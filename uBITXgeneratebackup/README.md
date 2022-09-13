@@ -8,7 +8,7 @@ COM_PORT = "COM14"
 
 BACKUPFILE= "binarybackupdump.btx"
 
-You should replace COM14 with the COM port that your uBITX comes up at when connected to your computer via USB. Your choice on the backupfile name. Just remember to maintain compatibility with the original uBITX Memory Manager, you need to keep the ".btx" extension. Also don't go messing with the file in a binary editor. Yes, I know that the second 1024 bytes (of the 2048 byte length file) are just zeros. But the uBITX Memory Manager likes it that way and I wanted to maint compatibility.
+You should replace COM14 with the COM port that your uBITX comes up at when connected to your computer via USB. Your choice on the backupfile name. Just remember to maintain compatibility with the original uBITX Memory Manager, you need to keep the ".btx" extension. Also don't go messing with the file in a binary editor. Yes, I know that the second 1024 bytes (of the 2048 byte length file) are just zeros. But the uBITX Memory Manager likes it that way and I wanted to maintain compatibility.
 
 I can be reached with thru my email on QRZ or thru topics on the groups.io BITX20 group. You should also be able to raise Issues on the GitHub. Let me know if you have an issue here.
 
