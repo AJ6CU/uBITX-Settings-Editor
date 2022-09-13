@@ -1,6 +1,6 @@
 # uBITXgeneratemodfile
 
-This program will be written using Python 3.10.4 on Windows. It requires the pySerial and the lxml libraries. Let me know if you find any other unusal dependencies.
+This program will be written using Python 3.10.4 on Windows. It requires the pySerial and the lxml libraries. Let me know if you find any other unusual dependencies.
 
 This program will work by reading from your EEPROM and merging the resulting values into an XML template file that will provide you with a "MOD File. You can then use your favorite ediotr (preferably one with support for XML) and modify/change values (see the <value></value> tage) 
 
