@@ -240,6 +240,10 @@
 		<label>Mode</label>
 		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
 	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ1_SHOW_NAME">							
+		<label>Show Name?</label>		
+		<value></value>									<!--either "yes" or "no" -->
+	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ1_NAME">							
 		<label>Name</label>		
 		<value></value>									<!--Maximum of 5 characters -->
@@ -251,6 +255,10 @@
 	<SETTING NAME="CHANNEL_FREQ2_MODE">							
 		<label>Mode</label>
 		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ2_SHOW_NAME">							
+		<label>Show Name?</label>		
+		<value></value>									<!--either "yes" or "no" -->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ2_NAME">							
 		<label>Name</label>
@@ -264,6 +272,10 @@
 		<label>Mode</label>
 		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
 	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ3_SHOW_NAME">							
+		<label>Show Name?</label>		
+		<value></value>									<!--either "yes" or "no" -->
+	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ3_NAME">							
 		<label>Name</label>
 		<value></value>									<!--Maximum of 5 characters -->
@@ -275,6 +287,10 @@
 	<SETTING NAME="CHANNEL_FREQ4_MODE">							
 		<label>Mode</label>
 		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ4_SHOW_NAME">							
+		<label>Show Name?</label>		
+		<value></value>									<!--either "yes" or "no" -->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ4_NAME">							
 		<label>Name</label>
@@ -288,6 +304,10 @@
 		<label>Mode</label>
 		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
 	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ5_SHOW_NAME">							
+		<label>Show Name?</label>		
+		<value></value>									<!--either "yes" or "no" -->
+	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ5_NAME">							
 		<label>Name</label>
 		<value></value>									<!--Maximum of 5 characters -->
@@ -299,6 +319,10 @@
 	<SETTING NAME="CHANNEL_FREQ6_MODE">							
 		<label>Mode</label>
 		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ5_SHOW_NAME">							
+		<label>Show Name?</label>		
+		<value></value>									<!--either "yes" or "no" -->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ6_NAME">							
 		<value></value>									<!--Maximum of 5 characters -->
@@ -312,6 +336,10 @@
 		<label>Mode</label>
 		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
 	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ7_SHOW_NAME">							
+		<label>Show Name?</label>		
+		<value></value>									<!--either "yes" or "no" -->
+	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ7_NAME">							
 		<label>Name</label>
 		<value></value>									<!--Maximum of 5 characters -->
@@ -323,6 +351,10 @@
 	<SETTING NAME="CHANNEL_FREQ8_MODE">							
 		<label>Mode</label>
 		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ8_SHOW_NAME">							
+		<label>Show Name?</label>		
+		<value></value>									<!--either "yes" or "no" -->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ8_NAME">							
 		<label>Name</label>
@@ -336,6 +368,10 @@
 		<label>Mode</label>
 		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
 	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ9_SHOW_NAME">							
+		<label>Show Name?</label>		
+		<value></value>									<!--either "yes" or "no" -->
+	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ9_NAME">							
 		<label>Name</label>
 		<value></value>									<!--Maximum of 5 characters -->
@@ -347,6 +383,10 @@
 	<SETTING NAME="CHANNEL_FREQ10_MODE">							
 		<label>Mode</label>
 		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ10_SHOW_NAME">							
+		<label>Show Name?</label>		
+		<value></value>									<!--either "yes" or "no" -->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ10_NAME">							
 		<label>Name</label>
