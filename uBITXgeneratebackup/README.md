@@ -1,6 +1,6 @@
 # uBITXgeneratebackup
 
-This program was written using Python 3.10.4 on Windows. It requires the pySerial libraries. Let me know if you find any other unusal dependencies.
+This program was written using Python 3.10.4 on Windows. It requires the pySerial library to be included. Let me know if you find any other unusal dependencies.
 
 You should only need to modify two variables to run this:
 
