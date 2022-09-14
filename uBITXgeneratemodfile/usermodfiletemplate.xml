@@ -15,10 +15,6 @@
 		<label>Master Calibration</label>
 		<value></value>							<!--every radio is unique but often around 161875-->
 	</SETTING>
-	<SETTING NAME="LSB_CAL">					
-		<label>LSB Calibration</label>			<!--always seems to be 0 (zero)-->
-		<value></value>
-	</SETTING>
 	<SETTING NAME="USB_CAL">					
 		<label>BFO (USB) Calibration</label>	<!--previously called USB Calibration. Often around 11996450-->
 		<value></value>
@@ -29,16 +25,16 @@
 	</SETTING>
 	
 	<SETTING NAME="IF1_CAL_ON_OFF_SWITCH">		<!--Enables calibration of IF -->
-		<label>IF1_CAL Status</label>
-		<value></value>							<!--0=off, 1=on -->
+		<label>Enable IF1_CAL?</label>
+		<value></value>							<!--either YES or NO-->
 	</SETTING>	
 	<SETTING NAME="IF1_CAL">							
 		<label>IF1 Calibration Factor</label>
 		<value></value>							<!--value is 0-255. Factory default is 0 or 255. Dr Lee recommends 0, or 60-85.-->
 	</SETTING>
 	<SETTING NAME="IF1_CAL_ADD_SUB">
-		<label>Subtract IF1 Calibration Factor</label>
-		<value></value>							<!--Default is to Add=0. To subtract calibration, set this value to 1-->
+		<label>Subtract IF1 Calibration Factor?</label>
+		<value></value>							<!--either YES or NO To subtract calibration, set this value to YES -->
 	</SETTING>
 <!-- 
 	*****************************************************************************************************
@@ -51,7 +47,7 @@
 	</SETTING>
 	<SETTING NAME="VFO_A_MODE">							
 		<label>VFO A Mode Upon Boot</label>
-		<value></value>							<!--0: default, 1:not use, 2:LSB, 3:USB, 4:CWL, 5:CWU-->
+		<value></value>							<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="VFO_B">
 		<label>VFO B Bootup Freq</label>
@@ -59,7 +55,7 @@
 	</SETTING>
 	<SETTING NAME="VFO_B_MODE">							
 		<label>VFO B Mode Upon Boot</label>
-		<value></value>							<!--0: default, 1:not use, 2:LSB, 3:USB, 4:CWL, 5:CWU-->
+		<value></value>							<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 
 	<SETTING NAME="TUNING_STEP_INDEX">							
@@ -93,7 +89,7 @@
 -->	
 	<SETTING NAME="CW_KEY_TYPE">							
 		<label>CW Key Type</label>
-		<value></value>								<!--0=Straight; 1=IAMBICA, 2=IAMBICB -->
+		<value></value>								<!--Select one of "straight", "iambica", "iambicb" -->
 	</SETTING>
 	<SETTING NAME="CW_SIDETONE">							
 		<label>CW Sidetone(HZ)</label>
@@ -106,11 +102,11 @@
 
 	<SETTING NAME="CW_DELAY_MS">							
 		<label>CW delay switching from TX back to RX</label>
-		<value></value>								<!--In miliseconds - by 10's (e.g. 0, 10, 20,100,1000) Max 2550-->
+		<value></value>								<!--In miliseconds Max 2550-->
 	</SETTING>
 	<SETTING NAME="CW_START_MS">							
 		<label>Delay before starting TX </label>
-		<value></value>								<!--0-560ms - by '2s (e.g., 2, 4, 100, 200) -->
+		<value></value>								<!--0-560ms - odd numbers rounded down to be even (i.e. 53->52) -->
 	</SETTING>
 <!--
 	*****************************************************************************************************
@@ -238,11 +234,11 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ1_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ1_SHOW_NAME">							
 		<label>Show Name?</label>		
-		<value></value>									<!--either "yes" or "no" -->
+		<value></value>									<!--either YES or NO-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ1_NAME">							
 		<label>Name</label>		
@@ -254,11 +250,11 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ2_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ2_SHOW_NAME">							
 		<label>Show Name?</label>		
-		<value></value>									<!--either "yes" or "no" -->
+		<value></value>									<!--either YES or NO-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ2_NAME">							
 		<label>Name</label>
@@ -270,11 +266,11 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ3_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ3_SHOW_NAME">							
 		<label>Show Name?</label>		
-		<value></value>									<!--either "yes" or "no" -->
+		<value></value>									<!--either YES or NO-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ3_NAME">							
 		<label>Name</label>
@@ -286,11 +282,11 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ4_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ4_SHOW_NAME">							
 		<label>Show Name?</label>		
-		<value></value>									<!--either "yes" or "no" -->
+		<value></value>									<!--either YES or NO-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ4_NAME">							
 		<label>Name</label>
@@ -302,11 +298,11 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ5_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ5_SHOW_NAME">							
 		<label>Show Name?</label>		
-		<value></value>									<!--either "yes" or "no" -->
+		<value></value>									<!--either YES or NO-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ5_NAME">							
 		<label>Name</label>
@@ -318,11 +314,11 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ6_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ5_SHOW_NAME">							
 		<label>Show Name?</label>		
-		<value></value>									<!--either "yes" or "no" -->
+		<value></value>									<!--either YES or NO-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ6_NAME">							
 		<value></value>									<!--Maximum of 5 characters -->
@@ -334,11 +330,11 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ7_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ7_SHOW_NAME">							
 		<label>Show Name?</label>		
-		<value></value>									<!--either "yes" or "no" -->
+		<value></value>									<!--either YES or NO-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ7_NAME">							
 		<label>Name</label>
@@ -350,11 +346,11 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ8_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ8_SHOW_NAME">							
 		<label>Show Name?</label>		
-		<value></value>									<!--either "yes" or "no" -->
+		<value></value>									<!--either YES or NO-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ8_NAME">							
 		<label>Name</label>
@@ -366,11 +362,11 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ9_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ9_SHOW_NAME">							
 		<label>Show Name?</label>		
-		<value></value>									<!--either "yes" or "no" -->
+		<value></value>									<!--either YES or NO-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ9_NAME">							
 		<label>Name</label>
@@ -382,11 +378,11 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ10_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ10_SHOW_NAME">							
 		<label>Show Name?</label>		
-		<value></value>									<!--either "yes" or "no" -->
+		<value></value>									<!--either YES or NO-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ10_NAME">							
 		<label>Name</label>
@@ -402,7 +398,7 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ11_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ12">							
 		<label>CH.12</label>
@@ -410,7 +406,7 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ12_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ13">							
 		<label>CH.13</label>
@@ -418,7 +414,7 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ13_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ14">							
 		<label>CH.14</label>
@@ -426,7 +422,7 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ14_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ15">							
 		<label>CH.15</label>
@@ -434,7 +430,7 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ15_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ16">							
 		<label>CH.16</label>
@@ -442,7 +438,7 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ16_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ17">							
 		<label>CH.17</label>
@@ -450,7 +446,7 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ17_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ18">							
 		<label>CH.18</label>
@@ -466,7 +462,7 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ19_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ20">							
 		<label>CH.20</label>
@@ -474,7 +470,7 @@
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ20_MODE">							
 		<label>Mode</label>
-		<value></value>									<!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	
 <!--	
@@ -510,82 +506,82 @@
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE1_START">
 		<label>Band 1 Start</label>		
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE1_END">							
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 		<label>Band 1 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE2_START">
 		<label>Band 2 Start</label>		
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE2_END">							
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 		<label>Band 2 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE3_START">
 		<label>Band 3 Start</label>		
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE3_END">							
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 		<label>Band 3 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE4_START">
 		<label>Band 4 Start</label>		
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE4_END">							
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 		<label>Band 4 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE5_START">
 		<label>Band 5 Start</label>		
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE5_END">							
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 		<label>Band 5 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE6_START">
 		<label>Band 6 Start</label>		
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE6_END">							
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 		<label>Band 6 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE7_START">
 		<label>Band 7 Start</label>		
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE7_END">							
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 		<label>Band 7 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE8_START">
 		<label>Band 8 Start</label>		
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE8_END">							
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 		<label>Band 8 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE9_START">
 		<label>Band 9 Start</label>		
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE9_END">							
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 		<label>Band 9 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE10_START">
 		<label>Band 10 Start</label>		
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE10_END">							
-		<value></value>										<!--In Khz. i.e. 14000000 is 14000 -->
+		<value></value>										<!--In hz. e.g.. 14000000  -->
 		<label>Band 10 End</label>
 	</SETTING>			
 <!--
@@ -598,7 +594,7 @@
 -->	
 	<SETTING NAME="BOOT_INTO_SDR_MODE">							
 		<label>Boot into SDR Mode</label>
-		<value></value>									<!--0=Normal boot into radio mode, 1=BOOT into SDR mode -->
+		<value></value>									<!--Either NORMAL or SDR  -->
 	</SETTING>
 <!--		SDR Offset Mode can be one of:
 			NO_OFFSET: 		No offset is provided to the data send to the SDR  
@@ -614,7 +610,7 @@
 	</SETTING>
 	<SETTING NAME="SDR_FREQUNCY">							
 		<label>SDR Offset frequency</label>   
-		<value></value>									<!--Check with SDR vendor. Enter full frequency (ie. 32.000.000) -->
+		<value></value>									<!--Check with SDR vendor. Enter frequency in Hz (ie. 32000000) -->
 	</SETTING>
 <!--	
 	*****************************************************************************************************
@@ -631,7 +627,7 @@
 		<value></value>								<!--5 Character name for this message-->
 	</SETTING> 
 	<SETTING NAME="WSPR_MESSAGE1">							
-		<label></label>  
+		<label>Encoded MSG1:</label>  
 		<value></value>								<!--Generate using uBITX Manager for now -->
 	</SETTING>
 	<SETTING NAME="WSPR_MESSAGE2_NAME">							
@@ -639,7 +635,7 @@
 		<value></value>								<!--5 Character name for this message-->
 	</SETTING> 
 	<SETTING NAME="WSPR_MESSAGE2">							
-		<label></label>  
+		<label>Encoded MSG2:</label>  
 		<value></value>								<!--Generate using uBITX Manager for now -->
 	</SETTING>
 	<SETTING NAME="WSPR_MESSAGE3_NAME">							
@@ -647,7 +643,7 @@
 		<value></value>								<!--5 Character name for this message-->
 	</SETTING> 
 	<SETTING NAME="WSPR_MESSAGE3">							
-		<label></label>  
+		<label>Encoded MSG3:</label>  
 		<value></value>								<!--Generate using uBITX Manager for now -->
 	</SETTING>
 	<SETTING NAME="WSPR_MESSAGE4_NAME">							
@@ -655,7 +651,7 @@
 		<value></value>								<!--5 Character name for this message-->
 	</SETTING> 
 	<SETTING NAME="WSPR_MESSAGE4">							
-		<label></label>  
+		<label>Encoded MSG4:</label>  
 		<value></value>								<!--Generate using uBITX Manager for now -->
 	</SETTING>
 <!-- 	
@@ -671,7 +667,7 @@
 -->	
 	<SETTING NAME="S_METER_LEVELS">							
 		<label>Enable S-Meter?</label>
-		<value></value>									<!-- =1 enables this feature -->				
+		<value></value>									<!--either YES or NO. YES enables this feature-->			
 	</SETTING>
 	<SETTING NAME="S_METER_LEVEL1">							
 		<label>Level 1</label>
@@ -732,38 +728,34 @@
  -->
 	<SETTING NAME="MESSAGE_LINE">							
 		<value></value>
-		<label>Message Line?</label>					<!-- 0=Off, 1=ON -->					
+		<label>Message Line?</label>					<!--either YES or NO-->					
 	</SETTING>
 	<SETTING NAME="SCROLLING_DISPLAY">							
 		<label>Display Opt1</label>					
-		<value></value>									<!-- 0=Off, 1=ON -->
+		<value></value>									<!--either YES or NO-->
 	</SETTING>
 	<SETTING NAME="One_Two_Line_Toggle">							
 		<label>Display Opt1</label>
-		<value></value>									<!-- 0=Off, 1=ON -->		
+		<value></value>									<!--either YES or NO-->		
 	</SETTING>
 <!-- 	
 	NEXTION
  -->
 	<SETTING NAME="MAIN_SCREEN_FORMAT">							
 		<label>Main Screen SSB or CW</label>								
-		<value></value>									<!--SSB displays IFS/ATT, CW display decode code (req 2nd Nano) -->
+		<value></value>									<!--Either SSB or CW; CW display decode code (req 2nd Nano) -->
 	</SETTING>
 <!-- 	
 GENERAL UX
  -->
 	<SETTING NAME="DISPLAY_CALL_SIGN">							
 		<label>Display Call Sign?</label>
-		<value></value>										<!-- 0=Off, 1=ON -->	
-	</SETTING>
-	<SETTING NAME="DISPLAY_S-METER">							
-		<label>Display S-Meter?</label>
-		<value></value>										<!-- 0=Off, 1=ON -->	
+		<value></value>										<!--either YES or NO-->	
 	</SETTING>
 
 	<SETTING NAME="Stored_IF_Shift">							
 		<label>Preserve IF Shift?</label>
-		<value></value>											<!--Allows IF Shift value to be reused between boots -->
+		<value></value>											<!--either YES or NO. YES allows IF Shift value to be reused between boots -->
 	</SETTING>
 	<SETTING NAME="IF_SHIFTVALUE">							
 		<label>Shift hz (+/-)</label>
@@ -804,8 +796,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY1_FUNC">							
 		<label>Key1 Function</label>
-		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO_Toggle, 	
-														Split_Toggle, TX_Toggle, SDR_Mode_Toggle, Rit_Toggle		-->
+		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO, SPLIT, TX, SDR, RIT		-->
 	</SETTING>	
 	<SETTING NAME="EXTENDED_KEY2_START">							
 		<label>Key2 Start ADC</label>
@@ -830,8 +821,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY3_FUNC">							
 		<label>Key3 Function</label>
-		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO_Toggle, 	
-														Split_Toggle, TX_Toggle, SDR_Mode_Toggle, Rit_Toggle		-->
+		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO, SPLIT, TX, SDR, RIT		-->
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY4_START">							
 		<label>Key4 Start ADC</label>
@@ -843,8 +833,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY4_FUNC">							
 		<label>Key4 Function</label>
-		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO_Toggle, 	
-														Split_Toggle, TX_Toggle, SDR_Mode_Toggle, Rit_Toggle		-->
+		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO, SPLIT, TX, SDR, RIT		-->
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY5_START">							
 		<label>Key5 Start ADC</label>
@@ -856,8 +845,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY5_FUNC">							
 		<label>Key5 Function</label>
-		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO_Toggle, 	
-														Split_Toggle, TX_Toggle, SDR_Mode_Toggle, Rit_Toggle		-->
+		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO, SPLIT, TX, SDR, RIT		-->
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY6_START">							
 		<label>Key6 Start ADC</label>
@@ -869,8 +857,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY6_FUNC">							
 		<label>Key6 Function</label>
-		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO_Toggle, 	
-														Split_Toggle, TX_Toggle, SDR_Mode_Toggle, Rit_Toggle		-->
+		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO, SPLIT, TX, SDR, RIT		-->
 	</SETTING>
 	
 <!-- 	
@@ -896,11 +883,11 @@ GENERAL UX
  -->						
 	<SETTING NAME="CUST_LPF_ENABLED">							
 		<label>Enable Custom LPF</label>
-		<value></value>														<!--0=disabled, 1=enabled  -->
+		<value></value>														<!--either YES or NO-->	
 	</SETTING>
 	<SETTING NAME="CUST_LPF_USE_D10-D13">							
 		<label>USE D10-D13?</label>
-		<value></value>														<!-- 0=disabled, 1=enabled -->
+		<value></value>														<!--either YES or NO-->	
 	</SETTING>
 
 	<SETTING NAME="CUST_LPF_FILTER1_ENDFREQ">							
