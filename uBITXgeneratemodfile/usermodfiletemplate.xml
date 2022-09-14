@@ -316,17 +316,17 @@
 		<label>Mode</label>
 		<value></value>									<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
-	<SETTING NAME="CHANNEL_FREQ5_SHOW_NAME">							
+	<SETTING NAME="CHANNEL_FREQ6_SHOW_NAME">							
 		<label>Show Name?</label>		
 		<value></value>									<!--either YES or NO-->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ6_NAME">							
-		<value></value>									<!--Maximum of 5 characters -->
 		<label>Name</label>
+		<value></value>									<!--Maximum of 5 characters -->
 	</SETTING>
-			<SETTING NAME="CHANNEL_FREQ7">							
-		<value></value>									<!--In Hz. eg.g 14032000 is entered 14032000 -->
+	<SETTING NAME="CHANNEL_FREQ7">							
 		<label>CH.07</label>
+		<value></value>									<!--In Hz. eg.g 14032000 is entered 14032000 -->
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ7_MODE">							
 		<label>Mode</label>
