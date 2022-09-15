@@ -504,6 +504,10 @@
 		<label>Restrictions on TX</label>
 		<value></value>										<!--Choice of NONE or HAM. NONE means no restrictions. HAM means TX only on HAM bands -->
 	</SETTING>
+	<SETTING NAME="HAM_BAND_COUNT">
+		<label>Countof HAM Bands:</label>		
+		<value></value>										<!--In hz. e.g.. 14000000  -->
+	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE1_START">
 		<label>Band 1 Start</label>		
 		<value></value>										<!--In hz. e.g.. 14000000  -->
