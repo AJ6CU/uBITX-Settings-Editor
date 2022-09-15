@@ -122,43 +122,43 @@
 		<label>Alt Call sign</label>					<!--Substituted in message for '<' Max 18 characters)-->
 		<value></value>
 	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG1">
+	<SETTING NAME="CW_MEMORY_KEYER_MSG1">
 		<label>CW Keyer MSG1</label>					
 		<value></value>									<!--Total characters in all memory keyer message <= 200-->
 	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG2">
+	<SETTING NAME="CW_MEMORY_KEYER_MSG2">
 		<label>CW Keyer MSG2</label>					
 		<value></value>									<!--Total characters in all memory keyer message <= 200-->
 	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG3">
+	<SETTING NAME="CW_MEMORY_KEYER_MSG3">
 		<label>CW Keyer MSG3</label>					
 		<value></value>									<!--Total characters in all memory keyer message <= 200-->
 	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG4">
+	<SETTING NAME="CW_MEMORY_KEYER_MSG4">
 		<label>CW Keyer MSG4</label>					
 		<value></value>									<!--Total characters in all memory keyer message <= 200-->
 	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG5">
+	<SETTING NAME="CW_MEMORY_KEYER_MSG5">
 		<label>CW Keyer MSG5</label>					
 		<value></value>									<!--Total characters in all memory keyer message <= 200-->
 	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG6">
+	<SETTING NAME="CW_MEMORY_KEYER_MSG6">
 		<label>CW Keyer MSG6</label>					
 		<value></value>									<!--Total characters in all memory keyer message <= 200-->
 	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG7">
+	<SETTING NAME="CW_MEMORY_KEYER_MSG7">
 		<label>CW Keyer MSG7</label>					
 		<value></value>									<!--Total characters in all memory keyer message <= 200-->
 	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG8">
+	<SETTING NAME="CW_MEMORY_KEYER_MSG8">
 		<label>CW Keyer MSG8</label>					
 		<value></value>									<!--Total characters in all memory keyer message <= 200-->
 	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG9">
+	<SETTING NAME="CW_MEMORY_KEYER_MSG9">
 		<label>CW Keyer MSG9</label>					
 		<value></value>									<!--Total characters in all memory keyer message <= 200-->
 	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG10">
+	<SETTING NAME="CW_MEMORY_KEYER_MSG10">
 		<label>CW Keyer MSG610</label>					
 		<value></value>									<!--Total characters in all memory keyer message <= 200-->
 	</SETTING>
@@ -506,7 +506,7 @@
 	</SETTING>
 	<SETTING NAME="HAM_BAND_COUNT">
 		<label>Countof HAM Bands:</label>		
-		<value></value>										<!--In hz. e.g.. 14000000  -->
+		<value></value>										
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE1_START">
 		<label>Band 1 Start</label>		
