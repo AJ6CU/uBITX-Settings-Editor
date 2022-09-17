@@ -112,6 +112,24 @@
 	*****************************************************************************************************
 	CW MEMORY KEYER
 	Currently activated via pressing the encoder in and then selecting the menu item "Memory Keyer" 
+	The following chracters were used in the original program to refer to substitutions that would be made
+	> Replace with my Call sign
+	< Replace with QSO callsign
+	' Start
+	" End
+	# AR
+	{ AS
+	^ KN
+	~ BT
+	] SK
+	
+	The issue is that the characters "'<> are special in XML and must be replaced with special groups. For:
+	" use &quot
+	' use &apos
+	< use &lt
+	> use &gt
+	I will probably replace these chracters with something that doesn't cause a problem with XML before final
+	release. I have added an issue on github for this.
 	*****************************************************************************************************	
 -->	
 	<SETTING NAME="USER_CALLSIGN">							
@@ -122,45 +140,9 @@
 		<label>Alt Call sign</label>					<!--Substituted in message for '<' Max 18 characters)-->
 		<value></value>
 	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG1">
-		<label>CW Keyer MSG1</label>					
-		<value></value>									<!--Total characters in all memory keyer message <= 200-->
-	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG2">
-		<label>CW Keyer MSG2</label>					
-		<value></value>									<!--Total characters in all memory keyer message <= 200-->
-	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG3">
-		<label>CW Keyer MSG3</label>					
-		<value></value>									<!--Total characters in all memory keyer message <= 200-->
-	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG4">
-		<label>CW Keyer MSG4</label>					
-		<value></value>									<!--Total characters in all memory keyer message <= 200-->
-	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG5">
-		<label>CW Keyer MSG5</label>					
-		<value></value>									<!--Total characters in all memory keyer message <= 200-->
-	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG6">
-		<label>CW Keyer MSG6</label>					
-		<value></value>									<!--Total characters in all memory keyer message <= 200-->
-	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG7">
-		<label>CW Keyer MSG7</label>					
-		<value></value>									<!--Total characters in all memory keyer message <= 200-->
-	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG8">
-		<label>CW Keyer MSG8</label>					
-		<value></value>									<!--Total characters in all memory keyer message <= 200-->
-	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG9">
-		<label>CW Keyer MSG9</label>					
-		<value></value>									<!--Total characters in all memory keyer message <= 200-->
-	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG10">
-		<label>CW Keyer MSG610</label>					
-		<value></value>									<!--Total characters in all memory keyer message <= 200-->
+	<SETTING NAME="CW_MEMORY_KEYER_MSGS">				<!--Total characters in all memory keyer message <= 200-->
+		<label>Total Messages:</label>					
+		<value></value>		
 	</SETTING>
 <!--	
 	*****************************************************************************************************
@@ -601,16 +583,16 @@
 		<value></value>									<!--Either NORMAL or SDR  -->
 	</SETTING>
 <!--		SDR Offset Mode can be one of:
-			NO_OFFSET: 		No offset is provided to the data send to the SDR  
-			FIXED_OFFSET:	The SDR offset frequency is added to the frequency on the display and sent to the SDR
-			MHZ_OFFSET:	  	The single MHZ digit of the radio's frequency is added. For example, if the radio was
+			NONE: 			No offset is provided to the data send to the SDR  
+			FIXED:			The SDR offset frequency is added to the frequency on the display and sent to the SDR
+			MHZ:		  	The single MHZ digit of the radio's frequency is added. For example, if the radio was
 							at 14.032.000, and the offset was at 30.000.000, the resulting frequency would be 43.032.000.	
-			KHZ_OFFSET:		Similar to MHZ_OFFSET, but using the KHZ number. So with a 30.000.000 offset and and a
+			KHZ:			Similar to MHZ_OFFSET, but using the KHZ number. So with a 30.000.000 offset and and a
 							14.032.000 radio setting, the SDR will see a 30.032.000 frequency.
 -->	
 	<SETTING NAME="SDR_OFFSET_MODE">
 		<label>SDR Freq Offset Mode</label>
-		<value></value>									<!--NO_OFFSET, FIXED_OFFSET, MHZ_OFFSET, KHZ_OFFSET   -->
+		<value></value>									<!--NONE, FIXED, MHZ, KHZ   -->
 	</SETTING>
 	<SETTING NAME="SDR_FREQUNCY">							
 		<label>SDR Offset frequency</label>   
@@ -746,13 +728,13 @@
 	NEXTION
  -->
 	<SETTING NAME="MAIN_SCREEN_FORMAT">							
-		<label>Main Screen SSB or CW</label>								
-		<value></value>									<!--Either SSB or CW; CW display decode code (req 2nd Nano) -->
+		<label>Main Screen DEFAULT or CW</label>								
+		<value></value>									<!--Either DEFAULT or CW; CW display decode code (req 2nd Nano) -->
 	</SETTING>
 <!-- 	
 GENERAL UX
  -->
-	<SETTING NAME="DISPLAY_CALL_SIGN">							
+	<SETTING NAME="NEXTION_DISPLAY_CALL_SIGN">							
 		<label>Display Call Sign?</label>
 		<value></value>										<!--either YES or NO-->	
 	</SETTING>
@@ -772,7 +754,7 @@ GENERAL UX
 																	Select RX to have the display show the actual RX frequency when sending CW
 																	See http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html  -->
 	</SETTING>
-	<SETTING NAME="CW Frequency Adjustment">
+	<SETTING NAME="CW_Frequency_Adjustment">
 		<label>CW Freq Adjust Value</label>						<!--Extra adjustment to the displayed frequency. 0-600 -->
 		<value></value>
 	</SETTING>

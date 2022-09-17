@@ -148,9 +148,21 @@
 	CW MEMORY KEYER
 	*****************************************************************************************************	
 -->	
-	<SETTING NAME="USER_CALLSIGN">							
+	<SETTING NAME="USER_CALLSIGN_KEY">							
 		<EEPROMStart>780</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>hex</displayFormat>								
+		<SPECIAL_PROCESSING>skip</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="USER_CALLSIGN_LEN">							
+		<EEPROMStart>781</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>								
+		<SPECIAL_PROCESSING>skip</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="USER_CALLSIGN">							
+		<EEPROMStart>782</EEPROMStart>
+		<sizeInBytes>18</sizeInBytes>
 		<displayFormat>str</displayFormat>								
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
@@ -160,66 +172,25 @@
 		<displayFormat>str</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG1">
+	<SETTING NAME="CW_AUTO_COUNT">							
+		<EEPROMStart>801</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>skip</SPECIAL_PROCESSING>
+	</SETTING>	
+	<SETTING NAME="CW_AUTO_DATA">							
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>skip</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGS">				<!--This is the CW_AUTO_DATA def in the software -->							
 		<EEPROMStart>803</EEPROMStart>
 		<sizeInBytes>200</sizeInBytes>
-		<displayFormat>hex</displayFormat>									
+		<displayFormat>str</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG2">
-		<EEPROMStart>803</EEPROMStart>
-		<sizeInBytes>200</sizeInBytes>
-		<displayFormat>hex</displayFormat>									
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
-	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG3">
-		<EEPROMStart>803</EEPROMStart>
-		<sizeInBytes>200</sizeInBytes>
-		<displayFormat>hex</displayFormat>									
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
-	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG4">
-		<EEPROMStart>803</EEPROMStart>
-		<sizeInBytes>200</sizeInBytes>
-		<displayFormat>hex</displayFormat>									
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
-	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG5">
-		<EEPROMStart>803</EEPROMStart>
-		<sizeInBytes>200</sizeInBytes>
-		<displayFormat>hex</displayFormat>									
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
-	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG6">
-		<EEPROMStart>803</EEPROMStart>
-		<sizeInBytes>200</sizeInBytes>
-		<displayFormat></displayFormat>									
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
-	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG7">
-		<EEPROMStart>803</EEPROMStart>
-		<sizeInBytes>200</sizeInBytes>
-		<displayFormat>hex</displayFormat>									
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
-	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG8">
-		<EEPROMStart>803</EEPROMStart>
-		<sizeInBytes>200</sizeInBytes>
-		<displayFormat>hex</displayFormat>									
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
-	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG9">
-		<EEPROMStart>803</EEPROMStart>
-		<sizeInBytes>200</sizeInBytes>
-		<displayFormat>hex</displayFormat>									
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
-	</SETTING>
-	<SETTING NAME="CQ_MEMORY_KEYER_MSG10">
-		<EEPROMStart>803</EEPROMStart>
-		<sizeInBytes>200</sizeInBytes>
-		<displayFormat>hex</displayFormat>									
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
-	</SETTING>
+	
 <!--	
 	*****************************************************************************************************
 	CW ADC Settings              
@@ -369,7 +340,7 @@
 		<EEPROMStart>723</EEPROMStart>
 		<sizeInBytes>5</sizeInBytes>
 		<displayFormat>str</displayFormat>
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ4">							
 		<EEPROMStart>642</EEPROMStart>
@@ -399,7 +370,7 @@
 		<EEPROMStart>646</EEPROMStart>
 		<sizeInBytes>4</sizeInBytes>
 		<displayFormat>int</displayFormat>
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ5_MODE">							
 		<EEPROMStart>649</EEPROMStart>
@@ -702,7 +673,7 @@
 		<EEPROMStart>260</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>int</displayFormat>		
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE1_START">
 		<EEPROMStart>262</EEPROMStart>
@@ -835,13 +806,13 @@
 	<SETTING NAME="BOOT_INTO_SDR_MODE">							
 		<EEPROMStart>240</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
-		<displayFormat>selection</displayFormat>
+		<displayFormat>selection_sdr</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>	
 	<SETTING NAME="SDR_OFFSET_MODE">
 		<EEPROMStart>240</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
-		<displayFormat>selection</displayFormat>							
+		<displayFormat>selection_sdr_offset</displayFormat>							
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
 	<SETTING NAME="SDR_FREQUNCY">							
@@ -1027,14 +998,14 @@
  -->
 	<SETTING NAME="MAIN_SCREEN_FORMAT">							
 		<EEPROMStart>770</EEPROMStart>
-		<sizeInBytes>4</sizeInBytes>
-		<displayFormat>selection</displayFormat>							
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_main_format</displayFormat>							
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
 	</SETTING>
 <!-- 	
 GENERAL UX
  -->
-	<SETTING NAME="DISPLAY_CALL_SIGN">							
+	<SETTING NAME="NEXTION_DISPLAY_CALL_SIGN">							
 		<EEPROMStart>361</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>bool</displayFormat>
@@ -1060,7 +1031,7 @@ GENERAL UX
 		<displayFormat>hex</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-	<SETTING NAME="CW Frequency Adjustment">
+	<SETTING NAME="CW_Frequency_Adjustment">
 		<EEPROMStart>359</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>selection</displayFormat>
