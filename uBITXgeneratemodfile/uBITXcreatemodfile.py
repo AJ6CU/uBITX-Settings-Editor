@@ -114,10 +114,10 @@ print("Opening connection to radio")
 RS232 = serial.Serial(COM_PORT, BAUD, timeout=0, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
 sleep(3)  #this is required to allow Nano to reset after open
 
-print("reading EEPROM")
+print("Reading EEPROM")
 EEPROMBuffer=readEEPROMData(RS232, 0, EEPROMSIZE)       #Read the EEPROM into memory
 
-print("opening template files")
+print("Opening template files")
 EEPROMtree = ET.parse(EEPROMMEMORYMAP)
 EEPROMroot = EEPROMtree.getroot()
 
@@ -278,6 +278,23 @@ for setting in EEPROMroot.findall('.//SETTING'):
                     while i < TOTALCWMESSAGES:
                         ET.SubElement(valueElement, 'message')
                         i+=1
+                case "Stored_IF_Shift":
+                        value.text = BOOL_SELECT[(get_Byte_FromEEPROM(EEPROMBuffer, memLocation) >> 6) & 0x01]
+                case "IF_SHIFTVALUE":
+                        tmpInt = get_uint16_FromEEPROM(EEPROMBuffer, memLocation)
+                        if tmpInt & 0x8000:                                         #We have a negative number
+                            value.text = "-" + str((~tmpInt+1)& 0xffff)             #convert from 2's complement
+                        else:
+                            value.text = str(tmpInt)
+                case "CW_DISPLAY_FREQ":
+                        shiftDisplay = (get_Byte_FromEEPROM(EEPROMBuffer, memLocation) >>7) & 0x01
+                        enableAdjustCWFreq = (get_Byte_FromEEPROM(EEPROMBuffer, memLocation+1) >>7) & 0x01
+
+                        if shiftDisplay & ~enableAdjustCWFreq:      #By definition means display shows RX freq
+                            value.text = "RX"
+                        else:
+                            value.text = "TX"                       #Shows TX Freq seems to be the preferred option
+
                 case "MESSAGE_LINE":
                         value.text = BOOL_SELECT[(get_Byte_FromEEPROM(EEPROMBuffer, memLocation) >>4)&0x01]
 
@@ -300,6 +317,16 @@ for setting in EEPROMroot.findall('.//SETTING'):
                         value.text = BOOL_SELECT[((get_Byte_FromEEPROM(EEPROMBuffer, memLocation) >>7) & 0x01)]
                 case "CW_Frequency_Adjustment":
                         value.text = str((get_Byte_FromEEPROM(EEPROMBuffer, memLocation) &  0x3f)*10)
+                case "TUNING_RESTICTIONS":
+                    if (get_Byte_FromEEPROM(EEPROMBuffer, memLocation) & 0x02):
+                        value.text = "BAND"  # Restriction are placed on Tuning (although not clear enforced)
+                    else:
+                        value.text = "NONE"  # No restrictions on how and where you can tune
+                case "TX_RESTRICTIONS":
+                    if (get_Byte_FromEEPROM(EEPROMBuffer, memLocation) >=100):
+                        value.text = "HAM"              #Restriction of TX to only HAM bands
+                    else:
+                        value.text = "NONE"              #Restrictions on TX
 
                 case "CW_ADC_ST_FROM"|"CW_ADC_ST_TO"|"CW_ADC_DOT_FROM"|"CW_ADC_DOT_TO":
                     upperBitsByte = XML_Get_Byte_FromEEPROM(EEPROMroot, "CW_ADC_MOST_BIT1", EEPROMBuffer)  #get byte with upper two bits
