@@ -89,7 +89,7 @@
 -->	
 	<SETTING NAME="CW_KEY_TYPE">							
 		<label>CW Key Type</label>
-		<value></value>								<!--Select one of "straight", "iambica", "iambicb" -->
+		<value></value>								<!--Select one of "STRAIGHT","IAMBICA","IAMBICB" -->
 	</SETTING>
 	<SETTING NAME="CW_SIDETONE">							
 		<label>CW Sidetone(HZ)</label>
@@ -782,7 +782,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY1_FUNC">							
 		<label>Key1 Function</label>
-		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO, SPLIT, TX, SDR, RIT		-->
+		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
 	</SETTING>	
 	<SETTING NAME="EXTENDED_KEY2_START">							
 		<label>Key2 Start ADC</label>
@@ -794,8 +794,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY2_FUNC">							
 		<label>Key2 Function</label>
-		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO_Toggle, 	
-														Split_Toggle, TX_Toggle, SDR_Mode_Toggle, Rit_Toggle		-->
+		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY3_START">							
 		<label>Key3 Start ADC</label>
@@ -807,7 +806,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY3_FUNC">							
 		<label>Key3 Function</label>
-		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO, SPLIT, TX, SDR, RIT		-->
+		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY4_START">							
 		<label>Key4 Start ADC</label>
@@ -819,7 +818,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY4_FUNC">							
 		<label>Key4 Function</label>
-		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO, SPLIT, TX, SDR, RIT		-->
+		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY5_START">							
 		<label>Key5 Start ADC</label>
@@ -831,7 +830,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY5_FUNC">							
 		<label>Key5 Function</label>
-		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO, SPLIT, TX, SDR, RIT		-->
+		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY6_START">							
 		<label>Key6 Start ADC</label>
@@ -843,7 +842,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY6_FUNC">							
 		<label>Key6 Function</label>
-		<value></value>								<!--One of: NONE, MODE, BAND+, BAND-, TUNE_STEP, VFO, SPLIT, TX, SDR, RIT		-->
+		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
 	</SETTING>
 	
 <!-- 	

@@ -370,7 +370,7 @@
 		<EEPROMStart>646</EEPROMStart>
 		<sizeInBytes>4</sizeInBytes>
 		<displayFormat>int</displayFormat>
-		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
 	<SETTING NAME="CHANNEL_FREQ5_MODE">							
 		<EEPROMStart>649</EEPROMStart>
