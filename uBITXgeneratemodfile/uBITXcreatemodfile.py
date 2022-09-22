@@ -409,7 +409,7 @@ for setting in EEPROMroot.findall('.//SETTING'):
                      else:
                             value.text = BOOL_SELECT[0]
 
-                case "CUST_LPF_USE_D10-D13":
+                case "CUST_LPF_USE_D10toD13":
                      if (((get_Byte_FromEEPROM(EEPROMBuffer, memLocation)) & 0x5F) == 0x58):  # a 0x58 bit pattern enables use of D10-D13 too
                          value.text = BOOL_SELECT[1]
                      else:

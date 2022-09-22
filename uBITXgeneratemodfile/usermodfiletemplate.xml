@@ -67,19 +67,19 @@
 		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
 	</SETTING>
 	<SETTING NAME="TUNING_STEP2">							
-		<label>Step #1</label>
+		<label>Step #2</label>
 		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
 	</SETTING>
 	<SETTING NAME="TUNING_STEP3">							
-		<label>Step #1</label>
+		<label>Step #3</label>
 		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
 	</SETTING>
 	<SETTING NAME="TUNING_STEP4">							
-		<label>Step #1</label>
+		<label>Step #4</label>
 		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
 	</SETTING>
 	<SETTING NAME="TUNING_STEP5">							
-		<label>Step #1</label>
+		<label>Step #5</label>
 		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
 	</SETTING>
 <!--
@@ -594,7 +594,7 @@
 		<label>SDR Freq Offset Mode</label>
 		<value></value>									<!--NONE, FIXED, MHZ, KHZ   -->
 	</SETTING>
-	<SETTING NAME="SDR_FREQUNCY">							
+	<SETTING NAME="SDR_FREQUENCY">							
 		<label>SDR Offset frequency</label>   
 		<value></value>									<!--Check with SDR vendor. Enter frequency in Hz (ie. 32000000) -->
 	</SETTING>
@@ -870,7 +870,7 @@ GENERAL UX
 		<label>Enable Custom LPF</label>
 		<value></value>														<!--either YES or NO-->	
 	</SETTING>
-	<SETTING NAME="CUST_LPF_USE_D10-D13">							
+	<SETTING NAME="CUST_LPF_USE_D10toD13">							
 		<label>USE D10-D13?</label>
 		<value></value>														<!--either YES or NO-->	
 	</SETTING>

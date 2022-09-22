@@ -815,7 +815,7 @@
 		<displayFormat>selection_sdr_offset</displayFormat>							
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-	<SETTING NAME="SDR_FREQUNCY">							
+	<SETTING NAME="SDR_FREQUENCY">							
 		<EEPROMStart>243</EEPROMStart>
 		<sizeInBytes>4</sizeInBytes>
 		<displayFormat>int</displayFormat>								
@@ -1187,7 +1187,7 @@ GENERAL UX
 		<displayFormat>bool</displayFormat>															
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-	<SETTING NAME="CUST_LPF_USE_D10-D13">							
+	<SETTING NAME="CUST_LPF_USE_D10toD13">							
 		<EEPROMStart>48</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>bool</displayFormat>															
