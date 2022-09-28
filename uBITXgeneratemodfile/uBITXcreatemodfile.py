@@ -31,6 +31,9 @@ MAXCALLSIGNLEN = 18                                 #Max length of callsign and 
 #ENUMS#####################################################
 MODE_SELECT = ["DEFAULT","xxx","LSB","USB","CWL","CWU"]
 BOOL_SELECT = ["NO","YES"]
+TUNE_RESTRICT_SELECT = ["NONE","BAND"]
+TX_RESTRICT_SELECT = ["NONE", "HAM"]
+TX_RESTRICT_MINIMUM = 100
 CW_KEY_SELECT = ["STRAIGHT","IAMBICA","IAMBICB"]
 MAIN_MENU_SELECT = ["DEFAULT","CW"]
 BOOT_MODE = ["NORMAL", "SDR"]
@@ -38,7 +41,7 @@ SDR_OFFSET_MODE = ["NONE","FIXED", "MHZ", "KHZ"]
 FTN_KEY_SELECT = ["NONE", "MODE", "BAND-UP", "BAND-DN", "TUNE-STEP", "VFO-A/B", "SPLIT", "TX", "SDR-MODE", "RIT"]
 LPF_MODE_SELECT = ["OFF", "STANDARD", "EXTENDED"]
 LPF_MODE_SETTING = [0x00, 0x57, 0x58]
-LPF_CTRL_SELECT = ["TX_LPF_A", "TX_LPF_B", "TX_LPF_C", "D10", "D11", "D12", "D13"]
+LPF_CTRL_SELECT = ["TX_LPF_A", "TX_LPF_B", "TX_LPF_C", "D10", "D11", "D12", "D13", "NONE"]
 #end ENUMS#################################################
 
 
@@ -320,15 +323,12 @@ for setting in EEPROMroot.findall('.//SETTING'):
                 case "CW_Frequency_Adjustment":
                         value.text = str((get_Byte_FromEEPROM(EEPROMBuffer, memLocation) &  0x3f)*10)
                 case "TUNING_RESTICTIONS":
-                    if (get_Byte_FromEEPROM(EEPROMBuffer, memLocation) & 0x02):
-                        value.text = "BAND"  # Restriction are placed on Tuning (although not clear enforced)
-                    else:
-                        value.text = "NONE"  # No restrictions on how and where you can tune
+                        value.text = TUNE_RESTRICT_SELECT[get_Byte_FromEEPROM(EEPROMBuffer, memLocation)>>1 & 0x01]
                 case "TX_RESTRICTIONS":
-                    if (get_Byte_FromEEPROM(EEPROMBuffer, memLocation) >=100):
-                        value.text = "HAM"              #Restriction of TX to only HAM bands
+                    if (get_Byte_FromEEPROM(EEPROMBuffer, memLocation) >= TX_RESTRICT_MINIMUM):
+                        value.text = TX_RESTRICT_SELECT[1]              #Restriction of TX to only HAM bands
                     else:
-                        value.text = "NONE"              #Restrictions on TX
+                        value.text = TX_RESTRICT_SELECT[0]              #Restrictions on TX
 
                 case "CW_ADC_ST_FROM"|"CW_ADC_ST_TO"|"CW_ADC_DOT_FROM"|"CW_ADC_DOT_TO":
                     upperBitsByte = XML_Get_Byte_FromEEPROM(EEPROMroot, "CW_ADC_MOST_BIT1", EEPROMBuffer)  #get byte with upper two bits
@@ -413,11 +413,14 @@ for setting in EEPROMroot.findall('.//SETTING'):
                     j = 0
                     tmpStr = ""
                     LPFControlByte = get_Byte_FromEEPROM(EEPROMBuffer, memLocation)
-                    while j < 7:
-                        if ((LPFControlByte>>j)&0x01):
-                            tmpStr += (LPF_CTRL_SELECT[j] + ",")
-                        j += 1
-                    value.text = tmpStr.rstrip(',')
+                    if LPFControlByte == 0x00:
+                        value.text="NONE"
+                    else:
+                        while j < 7:
+                            if ((LPFControlByte>>j)&0x01):
+                                tmpStr += (LPF_CTRL_SELECT[j] + ",")
+                            j += 1
+                        value.text = tmpStr.rstrip(',')
 
                 case _:
                     print("Special processing still required for:", settingName)
