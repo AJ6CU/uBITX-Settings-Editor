@@ -608,6 +608,10 @@
 	NOTE MISSIng BAND AND CALIBRATION INFO FOR WSPR
 	*****************************************************************************************************	
 -->	
+	<SETTING NAME="WSPR_COUNT">							
+		<label>WSPR Messages to Use</label>
+		<value></value>								<!--value 0-4. e.g., 3 would mean to use first 3 messages and ignore the 4th-->
+	</SETTING> 
 	<SETTING NAME="WSPR_MESSAGE1_NAME">							
 		<label>Name</label>
 		<value></value>								<!--5 Character name for this message-->

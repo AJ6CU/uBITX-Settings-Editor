@@ -831,6 +831,12 @@
 	NOTE MISSIng BAND AND CALIBRATION INFO FOR WSPR
 	*****************************************************************************************************	
 -->	
+	<SETTING NAME="WSPR_COUNT">							
+		<EEPROMStart>443</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>	
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING> 
 	<SETTING NAME="WSPR_MESSAGE1_NAME">							
 		<EEPROMStart>444</EEPROMStart>
 		<sizeInBytes>5</sizeInBytes>
