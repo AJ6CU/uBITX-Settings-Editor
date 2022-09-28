@@ -1187,12 +1187,7 @@ GENERAL UX
 		<displayFormat>bool</displayFormat>															
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-	<SETTING NAME="CUST_LPF_USE_D10toD13">							
-		<EEPROMStart>48</EEPROMStart>
-		<sizeInBytes>1</sizeInBytes>
-		<displayFormat>bool</displayFormat>															
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>												
-	</SETTING>
+
 	<SETTING NAME="CUST_LPF_FILTER1_ENDFREQ">							
 		<EEPROMStart>49</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>

@@ -33,9 +33,11 @@ MODE_SELECT = ["DEFAULT","xxx","LSB","USB","CWL","CWU"]
 BOOL_SELECT = ["NO","YES"]
 CW_KEY_SELECT = ["STRAIGHT","IAMBICA","IAMBICB"]
 MAIN_MENU_SELECT = ["DEFAULT","CW"]
-BOOT_MODE = ["NORMAL", "BOOT"]
+BOOT_MODE = ["NORMAL", "SDR"]
 SDR_OFFSET_MODE = ["NONE","FIXED", "MHZ", "KHZ"]
 FTN_KEY_SELECT = ["NONE", "MODE", "BAND-UP", "BAND-DN", "TUNE-STEP", "VFO-A/B", "SPLIT", "TX", "SDR-MODE", "RIT"]
+LPF_MODE_SELECT = ["OFF", "STANDARD", "EXTENDED"]
+LPF_MODE_SETTING = [0x00, 0x57, 0x58]
 LPF_CTRL_SELECT = ["TX_LPF_A", "TX_LPF_B", "TX_LPF_C", "D10", "D11", "D12", "D13"]
 #end ENUMS#################################################
 
@@ -403,17 +405,7 @@ for setting in EEPROMroot.findall('.//SETTING'):
                     value.text = str(get_Byte_FromEEPROM(EEPROMBuffer, memLocation)*4)
 
                 case "CUST_LPF_ENABLED":
-                     if ((((get_Byte_FromEEPROM(EEPROMBuffer, memLocation)) & 0x5F)==0x57)|
-                         (((get_Byte_FromEEPROM(EEPROMBuffer, memLocation)) & 0x5F) == 0x58)):  # a 0x57 or 0x58 bit pattern enables custom lpf
-                            value.text = BOOL_SELECT[1]
-                     else:
-                            value.text = BOOL_SELECT[0]
-
-                case "CUST_LPF_USE_D10toD13":
-                     if (((get_Byte_FromEEPROM(EEPROMBuffer, memLocation)) & 0x5F) == 0x58):  # a 0x58 bit pattern enables use of D10-D13 too
-                         value.text = BOOL_SELECT[1]
-                     else:
-                         value.text = BOOL_SELECT[0]
+                     value.text = LPF_MODE_SELECT[LPF_MODE_SETTING.index((get_Byte_FromEEPROM(EEPROMBuffer, memLocation)))]
 
                 case ("CUST_LPF_FILTER1_CONTROL" | "CUST_LPF_FILTER2_CONTROL" | "CUST_LPF_FILTER3_CONTROL" |
                      "CUST_LPF_FILTER4_CONTROL" | "CUST_LPF_FILTER5_CONTROL" | "CUST_LPF_FILTER6_CONTROL" |

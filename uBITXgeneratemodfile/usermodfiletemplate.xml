@@ -868,13 +868,8 @@ GENERAL UX
  -->						
 	<SETTING NAME="CUST_LPF_ENABLED">							
 		<label>Enable Custom LPF</label>
-		<value></value>														<!--either YES or NO-->	
+		<value></value>														<!--One of OFF, STANDARD, EXTENDED -->	
 	</SETTING>
-	<SETTING NAME="CUST_LPF_USE_D10toD13">							
-		<label>USE D10-D13?</label>
-		<value></value>														<!--either YES or NO-->	
-	</SETTING>
-
 	<SETTING NAME="CUST_LPF_FILTER1_ENDFREQ">							
 		<label>Ending frequency of LPF1</label>
 		<value></value>														<!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
