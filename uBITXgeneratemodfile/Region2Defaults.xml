@@ -26,15 +26,15 @@
 	
 	<SETTING NAME="IF1_CAL_ON_OFF_SWITCH">		<!--Enables calibration of IF -->
 		<label>Enable IF1_CAL?</label>
-		<value></value>							<!--either YES or NO-->
+		<value>NO</value>							<!--either YES or NO-->
 	</SETTING>	
 	<SETTING NAME="IF1_CAL">							
 		<label>IF1 Calibration Factor</label>
-		<value></value>							<!--value is 0-255. Factory default is 0 or 255. Dr Lee recommends 0, or 60-85.-->
+		<value>0</value>							<!--value is 0-255. Factory default is 0 or 255. Dr Lee recommends 0, or 60-85.-->
 	</SETTING>
 	<SETTING NAME="IF1_CAL_ADD_SUB">
 		<label>Subtract IF1 Calibration Factor?</label>
-		<value></value>							<!--either YES or NO To subtract calibration, set this value to YES -->
+		<value>NO</value>							<!--either YES or NO To subtract calibration, set this value to YES -->
 	</SETTING>
 <!-- 
 	*****************************************************************************************************
@@ -47,7 +47,7 @@
 	</SETTING>
 	<SETTING NAME="VFO_A_MODE">							
 		<label>VFO A Mode Upon Boot</label>
-		<value></value>							<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+		<value>DEFAULT</value>							<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 	<SETTING NAME="VFO_B">
 		<label>VFO B Bootup Freq</label>
@@ -55,32 +55,32 @@
 	</SETTING>
 	<SETTING NAME="VFO_B_MODE">							
 		<label>VFO B Mode Upon Boot</label>
-		<value></value>							<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+		<value>DEFAULT</value>							<!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
 	</SETTING>
 
 	<SETTING NAME="TUNING_STEP_INDEX">							
 		<label>Default Step#</label>
-		<value></value>							<!--Default tuning step on boot. 1-5 -->
+		<value>3</value>							<!--Default tuning step on boot. 1-5 -->
 	</SETTING>
 	<SETTING NAME="TUNING_STEP1">							
 		<label>Step #1</label>
-		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+		<value>10</value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
 	</SETTING>
 	<SETTING NAME="TUNING_STEP2">							
 		<label>Step #2</label>
-		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+		<value>50</value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
 	</SETTING>
 	<SETTING NAME="TUNING_STEP3">							
 		<label>Step #3</label>
-		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+		<value>100</value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
 	</SETTING>
 	<SETTING NAME="TUNING_STEP4">							
 		<label>Step #4</label>
-		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+		<value>500</value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
 	</SETTING>
 	<SETTING NAME="TUNING_STEP5">							
 		<label>Step #5</label>
-		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+		<value>1000</value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
 	</SETTING>
 <!--
 	*****************************************************************************************************
@@ -479,95 +479,95 @@
 -->
 	<SETTING NAME="TUNING_RESTICTIONS">						<!--Not clear this works at the moment....	-->						
 		<label>Tune Control</label>							
-		<value></value>										<!--Choice of NONE or BAND. NONE means no restrictions. BAND means only    
+		<value>BAND</value>										<!--Choice of NONE or BAND. NONE means no restrictions. BAND means only    
 																use move BAND+,BAND- to change to a different frequency area (no dial) -->
 	</SETTING>
 	<SETTING NAME="TX_RESTRICTIONS">
 		<label>Restrictions on TX</label>
-		<value></value>										<!--Choice of NONE or HAM. NONE means no restrictions. HAM means TX only on HAM bands -->
+		<value>NONE</value>										<!--Choice of NONE or HAM. NONE means no restrictions. HAM means TX only on HAM bands -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_COUNT">
 		<label>Countof HAM Bands:</label>		
-		<value></value>										
+		<value>10</value>										
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE1_START">
 		<label>Band 1 Start</label>		
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>1810</value>										<!--In khz. e.g., 14000 for 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE1_END">							
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>2000</value>										<!--In khz. e.g., 14000 for 14000000  -->
 		<label>Band 1 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE2_START">
 		<label>Band 2 Start</label>		
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>3500</value>										<!--In khz. e.g., 14000 for 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE2_END">							
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>4000</value>										<!--In khz. e.g., 14000 for 14000000  -->
 		<label>Band 2 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE3_START">
 		<label>Band 3 Start</label>		
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>5330</value>										<!--In khz. e.g., 14000 for 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE3_END">							
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>5404</value>										<!--In khz. e.g., 14000 for 14000000  -->
 		<label>Band 3 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE4_START">
 		<label>Band 4 Start</label>		
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>7000</value>										<!--In khz. e.g., 14000 for 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE4_END">							
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>7300</value>										<!--In khz. e.g., 14000 for 14000000  -->
 		<label>Band 4 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE5_START">
 		<label>Band 5 Start</label>		
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>10100</value>									<!--In khz. e.g., 14000 for 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE5_END">							
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>10150</value>									<!--In khz. e.g., 14000 for 14000000  -->
 		<label>Band 5 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE6_START">
 		<label>Band 6 Start</label>		
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>14000</value>									<!--In khz. e.g., 14000 for 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE6_END">							
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>14350</value>									<!--In khz. e.g., 14000 for 14000000  -->
 		<label>Band 6 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE7_START">
 		<label>Band 7 Start</label>		
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>18068</value>									<!--In khz. e.g., 14000 for 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE7_END">							
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>18168</value>									<!--In khz. e.g., 14000 for 14000000  -->
 		<label>Band 7 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE8_START">
 		<label>Band 8 Start</label>		
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>21000</value>									<!--In khz. e.g., 14000 for 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE8_END">							
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>21450</value>									<!--In khz. e.g., 14000 for 14000000  -->
 		<label>Band 8 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE9_START">
 		<label>Band 9 Start</label>		
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>24890</value>									<!--In khz. e.g., 14000 for 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE9_END">							
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>24990</value>									<!--In khz. e.g., 14000 for 14000000  -->
 		<label>Band 9 End</label>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE10_START">
 		<label>Band 10 Start</label>		
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>28000</value>									<!--In khz. e.g., 14000 for 14000000  -->
 	</SETTING>
 	<SETTING NAME="HAM_BAND_RANGE10_END">							
-		<value></value>										<!--In khz. e.g., 14000000 is entered 14000  -->
+		<value>29700</value>									<!--In khz. e.g., 14000 for 14000000  -->
 		<label>Band 10 End</label>
 	</SETTING>			
 <!--
@@ -580,7 +580,7 @@
 -->	
 	<SETTING NAME="BOOT_INTO_SDR_MODE">							
 		<label>Boot into SDR Mode</label>
-		<value></value>									<!--Either NORMAL or SDR  -->
+		<value>NORMAL</value>									<!--Either NORMAL or SDR  -->
 	</SETTING>
 <!--		SDR Offset Mode can be one of:
 			NONE: 			No offset is provided to the data send to the SDR  
@@ -596,7 +596,7 @@
 	</SETTING>
 	<SETTING NAME="SDR_FREQUENCY">							
 		<label>SDR Offset frequency</label>   
-		<value></value>									<!--Check with SDR vendor. Enter frequency in Hz (ie. 32000000) -->
+		<value>0</value>									<!--Check with SDR vendor. Enter frequency in Hz (ie. 32000000) -->
 	</SETTING>
 <!--	
 	*****************************************************************************************************
@@ -698,7 +698,7 @@
 	</SETTING>
 	<SETTING NAME="I2C_ADDR_SI5351">					<!--Best to not mess with this one unless you really know what you are doing-->							
 		<label>Si5351 I2C adderss chip</label>
-		<value></value>									<!-- 0 or 0x60 unless hardware modified -->
+		<value>0x60</value>									<!-- 0 or 0x60 unless hardware modified -->
 	</SETTING>		
 <!--		
 	*****************************************************************************************************
@@ -729,7 +729,7 @@
  -->
 	<SETTING NAME="MAIN_SCREEN_FORMAT">							
 		<label>Main Screen DEFAULT or CW</label>								
-		<value></value>									<!--Either DEFAULT or CW; CW display decode code (req 2nd Nano) -->
+		<value>DEFAULT</value>									<!--Either DEFAULT or CW; CW display decode code (req 2nd Nano) -->
 	</SETTING>
 <!-- 	
 GENERAL UX
@@ -868,7 +868,7 @@ GENERAL UX
  -->						
 	<SETTING NAME="CUST_LPF_ENABLED">							
 		<label>Enable Custom LPF</label>
-		<value></value>														<!--One of OFF, STANDARD, EXTENDED -->	
+		<value>OFF</value>														<!--One of OFF, STANDARD, EXTENDED -->	
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER1_ENDFREQ">							
 		<label>Ending frequency of LPF1</label>
@@ -876,7 +876,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER1_CONTROL">							
 		<label>Filter Ctrl1</label>
-		<value>NONE</value>													<!--Either NONE *or* Comma separated list of any combination of:		 
+		<value></value>													<!--Comma separated list of any combination of:		 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
@@ -888,7 +888,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER2_CONTROL">							
 		<label>Filter Ctrl2</label>
-		<value>NONE</value>													<!--Either NONE *or* Comma separated list of any combination of:	 
+		<value></value>													<!--Comma separated list of any combination of:		 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
@@ -899,7 +899,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER3_CONTROL">							
 		<label>Filter Ctrl1</label>
-		<value>NONE</value>													<!--Either NONE *or* Comma separated list of any combination of:	 
+		<value></value>													<!--Comma separated list of any combination of:		 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
@@ -910,7 +910,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER4_CONTROL">							
 		<label>Filter Ctrl4</label>
-		<value>NONE</value>													<!--Either NONE *or* Comma separated list of any combination of:		 
+		<value></value>													<!--Comma separated list of any combination of:		 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
@@ -921,7 +921,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER5_CONTROL">							
 		<label>Filter Ctrl5</label>
-		<value>NONE</value>													<!--Either NONE *or* Comma separated list of any combination of:		 
+		<value></value>													<!--Comma separated list of any combination of:		 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
@@ -932,7 +932,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER6_CONTROL">							
 		<label>Filter Ctrl6</label>
-		<value>NONE</value>													<!--Either NONE *or* Comma separated list of any combination of:		 
+		<value></value>													<!--Comma separated list of any combination of:		 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
@@ -943,7 +943,7 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER7_CONTROL">							
 		<label>Filter Ctrl1</label>
-		<value>NONE</value>													<!--Either NONE *or* Comma separated list of any combination of: 
+		<value></value>													<!--Comma separated list of any combination of:		 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
