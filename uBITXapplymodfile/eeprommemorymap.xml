@@ -1,0 +1,1282 @@
+﻿<data>
+<!--
+	***************************************************************************************************** 
+	RADIO CALIBRATION SETTINGS 
+	***************************************************************************************************** 
+-->	
+	<SETTING NAME="MASTER_CAL">					
+		<EEPROMStart>0</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>									
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="USB_CAL">					
+		<EEPROMStart>8</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>		
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_CAL">						
+		<EEPROMStart>252</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	
+	<SETTING NAME="IF1_CAL_ON_OFF_SWITCH">		
+		<EEPROMStart>240</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>	
+	<SETTING NAME="IF1_CAL">							
+		<EEPROMStart>241</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>							
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="IF1_CAL_ADD_SUB">
+		<EEPROMStart>240</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+<!-- 
+	*****************************************************************************************************
+	VFO SETTING FOR ON BOOT 
+	*****************************************************************************************************	
+-->
+	<SETTING NAME="VFO_A">							
+		<EEPROMStart>16</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>											
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="VFO_A_MODE">							
+		<EEPROMStart>256</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="VFO_B">
+		<EEPROMStart>20</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>									
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="VFO_B_MODE">							
+		<EEPROMStart>257</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+
+	<SETTING NAME="TUNING_STEP_INDEX">							
+		<EEPROMStart>342</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+ 		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="TUNING_STEP1">							
+		<EEPROMStart>343</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="TUNING_STEP2">							
+		<EEPROMStart>344</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="TUNING_STEP3">							
+		<EEPROMStart>345</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="TUNING_STEP4">							
+		<EEPROMStart>346</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="TUNING_STEP5">							
+		<EEPROMStart>347</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+<!--
+	*****************************************************************************************************
+	COMMON CW SETTINGS
+	*****************************************************************************************************	
+-->	
+	<SETTING NAME="CW_KEY_TYPE">							
+		<EEPROMStart>358</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_cw_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_SIDETONE">							
+		<EEPROMStart>24</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>										
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_SPEED_WPM">							
+		<EEPROMStart>28</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+
+	<SETTING NAME="CW_DELAY_MS">							
+		<EEPROMStart>258</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+ 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_START_MS">							
+		<EEPROMStart>259</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+<!--
+	*****************************************************************************************************
+	CW MEMORY KEYER
+	*****************************************************************************************************	
+-->	
+	<SETTING NAME="USER_CALLSIGN_KEY">							
+		<EEPROMStart>780</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>hex</displayFormat>								
+		<SPECIAL_PROCESSING>skip</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="USER_CALLSIGN_LEN">							
+		<EEPROMStart>781</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>								
+		<SPECIAL_PROCESSING>skip</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="USER_CALLSIGN">							
+		<EEPROMStart>782</EEPROMStart>
+		<sizeInBytes>18</sizeInBytes>
+		<displayFormat>str</displayFormat>								
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="QSO_CALLSIGN">							
+		<EEPROMStart>1023</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_AUTO_COUNT">							
+		<EEPROMStart>801</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>skip</SPECIAL_PROCESSING>
+	</SETTING>	
+	<SETTING NAME="CW_AUTO_DATA">							
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>skip</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGS">				<!--This is the CW_AUTO_DATA def in the software -->							
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	
+<!--	
+	*****************************************************************************************************
+	CW ADC Settings              
+	*****************************************************************************************************	
+-->
+	<SETTING NAME="CW_ADC_MOST_BIT1">							
+		<EEPROMStart>348</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+ 		<SPECIAL_PROCESSING>skip</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_ADC_ST_FROM">							
+		<EEPROMStart>349</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+ 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_ADC_ST_TO">							
+		<EEPROMStart>350</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+<!-- 
+	Paddle DOT ADC Settings
+	-->		
+		<SETTING NAME="CW_ADC_DOT_FROM">							
+		<EEPROMStart>351</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_ADC_DOT_TO">							
+		<EEPROMStart>352</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+ 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+<!-- 
+	Paddle DASH ADC Settings
+	-->		
+	<SETTING NAME="CW_ADC_MOST_BIT2">							
+		<EEPROMStart>353</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+ 		<SPECIAL_PROCESSING>skip</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_ADC_DASH_FROM">							
+		<EEPROMStart>354</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+ 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_ADC_DASH_TO">							
+		<EEPROMStart>355</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+<!-- 
+	Paddle BOTH ADC Settings
+	-->		
+	<SETTING NAME="CW_ADC_BOTH_FROM">							
+		<EEPROMStart>356</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_ADC_BOTH_TO">							
+		<EEPROMStart>357</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+<!--	
+	*****************************************************************************************************
+	USER_CHANNELS                                  
+	*****************************************************************************************************	
+-->	
+	<SETTING NAME="CHANNEL_FREQ1">							
+	    <EEPROMStart>630</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ1_MODE">							
+	    <EEPROMStart>633</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ1_SHOW_NAME">							
+		<EEPROMStart>710</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ1_NAME">							
+		<EEPROMStart>711</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ2">							
+		<EEPROMStart>634</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ2_MODE">							
+		<EEPROMStart>637</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ2_SHOW_NAME">							
+		<EEPROMStart>716</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ2_NAME">							
+		<EEPROMStart>717</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ3">							
+		<EEPROMStart>638</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ3_MODE">							
+		<EEPROMStart>641</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ3_SHOW_NAME">							
+		<EEPROMStart>722</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ3_NAME">							
+		<EEPROMStart>723</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ4">							
+		<EEPROMStart>642</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ4_MODE">							
+		<EEPROMStart>645</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>		
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ4_SHOW_NAME">							
+		<EEPROMStart>728</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ4_NAME">							
+		<EEPROMStart>729</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ5">							
+		<EEPROMStart>646</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ5_MODE">							
+		<EEPROMStart>649</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ5_SHOW_NAME">							
+		<EEPROMStart>734</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ5_NAME">							
+		<EEPROMStart>735</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ6">							
+	    <EEPROMStart>650</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ6_MODE">							
+	    <EEPROMStart>653</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ6_SHOW_NAME">							
+		<EEPROMStart>740</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ6_NAME">							
+		<EEPROMStart>741</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ7">							
+	    <EEPROMStart>654</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ7_MODE">							
+		<EEPROMStart>657</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ7_SHOW_NAME">							
+		<EEPROMStart>746</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ7_NAME">							
+		<EEPROMStart>747</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ8">							
+		<EEPROMStart>658</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ8_MODE">							
+		<EEPROMStart>661</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ8_SHOW_NAME">							
+		<EEPROMStart>752</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ8_NAME">							
+		<EEPROMStart>753</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ9">							
+		<EEPROMStart>662</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ9_MODE">							
+		<EEPROMStart>665</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ9_SHOW_NAME">							
+		<EEPROMStart>758</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ9_NAME">							
+		<EEPROMStart>759</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ10">							
+		<EEPROMStart>666</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ10_MODE">							
+		<EEPROMStart>669</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ10_SHOW_NAME">							
+		<EEPROMStart>764</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ10_NAME">							
+		<EEPROMStart>765</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+<!-- 	
+	End of Named Channels
+	
+	UNNAMED CHANNELS -->
+	<SETTING NAME="CHANNEL_FREQ11">							
+		<EEPROMStart>670</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ11_MODE">							
+		<EEPROMStart>673</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ12">							
+		<EEPROMStart>674</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ12_MODE">							
+		<EEPROMStart>677</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ13">							
+		<EEPROMStart>678</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ13_MODE">							
+		<EEPROMStart>681</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ14">							
+		<EEPROMStart>682</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ14_MODE">							
+		<EEPROMStart>685</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ15">							
+		<EEPROMStart>686</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ15_MODE">							
+		<EEPROMStart>689</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ16">							
+		<EEPROMStart>690</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ16_MODE">							
+		<EEPROMStart>693</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ17">							
+		<EEPROMStart>694</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ17_MODE">							
+		<EEPROMStart>697</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ18">							
+		<EEPROMStart>698</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ18_MODE">							
+		<EEPROMStart>701</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ19">							
+		<EEPROMStart>702</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ19_MODE">							
+		<EEPROMStart>705</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ20">							
+		<EEPROMStart>706</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CHANNEL_FREQ20_MODE">							
+		<EEPROMStart>709</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_mode</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	
+<!--	
+	*****************************************************************************************************
+	HAMBANDS
+	The software provides up for 10 different Ham Bands. Since the legal Ham Bands differ depending on   
+	region and country, you need to input the appropriate one for you. 	For your reference, the bands by
+	region is provided below:
+	REGION1: 						REGION2							REGION3				
+		1810-2000 						1810-2000						1800-1825		
+		3500-3800 						3500-4000						3500-3550		
+		7000-7200 						5330-5404						3790-3800		
+		10100-10150 					7000-7300						7000-7200		
+		14000-14350 					10100-10150						10100-10150		
+		18068-18168 					14000-14350						14000-14350		
+		21000-21450 					18068-18168						18068-18168		
+		24890-24990 					21000-21450						21000-21450		
+		28000-29700 					24890-24990						24890-24990		
+										28000-29700						28000-29700		
+	
+	The software also provides the ability to restrict TX to only HAM bands and to restrict the use of  
+	dial to move between bands. This late functionality might not work at the moment.... TX restrict does!
+	*****************************************************************************************************	
+-->
+	<SETTING NAME="TUNING_RESTICTIONS">												
+		<EEPROMStart>261</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection</displayFormat>											
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="TX_RESTRICTIONS">
+		<EEPROMStart>261</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection</displayFormat>											
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_COUNT">
+		<EEPROMStart>260</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>		
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE1_START">
+		<EEPROMStart>262</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE1_END">							
+		<EEPROMStart>264</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE2_START">
+		<EEPROMStart>266</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE2_END">							
+		<EEPROMStart>268</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE3_START">
+		<EEPROMStart>270</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE3_END">							
+		<EEPROMStart>272</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE4_START">
+		<EEPROMStart>274</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE4_END">							
+		<EEPROMStart>276</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE5_START">
+		<EEPROMStart>278</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE5_END">							
+		<EEPROMStart>280</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE6_START">
+		<EEPROMStart>282</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE6_END">							
+		<EEPROMStart>284</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE7_START">
+		<EEPROMStart>286</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE7_END">							
+		<EEPROMStart>288</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE8_START">
+		<EEPROMStart>290</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE8_END">							
+		<EEPROMStart>292</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE9_START">
+		<EEPROMStart>294</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE9_END">							
+		<EEPROMStart>296</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE10_START">
+		<EEPROMStart>298</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_RANGE10_END">							
+		<EEPROMStart>300</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>			
+<!--
+	*****************************************************************************************************
+	SDR
+	KD8CEC provides for the integration of a SDR dongle with the uBITX radio. There might be better      
+	alternaties these days, e.g. an external antenna switch with RF sensing, but the approach is		 
+	interesting.  If you search for "SDR" on hamskey.com you will find lots of articles on this method.  
+	*****************************************************************************************************	
+-->	
+	<SETTING NAME="BOOT_INTO_SDR_MODE">							
+		<EEPROMStart>240</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_sdr</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>	
+	<SETTING NAME="SDR_OFFSET_MODE">
+		<EEPROMStart>240</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_sdr_offset</displayFormat>							
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="SDR_FREQUENCY">							
+		<EEPROMStart>243</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>								
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+<!--	
+	*****************************************************************************************************
+	WSPR
+	Currently the generation of the code for WSPR is not yet available in this software. So it is suggested
+	that you use uBITX Memory Manager V1.1 to generate the code for the WSPR messages and then copy it into
+	this file. 
+	Provides up to 4 Messages.
+	NOTE MISSIng BAND AND CALIBRATION INFO FOR WSPR
+	*****************************************************************************************************	
+-->	
+	<SETTING NAME="WSPR_COUNT">							
+		<EEPROMStart>443</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>	
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING> 
+	<SETTING NAME="WSPR_MESSAGE1_NAME">							
+		<EEPROMStart>444</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>str</displayFormat>	
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING> 
+	<SETTING NAME="WSPR_MESSAGE1">							
+		<EEPROMStart>449</EEPROMStart>
+		<sizeInBytes>41</sizeInBytes>
+		<displayFormat>hex</displayFormat>			 										
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="WSPR_MESSAGE2_NAME">							
+		<EEPROMStart>490</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>str</displayFormat>							
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING> 
+	<SETTING NAME="WSPR_MESSAGE2">							
+	    <EEPROMStart>495</EEPROMStart>
+		<sizeInBytes>41</sizeInBytes>
+		<displayFormat>str</displayFormat>							
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="WSPR_MESSAGE3_NAME">							
+		<EEPROMStart>536</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING> 
+	<SETTING NAME="WSPR_MESSAGE3">							
+		<EEPROMStart>541</EEPROMStart>
+		<sizeInBytes>41</sizeInBytes>
+		<displayFormat>str</displayFormat>	
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="WSPR_MESSAGE4_NAME">							
+	    <EEPROMStart>582</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>str</displayFormat>					
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING> 
+	<SETTING NAME="WSPR_MESSAGE4">							
+		<EEPROMStart>587</EEPROMStart>
+		<sizeInBytes>41</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+<!-- 	
+	*****************************************************************************************************
+	HARDWARE SETTINGS
+	This Section collects the various Hardware settings. With one exception, you will probably not need  
+	to mess with this. The exception is the tweaking of the ADC settings for the S-Meter. Again, the ADC 
+	settings will very from machine to machine so the threshold for a "S5" signal will likely differ from
+	that used by someone else. If you search hamskey.com for "s-meter" you will find several articles on 
+	constructing and calibrating a S-Meter.                                                                                
+	
+	*****************************************************************************************************	
+-->	
+	<SETTING NAME="S_METER_LEVELS">							
+		<EEPROMStart>361</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>		
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="S_METER_LEVEL1">							
+		<EEPROMStart>230</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>									
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="S_METER_LEVEL2">							
+		<EEPROMStart>231</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>											
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="S_METER_LEVEL3">							
+		<EEPROMStart>232</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="S_METER_LEVEL4">							
+		<EEPROMStart>233</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+ 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="S_METER_LEVEL5">							
+		<EEPROMStart>234</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="S_METER_LEVEL6">							
+		<EEPROMStart>235</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="S_METER_LEVEL7">							
+		<EEPROMStart>236</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="S_METER_LEVEL8">							
+		<EEPROMStart>237</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>hex</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+							
+	<SETTING NAME="I2C_LCD_MASTER">						
+		<EEPROMStart>190</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>hex</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="I2C_LCD_SECOND">							
+		<EEPROMStart>191</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>hex</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="I2C_ADDR_SI5351">												
+		<EEPROMStart>63</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>hex</displayFormat>											
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>		
+<!--		
+	*****************************************************************************************************
+	ADVANCED UX Options
+	This Section provides a variety of options to tweak the user interface to better suit the needs of the
+	user. Some of these options only apply to the LCD version, while others are relevant to Nextion users
+	There are everal that are relevant to both. These options have been grouped accordingly to make it 	 
+	easier to navigate. 																			     
+	*****************************************************************************************************	
+-->	
+<!-- 	
+	LCD
+ -->
+	<SETTING NAME="MESSAGE_LINE">							
+		<EEPROMStart>361</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>								
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="SCROLLING_DISPLAY">							
+		<EEPROMStart>361</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>								
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>							
+	</SETTING>
+	<SETTING NAME="One_Two_Line_Toggle">							
+		<EEPROMStart>361</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>								
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+<!-- 	
+	NEXTION
+ -->
+	<SETTING NAME="MAIN_SCREEN_FORMAT">							
+		<EEPROMStart>770</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_main_format</displayFormat>							
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+<!-- 	
+GENERAL UX
+ -->
+	<SETTING NAME="NEXTION_DISPLAY_CALL_SIGN">							
+		<EEPROMStart>361</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+
+	<SETTING NAME="Stored_IF_Shift">							
+		<EEPROMStart>360</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="IF_SHIFTVALUE">							
+		<EEPROMStart>363</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	
+	<SETTING NAME="CW_DISPLAY_FREQ">
+		<EEPROMStart>359</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>hex</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_Frequency_Adjustment">
+		<EEPROMStart>359</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+<!-- 	
+	*****************************************************************************************************
+	EXTENDED KEYS
+	KD8CEC allow you to create up to 16 buttons that leverage the control line normally associted with the
+	switch on the encoder (A2). The particualar switch that is pushed is identified by the analog value  
+	read on pin A2. As in the CW Key area, the values of the ADC needs to be tweaked to accurately		 
+	identify which button was pushed. So you need to use the ADC monitoring feature to find the typical  
+	values for each button/resister pair you push. The goal is to get a Begin and End ADC that is broad  
+	enough to capture the button press without overlapping other possible button pushes.                 
+	More info on this approach is provided at 															 
+		http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html							 	
+		http://www.hamskey.com/2018/04/changed-extension-key-setting-in-cec.html      					                   
+	*****************************************************************************************************	
+ -->	
+	<SETTING NAME="EXTENDED_KEY1_START">							
+		<EEPROMStart>140</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY1_END">							
+		<EEPROMStart>141</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY1_FUNC">							
+		<EEPROMStart>142</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_ftn_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>	
+	<SETTING NAME="EXTENDED_KEY2_START">							
+		<EEPROMStart>143</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY2_END">							
+		<EEPROMStart>144</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY2_FUNC">							
+		  <EEPROMStart>145</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_ftn_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY3_START">							
+		<EEPROMStart>146</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY3_END">							
+		<EEPROMStart>147</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY3_FUNC">							
+		<EEPROMStart>148</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_ftn_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY4_START">							
+		<EEPROMStart>149</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+		<SETTING NAME="EXTENDED_KEY4_END">							
+		<EEPROMStart>150</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+		<SETTING NAME="EXTENDED_KEY4_FUNC">							
+		<EEPROMStart>151</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_ftn_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY5_START">							
+		<EEPROMStart>152</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY5_END">							
+		<EEPROMStart>153</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY5_FUNC">							
+		<EEPROMStart>154</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_ftn_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY6_START">							
+		<EEPROMStart>155</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY6_END">							
+		<EEPROMStart>156</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY6_FUNC">							
+		<EEPROMStart>157</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_ftn_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	
+<!-- 	
+	*****************************************************************************************************
+	CUSTOM_LPF_FILTERS
+	KD8CEC allow you to customize the functioning of the Low Pass Filters (LPF).This includes controlling
+	the relays for the existing LPF system as well as the possibility of controlling more offboard LPF   
+	relays using the D10,D11,D12,D13 lines (you can control 4 more relays directly or even use the 4	 
+	lines as an imput to a multiplexer to get potentially 16(!) additional relays/filter stages.         
+	Athough perhaps interesting to an experimenter, this festure's orign is back in the uBITX V3/V4      
+	timeframe where there was concerns about the spectral purity of the output of the uBITX.             
+	Perhaps of still relevance, the availability of the D10-D13 lines provides the opportunity to control
+	LPF of an offboard AMP or perhaps used to switch antennas based on TX frequency.                     
+	
+	Only the top of each filter frequency is specified. The assumption is that first filter starts at 0hz
+	and each succeeding filter starts at the end of the previous one +1. Additionally, you can specify   
+	individually which of the relays (or data lines in the case of D10-D13) will be enabled. You can have
+	more than one relay enabled!																		 
+	
+	NOTE: The solution uses A7 and so incompatible with single Nano S-meter solution. (Still can use the 
+		 second nano solution ("standalone")															 
+	*****************************************************************************************************	
+ -->						
+	<SETTING NAME="CUST_LPF_ENABLED">							
+		<EEPROMStart>48</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>															
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+
+	<SETTING NAME="CUST_LPF_FILTER1_ENDFREQ">							
+		<EEPROMStart>49</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>														
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CUST_LPF_FILTER1_CONTROL">							
+		<EEPROMStart>50</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection</displayFormat>														
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+  
+	<SETTING NAME="CUST_LPF_FILTER2_ENDFREQ">							
+		<EEPROMStart>51</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>														
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CUST_LPF_FILTER2_CONTROL">							
+		<EEPROMStart>52</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection</displayFormat>																	enable for the TX_LPF relay and set D10 high     -->
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CUST_LPF_FILTER3_ENDFREQ">							
+		<EEPROMStart>53</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CUST_LPF_FILTER3_CONTROL">							
+		<EEPROMStart>54</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CUST_LPF_FILTER4_ENDFREQ">							
+		<EEPROMStart>55</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>											
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CUST_LPF_FILTER4_CONTROL">							
+		<EEPROMStart>56</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CUST_LPF_FILTER5_ENDFREQ">							
+		<EEPROMStart>57</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CUST_LPF_FILTER5_CONTROL">							
+		<EEPROMStart>58</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CUST_LPF_FILTER6_ENDFREQ">							
+		<EEPROMStart>59</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CUST_LPF_FILTER6_CONTROL">							
+		<EEPROMStart>60</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CUST_LPF_FILTER7_ENDFREQ">							
+		<EEPROMStart>61</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CUST_LPF_FILTER7_CONTROL">							
+		<EEPROMStart>62</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>hex</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>	
+</data>

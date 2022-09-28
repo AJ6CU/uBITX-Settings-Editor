@@ -162,44 +162,44 @@
 <!--	Straight Key ADC Settings -->
 	<SETTING NAME="CW_ADC_ST_FROM">							
 		<label>CW ST Key ADC from</label>
-		<value></value>
+		<value></value>										<!--  Between 1 - 1023 -->
 	</SETTING>
 	<SETTING NAME="CW_ADC_ST_TO">							
 		<label>CW ST Key ADC from</label>
-		<value></value>
+		<value></value>										<!--  Between 1 - 1023 -->
 	</SETTING>
 <!-- 
 	Paddle DOT ADC Settings
 	-->		
 		<SETTING NAME="CW_ADC_DOT_FROM">							
 		<label>CW Paddle DOT ADC FROM</label>
-		<value></value>
+		<value></value>										<!--  Between 1 - 1023 -->
 	</SETTING>
 	<SETTING NAME="CW_ADC_DOT_TO">							
 		<label>CW Paddle DOT ADC FROM</label>
-		<value></value>
+		<value></value>										<!--  Between 1 - 1023 -->
 	</SETTING>
 <!-- 
 	Paddle DASH ADC Settings
 	-->		
 	<SETTING NAME="CW_ADC_DASH_FROM">							
 		<label>CW Paddle DASH FROM</label>
-		<value></value>
+		<value></value>										<!--  Between 1 - 1023 -->
 	</SETTING>
 	<SETTING NAME="CW_ADC_DASH_TO">							
 		<label>CW Paddle DASH TO</label>
-		<value></value>
+		<value></value>										<!--  Between 1 - 1023 -->
 	</SETTING>
 <!-- 
 	Paddle BOTH ADC Settings
 	-->		
 	<SETTING NAME="CW_ADC_BOTH_FROM">							
 		<label>CW Paddle BOTH pressed FROM</label>
-		<value></value>
+		<value></value>										<!--  Between 1 - 1023 -->
 	</SETTING>
 	<SETTING NAME="CW_ADC_BOTH_TO">							
 		<label>CW Paddle BOTH pressed TO</label>
-		<value></value>
+		<value></value>										<!--  Between 1 - 1023 -->
 	</SETTING>
 <!--	
 	*****************************************************************************************************
