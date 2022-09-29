@@ -385,9 +385,9 @@ for setting in EEPROMroot.findall('.//SETTING'):
                     msgStr: str = ''
 
                     while j < SIZEOFWSPRMESSAGES:
-                        msgStr+='{:02X}'.format(get_Byte_FromEEPROM(EEPROMBuffer, memLocation + j))+':'
+                        msgStr+='{:02X}'.format(get_Byte_FromEEPROM(EEPROMBuffer, memLocation + j))+','
                         j += 1
-                    value.text = msgStr.rstrip(':')                 #strip off extra : on right
+                    value.text = msgStr.rstrip(',')                 #strip off extra , on right
 
                 case "S_METER_LEVELS":
                     if ((get_Byte_FromEEPROM(EEPROMBuffer, memLocation)) & 0x08):  # a 0x08 bit pattern indicates s-meter on
