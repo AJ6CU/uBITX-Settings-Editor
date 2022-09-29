@@ -721,11 +721,11 @@
 		<label>Message Line?</label>					<!--either YES or NO-->					
 	</SETTING>
 	<SETTING NAME="SCROLLING_DISPLAY">							
-		<label>Display Opt1</label>					
-		<value></value>									<!--either YES or NO-->
+		<label>SCROLLING DISPLAY</label>					
+		<value></value>									<!--For LCD output either YES or NO-->
 	</SETTING>
-	<SETTING NAME="One_Two_Line_Toggle">							
-		<label>Display Opt1</label>
+	<SETTING NAME="ONE_TWO_LINE_TOGGLE">							
+		<label>One/Two Line Toggle</label>
 		<value></value>									<!--either YES or NO-->		
 	</SETTING>
 <!-- 	

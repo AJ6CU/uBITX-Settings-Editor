@@ -309,7 +309,7 @@ for setting in EEPROMroot.findall('.//SETTING'):
                 case "NEXTION_DISPLAY_CALL_SIGN":
                         value.text = BOOL_SELECT[(get_Byte_FromEEPROM(EEPROMBuffer, memLocation) >> 1) & 0x01]
 
-                case "One_Two_Line_Toggle":
+                case "ONE_TWO_LINE_TOGGLE":
                         value.text = BOOL_SELECT[get_Byte_FromEEPROM(EEPROMBuffer, memLocation)  & 0x01]
 
                 case "BOOT_INTO_SDR_MODE":

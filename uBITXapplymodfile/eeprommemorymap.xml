@@ -993,7 +993,7 @@
 		<displayFormat>bool</displayFormat>								
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>							
 	</SETTING>
-	<SETTING NAME="One_Two_Line_Toggle">							
+	<SETTING NAME="ONE_TWO_LINE_TOGGLE">							
 		<EEPROMStart>361</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>bool</displayFormat>								
