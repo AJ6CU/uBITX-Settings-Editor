@@ -1,6 +1,6 @@
 # uBITXapplymodfile
 
-This program will be written using Python 3.10.4 on Windows. It requires the installation of the following standard Python libraries:
+This program is written using Python 3.10.4 on Windows. It requires the installation of the following standard Python libraries:
 - pySerial 
 - lxml
 - bitarray libraries. Let me know if you find any other unusual dependencies.
