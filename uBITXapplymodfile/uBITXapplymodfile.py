@@ -7,25 +7,11 @@ from bitarray import bitarray
 from time import sleep
 import sys
 from globalvars import *
+from userconfig import *
 
 from setters import setters
 
-#definitions################################################
-COM_PORT = "COM24"
-#COM_PORT = "COM14"
-BAUD = 38400
-
-
-
 EEPROMMEMORYMAP="eeprommemorymap.xml"               #Maps EEPROM locations to settings
-
-USERMODFILE="usermodfile.xml"                       #Output of process - file that User can customize
-
-
-
-#end definitions############################################
-
-
 
 
 def readEEPROMData(portdesc: object, memAddress: int, numBytesToRead: int) -> bytearray:
@@ -181,7 +167,7 @@ for userSetting in UserModroot.findall('.//SETTING'):
     numBytes = eepromSetting.find("sizeInBytes").text
     dataType = eepromSetting.find("displayFormat").text
     if (userSettingValue != None):
-        EEPROM_Memory.set(userSettingName, userSettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot)
+        EEPROM_Memory.set(userSettingName, userSettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
     else:
         print("skipping because value = NONE, Setting Name", userSettingName)
 
@@ -324,206 +310,7 @@ for userSetting in UserModroot.findall('.//SETTING'):
 # #         ET.SubElement(valueElement, 'message')
 # #         i+=1
 #
-#         #***********************************
-#         #   CW ADC SETTINGS
-#         #***********************************
-#         case "CW_ADC_ST_FROM"|"CW_ADC_ST_TO"|"CW_ADC_DOT_FROM"|"CW_ADC_DOT_TO":
-#             print("need work:", userSettingName)
-#             #     upperBitsByte = XML_Get_Byte_FromEEPROM(EEPROMroot, "CW_ADC_MOST_BIT1", EEPROMBuffer)  #get byte with upper two bits
-#             #
-#             #     memContents: int = get_Byte_FromEEPROM(EEPROMBuffer, memLocation)               #now get the lower 8 bits
-#             #     match settingName:
-#             #         case "CW_ADC_ST_FROM":
-#             #             value.text = str(memContents | ((upperBitsByte &0x03)  << 8))           #4 sets of 2 bits, find them, put them to the left
-#             #         case "CW_ADC_ST_TO":
-#             #             value.text = str(memContents | ((upperBitsByte & 0x0C) << 6))
-#             #         case "CW_ADC_DOT_FROM":
-#             #             value.text = str(memContents | ((upperBitsByte & 0x30) << 4))
-#             #         case "CW_ADC_DOT_TO":
-#             #             value.text = str(memContents | ((upperBitsByte & 0xC0) << 2))
-#             #
-#         case "CW_ADC_DASH_FROM" | "CW_ADC_DASH_TO" | "CW_ADC_BOTH_FROM" | "CW_ADC_BOTH_TO":
-#             print("need work:", userSettingName)
-#             #     upperBitsByte = XML_Get_Byte_FromEEPROM(EEPROMroot, "CW_ADC_MOST_BIT2", EEPROMBuffer)       #get byte with upper 2 bits
-#             #
-#             #     memContents: int = get_Byte_FromEEPROM(EEPROMBuffer, memLocation)  # now get the lower 8 bits
-#             #     match settingName:
-#             #         case "CW_ADC_DASH_FROM":
-#             #             value.text = str(memContents | ((upperBitsByte & 0x03) << 8))           # 4 sets of 2 bits, find them, put them to the left
-#             #         case "CW_ADC_DASH_TO":
-#             #             value.text = str(memContents | ((upperBitsByte & 0x0C) << 6))
-#             #         case "CW_ADC_BOTH_FROM":
-#             #             value.text = str(memContents | ((upperBitsByte & 0x30) << 4))
-#             #         case "CW_ADC_BOTH_TO":
-#             #             value.text = str(memContents | ((upperBitsByte & 0xC0) << 2))
-#             #
-#
 
-#         #***********************************
-#         #   HAM BANDS
-#         #***********************************
-#             #
-#         case "TUNING_RESTICTIONS":
-#             print("need work:", userSettingName)
-#             #     if (get_Byte_FromEEPROM(EEPROMBuffer, memLocation) & 0x02):
-#             #         value.text = "BAND"  # Restriction are placed on Tuning (although not clear enforced)
-#             #     else:
-#             #         value.text = "NONE"  # No restrictions on how and where you can tune
-#         case "TX_RESTRICTIONS":
-#             print("need work:", userSettingName)
-#             #     if (get_Byte_FromEEPROM(EEPROMBuffer, memLocation) >=100):
-#             #         value.text = "HAM"              #Restriction of TX to only HAM bands
-#             #     else:
-#             #         value.text = "NONE"              #Restrictions on TX
-#             #
-#
-
-
-#         # ***********************************
-#         #   WSPR SETTINGS
-#         # ***********************************
-#
-#         case ("WSPR_MESSAGE1_NAME" | "WSPR_MESSAGE2_NAME" | "WSPR_MESSAGE3_NAME" | "WSPR_MESSAGE4_NAME" ):
-#             print("need work:", userSettingName)
-#
-#         case ("WSPR_MESSAGE1" | "WSPR_MESSAGE2" |"WSPR_MESSAGE3" | "WSPR_MESSAGE4"):
-#             print("need work:", userSettingName)
-#             #     j: int = 0
-#             #     msgStr: str = ''
-#             #
-#             #     while j < SIZEOFWSPRMESSAGES:
-#             #         msgStr+='{:02X}'.format(get_Byte_FromEEPROM(EEPROMBuffer, memLocation + j))+':'
-#             #         j += 1
-#             #     value.text = msgStr.rstrip(':')                 #strip off extra : on right
-#             #
-#
-#         # ***********************************
-#         #   HARDWARE SETTINGS
-#         # ***********************************
-#         case "S_METER_LEVELS":
-#             print("need work:", userSettingName)
-#         #     if ((get_Byte_FromEEPROM(EEPROMBuffer, memLocation)) & 0x08):  # a 0x08 bit pattern indicates s-meter on
-#         #         value.text = BOOL_SELECT[1]
-#         #     else:
-#         #         value.text = BOOL_SELECT[0]
-#         #
-#         case ("S_METER_LEVEL1" | "S_METER_LEVEL2" | "S_METER_LEVEL3" | "S_METER_LEVEL4" | "S_METER_LEVEL5"|
-#             "S_METER_LEVEL6" | "S_METER_LEVEL7" | "S_METER_LEVEL8"):
-#             print("need work:", userSettingName)
-#         #     value.text = str(4 * get_Byte_FromEEPROM(EEPROMBuffer, memLocation))
-#
-#         case ("I2C_LCD_MASTER" | "I2C_LCD_SECOND"):
-#             set_Byte_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue,16))
-#
-#         case "I2C_ADDR_SI5351":
-#             set_Byte_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue,16))
-#
-#         # ***********************************
-#         #   ADVANCED UX SETTINGS
-#         # ***********************************
-#
-#         case "MESSAGE_LINE":
-#             print("need work:", userSettingName)
-# #         value.text = BOOL_SELECT[(get_Byte_FromEEPROM(EEPROMBuffer, memLocation) >>4)&0x01]
-# #
-#         case "SCROLLING_DISPLAY":
-#             print("need work:", userSettingName)
-# #         value.text = BOOL_SELECT[(get_Byte_FromEEPROM(EEPROMBuffer, memLocation) >> 2) & 0x01]
-# #
-#         case "One_Two_Line_Toggle":
-#             print("need work:", userSettingName)
-#         #         value.text = BOOL_SELECT[get_Byte_FromEEPROM(EEPROMBuffer, memLocation)  & 0x01]
-#
-#         case "MAIN_SCREEN_FORMAT":
-#             set_Byte_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, MAIN_MENU_SELECT.index(userSettingValue) )
-#
-#         case "NEXTION_DISPLAY_CALL_SIGN":
-#             print("need work:", userSettingName)
-#         #         value.text = BOOL_SELECT[(get_Byte_FromEEPROM(EEPROMBuffer, memLocation) >> 1) & 0x01]
-# #
-#
-#         case "Stored_IF_Shift":
-#             print("need work:", userSettingName)
-#
-# #         value.text = BOOL_SELECT[(get_Byte_FromEEPROM(EEPROMBuffer, memLocation) >> 6) & 0x01]
-#         case "IF_SHIFTVALUE":
-#             print("need work:", userSettingName)
-# #tmpInt = get_uint16_FromEEPROM(EEPROMBuffer, memLocation)
-# #         if tmpInt & 0x8000:                                         #We have a negative number
-# #             value.text = "-" + str((~tmpInt+1)& 0xffff)             #convert from 2's complement
-# #         else:
-# #             value.text = str(tmpInt)
-#         case "CW_DISPLAY_FREQ":
-#             print("need work:", userSettingName)
-#
-# #         shiftDisplay = (get_Byte_FromEEPROM(EEPROMBuffer, memLocation) >>7) & 0x01
-# #         enableAdjustCWFreq = (get_Byte_FromEEPROM(EEPROMBuffer, memLocation+1) >>7) & 0x01
-# #
-# #         if shiftDisplay & ~enableAdjustCWFreq:      #By definition means display shows RX freq
-# #             value.text = "RX"
-# #         else:
-# #             value.text = "TX"                       #Shows TX Freq seems to be the preferred option
-#         case "CW_Frequency_Adjustment":
-#             print("need work:", userSettingName)
-# #         value.text = str((get_Byte_FromEEPROM(EEPROMBuffer, memLocation) &  0x3f)*10)
-#
-#         # ***********************************
-#         #   EXTENDED KEYS
-#         # ***********************************
-#
-#         #
-#         case ("EXTENDED_KEY1_START" |"EXTENDED_KEY2_START"|"EXTENDED_KEY3_START"|                #saved as ADC/4.
-#               "EXTENDED_KEY4_START" | "EXTENDED_KEY5_START"|"EXTENDED_KEY6_START"):              #x4 to make it user easier
-#             print("need work:", userSettingName)
-#         #     value.text = str(get_Byte_FromEEPROM(EEPROMBuffer, memLocation)*4)
-#         case ("EXTENDED_KEY1_END" | "EXTENDED_KEY2_END" | "EXTENDED_KEY3_END" | "EXTENDED_KEY4_END" |
-#               "EXTENDED_KEY5_END"  | "EXTENDED_KEY6_END"):
-#             print("need work:", userSettingName)
-#     #     value.text = str(get_Byte_FromEEPROM(EEPROMBuffer, memLocation)*4)
-#
-#         case ("EXTENDED_KEY1_FUNC" | "EXTENDED_KEY2_FUNC" | "EXTENDED_KEY3_FUNC" | "EXTENDED_KEY4_FUNC" |
-#                "EXTENDED_KEY5_FUNC" | "EXTENDED_KEY6_FUNC" ):
-#             set_Byte_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, FTN_KEY_SELECT.index(userSettingValue))
-#
-#         # ***********************************
-#         #   CUSTOM LPF FILTERS
-#         # ***********************************
-#
-#         case "CUST_LPF_ENABLED":
-#             print("need work:", userSettingName)
-#         #      if ((((get_Byte_FromEEPROM(EEPROMBuffer, memLocation)) & 0x5F)==0x57)|
-#         #          (((get_Byte_FromEEPROM(EEPROMBuffer, memLocation)) & 0x5F) == 0x58)):  # a 0x57 or 0x58 bit pattern enables custom lpf
-#         #             value.text = BOOL_SELECT[1]
-#         #      else:
-#         #             value.text = BOOL_SELECT[0]
-#         #
-#         case "CUST_LPF_USE_D10-D13":
-#             print("need work:", userSettingName)
-#         #      if (((get_Byte_FromEEPROM(EEPROMBuffer, memLocation)) & 0x5F) == 0x58):  # a 0x58 bit pattern enables use of D10-D13 too
-#         #          value.text = BOOL_SELECT[1]
-#         #      else:
-#         #          value.text = BOOL_SELECT[0]
-#         #
-#         case ("CUST_LPF_FILTER1_ENDFREQ" | "CUST_LPF_FILTER2_ENDFREQ" | "CUST_LPF_FILTER3_ENDFREQ" |
-#                "CUST_LPF_FILTER4_ENDFREQ" | "CUST_LPF_FILTER5_ENDFREQ" | "CUST_LPF_FILTER6_ENDFREQ" |
-#                "CUST_LPF_FILTER7_ENDFREQ"):
-#             set_Byte_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue))
-#
-#         case ("CUST_LPF_FILTER1_CONTROL" | "CUST_LPF_FILTER2_CONTROL" | "CUST_LPF_FILTER3_CONTROL" |
-#              "CUST_LPF_FILTER4_CONTROL" | "CUST_LPF_FILTER5_CONTROL" | "CUST_LPF_FILTER6_CONTROL" |
-#              "CUST_LPF_FILTER7_CONTROL"):
-#             print("need work:", userSettingName)
-#   #              j = 0
-#             #     tmpStr = ""
-#             #     LPFControlByte = get_Byte_FromEEPROM(EEPROMBuffer, memLocation)
-#             #     while j < 7:
-#             #         if ((LPFControlByte>>j)&0x01):
-#             #             tmpStr += (LPF_CTRL_SELECT[j] + ",")
-#             #         j += 1
-#             #     value.text = tmpStr.rstrip(',')
-#
-        # case _:
-        #    print("Special processing still required for:", userSettingName)
 
 
 print("In memory EEPROM copy updated. Now updating actual EEPROM")
