@@ -17,8 +17,8 @@ The title of each setting. For example, the initial boot up frequency for VFO A 
     	</SETTING>
 
 - \<label\>VFO A Bootup Freq\<\\label\>:	is a brief description of the function of the setting, perhaps what you might see in a fancier UX.
-- 7032000: 		the 7032000 is the frequency for the VFO A on boot.
-- <!--  comment -->:	hopefully more detail explanation of setting an options that can be used 
+- \\<value\>7032000\<\\value\>: 		the 7032000 is the frequency for the VFO A on boot.
+- \<!--  comment --\>:				hopefully more detail explanation of setting an options that can be used 
 
 BTW: CASE MATTERS!
 
