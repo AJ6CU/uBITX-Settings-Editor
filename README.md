@@ -15,17 +15,18 @@ The code is being written in Python. Eventually, using standard Python tools, I 
 - uBITXgeneratemodfile: This program takes the existing contents of the EEPROM, merges it into a commented XML document. Subsequently, the end user can modify/tailor to their needs.
 - uBITXapplymodfile: This takes the tailored modfile (XML) and updates the EEPROM
 
-Notice at this point, there is no GUI tool on the roadmap. It needs to be done and I will (or someone else will) eventually get around to creating it. The idea that users will have to directly modify an XML file to tailor their system is going to create a never-ending set of problems as people accidently delete characters, comment beginning/endings, or even whole sections. It is a major weakness of the current situation.
+There needs to be a GUI based tool and I am now considering options in how to implement it. The idea that users will have to directly modify an XML file to tailor their system is going to create a never-ending set of problems as people accidently delete characters, comment beginning/endings, or even whole sections. It is a major weakness of the current situation.
 
 ## STATUS
 THIS IS A WORK IN PROGRESS! People familiar with software development, XML, and Python, that also have solid backups of their EEPROM using the existing uBITX Memory Manager, are welcome to try it out and report any issues.
 
-I believe that uBITXgeneratebackup and uBITXrestorefrombackup are basically functional. I have generated backup files from both the original uBITX Memory Manager and my uBITXgeneratebackup, and when I compared them, they were identical. Similarly, I have crossed restored backups (uBITX Memory Manager using a backup generated from uBITXgeneratebackup and uBITXgeneratebackup using a backup from uBITX Memory Manager) and the contents of the EEPROM were identical. BUT THIS IS NOT AN EXHAUSTED TEST! Please keep your own backups for the situations when something goes wrong! Sorry to be a pessimist here, but something will go wrong and you need to be prepared.
+As of 10/4/2022, I believe that I have basic full functionality completed on all 4 of the commands above. 
 
-I also have the first draft of the template that will be used to generate the XML Mod file. You can look at it in the uBITXgeneratemodFile directory. Again, I appreciate any feedback here. 
+uBITXgeneratebackup and uBITXrestorefrombackup are basically functional. I have generated backup files from both the original uBITX Memory Manager and my uBITXgeneratebackup, and when I compared them, they were identical. Similarly, I have crossed restored backups (uBITX Memory Manager using a backup generated from uBITXgeneratebackup and uBITXgeneratebackup using a backup from uBITX Memory Manager) and the contents of the EEPROM were identical. BUT THIS IS NOT AN EXHAUSTED TEST! Please keep your own backups for the situations when something goes wrong! Sorry to be a pessimist here, but something will go wrong and you need to be prepared.
+
 
 ## SCHEDULE FOR REMAINING TOOLS
-I am currently working on uBITXgeneratemodfile. I expect, depending on other commitments, that the "pre-alpha" will not be available for testing until the end of September 2022. Since uBITXapplymodfile will leverage the technologies of the other 3 tools, I would expect that it will be available (again depending on my other commitments) by mid-October.
+I am currently working on refactoring uBITXgeneratemodfile by applying the design pattern I used in uBITXapplymodfile. This should make it easier to transistion these commands to a GUI based solution later. I expect, depending on other commitments, the refactoring of uBITXgeneratemodfile will be completed by the 14th of October. Then after a couple week break, i will transistion to writing the GUI tool.  
 
 ## USING THE TOOLS
 To use either tool at this stage, you need to know how to use an editor, install python packages, and run python. I happen to be using PyCharm, but admit my ignorance might have led me not to choose the optimal tool. Specific values that need to be changes, are identified in the README files in the appropriate directory.
