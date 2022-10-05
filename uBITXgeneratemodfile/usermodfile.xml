@@ -1,0 +1,1117 @@
+<data>
+    <!--	
+	***************************************************************************************************** 
+	Never change the value SETTING NAME='foo'. foo is used to identify the specific setting            
+	Only adjust the value between '<value>bar</value>' Look for value hint to right on value of bar
+	Settings grouped by function. Generally same as original uBITX Memory Manager, but some are changed
+	*****************************************************************************************************  
+	-->
+    <!--
+	***************************************************************************************************** 
+	RADIO CALIBRATION SETTINGS 
+	***************************************************************************************************** 
+-->
+    <SETTING NAME="MASTER_CAL">
+        <label>Master Calibration</label>
+        <value></value>
+        <!--every radio is unique but often around 161875-->
+    </SETTING>
+    <SETTING NAME="USB_CAL">
+        <label>BFO (USB) Calibration</label>
+        <!--previously called USB Calibration. Often around 11996450-->
+        <value></value>
+    </SETTING>
+    <SETTING NAME="CW_CAL">
+        <label>CW BFO Calibration</label>
+        <value></value>
+        <!--CW calibration factor, typically within a few khz of USB callibration-->
+    </SETTING>
+    <SETTING NAME="IF1_CAL_ON_OFF_SWITCH">
+        <!--Enables calibration of IF -->
+        <label>Enable IF1_CAL?</label>
+        <value></value>
+        <!--either YES or NO-->
+    </SETTING>
+    <SETTING NAME="IF1_CAL">
+        <label>IF1 Calibration Factor</label>
+        <value></value>
+        <!--value is 0-255. Factory default is 0 or 255. Dr Lee recommends 0, or 60-85.-->
+    </SETTING>
+    <SETTING NAME="IF1_CAL_ADD_SUB">
+        <label>Subtract IF1 Calibration Factor?</label>
+        <value></value>
+        <!--either YES or NO To subtract calibration, set this value to YES -->
+    </SETTING>
+    <!-- 
+	*****************************************************************************************************
+	VFO SETTING FOR ON BOOT 
+	*****************************************************************************************************	
+-->
+    <SETTING NAME="VFO_A">
+        <label>VFO A Bootup Freq</label>
+        <value>14033000</value>
+        <!--A valid frequency (only numbers) that uBITX can set - e.g., 14032000-->
+    </SETTING>
+    <SETTING NAME="VFO_A_MODE">
+        <label>VFO A Mode Upon Boot</label>
+        <value>CWL</value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="VFO_B">
+        <label>VFO B Bootup Freq</label>
+        <value>7033000</value>
+        <!--A valid frequency (only numbers) that uBITX can set - e.g., 7032000-->
+    </SETTING>
+    <SETTING NAME="VFO_B_MODE">
+        <label>VFO B Mode Upon Boot</label>
+        <value>DEFAULT</value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="TUNING_STEP_INDEX">
+        <label>Default Step#</label>
+        <value></value>
+        <!--Default tuning step on boot. 1-5 -->
+    </SETTING>
+    <SETTING NAME="TUNING_STEP1">
+        <label>Step #1</label>
+        <value></value>
+        <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+    </SETTING>
+    <SETTING NAME="TUNING_STEP2">
+        <label>Step #2</label>
+        <value></value>
+        <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+    </SETTING>
+    <SETTING NAME="TUNING_STEP3">
+        <label>Step #3</label>
+        <value></value>
+        <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+    </SETTING>
+    <SETTING NAME="TUNING_STEP4">
+        <label>Step #4</label>
+        <value></value>
+        <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+    </SETTING>
+    <SETTING NAME="TUNING_STEP5">
+        <label>Step #5</label>
+        <value></value>
+        <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+    </SETTING>
+    <!--
+	*****************************************************************************************************
+	COMMON CW SETTINGS
+	*****************************************************************************************************	
+-->
+    <SETTING NAME="CW_KEY_TYPE">
+        <label>CW Key Type</label>
+        <value></value>
+        <!--Select one of "STRAIGHT","IAMBICA","IAMBICB" -->
+    </SETTING>
+    <SETTING NAME="CW_SIDETONE">
+        <label>CW Sidetone(HZ)</label>
+        <value></value>
+        <!--Set according to your prefernce in HZ, e.g.650 -->
+    </SETTING>
+    <SETTING NAME="CW_SPEED_WPM">
+        <label>CW Speed</label>
+        <value></value>
+        <!--Set to desired WPM speed -->
+    </SETTING>
+    <SETTING NAME="CW_DELAY_MS">
+        <label>CW delay switching from TX back to RX</label>
+        <value></value>
+        <!--In miliseconds Max 2550-->
+    </SETTING>
+    <SETTING NAME="CW_START_MS">
+        <label>Delay before starting TX </label>
+        <value></value>
+        <!--0-560ms - odd numbers rounded down to be even (i.e. 53->52) -->
+    </SETTING>
+    <!--
+	*****************************************************************************************************
+	CW MEMORY KEYER
+	Currently activated via pressing the encoder in and then selecting the menu item "Memory Keyer" 
+	The following chracters were used in the original program to refer to substitutions that would be made
+	> Replace with my Call sign
+	< Replace with QSO callsign
+	' Start
+	" End
+	# AR
+	{ AS
+	^ KN
+	~ BT
+	] SK
+	
+	The issue is that the characters "'<> are special in XML and must be replaced with special groups. For:
+	" use &quot
+	' use &apos
+	< use &lt
+	> use &gt
+	I will probably replace these chracters with something that doesn't cause a problem with XML before final
+	release. I have added an issue on github for this.
+	*****************************************************************************************************	
+-->
+    <SETTING NAME="USER_CALLSIGN">
+        <label>Primary call sign</label>
+        <value></value>
+        <!--Substituted in message for '>' Max 18 characters)-->
+    </SETTING>
+    <SETTING NAME="QSO_CALLSIGN">
+        <label>Alt Call sign</label>
+        <!--Substituted in message for '<' Max 18 characters)-->
+        <value></value>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGS">
+        <!--Total characters in all memory keyer message <= 200-->
+        <label>Total Messages:</label>
+        <value></value>
+    </SETTING>
+    <!--	
+	*****************************************************************************************************
+	CW ADC Settings
+	The uBITX CW key input jack is "mono". The uBITX currently requires a resistance network between the 
+	key/paddle and the jack. Basically, the processor reads the voltage presented to one of its          
+	Analog pins (A to Digital Converter or ADC)and based on that voltage, determines whether we have a   
+	dah or dit or both paddles pressed in the case of a paddle. Similarly, with a straight key, based    
+	on the voltage, the uBITX determines whether the straight key is up or down. See the following       
+	for more details:  http://www.hamskey.com/2018/02/reducing-cw-key-errors-in-ubitx.html 				 
+	This section is used to set the various ADC value ranges. It is a range because resistors, wired, etc.
+	very from one to another. Furthermore, the reference voltages of different processors very too.      
+	You can directly monitor the resulting ADC as you press the keys and paddles via a menu item.        
+	See http://www.hamskey.com/2018/06/ubitx-firmware-cec-version-1094beta.html                          
+	*****************************************************************************************************	
+-->
+    <!--	Straight Key ADC Settings -->
+    <SETTING NAME="CW_ADC_ST_FROM">
+        <label>CW ST Key ADC from</label>
+        <value></value>
+        <!--  Between 1 - 1023 -->
+    </SETTING>
+    <SETTING NAME="CW_ADC_ST_TO">
+        <label>CW ST Key ADC from</label>
+        <value></value>
+        <!--  Between 1 - 1023 -->
+    </SETTING>
+    <!-- 
+	Paddle DOT ADC Settings
+	-->
+    <SETTING NAME="CW_ADC_DOT_FROM">
+        <label>CW Paddle DOT ADC FROM</label>
+        <value></value>
+        <!--  Between 1 - 1023 -->
+    </SETTING>
+    <SETTING NAME="CW_ADC_DOT_TO">
+        <label>CW Paddle DOT ADC FROM</label>
+        <value></value>
+        <!--  Between 1 - 1023 -->
+    </SETTING>
+    <!-- 
+	Paddle DASH ADC Settings
+	-->
+    <SETTING NAME="CW_ADC_DASH_FROM">
+        <label>CW Paddle DASH FROM</label>
+        <value></value>
+        <!--  Between 1 - 1023 -->
+    </SETTING>
+    <SETTING NAME="CW_ADC_DASH_TO">
+        <label>CW Paddle DASH TO</label>
+        <value></value>
+        <!--  Between 1 - 1023 -->
+    </SETTING>
+    <!-- 
+	Paddle BOTH ADC Settings
+	-->
+    <SETTING NAME="CW_ADC_BOTH_FROM">
+        <label>CW Paddle BOTH pressed FROM</label>
+        <value></value>
+        <!--  Between 1 - 1023 -->
+    </SETTING>
+    <SETTING NAME="CW_ADC_BOTH_TO">
+        <label>CW Paddle BOTH pressed TO</label>
+        <value></value>
+        <!--  Between 1 - 1023 -->
+    </SETTING>
+    <!--	
+	*****************************************************************************************************
+	USER_CHANNELS
+	The software provides up to 10 Named channels and additional 10 "UNAMED" channels. 
+	Currently, I cannot find a way to access the "UNNAMED" channels when in NEXTION mode
+	However, it is possible to access the "UNNAMED" channels from LCD mode. Perhaps this
+	will be a future enhancement to the NEXTION mode.                                  
+	*****************************************************************************************************	
+-->
+    <SETTING NAME="CHANNEL_FREQ1">
+        <label>CH.01</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ1_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ1_SHOW_NAME">
+        <label>Show Name?</label>
+        <value></value>
+        <!--either YES or NO-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ1_NAME">
+        <label>Name</label>
+        <value></value>
+        <!--Maximum of 5 characters -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ2">
+        <label>CH.02</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ2_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ2_SHOW_NAME">
+        <label>Show Name?</label>
+        <value></value>
+        <!--either YES or NO-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ2_NAME">
+        <label>Name</label>
+        <value></value>
+        <!--Maximum of 5 characters -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ3">
+        <label>CH.03</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ3_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ3_SHOW_NAME">
+        <label>Show Name?</label>
+        <value></value>
+        <!--either YES or NO-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ3_NAME">
+        <label>Name</label>
+        <value></value>
+        <!--Maximum of 5 characters -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ4">
+        <label>CH.04</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ4_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ4_SHOW_NAME">
+        <label>Show Name?</label>
+        <value></value>
+        <!--either YES or NO-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ4_NAME">
+        <label>Name</label>
+        <value></value>
+        <!--Maximum of 5 characters -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ5">
+        <label>CH.05</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ5_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ5_SHOW_NAME">
+        <label>Show Name?</label>
+        <value></value>
+        <!--either YES or NO-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ5_NAME">
+        <label>Name</label>
+        <value></value>
+        <!--Maximum of 5 characters -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ6">
+        <label>CH.06</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ6_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ6_SHOW_NAME">
+        <label>Show Name?</label>
+        <value></value>
+        <!--either YES or NO-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ6_NAME">
+        <label>Name</label>
+        <value></value>
+        <!--Maximum of 5 characters -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ7">
+        <label>CH.07</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ7_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ7_SHOW_NAME">
+        <label>Show Name?</label>
+        <value></value>
+        <!--either YES or NO-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ7_NAME">
+        <label>Name</label>
+        <value></value>
+        <!--Maximum of 5 characters -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ8">
+        <label>CH.08</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ8_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ8_SHOW_NAME">
+        <label>Show Name?</label>
+        <value></value>
+        <!--either YES or NO-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ8_NAME">
+        <label>Name</label>
+        <value></value>
+        <!--Maximum of 5 characters -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ9">
+        <label>CH.09</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ9_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ9_SHOW_NAME">
+        <label>Show Name?</label>
+        <value></value>
+        <!--either YES or NO-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ9_NAME">
+        <label>Name</label>
+        <value></value>
+        <!--Maximum of 5 characters -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ10">
+        <label>CH.10</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ10_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ10_SHOW_NAME">
+        <label>Show Name?</label>
+        <value></value>
+        <!--either YES or NO-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ10_NAME">
+        <label>Name</label>
+        <value></value>
+        <!--Maximum of 5 characters -->
+    </SETTING>
+    <!-- 	
+	End of Named Channels
+	
+	UNNAMED CHANNELS -->
+    <SETTING NAME="CHANNEL_FREQ11">
+        <label>CH.11</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ11_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ12">
+        <label>CH.12</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ12_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ13">
+        <label>CH.13</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ13_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ14">
+        <label>CH.14</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ14_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ15">
+        <label>CH.15</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ15_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ16">
+        <label>CH.16</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ16_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ17">
+        <label>CH.17</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ17_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ18">
+        <label>CH.18</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ18_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ19">
+        <label>CH.19</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ19_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ20">
+        <label>CH.20</label>
+        <value></value>
+        <!--In Hz. eg.g 14032000 is entered 14032000 -->
+    </SETTING>
+    <SETTING NAME="CHANNEL_FREQ20_MODE">
+        <label>Mode</label>
+        <value></value>
+        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+    </SETTING>
+    <!--	
+	*****************************************************************************************************
+	HAMBANDS
+	The software provides up for 10 different Ham Bands. Since the legal Ham Bands differ depending on   
+	region and country, you need to input the appropriate one for you. 	For your reference, the bands by
+	region is provided below:
+	REGION1: 						REGION2							REGION3				
+		1810-2000 						1810-2000						1800-1825		
+		3500-3800 						3500-4000						3500-3550		
+		7000-7200 						5330-5404						3790-3800		
+		10100-10150 					7000-7300						7000-7200		
+		14000-14350 					10100-10150						10100-10150		
+		18068-18168 					14000-14350						14000-14350		
+		21000-21450 					18068-18168						18068-18168		
+		24890-24990 					21000-21450						21000-21450		
+		28000-29700 					24890-24990						24890-24990		
+										28000-29700						28000-29700		
+	
+	The software also provides the ability to restrict TX to only HAM bands and to restrict the use of  
+	dial to move between bands. This late functionality might not work at the moment.... TX restrict does!
+	*****************************************************************************************************	
+-->
+    <SETTING NAME="TUNING_RESTICTIONS">
+        <!--Not clear this works at the moment....	-->
+        <label>Tune Control</label>
+        <value></value>
+        <!--Choice of NONE or BAND. NONE means no restrictions. BAND means only    
+																use move BAND+,BAND- to change to a different frequency area (no dial) -->
+    </SETTING>
+    <SETTING NAME="TX_RESTRICTIONS">
+        <label>Restrictions on TX</label>
+        <value></value>
+        <!--Choice of NONE or HAM. NONE means no restrictions. HAM means TX only on HAM bands -->
+    </SETTING>
+    <SETTING NAME="HAM_BAND_COUNT">
+        <label>Countof HAM Bands:</label>
+        <value></value>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE1_START">
+        <label>Band 1 Start</label>
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE1_END">
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+        <label>Band 1 End</label>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE2_START">
+        <label>Band 2 Start</label>
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE2_END">
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+        <label>Band 2 End</label>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE3_START">
+        <label>Band 3 Start</label>
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE3_END">
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+        <label>Band 3 End</label>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE4_START">
+        <label>Band 4 Start</label>
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE4_END">
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+        <label>Band 4 End</label>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE5_START">
+        <label>Band 5 Start</label>
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE5_END">
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+        <label>Band 5 End</label>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE6_START">
+        <label>Band 6 Start</label>
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE6_END">
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+        <label>Band 6 End</label>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE7_START">
+        <label>Band 7 Start</label>
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE7_END">
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+        <label>Band 7 End</label>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE8_START">
+        <label>Band 8 Start</label>
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE8_END">
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+        <label>Band 8 End</label>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE9_START">
+        <label>Band 9 Start</label>
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE9_END">
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+        <label>Band 9 End</label>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE10_START">
+        <label>Band 10 Start</label>
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+    </SETTING>
+    <SETTING NAME="HAM_BAND_RANGE10_END">
+        <value></value>
+        <!--In khz. e.g., 14000000 is entered 14000  -->
+        <label>Band 10 End</label>
+    </SETTING>
+    <!--
+	*****************************************************************************************************
+	SDR
+	KD8CEC provides for the integration of a SDR dongle with the uBITX radio. There might be better      
+	alternaties these days, e.g. an external antenna switch with RF sensing, but the approach is		 
+	interesting.  If you search for "SDR" on hamskey.com you will find lots of articles on this method.  
+	*****************************************************************************************************	
+-->
+    <SETTING NAME="BOOT_INTO_SDR_MODE">
+        <label>Boot into SDR Mode</label>
+        <value></value>
+        <!--Either NORMAL or SDR  -->
+    </SETTING>
+    <!--		SDR Offset Mode can be one of:
+			NONE: 			No offset is provided to the data send to the SDR  
+			FIXED:			The SDR offset frequency is added to the frequency on the display and sent to the SDR
+			MHZ:		  	The single MHZ digit of the radio's frequency is added. For example, if the radio was
+							at 14.032.000, and the offset was at 30.000.000, the resulting frequency would be 43.032.000.	
+			KHZ:			Similar to MHZ_OFFSET, but using the KHZ number. So with a 30.000.000 offset and and a
+							14.032.000 radio setting, the SDR will see a 30.032.000 frequency.
+-->
+    <SETTING NAME="SDR_OFFSET_MODE">
+        <label>SDR Freq Offset Mode</label>
+        <value></value>
+        <!--NONE, FIXED, MHZ, KHZ   -->
+    </SETTING>
+    <SETTING NAME="SDR_FREQUENCY">
+        <label>SDR Offset frequency</label>
+        <value></value>
+        <!--Check with SDR vendor. Enter frequency in Hz (ie. 32000000) -->
+    </SETTING>
+    <!--	
+	*****************************************************************************************************
+	WSPR
+	Currently the generation of the code for WSPR is not yet available in this software. So it is suggested
+	that you use uBITX Memory Manager V1.1 to generate the code for the WSPR messages and then copy it into
+	this file. 
+	Provides up to 4 Messages.
+	NOTE MISSIng BAND AND CALIBRATION INFO FOR WSPR
+	*****************************************************************************************************	
+-->
+    <SETTING NAME="WSPR_COUNT">
+        <label>WSPR Messages to Use</label>
+        <value></value>
+        <!--value 0-4. e.g., 3 would mean to use first 3 messages and ignore the 4th-->
+    </SETTING>
+    <SETTING NAME="WSPR_MESSAGE1_NAME">
+        <label>Name</label>
+        <value></value>
+        <!--5 Character name for this message-->
+    </SETTING>
+    <SETTING NAME="WSPR_MESSAGE1">
+        <label>Encoded MSG1:</label>
+        <value></value>
+        <!--Generate using uBITX Manager for now -->
+    </SETTING>
+    <SETTING NAME="WSPR_MESSAGE2_NAME">
+        <label>Name</label>
+        <value></value>
+        <!--5 Character name for this message-->
+    </SETTING>
+    <SETTING NAME="WSPR_MESSAGE2">
+        <label>Encoded MSG2:</label>
+        <value></value>
+        <!--Generate using uBITX Manager for now -->
+    </SETTING>
+    <SETTING NAME="WSPR_MESSAGE3_NAME">
+        <label>Name</label>
+        <value></value>
+        <!--5 Character name for this message-->
+    </SETTING>
+    <SETTING NAME="WSPR_MESSAGE3">
+        <label>Encoded MSG3:</label>
+        <value></value>
+        <!--Generate using uBITX Manager for now -->
+    </SETTING>
+    <SETTING NAME="WSPR_MESSAGE4_NAME">
+        <label>Name</label>
+        <value></value>
+        <!--5 Character name for this message-->
+    </SETTING>
+    <SETTING NAME="WSPR_MESSAGE4">
+        <label>Encoded MSG4:</label>
+        <value></value>
+        <!--Generate using uBITX Manager for now -->
+    </SETTING>
+    <!-- 	
+	*****************************************************************************************************
+	HARDWARE SETTINGS
+	This Section collects the various Hardware settings. With one exception, you will probably not need  
+	to mess with this. The exception is the tweaking of the ADC settings for the S-Meter. Again, the ADC 
+	settings will very from machine to machine so the threshold for a "S5" signal will likely differ from
+	that used by someone else. If you search hamskey.com for "s-meter" you will find several articles on 
+	constructing and calibrating a S-Meter.                                                                                
+	
+	*****************************************************************************************************	
+-->
+    <SETTING NAME="S_METER_LEVELS">
+        <label>Enable S-Meter?</label>
+        <value></value>
+        <!--either YES or NO. YES enables this feature-->
+    </SETTING>
+    <SETTING NAME="S_METER_LEVEL1">
+        <label>Level 1</label>
+        <value></value>
+        <!--Between 0-255 -->
+    </SETTING>
+    <SETTING NAME="S_METER_LEVEL2">
+        <label>Level 2</label>
+        <value></value>
+        <!--Between 0-255 -->
+    </SETTING>
+    <SETTING NAME="S_METER_LEVEL3">
+        <label>Level 3</label>
+        <value></value>
+        <!--Between 0-255 -->
+    </SETTING>
+    <SETTING NAME="S_METER_LEVEL4">
+        <label>Level 4</label>
+        <value></value>
+        <!--Between 0-255 -->
+    </SETTING>
+    <SETTING NAME="S_METER_LEVEL5">
+        <label>Level 5</label>
+        <value></value>
+        <!--Between 0-255 -->
+    </SETTING>
+    <SETTING NAME="S_METER_LEVEL6">
+        <label>Level 6</label>
+        <value></value>
+        <!--Between 0-255 -->
+    </SETTING>
+    <SETTING NAME="S_METER_LEVEL7">
+        <label>Level 7</label>
+        <value></value>
+        <!--Between 0-255 -->
+    </SETTING>
+    <SETTING NAME="S_METER_LEVEL8">
+        <label>Level 8</label>
+        <value></value>
+        <!--Between 0-255 -->
+    </SETTING>
+    <!--OEM display is parallel. To save chip pins some changed to I2C -->
+    <SETTING NAME="I2C_LCD_MASTER">
+        <label>Master LCD I2C Address</label>
+        <value></value>
+        <!--Default 0x27 -->
+    </SETTING>
+    <SETTING NAME="I2C_LCD_SECOND">
+        <label>Secondary LCD I2C Address</label>
+        <value></value>
+    </SETTING>
+    <SETTING NAME="I2C_ADDR_SI5351">
+        <!--Best to not mess with this one unless you really know what you are doing-->
+        <label>Si5351 I2C adderss chip</label>
+        <value></value>
+        <!-- 0 or 0x60 unless hardware modified -->
+    </SETTING>
+    <!--		
+	*****************************************************************************************************
+	ADVANCED UX Options
+	This Section provides a variety of options to tweak the user interface to better suit the needs of the
+	user. Some of these options only apply to the LCD version, while others are relevant to Nextion users
+	There are everal that are relevant to both. These options have been grouped accordingly to make it 	 
+	easier to navigate. 																			     
+	*****************************************************************************************************	
+-->
+    <!-- 	
+	LCD
+ -->
+    <SETTING NAME="MESSAGE_LINE">
+        <value></value>
+        <label>Message Line?</label>
+        <!--either YES or NO-->
+    </SETTING>
+    <SETTING NAME="SCROLLING_DISPLAY">
+        <label>SCROLLING DISPLAY</label>
+        <value></value>
+        <!--For LCD output either YES or NO-->
+    </SETTING>
+    <SETTING NAME="ONE_TWO_LINE_TOGGLE">
+        <label>One/Two Line Toggle</label>
+        <value></value>
+        <!--either YES or NO-->
+    </SETTING>
+    <!-- 	
+	NEXTION
+ -->
+    <SETTING NAME="MAIN_SCREEN_FORMAT">
+        <label>Main Screen DEFAULT or CW</label>
+        <value></value>
+        <!--Either DEFAULT or CW; CW display decode code (req 2nd Nano) -->
+    </SETTING>
+    <!-- 	
+GENERAL UX
+ -->
+    <SETTING NAME="NEXTION_DISPLAY_CALL_SIGN">
+        <label>Display Call Sign?</label>
+        <value></value>
+        <!--either YES or NO-->
+    </SETTING>
+    <SETTING NAME="Stored_IF_Shift">
+        <label>Preserve IF Shift?</label>
+        <value></value>
+        <!--either YES or NO. YES allows IF Shift value to be reused between boots -->
+    </SETTING>
+    <SETTING NAME="IF_SHIFTVALUE">
+        <label>Shift hz (+/-)</label>
+        <value></value>
+        <!-- 10,000 to -9999hz-->
+    </SETTING>
+    <SETTING NAME="CW_DISPLAY_FREQ">
+        <label>In CW Mode, Display TX or RX Freq?</label>
+        <value></value>
+        <!--Select TX to have display show the actual TX frequency when sending CW
+																	Select RX to have the display show the actual RX frequency when sending CW
+																	See http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html  -->
+    </SETTING>
+    <SETTING NAME="CW_Frequency_Adjustment">
+        <label>CW Freq Adjust Value</label>
+        <!--Extra adjustment to the displayed frequency. 0-600 -->
+        <value></value>
+    </SETTING>
+    <!-- 	
+	*****************************************************************************************************
+	EXTENDED KEYS
+	KD8CEC allow you to create up to 16 buttons that leverage the control line normally associted with the
+	switch on the encoder (A2). The particualar switch that is pushed is identified by the analog value  
+	read on pin A2. As in the CW Key area, the values of the ADC needs to be tweaked to accurately		 
+	identify which button was pushed. So you need to use the ADC monitoring feature to find the typical  
+	values for each button/resister pair you push. The goal is to get a Begin and End ADC that is broad  
+	enough to capture the button press without overlapping other possible button pushes.                 
+	More info on this approach is provided at 															 
+		http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html							 	
+		http://www.hamskey.com/2018/04/changed-extension-key-setting-in-cec.html      					                   
+	*****************************************************************************************************	
+ -->
+    <SETTING NAME="EXTENDED_KEY1_START">
+        <label>Key1 Start ADC</label>
+        <value></value>
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY1_END">
+        <label>Key1 End ADC</label>
+        <value></value>
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY1_FUNC">
+        <label>Key1 Function</label>
+        <value></value>
+        <!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY2_START">
+        <label>Key2 Start ADC</label>
+        <value></value>
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY2_END">
+        <label>Key2 End ADC</label>
+        <value></value>
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY2_FUNC">
+        <label>Key2 Function</label>
+        <value></value>
+        <!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY3_START">
+        <label>Key3 Start ADC</label>
+        <value></value>
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY3_END">
+        <label>Key3 End ADC</label>
+        <value></value>
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY3_FUNC">
+        <label>Key3 Function</label>
+        <value></value>
+        <!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY4_START">
+        <label>Key4 Start ADC</label>
+        <value></value>
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY4_END">
+        <label>Key4 End ADC</label>
+        <value></value>
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY4_FUNC">
+        <label>Key4 Function</label>
+        <value></value>
+        <!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY5_START">
+        <label>Key5 Start ADC</label>
+        <value></value>
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY5_END">
+        <label>Key5 End ADC</label>
+        <value></value>
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY5_FUNC">
+        <label>Key5 Function</label>
+        <value></value>
+        <!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY6_START">
+        <label>Key6 Start ADC</label>
+        <value></value>
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY6_END">
+        <label>Key6 End ADC</label>
+        <value></value>
+    </SETTING>
+    <SETTING NAME="EXTENDED_KEY6_FUNC">
+        <label>Key6 Function</label>
+        <value></value>
+        <!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+    </SETTING>
+    <!-- 	
+	*****************************************************************************************************
+	CUSTOM_LPF_FILTERS
+	KD8CEC allow you to customize the functioning of the Low Pass Filters (LPF).This includes controlling
+	the relays for the existing LPF system as well as the possibility of controlling more offboard LPF   
+	relays using the D10,D11,D12,D13 lines (you can control 4 more relays directly or even use the 4	 
+	lines as an imput to a multiplexer to get potentially 16(!) additional relays/filter stages.         
+	Athough perhaps interesting to an experimenter, this festure's orign is back in the uBITX V3/V4      
+	timeframe where there was concerns about the spectral purity of the output of the uBITX.             
+	Perhaps of still relevance, the availability of the D10-D13 lines provides the opportunity to control
+	LPF of an offboard AMP or perhaps used to switch antennas based on TX frequency.                     
+	
+	Only the top of each filter frequency is specified. The assumption is that first filter starts at 0hz
+	and each succeeding filter starts at the end of the previous one +1. Additionally, you can specify   
+	individually which of the relays (or data lines in the case of D10-D13) will be enabled. You can have
+	more than one relay enabled!																		 
+	
+	NOTE: The solution uses A7 and so incompatible with single Nano S-meter solution. (Still can use the 
+		 second nano solution ("standalone")															 
+	*****************************************************************************************************	
+ -->
+    <SETTING NAME="CUST_LPF_ENABLED">
+        <label>Enable Custom LPF</label>
+        <value></value>
+        <!--One of OFF, STANDARD, EXTENDED -->
+    </SETTING>
+    <SETTING NAME="CUST_LPF_FILTER1_ENDFREQ">
+        <label>Ending frequency of LPF1</label>
+        <value></value>
+        <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
+    </SETTING>
+    <SETTING NAME="CUST_LPF_FILTER1_CONTROL">
+        <label>Filter Ctrl1</label>
+        <value>NONE</value>
+        <!--Either NONE *or* Comma separated list of any combination of:		 
+																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
+																			For example the value of "TX_LPF,D10" (no quotes)
+																			enable for the TX_LPF relay and set D10 high     -->
+    </SETTING>
+    <SETTING NAME="CUST_LPF_FILTER2_ENDFREQ">
+        <label>Ending frequency of LPF1</label>
+        <value></value>
+        <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
+    </SETTING>
+    <SETTING NAME="CUST_LPF_FILTER2_CONTROL">
+        <label>Filter Ctrl2</label>
+        <value>NONE</value>
+        <!--Either NONE *or* Comma separated list of any combination of:	 
+																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
+																			For example the value of "TX_LPF,D10" (no quotes)
+																			enable for the TX_LPF relay and set D10 high     -->
+    </SETTING>
+    <SETTING NAME="CUST_LPF_FILTER3_ENDFREQ">
+        <label>Ending frequency of LPF3</label>
+        <value></value>
+        <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
+    </SETTING>
+    <SETTING NAME="CUST_LPF_FILTER3_CONTROL">
+        <label>Filter Ctrl1</label>
+        <value>NONE</value>
+        <!--Either NONE *or* Comma separated list of any combination of:	 
+																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
+																			For example the value of "TX_LPF,D10" (no quotes)
+																			enable for the TX_LPF relay and set D10 high     -->
+    </SETTING>
+    <SETTING NAME="CUST_LPF_FILTER4_ENDFREQ">
+        <label>Ending frequency of LPF4</label>
+        <value></value>
+        <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
+    </SETTING>
+    <SETTING NAME="CUST_LPF_FILTER4_CONTROL">
+        <label>Filter Ctrl4</label>
+        <value>NONE</value>
+        <!--Either NONE *or* Comma separated list of any combination of:		 
+																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
+																			For example the value of "TX_LPF,D10" (no quotes)
+																			enable for the TX_LPF relay and set D10 high     -->
+    </SETTING>
+    <SETTING NAME="CUST_LPF_FILTER5_ENDFREQ">
+        <label>Ending frequency of LPF5</label>
+        <value></value>
+        <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
+    </SETTING>
+    <SETTING NAME="CUST_LPF_FILTER5_CONTROL">
+        <label>Filter Ctrl5</label>
+        <value>NONE</value>
+        <!--Either NONE *or* Comma separated list of any combination of:		 
+																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
+																			For example the value of "TX_LPF,D10" (no quotes)
+																			enable for the TX_LPF relay and set D10 high     -->
+    </SETTING>
+    <SETTING NAME="CUST_LPF_FILTER6_ENDFREQ">
+        <label>Ending frequency of LPF6</label>
+        <value></value>
+        <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
+    </SETTING>
+    <SETTING NAME="CUST_LPF_FILTER6_CONTROL">
+        <label>Filter Ctrl6</label>
+        <value>NONE</value>
+        <!--Either NONE *or* Comma separated list of any combination of:		 
+																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
+																			For example the value of "TX_LPF,D10" (no quotes)
+																			enable for the TX_LPF relay and set D10 high     -->
+    </SETTING>
+    <SETTING NAME="CUST_LPF_FILTER7_ENDFREQ">
+        <label>Ending frequency of LPF1</label>
+        <value></value>
+        <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
+    </SETTING>
+    <SETTING NAME="CUST_LPF_FILTER7_CONTROL">
+        <label>Filter Ctrl1</label>
+        <value>NONE</value>
+        <!--Either NONE *or* Comma separated list of any combination of: 
+																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
+																			For example the value of "TX_LPF,D10" (no quotes)
+																			enable for the TX_LPF relay and set D10 high     -->
+    </SETTING>
+</data>
