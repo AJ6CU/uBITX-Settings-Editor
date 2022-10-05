@@ -5,6 +5,9 @@ This project is to provide a platform independent, open-source replacement for t
 
 Unfortunately, and unlike all the rest of the KD8CEC family of software, the source code to the uBITX Memory manager was never released nor was it natively ported to platforms other than Windows. The last release of the tool (V1.110) happened about 3.5 years ago. 
 
+The latest release of uBITX Memeory Manager is hosted at:
+https://github.com/phdlee/ubitx/releases/download/v1.11/uBITX_Manager_V1.11.zip
+
 I had originally not planned to tackle this task. However, in porting KD8CEC v1.2 to new hardware platforms, the uBITX Memory Manager started to show what looked like incompatibilities (e.g., works with the Arduino IoT, fails with the Arduino BLE and RP Connect). So I was left with no choice but to take this detour...
 
 ## IMPLEMENTATION
