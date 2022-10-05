@@ -6,43 +6,18 @@ import functools
 from time import sleep
 import sys
 
+from globalvars import *
+from userconfig import *
+
 #definitions################################################
-COM_PORT = "COM24"
-#COM_PORT = "COM14"
-BAUD = 38400
 
-READCOMMAND=0xDB
-
-EEPROMSIZE=1024
-BACKUPFILESIZE=2048
 
 EEPROMMEMORYMAP="eeprommemorymap.xml"               #Maps EEPROM locations to settings
 USERMODFILETEMPLACE="usermodfiletemplate.xml"       #Template file used to fill in with data from EEPROM
 
-USERMODFILE="usermodfile.xml"                       #Output of process - file that User can customize
-
-TOTALCWMESSAGES=10                                  #assumption on number of CW message elements to be provided
-SIZEOFWSPRMESSAGES=41                               #size in bytes of wspr messages
-MAXCALLSIGNLEN = 18                                 #Max length of callsign and alt callsign
-
 
 #end definitions############################################
 
-#ENUMS#####################################################
-MODE_SELECT = ["DEFAULT","xxx","LSB","USB","CWL","CWU"]
-BOOL_SELECT = ["NO","YES"]
-TUNE_RESTRICT_SELECT = ["NONE","BAND"]
-TX_RESTRICT_SELECT = ["NONE", "HAM"]
-TX_RESTRICT_MINIMUM = 100
-CW_KEY_SELECT = ["STRAIGHT","IAMBICA","IAMBICB"]
-MAIN_MENU_SELECT = ["DEFAULT","CW"]
-BOOT_MODE = ["NORMAL", "SDR"]
-SDR_OFFSET_MODE = ["NONE","FIXED", "MHZ", "KHZ"]
-FTN_KEY_SELECT = ["NONE", "MODE", "BAND-UP", "BAND-DN", "TUNE-STEP", "VFO-A/B", "SPLIT", "TX", "SDR-MODE", "RIT"]
-LPF_MODE_SELECT = ["OFF", "STANDARD", "EXTENDED"]
-LPF_MODE_SETTING = [0x00, 0x57, 0x58]
-LPF_CTRL_SELECT = ["TX_LPF_A", "TX_LPF_B", "TX_LPF_C", "D10", "D11", "D12", "D13", "NONE"]
-#end ENUMS#################################################
 
 
 def readEEPROMData(portdesc: object, memlocation: int, numBytesToRead: int) -> bytearray:
