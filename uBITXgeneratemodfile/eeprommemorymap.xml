@@ -1018,7 +1018,7 @@ GENERAL UX
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
 
-	<SETTING NAME="Stored_IF_Shift">							
+	<SETTING NAME="STORED_IF_SHIFT">
 		<EEPROMStart>360</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>bool</displayFormat>
@@ -1037,7 +1037,7 @@ GENERAL UX
 		<displayFormat>hex</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-	<SETTING NAME="CW_Frequency_Adjustment">
+	<SETTING NAME="CW_FREQUENCY_ADJUSTMENT">
 		<EEPROMStart>359</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>selection</displayFormat>

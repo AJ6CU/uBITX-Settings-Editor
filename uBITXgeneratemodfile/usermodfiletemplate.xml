@@ -743,7 +743,7 @@ GENERAL UX
 		<value></value>										<!--either YES or NO-->	
 	</SETTING>
 
-	<SETTING NAME="Stored_IF_Shift">							
+	<SETTING NAME="STORED_IF_SHIFT">
 		<label>Preserve IF Shift?</label>
 		<value></value>											<!--either YES or NO. YES allows IF Shift value to be reused between boots -->
 	</SETTING>
@@ -758,7 +758,7 @@ GENERAL UX
 																	Select RX to have the display show the actual RX frequency when sending CW
 																	See http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html  -->
 	</SETTING>
-	<SETTING NAME="CW_Frequency_Adjustment">
+	<SETTING NAME="CW_FREQUENCY_ADJUSTMENT">
 		<label>CW Freq Adjust Value</label>						<!--Extra adjustment to the displayed frequency. 0-600 -->
 		<value></value>
 	</SETTING>

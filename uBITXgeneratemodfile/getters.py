@@ -548,15 +548,13 @@ class getters(object):
 #         # ***********************************
 #
     def BOOT_INTO_SDR_MODE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-        #                         value.text = BOOT_MODE[(get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >> 1) & 0x01]
+        value.text = BOOT_MODE[(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >> 1) & 0x01]
 
     def SDR_OFFSET_MODE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-        #                         value.text = SDR_OFFSET_MODE[((get_uint8_FromEEPROM(EEPROMBuffer, memLocation) & 0xFF) >> 2) & 0x03]
+        value.text = SDR_OFFSET_MODE[((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) & 0xFF) >> 2) & 0x03]
 
     def SDR_FREQUENCY(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
 
 
 
@@ -565,46 +563,49 @@ class getters(object):
 #         # ***********************************
 #
     def WSPR_COUNT(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        value.text = str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
 
-    def WSPR_MESSAGE_NAME(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+    def WSPR_MESSAGE_NAME(self, SettingName, EEPROMBuffer, memLocation, value):
+        i: int =0
+        tmpStr: str = ''
+        while i<WSPRNAMELENGTH:
+            tmpStr += str(chr((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+i))))
+            i += 1
+        value.text = tmpStr
 
     def WSPR_MESSAGE1_NAME(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.WSPR_MESSAGE_NAME(SettingName, EEPROMBuffer, memLocation, value)
 
     def WSPR_MESSAGE2_NAME(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.WSPR_MESSAGE_NAME(SettingName, EEPROMBuffer, memLocation, value)
 
     def WSPR_MESSAGE3_NAME(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.WSPR_MESSAGE_NAME(SettingName, EEPROMBuffer, memLocation, value)
 
     def WSPR_MESSAGE4_NAME(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.WSPR_MESSAGE_NAME(SettingName, EEPROMBuffer, memLocation, value)
 
 
-    def WSPR_MESSAGE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+    def WSPR_MESSAGE(self, SettingName, EEPROMBuffer, memLocation, value):
+        j: int = 0
+        msgStr: str = ''
 
-        #                     j: int = 0
-#                     msgStr: str = ''
-#
-#                     while j < SIZEOFWSPRMESSAGES:
-#                         msgStr+='{:02X}'.format(get_uint8_FromEEPROM(EEPROMBuffer, memLocation + j))+','
-#                         j += 1
-#                     value.text = msgStr.rstrip(',')                 #strip off extra , on right
+        while j < SIZEOFWSPRMESSAGES:
+            msgStr+='{:02X}'.format(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation + j))+','
+            j += 1
+        value.text = msgStr.rstrip(',')                 #strip off extra , on right
 
     def WSPR_MESSAGE1(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.WSPR_MESSAGE(SettingName, EEPROMBuffer, memLocation, value)
 
     def WSPR_MESSAGE2(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.WSPR_MESSAGE(SettingName, EEPROMBuffer, memLocation, value)
 
     def WSPR_MESSAGE3(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.WSPR_MESSAGE(SettingName, EEPROMBuffer, memLocation, value)
 
     def WSPR_MESSAGE4(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.WSPR_MESSAGE(SettingName, EEPROMBuffer, memLocation, value)
 
 #
 #         # ***********************************
@@ -613,50 +614,48 @@ class getters(object):
 #
 
     def S_METER_LEVELS(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-        #                     if ((get_uint8_FromEEPROM(EEPROMBuffer, memLocation)) & 0x08):  # a 0x08 bit pattern indicates s-meter on
-#                         value.text = BOOL_SELECT[1]
-#                     else:
-#                         value.text = BOOL_SELECT[0]
+        if ((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)) & 0x08):  # a 0x08 bit pattern indicates s-meter on
+            value.text = BOOL_SELECT[1]
+        else:
+            value.text = BOOL_SELECT[0]
 
-    def S_METER_LEVEL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-        #                     value.text = str(4 * get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
-#
+    def S_METER_LEVEL(self, SettingName, EEPROMBuffer, memLocation, value):
+        value.text = str(4 * self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+
 
     def S_METER_LEVEL1(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.S_METER_LEVEL(SettingName, EEPROMBuffer, memLocation, value)
 
     def S_METER_LEVEL2(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.S_METER_LEVEL(SettingName, EEPROMBuffer, memLocation, value)
 
     def S_METER_LEVEL3(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.S_METER_LEVEL(SettingName, EEPROMBuffer, memLocation, value)
 
     def S_METER_LEVEL4(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.S_METER_LEVEL(SettingName, EEPROMBuffer, memLocation, value)
 
     def S_METER_LEVEL5(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.S_METER_LEVEL(SettingName, EEPROMBuffer, memLocation, value)
 
     def S_METER_LEVEL6(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.S_METER_LEVEL(SettingName, EEPROMBuffer, memLocation, value)
 
     def S_METER_LEVEL7(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.S_METER_LEVEL(SettingName, EEPROMBuffer, memLocation, value)
 
     def S_METER_LEVEL8(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.S_METER_LEVEL(SettingName, EEPROMBuffer, memLocation, value)
 
 
     def I2C_LCD_MASTER(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
 
     def I2C_LCD_SECOND(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
 
     def I2C_ADDR_SI5351(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
 
 
 
@@ -667,52 +666,43 @@ class getters(object):
 #
 
     def MESSAGE_LINE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-#                         value.text = BOOL_SELECT[(get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >>4)&0x01]
+        value.text = BOOL_SELECT[(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >>4)&0x01]
 
     def SCROLLING_DISPLAY(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-        #                         value.text = BOOL_SELECT[(get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >> 2) & 0x01]
+        value.text = BOOL_SELECT[(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >> 2) & 0x01]
 
     def ONE_TWO_LINE_TOGGLE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-        #                         value.text = BOOL_SELECT[get_uint8_FromEEPROM(EEPROMBuffer, memLocation)  & 0x01]
+        value.text = BOOL_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)  & 0x01]
 
     def NEXTION_DISPLAY_CALL_SIGN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-        #                         value.text = BOOL_SELECT[(get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >> 1) & 0x01]
+        value.text = BOOL_SELECT[(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >> 1) & 0x01]
 
     def MAIN_SCREEN_FORMAT(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        value.text = MAIN_MENU_SELECT[(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))]
 
     def CW_DISPLAY_FREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-#                         shiftDisplay = (get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >>7) & 0x01
-#                         enableAdjustCWFreq = (get_uint8_FromEEPROM(EEPROMBuffer, memLocation+1) >>7) & 0x01
-#
-#                         if shiftDisplay & ~enableAdjustCWFreq:      #By definition means display shows RX freq
-#                             value.text = "RX"
-#                         else:
-#                             value.text = "TX"                       #Shows TX Freq seems to be the preferred option
-#
 
-    def Stored_IF_Shift(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-        ##ALL CAPS
-#                         value.text = BOOL_SELECT[(get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >> 6) & 0x01]
+        shiftDisplay = (self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >>7) & 0x01
+        enableAdjustCWFreq = (self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+1) >>7) & 0x01
+
+        if shiftDisplay & ~enableAdjustCWFreq:      #By definition means display shows RX freq
+            value.text = "RX"
+        else:
+            value.text = "TX"                       #Shows TX Freq seems to be the preferred option
+
+
+    def STORED_IF_SHIFT(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = BOOL_SELECT[(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >> 6) & 0x01]
 
     def IF_SHIFTVALUE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-#                         tmpInt = get_uint16_FromEEPROM(EEPROMBuffer, memLocation)
-#                         if tmpInt & 0x8000:                                         #We have a negative number
-#                             value.text = "-" + str((~tmpInt+1)& 0xffff)             #convert from 2's complement
-#                         else:
-#                             value.text = str(tmpInt)
+        tmpInt = self.get_uint16_FromEEPROM(EEPROMBuffer, memLocation)
+        if tmpInt & 0x8000:                                         #We have a negative number
+            value.text = "-" + str((~tmpInt+1)& 0xffff)             #convert from 2's complement
+        else:
+            value.text = str(tmpInt)
 
-    def CW_Frequency_Adjustment(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-        #                         value.text = str((get_uint8_FromEEPROM(EEPROMBuffer, memLocation) &  0x3f)*10)
-        ##ALL CAPS
+    def CW_FREQUENCY_ADJUSTMENT(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = str((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) &  0x3f)*10)
 
 
 
@@ -722,71 +712,70 @@ class getters(object):
 #         # ***********************************
 #
 
-    def EXTENDED_KEY_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-        #                     value.text = str(get_uint8_FromEEPROM(EEPROMBuffer, memLocation)*4)
+    def EXTENDED_KEY_START(self, SettingName, EEPROMBuffer, memLocation, value):
+        value.text = str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)*4)
 
     def EXTENDED_KEY1_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
 
     def EXTENDED_KEY2_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
 
     def EXTENDED_KEY3_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
 
     def EXTENDED_KEY4_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
 
     def EXTENDED_KEY5_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
 
     def EXTENDED_KEY6_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
 
 
-    def EXTENDED_KEY_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+    def EXTENDED_KEY_END(self, SettingName, EEPROMBuffer, memLocation, value):
+        value.text = str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)*4)
 
     def EXTENDED_KEY1_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
 
     def EXTENDED_KEY2_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
 
     def EXTENDED_KEY3_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
 
     def EXTENDED_KEY4_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
 
     def EXTENDED_KEY5_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
 
     def EXTENDED_KEY6_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
 
 
-    def EXTENDED_KEY_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+    def EXTENDED_KEY_FUNC(self, SettingName, EEPROMBuffer, memLocation, value):
+        value.text = FTN_KEY_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
 
     def EXTENDED_KEY1_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
 
     def EXTENDED_KEY2_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
 
     def EXTENDED_KEY3_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
 
     def EXTENDED_KEY4_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
 
     def EXTENDED_KEY5_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
 
     def EXTENDED_KEY6_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
 
 
 #
@@ -797,68 +786,67 @@ class getters(object):
 #
 
     def CUST_LPF_ENABLED(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-        #                      value.text = LPF_MODE_SELECT[LPF_MODE_SETTING.index((get_uint8_FromEEPROM(EEPROMBuffer, memLocation)))]
+        value.text = LPF_MODE_SELECT[LPF_MODE_SETTING.index((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)))]
 
-    def CUST_LPF_FILTER_ENDFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+    def CUST_LPF_FILTER_ENDFREQ(self, SettingName, EEPROMBuffer, memLocation, value):
+        value.text = str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
 
     def CUST_LPF_FILTER1_ENDFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.CUST_LPF_FILTER_ENDFREQ(SettingName, EEPROMBuffer, memLocation, value)
 
     def CUST_LPF_FILTER2_ENDFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.CUST_LPF_FILTER_ENDFREQ(SettingName, EEPROMBuffer, memLocation, value)
 
     def CUST_LPF_FILTER3_ENDFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.CUST_LPF_FILTER_ENDFREQ(SettingName, EEPROMBuffer, memLocation, value)
 
     def CUST_LPF_FILTER4_ENDFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.CUST_LPF_FILTER_ENDFREQ(SettingName, EEPROMBuffer, memLocation, value)
 
     def CUST_LPF_FILTER5_ENDFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.CUST_LPF_FILTER_ENDFREQ(SettingName, EEPROMBuffer, memLocation, value)
 
     def CUST_LPF_FILTER6_ENDFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.CUST_LPF_FILTER_ENDFREQ(SettingName, EEPROMBuffer, memLocation, value)
 
     def CUST_LPF_FILTER7_ENDFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.CUST_LPF_FILTER_ENDFREQ(SettingName, EEPROMBuffer, memLocation, value)
 
 
-    def CUST_LPF_FILTER_CONTROL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
-#                             j = 0
-#                     tmpStr = ""
-#                     LPFControlByte = get_uint8_FromEEPROM(EEPROMBuffer, memLocation)
-#                     if LPFControlByte == 0x00:
-#                         value.text="NONE"
-#                     else:
-#                         while j < 7:
-#                             if ((LPFControlByte>>j)&0x01):
-#                                 tmpStr += (LPF_CTRL_SELECT[j] + ",")
-#                             j += 1
-#                         value.text = tmpStr.rstrip(',')
+    def CUST_LPF_FILTER_CONTROL(self, SettingName, EEPROMBuffer, memLocation, value):
+
+        j = 0
+        tmpStr = ""
+        LPFControlByte = self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)
+        if LPFControlByte == 0x00:
+            value.text="NONE"
+        else:
+            while j < 7:
+                if ((LPFControlByte>>j)&0x01):
+                    tmpStr += (LPF_CTRL_SELECT[j] + ",")
+                j += 1
+            value.text = tmpStr.rstrip(',')
 
     def CUST_LPF_FILTER1_CONTROL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.CUST_LPF_FILTER_CONTROL(SettingName, EEPROMBuffer, memLocation, value)
 
     def CUST_LPF_FILTER2_CONTROL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.CUST_LPF_FILTER_CONTROL(SettingName, EEPROMBuffer, memLocation, value)
 
     def CUST_LPF_FILTER3_CONTROL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.CUST_LPF_FILTER_CONTROL(SettingName, EEPROMBuffer, memLocation, value)
 
     def CUST_LPF_FILTER4_CONTROL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.CUST_LPF_FILTER_CONTROL(SettingName, EEPROMBuffer, memLocation, value)
 
     def CUST_LPF_FILTER5_CONTROL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.CUST_LPF_FILTER_CONTROL(SettingName, EEPROMBuffer, memLocation, value)
 
     def CUST_LPF_FILTER6_CONTROL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.CUST_LPF_FILTER_CONTROL(SettingName, EEPROMBuffer, memLocation, value)
 
     def CUST_LPF_FILTER7_CONTROL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        print("Getter Called:", SettingName)
+        self.CUST_LPF_FILTER_CONTROL(SettingName, EEPROMBuffer, memLocation, value)
 
 
 
