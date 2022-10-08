@@ -134,7 +134,7 @@ for userSetting in EEPROMroot.findall('.//SETTING'):
     userSettingTag = UserModroot.find('.//SETTING[@NAME="{}"]'.format(userSettingName))
     if (userSettingTag != None):
         valueTag=userSettingTag.find('.//value')
-        UserMods.get(userSettingName, userSettingName, EEPROMBuffer, memLocation, valueTag, EEPROMroot, UserModroot)
+        UserMods.get(userSettingName, userSettingName, EEPROMBuffer, memLocation, valueTag, EEPROMroot, userSettingTag)
 
 
 #    print("processing=",settingName, "\tmemLocation=", memLocation, "\tMemcontents=", str(EEPROMBuffer[memLocation]), "\tnumber of bytes=", numBytes,"\tdatatype=",dataType)

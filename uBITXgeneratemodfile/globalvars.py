@@ -28,6 +28,7 @@ EEPROMSIZE=1024
 BACKUPFILESIZE=2048
 
 
+CHANNELNAMELENGTH = 5                               #Number of characters in the Channel Name
 TOTALCWMESSAGES=10                                  #assumption on number of CW message elements to be provided
 SIZEOFWSPRMESSAGES=41                               #size in bytes of wspr messages
 MAXCALLSIGNLEN = 18                                 #Max length of callsign and alt callsign
