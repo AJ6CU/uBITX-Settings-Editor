@@ -562,6 +562,63 @@ class getters(object):
 #         #   WSPR SETTINGS
 #         # ***********************************
 #
+    def WSPR_BAND1_TXFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
+
+    def WSPR_BAND2_TXFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
+
+    def WSPR_BAND3_TXFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
+
+    def WSPR_BAND1_MULTICHAN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = str(self.get_uint16_FromEEPROM(EEPROMBuffer, memLocation))
+
+    def WSPR_BAND2_MULTICHAN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = str(self.get_uint16_FromEEPROM(EEPROMBuffer, memLocation))
+
+    def WSPR_BAND3_MULTICHAN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = str(self.get_uint16_FromEEPROM(EEPROMBuffer, memLocation))
+
+
+    def WSPR_BAND_REG1(self, SettingName, EEPROMBuffer, memLocation, value ):
+        j: int = 0
+        msgStr: str = ''
+
+        while j < WSPRREG1LENGTH:
+            msgStr+='{:02X}'.format(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation + j))+','
+            j += 1
+        value.text = msgStr.rstrip(',')                 #strip off extra , on right
+
+    def WSPR_BAND1_REG1(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.WSPR_BAND_REG1(SettingName, EEPROMBuffer, memLocation, value)
+
+    def WSPR_BAND2_REG1(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.WSPR_BAND_REG1(SettingName, EEPROMBuffer, memLocation, value)
+
+    def WSPR_BAND3_REG1(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.WSPR_BAND_REG1(SettingName, EEPROMBuffer, memLocation, value)
+
+
+    def WSPR_BAND_REG2(self, SettingName, EEPROMBuffer, memLocation, value ):
+        j: int = 0
+        msgStr: str = ''
+
+        while j < WSPRREG2LENGTH:
+            msgStr+='{:02X}'.format(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation + j))+','
+            j += 1
+        value.text = msgStr.rstrip(',')                 #strip off extra , on right
+
+    def WSPR_BAND1_REG2(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.WSPR_BAND_REG2(SettingName, EEPROMBuffer, memLocation, value)
+
+    def WSPR_BAND2_REG2(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.WSPR_BAND_REG2(SettingName, EEPROMBuffer, memLocation, value)
+
+    def WSPR_BAND3_REG2(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.WSPR_BAND_REG2(SettingName, EEPROMBuffer, memLocation, value)
+
+
     def WSPR_COUNT(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
         value.text = str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
 

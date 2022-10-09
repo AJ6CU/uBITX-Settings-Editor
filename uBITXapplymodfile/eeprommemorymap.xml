@@ -825,12 +825,83 @@
 	*****************************************************************************************************
 	WSPR
 	Currently the generation of the code for WSPR is not yet available in this software. So it is suggested
-	that you use uBITX Memory Manager V1.1 to generate the code for the WSPR messages and then copy it into
-	this file. 
+	that you use uBITX Memory Manager V1.1 to generate the code for the WSPR messages and write it into
+	your EEPROM. And then use this routine to download your wspr configuration.
 	Provides up to 4 Messages.
-	NOTE MISSIng BAND AND CALIBRATION INFO FOR WSPR
 	*****************************************************************************************************	
 -->	
+	<SETTING NAME="WSPR_BAND1_TXFREQ">							
+		<EEPROMStart>401</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>	
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND1_MULTICHAN">							
+		<EEPROMStart>405</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>int</displayFormat>	
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND1_REG1">							
+		<EEPROMStart>407</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>hex</displayFormat>	
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING> 
+		<SETTING NAME="WSPR_BAND1_REG2">							
+		<EEPROMStart>412</EEPROMStart>
+		<sizeInBytes>3</sizeInBytes>
+		<displayFormat>hex</displayFormat>	
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND2_TXFREQ">							
+		<EEPROMStart>415</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>	
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND2_MULTICHAN">							
+		<EEPROMStart>419</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>int</displayFormat>	
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND2_REG1">							
+		<EEPROMStart>421</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>hex</displayFormat>	
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING> 
+		<SETTING NAME="WSPR_BAND2_REG2">							
+		<EEPROMStart>426</EEPROMStart>
+		<sizeInBytes>3</sizeInBytes>
+		<displayFormat>hex</displayFormat>	
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING> 
+		<SETTING NAME="WSPR_BAND3_TXFREQ">							
+		<EEPROMStart>429</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>	
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND3_MULTICHAN">							
+		<EEPROMStart>433</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>int</displayFormat>	
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND3_REG1">							
+		<EEPROMStart>435</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>hex</displayFormat>	
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING> 
+		<SETTING NAME="WSPR_BAND3_REG2">							
+		<EEPROMStart>440</EEPROMStart>
+		<sizeInBytes>3</sizeInBytes>
+		<displayFormat>hex</displayFormat>	
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING> 
 	<SETTING NAME="WSPR_COUNT">							
 		<EEPROMStart>443</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>

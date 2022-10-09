@@ -727,12 +727,71 @@
 	*****************************************************************************************************
 	WSPR
 	Currently the generation of the code for WSPR is not yet available in this software. So it is suggested
-	that you use uBITX Memory Manager V1.1 to generate the code for the WSPR messages and then copy it into
-	this file. 
+	that you use uBITX Memory Manager V1.1 to generate the code for the WSPR messages and then use the
+	generatemdifile app to get these values
 	Provides up to 4 Messages.
-	NOTE MISSIng BAND AND CALIBRATION INFO FOR WSPR
 	*****************************************************************************************************	
 -->
+    <SETTING NAME="WSPR_BAND1_TXFREQ">
+        <label>TX frequency for Band 1</label>
+        <value>14097067</value>
+        <!--entered in HZ-->
+    </SETTING>
+    <SETTING NAME="WSPR_BAND1_MULTICHAN">
+        <label>Frequency offset for mutlichannels</label>
+        <value>500</value>
+        <!--entered in HZ-->
+    </SETTING>
+    <SETTING NAME="WSPR_BAND1_REG1">
+        <label>Contents of WSPR Reg 1</label>
+        <value>0F,7A,F1,3F,74</value>
+        <!--5 hex bytes separated by a comma-->
+    </SETTING>
+    <SETTING NAME="WSPR_BAND1_REG2">
+        <label>Contents of WSPR Reg 1</label>
+        <value>00,1D,00</value>
+        <!--3 hex bytes separated by a comma-->
+    </SETTING>
+    <SETTING NAME="WSPR_BAND2_TXFREQ">
+        <label>TX frequency for Band 2</label>
+        <value>10140200</value>
+        <!--entered in HZ-->
+    </SETTING>
+    <SETTING NAME="WSPR_BAND2_MULTICHAN">
+        <label>Frequency offset for mutlichannels</label>
+        <value>687</value>
+        <!--entered in HZ-->
+    </SETTING>
+    <SETTING NAME="WSPR_BAND2_REG1">
+        <label>Contents of WSPR Reg 1</label>
+        <value>0F,D7,FD,AD,2E</value>
+        <!--5 hex bytes separated by a comma-->
+    </SETTING>
+    <SETTING NAME="WSPR_BAND2_REG2">
+        <label>Contents of WSPR Reg 2</label>
+        <value>00,2A,00</value>
+        <!--3 hex bytes separated by a comma-->
+    </SETTING>
+    <SETTING NAME="WSPR_BAND3_TXFREQ">
+        <label>TX frequency for Band 3</label>
+        <value>7040100</value>
+        <!--entered in HZ-->
+    </SETTING>
+    <SETTING NAME="WSPR_BAND3_MULTICHAN">
+        <label>Frequency offset for mutlichannels</label>
+        <value>1000</value>
+        <!--entered in HZ-->
+    </SETTING>
+    <SETTING NAME="WSPR_BAND3_REG1">
+        <label>Contents of WSPR Reg 1</label>
+        <value>0F,BC,FC,D0,78</value>
+        <!--5 hex bytes separated by a comma-->
+    </SETTING>
+    <SETTING NAME="WSPR_BAND3_REG2">
+        <label>Contents of WSPR Reg 2</label>
+        <value>00,3D,00</value>
+        <!--3 hex bytes separated by a comma-->
+    </SETTING>
     <SETTING NAME="WSPR_COUNT">
         <label>WSPR Messages to Use</label>
         <value>4</value>

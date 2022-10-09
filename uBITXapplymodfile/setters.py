@@ -515,38 +515,6 @@ class setters(object):
     def CHANNEL_FREQ10_SHOW_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
         self.CHANNEL_FREQ_SHOW_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
 
-    # def CHANNEL_FREQ11_SHOW_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_SHOW_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ12_SHOW_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_SHOW_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ13_SHOW_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_SHOW_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ14_SHOW_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_SHOW_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ15_SHOW_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_SHOW_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ16_SHOW_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_SHOW_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ17_SHOW_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_SHOW_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ18_SHOW_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_SHOW_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ19_SHOW_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_SHOW_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ20_SHOW_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_SHOW_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-
-
-
     def CHANNEL_FREQ_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue: str):
         i: int = 0
         while i < CHANNELNAMELENGTH:
@@ -585,37 +553,6 @@ class setters(object):
 
     def CHANNEL_FREQ10_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
         self.CHANNEL_FREQ_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-
-    # def CHANNEL_FREQ11_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ12_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ13_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ14_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ15_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ16_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ17_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ18_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ19_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-    #
-    # def CHANNEL_FREQ20_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-    #     self.CHANNEL_FREQ_NAME(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
-
 
 
 #         #***********************************
@@ -733,6 +670,56 @@ class setters(object):
 #         #   WSPR SETTINGS
 #         # ***********************************
 #
+    def WSPR_BAND1_TXFREQ(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+        self.set_unit32_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue))
+
+    def WSPR_BAND2_TXFREQ(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+        self.set_unit32_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue))
+
+    def WSPR_BAND3_TXFREQ(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+        self.set_unit32_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue))
+
+    def WSPR_BAND1_MULTICHAN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+        self.set_unit16_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue))
+
+    def WSPR_BAND2_MULTICHAN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+        self.set_unit16_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue))
+
+    def WSPR_BAND3_MULTICHAN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+        self.set_unit16_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue))
+
+    def WSPR_BAND_REG1(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue):
+        i: int =0
+        regContents = userSettingValue.split(',')
+        while i < WSPRREG1LENGTH:
+            self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation+i, int(regContents[i],16))
+            i += 1
+
+    def WSPR_BAND1_REG1(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.WSPR_BAND_REG1(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+    def WSPR_BAND2_REG1(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.WSPR_BAND_REG1(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+    def WSPR_BAND3_REG1(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.WSPR_BAND_REG1(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+
+    def WSPR_BAND_REG2(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue):
+        i: int =0
+        regContents = userSettingValue.split(',')
+        while i < WSPRREG2LENGTH:
+            self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation+i, int(regContents[i],16))
+            i += 1
+
+    def WSPR_BAND1_REG2(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.WSPR_BAND_REG2(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+    def WSPR_BAND2_REG2(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.WSPR_BAND_REG2(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+    def WSPR_BAND3_REG2(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.WSPR_BAND_REG2(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
 
     def WSPR_COUNT(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
         self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue))
