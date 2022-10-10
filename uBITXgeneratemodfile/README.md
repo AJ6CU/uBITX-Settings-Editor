@@ -1,10 +1,18 @@
 # uBITXgeneratemodfile
 
-This program will be written using Python 3.10.4 on Windows. It requires the pySerial and the lxml libraries. Let me know if you find any other unusual dependencies.
+This program was written using Python 3.10.4 on Windows. It requires the pySerial and the lxml libraries. Let me know if you find any other unusual dependencies.
 
 This program will work by reading from your EEPROM and merging the resulting values into an XML template file that will provide you with a "MOD File. You can then use your favorite ediotr (preferably one with support for XML) and modify/change values (see the <value></value> tage) 
 
-At this point, I just have the template file available (see usermodfiletemplate.xml in this directory) for your reference. This is still a work in progress and this file is in no way final. I am aware of several inconsistencies (e.g. how I  use all three of "true", "yes" and "1"). If you spot other areas of improvements, I would be happy to hear from you.
+The user configurable settings are in "genmodfile_userconfig.py". 
+
+You should only need to modify two variables to run this:
+
+COM_PORT = "COM24"
+USERMODFILE="usermodfile.xml"
+
+You should replace COM24 with the COM port that your uBITX comes up at when connected to your computer via USB.
+A possible MacOS com port is also provided but is commented out with a prefix of "#". 
 
 I can be reached with thru my email on QRZ or thru topics on the groups.io BITX20 group. You should also be able to raise Issues on the GitHub. Let me know if you have an issue here.
 

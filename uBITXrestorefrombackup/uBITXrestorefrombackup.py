@@ -3,24 +3,9 @@ import serial
 import functools
 from time import sleep
 import sys
+from restore_userconfig import *
+from globalvars import *
 
-#definitions################################################
-COM_PORT = "COM14"
-BAUD = 38400
-
-WRITECOMMAND=0xDC
-OK=0x77
-ACK = 0x00
-RETRIES=3
-
-EEPROMSIZE=1024
-
-PROTECTFACTORYRESTORE=1
-STARTFACTOREYRESTORE=64
-ENDFACTORYRESTORE=100
-
-BACKUPFILE="binarybackupdump.btx"
-#end definitions############################################
 
 
 def writeEEPROMData(portdesc: object, memlocation: int, numBytesToWrite: int, memBuffer: bytes):
@@ -79,7 +64,7 @@ def writeEEPROMData(portdesc: object, memlocation: int, numBytesToWrite: int, me
 #####################################
 print("Establishing Connection to Radio:")
 RS232 = serial.Serial(COM_PORT, BAUD, timeout=0, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
-
+sleep(3)  #this is required to allow Nano to reset after open
 print("reading backup file into buffer")
 backup = open(BACKUPFILE, "rb")
 inMemoryFile=bytearray(backup.read(EEPROMSIZE))

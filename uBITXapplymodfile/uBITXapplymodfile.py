@@ -7,7 +7,7 @@ from bitarray import bitarray
 from time import sleep
 import sys
 from globalvars import *
-from userconfig import *
+from applymod_userconfig import *
 
 from setters import setters
 
