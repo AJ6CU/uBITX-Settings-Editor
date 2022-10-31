@@ -62,7 +62,13 @@ class setters(object):
 #         #   RADIO CALIBRATION SETTINGS
 #         #***********************************
     def MASTER_CAL(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-        self.set_unit32_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+        if( userSettingValue[0] == '-'):              #we have a negative number and have to put it into 2's complement
+            tmpStr: str = userSettingValue[1:len(userSettingValue)]         #strip off the leading "-"
+            tmpInt: int = int(tmpStr)
+            tmpInt = (~tmpInt+1)& 0xffffffff                                    #Put it in 2's complement
+            self.set_unit32_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, tmpInt)
+        else:
+            self.set_unit32_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue) & 0xffffffff)
 
     def USB_CAL(self,  SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
         self.set_unit32_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)

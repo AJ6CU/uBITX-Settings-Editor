@@ -31,7 +31,11 @@ class getters(object):
 #         #***********************************
 
     def MASTER_CAL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
+        tmpInt = self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation)
+        if tmpInt & 0x80000000:                                         #We have a negative number
+            value.text = "-" + str((~tmpInt+1)& 0xffffffff)             #convert from 2's complement
+        else:
+            value.text = str(tmpInt)
 
     def USB_CAL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
         value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
@@ -421,9 +425,14 @@ class getters(object):
         i: int =0
         tmpStr: str = ''
         while i<CHANNELNAMELENGTH:
-            tmpStr += str(chr((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+i))))
+            tmp = str(chr((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+i))))
+            if (tmp.isprintable()):
+                tmpStr += tmp
+            else:
+                tmpStr += ' '
             i += 1
         value.text = tmpStr
+
 
     def CHANNEL_FREQ1_NAME(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
         self.CHANNEL_FREQ_NAME(SettingName, EEPROMBuffer, memLocation, value)
@@ -626,9 +635,15 @@ class getters(object):
         i: int =0
         tmpStr: str = ''
         while i<WSPRNAMELENGTH:
-            tmpStr += str(chr((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+i))))
+            tmp = str(chr((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+i))))
+            if (tmp.isprintable()):
+                tmpStr += tmp
+            else:
+                tmpStr += ' '
             i += 1
         value.text = tmpStr
+
+
 
     def WSPR_MESSAGE1_NAME(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
         self.WSPR_MESSAGE_NAME(SettingName, EEPROMBuffer, memLocation, value)

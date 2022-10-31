@@ -1,4 +1,6 @@
 from globalvars import *
+from time import sleep
+import sys
 
 def readEEPROMData(portdesc: object, memlocation: int, numBytesToRead: int) -> bytearray:
 
