@@ -602,12 +602,59 @@
 	*****************************************************************************************************
 	WSPR
 	Currently the generation of the code for WSPR is not yet available in this software. So it is suggested
-	that you use uBITX Memory Manager V1.1 to generate the code for the WSPR messages and then copy it into
-	this file. 
+	that you use uBITX Memory Manager V1.1 to generate the code for the WSPR messages and then use the
+	generatemdifile app to get these values
 	Provides up to 4 Messages.
-	NOTE MISSIng BAND AND CALIBRATION INFO FOR WSPR
 	*****************************************************************************************************	
 -->	
+	<SETTING NAME="WSPR_BAND1_TXFREQ">							
+		<label>TX frequency for Band 1</label>
+		<value></value>								<!--entered in HZ-->
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND1_MULTICHAN">							
+		<label>Frequency offset for mutlichannels</label>
+		<value></value>								<!--entered in HZ-->
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND1_REG1">							
+		<label>Contents of WSPR Reg 1</label>
+		<value></value>								<!--5 hex bytes separated by a comma-->
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND1_REG2">							
+		<label>Contents of WSPR Reg 1</label>
+		<value></value>								<!--3 hex bytes separated by a comma-->
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND2_TXFREQ">							
+		<label>TX frequency for Band 2</label>
+		<value></value>								<!--entered in HZ-->
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND2_MULTICHAN">							
+		<label>Frequency offset for mutlichannels</label>
+		<value></value>								<!--entered in HZ-->
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND2_REG1">							
+		<label>Contents of WSPR Reg 1</label>
+		<value></value>								<!--5 hex bytes separated by a comma-->
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND2_REG2">							
+		<label>Contents of WSPR Reg 2</label>
+		<value></value>								<!--3 hex bytes separated by a comma-->
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND3_TXFREQ">							
+		<label>TX frequency for Band 3</label>
+		<value></value>								<!--entered in HZ-->
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND3_MULTICHAN">							
+		<label>Frequency offset for mutlichannels</label>
+		<value></value>								<!--entered in HZ-->
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND3_REG1">							
+		<label>Contents of WSPR Reg 1</label>
+		<value></value>								<!--5 hex bytes separated by a comma-->
+	</SETTING> 
+	<SETTING NAME="WSPR_BAND3_REG2">							
+		<label>Contents of WSPR Reg 2</label>
+		<value></value>								<!--3 hex bytes separated by a comma-->
+	</SETTING> 
 	<SETTING NAME="WSPR_COUNT">							
 		<label>WSPR Messages to Use</label>
 		<value></value>								<!--value 0-4. e.g., 3 would mean to use first 3 messages and ignore the 4th-->
@@ -743,7 +790,7 @@ GENERAL UX
 		<value></value>										<!--either YES or NO-->	
 	</SETTING>
 
-	<SETTING NAME="Stored_IF_Shift">							
+	<SETTING NAME="STORED_IF_SHIFT">
 		<label>Preserve IF Shift?</label>
 		<value></value>											<!--either YES or NO. YES allows IF Shift value to be reused between boots -->
 	</SETTING>
@@ -758,7 +805,7 @@ GENERAL UX
 																	Select RX to have the display show the actual RX frequency when sending CW
 																	See http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html  -->
 	</SETTING>
-	<SETTING NAME="CW_Frequency_Adjustment">
+	<SETTING NAME="CW_FREQUENCY_ADJUSTMENT">
 		<label>CW Freq Adjust Value</label>						<!--Extra adjustment to the displayed frequency. 0-600 -->
 		<value></value>
 	</SETTING>

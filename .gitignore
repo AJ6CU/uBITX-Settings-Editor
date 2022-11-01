@@ -150,3 +150,31 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+uBITXgeneratemodfile/.idea/inspectionProfiles/profiles_settings.xml
+uBITXgeneratemodfile/.idea/inspectionProfiles/Project_Default.xml
+uBITXgeneratemodfile/.idea/misc.xml
+uBITXgeneratemodfile/.idea/modules.xml
+uBITXgeneratemodfile/.idea/uBITXgeneratemodfile.iml
+uBITXgeneratemodfile/.idea/vcs.xml
+uBITXapplymodfile/.idea/inspectionProfiles/profiles_settings.xml
+uBITXapplymodfile/.idea/inspectionProfiles/profiles_settings.xml
+uBITXapplymodfile/.idea/inspectionProfiles/profiles_settings.xml
+uBITXapplymodfile/.idea/misc.xml
+uBITXapplymodfile/.idea/modules.xml
+uBITXapplymodfile/.idea/uBITXapplymodfile.iml
+uBITXapplymodfile/.idea/vcs.xml
+uBITXgeneratemodfile/.idea/inspectionProfiles/profiles_settings.xml
+uBITXgeneratemodfile/.idea/misc.xml
+uBITXgeneratemodfile/.idea/modules.xml
+uBITXgeneratemodfile/.idea/vcs.xml
+uBITXgeneratebackup/.idea/misc.xml
+uBITXgeneratebackup/.idea/modules.xml
+uBITXgeneratebackup/.idea/vcs.xml
+uBITXgeneratebackup/.idea/uBITXgeneratebackup.iml
+uBITXgeneratebackup/.idea/inspectionProfiles/Project_Default.xml
+uBITXgeneratebackup/.idea/inspectionProfiles/profiles_settings.xml
+uBITXrestorefrombackup/.idea/vcs.xml
+uBITXrestorefrombackup/.idea/modules.xml
+uBITXrestorefrombackup/.idea/misc.xml
+uBITXrestorefrombackup/.idea/inspectionProfiles/profiles_settings.xml
+uBITXrestorefrombackup/.idea/inspectionProfiles/Project_Default.xml
