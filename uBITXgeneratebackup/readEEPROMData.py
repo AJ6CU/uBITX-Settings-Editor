@@ -49,6 +49,7 @@ def readEEPROMData(portdesc: object, memlocation: int, numBytesToRead: int) -> b
     trailingByte = int.from_bytes(portdesc.read(1),"little",signed=False)
 
     if(sentCheckSum!=checkSum)|(trailingByte!=0):
-        sys.exit("Bad Checksum on EEPROM Read")
+        printLineToLog("Bad Checksum on EEPROM Read")
+        sys.exit("Error Code -1")
 
     return returnBuffer

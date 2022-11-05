@@ -36,3 +36,4 @@ TOTALCWMESSAGES=10                                  #assumption on number of CW 
 SIZEOFWSPRMESSAGES=41                               #size in bytes of wspr messages
 MAXCALLSIGNLEN = 18                                 #Max length of callsign and alt callsign
 
+

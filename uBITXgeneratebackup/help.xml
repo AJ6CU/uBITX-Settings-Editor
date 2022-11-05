@@ -1,0 +1,77 @@
+<data>
+	<FORMAT NAME="Heading1">
+		<TEXT>
+			uBITX BACKUP HELP
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Heading3">
+		<TEXT>
+			Introduction
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+			The heard of the uBITX transceiver is a microcontroller (MCU). The uBITX is manufactured by HF Signals (https://www.hfsignals.com/) using an Arduino Nano V3 MCU. The MCU includes flash memory of approximately 32kb as well as an 1024 bytes of Electrically Erasable Programmable Read-Only Memory (EEPROM). The flash memory holds the firmware or program where as the EEPROM is used to store settings (e.g. calibration information, last used frequencies and modes, tuning rates, etc.).
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+			Although functional, the original firmware provided by HF Signals only supported a 2 line LCD As a result, Dr. Ian Lee (KD8CEC) developed an enhanced version of the firmware that provided a graphical user interface that used the screens from Nextion. www.hamskey.com documents in a blog format Dr. Lee's efforts as he developed this software.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            This backup only works with KD8CEC derived firmware. The original KD8CEC is available at: https://github.com/phdlee/ubitx That version only supports Arduino Nano based version of the uBITX. For uBITX's which have had their Raduinos replaced with designs derived from AJ6CU (which includes faster processors and an external larger EEPROM), that source code (as well as the source code to this application) resides at: https://github.com/aj6cu .
+		</TEXT>
+	</FORMAT>
+		<FORMAT NAME="Heading3">
+		<TEXT>
+			Usage Process
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            1. Turn on your uBITX. Wait for it to fully start and display a frequency on the VFO.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            2. Plug the USB cable from your uBITX to your computer.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            3.	Start this program. If you plugged the USB cable in after starting this program, hit the Refresh Port List button to detect the uBITX.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            4.	From the "Select Serial Port" drop down, select the COM Port that is used by your uBITX.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            5.	Click the "Save Backup To button and select a convenient place to save the backup file. You do not need to add the ".btx" extension.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            6.	Click the "Run Backup" button to start the backup. The processing of the backup is recorded in the Backup Log in the center of the page.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            7.	If an error occurs, for example you selected the wrong COM Port, correct it and click Run Backup again. You can save the record of the backup (which includes the location of the backup file) by clicking the "Copy Log To Clipboard" and then pasting it into an email or word processing program of your choice. Once you receive the "Backup Successfuly Completed" message, click the Quit key to exit. 
+		</TEXT>
+	</FORMAT>
+		<FORMAT NAME="Heading3">
+		<TEXT>
+			Compatibility
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            The backup file created by this program is compatible with the original uBITX Memory Manager that was written by KD8CEC. 
+		</TEXT>
+	</FORMAT>
+</data>
