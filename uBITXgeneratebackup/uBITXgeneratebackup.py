@@ -1,14 +1,18 @@
-#from typing import Any
-import tkinter.messagebox
-
-
+#   General System Imports
 import serial
-#import functools
 from time import sleep
 import time
-
 import platform
 from os.path import exists
+
+
+#   Tkinter imports
+import tkinter
+#from tkinter import ttk                     # has to be in this order so that ttk comes after general import of tkinter
+                                            # this ensures that the style/themed (ttk) widgets are used
+import tkinter.messagebox
+import serial.tools.list_ports              # Used to get a list of com ports
+from tkinter import filedialog as fd
 
 
 from globalvars import *
@@ -16,26 +20,6 @@ from backup_userconfig import *
 from readEEPROMData import readEEPROMData
 from helpsubsystem import *
 from fonts import *
-
-from tkinter import *
-from tkinter import ttk                     # has to be in this order so that ttk comes after general import of tkinter
-                                            # this ensures that the style/themed (ttk) widgets are used
-import serial.tools.list_ports              # Used to get a list of com ports
-from tkinter import filedialog as fd
-
-
-# Set any platform specific variables
-if(platform.system()=='Windows'):
-    appTheme = 'vista'
-    startDir = "~\Documents"
-elif (platform.system() == 'Darwin'):
-    appTheme = 'aqua'
-    startDir = "~"
-else:
-    appTheme = 'default'
-    startDir = "~"
-
-
 
 #   Callbacks ("command") function defintions
 
@@ -132,40 +116,60 @@ def backup():                   # This actually performs the backup
 #
 #   Setup starts here
 #
+
+
+# Set any platform specific variables
+if(platform.system()=='Windows'):
+    appTheme = 'vista'
+    startDir = "~\Documents"
+elif (platform.system() == 'Darwin'):
+    appTheme = 'aqua'
+    startDir = "~"
+else:
+    appTheme = 'default'
+    startDir = "~"
+
 #   defines the root window
 root = Tk()
 root.title("uBITX Backup")
+root.geometry('650x650')
+root.minsize(650,400)
 
 #   Style definition
 appStyle = ttk.Style()
 appStyle.theme_use(appTheme)
 
 #   fontList from fonts.py
-appStyle.configure('Heading1.TLabel',font=fontList['Heading1'])
+appStyle.configure('Heading1.TLabel',font=fontList['Heading1'], background='blue', foreground='white')
 appStyle.configure('Heading3.TLabel',font=fontList['Heading3'])
 appStyle.configure('Button1.TButton',font=fontList['Emphasis'])
 appStyle.configure('Symbol.TLabel',font=fontList['Symbol'])
-
-#   widget definitions and layouts
+appStyle.configure('Title.TFrame', background='blue', foreground='white')
+#
+#   Widget definitions and layouts
+#
 
 #   define and layout the 4 frames
-titleFrame=ttk.Frame(root, width=100, height=100)
-configFrame=ttk.Frame(root, width=100, height=50)
-logFrame=ttk.Frame(root, width=100, height=50)
-commandFrame=ttk.Frame(root, width=100, height=50)
 
-titleFrame.grid(row=0,column=0, pady=20)
+titleFrame=ttk.Frame(root, width=50, height=50, style='Title.TFrame')
+configFrame=ttk.Frame(root, width=50, height=50)
+logFrame=ttk.Frame(root, width=50, height=50)
+commandFrame=ttk.Frame(root, width=50, height=25)
+
+#   Assign extra/less space to column 0 which contains the text widget
+root.grid_columnconfigure(0, weight=1)
+
+titleFrame.grid(row=0,column=0, sticky='ewns')
 configFrame.grid(row=1, column=0, pady=10)
-logFrame.grid(row=2, column=0)
+root.grid_rowconfigure(2,weight=1)
+logFrame.grid(row=2, column=0, sticky='ns')
+root.grid_rowconfigure(3,weight=0)
 commandFrame.grid(row=3, column=0, sticky='ew')
 
 
 # Define and layout the contents of titleFrame
 titleBar = ttk.Label(titleFrame, text="uBITX EEPROM BACKUP", style='Heading1.TLabel')
-separator_bar = ttk.Separator(titleFrame,orient='horizontal')
-
-titleBar.grid(row=0, sticky='ew')
-separator_bar.grid(row=1,  sticky='ew')
+titleBar.pack(anchor='center')
 
 #   Define and layout the contents of the configuration frame
 #   On click of refresh button, the list of com ports is probed and they are updated in updateComPorts
@@ -220,30 +224,36 @@ runButton.grid(row=3, column=0, columnspan=3, pady=15)
 logLabel = ttk.Label(logFrame, text="Backup Log", style='Heading3.TLabel')
 helpButton = ttk.Button(logFrame, text="Help", command=lambda: helpDialog("Help","help.xml"))
 
-logBox = Text(logFrame, width=100)
+logBox = Text(logFrame, width=300)
 logBoxScrollBar = ttk.Scrollbar(logFrame, command=logBox.yview)     #   these two lines attach a scroll bar on right
 logBox['yscrollcommand'] = logBoxScrollBar.set                      #   side of the text box
 
+logBox.bind("<Key>", lambda e: "break")         # this disables all typing into the logbox by mapping all keys to break
+
+#   Allocate any change in vertical space to row 1 which contains the text widget
+logFrame.grid_rowconfigure(1,weight=1)
+
+#   Allocate any change in height to column 1 that contains the text widget
+logFrame.grid_columnconfigure(0,weight=1)
+
+logLabel.grid(row=0, column=0, padx=10, sticky='sw')
+helpButton.grid(row=0,column=0, pady=5, sticky='se')
+logBox.grid(row=1,column=0, padx=(10,0), sticky="nsew")
+logBoxScrollBar.grid(row=1, column=1, sticky='nsew')
+
+#   Now create and layout the final frame with the commands
 copyToClipboardButton = ttk.Button(commandFrame, text="Copy Log To Clipboard", command=copyLogToClipboard)
 quitButton = ttk.Button(commandFrame, text="Quit", command=root.destroy)
 aboutButton = ttk.Button(commandFrame, text="About", command=lambda: helpDialog("About","about.xml"))
 
+#   Adjust the weight of how free space is allocated to the only column in the frame
+commandFrame.grid_columnconfigure(0, weight=1)
 
-logBox.bind("<Key>", lambda e: "break")         # this disables all typing into the logbox by mapping all keys to break
+#   Now layout the buttons
+copyToClipboardButton.grid(row=0, column=0, padx=(10,0), pady=5, sticky='w')
+quitButton.grid(row=0, column=0, padx=15, pady=5)
+aboutButton.grid(row=0, column=0, padx=(0,15), pady=5, sticky='e')
 
-logLabel.grid(row=0, column=0, sticky='sw')
-helpButton.grid(row=0,column=0, pady=5, padx=10, sticky='se')
-logBox.grid(row=1,column=0, sticky="nsew", padx=2)
-logBoxScrollBar.grid(row=1, column=1, sticky='nsew')
-
-#   Adjust the weight of how free space is allocated to roughly layout the 3 buttons evenly
-commandFrame.grid_columnconfigure(0, weight=2)
-commandFrame.grid_columnconfigure(1, weight=1)
-commandFrame.grid_columnconfigure(2, weight=2)
-
-copyToClipboardButton.grid(row=0, column=0, padx=20, pady=10, sticky='w')
-quitButton.grid(row=0, column=1, padx=15, pady=10, sticky='ew' )
-aboutButton.grid(row=0, column=2, padx=20, pady=10,  sticky='e')
 
 
 root.mainloop()
