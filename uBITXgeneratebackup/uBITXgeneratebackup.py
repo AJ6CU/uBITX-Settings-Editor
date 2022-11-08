@@ -8,8 +8,7 @@ from os.path import exists
 
 #   Tkinter imports
 import tkinter
-#from tkinter import ttk                     # has to be in this order so that ttk comes after general import of tkinter
-                                            # this ensures that the style/themed (ttk) widgets are used
+
 import tkinter.messagebox
 import serial.tools.list_ports              # Used to get a list of com ports
 from tkinter import filedialog as fd
@@ -18,10 +17,13 @@ from tkinter import filedialog as fd
 from globalvars import *
 from backup_userconfig import *
 from readEEPROMData import readEEPROMData
+from printtolog import *
 from helpsubsystem import *
 from fonts import *
 
+#####################################
 #   Callbacks ("command") function defintions
+#####################################
 
 def backupFileSelect():
     global BACKUPFILE, fileName, startDir
@@ -57,66 +59,48 @@ def updateComPorts(comPortOptions, comPort):
     COM_PORT = "COM PORT"     #reset COM_PORT to an illegal value
 
 
-
-def printlnToLog(lineToLog):
-    printToLog(lineToLog + '\n')
-
-def printToLog(textToLog):
-    global logBox
-    logBox.insert(END, textToLog)
-
-def get_time_stamp():
-    return time.strftime('%D %T')
-
-def copyLogToClipboard():
-    global logBox
-    logBox.clipboard_clear()
-    logBox.clipboard_append(logBox.get("1.0",END))
-    #logBox.update()
-
-
 def backup():                   # This actually performs the backup
     # First doublecheck that we are not overwriting a file, and if so, confirm it is ok
     if (exists(BACKUPFILE)):
         response = tkinter.messagebox.askquestion(title="Warning", message=BACKUPFILE + " already exists.\nDo you want to replace it?", icon='warning')
         if response == 'no' :
             backupFileSelect()
-        else:
-#           All set, perform backup
+            return
 
-            printlnToLog(get_time_stamp() + ": ***Starting backup of device on " + COM_PORT + "***")
-            try:
-                RS232 = serial.Serial(COM_PORT, BAUD, timeout=0, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
-            except:
-                printlnToLog(get_time_stamp() + ": " + COM_PORT + " not selected or no device attached")
-                printlnToLog(get_time_stamp() + ": ***Backup Aborted***")
-                printlnToLog(" ")                     #print blank line in case backup run again
-                printlnToLog(" ")                     #print blank line in case backup run again
-                tkinter.messagebox.showerror("Error", message="COM Port not selected or no device attached")
-            else:
-                sleep(3)  #this is required to allow Nano to reset after open
+#       All set, perform backup
 
-                printlnToLog(get_time_stamp() + ": Reading EEPROM into buffer")
-                EEPROMBuffer=readEEPROMData(RS232, 0, EEPROMSIZE)       #Read the EEPROM into memory
-                printlnToLog(get_time_stamp() + ": EEPROM read into buffer")
+    printlnToLog(get_time_stamp() + ": ***Starting backup of device on " + COM_PORT + "***")
+    try:
+        RS232 = serial.Serial(COM_PORT, BAUD, timeout=0, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
+    except:
+        printlnToLog(get_time_stamp() + ": " + COM_PORT + " not selected or no device attached")
+        printlnToLog(get_time_stamp() + ": ***Backup Aborted***")
+        printlnToLog(" ")                     #print blank line in case backup run again
+        printlnToLog(" ")                     #print blank line in case backup run again
+        tkinter.messagebox.showerror("Error", message="COM Port not selected or no device attached")
+    else:
+        sleep(3)  #this is required to allow Nano to reset after open
 
-                printlnToLog(get_time_stamp() + ": Writing EEPROM to: " + BACKUPFILE)
-                backup = open(BACKUPFILE, "wb")
-                backup.write(bytearray(EEPROMBuffer))
+        printlnToLog(get_time_stamp() + ": Reading EEPROM into buffer")
+        EEPROMBuffer=readEEPROMData(RS232, 0, EEPROMSIZE)       #Read the EEPROM into memory
+        printlnToLog(get_time_stamp() + ": EEPROM read into buffer")
 
-                printlnToLog(get_time_stamp() + ": Making file compatible with uBITX Memory Manager V1")
-                backup.write(b"\0"* (BACKUPFILESIZE-EEPROMSIZE))
+        printlnToLog(get_time_stamp() + ": Writing EEPROM to: " + BACKUPFILE)
+        backup = open(BACKUPFILE, "wb")
+        backup.write(bytearray(EEPROMBuffer))
 
-                backup.close()
-                RS232.close()
-                printlnToLog(get_time_stamp() + ": ***Backup Successfully Completed***")
-                printlnToLog(" ")                     #print blank line in case backup run again
-                printlnToLog(" ")                     #print blank line in case backup run again
+        printlnToLog(get_time_stamp() + ": Making file compatible with uBITX Memory Manager V1")
+        backup.write(b"\0"* (BACKUPFILESIZE-EEPROMSIZE))
 
-#
-#   Setup starts here
-#
+        backup.close()
+        RS232.close()
+        printlnToLog(get_time_stamp() + ": ***Backup Successfully Completed***")
+        printlnToLog(" ")                     #print blank line in case backup run again
+        printlnToLog(" ")                     #print blank line in case backup run again
 
+#####################################
+#Start Main Progrm
+#####################################
 
 # Set any platform specific variables
 if(platform.system()=='Windows'):
@@ -132,8 +116,8 @@ else:
 #   defines the root window
 root = Tk()
 root.title("uBITX Backup")
-root.geometry('650x650')
-root.minsize(650,400)
+root.geometry('700x650')
+root.minsize(700,400)
 
 #   Style definition
 appStyle = ttk.Style()
@@ -215,7 +199,7 @@ backupFileButton.grid(row=2,column=1, sticky=E)
 fileName.grid(row=2, column=2, padx=5)
 
 #   Finally we need to add the Run button to start the backup
-runButton = ttk.Button(configFrame, text="Run Backup", command=backup, style='Button1.TButton')
+runButton = ttk.Button(configFrame, text="BACKUP", command=backup, style='Button1.TButton')
 runButton.grid(row=3, column=0, columnspan=3, pady=15)
 
 
@@ -254,6 +238,6 @@ copyToClipboardButton.grid(row=0, column=0, padx=(10,0), pady=5, sticky='w')
 quitButton.grid(row=0, column=0, padx=15, pady=5)
 aboutButton.grid(row=0, column=0, padx=(0,15), pady=5, sticky='e')
 
-
+startLog(logBox)
 
 root.mainloop()

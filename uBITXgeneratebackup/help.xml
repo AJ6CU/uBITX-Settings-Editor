@@ -26,7 +26,7 @@
 	</FORMAT>
 		<FORMAT NAME="Heading3">
 		<TEXT>
-			Usage Process
+			Backing Up Your uBITX
 		</TEXT>
 	</FORMAT>
 	<FORMAT NAME="Normal">
@@ -51,12 +51,12 @@
 	</FORMAT>
 	<FORMAT NAME="Normal">
 		<TEXT>
-            5.	Click the "Save Backup To button and select a convenient place to save the backup file. You do not need to add the ".btx" extension.
+            5.	Click the "Save Backup To" button and select a convenient place to save the backup file. You do not need to add the ".btx" extension.
 		</TEXT>
 	</FORMAT>
 	<FORMAT NAME="Normal">
 		<TEXT>
-            6.	Click the "Run Backup" button to start the backup. The processing of the backup is recorded in the Backup Log in the center of the page.
+            6.	Click the "RBACKUP" button to start the backup. The processing of the backup is recorded in the Backup Log in the center of the page.
 		</TEXT>
 	</FORMAT>
 	<FORMAT NAME="Normal">
