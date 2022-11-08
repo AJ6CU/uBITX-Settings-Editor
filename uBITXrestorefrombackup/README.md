@@ -1,18 +1,11 @@
 # uBITXrestorefrombackup
 
-This program was written using Python 3.10.4 on Windows. It requires the pySerial library. Let me know if you find any other unusual dependencies.
+![image](https://user-images.githubusercontent.com/70183884/200671062-3056f702-906d-4b3b-b563-26ae89636af7.png)
 
-The user configurable settings are in "restore_userconfig.py". 
 
-You should only need to modify two variables to run this:
+This program was written using Python 3.10.4 on Windows.
 
-COM_PORT = "COM24"
-BACKUPFILE= "binarybackupdump.btx"
-
-You should replace COM24 with the COM port that your uBITX comes up at when connected to your computer via USB.
-A possible MacOS com port is also provided but is commented out with a prefix of "#". 
-
-Your choice on the backupfile name (as long as it exists). Just remember to maintain compatibility with the original uBITX Memory Manager, you need to keep the ".btx" extension. 
+It uses Tkinter to provide a GUI to the backup process. The output of the backup, is a ".btx" file that is fully compatible with the original uBITX Memory Manager developed by KD8CEC.
 
 I can be reached with thru my email on QRZ or thru topics on the groups.io BITX20 group. You should also be able to raise Issues on the GitHub. Let me know if you have an issue here.
 
