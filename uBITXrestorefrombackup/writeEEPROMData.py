@@ -8,7 +8,6 @@ from printtolog import *
 
 
 def writeEEPROMData(portdesc: object, memlocation: int, numBytesToWrite: int, memBuffer: bytes, protectFactory: int):
-    global PROTECTFACTORYRESTORE
 
     # send command buffer to radio
     # byte1 = LSB of the start location in EEPROM
@@ -51,7 +50,9 @@ def writeEEPROMData(portdesc: object, memlocation: int, numBytesToWrite: int, me
                 printlnToLog(get_time_stamp() + ": trailingByte=" +str(trailingByte))
                 retryCnt +=1
             if retryCnt > RETRIES:
-                sys.exit("EEPROM Write Failed, try again")
+                printToLog("Failed writing to EEPROM -- number of Retries exceeded")
+                tkinter.messagebox.showerror(title="ERROR", message="Failed writing to EEPROM -- number of Retries exceeded\nTry restarting radio, ensuring the USB cable plugged in securely, and then restart application. \nEXITING")
+                sys.exit(-1)
             else:
                 if (i % 100 == 0) & (i!=0):
                     printlnToLog(get_time_stamp() + ": EEPROM bytes written: " + str(i-99)+ "-" +str(i))

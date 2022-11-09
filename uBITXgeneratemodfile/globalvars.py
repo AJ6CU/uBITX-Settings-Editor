@@ -36,3 +36,14 @@ TOTALCWMESSAGES=10                                  #assumption on number of CW 
 SIZEOFWSPRMESSAGES=41                               #size in bytes of wspr messages
 MAXCALLSIGNLEN = 18                                 #Max length of callsign and alt callsign
 
+#application required files################################################
+
+
+EEPROMMEMORYMAP="eeprommemorymap.xml"               #Maps EEPROM locations to settings
+USERMODFILETEMPLACE="usermodfiletemplate.xml"       #Template file used to fill in with data from EEPROM
+
+#COM_PORT = "/dev/tty.usbserial-1410"            # format for macos
+COM_PORT = "COM PORT"                             # format for windows
+BAUD = 38400
+USERMODFILE="usermodfile.xml"                       #Output of process - file that User can customize
+
