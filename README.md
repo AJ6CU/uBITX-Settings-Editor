@@ -23,13 +23,11 @@ There needs to be a GUI based tool and I am now considering options in how to im
 ## STATUS
 THIS IS A WORK IN PROGRESS! People familiar with software development, XML, and Python, that also have solid backups of their EEPROM using the existing uBITX Memory Manager, are welcome to try it out and report any issues.
 
-As of 10/4/2022, I believe that I have basic full functionality completed on all 4 of the commands above. 
-
-uBITXgeneratebackup and uBITXrestorefrombackup are basically functional. I have generated backup files from both the original uBITX Memory Manager and my uBITXgeneratebackup, and when I compared them, they were identical. Similarly, I have crossed restored backups (uBITX Memory Manager using a backup generated from uBITXgeneratebackup and uBITXgeneratebackup using a backup from uBITX Memory Manager) and the contents of the EEPROM were identical. BUT THIS IS NOT AN EXHAUSTED TEST! Please keep your own backups for the situations when something goes wrong! Sorry to be a pessimist here, but something will go wrong and you need to be prepared.
+As of 11/4/2022, I believe that I have basic full functionality completed on all 4 of the commands above. I have also provide a GUI version for the backup and restore commands. Should shortly have a similar GUI front end for the two programs that cerate and write the XML files that users can modify.
 
 
 ## SCHEDULE FOR REMAINING TOOLS
-I am currently working on refactoring uBITXgeneratemodfile by applying the design pattern I used in uBITXapplymodfile. This should make it easier to transistion these commands to a GUI based solution later. I expect, depending on other commitments, the refactoring of uBITXgeneratemodfile will be completed by the 14th of October. Then after a couple week break, i will transistion to writing the GUI tool.  
+After providing a basic GUI interface for all 4 tools, I will proceed to write a GUI editor for the "modfiles" to eliminate the need (and risk) of users hand modifying XML files. 
 
 ## USING THE TOOLS
 To use either tool at this stage, you need to know how to use an editor, install python packages, and run python. I happen to be using PyCharm, but admit my ignorance might have led me not to choose the optimal tool. Specific values that need to be changes, are identified in the README files in the appropriate directory.
