@@ -1,6 +1,8 @@
-from globalvars import *
 from time import sleep
 import sys
+
+from globalvars import *
+from printtolog import *
 
 def readEEPROMData(portdesc: object, memlocation: int, numBytesToRead: int) -> bytearray:
 
@@ -49,7 +51,8 @@ def readEEPROMData(portdesc: object, memlocation: int, numBytesToRead: int) -> b
     trailingByte = int.from_bytes(portdesc.read(1),"little",signed=False)
 
     if(sentCheckSum!=checkSum)|(trailingByte!=0):
-        printLineToLog("Bad Checksum on EEPROM Read")
-        sys.exit("Error Code -1")
+        printToLog("Bad Checksum on EEPROM Read")
+        tkinter.messagebox.showerror(title="ERROR", message="Bad Checksum reading from Radio.\nTry restarting radio, ensuring the USB cable plugged in securely, and then restart application. \nEXITING")
+        sys.exit(-1)
 
     return returnBuffer

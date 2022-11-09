@@ -1,7 +1,6 @@
 #   General System Imports
 import serial
 from time import sleep
-import time
 import platform
 from os.path import exists
 
@@ -22,7 +21,7 @@ from helpsubsystem import *
 from fonts import *
 
 #####################################
-#   Callbacks ("command") function defintions
+#   Callbacks ("command") function definitions
 #####################################
 
 def backupFileSelect():
@@ -70,6 +69,7 @@ def backup():                   # This actually performs the backup
 #       All set, perform backup
 
     printlnToLog(get_time_stamp() + ": ***Starting backup of device on " + COM_PORT + "***")
+    printlnToLog(get_time_stamp() + ": Writing backup tp file: " + BACKUPFILE)
     try:
         RS232 = serial.Serial(COM_PORT, BAUD, timeout=0, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
     except:
@@ -79,6 +79,8 @@ def backup():                   # This actually performs the backup
         printlnToLog(" ")                     #print blank line in case backup run again
         tkinter.messagebox.showerror("Error", message="COM Port not selected or no device attached")
     else:
+        printlnToLog(get_time_stamp() + ": Establishing Connection to uBITX on " + COM_PORT)
+        printlnToLog(get_time_stamp() + ": Awaiting Radio Processor Ready this will take 3-5 seconds")
         sleep(3)  #this is required to allow Nano to reset after open
 
         printlnToLog(get_time_stamp() + ": Reading EEPROM into buffer")
