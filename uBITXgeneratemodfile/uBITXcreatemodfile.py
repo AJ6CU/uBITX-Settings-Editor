@@ -207,7 +207,7 @@ commandFrame.grid(row=3, column=0, sticky='ew')
 
 
 # Define and layout the contents of titleFrame
-titleBar = ttk.Label(titleFrame, text="uBITX Create User Mod File", style='Heading1.TLabel')
+titleBar = ttk.Label(titleFrame, text="uBITX Create User Modification File", style='Heading1.TLabel')
 titleBar.pack(anchor='center')
 
 #   Define and layout the contents of the configuration frame
@@ -246,7 +246,7 @@ downArrowLabel.grid(row=1,column=0)
 #   Now create the target line
 fileName = ttk.Entry(configFrame, width=50)
 fileName.insert(0, USERMODFILE)
-USERMODFILEButton = ttk.Button(configFrame, text="Save Backup To:", command=modFileSelect)
+USERMODFILEButton = ttk.Button(configFrame, text="Save Modification File To:", command=modFileSelect)
 
 #   Put the Target line in the second row (actually # 3)
 targetLabel.grid(row=2,column=0)

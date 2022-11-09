@@ -13,17 +13,17 @@
 -->
     <SETTING NAME="MASTER_CAL">
         <label>Master Calibration</label>
-        <value>-152499</value>
+        <value>61336</value>
         <!--every radio is unique but often around 161875-->
     </SETTING>
     <SETTING NAME="USB_CAL">
         <label>BFO (USB) Calibration</label>
         <!--previously called USB Calibration. Often around 11996450-->
-        <value>11056722</value>
+        <value>11055847</value>
     </SETTING>
     <SETTING NAME="CW_CAL">
         <label>CW BFO Calibration</label>
-        <value>11056745</value>
+        <value>11057015</value>
         <!--CW calibration factor, typically within a few khz of USB callibration-->
     </SETTING>
     <SETTING NAME="IF1_CAL_ON_OFF_SWITCH">
@@ -49,7 +49,7 @@
 -->
     <SETTING NAME="VFO_A">
         <label>VFO A Bootup Freq</label>
-        <value>14000300</value>
+        <value>7025500</value>
         <!--A valid frequency (only numbers) that uBITX can set - e.g., 14032000-->
     </SETTING>
     <SETTING NAME="VFO_A_MODE">
@@ -59,12 +59,12 @@
     </SETTING>
     <SETTING NAME="VFO_B">
         <label>VFO B Bootup Freq</label>
-        <value>7043760</value>
+        <value>14036500</value>
         <!--A valid frequency (only numbers) that uBITX can set - e.g., 7032000-->
     </SETTING>
     <SETTING NAME="VFO_B_MODE">
         <label>VFO B Mode Upon Boot</label>
-        <value>USB</value>
+        <value>CWU</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
     </SETTING>
     <SETTING NAME="TUNING_STEP_INDEX">
@@ -74,27 +74,27 @@
     </SETTING>
     <SETTING NAME="TUNING_STEP1">
         <label>Step #1</label>
-        <value>0</value>
+        <value>10</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
     </SETTING>
     <SETTING NAME="TUNING_STEP2">
         <label>Step #2</label>
-        <value>0</value>
+        <value>50</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
     </SETTING>
     <SETTING NAME="TUNING_STEP3">
         <label>Step #3</label>
-        <value>0</value>
+        <value>100</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
     </SETTING>
     <SETTING NAME="TUNING_STEP4">
         <label>Step #4</label>
-        <value>0</value>
+        <value>500</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
     </SETTING>
     <SETTING NAME="TUNING_STEP5">
         <label>Step #5</label>
-        <value>0</value>
+        <value>1000</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
     </SETTING>
     <!--
@@ -109,7 +109,7 @@
     </SETTING>
     <SETTING NAME="CW_SIDETONE">
         <label>CW Sidetone(HZ)</label>
-        <value>1000</value>
+        <value>650</value>
         <!--Set according to your prefernce in HZ, e.g.650 -->
     </SETTING>
     <SETTING NAME="CW_SPEED_WPM">
@@ -153,7 +153,7 @@
 -->
     <SETTING NAME="USER_CALLSIGN">
         <label>Primary call sign</label>
-        <value>K3RTA</value>
+        <value>AJ6CU</value>
         <!--Substituted in message for '>' Max 18 characters)-->
     </SETTING>
     <SETTING NAME="QSO_CALLSIGN">
@@ -282,12 +282,12 @@
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ2_SHOW_NAME">
         <label>Show Name?</label>
-        <value>YES</value>
+        <value>NO</value>
         <!--either YES or NO-->
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ2_NAME">
         <label>Name</label>
-        <value>FNDL1</value>
+        <value>     </value>
         <!--Maximum of 5 characters -->
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ3">
@@ -302,12 +302,12 @@
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ3_SHOW_NAME">
         <label>Show Name?</label>
-        <value>YES</value>
+        <value>NO</value>
         <!--either YES or NO-->
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ3_NAME">
         <label>Name</label>
-        <value>FNDL2</value>
+        <value>     </value>
         <!--Maximum of 5 characters -->
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ4">
@@ -447,7 +447,7 @@
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ10_NAME">
         <label>Name</label>
-        <value>60-5 </value>
+        <value>60   </value>
         <!--Maximum of 5 characters -->
     </SETTING>
     <!-- 	
@@ -744,7 +744,7 @@
     </SETTING>
     <SETTING NAME="WSPR_BAND1_REG1">
         <label>Contents of WSPR Reg 1</label>
-        <value>0F,BE,F8,2D,7C</value>
+        <value>0F,BD,F6,71,FA</value>
         <!--5 hex bytes separated by a comma-->
     </SETTING>
     <SETTING NAME="WSPR_BAND1_REG2">
@@ -764,7 +764,7 @@
     </SETTING>
     <SETTING NAME="WSPR_BAND2_REG1">
         <label>Contents of WSPR Reg 1</label>
-        <value>0F,7B,FC,49,F6</value>
+        <value>0F,7A,FA,CF,F4</value>
         <!--5 hex bytes separated by a comma-->
     </SETTING>
     <SETTING NAME="WSPR_BAND2_REG2">
@@ -779,12 +779,12 @@
     </SETTING>
     <SETTING NAME="WSPR_BAND3_MULTICHAN">
         <label>Frequency offset for mutlichannels</label>
-        <value>312</value>
+        <value>344</value>
         <!--entered in HZ-->
     </SETTING>
     <SETTING NAME="WSPR_BAND3_REG1">
         <label>Contents of WSPR Reg 1</label>
-        <value>0F,B9,F4,C8,F2</value>
+        <value>0F,B8,F3,10,70</value>
         <!--5 hex bytes separated by a comma-->
     </SETTING>
     <SETTING NAME="WSPR_BAND3_REG2">
@@ -906,7 +906,7 @@
     <SETTING NAME="I2C_ADDR_SI5351">
         <!--Best to not mess with this one unless you really know what you are doing-->
         <label>Si5351 I2C adderss chip</label>
-        <value>0xff</value>
+        <value>0x0</value>
         <!-- 0 or 0x60 unless hardware modified -->
     </SETTING>
     <!--		
@@ -1177,7 +1177,7 @@ GENERAL UX
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER7_CONTROL">
         <label>Filter Ctrl1</label>
-        <value>TX_LPF_A,TX_LPF_B,TX_LPF_C,D10</value>
+        <value>TX_LPF_A,TX_LPF_C,D10</value>
         <!--Either NONE *or* Comma separated list of any combination of: 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)

@@ -1,7 +1,7 @@
 <data>
 	<FORMAT NAME="Heading1">
 		<TEXT>
-			uBITX createmodfile HELP
+			uBITX uBITXgeneratemodfile HELP
 		</TEXT>
 	</FORMAT>
 	<FORMAT NAME="Heading3">
@@ -19,14 +19,29 @@
 			Although functional, the original firmware provided by HF Signals only supported a 2 line LCD As a result, Dr. Ian Lee (KD8CEC) developed an enhanced version of the firmware that provided a graphical user interface that used the screens from Nextion. www.hamskey.com documents in a blog format Dr. Lee's efforts as he developed this software.
 		</TEXT>
 	</FORMAT>
+		<FORMAT NAME="Heading3">
+		<TEXT>
+			Purpose
+		</TEXT>
+	</FORMAT>
 	<FORMAT NAME="Normal">
 		<TEXT>
-            This backup only works with KD8CEC derived firmware. The original KD8CEC is available at: https://github.com/phdlee/ubitx That version only supports Arduino Nano based version of the uBITX. For uBITX's which have had their Raduinos replaced with designs derived from AJ6CU (which includes faster processors and an external larger EEPROM), that source code (as well as the source code to this application) resides at: https://github.com/aj6cu .
+            The purpose of this software is to allow the user of a uBITX running a KD8CEC derived software to customize various setting stored in the EEPROM of the radio. This includes fundamental items related to calibration as well as convenience items like call sign and tuning rate.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Heading3">
+		<TEXT>
+			Operation Fundamentals
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            Once connected to your uBITX, and an output file selected, this application will generate a human readable XML file (called in short "usermodfile") which contains all the parameters you might want to change. You can modify it using any standard text editor (note that Word, etc. that store docs in a proprietary format will not work.) There are lots of free XML editors available, I happen to use Notepad++ on Windows, but there are probably better options. Once you have tailored the usermodfile to your needs, you can use "uBITXapplymodfile" to write its contents to your EEPROM on your uBITX.
 		</TEXT>
 	</FORMAT>
 		<FORMAT NAME="Heading3">
 		<TEXT>
-			Backing Up Your uBITX
+			Gnerating a "usermodfile" from  Your uBITX
 		</TEXT>
 	</FORMAT>
 	<FORMAT NAME="Normal">
@@ -51,27 +66,27 @@
 	</FORMAT>
 	<FORMAT NAME="Normal">
 		<TEXT>
-            5.	Click the "Save Backup To" button and select a convenient place to save the backup file. You do not need to add the ".btx" extension.
+            5.	Click the "Save Modification File TO" button and select a convenient place to save the generated usermodfile. You do not need to manually add the ".xml" extension as it is added automatically.
 		</TEXT>
 	</FORMAT>
 	<FORMAT NAME="Normal">
 		<TEXT>
-            6.	Click the "RBACKUP" button to start the backup. The processing of the backup is recorded in the Backup Log in the center of the page.
+            6.	Click the "RUN" button to start the creation of the usermodfile. The processing of the application is recorded in the Log section in the center of the page.
 		</TEXT>
 	</FORMAT>
 	<FORMAT NAME="Normal">
 		<TEXT>
-            7.	If an error occurs, for example you selected the wrong COM Port, correct it and click Run Backup again. You can save the record of the backup (which includes the location of the backup file) by clicking the "Copy Log To Clipboard" and then pasting it into an email or word processing program of your choice. Once you receive the "Backup Successfuly Completed" message, click the Quit key to exit. 
+            7.	If an error occurs, for example you selected the wrong COM Port, correct it and click Run again. You can save the record of the backup (which includes the location of the usermodfile) by clicking the "Copy Log To Clipboard" and then pasting it into an email or word processing program of your choice. Once you receive the "User Modification File Successfuly Completed" message, click the Quit key to exit. 
 		</TEXT>
 	</FORMAT>
 		<FORMAT NAME="Heading3">
 		<TEXT>
-			Compatibility
+			Future Direction
 		</TEXT>
 	</FORMAT>
 	<FORMAT NAME="Normal">
 		<TEXT>
-            The backup file created by this program is compatible with the original uBITX Memory Manager that was written by KD8CEC. 
+            A fully GUI based application to edit the usermodfile is underdevelopment and should be available before the end of 2022.
 		</TEXT>
 	</FORMAT>
 </data>
