@@ -4,6 +4,7 @@ import sys
 
 from lxml import etree as ET
 from fonts import *
+from printtolog import *
 
 
 
@@ -39,7 +40,9 @@ def helpDialog(winTitle, helpFile):
     try:
         helpTree = ET.parse(helpFile)
     except:
-        sys.exit("missing helpfile: " + helpFile)
+        printToLog("Missing file: " + helpFile)
+        tkinter.messagebox.showerror(title="FATAL ERROR", message=helpFile+" is missing or corrupted. Please re-install application. \nEXITING")
+        sys.exit(-1)
     helpRoot = helpTree.getroot()
 
     for textTag in helpRoot.findall('.//FORMAT'):
