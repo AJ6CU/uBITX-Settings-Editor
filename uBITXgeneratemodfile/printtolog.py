@@ -25,6 +25,4 @@ def copyLogToClipboard():
     whereToLog.clipboard_clear()
     whereToLog.clipboard_append(whereToLog.get("1.0",tkinter.END))
     whereToLog.update()
-    time.sleep(0.2)
-    whereToLog.update()
 

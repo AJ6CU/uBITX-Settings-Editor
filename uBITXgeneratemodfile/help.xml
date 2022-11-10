@@ -1,7 +1,7 @@
 <data>
 	<FORMAT NAME="Heading1">
 		<TEXT>
-			uBITX uBITXgeneratemodfile HELP
+			uBITXgeneratemodfile HELP
 		</TEXT>
 	</FORMAT>
 	<FORMAT NAME="Heading3">
@@ -41,7 +41,7 @@
 	</FORMAT>
 		<FORMAT NAME="Heading3">
 		<TEXT>
-			Gnerating a "usermodfile" from  Your uBITX
+			Generating a "usermodfile" from  Your uBITX
 		</TEXT>
 	</FORMAT>
 	<FORMAT NAME="Normal">

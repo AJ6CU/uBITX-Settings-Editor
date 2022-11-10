@@ -1,4 +1,4 @@
-#   General System Imports
+
 import serial
 from time import sleep
 import platform
@@ -12,9 +12,8 @@ import tkinter.messagebox
 import serial.tools.list_ports              # Used to get a list of com ports
 from tkinter import filedialog as fd
 
-
+#   Application includes
 from globalvars import *
-from backup_userconfig import *
 from readEEPROMData import readEEPROMData
 from printtolog import *
 from helpsubsystem import *
@@ -68,16 +67,16 @@ def backup():                   # This actually performs the backup
 
 #       All set, perform backup
 
-    printlnToLog(get_time_stamp() + ": ***Starting backup of device on " + COM_PORT + "***")
+    printlnToLog(get_time_stamp() + ": ***Starting backup of uBITX on " + COM_PORT + "***")
     printlnToLog(get_time_stamp() + ": Writing backup tp file: " + BACKUPFILE)
     try:
         RS232 = serial.Serial(COM_PORT, BAUD, timeout=0, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
     except:
-        printlnToLog(get_time_stamp() + ": " + COM_PORT + " not selected or no device attached")
+        printlnToLog(get_time_stamp() + ": " + COM_PORT + " not selected or no uBITX attached")
         printlnToLog(get_time_stamp() + ": ***Backup Aborted***")
         printlnToLog(" ")                     #print blank line in case backup run again
         printlnToLog(" ")                     #print blank line in case backup run again
-        tkinter.messagebox.showerror("Error", message="COM Port not selected or no device attached")
+        tkinter.messagebox.showerror("Error", message="COM Port not selected or no uBITX attached")
     else:
         printlnToLog(get_time_stamp() + ": Establishing Connection to uBITX on " + COM_PORT)
         printlnToLog(get_time_stamp() + ": Awaiting Radio Processor Ready this will take 3-5 seconds")
