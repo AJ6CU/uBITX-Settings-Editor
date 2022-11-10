@@ -13,7 +13,7 @@
 -->
     <SETTING NAME="MASTER_CAL">
         <label>Master Calibration</label>
-        <value>-152499</value>
+        <value>-152400</value>
         <!--every radio is unique but often around 161875-->
     </SETTING>
     <SETTING NAME="USB_CAL">
@@ -49,7 +49,7 @@
 -->
     <SETTING NAME="VFO_A">
         <label>VFO A Bootup Freq</label>
-        <value>14000300</value>
+        <value>14000700</value>
         <!--A valid frequency (only numbers) that uBITX can set - e.g., 14032000-->
     </SETTING>
     <SETTING NAME="VFO_A_MODE">
@@ -109,7 +109,7 @@
     </SETTING>
     <SETTING NAME="CW_SIDETONE">
         <label>CW Sidetone(HZ)</label>
-        <value>1000</value>
+        <value>700</value>
         <!--Set according to your prefernce in HZ, e.g.650 -->
     </SETTING>
     <SETTING NAME="CW_SPEED_WPM">
@@ -153,7 +153,7 @@
 -->
     <SETTING NAME="USER_CALLSIGN">
         <label>Primary call sign</label>
-        <value>K3RTA</value>
+        <value>AJ6CU</value>
         <!--Substituted in message for '>' Max 18 characters)-->
     </SETTING>
     <SETTING NAME="QSO_CALLSIGN">

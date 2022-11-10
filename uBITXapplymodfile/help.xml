@@ -1,0 +1,92 @@
+<data>
+	<FORMAT NAME="Heading1">
+		<TEXT>
+			uBITXapplymodfile HELP
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Heading3">
+		<TEXT>
+			Introduction
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+			The heard of the uBITX transceiver is a microcontroller (MCU). The uBITX is manufactured by HF Signals (https://www.hfsignals.com/) using an Arduino Nano V3 MCU. The MCU includes flash memory of approximately 32kb as well as an 1024 bytes of Electrically Erasable Programmable Read-Only Memory (EEPROM). The flash memory holds the firmware or program where as the EEPROM is used to store settings (e.g. calibration information, last used frequencies and modes, tuning rates, etc.).
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+			Although functional, the original firmware provided by HF Signals only supported a 2 line LCD As a result, Dr. Ian Lee (KD8CEC) developed an enhanced version of the firmware that provided a graphical user interface that used the screens from Nextion. www.hamskey.com documents in a blog format Dr. Lee's efforts as he developed this software.
+		</TEXT>
+	</FORMAT>
+		<FORMAT NAME="Heading3">
+		<TEXT>
+			Purpose
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            The purpose of this software is to allow the user of a uBITX running a KD8CEC derived software to customize various setting stored in the EEPROM of the radio. This includes fundamental items related to calibration as well as convenience items like call sign and tuning rate.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Heading3">
+		<TEXT>
+			Operation Fundamentals
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            Once connected to your uBITX, and and a previously created "usermodfile" has been selected, this application will update the EEPROM of the uBITX to reflect the contents of the "usermodfile". The "usermodfile" is an XML file and the msot convenient way to generate it is to use the application "uBITXgeneratemodfile".
+		</TEXT>
+	</FORMAT>
+		<FORMAT NAME="Heading3">
+		<TEXT>
+			Uploading "usermodfile" to  your uBITX
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            1. Turn on your uBITX. Wait for it to fully start and display a frequency on the VFO.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            2. Plug the USB cable from your uBITX to your computer.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            3.	Start this program. If you plugged the USB cable in after starting this program, hit the Refresh Port List button to detect the uBITX.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            4.	Click the "Select User Modification File" button and select an existing usermodfile. You do not need to manually add the ".xml" extension as it is added automatically.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            5.	From the "Select Serial Port" drop down, select the COM Port that is used by your uBITX.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            6.	Click the "RUN" button to start process of uploading your usermodfile to your uBITX. The processing of the application is recorded in the Log section in the center of the page.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            7.	If an error occurs, for example you selected the wrong COM Port, correct it and click Run again. You can save the record of the backup (which includes the location of the usermodfile) by clicking the "Copy Log To Clipboard" and then pasting it into an email or word processing program of your choice. Once you receive the "User Modification File Successfuly Applied" message, click the Quit key to exit. 
+		</TEXT>
+	</FORMAT>
+		<FORMAT NAME="Heading3">
+		<TEXT>
+			Future Direction
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            A fully GUI based application to edit the usermodfile is underdevelopment and should be available before the end of 2022.
+		</TEXT>
+	</FORMAT>
+</data>

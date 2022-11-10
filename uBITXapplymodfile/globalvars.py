@@ -35,3 +35,8 @@ TOTALCWMESSAGES=10                                  #assumption on number of CW 
 SIZEOFWSPRMESSAGES=41                               #size in bytes of wspr messages
 MAXCALLSIGNLEN = 18                                 #Max length of callsign and alt callsign
 
+COM_PORT = "COM PORT"                             # format for windows
+BAUD = 38400
+
+USERMODFILE="usermodfile.xml"                       #Output of process - file that User can customize
+EEPROMMEMORYMAP="eeprommemorymap.xml"               #Maps EEPROM locations to settings
