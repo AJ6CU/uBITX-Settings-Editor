@@ -40,7 +40,7 @@ def helpDialog(winTitle, helpFile):
     try:
         helpTree = ET.parse(helpFile)
     except:
-        printlnToLog(get_time_stamp() + ": Missing file: " + helpFile)")
+        printlnToLog(get_time_stamp() + ": Missing file: " + helpFile)
         tkinter.messagebox.showerror(title="FATAL ERROR", message=helpFile+" is missing or corrupted. Please re-install application. \nEXITING")
         sys.exit(-1)
     helpRoot = helpTree.getroot()

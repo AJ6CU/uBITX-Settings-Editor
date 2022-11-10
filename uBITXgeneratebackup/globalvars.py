@@ -37,3 +37,6 @@ SIZEOFWSPRMESSAGES=41                               #size in bytes of wspr messa
 MAXCALLSIGNLEN = 18                                 #Max length of callsign and alt callsign
 
 
+COM_PORT = "COM PORT"
+BAUD = 38400
+BACKUPFILE="binarybackupdump.btx"

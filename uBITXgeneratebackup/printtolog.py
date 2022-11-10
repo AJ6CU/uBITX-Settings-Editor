@@ -24,4 +24,5 @@ def copyLogToClipboard():
     global whereToLog
     whereToLog.clipboard_clear()
     whereToLog.clipboard_append(whereToLog.get("1.0",tkinter.END))
+    whereToLog.update()
 
