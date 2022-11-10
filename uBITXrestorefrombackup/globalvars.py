@@ -35,3 +35,19 @@ TOTALCWMESSAGES=10                                  #assumption on number of CW 
 SIZEOFWSPRMESSAGES=41                               #size in bytes of wspr messages
 MAXCALLSIGNLEN = 18                                 #Max length of callsign and alt callsign
 
+COM_PORT = "COM24"
+BAUD = 38400
+
+PROTECTFACTORYRESTORE=1
+STARTFACTOREYRESTORE=64
+ENDFACTORYRESTORE=100
+
+
+COM_PORT = "COM PORT"
+BAUD = 38400
+
+PROTECTFACTORYRESTORE=1
+STARTFACTOREYRESTORE=64
+ENDFACTORYRESTORE=100
+
+BACKUPFILE="binarybackupdump.btx"

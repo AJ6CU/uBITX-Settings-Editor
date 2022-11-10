@@ -1,7 +1,6 @@
 from time import sleep
 from time import *
 import sys
-from restore_userconfig import *
 
 from globalvars import *
 from printtolog import *
@@ -51,7 +50,7 @@ def writeEEPROMData(portdesc: object, memlocation: int, numBytesToWrite: int, me
                 retryCnt +=1
             if retryCnt > RETRIES:
                 printToLog("Failed writing to EEPROM -- number of Retries exceeded")
-                tkinter.messagebox.showerror(title="ERROR", message="Failed writing to EEPROM -- number of Retries exceeded\nTry restarting radio, ensuring the USB cable plugged in securely, and then restart application. \nEXITING")
+                tkinter.messagebox.showerror(title="ERROR", message="Failed writing to EEPROM -- number of Retries exceeded\nTry restarting uBITX, ensuring the USB cable plugged in securely, and then restart application. \nEXITING")
                 sys.exit(-1)
             else:
                 if (i % 100 == 0) & (i!=0):

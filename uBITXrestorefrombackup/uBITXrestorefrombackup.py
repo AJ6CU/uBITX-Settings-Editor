@@ -15,7 +15,6 @@ from tkinter import filedialog as fd
 
 #   local function imports
 from globalvars import *
-from restore_userconfig import *
 from writeEEPROMData import writeEEPROMData
 from printtolog import *
 from helpsubsystem import *
@@ -73,14 +72,14 @@ def restore():              # this actually does the restore
         try:
             RS232 = serial.Serial(COM_PORT, BAUD, timeout=0, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
         except:
-            printlnToLog(get_time_stamp() + ": " + COM_PORT + " not selected or no device attached")
+            printlnToLog(get_time_stamp() + ": " + COM_PORT + " not selected or no uBITX attached")
             printlnToLog(get_time_stamp() + ": ***Backup Aborted***")
             printlnToLog(" ")                     #print blank line in case backup run again
             printlnToLog(" ")                     #print blank line in case backup run again
-            tkinter.messagebox.showerror("Error", message="COM Port not selected or no device attached")
+            tkinter.messagebox.showerror("Error", message="COM Port not selected or no uBITX attached")
         else:       # We now have a valid backup file and a valid com port. Let's go!
-            printlnToLog(get_time_stamp() + ": Establishing Connection to Radio on " + COM_PORT)
-            printlnToLog(get_time_stamp() + ": Awaiting Radio Processor Ready this will take 3-5 seconds")
+            printlnToLog(get_time_stamp() + ": Establishing Connection to uBITX on " + COM_PORT)
+            printlnToLog(get_time_stamp() + ": Awaiting uBITX Processor Ready this will take 3-5 seconds")
 
             sleep(3)  #this is required to allow Nano to reset after open
             printlnToLog(get_time_stamp() + ": Reading backup file into memory")
