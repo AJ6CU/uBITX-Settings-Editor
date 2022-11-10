@@ -1,19 +1,13 @@
 # uBITXapplymodfile
 
+![image](https://user-images.githubusercontent.com/70183884/201205420-cd7acb78-0303-426d-8468-cbf0478459be.png)
+
+
 This program is written using Python 3.10.4 on Windows. It requires the installation of the following standard Python libraries:
 - pySerial 
 - lxml
 - bitarray libraries. Let me know if you find any other unusual dependencies.
 
-The user configurable settings are in "applymod_userconfig.py". 
-
-You should only need to modify two variables to run this:
-
-COM_PORT = "COM24"
-USERMODFILE="usermodfile.xml"                       
-
-You should replace COM24 with the COM port that your uBITX comes up at when connected to your computer via USB.
-A possible MacOS com port is also provided but is commented out with a prefix of "#". 
 
 
 This program will work by reading a "usermodfile" XML file and applying the contents of this file to EEPROM. The "usermodfile" should be created using the uBITXgeneratemodfile application. The usermodfile is XML based and can be edited by your favorite text editor. However, I would recommend an editor either optimized for XML or an editor with an addon XML plugin to reduce. 
@@ -32,14 +26,6 @@ The title of each setting. For example, the initial boot up frequency for VFO A 
 - \<!--  comment --\>:                     hopefully more detail explanation of setting an options that can be used 
 
 BTW: CASE MATTERS!
-
-Once installed, you should only have to modify "userconfig.py" This contains the commonly modified parameters that you might need to change
-
-COM_PORT = "COM14"  	Change this to the com port your uBTIX is attached to your computer 
-
-BAUD = 38400		You *should* not change this unless your know what you are doing. CEC is looking for 38400 serial baud
-
-USERMODFILE = "usermodfile.xml"		The file name where your modfile is saved. Should have an XML suffix
 
 
 
