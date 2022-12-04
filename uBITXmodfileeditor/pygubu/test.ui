@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.3">
+  <object class="tk.Toplevel" id="toplevel1">
+    <property name="height">200</property>
+    <property name="title" translatable="yes">Actions Test</property>
+    <property name="width">200</property>
+    <child>
+      <object class="ttk.Frame" id="frame1">
+        <property name="height">200</property>
+        <property name="padding">5</property>
+        <property name="width">200</property>
+        <layout manager="pack">
+          <property name="side">top</property>
+        </layout>
+        <child>
+          <object class="ttk.Button" id="action_a" named="True">
+            <property name="command" type="command" cbtype="with_wid">on_button_clicked</property>
+            <property name="text" translatable="yes">Action A</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="action_b" named="True">
+            <property name="command" type="command" cbtype="with_wid">on_button_clicked</property>
+            <property name="text" translatable="yes">Action B</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="action_c" named="True">
+            <property name="command" type="command" cbtype="with_wid">on_button_clicked</property>
+            <property name="text" translatable="yes">Action C</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
