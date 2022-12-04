@@ -27,6 +27,42 @@ class getters(object):
 
 
 #         #***********************************
+#         #   Firmware validation and factory defaults
+#         #***********************************
+    def FIRMWAR_ID_ADDR1(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+
+    def FIRMWAR_ID_ADDR2(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+
+    def FIRMWAR_ID_ADDR3(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+
+    def VERSION_ADDRESS(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = INTERNAL_FIRMWARE_VERSION[int(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))]
+
+    def FACTORY_VALUES_MASTER_CAL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        tmpInt = self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation)
+        if tmpInt & 0x80000000:                                         #We have a negative number
+            value.text = "-" + str((~tmpInt+1)& 0xffffffff)             #convert from 2's complement
+        else:
+            value.text = str(tmpInt)
+    def FACTORY_VALUES_USB_CAL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
+
+    def FACTORY_VALUES_VFO_A (self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
+
+    def FACTORY_VALUES_VFO_B(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
+
+    def FACTORY_VALUES_CW_SIDETONE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
+
+    def FACTORY_VALUES_CW_SPEED (self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        value.text = str(round(1200/self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)))
+
+#         #***********************************
 #         #   RADIO CALIBRATION SETTINGS
 #         #***********************************
 
@@ -60,10 +96,10 @@ class getters(object):
 #
 
     def VFO_A (self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
+        value.text = '{:,}'.format(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation)).replace(',','.')
 
     def VFO_B(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
+        value.text = '{:,}'.format(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation)).replace(',','.')
 
     def VFO_A_MODE (self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
         value.text = MODE_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
@@ -256,7 +292,7 @@ class getters(object):
 #         #***********************************
 #
     def CHANNEL_FREQ(self, SettingName, EEPROMBuffer, memLocation, value):
-        value.text = str((self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation)&0x1FFFFFFF))     #upper 3 bits are the mode must mask off
+        value.text = '{:,}'.format((self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation)&0x1FFFFFFF)).replace(',','.')     #upper 3 bits are the mode must mask off
 
     def CHANNEL_FREQ1(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
         self.CHANNEL_FREQ(SettingName,EEPROMBuffer, memLocation, value)
@@ -485,7 +521,7 @@ class getters(object):
 
 
     def HAM_BAND_RANGE_START(self, SettingName, EEPROMBuffer, memLocation, value):
-        value.text = str(self.get_uint16_FromEEPROM(EEPROMBuffer, memLocation))
+        value.text = '{:,}'.format(self.get_uint16_FromEEPROM(EEPROMBuffer, memLocation)).replace(',','.')
 
     def HAM_BAND_RANGE1_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
         self.HAM_BAND_RANGE_START(SettingName, EEPROMBuffer, memLocation, value)
@@ -519,7 +555,7 @@ class getters(object):
 
 
     def HAM_BAND_RANGE_END(self, SettingName, EEPROMBuffer, memLocation, value):
-        value.text = str(self.get_uint16_FromEEPROM(EEPROMBuffer, memLocation))
+        value.text = '{:,}'.format(self.get_uint16_FromEEPROM(EEPROMBuffer, memLocation)).replace(',','.')
 
     def HAM_BAND_RANGE1_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
         self.HAM_BAND_RANGE_END(SettingName, EEPROMBuffer, memLocation, value)
@@ -551,6 +587,77 @@ class getters(object):
     def HAM_BAND_RANGE10_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
         self.HAM_BAND_RANGE_END(SettingName, EEPROMBuffer, memLocation, value)
 
+#         #***********************************
+#         #   Last Frequency and Mode Used per Band
+#         #***********************************
+#
+    def HAM_BAND_FREQS(self, SettingName, EEPROMBuffer, memLocation, value):
+ #       value.text = str((self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation)&0x1FFFFFFF))     #upper 3 bits are the mode must mask off
+        value.text = '{:,}'.format(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation)&0x1FFFFFFF).replace(',','.')
+
+    def HAM_BAND_FREQS1(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS(SettingName,EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS2(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS(SettingName,EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS3(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS(SettingName,EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS4(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS(SettingName,EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS5(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS(SettingName,EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS6(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS(SettingName,EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS7(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS(SettingName,EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS8(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS(SettingName,EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS9(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS(SettingName,EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS10(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS(SettingName,EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS_MODE(self, SettingName, EEPROMBuffer, memLocation, value):
+        value.text = str(MODE_SELECT[((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)) >>5)])
+
+    def HAM_BAND_FREQS1_MODE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS_MODE(SettingName, EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS2_MODE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS_MODE(SettingName, EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS3_MODE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS_MODE(SettingName, EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS4_MODE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS_MODE(SettingName, EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS5_MODE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS_MODE(SettingName, EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS6_MODE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS_MODE(SettingName, EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS7_MODE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS_MODE(SettingName, EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS8_MODE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS_MODE(SettingName, EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS9_MODE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS_MODE(SettingName, EEPROMBuffer, memLocation, value)
+
+    def HAM_BAND_FREQS10_MODE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        self.HAM_BAND_FREQS_MODE(SettingName, EEPROMBuffer, memLocation, value)
+
 
 #         # ***********************************
 #         #   SDR SETTINGS
@@ -563,7 +670,7 @@ class getters(object):
         value.text = SDR_OFFSET_MODE[((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) & 0xFF) >> 2) & 0x03]
 
     def SDR_FREQUENCY(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
+        value.text = '{:,}'.format(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation)).replace(',','.')
 
 
 
@@ -572,13 +679,13 @@ class getters(object):
 #         # ***********************************
 #
     def WSPR_BAND1_TXFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
+        value.text = '{:,}'.format(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation)).replace(',','.')
 
     def WSPR_BAND2_TXFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
+        value.text = '{:,}'.format(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation)).replace(',','.')
 
     def WSPR_BAND3_TXFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
+        value.text = '{:,}'.format(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation)).replace(',','.')
 
     def WSPR_BAND1_MULTICHAN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
         value.text = str(self.get_uint16_FromEEPROM(EEPROMBuffer, memLocation))

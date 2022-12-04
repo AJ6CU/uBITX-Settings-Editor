@@ -1,6 +1,35 @@
 ﻿<data>
 <!--
 	***************************************************************************************************** 
+	Firmware identification
+	***************************************************************************************************** 
+-->	
+	<SETTING NAME="FIRMWAR_ID_ADDR1">					
+		<EEPROMStart>776</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>									
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="FIRMWAR_ID_ADDR2">					
+		<EEPROMStart>777</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>									
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="FIRMWAR_ID_ADDR3">					
+		<EEPROMStart>778</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>									
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="VERSION_ADDRESS">					
+		<EEPROMStart>779</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>									
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+<!--
+	***************************************************************************************************** 
 	RADIO CALIBRATION SETTINGS 
 	***************************************************************************************************** 
 -->	
@@ -41,6 +70,48 @@
 		<displayFormat>bool</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
+<!--
+	***************************************************************************************************** 
+	Settings saved for Factory Reset
+	***************************************************************************************************** 
+-->	
+	<SETTING NAME="FACTORY_VALUES_MASTER_CAL">					
+		<EEPROMStart>65</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>									
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="FACTORY_VALUES_USB_CAL">					
+		<EEPROMStart>73</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>		
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="FACTORY_VALUES_VFO_A">							
+		<EEPROMStart>81</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>											
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="FACTORY_VALUES_VFO_B">
+		<EEPROMStart>85</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>									
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="FACTORY_VALUES_CW_SIDETONE">							
+		<EEPROMStart>89</EEPROMStart>
+		<sizeInBytes>4</sizeInBytes>
+		<displayFormat>int</displayFormat>										
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+		<SETTING NAME="FACTORY_VALUES_CW_SPEED">							
+		<EEPROMStart>93</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+
 <!-- 
 	*****************************************************************************************************
 	VFO SETTING FOR ON BOOT 
@@ -794,7 +865,136 @@
 		<sizeInBytes>2</sizeInBytes>
 		<displayFormat>convert-to-khz</displayFormat>
 		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
-	</SETTING>			
+	</SETTING>
+
+<!--
+	*****************************************************************************************************
+	Last Used Frequency for Band
+	KD8CEC provides tracks the last used frequency and mode on each band. This allows you to band up/band down
+	and get back to a familiar frequency.
+	*****************************************************************************************************
+-->
+
+	<SETTING NAME="HAM_BAND_FREQS1">
+		<EEPROMStart>302</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS1_MODE">
+		<EEPROMStart>305</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS2">
+		<EEPROMStart>306</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS2_MODE">
+		<EEPROMStart>309</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS3">
+		<EEPROMStart>310</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS3_MODE">
+		<EEPROMStart>313</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS4">
+		<EEPROMStart>314</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS4_MODE">
+		<EEPROMStart>317</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS5">
+		<EEPROMStart>318</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS5_MODE">
+		<EEPROMStart>321</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS6">
+		<EEPROMStart>322</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS6_MODE">
+		<EEPROMStart>325</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS7">
+		<EEPROMStart>326</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS7_MODE">
+		<EEPROMStart>329</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS8">
+		<EEPROMStart>330</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS8_MODE">
+		<EEPROMStart>333</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS9">
+		<EEPROMStart>334</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS9_MODE">
+		<EEPROMStart>337</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS10">
+		<EEPROMStart>338</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="HAM_BAND_FREQS10_MODE">
+		<EEPROMStart>341</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>convert-to-khz</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
 <!--
 	*****************************************************************************************************
 	SDR

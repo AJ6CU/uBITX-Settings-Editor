@@ -8,94 +8,180 @@
 	-->
     <!--
 	***************************************************************************************************** 
+	Firmware identification field - Read only
+	***************************************************************************************************** 
+-->
+    <SETTING NAME="FIRMWAR_ID_ADDR1">
+        <label>FIRMWAR_ID_ADDR1</label>
+        <value>0x59</value>
+        <!--0x59-->
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="FIRMWAR_ID_ADDR2">
+        <label>FIRMWAR_ID_ADDR2</label>
+        <value>0x58</value>
+        <!--0x58-->
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="FIRMWAR_ID_ADDR3">
+        <label>FIRMWAR_ID_ADDR3</label>
+        <value>0x68</value>
+        <!--0x68-->
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="VERSION_ADDRESS">
+        <label>VERSION_ADDRESS</label>
+        <value>V2.0</value>
+        <!--internal numbering for version. 1=V1.061, 2=1.07,
+														3=1.08, 4=1.09, 5=2.0 -->
+        <tooltip></tooltip>
+    </SETTING>
+    <!--
+	***************************************************************************************************** 
+	Settings saved for Factory Reset - Read only; used for if factory reset needed
+	***************************************************************************************************** 
+-->
+    <SETTING NAME="FACTORY_VALUES_MASTER_CAL">
+        <label>Mster Calibration (Factory)</label>
+        <value>188751</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="FACTORY_VALUES_USB_CAL">
+        <label>BFO (USB) Calibration (Factory)</label>
+        <value>11056451</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="FACTORY_VALUES_VFO_A">
+        <label>VFO A Saved Frequency (Factory)</label>
+        <value>7030001</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="FACTORY_VALUES_VFO_B">
+        <label>VFO B Saved Frequency (Factory)</label>
+        <value>14030001</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="FACTORY_VALUES_CW_SIDETONE">
+        <label>CW Sidetone (Factory)</label>
+        <value>1000</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="FACTORY_VALUES_CW_SPEED">
+        <value>12</value>
+        <label>CW Speed (Factory)</label>
+        <tooltip></tooltip>
+    </SETTING>
+    <!--
+	***************************************************************************************************** 
 	RADIO CALIBRATION SETTINGS 
 	***************************************************************************************************** 
 -->
     <SETTING NAME="MASTER_CAL">
         <label>Master Calibration</label>
-        <value>-152400</value>
+        <value>43750</value>
         <!--every radio is unique but often around 161875-->
+        <tooltip>Adjusts radio frequency to correct for hardware differences</tooltip>
     </SETTING>
     <SETTING NAME="USB_CAL">
         <label>BFO (USB) Calibration</label>
         <!--previously called USB Calibration. Often around 11996450-->
-        <value>11056722</value>
+        <value>11056257</value>
+        <tooltip>Adjusts BFO for best SSB reception. See HF Signals V6 Calibration video</tooltip>
     </SETTING>
     <SETTING NAME="CW_CAL">
         <label>CW BFO Calibration</label>
-        <value>11056745</value>
+        <value>11056370</value>
         <!--CW calibration factor, typically within a few khz of USB callibration-->
+        <tooltip>Adjusts BFO for best CW reception. See HF Signals V6 Calibration video</tooltip>
     </SETTING>
     <SETTING NAME="IF1_CAL_ON_OFF_SWITCH">
         <!--Enables calibration of IF -->
         <label>Enable IF1_CAL?</label>
         <value>NO</value>
         <!--either YES or NO-->
+        <tooltip>Enable if you find you are often adjusting the IF on your radio</tooltip>
     </SETTING>
     <SETTING NAME="IF1_CAL">
         <label>IF1 Calibration Factor</label>
         <value>0</value>
         <!--value is 0-255. Factory default is 0 or 255. Dr Lee recommends 0, or 60-85.-->
+        <tooltip>Value is 0-255. Factory default is 0 or 255. Dr Lee recommends 0, or 60-85.</tooltip>
     </SETTING>
     <SETTING NAME="IF1_CAL_ADD_SUB">
         <label>Subtract IF1 Calibration Factor?</label>
         <value>NO</value>
         <!--either YES or NO To subtract calibration, set this value to YES -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <!-- 
 	*****************************************************************************************************
-	VFO SETTING FOR ON BOOT 
+	VFO SETTING FROM LAST OPERATION  (READ ONLY)
 	*****************************************************************************************************	
 -->
     <SETTING NAME="VFO_A">
-        <label>VFO A Bootup Freq</label>
-        <value>14000700</value>
-        <!--A valid frequency (only numbers) that uBITX can set - e.g., 14032000-->
+        <label>VFO A Last Used Freq</label>
+        <value>7216000</value>
+        <!--The last frequency used on VFO A - Read Only-->
+        <tooltip></tooltip>
     </SETTING>
     <SETTING NAME="VFO_A_MODE">
-        <label>VFO A Mode Upon Boot</label>
-        <value>CWL</value>
-        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <label>VFO A Mode Last Used Freq</label>
+        <value>LSB</value>
+        <!--Last Mode for VFO A one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip></tooltip>
     </SETTING>
     <SETTING NAME="VFO_B">
-        <label>VFO B Bootup Freq</label>
-        <value>7043760</value>
-        <!--A valid frequency (only numbers) that uBITX can set - e.g., 7032000-->
+        <label>VFO B Last Used Freq</label>
+        <value>14036500</value>
+        <!--The last frequency used on VFO B - Read Only-->
+        <tooltip></tooltip>
     </SETTING>
     <SETTING NAME="VFO_B_MODE">
-        <label>VFO B Mode Upon Boot</label>
-        <value>USB</value>
-        <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <label>VFO B Mode Last Used Freq</label>
+        <value>CWU</value>
+        <!--Sast Mode for VFO A one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip></tooltip>
     </SETTING>
+    <!--
+	*****************************************************************************************************
+	Tuning Steps
+	*****************************************************************************************************
+-->
     <SETTING NAME="TUNING_STEP_INDEX">
         <label>Default Step#</label>
         <value>3</value>
         <!--Default tuning step on boot. 1-5 -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP1">
         <label>Step #1</label>
-        <value>0</value>
+        <value>10</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP2">
         <label>Step #2</label>
-        <value>0</value>
+        <value>50</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP3">
         <label>Step #3</label>
-        <value>0</value>
+        <value>100</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP4">
         <label>Step #4</label>
-        <value>0</value>
+        <value>500</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP5">
         <label>Step #5</label>
-        <value>0</value>
+        <value>1000</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <!--
 	*****************************************************************************************************
@@ -106,26 +192,31 @@
         <label>CW Key Type</label>
         <value>STRAIGHT</value>
         <!--Select one of "STRAIGHT","IAMBICA","IAMBICB" -->
+        <tooltip>Select the type of key you are using</tooltip>
     </SETTING>
     <SETTING NAME="CW_SIDETONE">
         <label>CW Sidetone(HZ)</label>
-        <value>700</value>
+        <value>650</value>
         <!--Set according to your prefernce in HZ, e.g.650 -->
+        <tooltip>Set your preferred sidetone frequency in HZ</tooltip>
     </SETTING>
     <SETTING NAME="CW_SPEED_WPM">
         <label>CW Speed</label>
         <value>15</value>
         <!--Set to desired WPM speed -->
+        <tooltip>Specify how fast (in wpm) that you want your keyer set at</tooltip>
     </SETTING>
     <SETTING NAME="CW_DELAY_MS">
         <label>CW delay switching from TX back to RX</label>
         <value>740</value>
         <!--In miliseconds Max 2550-->
+        <tooltip>Used to delay (in ms) returning to RX mode when keying.</tooltip>
     </SETTING>
     <SETTING NAME="CW_START_MS">
         <label>Delay before starting TX </label>
         <value>0</value>
         <!--0-560ms - odd numbers rounded down to be even (i.e. 53->52) -->
+        <tooltip>Add delay before going into TX mode from RX</tooltip>
     </SETTING>
     <!--
 	*****************************************************************************************************
@@ -155,16 +246,19 @@
         <label>Primary call sign</label>
         <value>AJ6CU</value>
         <!--Substituted in message for '>' Max 18 characters)-->
+        <tooltip>Enter your Callsign - max 18 characters</tooltip>
     </SETTING>
     <SETTING NAME="QSO_CALLSIGN">
         <label>Alt Call sign</label>
         <!--Substituted in message for '<' Max 18 characters)-->
         <value></value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CW_MEMORY_KEYER_MSGS">
         <!--Total characters in all memory keyer message <= 200-->
         <label>Total Messages:</label>
         <value>0</value>
+        <tooltip>to be added</tooltip>
         <message></message>
         <message></message>
         <message></message>
@@ -196,11 +290,13 @@
         <label>CW ST Key ADC from</label>
         <value>0</value>
         <!--  Between 1 - 1023 -->
+        <tooltip>Starting ADC (0-1023) for straight key down - suggest 0</tooltip>
     </SETTING>
     <SETTING NAME="CW_ADC_ST_TO">
         <label>CW ST Key ADC from</label>
         <value>0</value>
         <!--  Between 1 - 1023 -->
+        <tooltip>Ending ADC (0-1023) for straight key down - suggest 50</tooltip>
     </SETTING>
     <!-- 
 	Paddle DOT ADC Settings
@@ -209,11 +305,13 @@
         <label>CW Paddle DOT ADC FROM</label>
         <value>0</value>
         <!--  Between 1 - 1023 -->
+        <tooltip>Starting ADC (0-1023) for dot key of paddle pressed - suggest 301</tooltip>
     </SETTING>
     <SETTING NAME="CW_ADC_DOT_TO">
         <label>CW Paddle DOT ADC FROM</label>
         <value>0</value>
         <!--  Between 1 - 1023 -->
+        <tooltip>Ending ADC (0-1023) for dot key of paddle pressed - suggest 600</tooltip>
     </SETTING>
     <!-- 
 	Paddle DASH ADC Settings
@@ -222,11 +320,13 @@
         <label>CW Paddle DASH FROM</label>
         <value>0</value>
         <!--  Between 1 - 1023 -->
+        <tooltip>Starting ADC (0-1023) for dash key of paddle pressed - suggest 601</tooltip>
     </SETTING>
     <SETTING NAME="CW_ADC_DASH_TO">
         <label>CW Paddle DASH TO</label>
         <value>0</value>
         <!--  Between 1 - 1023 -->
+        <tooltip>Ending ADC (0-1023) for dash key of paddle pressed suggest 700</tooltip>
     </SETTING>
     <!-- 
 	Paddle BOTH ADC Settings
@@ -235,11 +335,13 @@
         <label>CW Paddle BOTH pressed FROM</label>
         <value>0</value>
         <!--  Between 1 - 1023 -->
+        <tooltip>Starting ADC (0-1023) for both keys of paddle pressed - suggest 51</tooltip>
     </SETTING>
     <SETTING NAME="CW_ADC_BOTH_TO">
         <label>CW Paddle BOTH pressed TO</label>
         <value>0</value>
         <!--  Between 1 - 1023 -->
+        <tooltip>Ending ADC (0-1023) for both keys of paddle pressed - suggest 300</tooltip>
     </SETTING>
     <!--	
 	*****************************************************************************************************
@@ -254,201 +356,241 @@
         <label>CH.01</label>
         <value>3919000</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ1_MODE">
         <label>Mode</label>
         <value>LSB</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ1_SHOW_NAME">
         <label>Show Name?</label>
         <value>YES</value>
         <!--either YES or NO-->
+        <tooltip>Controls display of channel name on the display</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ1_NAME">
         <label>Name</label>
         <value>FNDLY</value>
         <!--Maximum of 5 characters -->
+        <tooltip>Enter up to a 5 character name for the Channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ2">
         <label>CH.02</label>
         <value>0</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ2_MODE">
         <label>Mode</label>
         <value>DEFAULT</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ2_SHOW_NAME">
         <label>Show Name?</label>
-        <value>YES</value>
+        <value>NO</value>
         <!--either YES or NO-->
+        <tooltip>Controls display of channel name on the display</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ2_NAME">
         <label>Name</label>
-        <value>FNDL1</value>
+        <value>     </value>
         <!--Maximum of 5 characters -->
+        <tooltip>Enter up to a 5 character name for the Channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ3">
         <label>CH.03</label>
         <value>0</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ3_MODE">
         <label>Mode</label>
         <value>DEFAULT</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ3_SHOW_NAME">
         <label>Show Name?</label>
-        <value>YES</value>
+        <value>NO</value>
         <!--either YES or NO-->
+        <tooltip>Controls display of channel name on the display</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ3_NAME">
         <label>Name</label>
-        <value>FNDL2</value>
+        <value>     </value>
         <!--Maximum of 5 characters -->
+        <tooltip>Enter up to a 5 character name for the Channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ4">
         <label>CH.04</label>
         <value>7255000</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ4_MODE">
         <label>Mode</label>
         <value>LSB</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Enter frequency (in Hz) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ4_SHOW_NAME">
         <label>Show Name?</label>
         <value>YES</value>
         <!--either YES or NO-->
+        <tooltip>Controls display of channel name on the display</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ4_NAME">
         <label>Name</label>
         <value>ECARS</value>
         <!--Maximum of 5 characters -->
+        <tooltip>Enter up to a 5 character name for the Channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ5">
         <label>CH.05</label>
         <value>14300000</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ5_MODE">
         <label>Mode</label>
         <value>USB</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ5_SHOW_NAME">
         <label>Show Name?</label>
         <value>YES</value>
         <!--either YES or NO-->
+        <tooltip>Controls display of channel name on the display</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ5_NAME">
         <label>Name</label>
         <value>INTCN</value>
         <!--Maximum of 5 characters -->
+        <tooltip>Enter up to a 5 character name for the Channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ6">
         <label>CH.06</label>
         <value>5330500</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ6_MODE">
         <label>Mode</label>
         <value>USB</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ6_SHOW_NAME">
         <label>Show Name?</label>
         <value>YES</value>
         <!--either YES or NO-->
+        <tooltip>Controls display of channel name on the display</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ6_NAME">
         <label>Name</label>
         <value>60-1 </value>
         <!--Maximum of 5 characters -->
+        <tooltip>Enter up to a 5 character name for the Channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ7">
         <label>CH.07</label>
         <value>5346500</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ7_MODE">
         <label>Mode</label>
         <value>USB</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ7_SHOW_NAME">
         <label>Show Name?</label>
         <value>YES</value>
         <!--either YES or NO-->
+        <tooltip>Controls display of channel name on the display</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ7_NAME">
         <label>Name</label>
         <value>60-2 </value>
         <!--Maximum of 5 characters -->
+        <tooltip>Enter up to a 5 character name for the Channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ8">
         <label>CH.08</label>
         <value>5357000</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ8_MODE">
         <label>Mode</label>
         <value>USB</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ8_SHOW_NAME">
         <label>Show Name?</label>
         <value>YES</value>
         <!--either YES or NO-->
+        <tooltip>Controls display of channel name on the display</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ8_NAME">
         <label>Name</label>
         <value>60-3 </value>
         <!--Maximum of 5 characters -->
+        <tooltip>Enter up to a 5 character name for the Channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ9">
         <label>CH.09</label>
         <value>5371500</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ9_MODE">
         <label>Mode</label>
         <value>USB</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ9_SHOW_NAME">
         <label>Show Name?</label>
         <value>YES</value>
         <!--either YES or NO-->
+        <tooltip>Controls display of channel name on the display</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ9_NAME">
         <label>Name</label>
         <value>60-4 </value>
         <!--Maximum of 5 characters -->
+        <tooltip>Enter up to a 5 character name for the Channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ10">
         <label>CH.10</label>
         <value>5403500</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ10_MODE">
         <label>Mode</label>
         <value>USB</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ10_SHOW_NAME">
         <label>Show Name?</label>
         <value>YES</value>
         <!--either YES or NO-->
+        <tooltip>Controls display of channel name on the display</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ10_NAME">
         <label>Name</label>
-        <value>60-5 </value>
+        <value>60   </value>
         <!--Maximum of 5 characters -->
+        <tooltip>Enter up to a 5 character name for the Channel</tooltip>
     </SETTING>
     <!-- 	
 	End of Named Channels
@@ -458,101 +600,121 @@
         <label>CH.11</label>
         <value>0</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ11_MODE">
         <label>Mode</label>
         <value>DEFAULT</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ12">
         <label>CH.12</label>
         <value>0</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ12_MODE">
         <label>Mode</label>
         <value>DEFAULT</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ13">
         <label>CH.13</label>
         <value>0</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ13_MODE">
         <label>Mode</label>
         <value>DEFAULT</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ14">
         <label>CH.14</label>
         <value>0</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ14_MODE">
         <label>Mode</label>
         <value>DEFAULT</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ15">
         <label>CH.15</label>
         <value>0</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ15_MODE">
         <label>Mode</label>
         <value>DEFAULT</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ16">
         <label>CH.16</label>
         <value>0</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ16_MODE">
         <label>Mode</label>
         <value>DEFAULT</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ17">
         <label>CH.17</label>
         <value>0</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ17_MODE">
         <label>Mode</label>
         <value>DEFAULT</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ18">
         <label>CH.18</label>
         <value>0</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ18_MODE">
         <label>Mode</label>
         <value>DEFAULT</value>
         <!--0=default, 1=Not used, 2=LSB, 3=USB, 4=CWL, 5=CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ19">
         <label>CH.19</label>
         <value>0</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ19_MODE">
         <label>Mode</label>
         <value>DEFAULT</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ20">
         <label>CH.20</label>
         <value>0</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
+        <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ20_MODE">
         <label>Mode</label>
         <value>DEFAULT</value>
         <!--Select one of: DEFAULT, LSB, USB, CWL, CWU-->
+        <tooltip>Select mode of operation - e.g. LSB, USB, CWL, CWU or DEFAULT</tooltip>
     </SETTING>
     <!--	
 	*****************************************************************************************************
@@ -582,115 +744,245 @@
         <value>NONE</value>
         <!--Choice of NONE or BAND. NONE means no restrictions. BAND means only    
 																use move BAND+,BAND- to change to a different frequency area (no dial) -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="TX_RESTRICTIONS">
         <label>Restrictions on TX</label>
         <value>NONE</value>
         <!--Choice of NONE or HAM. NONE means no restrictions. HAM means TX only on HAM bands -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_COUNT">
         <label>Countof HAM Bands:</label>
         <value>0</value>
+        <tooltip>Enter the total number of Ham Bands defined (no more than 10)</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE1_START">
         <label>Band 1 Start</label>
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
+        <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE1_END">
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 1 End</label>
+        <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE2_START">
         <label>Band 2 Start</label>
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
+        <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE2_END">
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 2 End</label>
+        <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE3_START">
         <label>Band 3 Start</label>
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
+        <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE3_END">
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 3 End</label>
+        <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE4_START">
         <label>Band 4 Start</label>
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
+        <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE4_END">
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 4 End</label>
+        <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE5_START">
         <label>Band 5 Start</label>
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
+        <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE5_END">
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 5 End</label>
+        <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE6_START">
         <label>Band 6 Start</label>
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
+        <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE6_END">
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 6 End</label>
+        <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE7_START">
         <label>Band 7 Start</label>
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
+        <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE7_END">
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 7 End</label>
+        <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE8_START">
         <label>Band 8 Start</label>
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
+        <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE8_END">
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 8 End</label>
+        <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE9_START">
         <label>Band 9 Start</label>
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
+        <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE9_END">
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 9 End</label>
+        <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE10_START">
         <label>Band 10 Start</label>
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
+        <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE10_END">
         <value>0</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 10 End</label>
+        <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
+    </SETTING>
+    <!--
+	*****************************************************************************************************
+	Last Used Frequency for Band
+	KD8CEC provides tracks the last used frequency and mode on each band. This allows you to band up/band down
+	and get back to a familiar frequency.  This is Read Only Information
+	*****************************************************************************************************
+-->
+    <SETTING NAME="HAM_BAND_FREQS1">
+        <label>Band 1 Last Used Frequency</label>
+        <value>1872000</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS1_MODE">
+        <label>Band 1 Last Used Mode</label>
+        <value>USB</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS2">
+        <label>Band 2 Last Used Frequency</label>
+        <value>3532000</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS2_MODE">
+        <label>Band 2 Last Used Mode</label>
+        <value>CWU</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS3">
+        <label>Band 3 Last Used Frequency</label>
+        <value>5356000</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS3_MODE">
+        <label>Band 3 Last Used Mode</label>
+        <value>USB</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS4">
+        <label>Band 4 Last Used Frequency</label>
+        <value>7271000</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS4_MODE">
+        <label>Band 4 Last Used Mode</label>
+        <value>LSB</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS5">
+        <label>Band 5 Last Used Frequency</label>
+        <value>10092576</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS5_MODE">
+        <label>Band 5 Last Used Mode</label>
+        <value>USB</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS6">
+        <label>Band 6 Last Used Frequency</label>
+        <value>14052600</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS6_MODE">
+        <label>Band 6 Last Used Mode</label>
+        <value>CWU</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS7">
+        <label>Band 7 Last Used Frequency</label>
+        <value>18120000</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS7_MODE">
+        <label>Band 7 Last Used Mode</label>
+        <value>USB</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS8">
+        <label>Band 8 Last Used Frequency</label>
+        <value>21078000</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS8_MODE">
+        <label>Band 8 Last Used Mode</label>
+        <value>USB</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS9">
+        <label>Band 9 Last Used Frequency</label>
+        <value>24907000</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS9_MODE">
+        <label>Band 9 Last Used Mode</label>
+        <value>USB</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS10">
+        <label>Band 10 Last Used Frequency</label>
+        <value>28078000</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS10_MODE">
+        <label>Band 10 Last Used Mode</label>
+        <value>USB</value>
+        <tooltip></tooltip>
     </SETTING>
     <!--
 	*****************************************************************************************************
@@ -704,6 +996,7 @@
         <label>Boot into SDR Mode</label>
         <value>SDR</value>
         <!--Either NORMAL or SDR  -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <!--		SDR Offset Mode can be one of:
 			NONE: 			No offset is provided to the data send to the SDR  
@@ -717,11 +1010,13 @@
         <label>SDR Freq Offset Mode</label>
         <value>NONE</value>
         <!--NONE, FIXED, MHZ, KHZ   -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="SDR_FREQUENCY">
         <label>SDR Offset frequency</label>
         <value>0</value>
         <!--Check with SDR vendor. Enter frequency in Hz (ie. 32000000) -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <!--	
 	*****************************************************************************************************
@@ -736,106 +1031,127 @@
         <label>TX frequency for Band 1</label>
         <value>7040117</value>
         <!--entered in HZ-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_BAND1_MULTICHAN">
         <label>Frequency offset for mutlichannels</label>
         <value>1000</value>
         <!--entered in HZ-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_BAND1_REG1">
         <label>Contents of WSPR Reg 1</label>
-        <value>0F,BE,F8,2D,7C</value>
+        <value>0F,BD,F7,E3,FA</value>
         <!--5 hex bytes separated by a comma-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_BAND1_REG2">
         <label>Contents of WSPR Reg 1</label>
         <value>00,3D,00</value>
         <!--3 hex bytes separated by a comma-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_BAND2_TXFREQ">
         <label>TX frequency for Band 2</label>
         <value>14097117</value>
         <!--entered in HZ-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_BAND2_MULTICHAN">
         <label>Frequency offset for mutlichannels</label>
         <value>500</value>
         <!--entered in HZ-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_BAND2_REG1">
         <label>Contents of WSPR Reg 1</label>
-        <value>0F,7B,FC,49,F6</value>
+        <value>0F,7A,FC,3E,74</value>
         <!--5 hex bytes separated by a comma-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_BAND2_REG2">
         <label>Contents of WSPR Reg 2</label>
         <value>00,1D,00</value>
         <!--3 hex bytes separated by a comma-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_BAND3_TXFREQ">
         <label>TX frequency for Band 3</label>
         <value>21096117</value>
         <!--entered in HZ-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_BAND3_MULTICHAN">
         <label>Frequency offset for mutlichannels</label>
         <value>312</value>
         <!--entered in HZ-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_BAND3_REG1">
         <label>Contents of WSPR Reg 1</label>
-        <value>0F,B9,F4,C8,F2</value>
+        <value>0F,B8,F4,84,70</value>
         <!--5 hex bytes separated by a comma-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_BAND3_REG2">
         <label>Contents of WSPR Reg 2</label>
         <value>00,13,00</value>
         <!--3 hex bytes separated by a comma-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_COUNT">
         <label>WSPR Messages to Use</label>
         <value>0</value>
         <!--value 0-4. e.g., 3 would mean to use first 3 messages and ignore the 4th-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE1_NAME">
         <label>Name</label>
         <value>     </value>
         <!--5 Character name for this message-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE1">
         <label>Encoded MSG1:</label>
         <value>00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
         <!--Generate using uBITX Manager for now -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE2_NAME">
         <label>Name</label>
         <value>     </value>
         <!--5 Character name for this message-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE2">
         <label>Encoded MSG2:</label>
         <value>00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
         <!--Generate using uBITX Manager for now -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE3_NAME">
         <label>Name</label>
         <value>     </value>
         <!--5 Character name for this message-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE3">
         <label>Encoded MSG3:</label>
         <value>00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
         <!--Generate using uBITX Manager for now -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE4_NAME">
         <label>Name</label>
         <value>     </value>
         <!--5 Character name for this message-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE4">
         <label>Encoded MSG4:</label>
         <value>00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
         <!--Generate using uBITX Manager for now -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <!-- 	
 	*****************************************************************************************************
@@ -852,62 +1168,74 @@
         <label>Enable S-Meter?</label>
         <value>NO</value>
         <!--either YES or NO. YES enables this feature-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="S_METER_LEVEL1">
         <label>Level 1</label>
         <value>124</value>
         <!--Between 0-255 -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="S_METER_LEVEL2">
         <label>Level 2</label>
         <value>208</value>
         <!--Between 0-255 -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="S_METER_LEVEL3">
         <label>Level 3</label>
         <value>296</value>
         <!--Between 0-255 -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="S_METER_LEVEL4">
         <label>Level 4</label>
         <value>388</value>
         <!--Between 0-255 -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="S_METER_LEVEL5">
         <label>Level 5</label>
         <value>484</value>
         <!--Between 0-255 -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="S_METER_LEVEL6">
         <label>Level 6</label>
         <value>608</value>
         <!--Between 0-255 -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="S_METER_LEVEL7">
         <label>Level 7</label>
         <value>756</value>
         <!--Between 0-255 -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="S_METER_LEVEL8">
         <label>Level 8</label>
         <value>896</value>
         <!--Between 0-255 -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <!--OEM display is parallel. To save chip pins some changed to I2C -->
     <SETTING NAME="I2C_LCD_MASTER">
         <label>Master LCD I2C Address</label>
         <value>0x0</value>
         <!--Default 0x27 -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="I2C_LCD_SECOND">
         <label>Secondary LCD I2C Address</label>
         <value>0x0</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="I2C_ADDR_SI5351">
         <!--Best to not mess with this one unless you really know what you are doing-->
         <label>Si5351 I2C adderss chip</label>
-        <value>0xff</value>
+        <value>0x0</value>
         <!-- 0 or 0x60 unless hardware modified -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <!--		
 	*****************************************************************************************************
@@ -925,16 +1253,19 @@
         <value>NO</value>
         <label>Message Line?</label>
         <!--either YES or NO-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="SCROLLING_DISPLAY">
         <label>SCROLLING DISPLAY</label>
         <value>NO</value>
         <!--For LCD output either YES or NO-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="ONE_TWO_LINE_TOGGLE">
         <label>One/Two Line Toggle</label>
         <value>NO</value>
         <!--either YES or NO-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <!-- 	
 	NEXTION
@@ -943,6 +1274,7 @@
         <label>Main Screen DEFAULT or CW</label>
         <value>DEFAULT</value>
         <!--Either DEFAULT or CW; CW display decode code (req 2nd Nano) -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <!-- 	
 GENERAL UX
@@ -951,16 +1283,19 @@ GENERAL UX
         <label>Display Call Sign?</label>
         <value>NO</value>
         <!--either YES or NO-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="STORED_IF_SHIFT">
         <label>Preserve IF Shift?</label>
         <value>NO</value>
         <!--either YES or NO. YES allows IF Shift value to be reused between boots -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="IF_SHIFTVALUE">
         <label>Shift hz (+/-)</label>
         <value>0</value>
         <!-- 10,000 to -9999hz-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CW_DISPLAY_FREQ">
         <label>In CW Mode, Display TX or RX Freq?</label>
@@ -968,11 +1303,13 @@ GENERAL UX
         <!--Select TX to have display show the actual TX frequency when sending CW
 																	Select RX to have the display show the actual RX frequency when sending CW
 																	See http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html  -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CW_FREQUENCY_ADJUSTMENT">
         <label>CW Freq Adjust Value</label>
         <!--Extra adjustment to the displayed frequency. 0-600 -->
         <value>0</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <!-- 	
 	*****************************************************************************************************
@@ -991,80 +1328,98 @@ GENERAL UX
     <SETTING NAME="EXTENDED_KEY1_START">
         <label>Key1 Start ADC</label>
         <value>0</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY1_END">
         <label>Key1 End ADC</label>
         <value>0</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY1_FUNC">
         <label>Key1 Function</label>
         <value>NONE</value>
         <!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY2_START">
         <label>Key2 Start ADC</label>
         <value>0</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY2_END">
         <label>Key2 End ADC</label>
         <value>0</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY2_FUNC">
         <label>Key2 Function</label>
         <value>NONE</value>
         <!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY3_START">
         <label>Key3 Start ADC</label>
         <value>0</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY3_END">
         <label>Key3 End ADC</label>
         <value>0</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY3_FUNC">
         <label>Key3 Function</label>
         <value>NONE</value>
         <!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY4_START">
         <label>Key4 Start ADC</label>
         <value>0</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY4_END">
         <label>Key4 End ADC</label>
         <value>0</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY4_FUNC">
         <label>Key4 Function</label>
         <value>NONE</value>
         <!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY5_START">
         <label>Key5 Start ADC</label>
         <value>0</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY5_END">
         <label>Key5 End ADC</label>
         <value>0</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY5_FUNC">
         <label>Key5 Function</label>
         <value>NONE</value>
         <!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY6_START">
         <label>Key6 Start ADC</label>
         <value>0</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY6_END">
         <label>Key6 End ADC</label>
         <value>0</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="EXTENDED_KEY6_FUNC">
         <label>Key6 Function</label>
         <value>NONE</value>
         <!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <!-- 	
 	*****************************************************************************************************
@@ -1091,11 +1446,13 @@ GENERAL UX
         <label>Enable Custom LPF</label>
         <value>OFF</value>
         <!--One of OFF, STANDARD, EXTENDED -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER1_ENDFREQ">
         <label>Ending frequency of LPF1</label>
         <value>255</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER1_CONTROL">
         <label>Filter Ctrl1</label>
@@ -1104,11 +1461,13 @@ GENERAL UX
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER2_ENDFREQ">
         <label>Ending frequency of LPF1</label>
         <value>255</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER2_CONTROL">
         <label>Filter Ctrl2</label>
@@ -1117,11 +1476,13 @@ GENERAL UX
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER3_ENDFREQ">
         <label>Ending frequency of LPF3</label>
         <value>255</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER3_CONTROL">
         <label>Filter Ctrl1</label>
@@ -1130,11 +1491,13 @@ GENERAL UX
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER4_ENDFREQ">
         <label>Ending frequency of LPF4</label>
         <value>255</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER4_CONTROL">
         <label>Filter Ctrl4</label>
@@ -1143,11 +1506,13 @@ GENERAL UX
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER5_ENDFREQ">
         <label>Ending frequency of LPF5</label>
         <value>255</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER5_CONTROL">
         <label>Filter Ctrl5</label>
@@ -1156,11 +1521,13 @@ GENERAL UX
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER6_ENDFREQ">
         <label>Ending frequency of LPF6</label>
         <value>255</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER6_CONTROL">
         <label>Filter Ctrl6</label>
@@ -1169,18 +1536,21 @@ GENERAL UX
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER7_ENDFREQ">
         <label>Ending frequency of LPF1</label>
         <value>255</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
+        <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER7_CONTROL">
         <label>Filter Ctrl1</label>
-        <value>TX_LPF_A,TX_LPF_B,TX_LPF_C,D10</value>
+        <value>TX_LPF_A,TX_LPF_C,D10</value>
         <!--Either NONE *or* Comma separated list of any combination of: 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
+        <tooltip>to be added</tooltip>
     </SETTING>
 </data>

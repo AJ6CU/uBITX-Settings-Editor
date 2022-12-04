@@ -1,4 +1,5 @@
 #ENUMS#####################################################
+INTERNAL_FIRMWARE_VERSION = ["NA", "V1.061", "V1.07", "V1.08", "V1.09", "V2.0"]
 MODE_SELECT = ["DEFAULT","xxx","LSB","USB","CWL","CWU"]
 BOOL_SELECT = ["NO","YES"]
 TUNE_RESTRICT_SELECT = ["NONE","BAND"]
