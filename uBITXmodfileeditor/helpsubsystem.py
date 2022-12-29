@@ -1,20 +1,37 @@
+#   Tkinter imports
+
 from tkinter import *
 from tkinter import ttk
+
+import tkinter.messagebox
+
 import sys
 
 from lxml import etree as ET
-from fonts import *
 from printtolog import *
 
 
 
-def helpPrintln(outputBox,itsStyle, content):
-    global fontList
+def helpPrintln(outputBox, itsStyle, content):
+    fontList = {'Heading1': ('Times New Roman', 24, 'bold', 'italic'),
+                    'Heading2': ('Arial', 18, 'bold'),
+                    'Heading3': ('Arial', 12, 'bold'),
+                    'Heading4': ('Arial', 10, 'bold'),
+                    'Normal': ('Default', 10),
+                    'Emphasis': ('Default', 12, 'bold'),
+                    'Symbol1': ('Symbol', 18, 'bold'),
+                    'Symbol3': ('Symbol', 12, 'bold')}
     outputBox.tag_configure(itsStyle, font=fontList[itsStyle],wrap=WORD)
     outputBox.insert(END, f'{content}\n', itsStyle)
 
-def helpDialog(winTitle, helpFile):
-    #   create new top level window for the help
+def helpDialog(winTitle, helpFile, logMe):
+    try:
+        helpRoot = ET.parse(helpFile)
+    except:
+        logMe.println("timestamp"," Missing file: " + helpFile)
+        tkinter.messagebox.showerror(title="FATAL ERROR", message=helpFile+" is missing or corrupted. Please re-install application. \nEXITING")
+        sys.exit(-1)
+#   create new top level window for the help
 
     helpWindow = Toplevel()
     helpWindow.title(winTitle)
@@ -37,13 +54,6 @@ def helpDialog(winTitle, helpFile):
     okButton.grid(row=1, columnspan=2)
     helpBoxScrollBar.grid(row=0, column=1, sticky='nsew')
 
-    try:
-        helpTree = ET.parse(helpFile)
-    except:
-        printlnToLog(get_time_stamp() + ": Missing file: " + helpFile)
-        tkinter.messagebox.showerror(title="FATAL ERROR", message=helpFile+" is missing or corrupted. Please re-install application. \nEXITING")
-        sys.exit(-1)
-    helpRoot = helpTree.getroot()
 
     for textTag in helpRoot.findall('.//FORMAT'):
         formatting = textTag.get("NAME")

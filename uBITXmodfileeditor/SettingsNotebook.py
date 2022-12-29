@@ -1,20 +1,71 @@
 from tkinter import *
+import tkinter as tk
+import pygubu.widgets.simpletooltip as tooltip
+from lxml import etree as ET
+
 from settingsnotebookwidget import SettingsnotebookWidget
 
 class SettingsNotebook(SettingsnotebookWidget):
+    #   temp to control what is processed
+    readyToGo = ['VERSION_ADDRESS', 'FACTORY_VALUES_MASTER_CAL', 'FACTORY_VALUES_USB_CAL',
+             'MASTER_CAL', 'USB_CAL', 'CW_CAL', 'VFO_A', 'VFO_A_MODE', 'VFO_B', 'VFO_B_MODE',
+             'TUNING_STEP_INDEX', 'TUNING_STEP1', 'TUNING_STEP2', 'TUNING_STEP3', 'TUNING_STEP4', 'TUNING_STEP5',
+             'CW_KEY_TYPE',
+            'CW_SIDETONE',  'CW_SPEED_WPM', 'CW_DELAY_MS','CW_START_MS', 'USER_CALLSIGN', 'CW_ADC_ST_FROM', 'CW_ADC_ST_TO',
+            'CW_ADC_DOT_FROM', 'CW_ADC_DOT_TO', 'CW_ADC_DASH_FROM', 'CW_ADC_DASH_TO', 'CW_ADC_BOTH_FROM', 'CW_ADC_BOTH_TO',
+            'CHANNEL_FREQ1', 'CHANNEL_FREQ1_MODE', 'CHANNEL_FREQ1_SHOW_NAME', 'CHANNEL_FREQ1_NAME',
+            'CHANNEL_FREQ1', 'CHANNEL_FREQ1_MODE', 'CHANNEL_FREQ1_SHOW_NAME', 'CHANNEL_FREQ1_NAME',
+            'CHANNEL_FREQ2', 'CHANNEL_FREQ2_MODE', 'CHANNEL_FREQ2_SHOW_NAME', 'CHANNEL_FREQ2_NAME',
+            'CHANNEL_FREQ3', 'CHANNEL_FREQ3_MODE', 'CHANNEL_FREQ3_SHOW_NAME', 'CHANNEL_FREQ3_NAME',
+            'CHANNEL_FREQ4', 'CHANNEL_FREQ4_MODE', 'CHANNEL_FREQ4_SHOW_NAME', 'CHANNEL_FREQ4_NAME',
+            'CHANNEL_FREQ5', 'CHANNEL_FREQ5_MODE', 'CHANNEL_FREQ5_SHOW_NAME', 'CHANNEL_FREQ5_NAME',
+            'CHANNEL_FREQ6', 'CHANNEL_FREQ6_MODE', 'CHANNEL_FREQ6_SHOW_NAME', 'CHANNEL_FREQ6_NAME',
+            'CHANNEL_FREQ7', 'CHANNEL_FREQ7_MODE', 'CHANNEL_FREQ7_SHOW_NAME', 'CHANNEL_FREQ7_NAME',
+            'CHANNEL_FREQ8', 'CHANNEL_FREQ8_MODE', 'CHANNEL_FREQ8_SHOW_NAME', 'CHANNEL_FREQ8_NAME',
+            'CHANNEL_FREQ9', 'CHANNEL_FREQ9_MODE', 'CHANNEL_FREQ9_SHOW_NAME', 'CHANNEL_FREQ9_NAME',
+            'CHANNEL_FREQ10', 'CHANNEL_FREQ10_MODE', 'CHANNEL_FREQ10_SHOW_NAME', 'CHANNEL_FREQ10_NAME',
+            'CHANNEL_FREQ11', 'CHANNEL_FREQ11_MODE',  'CHANNEL_FREQ12', 'CHANNEL_FREQ12_MODE',
+            'CHANNEL_FREQ13', 'CHANNEL_FREQ13_MODE',  'CHANNEL_FREQ14', 'CHANNEL_FREQ14_MODE',
+            'CHANNEL_FREQ15', 'CHANNEL_FREQ15_MODE',  'CHANNEL_FREQ16', 'CHANNEL_FREQ16_MODE',
+            'CHANNEL_FREQ17', 'CHANNEL_FREQ17_MODE',  'CHANNEL_FREQ18', 'CHANNEL_FREQ18_MODE',
+            'CHANNEL_FREQ19', 'CHANNEL_FREQ19_MODE',  'CHANNEL_FREQ20', 'CHANNEL_FREQ20_MODE',
+            'HAM_BAND_COUNT', 'HAM_BAND_RANGE1_START', 'HAM_BAND_RANGE1_END', 'HAM_BAND_RANGE2_START', 'HAM_BAND_RANGE2_END',
+            'HAM_BAND_RANGE3_START', 'HAM_BAND_RANGE3_END', 'HAM_BAND_RANGE4_START', 'HAM_BAND_RANGE4_END', 'HAM_BAND_RANGE5_START',
+            'HAM_BAND_RANGE5_END', 'HAM_BAND_RANGE6_START', 'HAM_BAND_RANGE6_END', 'HAM_BAND_RANGE7_START', 'HAM_BAND_RANGE7_END',
+            'HAM_BAND_RANGE8_START', 'HAM_BAND_RANGE8_END', 'HAM_BAND_RANGE9_START', 'HAM_BAND_RANGE9_END', 'HAM_BAND_RANGE10_START',
+            'HAM_BAND_RANGE10_END',  'HAM_BAND_FREQS1', 'HAM_BAND_FREQS2','HAM_BAND_FREQS3','HAM_BAND_FREQS4','HAM_BAND_FREQS5',
+            'HAM_BAND_FREQS6','HAM_BAND_FREQS7','HAM_BAND_FREQS8','HAM_BAND_FREQS9','HAM_BAND_FREQS10', 'HAM_BAND_FREQS1_MODE',
+            'HAM_BAND_FREQS2_MODE', 'HAM_BAND_FREQS3_MODE', 'HAM_BAND_FREQS4_MODE', 'HAM_BAND_FREQS5_MODE', 'HAM_BAND_FREQS6_MODE',
+            'HAM_BAND_FREQS7_MODE', 'HAM_BAND_FREQS8_MODE', 'HAM_BAND_FREQS9_MODE', 'HAM_BAND_FREQS10_MODE'
+            ]
+
+    #   this needs to be moved somewhere else too
+    clearErrorMessages = [ 'TUNING_STEPS_INVALID_WIDGET',
+                     'CW_SIDETONE_INVALID_WIDGET',  'CW_SPEED_WPM_INVALID_WIDGET',
+                    'CW_DELAY_MS_INVALID_WIDGET','CW_START_MS_INVALID_WIDGET', 'USER_CALLSIGN_INVALID_WIDGET', 'CW_ADC_ST_INVALID_WIDGET',
+                    'CW_ADC_DOT_INVALID_WIDGET', 'CW_ADC_DASH_INVALID_WIDGET', 'CW_ADC_BOTH_INVALID_WIDGET',
+                     'Extended_Channel_Frame',
+                    'HAM_BAND_COUNT_INVALID_WIDGET',
+                    'HAM_BAND_RANGE1_INVALID_WIDGET', 'HAM_BAND_RANGE2_INVALID_WIDGET', 'HAM_BAND_RANGE3_INVALID_WIDGET', 'HAM_BAND_RANGE4_INVALID_WIDGET',
+                    'HAM_BAND_RANGE5_INVALID_WIDGET', 'HAM_BAND_RANGE6_INVALID_WIDGET', 'HAM_BAND_RANGE7_INVALID_WIDGET', 'HAM_BAND_RANGE8_INVALID_WIDGET',
+                    'HAM_BAND_RANGE9_INVALID_WIDGET', 'HAM_BAND_RANGE10_INVALID_WIDGET', 'TUNING_STEP_INDEX_WIDGET']
     #   Class variables
     #
+    newTuningSteps = ()
     #   error message will be set when ever validation fails
     validationErrorMsg = ''
 
     #   Error messages common to all validation
     error_Msgs = {
-        "NOTINMIDDLE":"Value must be {:,} to {:,}, prior value restored",
+        "NOTINMIDDLE":"must be between {:,} and {:,}, prior value restored",
         "NOTANUMBER":"{} is not a valid number, prior value restored",
-        "NOTLOWER":"Value must be lower than {:,}, prior value restored",
-        "NOTHIGHER":"Value must be higher than {:,}, prior value restored",
-        "STRINGTOOLONG": "Entry longer than {}, prior value restored"
+        "NOTLOWER":"must be lower than {:,}, prior value restored",
+        "NOTHIGHER":"must be higher than {:,}, prior value restored",
+        "STRINGTOOLONG": "longer than {} characters, prior value restored",
+        "NOTVALIDTUNINGSTEP": "Left most two digits of any tuning step must be {:,} to {:,}, prior value restored"
     }
+
+    priorValues={}
 
     # Value Constraints
     ADC = {'LOW':0, 'HIGH':1023}            # Min/Max for Analog to Digital read - used for cw keys, etc.
@@ -23,6 +74,9 @@ class SettingsNotebook(SettingsnotebookWidget):
     MASTER_CAL_BOUNDS = {'LOW':-500000, 'HIGH': 500000}
     USB_CAL_BOUNDS = {'LOW':0, 'HIGH': 20000000}
     CW_CAL_BOUNDS = {'LOW':0, 'HIGH': 20000000}
+    PREDEFINED_TUNING_STEPS = {'0': [1,5,10,50,100], '1': [10,20,50,100,1000], '2': [1,10,100,1000,10000],
+                               '3': [10,50,500,5000,10000], '4': [10,50,100,2000,50000] }
+    TUNING_STEPS_BOUNDS = {'LOW':1, 'HIGH': 60}
     CW_SIDETONE_BOUNDS = {'LOW':100, 'HIGH': 2000}
     CW_SPEED_WPM_BOUNDS = {'LOW':1, 'HIGH': 250}
     CW_START_MS_BOUNDS = {'LOW':0, 'HIGH': 5000}
@@ -30,6 +84,11 @@ class SettingsNotebook(SettingsnotebookWidget):
     CHANNEL_WSPR_NAME_MAX = 5
     USER_CALLSIGN_BOUNDS = {'HIGH':18 }
     HAM_BAND_COUNT_BOUNDS = {'LOW':0, 'HIGH':10}
+
+    errorMsgPersistFlag = 0         #This is a hack to keep error messages around thru the next entry/selection
+                                    #When an error message is displayed, this flag is incremented.
+                                    #When a good entry is validated, this error message is set to zero
+                                    #On the next valid entry, the errormessage is unpacked and is no longer visible
 
     ##############################
     #  Validation helper functions
@@ -81,19 +140,20 @@ class SettingsNotebook(SettingsnotebookWidget):
         #               False if one of the tests fails
         if(self.validateNumber(x,lowValue, highValue)):
             if (highOrLow == "HIGH"):
-                if (self.getNumber(x) <= int(target )):          # Target is supposed to be greater than X
+                if (self.getNumber(x) <= int(self.getNumber(target) )):          # Target is supposed to be greater than X
                     return True
                 else:
-                    SettingsNotebook.validationErrorMsg = SettingsNotebook.error_Msgs["NOTLOWER"].format(int(target))
+                    SettingsNotebook.validationErrorMsg = SettingsNotebook.error_Msgs["NOTLOWER"].format(int(self.getNumber(target)))
                     return False
-            elif (self.getNumber(x) >= int(target)):             # Target is supposed to be less than X
+            elif (self.getNumber(x) >= int(self.getNumber(target))):             # Target is supposed to be less than X
                 return True
             else:
-                SettingsNotebook.validationErrorMsg = SettingsNotebook.error_Msgs["NOTHIGHER"].format(int(target))
+                SettingsNotebook.validationErrorMsg = SettingsNotebook.error_Msgs["NOTHIGHER"].format(int(self.getNumber(target)))
                 return False
         else:
             return False            # Error message already set by validateNumber
-
+    def clearErrorMsgPersistFlag(self):
+        errorMsgPersistFlag = 0
 
     ##############################
     #  Validation functions
@@ -102,41 +162,99 @@ class SettingsNotebook(SettingsnotebookWidget):
     def validate_MASTER_CAL(self, p_entry_value, v_condition):
 
         if (v_condition == "focusin"):
-            self.priorValue = p_entry_value
+            self.priorValues["MASTER_CAL"] = p_entry_value
         if(self.validateNumber(p_entry_value,  SettingsNotebook.MASTER_CAL_BOUNDS['LOW'],  SettingsNotebook.MASTER_CAL_BOUNDS['HIGH'])):
-            self.MASTER_CAL_INVALID_WIDGET.forget()
             return True
         else:
-            self.MASTER_CAL_INVALID.set(SettingsNotebook.validationErrorMsg)
-            self.MASTER_CAL_INVALID_WIDGET.pack()
-            self.MASTER_CAL.set(self.priorValue)
+            self.log.printerror("timestamp", "Master Calibration " + SettingsNotebook.validationErrorMsg)
+            self.MASTER_CAL.set(self.priorValues["MASTER_CAL"])
             return False
 
     def validate_USB_CAL(self, p_entry_value, v_condition):
 
         if (v_condition == "focusin"):
-            self.priorValue = p_entry_value
+            self.priorValues["USB_CAL"] = p_entry_value
         if(self.validateNumber(p_entry_value, SettingsNotebook.USB_CAL_BOUNDS['LOW'], SettingsNotebook.USB_CAL_BOUNDS['HIGH'])):
-            self.USB_CAL_INVALID_WIDGET.forget()
             return True
         else:
-            self.USB_CAL_INVALID.set(SettingsNotebook.validationErrorMsg)
-            self.USB_CAL_INVALID_WIDGET.pack()
-            self.USB_CAL.set(self.priorValue)
+            self.log.printerror("timestamp", "SSB BFO Calibration " + SettingsNotebook.validationErrorMsg)
+            self.USB_CAL.set(self.priorValues["USB_CAL"])
             return False
 
     def validate_CW_CAL(self, p_entry_value, v_condition):
+        if (v_condition == "focusin"):
+            self.priorValues["CW_CAL"] = p_entry_value
+        if(self.validateNumber(p_entry_value, SettingsNotebook.CW_CAL_BOUNDS['LOW'], SettingsNotebook.CW_CAL_BOUNDS['HIGH'])):
+            return True
+        else:
+            self.log.printerror("timestamp", "CW BFO Calibration " + SettingsNotebook.validationErrorMsg)
+            self.CW_CAL.set(self.priorValues["CW_CAL"])
+            return False
+
+
+
+    def validate_TUNING_STEP(self, p_entry_value, v_condition, currentStep):
 
         if (v_condition == "focusin"):
             self.priorValue = p_entry_value
-        if(self.validateNumber(p_entry_value,SettingsNotebook.CW_CAL_BOUNDS['LOW'], SettingsNotebook.CW_CAL_BOUNDS['HIGH'])):
-            self.CW_CAL_INVALID_WIDGET.forget()
-            return True
+
+        # Make sure we have a number here
+        try:
+            valueToTest = int(p_entry_value)
+        except:                                   #   if it fails the conversion to number, must not be a number
+            SettingsNotebook.validationErrorMsg = SettingsNotebook.error_Msgs["NOTANUMBER"].format(p_entry_value)
+            SettingsNotebook.errorMsgPersistFlag +=1
+
         else:
-            self.CW_CAL_INVALID.set(SettingsNotebook.validationErrorMsg)
-            self.CW_CAL_INVALID_WIDGET.pack()
-            self.CW_CAL.set(self.priorValue)
-            return False
+            # We have a real number, now need to look at first (left most) digits to make sure they are 1-60
+            noSpacesString = p_entry_value.strip()
+            stepLength= len(noSpacesString)
+
+            if stepLength >= 2:
+                testValue = int(noSpacesString[:2])
+            elif stepLength > 1:
+                testValue = int(noSpacesString[:1])
+            else:
+                testValue = 0
+
+            if((testValue >= SettingsNotebook.TUNING_STEPS_BOUNDS['LOW']) & (SettingsNotebook.TUNING_STEPS_BOUNDS['HIGH'] >= testValue)):
+                if SettingsNotebook.errorMsgPersistFlag == 0:
+                    # If it passes this test, we have a number where the left most digits are between 1-60
+                    # And there is no other error message showing
+                    self.TUNING_STEPS_INVALID_WIDGET.forget()
+                else:
+                    SettingsNotebook.errorMsgPersistFlag = 0        #This resets the error message count so it will disappear on next entry
+                return True
+            else:
+                # Reaching here means that a step's left most digits are out of the range of 1-60
+                SettingsNotebook.validationErrorMsg = \
+                    SettingsNotebook.error_Msgs["NOTVALIDTUNINGSTEP"].format(SettingsNotebook.TUNING_STEPS_BOUNDS['LOW'],
+                                                                             SettingsNotebook.TUNING_STEPS_BOUNDS['HIGH'])
+                SettingsNotebook.errorMsgPersistFlag +=1
+        # if we reach this point, there is an error...
+        self.TUNING_STEPS_INVALID.set(SettingsNotebook.validationErrorMsg)
+        self.TUNING_STEPS_INVALID_WIDGET.pack()
+        getattr(self, "TUNING_"+currentStep).set(self.priorValue)
+        return False
+
+
+    def validate_TUNING_STEP1(self, p_entry_value, v_condition):
+        return self.validate_TUNING_STEP(p_entry_value, v_condition, "STEP1")
+
+    def validate_TUNING_STEP2(self, p_entry_value, v_condition):
+        return self.validate_TUNING_STEP(p_entry_value, v_condition, "STEP2")
+
+    def validate_TUNING_STEP3(self, p_entry_value, v_condition):
+        return self.validate_TUNING_STEP(p_entry_value, v_condition, "STEP3")
+
+    def validate_TUNING_STEP4(self, p_entry_value, v_condition):
+        return self.validate_TUNING_STEP(p_entry_value, v_condition, "STEP4")
+
+    def validate_TUNING_STEP5(self, p_entry_value, v_condition):
+        return self.validate_TUNING_STEP(p_entry_value, v_condition, "STEP5")
+
+
+
 
     def validate_CW_SIDETONE(self, p_entry_value, v_condition):
 
@@ -320,30 +438,27 @@ class SettingsNotebook(SettingsnotebookWidget):
 
     def validate_CHANNEL_FREQ(self, p_entry_value, v_condition, bandName):
         if (v_condition == "focusin"):
-            self.priorValue = p_entry_value
+            self.priorValues["CHANNEL_"+ bandName] = p_entry_value
         if (self.validateNumber(p_entry_value, SettingsNotebook.FREQ['LOW'], SettingsNotebook.FREQ['HIGH'])):
-            getattr(self, "CHANNEL_"+bandName+"_INVALID_WIDGET").forget()
             return True
 
         # if we reach this point, there is an error...
-        getattr(self, "CHANNEL_"+bandName+"_INVALID").set(SettingsNotebook.validationErrorMsg)
-        getattr(self, "CHANNEL_"+bandName+"_INVALID_WIDGET").pack()
-        getattr(self, "CHANNEL_"+bandName).set(self.priorValue)
+        self.log.printerror("timestamp", "Channel Freq " + SettingsNotebook.validationErrorMsg)
+        getattr(self, "CHANNEL_"+bandName).set(self.priorValues["CHANNEL_"+bandName])
         return False
 
     def validate_CHANNEL_NAME(self, p_entry_value, v_condition, bandName):
 
         if (v_condition == "focusin"):
-            self.priorValue = p_entry_value
-            getattr(self, "CHANNEL_"+bandName+"_NAME").set(self.priorValue.strip())
+            self.priorValues["CHANNEL_"+bandName+"_NAME"] = p_entry_value
+            getattr(self, "CHANNEL_"+bandName+"_NAME").set(p_entry_value.strip())
         if(self.checkLength(p_entry_value.strip(), SettingsNotebook.CHANNEL_WSPR_NAME_MAX) ):
             getattr(self, "CHANNEL_"+bandName+"_NAME").set(p_entry_value.strip())
-            getattr(self, "CHANNEL_"+bandName+"_INVALID_WIDGET").forget()
             return True
 
-        getattr(self, "CHANNEL_"+bandName+"_INVALID").set(SettingsNotebook.validationErrorMsg)
-        getattr(self, "CHANNEL_"+bandName+"_INVALID_WIDGET").pack()
-        getattr(self, "CHANNEL_"+bandName+"_NAME").set(self.priorValue)
+        # if we reach this point, there is an error...
+        self.log.printerror("timestamp", "Channel Name " + SettingsNotebook.validationErrorMsg)
+        getattr(self, "CHANNEL_"+bandName+"_NAME").set(self.priorValues["CHANNEL_"+bandName+"_NAME"])
         return False
 
     def validate_CHANNEL_FREQ1_NAME(self, p_entry_value, v_condition):
@@ -443,44 +558,43 @@ class SettingsNotebook(SettingsnotebookWidget):
 
     def validate_HAM_BAND_COUNT(self, p_entry_value, v_condition):
         if (v_condition == "focusin"):
-            self.priorValue = p_entry_value
+            self.priorValues["HAM_BAND_COUNT"] = p_entry_value
         if (self.validateNumberRange (p_entry_value, SettingsNotebook.HAM_BAND_COUNT_BOUNDS['LOW'],
                                  SettingsNotebook.HAM_BAND_COUNT_BOUNDS['HIGH'], 'HIGH',
-                                 SettingsNotebook.HAM_BAND_COUNT_BOUNDS['HIGH']+1)):
-            self.HAM_BAND_COUNT_INVALID_WIDGET.forget()
+                                 str(SettingsNotebook.HAM_BAND_COUNT_BOUNDS['HIGH']+1))):
             return True
 
         # if we reach this point, there is an error...
-        self.HAM_BAND_COUNT_INVALID.set(SettingsNotebook.validationErrorMsg)
-        self.HAM_BAND_COUNT_INVALID_WIDGET.pack()
-        self.HAM_BAND_COUNT.set(self.priorValue)
+        self.log.printerror("timestamp", "Number of Ham Bands must be between" + SettingsNotebook.validationErrorMsg)
+        self.HAM_BAND_COUNT.set(self.priorValues["HAM_BAND_COUNT"])
+
         return False
 
     def validate_HAM_BAND_START(self, p_entry_value, v_condition, bandName):
         if (v_condition == "focusin"):
-            self.priorValue = p_entry_value
-        if (self.validateFREQKHZ(p_entry_value, 'HIGH', getattr(self, "HAM_BAND_"+bandName+"_END").get())):
-            getattr(self, "HAM_BAND_"+bandName+"_INVALID_WIDGET").forget()
-            return True
+            self.priorValues["HAM_BAND_"+bandName+"_START"] = p_entry_value
+        elif (v_condition == "focusout"):
+            if (self.getNumber(p_entry_value) == '0') | (self.validateFREQKHZ(p_entry_value, 'HIGH', str(SettingsNotebook.FREQKHZ['HIGH']))):
+                return True
 
-        # if we reach this point, there is an error...
-        getattr(self, "HAM_BAND_"+bandName+"_INVALID").set(SettingsNotebook.validationErrorMsg)
-        getattr(self, "HAM_BAND_"+bandName+"_INVALID_WIDGET").pack()
-        getattr(self, "HAM_BAND_"+bandName+"_START").set(self.priorValue)
-        return False
+            # if we reach this point, there is an error...
+            self.log.printerror("timestamp", "Ham Band start freq " + SettingsNotebook.validationErrorMsg)
+            getattr(self, "HAM_BAND_"+bandName+"_START").set(self.priorValues["HAM_BAND_"+bandName+"_START"])
+            return False
+        return True
 
     def validate_HAM_BAND_END(self, p_entry_value, v_condition, bandName):
         if (v_condition == "focusin"):
-            self.priorValue = p_entry_value
-        if (self.validateFREQKHZ(p_entry_value, 'LOW', getattr(self, "HAM_BAND_"+bandName+"_START").get())):
-            getattr(self, "HAM_BAND_"+bandName+"_INVALID_WIDGET").forget()
-            return True
+            self.priorValues["HAM_BAND_"+bandName+"_END"] = p_entry_value
+        elif (v_condition == "focusout"):
+            if (self.getNumber(p_entry_value) == '0') | (self.validateFREQKHZ(p_entry_value, 'LOW', getattr(self, "HAM_BAND_"+bandName+"_START").get())):
+                return True
 
-        # if we reach this point, there is an error...
-        getattr(self, "HAM_BAND_"+bandName+"_INVALID").set(SettingsNotebook.validationErrorMsg)
-        getattr(self, "HAM_BAND_"+bandName+"_INVALID_WIDGET").pack()
-        getattr(self, "HAM_BAND_"+bandName+"_END").set(self.priorValue)
-        return False
+            # if we reach this point, there is an error...
+            self.log.printerror("timestamp", "Ham Band end freq " + SettingsNotebook.validationErrorMsg)
+            getattr(self, "HAM_BAND_"+bandName+"_END").set(self.priorValues["HAM_BAND_"+bandName+"_END"])
+            return False
+        return True
 
     def validate_HAM_BAND_RANGE1_START(self, p_entry_value, v_condition):
         return self.validate_HAM_BAND_START(p_entry_value, v_condition, "RANGE1")
@@ -674,3 +788,97 @@ class SettingsNotebook(SettingsnotebookWidget):
 
         self.HAM_BAND_RANGE10_START.set("28.000")
         self.HAM_BAND_RANGE10_END.set("29.700")
+
+    def new_Default_Tuning_Step(self, *args):
+        self.TUNING_STEP_INDEX.set(SettingsNotebook.newTuningSteps.index(self.TUNING_STEP_INDEX_VALUE.get())+1)
+
+    def Refresh_Tuning_Steps(self):
+        SettingsNotebook.newTuningSteps = (self.TUNING_STEP1.get(), self.TUNING_STEP2.get(), self.TUNING_STEP3.get(), self.TUNING_STEP4.get(), self.TUNING_STEP5.get())
+        self.TUNING_STEP_INDEX_VALUE_WIDGET['values'] = SettingsNotebook.newTuningSteps
+        self.TUNING_STEP_INDEX_VALUE_WIDGET.current(int(self.TUNING_STEP_INDEX.get())-1)
+        self.new_Default_Tuning_Step()
+
+    def Tuning_Steps_Set_Common(self):
+        i = self.Tuning_Steps_Common.get()
+        if int(i) < 5:
+            self.TUNING_STEP1.set(SettingsNotebook.PREDEFINED_TUNING_STEPS[i][0])
+            self.TUNING_STEP2.set(SettingsNotebook.PREDEFINED_TUNING_STEPS[i][1])
+            self.TUNING_STEP3.set(SettingsNotebook.PREDEFINED_TUNING_STEPS[i][2])
+            self.TUNING_STEP4.set(SettingsNotebook.PREDEFINED_TUNING_STEPS[i][3])
+            self.TUNING_STEP5.set(SettingsNotebook.PREDEFINED_TUNING_STEPS[i][4])
+
+            self.TUNING_STEP1_WIDGET.configure(state='disabled')
+            self.TUNING_STEP2_WIDGET.configure(state='disabled')
+            self.TUNING_STEP3_WIDGET.configure(state='disabled')
+            self.TUNING_STEP4_WIDGET.configure(state='disabled')
+            self.TUNING_STEP5_WIDGET.configure(state='disabled')
+        else:
+            self.TUNING_STEP1_WIDGET.configure(state='normal')
+            self.TUNING_STEP2_WIDGET.configure(state='normal')
+            self.TUNING_STEP3_WIDGET.configure(state='normal')
+            self.TUNING_STEP4_WIDGET.configure(state='normal')
+            self.TUNING_STEP5_WIDGET.configure(state='normal')
+
+        self.Refresh_Tuning_Steps()
+
+
+    def setNotebook(self, valueTree):
+
+        self.userModroot = valueTree
+
+        for userSetting in self.userModroot.findall('.//SETTING'):
+            name = userSetting.get("NAME")
+
+            if name in SettingsNotebook.readyToGo:
+                print("name=", name)
+                getattr(self, name).set(userSetting.find("value").text)
+
+                toolTip = userSetting.find("tooltip").text
+
+                if toolTip != None:
+                    tooltip.create(getattr(self, name + "_WIDGET"), toolTip)
+                    # Check for special processing
+            else:
+                print("Not ready=",  name)
+
+
+        # Post process some special cases
+        self.TUNING_STEP_INDEX_VALUE.trace_add('write',self.new_Default_Tuning_Step)
+        self.Refresh_Tuning_Steps()
+        self.TUNING_STEP1_WIDGET.configure(state='normal')
+        self.TUNING_STEP2_WIDGET.configure(state='normal')
+        self.TUNING_STEP3_WIDGET.configure(state='normal')
+        self.TUNING_STEP4_WIDGET.configure(state='normal')
+        self.TUNING_STEP5_WIDGET.configure(state='normal')
+
+        #   Clear error messages
+        for widget in SettingsNotebook.clearErrorMessages:
+            getattr(self, widget).forget()
+
+        self.enableNotebook()
+
+    def getNotebook(self):
+
+        for userSetting in self.userModroot.findall('.//SETTING'):
+            name = userSetting.get("NAME")
+
+            if name in SettingsNotebook.readyToGo:
+                print("name=", name)
+                userSetting.find("value").text=getattr(self, name).get()
+            else:
+                print("Not ready=",  name)
+
+        return self.userModroot
+
+    def setLog(self, log ):                     # this method is called to tell object where to write the log
+        self.log = log
+
+    def enableNotebook(self):
+        self.master.grid(row=2, column=0, padx=15, sticky='ewns')
+
+    def disableNotebook(self):
+        self.master.forget()
+
+
+
+

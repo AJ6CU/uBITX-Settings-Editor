@@ -76,8 +76,243 @@ class SettingsnotebookWidget(ttk.Frame):
             anchor="center", expand="true", fill="both", side="left")
         self.USER_CALLSIGN_INVALID_Frame.grid(column=2, row=0)
         self.General_Operator_Settings_Frame.pack(padx="50 0", side="top")
-        self.General_Operator_Frame.grid(
-            column=0, pady="20 0", row=0, sticky="w")
+        self.General_Operator_Frame.pack(anchor="w", side="top")
+        self.frame4 = ttk.Frame(self.General_Frame)
+        self.frame4.configure(height=200, width=200)
+        separator2 = ttk.Separator(self.frame4)
+        separator2.configure(orient="horizontal")
+        separator2.pack(
+            anchor="center",
+            expand="true",
+            fill="x",
+            pady="10 0",
+            side="top")
+        self.frame4.pack(anchor="w", expand="true", fill="x", side="top")
+        self.General_Tuning_Steps_Frame = ttk.Frame(self.General_Frame)
+        self.General_Tuning_Steps_Frame.configure(height=200, width=200)
+        self.Tuning_Steps_Title_Frame = ttk.Frame(
+            self.General_Tuning_Steps_Frame)
+        self.Tuning_Steps_Title_Frame.configure(height=200, width=200)
+        self.General_Tuning_Steps_Label = ttk.Label(
+            self.Tuning_Steps_Title_Frame)
+        self.General_Tuning_Steps_Label.configure(
+            style="Heading3.TLabel", text='Tuning Steps')
+        self.General_Tuning_Steps_Label.pack(
+            anchor="w", expand="true", fill="x")
+        self.Tuning_Steps_Title_Frame.pack(
+            anchor="w", expand="true", fill="x", pady="20 0", side="top")
+        self.General_Tuning_Steps_Settings_Frame = ttk.Frame(
+            self.General_Tuning_Steps_Frame)
+        self.General_Tuning_Steps_Settings_Frame.configure(
+            height=200, width=200)
+        frame10 = ttk.Frame(self.General_Tuning_Steps_Settings_Frame)
+        frame10.configure(width=200)
+        label105 = ttk.Label(frame10)
+        label105.configure(
+            style="Heading4.TLabel",
+            text='Step#\t1\t2\t3\t4\t5')
+        label105.grid(column=0, row=0, sticky="w")
+        self.Tuning_Steps_RadioButton5 = ttk.Radiobutton(frame10)
+        self.Tuning_Steps_Common = tk.StringVar(value='5')
+        self.Tuning_Steps_RadioButton5.configure(
+            style="RadioButtonNormal.TRadiobutton",
+            text='Custom',
+            value=5,
+            variable=self.Tuning_Steps_Common)
+        self.Tuning_Steps_RadioButton5.grid(
+            column=0, padx=38, pady=10, row=6, sticky="w")
+        self.Tuning_Steps_RadioButton5.configure(
+            command=self.Tuning_Steps_Set_Common)
+        self.Tuning_Steps_RadioButton0 = ttk.Radiobutton(frame10)
+        self.Tuning_Steps_RadioButton0.configure(
+            style="RadioButtonNormal.TRadiobutton",
+            text='1\t5\t10\t50\t100 Hz',
+            value=0,
+            variable=self.Tuning_Steps_Common)
+        self.Tuning_Steps_RadioButton0.grid(
+            column=0, padx=38, row=1, sticky="w")
+        self.Tuning_Steps_RadioButton0.configure(
+            command=self.Tuning_Steps_Set_Common)
+        self.Tuning_Steps_RadioButton1 = ttk.Radiobutton(frame10)
+        self.Tuning_Steps_RadioButton1.configure(
+            style="RadioButtonNormal.TRadiobutton",
+            text='10\t20\t50\t100\t1000 Hz',
+            value=1,
+            variable=self.Tuning_Steps_Common)
+        self.Tuning_Steps_RadioButton1.grid(
+            column=0, padx=38, row=2, sticky="w")
+        self.Tuning_Steps_RadioButton1.configure(
+            command=self.Tuning_Steps_Set_Common)
+        self.Tuning_Steps_RadioButton2 = ttk.Radiobutton(frame10)
+        self.Tuning_Steps_RadioButton2.configure(
+            style="RadioButtonNormal.TRadiobutton",
+            text='1\t10\t100\t1000\t10000 Hz',
+            value=2,
+            variable=self.Tuning_Steps_Common)
+        self.Tuning_Steps_RadioButton2.grid(
+            column=0, padx=38, row=3, sticky="w")
+        self.Tuning_Steps_RadioButton2.configure(
+            command=self.Tuning_Steps_Set_Common)
+        self.Tuning_Steps_RadioButton3 = ttk.Radiobutton(frame10)
+        self.Tuning_Steps_RadioButton3.configure(
+            style="RadioButtonNormal.TRadiobutton",
+            text='10\t50\t500\t5000\t10000 Hz',
+            value=3,
+            variable=self.Tuning_Steps_Common)
+        self.Tuning_Steps_RadioButton3.grid(
+            column=0, padx=38, row=4, sticky="w")
+        self.Tuning_Steps_RadioButton3.configure(
+            command=self.Tuning_Steps_Set_Common)
+        self.Tuning_Steps_RadioButton4 = ttk.Radiobutton(frame10)
+        self.Tuning_Steps_RadioButton4.configure(
+            style="RadioButtonNormal.TRadiobutton",
+            text='10\t50\t100\t2000\t50000 Hz',
+            value=4,
+            variable=self.Tuning_Steps_Common)
+        self.Tuning_Steps_RadioButton4.grid(
+            column=0, padx=38, row=5, sticky="w")
+        self.Tuning_Steps_RadioButton4.configure(
+            command=self.Tuning_Steps_Set_Common)
+        frame10.pack(anchor="w", pady="20 0", side="top")
+        self.frame6 = ttk.Frame(self.General_Tuning_Steps_Settings_Frame)
+        self.frame6.configure(width=200)
+        label20 = ttk.Label(self.frame6)
+        label20.configure(style="Heading4.TLabel", text='Step#')
+        label20.grid(column=0, padx="0 20", row=0, sticky="e")
+        label19 = ttk.Label(self.frame6)
+        label19.configure(style="Heading4.TLabel", text='1\t2\t3\t4\t5')
+        label19.grid(column=1, columnspan=8, padx="0 20", row=0, sticky="w")
+        self.label84 = ttk.Label(self.frame6)
+        self.label84.configure(style="Heading4.TLabel", text='Steps (HZ)')
+        self.label84.grid(column=0, padx="0 20", row=1, sticky="e")
+        self.TUNING_STEP1_WIDGET = ttk.Entry(self.frame6)
+        self.TUNING_STEP1 = tk.StringVar()
+        self.TUNING_STEP1_WIDGET.configure(
+            justify="right",
+            state="disabled",
+            style="Normal.TEntry",
+            textvariable=self.TUNING_STEP1,
+            validate="focus",
+            width=7)
+        self.TUNING_STEP1_WIDGET.grid(column=2, padx="0 8", row=1)
+        _validatecmd = (
+            self.TUNING_STEP1_WIDGET.register(
+                self.validate_TUNING_STEP1), "%P", "%V")
+        self.TUNING_STEP1_WIDGET.configure(validatecommand=_validatecmd)
+        self.TUNING_STEP2_WIDGET = ttk.Entry(self.frame6)
+        self.TUNING_STEP2 = tk.StringVar()
+        self.TUNING_STEP2_WIDGET.configure(
+            justify="right",
+            state="disabled",
+            style="Normal.TEntry",
+            textvariable=self.TUNING_STEP2,
+            validate="focus",
+            width=7)
+        self.TUNING_STEP2_WIDGET.grid(column=3, padx="0 8", row=1)
+        _validatecmd = (
+            self.TUNING_STEP2_WIDGET.register(
+                self.validate_TUNING_STEP2), "%P", "%V")
+        self.TUNING_STEP2_WIDGET.configure(validatecommand=_validatecmd)
+        self.TUNING_STEP3_WIDGET = ttk.Entry(self.frame6)
+        self.TUNING_STEP3 = tk.StringVar()
+        self.TUNING_STEP3_WIDGET.configure(
+            justify="right",
+            state="disabled",
+            style="Normal.TEntry",
+            textvariable=self.TUNING_STEP3,
+            validate="focus",
+            width=7)
+        self.TUNING_STEP3_WIDGET.grid(column=4, padx="0 8", row=1)
+        _validatecmd = (
+            self.TUNING_STEP3_WIDGET.register(
+                self.validate_TUNING_STEP3), "%P", "%V")
+        self.TUNING_STEP3_WIDGET.configure(validatecommand=_validatecmd)
+        self.TUNING_STEP4_WIDGET = ttk.Entry(self.frame6)
+        self.TUNING_STEP4 = tk.StringVar()
+        self.TUNING_STEP4_WIDGET.configure(
+            justify="right",
+            state="disabled",
+            style="Normal.TEntry",
+            textvariable=self.TUNING_STEP4,
+            validate="focus",
+            width=7)
+        self.TUNING_STEP4_WIDGET.grid(column=5, padx="0 8", row=1)
+        _validatecmd = (
+            self.TUNING_STEP4_WIDGET.register(
+                self.validate_TUNING_STEP4), "%P", "%V")
+        self.TUNING_STEP4_WIDGET.configure(validatecommand=_validatecmd)
+        self.TUNING_STEP5_WIDGET = ttk.Entry(self.frame6)
+        self.TUNING_STEP5 = tk.StringVar()
+        self.TUNING_STEP5_WIDGET.configure(
+            justify="right",
+            state="disabled",
+            style="Normal.TEntry",
+            textvariable=self.TUNING_STEP5,
+            validate="focus",
+            width=7)
+        self.TUNING_STEP5_WIDGET.grid(column=6, row=1)
+        _validatecmd = (
+            self.TUNING_STEP5_WIDGET.register(
+                self.validate_TUNING_STEP5), "%P", "%V")
+        self.TUNING_STEP5_WIDGET.configure(validatecommand=_validatecmd)
+        self.TUNING_STEPS_INVALID_WIDGET_Frame = ttk.Frame(self.frame6)
+        self.TUNING_STEPS_INVALID_WIDGET_Frame.configure(width=200)
+        self.TUNING_STEPS_INVALID_WIDGET = tk.Message(
+            self.TUNING_STEPS_INVALID_WIDGET_Frame)
+        self.TUNING_STEPS_INVALID = tk.StringVar(
+            value='An error message with lots of text and information on it.')
+        self.TUNING_STEPS_INVALID_WIDGET.configure(
+            font="{Arial} 10 {bold italic}",
+            foreground="#ff0000",
+            justify="left",
+            takefocus=False,
+            text='An error message with lots of text and information on it.',
+            textvariable=self.TUNING_STEPS_INVALID,
+            width=200)
+        self.TUNING_STEPS_INVALID_WIDGET.pack(
+            anchor="center", expand="true", fill="both", side="left")
+        self.TUNING_STEPS_INVALID_WIDGET_Frame.grid(
+            column=7, padx=10, row=0, rowspan=3)
+        label26 = ttk.Label(self.frame6)
+        label26.grid(row=2)
+        self.frame6.pack(anchor="w", padx=50, side="top")
+        frame1 = ttk.Frame(self.General_Tuning_Steps_Settings_Frame)
+        frame1.configure(height=200, width=200)
+        label21 = ttk.Label(frame1)
+        label21.configure(style="Heading4.TLabel", text='Default Step:')
+        label21.grid(column=0, padx=5, row=0)
+        self.TUNING_STEP_INDEX_VALUE_WIDGET = ttk.Combobox(frame1)
+        self.TUNING_STEP_INDEX_VALUE = tk.StringVar()
+        self.TUNING_STEP_INDEX_VALUE_WIDGET.configure(
+            justify="center",
+            state="readonly",
+            style="ComboBox4.TCombobox",
+            textvariable=self.TUNING_STEP_INDEX_VALUE,
+            values='10 20 50 100 1000',
+            width=5)
+        self.TUNING_STEP_INDEX_VALUE_WIDGET.grid(column=1, row=0)
+        frame8 = ttk.Frame(frame1)
+        frame8.configure(height=0, width=0)
+        self.TUNING_STEP_INDEX_WIDGET = ttk.Label(frame8)
+        self.TUNING_STEP_INDEX = tk.StringVar()
+        self.TUNING_STEP_INDEX_WIDGET.configure(
+            textvariable=self.TUNING_STEP_INDEX)
+        self.TUNING_STEP_INDEX_WIDGET.pack()
+        frame8.grid(column=7, pady="20 0", row=1)
+        frame1.pack(anchor="w", side="top")
+        self.General_Tuning_Steps_Settings_Frame.pack(padx="50 0", side="top")
+        self.General_Tuning_Steps_Frame.pack(anchor="w", side="top")
+        self.frame7 = ttk.Frame(self.General_Frame)
+        self.frame7.configure(height=200, width=200)
+        separator4 = ttk.Separator(self.frame7)
+        separator4.configure(orient="horizontal")
+        separator4.pack(
+            anchor="center",
+            expand="true",
+            fill="x",
+            pady="10 0",
+            side="top")
+        self.frame7.pack(anchor="w", expand="true", fill="x", side="top")
         self.General_CW_Frame = ttk.Frame(self.General_Frame)
         self.General_CW_Frame.configure(height=200, width=200)
         self.Operator_CW_Title_Frame = ttk.Frame(self.General_CW_Frame)
@@ -87,7 +322,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.General_Settings_CW_Label.configure(
             style="Heading3.TLabel", text='CW')
         self.General_Settings_CW_Label.pack(
-            anchor="w", expand="true", fill="x")
+            anchor="w", expand="true", fill="x", pady="20 0")
         self.Operator_CW_Title_Frame.pack(
             anchor="w", expand="true", fill="x", side="top")
         self.General_CW_Settings_Frame = ttk.Frame(self.General_CW_Frame)
@@ -244,7 +479,18 @@ class SettingsnotebookWidget(ttk.Frame):
             anchor="center", expand="true", fill="both", side="left")
         self.CW_DELAY_MS_INVALID_Frame.grid(column=2, row=14)
         self.General_CW_Settings_Frame.pack(padx="50 0", side="top")
-        self.General_CW_Frame.grid(column=0, pady="20 0", row=1, sticky="w")
+        self.frame5 = ttk.Frame(self.General_CW_Frame)
+        self.frame5.configure(height=200, width=200)
+        separator3 = ttk.Separator(self.frame5)
+        separator3.configure(orient="horizontal")
+        separator3.pack(
+            anchor="center",
+            expand="true",
+            fill="x",
+            pady="10 0",
+            side="top")
+        self.frame5.pack(anchor="w", expand="true", fill="x", side="top")
+        self.General_CW_Frame.pack(anchor="w", side="top")
         self.Operator_Channel_Frame = ttk.Frame(self.General_Frame)
         self.Operator_Channel_Frame.configure(height=200, width=200)
         self.All_Channel_Frame = ttk.Frame(self.Operator_Channel_Frame)
@@ -329,9 +575,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ1_WIDGET.register(
                 self.validate_CHANNEL_FREQ1), "%P", "%V")
         self.CHANNEL_FREQ1_WIDGET.configure(validatecommand=_validatecmd)
-        self.label34 = ttk.Label(self.General_Channels_Settings_Frame)
-        self.label34.configure(text='Hz')
-        self.label34.grid(column=5, padx="0 10", pady="5 5", row=4)
+        label34 = ttk.Label(self.General_Channels_Settings_Frame)
+        label34.configure(text='Hz')
+        label34.grid(column=5, padx="0 10", pady="5 5", row=4)
         self.CHANNEL_FREQ1_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ1_MODE = tk.StringVar()
@@ -340,32 +586,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox3.TCombobox",
             textvariable=self.CHANNEL_FREQ1_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ1_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 5", row=4, sticky="w")
-        self.frame16 = ttk.Frame(self.General_Channels_Settings_Frame)
-        self.frame16.configure(height=30, width=400)
-        self.CHANNEL_FREQ1_INVALID_WIDGET = tk.Message(self.frame16)
-        self.CHANNEL_FREQ1_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ1_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ1_INVALID,
-            width=400)
-        self.CHANNEL_FREQ1_INVALID_WIDGET.pack(
-            anchor="w", expand="true", fill="y", side="left")
-        self.frame16.grid(
-            column=11,
-            columnspan=7,
-            pady="5 5",
-            row=4,
-            rowspan=1,
-            sticky="w")
+        self.CHANNEL_FREQ1_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ2_Label = ttk.Label(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ2_Label.configure(
@@ -409,9 +636,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ2_WIDGET.register(
                 self.validate_CHANNEL_FREQ2), "%P", "%V")
         self.CHANNEL_FREQ2_WIDGET.configure(validatecommand=_validatecmd)
-        self.label37 = ttk.Label(self.General_Channels_Settings_Frame)
-        self.label37.configure(text='Hz')
-        self.label37.grid(column=5, padx="0 10", pady="5 0", row=5)
+        label37 = ttk.Label(self.General_Channels_Settings_Frame)
+        label37.configure(text='Hz')
+        label37.grid(column=5, padx="0 10", pady="5 0", row=5)
         self.CHANNEL_FREQ2_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ2_MODE = tk.StringVar()
@@ -420,30 +647,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox4.TCombobox",
             textvariable=self.CHANNEL_FREQ2_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ2_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=5, sticky="w")
-        self.frame17 = ttk.Frame(self.General_Channels_Settings_Frame)
-        self.CHANNEL_FREQ2_INVALID_WIDGET = tk.Message(self.frame17)
-        self.CHANNEL_FREQ2_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ2_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ2_INVALID,
-            width=400)
-        self.CHANNEL_FREQ2_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame17.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=5,
-            sticky="w")
+        self.CHANNEL_FREQ2_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ3_Label = ttk.Label(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ3_Label.configure(
@@ -487,9 +697,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ3_WIDGET.register(
                 self.validate_CHANNEL_FREQ3), "%P", "%V")
         self.CHANNEL_FREQ3_WIDGET.configure(validatecommand=_validatecmd)
-        self.label40 = ttk.Label(self.General_Channels_Settings_Frame)
-        self.label40.configure(text='Hz')
-        self.label40.grid(column=5, padx="0 10", pady="5 0", row=6)
+        label40 = ttk.Label(self.General_Channels_Settings_Frame)
+        label40.configure(text='Hz')
+        label40.grid(column=5, padx="0 10", pady="5 0", row=6)
         self.CHANNEL_FREQ3_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ3_MODE = tk.StringVar()
@@ -498,30 +708,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox3.TCombobox",
             textvariable=self.CHANNEL_FREQ3_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ3_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=6, sticky="w")
-        self.frame18 = ttk.Frame(self.General_Channels_Settings_Frame)
-        self.CHANNEL_FREQ3_INVALID_WIDGET = tk.Message(self.frame18)
-        self.CHANNEL_FREQ3_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ3_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ3_INVALID,
-            width=400)
-        self.CHANNEL_FREQ3_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame18.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=6,
-            sticky="w")
+        self.CHANNEL_FREQ3_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ4_Label = ttk.Label(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ4_Label.configure(
@@ -565,9 +758,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ4_WIDGET.register(
                 self.validate_CHANNEL_FREQ4), "%P", "%V")
         self.CHANNEL_FREQ4_WIDGET.configure(validatecommand=_validatecmd)
-        self.label43 = ttk.Label(self.General_Channels_Settings_Frame)
-        self.label43.configure(text='Hz')
-        self.label43.grid(column=5, padx="0 10", pady="5 0", row=7)
+        label43 = ttk.Label(self.General_Channels_Settings_Frame)
+        label43.configure(text='Hz')
+        label43.grid(column=5, padx="0 10", pady="5 0", row=7)
         self.CHANNEL_FREQ4_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ4_MODE = tk.StringVar()
@@ -576,30 +769,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox3.TCombobox",
             textvariable=self.CHANNEL_FREQ4_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ4_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=7, sticky="w")
-        self.frame19 = ttk.Frame(self.General_Channels_Settings_Frame)
-        self.CHANNEL_FREQ4_INVALID_WIDGET = tk.Message(self.frame19)
-        self.CHANNEL_FREQ4_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ4_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ4_INVALID,
-            width=400)
-        self.CHANNEL_FREQ4_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame19.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=7,
-            sticky="w")
+        self.CHANNEL_FREQ4_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ5_Label = ttk.Label(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ5_Label.configure(
@@ -643,9 +819,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ5_WIDGET.register(
                 self.validate_CHANNEL_FREQ5), "%P", "%V")
         self.CHANNEL_FREQ5_WIDGET.configure(validatecommand=_validatecmd)
-        self.label46 = ttk.Label(self.General_Channels_Settings_Frame)
-        self.label46.configure(text='Hz')
-        self.label46.grid(column=5, padx="0 10", pady="5 0", row=8)
+        label46 = ttk.Label(self.General_Channels_Settings_Frame)
+        label46.configure(text='Hz')
+        label46.grid(column=5, padx="0 10", pady="5 0", row=8)
         self.CHANNEL_FREQ5_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ5_MODE = tk.StringVar()
@@ -654,30 +830,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox3.TCombobox",
             textvariable=self.CHANNEL_FREQ5_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ5_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=8, sticky="w")
-        self.frame20 = ttk.Frame(self.General_Channels_Settings_Frame)
-        self.CHANNEL_FREQ5_INVALID_WIDGET = tk.Message(self.frame20)
-        self.CHANNEL_FREQ5_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ5_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ5_INVALID,
-            width=400)
-        self.CHANNEL_FREQ5_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame20.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=8,
-            sticky="w")
+        self.CHANNEL_FREQ5_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ6_Label = ttk.Label(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ6_Label.configure(
@@ -721,9 +880,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ6_WIDGET.register(
                 self.validate_CHANNEL_FREQ6), "%P", "%V")
         self.CHANNEL_FREQ6_WIDGET.configure(validatecommand=_validatecmd)
-        self.label49 = ttk.Label(self.General_Channels_Settings_Frame)
-        self.label49.configure(text='Hz')
-        self.label49.grid(column=5, padx="0 10", pady="5 0", row=9)
+        label49 = ttk.Label(self.General_Channels_Settings_Frame)
+        label49.configure(text='Hz')
+        label49.grid(column=5, padx="0 10", pady="5 0", row=9)
         self.CHANNEL_FREQ6_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ6_MODE = tk.StringVar()
@@ -732,30 +891,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox3.TCombobox",
             textvariable=self.CHANNEL_FREQ6_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ6_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=9, sticky="w")
-        self.frame21 = ttk.Frame(self.General_Channels_Settings_Frame)
-        self.CHANNEL_FREQ6_INVALID_WIDGET = tk.Message(self.frame21)
-        self.CHANNEL_FREQ6_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ6_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ6_INVALID,
-            width=400)
-        self.CHANNEL_FREQ6_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame21.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=9,
-            sticky="w")
+        self.CHANNEL_FREQ6_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ7_Label = ttk.Label(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ7_Label.configure(
@@ -800,9 +942,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ7_WIDGET.register(
                 self.validate_CHANNEL_FREQ7), "%P", "%V")
         self.CHANNEL_FREQ7_WIDGET.configure(validatecommand=_validatecmd)
-        self.label52 = ttk.Label(self.General_Channels_Settings_Frame)
-        self.label52.configure(text='Hz')
-        self.label52.grid(column=5, padx="0 10", pady="5 0", row=10)
+        label52 = ttk.Label(self.General_Channels_Settings_Frame)
+        label52.configure(text='Hz')
+        label52.grid(column=5, padx="0 10", pady="5 0", row=10)
         self.CHANNEL_FREQ7_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ7_MODE = tk.StringVar()
@@ -811,30 +953,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox3.TCombobox",
             textvariable=self.CHANNEL_FREQ7_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ7_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=10, sticky="w")
-        self.frame22 = ttk.Frame(self.General_Channels_Settings_Frame)
-        self.CHANNEL_FREQ7_INVALID_WIDGET = tk.Message(self.frame22)
-        self.CHANNEL_FREQ7_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ7_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ7_INVALID,
-            width=400)
-        self.CHANNEL_FREQ7_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame22.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=10,
-            sticky="w")
+        self.CHANNEL_FREQ7_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ8_Label = ttk.Label(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ8_Label.configure(
@@ -879,9 +1004,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ8_WIDGET.register(
                 self.validate_CHANNEL_FREQ8), "%P", "%V")
         self.CHANNEL_FREQ8_WIDGET.configure(validatecommand=_validatecmd)
-        self.label55 = ttk.Label(self.General_Channels_Settings_Frame)
-        self.label55.configure(text='Hz')
-        self.label55.grid(column=5, padx="0 10", pady="5 0", row=11)
+        label55 = ttk.Label(self.General_Channels_Settings_Frame)
+        label55.configure(text='Hz')
+        label55.grid(column=5, padx="0 10", pady="5 0", row=11)
         self.CHANNEL_FREQ8_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ8_MODE = tk.StringVar()
@@ -890,30 +1015,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox3.TCombobox",
             textvariable=self.CHANNEL_FREQ8_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ8_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=11, sticky="w")
-        self.frame23 = ttk.Frame(self.General_Channels_Settings_Frame)
-        self.CHANNEL_FREQ8_INVALID_WIDGET = tk.Message(self.frame23)
-        self.CHANNEL_FREQ8_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ8_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ8_INVALID,
-            width=400)
-        self.CHANNEL_FREQ8_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame23.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=11,
-            sticky="w")
+        self.CHANNEL_FREQ8_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ9_Label = ttk.Label(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ9_Label.configure(
@@ -958,9 +1066,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ9_WIDGET.register(
                 self.validate_CHANNEL_FREQ9), "%P", "%V")
         self.CHANNEL_FREQ9_WIDGET.configure(validatecommand=_validatecmd)
-        self.label58 = ttk.Label(self.General_Channels_Settings_Frame)
-        self.label58.configure(text='Hz')
-        self.label58.grid(column=5, padx="0 10", pady="5 0", row=12)
+        label58 = ttk.Label(self.General_Channels_Settings_Frame)
+        label58.configure(text='Hz')
+        label58.grid(column=5, padx="0 10", pady="5 0", row=12)
         self.CHANNEL_FREQ9_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ9_MODE = tk.StringVar()
@@ -969,30 +1077,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox3.TCombobox",
             textvariable=self.CHANNEL_FREQ9_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ9_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=12, sticky="w")
-        self.frame24 = ttk.Frame(self.General_Channels_Settings_Frame)
-        self.CHANNEL_FREQ9_INVALID_WIDGET = tk.Message(self.frame24)
-        self.CHANNEL_FREQ9_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ9_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ9_INVALID,
-            width=400)
-        self.CHANNEL_FREQ9_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame24.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=12,
-            sticky="w")
+        self.CHANNEL_FREQ9_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ10_Label = ttk.Label(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ10_Label.configure(
@@ -1045,52 +1136,35 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox3.TCombobox",
             textvariable=self.CHANNEL_FREQ10_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ10_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=13, sticky="w")
-        self.label61 = ttk.Label(self.General_Channels_Settings_Frame)
-        self.label61.configure(text='Hz')
-        self.label61.grid(column=5, padx="0 10", pady="5 0", row=13)
-        self.frame25 = ttk.Frame(self.General_Channels_Settings_Frame)
-        self.CHANNEL_FREQ10_INVALID_WIDGET = tk.Message(self.frame25)
-        self.CHANNEL_FREQ10_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ10_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ10_INVALID,
-            width=400)
-        self.CHANNEL_FREQ10_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame25.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=13,
-            sticky="w")
+        self.CHANNEL_FREQ10_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
+        label61 = ttk.Label(self.General_Channels_Settings_Frame)
+        label61.configure(text='Hz')
+        label61.grid(column=5, padx="0 10", pady="5 0", row=13)
         self.General_Channels_Settings_Frame.pack(
             anchor="w", expand="false", fill="x", padx="50 0", pady="20 0", side="top")
         self.General_Channels_Settings_Frame.grid_anchor("w")
         self.Standard_Channel_Frame.pack(anchor="w", side="top")
         self.show_extended_channels_frame = ttk.Frame(self.All_Channel_Frame)
         self.show_extended_channels_frame.configure(height=200, width=200)
-        self.checkbutton2 = ttk.Checkbutton(self.show_extended_channels_frame)
+        checkbutton2 = ttk.Checkbutton(self.show_extended_channels_frame)
         self.toggleExtendedChannelsCheckBox = tk.StringVar()
-        self.checkbutton2.configure(
+        checkbutton2.configure(
             offvalue=0,
             onvalue=1,
             style="Checkbox4.TCheckbutton",
             text='Show Extended Channels',
             variable=self.toggleExtendedChannelsCheckBox)
-        self.checkbutton2.pack(anchor="w", pady="10 0")
-        self.checkbutton2.configure(command=self.toggleExtendedChannels)
-        self.separator1 = ttk.Separator(self.show_extended_channels_frame)
-        self.separator1.configure(orient="horizontal")
-        self.separator1.pack(
+        checkbutton2.pack(anchor="w", pady="10 0")
+        checkbutton2.configure(command=self.toggleExtendedChannels)
+        separator1 = ttk.Separator(self.show_extended_channels_frame)
+        separator1.configure(orient="horizontal")
+        separator1.pack(
             anchor="center",
             expand="true",
             fill="x",
@@ -1149,9 +1223,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ11_WIDGET.register(
                 self.validate_CHANNEL_FREQ11), "%P", "%V")
         self.CHANNEL_FREQ11_WIDGET.configure(validatecommand=_validatecmd)
-        self.label77 = ttk.Label(self.General_Extended_Channel_Frame)
-        self.label77.configure(text='Hz')
-        self.label77.grid(column=5, padx="0 10", pady="5 0", row=4)
+        label77 = ttk.Label(self.General_Extended_Channel_Frame)
+        label77.configure(text='Hz')
+        label77.grid(column=5, padx="0 10", pady="5 0", row=4)
         self.CHANNEL_FREQ11_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ11_MODE = tk.StringVar()
@@ -1160,32 +1234,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox3.TCombobox",
             textvariable=self.CHANNEL_FREQ11_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ11_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 5", row=4, sticky="w")
-        self.frame27 = ttk.Frame(self.General_Extended_Channel_Frame)
-        self.frame27.configure(height=1, width=30)
-        self.CHANNEL_FREQ11_INVALID_WIDGET = tk.Message(self.frame27)
-        self.CHANNEL_FREQ11_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ11_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ11_INVALID,
-            width=400)
-        self.CHANNEL_FREQ11_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame27.grid(
-            column=11,
-            columnspan=7,
-            pady="5 0",
-            row=4,
-            rowspan=1,
-            sticky="w")
+        self.CHANNEL_FREQ11_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ12_Label = ttk.Label(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ12_Label.configure(
@@ -1206,9 +1261,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ12_WIDGET.register(
                 self.validate_CHANNEL_FREQ12), "%P", "%V")
         self.CHANNEL_FREQ12_WIDGET.configure(validatecommand=_validatecmd)
-        self.label79 = ttk.Label(self.General_Extended_Channel_Frame)
-        self.label79.configure(text='Hz')
-        self.label79.grid(column=5, padx="0 10", pady="5 0", row=5)
+        label79 = ttk.Label(self.General_Extended_Channel_Frame)
+        label79.configure(text='Hz')
+        label79.grid(column=5, padx="0 10", pady="5 0", row=5)
         self.CHANNEL_FREQ12_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ12_MODE = tk.StringVar()
@@ -1217,30 +1272,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox4.TCombobox",
             textvariable=self.CHANNEL_FREQ12_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ12_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=5, sticky="w")
-        self.frame28 = ttk.Frame(self.General_Extended_Channel_Frame)
-        self.CHANNEL_FREQ12_INVALID_WIDGET = tk.Message(self.frame28)
-        self.CHANNEL_FREQ12_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ12_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ12_INVALID,
-            width=400)
-        self.CHANNEL_FREQ12_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame28.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=5,
-            sticky="w")
+        self.CHANNEL_FREQ12_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ13_Label = ttk.Label(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ13_Label.configure(
@@ -1261,9 +1299,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ13_WIDGET.register(
                 self.validate_CHANNEL_FREQ13), "%P", "%V")
         self.CHANNEL_FREQ13_WIDGET.configure(validatecommand=_validatecmd)
-        self.label81 = ttk.Label(self.General_Extended_Channel_Frame)
-        self.label81.configure(text='Hz')
-        self.label81.grid(column=5, padx="0 10", pady="5 0", row=6)
+        label81 = ttk.Label(self.General_Extended_Channel_Frame)
+        label81.configure(text='Hz')
+        label81.grid(column=5, padx="0 10", pady="5 0", row=6)
         self.CHANNEL_FREQ13_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ13_MODE = tk.StringVar()
@@ -1272,30 +1310,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox4.TCombobox",
             textvariable=self.CHANNEL_FREQ13_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ13_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=6, sticky="w")
-        self.frame29 = ttk.Frame(self.General_Extended_Channel_Frame)
-        self.CHANNEL_FREQ13_INVALID_WIDGET = tk.Message(self.frame29)
-        self.CHANNEL_FREQ13_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ13_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ13_INVALID,
-            width=400)
-        self.CHANNEL_FREQ13_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame29.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=6,
-            sticky="w")
+        self.CHANNEL_FREQ13_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ14_Label = ttk.Label(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ14_Label.configure(
@@ -1316,9 +1337,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ14_WIDGET.register(
                 self.validate_CHANNEL_FREQ14), "%P", "%V")
         self.CHANNEL_FREQ14_WIDGET.configure(validatecommand=_validatecmd)
-        self.label83 = ttk.Label(self.General_Extended_Channel_Frame)
-        self.label83.configure(text='Hz')
-        self.label83.grid(column=5, padx="0 10", pady="5 0", row=7)
+        label83 = ttk.Label(self.General_Extended_Channel_Frame)
+        label83.configure(text='Hz')
+        label83.grid(column=5, padx="0 10", pady="5 0", row=7)
         self.CHANNEL_FREQ14_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ14_MODE = tk.StringVar()
@@ -1327,30 +1348,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox4.TCombobox",
             textvariable=self.CHANNEL_FREQ14_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ14_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=7, sticky="w")
-        self.frame30 = ttk.Frame(self.General_Extended_Channel_Frame)
-        self.CHANNEL_FREQ14_INVALID_WIDGET = tk.Message(self.frame30)
-        self.CHANNEL_FREQ14_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ14_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ14_INVALID,
-            width=400)
-        self.CHANNEL_FREQ14_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame30.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=7,
-            sticky="w")
+        self.CHANNEL_FREQ14_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ15_Label = ttk.Label(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ15_Label.configure(
@@ -1371,9 +1375,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ15_WIDGET.register(
                 self.validate_CHANNEL_FREQ15), "%P", "%V")
         self.CHANNEL_FREQ15_WIDGET.configure(validatecommand=_validatecmd)
-        self.label85 = ttk.Label(self.General_Extended_Channel_Frame)
-        self.label85.configure(text='Hz')
-        self.label85.grid(column=5, padx="0 10", pady="5 0", row=8)
+        label85 = ttk.Label(self.General_Extended_Channel_Frame)
+        label85.configure(text='Hz')
+        label85.grid(column=5, padx="0 10", pady="5 0", row=8)
         self.CHANNEL_FREQ15_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ15_MODE = tk.StringVar()
@@ -1382,30 +1386,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox4.TCombobox",
             textvariable=self.CHANNEL_FREQ15_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ15_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=8, sticky="w")
-        self.frame31 = ttk.Frame(self.General_Extended_Channel_Frame)
-        self.CHANNEL_FREQ15_INVALID_WIDGET = tk.Message(self.frame31)
-        self.CHANNEL_FREQ15_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ15_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ15_INVALID,
-            width=400)
-        self.CHANNEL_FREQ15_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame31.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=8,
-            sticky="w")
+        self.CHANNEL_FREQ15_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ16_Label = ttk.Label(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ16_Label.configure(
@@ -1426,9 +1413,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ16_WIDGET.register(
                 self.validate_CHANNEL_FREQ16), "%P", "%V")
         self.CHANNEL_FREQ16_WIDGET.configure(validatecommand=_validatecmd)
-        self.label87 = ttk.Label(self.General_Extended_Channel_Frame)
-        self.label87.configure(text='Hz')
-        self.label87.grid(column=5, padx="0 10", pady="5 0", row=9)
+        label87 = ttk.Label(self.General_Extended_Channel_Frame)
+        label87.configure(text='Hz')
+        label87.grid(column=5, padx="0 10", pady="5 0", row=9)
         self.CHANNEL_FREQ16_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ16_MODE = tk.StringVar()
@@ -1437,30 +1424,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox4.TCombobox",
             textvariable=self.CHANNEL_FREQ16_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ16_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=9, sticky="w")
-        self.frame32 = ttk.Frame(self.General_Extended_Channel_Frame)
-        self.CHANNEL_FREQ16_INVALID_WIDGET = tk.Message(self.frame32)
-        self.CHANNEL_FREQ16_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ16_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ16_INVALID,
-            width=400)
-        self.CHANNEL_FREQ16_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame32.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=9,
-            sticky="w")
+        self.CHANNEL_FREQ16_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ17_Label = ttk.Label(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ17_Label.configure(
@@ -1482,9 +1452,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ17_WIDGET.register(
                 self.validate_CHANNEL_FREQ17), "%P", "%V")
         self.CHANNEL_FREQ17_WIDGET.configure(validatecommand=_validatecmd)
-        self.label89 = ttk.Label(self.General_Extended_Channel_Frame)
-        self.label89.configure(text='Hz')
-        self.label89.grid(column=5, padx="0 10", pady="5 0", row=10)
+        label89 = ttk.Label(self.General_Extended_Channel_Frame)
+        label89.configure(text='Hz')
+        label89.grid(column=5, padx="0 10", pady="5 0", row=10)
         self.CHANNEL_FREQ17_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ17_MODE = tk.StringVar()
@@ -1493,30 +1463,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox4.TCombobox",
             textvariable=self.CHANNEL_FREQ17_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ17_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=10, sticky="w")
-        self.frame33 = ttk.Frame(self.General_Extended_Channel_Frame)
-        self.CHANNEL_FREQ17_INVALID_WIDGET = tk.Message(self.frame33)
-        self.CHANNEL_FREQ17_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ17_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ17_INVALID,
-            width=400)
-        self.CHANNEL_FREQ17_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame33.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=10,
-            sticky="w")
+        self.CHANNEL_FREQ17_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ18_Label = ttk.Label(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ18_Label.configure(
@@ -1538,9 +1491,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ18_WIDGET.register(
                 self.validate_CHANNEL_FREQ18), "%P", "%V")
         self.CHANNEL_FREQ18_WIDGET.configure(validatecommand=_validatecmd)
-        self.label91 = ttk.Label(self.General_Extended_Channel_Frame)
-        self.label91.configure(text='Hz')
-        self.label91.grid(column=5, padx="0 10", pady="5 0", row=11)
+        label91 = ttk.Label(self.General_Extended_Channel_Frame)
+        label91.configure(text='Hz')
+        label91.grid(column=5, padx="0 10", pady="5 0", row=11)
         self.CHANNEL_FREQ18_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ18_MODE = tk.StringVar()
@@ -1549,30 +1502,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox4.TCombobox",
             textvariable=self.CHANNEL_FREQ18_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ18_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=11, sticky="w")
-        self.frame34 = ttk.Frame(self.General_Extended_Channel_Frame)
-        self.CHANNEL_FREQ18_INVALID_WIDGET = tk.Message(self.frame34)
-        self.CHANNEL_FREQ18_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ18_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ18_INVALID,
-            width=400)
-        self.CHANNEL_FREQ18_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame34.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=11,
-            sticky="w")
+        self.CHANNEL_FREQ18_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ19_Label = ttk.Label(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ19_Label.configure(
@@ -1594,9 +1530,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ19_WIDGET.register(
                 self.validate_CHANNEL_FREQ19), "%P", "%V")
         self.CHANNEL_FREQ19_WIDGET.configure(validatecommand=_validatecmd)
-        self.label93 = ttk.Label(self.General_Extended_Channel_Frame)
-        self.label93.configure(text='Hz')
-        self.label93.grid(column=5, padx="0 10", pady="5 0", row=12)
+        label93 = ttk.Label(self.General_Extended_Channel_Frame)
+        label93.configure(text='Hz')
+        label93.grid(column=5, padx="0 10", pady="5 0", row=12)
         self.CHANNEL_FREQ19_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ19_MODE = tk.StringVar()
@@ -1605,30 +1541,13 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox4.TCombobox",
             textvariable=self.CHANNEL_FREQ19_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ19_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=12, sticky="w")
-        self.frame35 = ttk.Frame(self.General_Extended_Channel_Frame)
-        self.CHANNEL_FREQ19_INVALID_WIDGET = tk.Message(self.frame35)
-        self.CHANNEL_FREQ19_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ19_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ19_INVALID,
-            width=400)
-        self.CHANNEL_FREQ19_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame35.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=12,
-            sticky="w")
+        self.CHANNEL_FREQ19_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.CHANNEL_FREQ20_Label = ttk.Label(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ20_Label.configure(
@@ -1650,9 +1569,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ20_WIDGET.register(
                 self.validate_CHANNEL_FREQ20), "%P", "%V")
         self.CHANNEL_FREQ20_WIDGET.configure(validatecommand=_validatecmd)
-        self.label95 = ttk.Label(self.General_Extended_Channel_Frame)
-        self.label95.configure(text='Hz')
-        self.label95.grid(column=5, padx="0 10", pady="5 0", row=13)
+        label95 = ttk.Label(self.General_Extended_Channel_Frame)
+        label95.configure(text='Hz')
+        label95.grid(column=5, padx="0 10", pady="5 0", row=13)
         self.CHANNEL_FREQ20_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ20_MODE = tk.StringVar()
@@ -1661,44 +1580,25 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox4.TCombobox",
             textvariable=self.CHANNEL_FREQ20_MODE,
+            validate="focusout",
             values='DEFAULT LSB USB CWL CWU',
             width=10)
         self.CHANNEL_FREQ20_MODE_WIDGET.grid(
             column=7, padx="0 2", pady="5 0", row=13, sticky="w")
-        self.frame36 = ttk.Frame(self.General_Extended_Channel_Frame)
-        self.CHANNEL_FREQ20_INVALID_WIDGET = tk.Message(self.frame36)
-        self.CHANNEL_FREQ20_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CHANNEL_FREQ20_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CHANNEL_FREQ20_INVALID,
-            width=400)
-        self.CHANNEL_FREQ20_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame36.grid(
-            column=10,
-            columnspan=7,
-            pady="5 0",
-            row=13,
-            sticky="w")
+        self.CHANNEL_FREQ20_MODE_WIDGET.configure(
+            validatecommand=self.clearErrorMsgPersistFlag)
         self.General_Extended_Channel_Frame.pack(
             anchor="w", expand="false", fill="x", padx="50 0", side="left")
         self.General_Extended_Channel_Frame.grid_anchor("w")
         self.Extended_Channel_Frame.pack(anchor="w")
         self.All_Channel_Frame.pack(side="top")
-        self.Operator_Channel_Frame.grid(
-            column=0, pady="20 0", row=2, sticky="w")
+        self.Operator_Channel_Frame.pack(anchor="w", side="top")
         self.General_Frame.pack(
             expand="true",
             fill="both",
             padx=5,
             pady=5,
             side="top")
-        self.General_Frame.grid_anchor("nw")
         self.General_SF.pack(
             anchor="center",
             expand="true",
@@ -1711,12 +1611,12 @@ class SettingsnotebookWidget(ttk.Frame):
         self.Autokeyer_Frame = ttk.Frame(self.Autokeyer_SF.innerframe)
         self.CW_Autokeyer_Titlle_Frame = ttk.Frame(self.Autokeyer_Frame)
         self.CW_Autokeyer_Titlle_Frame.configure(height=200, width=200)
-        self.label3 = ttk.Label(self.CW_Autokeyer_Titlle_Frame)
-        self.label3.configure(
+        label3 = ttk.Label(self.CW_Autokeyer_Titlle_Frame)
+        label3.configure(
             justify="center",
             style="Heading2.TLabel",
             text='CW Autokeyer Settings')
-        self.label3.pack()
+        label3.pack()
         self.CW_Autokeyer_Titlle_Frame.pack(
             anchor="center", fill="x", side="top")
         self.CW_Autokeyer_Callsign_Frame = ttk.Frame(self.Autokeyer_Frame)
@@ -1901,9 +1801,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE1_START), "%P", "%V")
         self.HAM_BAND_RANGE1_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label116 = ttk.Label(self.frame46)
-        self.label116.configure(text='KHz')
-        self.label116.grid(column=4, padx="0 10", row=10, sticky="w")
+        label116 = ttk.Label(self.frame46)
+        label116.configure(text='KHz')
+        label116.grid(column=4, padx="0 10", row=10, sticky="w")
         self.HAM_BAND_RANGE1_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE1_END = tk.StringVar()
         self.HAM_BAND_RANGE1_END_WIDGET.configure(
@@ -1917,9 +1817,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE1_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE1_END), "%P", "%V")
         self.HAM_BAND_RANGE1_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label117 = ttk.Label(self.frame46)
-        self.label117.configure(text='KHz')
-        self.label117.grid(column=6, padx="0 5", row=10)
+        label117 = ttk.Label(self.frame46)
+        label117.configure(text='KHz')
+        label117.grid(column=6, padx="0 5", row=10)
         self.frame48 = ttk.Frame(self.frame46)
         self.frame48.configure(height=1, width=30)
         self.HAM_BAND_RANGE1_INVALID_WIDGET = tk.Message(self.frame48)
@@ -1958,9 +1858,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE2_START), "%P", "%V")
         self.HAM_BAND_RANGE2_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label118 = ttk.Label(self.frame46)
-        self.label118.configure(text='KHz')
-        self.label118.grid(column=4, padx="0 10", row=11, sticky="w")
+        label118 = ttk.Label(self.frame46)
+        label118.configure(text='KHz')
+        label118.grid(column=4, padx="0 10", row=11, sticky="w")
         self.HAM_BAND_RANGE2_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE2_END = tk.StringVar()
         self.HAM_BAND_RANGE2_END_WIDGET.configure(
@@ -1974,9 +1874,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE2_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE2_END), "%P", "%V")
         self.HAM_BAND_RANGE2_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label119 = ttk.Label(self.frame46)
-        self.label119.configure(text='KHz')
-        self.label119.grid(column=6, padx="0 5", row=11)
+        label119 = ttk.Label(self.frame46)
+        label119.configure(text='KHz')
+        label119.grid(column=6, padx="0 5", row=11)
         self.frame49 = ttk.Frame(self.frame46)
         self.HAM_BAND_RANGE2_INVALID_WIDGET = tk.Message(self.frame49)
         self.HAM_BAND_RANGE2_INVALID = tk.StringVar(
@@ -2009,9 +1909,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE3_START), "%P", "%V")
         self.HAM_BAND_RANGE3_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label120 = ttk.Label(self.frame46)
-        self.label120.configure(text='KHz')
-        self.label120.grid(column=4, padx="0 10", row=12, sticky="w")
+        label120 = ttk.Label(self.frame46)
+        label120.configure(text='KHz')
+        label120.grid(column=4, padx="0 10", row=12, sticky="w")
         self.HAM_BAND_RANGE3_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE3_END = tk.StringVar()
         self.HAM_BAND_RANGE3_END_WIDGET.configure(
@@ -2025,9 +1925,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE3_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE3_END), "%P", "%V")
         self.HAM_BAND_RANGE3_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label121 = ttk.Label(self.frame46)
-        self.label121.configure(text='KHz')
-        self.label121.grid(column=6, padx="0 5", row=12)
+        label121 = ttk.Label(self.frame46)
+        label121.configure(text='KHz')
+        label121.grid(column=6, padx="0 5", row=12)
         self.frame50 = ttk.Frame(self.frame46)
         self.HAM_BAND_RANGE3_INVALID_WIDGET = tk.Message(self.frame50)
         self.HAM_BAND_RANGE3_INVALID = tk.StringVar(
@@ -2060,9 +1960,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE4_START), "%P", "%V")
         self.HAM_BAND_RANGE4_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label122 = ttk.Label(self.frame46)
-        self.label122.configure(text='KHz')
-        self.label122.grid(column=4, padx="0 10", row=13, sticky="w")
+        label122 = ttk.Label(self.frame46)
+        label122.configure(text='KHz')
+        label122.grid(column=4, padx="0 10", row=13, sticky="w")
         self.HAM_BAND_RANGE4_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE4_END = tk.StringVar()
         self.HAM_BAND_RANGE4_END_WIDGET.configure(
@@ -2076,9 +1976,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE4_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE4_END), "%P", "%V")
         self.HAM_BAND_RANGE4_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label123 = ttk.Label(self.frame46)
-        self.label123.configure(text='KHz')
-        self.label123.grid(column=6, padx="0 5", row=13)
+        label123 = ttk.Label(self.frame46)
+        label123.configure(text='KHz')
+        label123.grid(column=6, padx="0 5", row=13)
         self.frame51 = ttk.Frame(self.frame46)
         self.HAM_BAND_RANGE4_INVALID_WIDGET = tk.Message(self.frame51)
         self.HAM_BAND_RANGE4_INVALID = tk.StringVar(
@@ -2111,9 +2011,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE5_START), "%P", "%V")
         self.HAM_BAND_RANGE5_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label124 = ttk.Label(self.frame46)
-        self.label124.configure(text='KHz')
-        self.label124.grid(column=4, padx="0 10", row=14, sticky="w")
+        label124 = ttk.Label(self.frame46)
+        label124.configure(text='KHz')
+        label124.grid(column=4, padx="0 10", row=14, sticky="w")
         self.HAM_BAND_RANGE5_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE5_END = tk.StringVar()
         self.HAM_BAND_RANGE5_END_WIDGET.configure(
@@ -2127,9 +2027,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE5_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE5_END), "%P", "%V")
         self.HAM_BAND_RANGE5_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label125 = ttk.Label(self.frame46)
-        self.label125.configure(text='KHz')
-        self.label125.grid(column=6, padx="0 5", row=14)
+        label125 = ttk.Label(self.frame46)
+        label125.configure(text='KHz')
+        label125.grid(column=6, padx="0 5", row=14)
         self.frame52 = ttk.Frame(self.frame46)
         self.HAM_BAND_RANGE5_INVALID_WIDGET = tk.Message(self.frame52)
         self.HAM_BAND_RANGE5_INVALID = tk.StringVar(
@@ -2162,9 +2062,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE6_START), "%P", "%V")
         self.HAM_BAND_RANGE6_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label126 = ttk.Label(self.frame46)
-        self.label126.configure(text='KHz')
-        self.label126.grid(column=4, padx="0 10", row=15, sticky="w")
+        label126 = ttk.Label(self.frame46)
+        label126.configure(text='KHz')
+        label126.grid(column=4, padx="0 10", row=15, sticky="w")
         self.HAM_BAND_RANGE6_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE6_END = tk.StringVar()
         self.HAM_BAND_RANGE6_END_WIDGET.configure(
@@ -2178,9 +2078,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE6_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE6_END), "%P", "%V")
         self.HAM_BAND_RANGE6_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label127 = ttk.Label(self.frame46)
-        self.label127.configure(text='KHz')
-        self.label127.grid(column=6, padx="0 5", row=15)
+        label127 = ttk.Label(self.frame46)
+        label127.configure(text='KHz')
+        label127.grid(column=6, padx="0 5", row=15)
         self.frame53 = ttk.Frame(self.frame46)
         self.HAM_BAND_RANGE6_INVALID_WIDGET = tk.Message(self.frame53)
         self.HAM_BAND_RANGE6_INVALID = tk.StringVar(
@@ -2213,9 +2113,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE7_START), "%P", "%V")
         self.HAM_BAND_RANGE7_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label128 = ttk.Label(self.frame46)
-        self.label128.configure(text='KHz')
-        self.label128.grid(column=4, padx="0 10", row=16, sticky="w")
+        label128 = ttk.Label(self.frame46)
+        label128.configure(text='KHz')
+        label128.grid(column=4, padx="0 10", row=16, sticky="w")
         self.HAM_BAND_RANGE7_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE7_END = tk.StringVar()
         self.HAM_BAND_RANGE7_END_WIDGET.configure(
@@ -2229,9 +2129,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE7_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE7_END), "%P", "%V")
         self.HAM_BAND_RANGE7_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label129 = ttk.Label(self.frame46)
-        self.label129.configure(text='KHz')
-        self.label129.grid(column=6, padx="0 5", row=16)
+        label129 = ttk.Label(self.frame46)
+        label129.configure(text='KHz')
+        label129.grid(column=6, padx="0 5", row=16)
         self.frame54 = ttk.Frame(self.frame46)
         self.HAM_BAND_RANGE7_INVALID_WIDGET = tk.Message(self.frame54)
         self.HAM_BAND_RANGE7_INVALID = tk.StringVar(
@@ -2264,9 +2164,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE8_START), "%P", "%V")
         self.HAM_BAND_RANGE8_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label130 = ttk.Label(self.frame46)
-        self.label130.configure(text='KHz')
-        self.label130.grid(column=4, padx="0 10", row=17, sticky="w")
+        label130 = ttk.Label(self.frame46)
+        label130.configure(text='KHz')
+        label130.grid(column=4, padx="0 10", row=17, sticky="w")
         self.HAM_BAND_RANGE8_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE8_END = tk.StringVar()
         self.HAM_BAND_RANGE8_END_WIDGET.configure(
@@ -2280,9 +2180,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE8_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE8_END), "%P", "%V")
         self.HAM_BAND_RANGE8_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label131 = ttk.Label(self.frame46)
-        self.label131.configure(text='KHz')
-        self.label131.grid(column=6, padx="0 5", row=17)
+        label131 = ttk.Label(self.frame46)
+        label131.configure(text='KHz')
+        label131.grid(column=6, padx="0 5", row=17)
         self.frame55 = ttk.Frame(self.frame46)
         self.HAM_BAND_RANGE8_INVALID_WIDGET = tk.Message(self.frame55)
         self.HAM_BAND_RANGE8_INVALID = tk.StringVar(
@@ -2315,9 +2215,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE9_START), "%P", "%V")
         self.HAM_BAND_RANGE9_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label132 = ttk.Label(self.frame46)
-        self.label132.configure(text='KHz')
-        self.label132.grid(column=4, padx="0 10", row=18, sticky="w")
+        label132 = ttk.Label(self.frame46)
+        label132.configure(text='KHz')
+        label132.grid(column=4, padx="0 10", row=18, sticky="w")
         self.HAM_BAND_RANGE9_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE9_END = tk.StringVar()
         self.HAM_BAND_RANGE9_END_WIDGET.configure(
@@ -2331,9 +2231,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE9_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE9_END), "%P", "%V")
         self.HAM_BAND_RANGE9_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label133 = ttk.Label(self.frame46)
-        self.label133.configure(text='KHz')
-        self.label133.grid(column=6, padx="0 5", row=18)
+        label133 = ttk.Label(self.frame46)
+        label133.configure(text='KHz')
+        label133.grid(column=6, padx="0 5", row=18)
         self.frame56 = ttk.Frame(self.frame46)
         self.HAM_BAND_RANGE9_INVALID_WIDGET = tk.Message(self.frame56)
         self.HAM_BAND_RANGE9_INVALID = tk.StringVar(
@@ -2371,9 +2271,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE10_START), "%P", "%V")
         self.HAM_BAND_RANGE10_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label134 = ttk.Label(self.frame46)
-        self.label134.configure(text='KHz')
-        self.label134.grid(column=4, padx="0 10", row=19, sticky="w")
+        label134 = ttk.Label(self.frame46)
+        label134.configure(text='KHz')
+        label134.grid(column=4, padx="0 10", row=19, sticky="w")
         self.HAM_BAND_RANGE10_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE10_END = tk.StringVar()
         self.HAM_BAND_RANGE10_END_WIDGET.configure(
@@ -2388,9 +2288,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE10_END), "%P", "%V")
         self.HAM_BAND_RANGE10_END_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label135 = ttk.Label(self.frame46)
-        self.label135.configure(text='KHz')
-        self.label135.grid(column=6, padx="0 5", row=19)
+        label135 = ttk.Label(self.frame46)
+        label135.configure(text='KHz')
+        label135.grid(column=6, padx="0 5", row=19)
         self.frame57 = ttk.Frame(self.frame46)
         self.HAM_BAND_RANGE10_INVALID_WIDGET = tk.Message(self.frame57)
         self.HAM_BAND_RANGE10_INVALID = tk.StringVar(
@@ -2424,11 +2324,11 @@ class SettingsnotebookWidget(ttk.Frame):
         self.region1.configure(style="Button4.TButton", text='Region 1')
         self.region1.grid(column=1, padx=5, row=1)
         self.region1.configure(command=self.autoInputRegion1)
-        self.label136 = ttk.Label(self.frame58)
-        self.label136.configure(
+        label136 = ttk.Label(self.frame58)
+        label136.configure(
             style="Heading3.TLabel",
             text='Auto Input Bands For:')
-        self.label136.grid(column=0, ipadx=5, padx=5, row=1)
+        label136.grid(column=0, ipadx=5, padx=5, row=1)
         self.region2 = ttk.Button(self.frame58)
         self.region2.configure(style="Button4.TButton", text='Region 2')
         self.region2.grid(column=2, padx=5, row=1)
@@ -2437,42 +2337,37 @@ class SettingsnotebookWidget(ttk.Frame):
         self.region3.configure(style="Button4.TButton", text='Region 3')
         self.region3.grid(column=3, padx=5, row=1)
         self.region3.configure(command=self.autoInputRegion3)
-        self.label4 = ttk.Label(self.frame58)
-        self.label4.configure(style="Heading4.TLabel", text='Region 1:')
-        self.label4.grid(column=0, pady="10 5", row=2, sticky="e")
-        self.label10 = ttk.Label(self.frame58)
-        self.label10.configure(style="Heading4.TLabel", text='Region 2:')
-        self.label10.grid(column=0, pady="0 5", row=3, sticky="e")
-        self.label12 = ttk.Label(self.frame58)
-        self.label12.configure(style="Heading4.TLabel", text='Region 3:')
-        self.label12.grid(column=0, row=4, sticky="e")
-        self.label13 = ttk.Label(self.frame58)
-        self.label13.configure(
+        label4 = ttk.Label(self.frame58)
+        label4.configure(style="Heading4.TLabel", text='Region 1:')
+        label4.grid(column=0, pady="10 5", row=2, sticky="e")
+        label10 = ttk.Label(self.frame58)
+        label10.configure(style="Heading4.TLabel", text='Region 2:')
+        label10.grid(column=0, pady="0 5", row=3, sticky="e")
+        label12 = ttk.Label(self.frame58)
+        label12.configure(style="Heading4.TLabel", text='Region 3:')
+        label12.grid(column=0, row=4, sticky="e")
+        label13 = ttk.Label(self.frame58)
+        label13.configure(
             text='Africa, Europe, Middle East, and northern Asia')
-        self.label13.grid(
+        label13.grid(
             column=1,
             columnspan=3,
             padx="5 0",
             pady="10 5",
             row=2,
             sticky="w")
-        self.label14 = ttk.Label(self.frame58)
-        self.label14.configure(text='the Americas')
-        self.label14.grid(
+        label14 = ttk.Label(self.frame58)
+        label14.configure(text='the Americas')
+        label14.grid(
             column=1,
             columnspan=3,
             padx="5 0",
             pady="0 5",
             row=3,
             sticky="ew")
-        self.label18 = ttk.Label(self.frame58)
-        self.label18.configure(text='the rest of Asia and the Pacific')
-        self.label18.grid(
-            column=1,
-            columnspan=3,
-            padx="5 0",
-            row=4,
-            sticky="ew")
+        label18 = ttk.Label(self.frame58)
+        label18.configure(text='the rest of Asia and the Pacific')
+        label18.grid(column=1, columnspan=3, padx="5 0", row=4, sticky="ew")
         self.frame58.pack(anchor="w", padx="60 0", pady="20 0", side="top")
         self.frame58.grid_anchor("w")
         self.Bands_SF.pack(side="top")
@@ -2481,12 +2376,12 @@ class SettingsnotebookWidget(ttk.Frame):
             self.settingsNotebook, scrolltype="both")
         self.HW_ADJ_SF.configure(usemousewheel=True)
         self.HW_ADJ_Frame = ttk.Frame(self.HW_ADJ_SF.innerframe)
-        self.label5 = ttk.Label(self.HW_ADJ_Frame)
-        self.label5.configure(
+        label5 = ttk.Label(self.HW_ADJ_Frame)
+        label5.configure(
             justify="center",
             style="Heading2.TLabel",
             text='Hardware Advanced Settings')
-        self.label5.grid(column=0, columnspan=5, row=0, sticky="n")
+        label5.grid(column=0, columnspan=5, row=0, sticky="n")
         self.HW_ADJ_Frame.pack(
             expand="true",
             fill="both",
@@ -2557,31 +2452,13 @@ class SettingsnotebookWidget(ttk.Frame):
             column=4, padx="0 5", pady=2, row=4, sticky="w")
         self.MASTER_CAL_COPY_BUTTON.configure(
             command=self.Reset_Master_Cal_To_Factory)
-        self.label23 = ttk.Label(self.Radio_Calibration_Frame)
+        label23 = ttk.Label(self.Radio_Calibration_Frame)
         self.FACTORY_VALUES_MASTER_CAL = tk.StringVar(value='99999999')
-        self.label23.configure(
+        label23.configure(
             style="Normal.TLabel",
             text='99999999',
             textvariable=self.FACTORY_VALUES_MASTER_CAL)
-        self.label23.grid(column=5, row=4, sticky="w")
-        self.MASTER_CAL_INVALID_Frame = ttk.Frame(self.Radio_Calibration_Frame)
-        self.MASTER_CAL_INVALID_Frame.configure(height=1, width=30)
-        self.MASTER_CAL_INVALID_WIDGET = tk.Message(
-            self.MASTER_CAL_INVALID_Frame)
-        self.MASTER_CAL_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.MASTER_CAL_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.MASTER_CAL_INVALID,
-            width=400)
-        self.MASTER_CAL_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.MASTER_CAL_INVALID_Frame.grid(
-            column=11, columnspan=4, row=4, rowspan=1, sticky="w")
+        label23.grid(column=5, row=4, sticky="w")
         self.USB_CAL_LABEL = ttk.Label(self.Radio_Calibration_Frame)
         self.USB_CAL_LABEL.configure(style="Normal.TLabel", text='SSB BFO')
         self.USB_CAL_LABEL.grid(column=1, padx="25 0", row=5, sticky="w")
@@ -2606,30 +2483,13 @@ class SettingsnotebookWidget(ttk.Frame):
         self.USB_CAL_COPY_BUTTON.grid(column=4, pady=2, row=5, sticky="w")
         self.USB_CAL_COPY_BUTTON.configure(
             command=self.Reset_SSB_BFO_To_Factory)
-        self.label25 = ttk.Label(self.Radio_Calibration_Frame)
+        label25 = ttk.Label(self.Radio_Calibration_Frame)
         self.FACTORY_VALUES_USB_CAL = tk.StringVar(value='99999999')
-        self.label25.configure(
+        label25.configure(
             style="Normal.TLabel",
             text='99999999',
             textvariable=self.FACTORY_VALUES_USB_CAL)
-        self.label25.grid(column=5, row=5, sticky="w")
-        self.USB_CAL_INVALID_Frame = ttk.Frame(self.Radio_Calibration_Frame)
-        self.USB_CAL_INVALID_Frame.configure(height=1, width=30)
-        self.USB_CAL_INVALID_WIDGET = tk.Message(self.USB_CAL_INVALID_Frame)
-        self.USB_CAL_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.USB_CAL_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.USB_CAL_INVALID,
-            width=400)
-        self.USB_CAL_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.USB_CAL_INVALID_Frame.grid(
-            column=11, columnspan=4, row=5, rowspan=1, sticky="w")
+        label25.grid(column=5, row=5, sticky="w")
         self.CW_CAL_LABEL = ttk.Label(self.Radio_Calibration_Frame)
         self.CW_CAL_LABEL.configure(style="Normal.TLabel", text='CW BFO')
         self.CW_CAL_LABEL.grid(
@@ -2651,26 +2511,6 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CW_CAL_WIDGET.register(
                 self.validate_CW_CAL), "%P", "%V")
         self.CW_CAL_WIDGET.configure(validatecommand=_validatecmd)
-        self.CW_CAL_INVALID_Frame = ttk.Frame(self.Radio_Calibration_Frame)
-        self.CW_CAL_INVALID_WIDGET = tk.Message(self.CW_CAL_INVALID_Frame)
-        self.CW_CAL_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CW_CAL_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CW_CAL_INVALID,
-            width=400)
-        self.CW_CAL_INVALID_WIDGET.pack(
-            anchor="center",
-            expand="true",
-            fill="both",
-            pady="15 0",
-            side="left")
-        self.CW_CAL_INVALID_Frame.grid(
-            column=11, columnspan=4, row=6, sticky="w")
         self.Radio_Calibration_Frame.pack(fill="x", side="top")
         self.Radio_Calibration_Frame.grid_anchor("nw")
         self.CW_Calibration_Frame = ttk.Frame(self.Calibration_SF.innerframe)
@@ -2924,12 +2764,12 @@ class SettingsnotebookWidget(ttk.Frame):
         self.WSPR_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
         self.WSPR_SF.configure(usemousewheel=True)
         self.WSPR_Frame = ttk.Frame(self.WSPR_SF.innerframe)
-        self.label6 = ttk.Label(self.WSPR_Frame)
-        self.label6.configure(
+        label6 = ttk.Label(self.WSPR_Frame)
+        label6.configure(
             justify="center",
             style="Heading2.TLabel",
             text='General Settings')
-        self.label6.grid(column=0, columnspan=5, row=0, sticky="n")
+        label6.grid(column=0, columnspan=5, row=0, sticky="n")
         self.WSPR_Frame.pack(
             expand="true",
             fill="both",
@@ -2941,12 +2781,12 @@ class SettingsnotebookWidget(ttk.Frame):
         self.SDR_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
         self.SDR_SF.configure(usemousewheel=True)
         self.SDR_Frame = ttk.Frame(self.SDR_SF.innerframe)
-        self.label7 = ttk.Label(self.SDR_Frame)
-        self.label7.configure(
+        label7 = ttk.Label(self.SDR_Frame)
+        label7.configure(
             justify="center",
             style="Heading2.TLabel",
             text='SDR Settings')
-        self.label7.grid(column=0, columnspan=5, row=0, sticky="n")
+        label7.grid(column=0, columnspan=5, row=0, sticky="n")
         self.SDR_Frame.pack(
             expand="true",
             fill="both",
@@ -2959,30 +2799,30 @@ class SettingsnotebookWidget(ttk.Frame):
             self.settingsNotebook, scrolltype="both")
         self.Advanced_SF.configure(usemousewheel=True)
         self.Advanced_Frame = ttk.Frame(self.Advanced_SF.innerframe)
-        self.label8 = ttk.Label(self.Advanced_Frame)
-        self.label8.configure(
+        label8 = ttk.Label(self.Advanced_Frame)
+        label8.configure(
             justify="center",
             style="Heading2.TLabel",
             text='Advanced Settings')
-        self.label8.grid(column=0, columnspan=5, row=2, sticky="n")
-        self.label1 = ttk.Label(self.Advanced_Frame)
-        self.label1.configure(text='label1')
-        self.label1.grid(column=0, row=3)
-        self.label9 = ttk.Label(self.Advanced_Frame)
-        self.label9.configure(text='label9')
-        self.label9.grid(column=0, row=4)
-        self.label11 = ttk.Label(self.Advanced_Frame)
-        self.label11.configure(text='label11')
-        self.label11.grid(column=0, row=3)
-        self.label15 = ttk.Label(self.Advanced_Frame)
-        self.label15.configure(text='label15')
-        self.label15.grid(column=0, row=4)
-        self.label16 = ttk.Label(self.Advanced_Frame)
-        self.label16.configure(text='label16')
-        self.label16.grid(column=0, row=5)
-        self.label17 = ttk.Label(self.Advanced_Frame)
-        self.label17.configure(text='label17')
-        self.label17.grid(column=0, row=6)
+        label8.grid(column=0, columnspan=5, row=2, sticky="n")
+        label1 = ttk.Label(self.Advanced_Frame)
+        label1.configure(text='label1')
+        label1.grid(column=0, row=3)
+        label9 = ttk.Label(self.Advanced_Frame)
+        label9.configure(text='label9')
+        label9.grid(column=0, row=4)
+        label11 = ttk.Label(self.Advanced_Frame)
+        label11.configure(text='label11')
+        label11.grid(column=0, row=3)
+        label15 = ttk.Label(self.Advanced_Frame)
+        label15.configure(text='label15')
+        label15.grid(column=0, row=4)
+        label16 = ttk.Label(self.Advanced_Frame)
+        label16.configure(text='label16')
+        label16.grid(column=0, row=5)
+        label17 = ttk.Label(self.Advanced_Frame)
+        label17.configure(text='label17')
+        label17.grid(column=0, row=6)
         self.Advanced_Frame.pack(side="top")
         self.Advanced_SF.pack(side="top")
         self.settingsNotebook.add(self.Advanced_SF, text='Advanced')
@@ -2999,17 +2839,69 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading2.TLabel",
             text='System Information')
         self.System_Information_Label.pack(anchor="n")
-        self.System_Information_Title_Frame.pack(fill="x", side="top")
+        self.System_Information_Title_Frame.pack(side="top")
+        self.System_Info_Firmware_Version = ttk.Frame(
+            self.System_Info_SF.innerframe)
+        self.System_Info_Firmware_Version.configure(width=200)
+        self.System_Info_Firmware_Version_Label = ttk.Label(
+            self.System_Info_Firmware_Version)
+        self.System_Info_Firmware_Version_Label.configure(
+            style="Heading3.TLabel", text='Firmware Version: ')
+        self.System_Info_Firmware_Version_Label.grid(column=0, row=0)
+        self.KD8CEC = ttk.Label(self.System_Info_Firmware_Version)
+        self.KD8CEC.configure(style="Normal.TLabel", text='KD8CEC  ')
+        self.KD8CEC.grid(column=1, row=0, sticky="ew")
+        self.VERSION_ADDRESS_WIDGET = ttk.Label(
+            self.System_Info_Firmware_Version)
+        self.VERSION_ADDRESS = tk.StringVar()
+        self.VERSION_ADDRESS_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.VERSION_ADDRESS)
+        self.VERSION_ADDRESS_WIDGET.grid(column=2, row=0, sticky="w")
+        self.System_Info_Firmware_Version.pack(
+            anchor="w", pady="20 0", side="top")
+        self.System_Info_Calibration_Settings = ttk.Frame(
+            self.System_Info_SF.innerframe)
+        self.System_Info_Calibration_Settings.configure(width=200)
+        self.System_Info_Factory_Calibration_Label = ttk.Label(
+            self.System_Info_Calibration_Settings)
+        self.System_Info_Factory_Calibration_Label.configure(
+            style="Heading3.TLabel", text='Factory Calibration Data')
+        self.System_Info_Factory_Calibration_Label.grid(
+            column=0, columnspan=3, row=0, sticky="w")
+        self.System_Info_Factory_Calibration_Master_Label = ttk.Label(
+            self.System_Info_Calibration_Settings)
+        self.System_Info_Factory_Calibration_Master_Label.configure(
+            style="Heading4.TLabel", text='Master:')
+        self.System_Info_Factory_Calibration_Master_Label.grid(
+            column=1, padx="75 50", row=2, sticky="e")
+        self.System_Info_MASTER_CAL_WIDGET = ttk.Label(
+            self.System_Info_Calibration_Settings)
+        self.System_Info_MASTER_CAL_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.MASTER_CAL)
+        self.System_Info_MASTER_CAL_WIDGET.grid(column=2, row=2, sticky="e")
+        self.System_Info_Factory_Calibration_BFO_Label = ttk.Label(
+            self.System_Info_Calibration_Settings)
+        self.System_Info_Factory_Calibration_BFO_Label.configure(
+            style="Heading4.TLabel", text='SSB BFO:')
+        self.System_Info_Factory_Calibration_BFO_Label.grid(
+            column=1, padx="75 50", pady="0 3", row=3, sticky="e")
+        self.System_Info_USB_CAL_WIDGET = ttk.Label(
+            self.System_Info_Calibration_Settings)
+        self.System_Info_USB_CAL_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.USB_CAL)
+        self.System_Info_USB_CAL_WIDGET.grid(column=2, row=3, sticky="e")
+        self.System_Info_Calibration_Settings.pack(
+            anchor="w", pady="20 0", side="top")
         self.System_Info_VFO_Frame = ttk.Frame(self.System_Info_SF.innerframe)
-        self.sytem_Infor_Last_Saved_Freq = ttk.Label(
+        self.sytem_Infor_Last_Saved_Freq_Label = ttk.Label(
             self.System_Info_VFO_Frame)
-        self.sytem_Infor_Last_Saved_Freq.configure(
+        self.sytem_Infor_Last_Saved_Freq_Label.configure(
             style="Heading3.TLabel", text='Last Used Frequencies')
-        self.sytem_Infor_Last_Saved_Freq.grid(
-            column=0, columnspan=2, pady="20 0", row=3, sticky="ew")
-        self.label2 = ttk.Label(self.System_Info_VFO_Frame)
-        self.label2.configure(style="Heading4.TLabel", text='Current')
-        self.label2.grid(column=2, columnspan=3, padx="0 25", row=4)
+        self.sytem_Infor_Last_Saved_Freq_Label.grid(
+            column=0, columnspan=2, row=3, sticky="ew")
+        label2 = ttk.Label(self.System_Info_VFO_Frame)
+        label2.configure(style="Heading4.TLabel", text='Current')
+        label2.grid(column=2, columnspan=3, padx="0 25", row=4)
         self.System_Info_System_Information_Last_Saved_VFO_Frequency_Label = ttk.Label(
             self.System_Info_VFO_Frame)
         self.System_Info_System_Information_Last_Saved_VFO_Frequency_Label.configure(
@@ -3027,10 +2919,12 @@ class SettingsnotebookWidget(ttk.Frame):
         self.System_Info_System_Information_Last_Saved_VFO_VFO_A_Label.configure(
             style="Heading4.TLabel", text='VFO A:')
         self.System_Info_System_Information_Last_Saved_VFO_VFO_A_Label.grid(
-            column=1, padx="0 15", pady="0 3", row=6, sticky="e")
+            column=1, padx="0 40", pady="0 3", row=6, sticky="e")
         self.VFO_A_WIDGET = ttk.Label(self.System_Info_VFO_Frame)
         self.VFO_A = tk.StringVar()
-        self.VFO_A_WIDGET.configure(textvariable=self.VFO_A)
+        self.VFO_A_WIDGET.configure(
+            style="Normal.TLabel",
+            textvariable=self.VFO_A)
         self.VFO_A_WIDGET.grid(
             column=2,
             padx="0 40",
@@ -3039,7 +2933,9 @@ class SettingsnotebookWidget(ttk.Frame):
             sticky="e")
         self.VFO_A_MODE_WIDGET = ttk.Label(self.System_Info_VFO_Frame)
         self.VFO_A_MODE = tk.StringVar()
-        self.VFO_A_MODE_WIDGET.configure(textvariable=self.VFO_A_MODE)
+        self.VFO_A_MODE_WIDGET.configure(
+            style="Normal.TLabel",
+            textvariable=self.VFO_A_MODE)
         self.VFO_A_MODE_WIDGET.grid(
             column=4,
             padx="5 30",
@@ -3051,10 +2947,12 @@ class SettingsnotebookWidget(ttk.Frame):
         self.System_Info_System_Information_Last_Saved_VFO_VFO_B_Label.configure(
             style="Heading4.TLabel", text='VFO B:')
         self.System_Info_System_Information_Last_Saved_VFO_VFO_B_Label.grid(
-            column=1, padx="0 15", pady="0 3", row=7, sticky="e")
+            column=1, padx="0 40", pady="0 3", row=7, sticky="e")
         self.VFO_B_WIDGET = ttk.Label(self.System_Info_VFO_Frame)
         self.VFO_B = tk.StringVar()
-        self.VFO_B_WIDGET.configure(textvariable=self.VFO_B)
+        self.VFO_B_WIDGET.configure(
+            style="Normal.TLabel",
+            textvariable=self.VFO_B)
         self.VFO_B_WIDGET.grid(
             column=2,
             padx="0 40",
@@ -3063,7 +2961,9 @@ class SettingsnotebookWidget(ttk.Frame):
             sticky="e")
         self.VFO_B_MODE_WIDGET = ttk.Label(self.System_Info_VFO_Frame)
         self.VFO_B_MODE = tk.StringVar()
-        self.VFO_B_MODE_WIDGET.configure(textvariable=self.VFO_B_MODE)
+        self.VFO_B_MODE_WIDGET.configure(
+            style="Normal.TLabel",
+            textvariable=self.VFO_B_MODE)
         self.VFO_B_MODE_WIDGET.grid(
             column=4,
             padx="5 30",
@@ -3074,183 +2974,183 @@ class SettingsnotebookWidget(ttk.Frame):
         self.HAM_BAND_FREQS1_Label.configure(
             style="Heading4.TLabel", text='Band 1:')
         self.HAM_BAND_FREQS1_Label.grid(
-            column=1, padx="0 15", pady="15 3", row=8, sticky="e")
+            column=1, padx="0 40", pady="15 3", row=8, sticky="e")
         self.HAM_BAND_FREQS1_WIDGET = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS1 = tk.StringVar()
         self.HAM_BAND_FREQS1_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS1)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS1)
         self.HAM_BAND_FREQS1_WIDGET.grid(
             column=2, padx="0 40", pady="15 3", row=8, sticky="e")
         self.HAM_BAND_FREQS1_MODE_WIDGET = ttk.Label(
             self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS1_MODE = tk.StringVar()
         self.HAM_BAND_FREQS1_MODE_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS1_MODE)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS1_MODE)
         self.HAM_BAND_FREQS1_MODE_WIDGET.grid(
             column=4, padx="5 30", pady="15 3", row=8, sticky="w")
         self.HAM_BAND_FREQS2_Label = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS2_Label.configure(
             style="Heading4.TLabel", text='Band 2:')
         self.HAM_BAND_FREQS2_Label.grid(
-            column=1, padx="0 15", pady="0 3", row=9, sticky="e")
+            column=1, padx="0 40", pady="0 3", row=9, sticky="e")
         self.HAM_BAND_FREQ2_WIDGET = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS2 = tk.StringVar()
-        self.HAM_BAND_FREQ2_WIDGET.configure(textvariable=self.HAM_BAND_FREQS2)
+        self.HAM_BAND_FREQ2_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS2)
         self.HAM_BAND_FREQ2_WIDGET.grid(
             column=2, padx="0 40", row=9, sticky="e")
         self.HAM_BAND_FREQS2_MODE_WIDGET = ttk.Label(
             self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS2_MODE = tk.StringVar()
         self.HAM_BAND_FREQS2_MODE_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS2_MODE)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS2_MODE)
         self.HAM_BAND_FREQS2_MODE_WIDGET.grid(
             column=4, padx="5 30", row=9, sticky="w")
         self.HAM_BAND_FREQS3_Label = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS3_Label.configure(
             style="Heading4.TLabel", text='Band 3:')
         self.HAM_BAND_FREQS3_Label.grid(
-            column=1, padx="0 15", pady="0 3", row=10, sticky="e")
+            column=1, padx="0 40", pady="0 3", row=10, sticky="e")
         self.HAM_BAND_FREQS3_WIDGET = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS3 = tk.StringVar()
         self.HAM_BAND_FREQS3_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS3)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS3)
         self.HAM_BAND_FREQS3_WIDGET.grid(
             column=2, padx="0 40", row=10, sticky="e")
         self.HAM_BAND_FREQS3_MODE_WIDGET = ttk.Label(
             self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS3_MODE = tk.StringVar()
         self.HAM_BAND_FREQS3_MODE_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS3_MODE)
+            style="Heading4.TLabel", textvariable=self.HAM_BAND_FREQS3_MODE)
         self.HAM_BAND_FREQS3_MODE_WIDGET.grid(
             column=4, padx="5 30", row=10, sticky="w")
         self.HAM_BAND_FREQS4_Label = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS4_Label.configure(
             style="Heading4.TLabel", text='Band 4:')
         self.HAM_BAND_FREQS4_Label.grid(
-            column=1, padx="0 15", pady="0 3", row=11, sticky="e")
+            column=1, padx="0 40", pady="0 3", row=11, sticky="e")
         self.HAM_BAND_FREQS4_WIDGET = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS4 = tk.StringVar()
         self.HAM_BAND_FREQS4_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS4)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS4)
         self.HAM_BAND_FREQS4_WIDGET.grid(
             column=2, padx="0 40", row=11, sticky="e")
         self.HAM_BAND_FREQS4_MODE_WIDGET = ttk.Label(
             self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS4_MODE = tk.StringVar()
         self.HAM_BAND_FREQS4_MODE_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS4_MODE)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS4_MODE)
         self.HAM_BAND_FREQS4_MODE_WIDGET.grid(
             column=4, padx="5 30", row=11, sticky="w")
         self.HAM_BAND_FREQS5_Label = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS5_Label.configure(
             style="Heading4.TLabel", text='Band 5:')
         self.HAM_BAND_FREQS5_Label.grid(
-            column=1, padx="0 15", pady="0 3", row=12, sticky="e")
+            column=1, padx="0 40", pady="0 3", row=12, sticky="e")
         self.HAM_BAND_FREQS5_WIDGET = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS5 = tk.StringVar()
         self.HAM_BAND_FREQS5_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS5)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS5)
         self.HAM_BAND_FREQS5_WIDGET.grid(
             column=2, padx="0 40", row=12, sticky="e")
         self.HAM_BAND_FREQS5_MODE_WIDGET = ttk.Label(
             self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS5_MODE = tk.StringVar()
         self.HAM_BAND_FREQS5_MODE_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS5_MODE)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS5_MODE)
         self.HAM_BAND_FREQS5_MODE_WIDGET.grid(
             column=4, padx="5 30", row=12, sticky="w")
         self.HAM_BAND_FREQS6_Label = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS6_Label.configure(
             style="Heading4.TLabel", text='Band 6:')
         self.HAM_BAND_FREQS6_Label.grid(
-            column=1, padx="0 15", pady="0 3", row=13, sticky="e")
+            column=1, padx="0 40", pady="0 3", row=13, sticky="e")
         self.HAM_BAND_FREQS6_WIDGET = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS6 = tk.StringVar()
         self.HAM_BAND_FREQS6_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS6)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS6)
         self.HAM_BAND_FREQS6_WIDGET.grid(
             column=2, padx="0 40", row=13, sticky="e")
         self.HAM_BAND_FREQS6_MODE_WIDGET = ttk.Label(
             self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS6_MODE = tk.StringVar()
         self.HAM_BAND_FREQS6_MODE_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS6_MODE)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS6_MODE)
         self.HAM_BAND_FREQS6_MODE_WIDGET.grid(
             column=4, padx="5 30", row=13, sticky="w")
         self.HAM_BAND_FREQS7_Label = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS7_Label.configure(
             style="Heading4.TLabel", text='Band 7:')
         self.HAM_BAND_FREQS7_Label.grid(
-            column=1, padx="0 15", pady="0 3", row=14, sticky="e")
+            column=1, padx="0 40", pady="0 3", row=14, sticky="e")
         self.HAM_BAND_FREQS7_WIDGET = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS7 = tk.StringVar()
         self.HAM_BAND_FREQS7_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS7)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS7)
         self.HAM_BAND_FREQS7_WIDGET.grid(
             column=2, padx="0 40", row=14, sticky="e")
         self.HAM_BAND_FREQS7_MODE_WIDGET = ttk.Label(
             self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS7_MODE = tk.StringVar()
         self.HAM_BAND_FREQS7_MODE_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS7_MODE)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS7_MODE)
         self.HAM_BAND_FREQS7_MODE_WIDGET.grid(
             column=4, padx="5 30", row=14, sticky="w")
         self.HAM_BAND_FREQS8_Label = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS8_Label.configure(
             style="Heading4.TLabel", text='Band 8:')
         self.HAM_BAND_FREQS8_Label.grid(
-            column=1, padx="0 15", pady="0 3", row=15, sticky="e")
+            column=1, padx="0 40", pady="0 3", row=15, sticky="e")
         self.HAM_BAND_FREQS8_WIDGET = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS8 = tk.StringVar()
         self.HAM_BAND_FREQS8_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS8)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS8)
         self.HAM_BAND_FREQS8_WIDGET.grid(
             column=2, padx="0 40", row=15, sticky="e")
         self.HAM_BAND_FREQS8_MODE_WIDGET = ttk.Label(
             self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS8_MODE = tk.StringVar()
         self.HAM_BAND_FREQS8_MODE_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS8_MODE)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS8_MODE)
         self.HAM_BAND_FREQS8_MODE_WIDGET.grid(
             column=4, padx="5 30", row=15, sticky="w")
         self.HAM_BAND_FREQS9_Label = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS9_Label.configure(
             style="Heading4.TLabel", text='Band 9:')
         self.HAM_BAND_FREQS9_Label.grid(
-            column=1, padx="0 15", pady="0 3", row=16, sticky="e")
+            column=1, padx="0 40", pady="0 3", row=16, sticky="e")
         self.HAM_BAND_FREQS9_WIDGET = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS9 = tk.StringVar()
         self.HAM_BAND_FREQS9_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS9)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS9)
         self.HAM_BAND_FREQS9_WIDGET.grid(
             column=2, padx="0 40", row=16, sticky="e")
         self.HAM_BAND_FREQS9_MODE_WIDGET = ttk.Label(
             self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS9_MODE = tk.StringVar()
         self.HAM_BAND_FREQS9_MODE_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS9_MODE)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS9_MODE)
         self.HAM_BAND_FREQS9_MODE_WIDGET.grid(
             column=4, padx="5 30", row=16, sticky="w")
         self.HAM_BAND_FREQS10_Label = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS10_Label.configure(
             style="Heading4.TLabel", text='Band 10:')
         self.HAM_BAND_FREQS10_Label.grid(
-            column=1, padx="0 15", pady="0 3", row=17, sticky="e")
+            column=1, padx="0 40", pady="0 3", row=17, sticky="e")
         self.HAM_BAND_FREQS10_WIDGET = ttk.Label(self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS10 = tk.StringVar()
         self.HAM_BAND_FREQS10_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS10)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS10)
         self.HAM_BAND_FREQS10_WIDGET.grid(
             column=2, padx="0 40", row=17, sticky="e")
         self.HAM_BAND_FREQS10_MODE_WIDGET = ttk.Label(
             self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS10_MODE = tk.StringVar()
         self.HAM_BAND_FREQS10_MODE_WIDGET.configure(
-            textvariable=self.HAM_BAND_FREQS10_MODE)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS10_MODE)
         self.HAM_BAND_FREQS10_MODE_WIDGET.grid(
             column=4, padx="5 30", row=17, sticky="w")
-        self.System_Info_VFO_Frame.pack(
-            expand="true", fill="both", padx=5, pady=5, side="top")
+        self.System_Info_VFO_Frame.pack(anchor="w", pady="20 0", side="top")
         self.System_Info_VFO_Frame.grid_anchor("nw")
         self.System_Info_SF.pack(expand="true", fill="both", side="top")
         self.settingsNotebook.add(self.System_Info_SF, text='System Info')
@@ -3304,7 +3204,18 @@ class SettingsnotebookWidget(ttk.Frame):
         style.configure('Symbol1.TLabel', font=fontList['Symbol1'])
         style.configure('Button3.TButton', font=fontList['Heading3'])
         style.configure('Button4.TButton', font=fontList['Heading4'])
+        style.configure('Normal.TButton', font=fontList['Normal'])
+        style.configure('Symbol1.TButton', font=fontList['Symbol1'])
+        style.configure('Symbol3.TButton', font=fontList['Symbol3'])
         style.configure('ButtonEmphasis.TButton', font=fontList['Emphasis'])
+        style.configure('RadioButton3.TRadiobutton', font=fontList['Heading3'])
+        style.configure('RadioButton4.TRadiobutton', font=fontList['Heading4'])
+        style.configure(
+            'RadioButtonNormal.TRadiobutton',
+            font=fontList['Normal'])
+        style.configure(
+            'RadioButtonEmphasis.TRadiobutton',
+            font=fontList['Emphasis'])
         style.configure('Checkbox3.TCheckbutton', font=fontList['Heading3'])
         style.configure('Checkbox4.TCheckbutton', font=fontList['Heading4'])
         style.configure(
@@ -3312,9 +3223,6 @@ class SettingsnotebookWidget(ttk.Frame):
             font=fontList['Emphasis'])
         style.configure('ComboBox3.TCombobox', font=fontList['Heading3'])
         style.configure('ComboBox4.TCombobox', font=fontList['Heading4'])
-        style.configure('Normal.TButton', font=fontList['Normal'])
-        style.configure('Symbol1.TButton', font=fontList['Symbol1'])
-        style.configure('Symbol3.TButton', font=fontList['Symbol3'])
         style.configure('Normal.TEntry', font=fontList['Normal'])
         style.configure(
             'NoBorder.TEntry',
@@ -3323,8 +3231,31 @@ class SettingsnotebookWidget(ttk.Frame):
             borderwidth=0,
             bd=0)
         style.configure('Title.TFrame', background='blue', foreground='white')
+        style.configure(
+            'Heading2.TLabelframe.Label',
+            font=fontList['Heading3'])
+        style.configure('Heading2.TLabelframe')
+        style.configure('Normal.TText', font=fontList['Heading3'])
 
     def validate_USER_CALLSIGN(self, p_entry_value, v_condition):
+        pass
+
+    def Tuning_Steps_Set_Common(self):
+        pass
+
+    def validate_TUNING_STEP1(self, p_entry_value, v_condition):
+        pass
+
+    def validate_TUNING_STEP2(self, p_entry_value, v_condition):
+        pass
+
+    def validate_TUNING_STEP3(self, p_entry_value, v_condition):
+        pass
+
+    def validate_TUNING_STEP4(self, p_entry_value, v_condition):
+        pass
+
+    def validate_TUNING_STEP5(self, p_entry_value, v_condition):
         pass
 
     def validate_CW_SIDETONE(self, p_entry_value, v_condition):
@@ -3343,6 +3274,9 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def validate_CHANNEL_FREQ1(self, p_entry_value, v_condition):
+        pass
+
+    def clearErrorMsgPersistFlag(self):
         pass
 
     def validate_CHANNEL_FREQ2_NAME(self, p_entry_value, v_condition):

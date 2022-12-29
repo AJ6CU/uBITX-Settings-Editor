@@ -1,6 +1,0 @@
-import pygubu.widgets.simpletooltip as tooltip
-# . . . 
-button = builder.get_object("button1")
-# add a tooltip
-tooltip.create(button, "A tooltip for the button")
-# . . . 

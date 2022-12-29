@@ -9,7 +9,7 @@ from os.path import exists
 import tkinter
 
 import tkinter.messagebox
-import serial.tools.list_ports              # Used to get a list of com ports
+
 from tkinter import filedialog as fd
 
 #   Application includes

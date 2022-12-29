@@ -62,18 +62,16 @@
                       <property name="pady">5</property>
                       <property name="side">top</property>
                     </layout>
-                    <containerlayout manager="grid">
+                    <containerlayout manager="pack">
                       <property name="anchor">nw</property>
                     </containerlayout>
                     <child>
                       <object class="ttk.Frame" id="General_Operator_Frame" named="True">
                         <property name="height">200</property>
                         <property name="width">200</property>
-                        <layout manager="grid">
-                          <property name="column">0</property>
-                          <property name="pady">20 0</property>
-                          <property name="row">0</property>
-                          <property name="sticky">w</property>
+                        <layout manager="pack">
+                          <property name="anchor">w</property>
+                          <property name="side">top</property>
                         </layout>
                         <child>
                           <object class="ttk.Frame" id="General_Operator_Title_Frame" named="True">
@@ -158,14 +156,429 @@
                       </object>
                     </child>
                     <child>
+                      <object class="ttk.Frame" id="frame4" named="True">
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="anchor">w</property>
+                          <property name="expand">true</property>
+                          <property name="fill">x</property>
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Separator" id="separator2">
+                            <property name="orient">horizontal</property>
+                            <layout manager="pack">
+                              <property name="anchor">center</property>
+                              <property name="expand">true</property>
+                              <property name="fill">x</property>
+                              <property name="pady">10 0</property>
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="General_Tuning_Steps_Frame" named="True">
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="anchor">w</property>
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Frame" id="Tuning_Steps_Title_Frame" named="True">
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="anchor">w</property>
+                              <property name="expand">true</property>
+                              <property name="fill">x</property>
+                              <property name="pady">20 0</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="General_Tuning_Steps_Label" named="True">
+                                <property name="style">Heading3.TLabel</property>
+                                <property name="text" translatable="yes">Tuning Steps</property>
+                                <layout manager="pack">
+                                  <property name="anchor">w</property>
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="General_Tuning_Steps_Settings_Frame" named="True">
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="padx">50 0</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Frame" id="frame10">
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="anchor">w</property>
+                                  <property name="pady">20 0</property>
+                                  <property name="side">top</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="label105">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Step#	1	2	3	4	5</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Radiobutton" id="Tuning_Steps_RadioButton5" named="True">
+                                    <property name="command" type="command" cbtype="simple">Tuning_Steps_Set_Common</property>
+                                    <property name="style">RadioButtonNormal.TRadiobutton</property>
+                                    <property name="text" translatable="yes">Custom</property>
+                                    <property name="value">5</property>
+                                    <property name="variable">string:Tuning_Steps_Common</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">38</property>
+                                      <property name="pady">10</property>
+                                      <property name="row">6</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Radiobutton" id="Tuning_Steps_RadioButton0" named="True">
+                                    <property name="command" type="command" cbtype="simple">Tuning_Steps_Set_Common</property>
+                                    <property name="style">RadioButtonNormal.TRadiobutton</property>
+                                    <property name="text" translatable="yes">1	5	10	50	100 Hz</property>
+                                    <property name="value">0</property>
+                                    <property name="variable">string:Tuning_Steps_Common</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">38</property>
+                                      <property name="row">1</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Radiobutton" id="Tuning_Steps_RadioButton1" named="True">
+                                    <property name="command" type="command" cbtype="simple">Tuning_Steps_Set_Common</property>
+                                    <property name="style">RadioButtonNormal.TRadiobutton</property>
+                                    <property name="text" translatable="yes">10	20	50	100	1000 Hz</property>
+                                    <property name="value">1</property>
+                                    <property name="variable">string:Tuning_Steps_Common</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">38</property>
+                                      <property name="row">2</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Radiobutton" id="Tuning_Steps_RadioButton2" named="True">
+                                    <property name="command" type="command" cbtype="simple">Tuning_Steps_Set_Common</property>
+                                    <property name="style">RadioButtonNormal.TRadiobutton</property>
+                                    <property name="text" translatable="yes">1	10	100	1000	10000 Hz</property>
+                                    <property name="value">2</property>
+                                    <property name="variable">string:Tuning_Steps_Common</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">38</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Radiobutton" id="Tuning_Steps_RadioButton3" named="True">
+                                    <property name="command" type="command" cbtype="simple">Tuning_Steps_Set_Common</property>
+                                    <property name="style">RadioButtonNormal.TRadiobutton</property>
+                                    <property name="text" translatable="yes">10	50	500	5000	10000 Hz</property>
+                                    <property name="value">3</property>
+                                    <property name="variable">string:Tuning_Steps_Common</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">38</property>
+                                      <property name="row">4</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Radiobutton" id="Tuning_Steps_RadioButton4" named="True">
+                                    <property name="command" type="command" cbtype="simple">Tuning_Steps_Set_Common</property>
+                                    <property name="style">RadioButtonNormal.TRadiobutton</property>
+                                    <property name="text" translatable="yes">10	50	100	2000	50000 Hz</property>
+                                    <property name="value">4</property>
+                                    <property name="variable">string:Tuning_Steps_Common</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">38</property>
+                                      <property name="row">5</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Frame" id="frame6" named="True">
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="anchor">w</property>
+                                  <property name="padx">50</property>
+                                  <property name="side">top</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="label20">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Step#</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 20</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label19">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">1	2	3	4	5</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="columnspan">8</property>
+                                      <property name="padx">0 20</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label84" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Steps (HZ)</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 20</property>
+                                      <property name="row">1</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="TUNING_STEP1_WIDGET" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="state">disabled</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="textvariable">string:TUNING_STEP1</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_TUNING_STEP1</property>
+                                    <property name="width">7</property>
+                                    <layout manager="grid">
+                                      <property name="column">2</property>
+                                      <property name="padx">0 8</property>
+                                      <property name="row">1</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="TUNING_STEP2_WIDGET" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="state">disabled</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="textvariable">string:TUNING_STEP2</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_TUNING_STEP2</property>
+                                    <property name="width">7</property>
+                                    <layout manager="grid">
+                                      <property name="column">3</property>
+                                      <property name="padx">0 8</property>
+                                      <property name="row">1</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="TUNING_STEP3_WIDGET" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="state">disabled</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="textvariable">string:TUNING_STEP3</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_TUNING_STEP3</property>
+                                    <property name="width">7</property>
+                                    <layout manager="grid">
+                                      <property name="column">4</property>
+                                      <property name="padx">0 8</property>
+                                      <property name="row">1</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="TUNING_STEP4_WIDGET" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="state">disabled</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="textvariable">string:TUNING_STEP4</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_TUNING_STEP4</property>
+                                    <property name="width">7</property>
+                                    <layout manager="grid">
+                                      <property name="column">5</property>
+                                      <property name="padx">0 8</property>
+                                      <property name="row">1</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="TUNING_STEP5_WIDGET" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="state">disabled</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="textvariable">string:TUNING_STEP5</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_TUNING_STEP5</property>
+                                    <property name="width">7</property>
+                                    <layout manager="grid">
+                                      <property name="column">6</property>
+                                      <property name="row">1</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Frame" id="TUNING_STEPS_INVALID_WIDGET_Frame" named="True">
+                                    <property name="width">200</property>
+                                    <layout manager="grid">
+                                      <property name="column">7</property>
+                                      <property name="padx">10</property>
+                                      <property name="row">0</property>
+                                      <property name="rowspan">3</property>
+                                    </layout>
+                                    <child>
+                                      <object class="tk.Message" id="TUNING_STEPS_INVALID_WIDGET" named="True">
+                                        <property name="font">{Arial} 10 {bold italic}</property>
+                                        <property name="foreground">#ff0000</property>
+                                        <property name="justify">left</property>
+                                        <property name="takefocus">false</property>
+                                        <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
+                                        <property name="textvariable">string:TUNING_STEPS_INVALID</property>
+                                        <property name="width">200</property>
+                                        <layout manager="pack">
+                                          <property name="anchor">center</property>
+                                          <property name="expand">true</property>
+                                          <property name="fill">both</property>
+                                          <property name="side">left</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label26">
+                                    <layout manager="grid">
+                                      <property name="row">2</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Frame" id="frame1">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="anchor">w</property>
+                                  <property name="side">top</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="label21">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Default Step:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">0</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Combobox" id="TUNING_STEP_INDEX_VALUE_WIDGET" named="True">
+                                    <property name="justify">center</property>
+                                    <property name="state">readonly</property>
+                                    <property name="style">ComboBox4.TCombobox</property>
+                                    <property name="textvariable">string:TUNING_STEP_INDEX_VALUE</property>
+                                    <property name="values">10 20 50 100 1000</property>
+                                    <property name="width">5</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="row">0</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Frame" id="frame8">
+                                    <property name="height">0</property>
+                                    <property name="width">0</property>
+                                    <layout manager="grid">
+                                      <property name="column">7</property>
+                                      <property name="pady">20 0</property>
+                                      <property name="row">1</property>
+                                    </layout>
+                                    <child>
+                                      <object class="ttk.Label" id="TUNING_STEP_INDEX_WIDGET" named="True">
+                                        <property name="textvariable">string:TUNING_STEP_INDEX</property>
+                                        <layout manager="pack" />
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame7" named="True">
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="anchor">w</property>
+                          <property name="expand">true</property>
+                          <property name="fill">x</property>
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Separator" id="separator4">
+                            <property name="orient">horizontal</property>
+                            <layout manager="pack">
+                              <property name="anchor">center</property>
+                              <property name="expand">true</property>
+                              <property name="fill">x</property>
+                              <property name="pady">10 0</property>
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
                       <object class="ttk.Frame" id="General_CW_Frame" named="True">
                         <property name="height">200</property>
                         <property name="width">200</property>
-                        <layout manager="grid">
-                          <property name="column">0</property>
-                          <property name="pady">20 0</property>
-                          <property name="row">1</property>
-                          <property name="sticky">w</property>
+                        <layout manager="pack">
+                          <property name="anchor">w</property>
+                          <property name="side">top</property>
                         </layout>
                         <child>
                           <object class="ttk.Frame" id="Operator_CW_Title_Frame" named="True">
@@ -185,6 +598,7 @@
                                   <property name="anchor">w</property>
                                   <property name="expand">true</property>
                                   <property name="fill">x</property>
+                                  <property name="pady">20 0</property>
                                 </layout>
                               </object>
                             </child>
@@ -424,17 +838,39 @@
                             </child>
                           </object>
                         </child>
+                        <child>
+                          <object class="ttk.Frame" id="frame5" named="True">
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="anchor">w</property>
+                              <property name="expand">true</property>
+                              <property name="fill">x</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Separator" id="separator3">
+                                <property name="orient">horizontal</property>
+                                <layout manager="pack">
+                                  <property name="anchor">center</property>
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="pady">10 0</property>
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                       </object>
                     </child>
                     <child>
                       <object class="ttk.Frame" id="Operator_Channel_Frame" named="True">
                         <property name="height">200</property>
                         <property name="width">200</property>
-                        <layout manager="grid">
-                          <property name="column">0</property>
-                          <property name="pady">20 0</property>
-                          <property name="row">2</property>
-                          <property name="sticky">w</property>
+                        <layout manager="pack">
+                          <property name="anchor">w</property>
+                          <property name="side">top</property>
                         </layout>
                         <child>
                           <object class="ttk.Frame" id="All_Channel_Frame" named="True">
@@ -630,6 +1066,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox3.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ1_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -639,37 +1077,6 @@
                                           <property name="row">4</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame16" named="True">
-                                        <property name="height">30</property>
-                                        <property name="width">400</property>
-                                        <layout manager="grid">
-                                          <property name="column">11</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 5</property>
-                                          <property name="row">4</property>
-                                          <property name="rowspan">1</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ1_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ1_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">w</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">y</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -747,6 +1154,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox4.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ2_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -756,34 +1165,6 @@
                                           <property name="row">5</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame17" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">5</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ2_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ2_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -861,6 +1242,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox3.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ3_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -870,34 +1253,6 @@
                                           <property name="row">6</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame18" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">6</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ3_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ3_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -975,6 +1330,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox3.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ4_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -984,34 +1341,6 @@
                                           <property name="row">7</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame19" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">7</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ4_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ4_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -1089,6 +1418,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox3.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ5_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -1098,34 +1429,6 @@
                                           <property name="row">8</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame20" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">8</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ5_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ5_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -1203,6 +1506,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox3.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ6_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -1212,34 +1517,6 @@
                                           <property name="row">9</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame21" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">9</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ6_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ6_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -1317,6 +1594,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox3.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ7_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -1326,34 +1605,6 @@
                                           <property name="row">10</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame22" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">10</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ7_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ7_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -1431,6 +1682,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox3.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ8_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -1440,34 +1693,6 @@
                                           <property name="row">11</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame23" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">11</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ8_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ8_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -1545,6 +1770,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox3.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ9_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -1554,34 +1781,6 @@
                                           <property name="row">12</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame24" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">12</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ9_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ9_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -1649,6 +1848,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox3.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ10_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -1669,34 +1870,6 @@
                                           <property name="pady">5 0</property>
                                           <property name="row">13</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame25" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">13</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ10_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ10_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                   </object>
@@ -1863,6 +2036,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox3.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ11_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -1872,37 +2047,6 @@
                                           <property name="row">4</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame27" named="True">
-                                        <property name="height">1</property>
-                                        <property name="width">30</property>
-                                        <layout manager="grid">
-                                          <property name="column">11</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">4</property>
-                                          <property name="rowspan">1</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ11_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ11_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -1950,6 +2094,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox4.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ12_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -1959,34 +2105,6 @@
                                           <property name="row">5</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame28" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">5</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ12_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ12_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -2034,6 +2152,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox4.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ13_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -2043,34 +2163,6 @@
                                           <property name="row">6</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame29" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">6</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ13_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ13_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -2118,6 +2210,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox4.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ14_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -2127,34 +2221,6 @@
                                           <property name="row">7</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame30" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">7</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ14_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ14_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -2202,6 +2268,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox4.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ15_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -2211,34 +2279,6 @@
                                           <property name="row">8</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame31" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">8</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ15_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ15_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -2286,6 +2326,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox4.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ16_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -2295,34 +2337,6 @@
                                           <property name="row">9</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame32" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">9</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ16_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ16_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -2370,6 +2384,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox4.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ17_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -2379,34 +2395,6 @@
                                           <property name="row">10</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame33" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">10</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ17_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ17_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -2454,6 +2442,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox4.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ18_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -2463,34 +2453,6 @@
                                           <property name="row">11</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame34" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">11</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ18_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ18_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -2538,6 +2500,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox4.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ19_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -2547,34 +2511,6 @@
                                           <property name="row">12</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame35" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">12</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ19_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ19_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                     <child>
@@ -2623,6 +2559,8 @@
                                         <property name="state">readonly</property>
                                         <property name="style">ComboBox4.TCombobox</property>
                                         <property name="textvariable">string:CHANNEL_FREQ20_MODE</property>
+                                        <property name="validate">focusout</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="">clearErrorMsgPersistFlag</property>
                                         <property name="values">DEFAULT LSB USB CWL CWU</property>
                                         <property name="width">10</property>
                                         <layout manager="grid">
@@ -2632,34 +2570,6 @@
                                           <property name="row">13</property>
                                           <property name="sticky">w</property>
                                         </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Frame" id="frame36" named="True">
-                                        <layout manager="grid">
-                                          <property name="column">10</property>
-                                          <property name="columnspan">7</property>
-                                          <property name="pady">5 0</property>
-                                          <property name="row">13</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                        <child>
-                                          <object class="tk.Message" id="CHANNEL_FREQ20_INVALID_WIDGET" named="True">
-                                            <property name="font">{Arial} 10 {bold italic}</property>
-                                            <property name="foreground">#ff0000</property>
-                                            <property name="justify">left</property>
-                                            <property name="takefocus">false</property>
-                                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                            <property name="textvariable">string:CHANNEL_FREQ20_INVALID</property>
-                                            <property name="width">400</property>
-                                            <layout manager="pack">
-                                              <property name="anchor">center</property>
-                                              <property name="expand">true</property>
-                                              <property name="fill">both</property>
-                                              <property name="side">left</property>
-                                            </layout>
-                                          </object>
-                                        </child>
                                       </object>
                                     </child>
                                   </object>
@@ -4978,7 +4888,6 @@ Recovery</property>
                     <property name="height">200</property>
                     <property name="width">200</property>
                     <layout manager="pack">
-                      <property name="fill">x</property>
                       <property name="side">top</property>
                     </layout>
                     <child>
@@ -4994,25 +4903,133 @@ Recovery</property>
                   </object>
                 </child>
                 <child>
+                  <object class="ttk.Frame" id="System_Info_Firmware_Version" named="True">
+                    <property name="width">200</property>
+                    <layout manager="pack">
+                      <property name="anchor">w</property>
+                      <property name="pady">20 0</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Label" id="System_Info_Firmware_Version_Label" named="True">
+                        <property name="style">Heading3.TLabel</property>
+                        <property name="text" translatable="yes">Firmware Version: </property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="row">0</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Label" id="KD8CEC" named="True">
+                        <property name="style">Normal.TLabel</property>
+                        <property name="text" translatable="yes">KD8CEC  </property>
+                        <layout manager="grid">
+                          <property name="column">1</property>
+                          <property name="row">0</property>
+                          <property name="sticky">ew</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Label" id="VERSION_ADDRESS_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
+                        <property name="textvariable">string:VERSION_ADDRESS</property>
+                        <layout manager="grid">
+                          <property name="column">2</property>
+                          <property name="row">0</property>
+                          <property name="sticky">w</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Frame" id="System_Info_Calibration_Settings" named="True">
+                    <property name="width">200</property>
+                    <layout manager="pack">
+                      <property name="anchor">w</property>
+                      <property name="pady">20 0</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <child>
+                      <object class="ttk.Label" id="System_Info_Factory_Calibration_Label" named="True">
+                        <property name="style">Heading3.TLabel</property>
+                        <property name="text" translatable="yes">Factory Calibration Data</property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="columnspan">3</property>
+                          <property name="row">0</property>
+                          <property name="sticky">w</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Label" id="System_Info_Factory_Calibration_Master_Label" named="True">
+                        <property name="style">Heading4.TLabel</property>
+                        <property name="text" translatable="yes">Master:</property>
+                        <layout manager="grid">
+                          <property name="column">1</property>
+                          <property name="padx">75 50</property>
+                          <property name="row">2</property>
+                          <property name="sticky">e</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Label" id="System_Info_MASTER_CAL_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
+                        <property name="textvariable">string:MASTER_CAL</property>
+                        <layout manager="grid">
+                          <property name="column">2</property>
+                          <property name="row">2</property>
+                          <property name="sticky">e</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Label" id="System_Info_Factory_Calibration_BFO_Label" named="True">
+                        <property name="style">Heading4.TLabel</property>
+                        <property name="text" translatable="yes">SSB BFO:</property>
+                        <layout manager="grid">
+                          <property name="column">1</property>
+                          <property name="padx">75 50</property>
+                          <property name="pady">0 3</property>
+                          <property name="row">3</property>
+                          <property name="sticky">e</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Label" id="System_Info_USB_CAL_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
+                        <property name="textvariable">string:USB_CAL</property>
+                        <layout manager="grid">
+                          <property name="column">2</property>
+                          <property name="row">3</property>
+                          <property name="sticky">e</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
                   <object class="ttk.Frame" id="System_Info_VFO_Frame" named="True">
                     <layout manager="pack">
-                      <property name="expand">true</property>
-                      <property name="fill">both</property>
-                      <property name="padx">5</property>
-                      <property name="pady">5</property>
+                      <property name="anchor">w</property>
+                      <property name="pady">20 0</property>
                       <property name="side">top</property>
                     </layout>
                     <containerlayout manager="grid">
                       <property name="anchor">nw</property>
                     </containerlayout>
                     <child>
-                      <object class="ttk.Label" id="sytem_Infor_Last_Saved_Freq" named="True">
+                      <object class="ttk.Label" id="sytem_Infor_Last_Saved_Freq_Label" named="True">
                         <property name="style">Heading3.TLabel</property>
                         <property name="text" translatable="yes">Last Used Frequencies</property>
                         <layout manager="grid">
                           <property name="column">0</property>
                           <property name="columnspan">2</property>
-                          <property name="pady">20 0</property>
                           <property name="row">3</property>
                           <property name="sticky">ew</property>
                         </layout>
@@ -5060,7 +5077,7 @@ Recovery</property>
                         <property name="text" translatable="yes">VFO A:</property>
                         <layout manager="grid">
                           <property name="column">1</property>
-                          <property name="padx">0 15</property>
+                          <property name="padx">0 40</property>
                           <property name="pady">0 3</property>
                           <property name="row">6</property>
                           <property name="sticky">e</property>
@@ -5069,6 +5086,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="VFO_A_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:VFO_A</property>
                         <layout manager="grid">
                           <property name="column">2</property>
@@ -5081,6 +5099,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="VFO_A_MODE_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:VFO_A_MODE</property>
                         <layout manager="grid">
                           <property name="column">4</property>
@@ -5097,7 +5116,7 @@ Recovery</property>
                         <property name="text" translatable="yes">VFO B:</property>
                         <layout manager="grid">
                           <property name="column">1</property>
-                          <property name="padx">0 15</property>
+                          <property name="padx">0 40</property>
                           <property name="pady">0 3</property>
                           <property name="row">7</property>
                           <property name="sticky">e</property>
@@ -5106,6 +5125,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="VFO_B_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:VFO_B</property>
                         <layout manager="grid">
                           <property name="column">2</property>
@@ -5118,6 +5138,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="VFO_B_MODE_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:VFO_B_MODE</property>
                         <layout manager="grid">
                           <property name="column">4</property>
@@ -5134,7 +5155,7 @@ Recovery</property>
                         <property name="text" translatable="yes">Band 1:</property>
                         <layout manager="grid">
                           <property name="column">1</property>
-                          <property name="padx">0 15</property>
+                          <property name="padx">0 40</property>
                           <property name="pady">15 3</property>
                           <property name="row">8</property>
                           <property name="sticky">e</property>
@@ -5143,6 +5164,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS1_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS1</property>
                         <layout manager="grid">
                           <property name="column">2</property>
@@ -5155,6 +5177,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS1_MODE_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS1_MODE</property>
                         <layout manager="grid">
                           <property name="column">4</property>
@@ -5171,7 +5194,7 @@ Recovery</property>
                         <property name="text" translatable="yes">Band 2:</property>
                         <layout manager="grid">
                           <property name="column">1</property>
-                          <property name="padx">0 15</property>
+                          <property name="padx">0 40</property>
                           <property name="pady">0 3</property>
                           <property name="row">9</property>
                           <property name="sticky">e</property>
@@ -5180,6 +5203,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQ2_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS2</property>
                         <layout manager="grid">
                           <property name="column">2</property>
@@ -5191,6 +5215,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS2_MODE_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS2_MODE</property>
                         <layout manager="grid">
                           <property name="column">4</property>
@@ -5206,7 +5231,7 @@ Recovery</property>
                         <property name="text" translatable="yes">Band 3:</property>
                         <layout manager="grid">
                           <property name="column">1</property>
-                          <property name="padx">0 15</property>
+                          <property name="padx">0 40</property>
                           <property name="pady">0 3</property>
                           <property name="row">10</property>
                           <property name="sticky">e</property>
@@ -5215,6 +5240,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS3_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS3</property>
                         <layout manager="grid">
                           <property name="column">2</property>
@@ -5226,6 +5252,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS3_MODE_WIDGET" named="True">
+                        <property name="style">Heading4.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS3_MODE</property>
                         <layout manager="grid">
                           <property name="column">4</property>
@@ -5241,7 +5268,7 @@ Recovery</property>
                         <property name="text" translatable="yes">Band 4:</property>
                         <layout manager="grid">
                           <property name="column">1</property>
-                          <property name="padx">0 15</property>
+                          <property name="padx">0 40</property>
                           <property name="pady">0 3</property>
                           <property name="row">11</property>
                           <property name="sticky">e</property>
@@ -5250,6 +5277,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS4_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS4</property>
                         <layout manager="grid">
                           <property name="column">2</property>
@@ -5261,6 +5289,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS4_MODE_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS4_MODE</property>
                         <layout manager="grid">
                           <property name="column">4</property>
@@ -5276,7 +5305,7 @@ Recovery</property>
                         <property name="text" translatable="yes">Band 5:</property>
                         <layout manager="grid">
                           <property name="column">1</property>
-                          <property name="padx">0 15</property>
+                          <property name="padx">0 40</property>
                           <property name="pady">0 3</property>
                           <property name="row">12</property>
                           <property name="sticky">e</property>
@@ -5285,6 +5314,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS5_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS5</property>
                         <layout manager="grid">
                           <property name="column">2</property>
@@ -5296,6 +5326,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS5_MODE_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS5_MODE</property>
                         <layout manager="grid">
                           <property name="column">4</property>
@@ -5311,7 +5342,7 @@ Recovery</property>
                         <property name="text" translatable="yes">Band 6:</property>
                         <layout manager="grid">
                           <property name="column">1</property>
-                          <property name="padx">0 15</property>
+                          <property name="padx">0 40</property>
                           <property name="pady">0 3</property>
                           <property name="row">13</property>
                           <property name="sticky">e</property>
@@ -5320,6 +5351,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS6_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS6</property>
                         <layout manager="grid">
                           <property name="column">2</property>
@@ -5331,6 +5363,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS6_MODE_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS6_MODE</property>
                         <layout manager="grid">
                           <property name="column">4</property>
@@ -5346,7 +5379,7 @@ Recovery</property>
                         <property name="text" translatable="yes">Band 7:</property>
                         <layout manager="grid">
                           <property name="column">1</property>
-                          <property name="padx">0 15</property>
+                          <property name="padx">0 40</property>
                           <property name="pady">0 3</property>
                           <property name="row">14</property>
                           <property name="sticky">e</property>
@@ -5355,6 +5388,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS7_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS7</property>
                         <layout manager="grid">
                           <property name="column">2</property>
@@ -5366,6 +5400,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS7_MODE_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS7_MODE</property>
                         <layout manager="grid">
                           <property name="column">4</property>
@@ -5381,7 +5416,7 @@ Recovery</property>
                         <property name="text" translatable="yes">Band 8:</property>
                         <layout manager="grid">
                           <property name="column">1</property>
-                          <property name="padx">0 15</property>
+                          <property name="padx">0 40</property>
                           <property name="pady">0 3</property>
                           <property name="row">15</property>
                           <property name="sticky">e</property>
@@ -5390,6 +5425,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS8_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS8</property>
                         <layout manager="grid">
                           <property name="column">2</property>
@@ -5401,6 +5437,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS8_MODE_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS8_MODE</property>
                         <layout manager="grid">
                           <property name="column">4</property>
@@ -5416,7 +5453,7 @@ Recovery</property>
                         <property name="text" translatable="yes">Band 9:</property>
                         <layout manager="grid">
                           <property name="column">1</property>
-                          <property name="padx">0 15</property>
+                          <property name="padx">0 40</property>
                           <property name="pady">0 3</property>
                           <property name="row">16</property>
                           <property name="sticky">e</property>
@@ -5425,6 +5462,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS9_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS9</property>
                         <layout manager="grid">
                           <property name="column">2</property>
@@ -5436,6 +5474,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS9_MODE_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS9_MODE</property>
                         <layout manager="grid">
                           <property name="column">4</property>
@@ -5451,7 +5490,7 @@ Recovery</property>
                         <property name="text" translatable="yes">Band 10:</property>
                         <layout manager="grid">
                           <property name="column">1</property>
-                          <property name="padx">0 15</property>
+                          <property name="padx">0 40</property>
                           <property name="pady">0 3</property>
                           <property name="row">17</property>
                           <property name="sticky">e</property>
@@ -5460,6 +5499,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS10_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS10</property>
                         <layout manager="grid">
                           <property name="column">2</property>
@@ -5471,6 +5511,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS10_MODE_WIDGET" named="True">
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS10_MODE</property>
                         <layout manager="grid">
                           <property name="column">4</property>
