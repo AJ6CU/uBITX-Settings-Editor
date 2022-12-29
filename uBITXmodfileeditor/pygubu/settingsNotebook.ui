@@ -2850,36 +2850,6 @@
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Frame" id="frame47" named="True">
-                        <property name="height">1</property>
-                        <property name="width">30</property>
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">7</property>
-                          <property name="rowspan">1</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="HAM_BAND_COUNT_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:HAM_BAND_COUNT_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
                       <object class="ttk.Label" id="label100" named="True">
                         <property name="justify">center</property>
                         <property name="style">Heading4.TLabel</property>
@@ -2981,36 +2951,6 @@
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Frame" id="frame48" named="True">
-                        <property name="height">1</property>
-                        <property name="width">30</property>
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">10</property>
-                          <property name="rowspan">1</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="HAM_BAND_RANGE1_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:HAM_BAND_RANGE1_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
                       <object class="ttk.Label" id="label107" named="True">
                         <property name="style">Heading4.TLabel</property>
                         <property name="text" translatable="yes">Band 2</property>
@@ -3073,33 +3013,6 @@
                           <property name="padx">0 5</property>
                           <property name="row">11</property>
                         </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Frame" id="frame49" named="True">
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">11</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="HAM_BAND_RANGE2_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:HAM_BAND_RANGE2_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
                       </object>
                     </child>
                     <child>
@@ -3168,33 +3081,6 @@
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Frame" id="frame50" named="True">
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">12</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="HAM_BAND_RANGE3_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:HAM_BAND_RANGE3_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
                       <object class="ttk.Label" id="label109" named="True">
                         <property name="style">Heading4.TLabel</property>
                         <property name="text" translatable="yes">Band 4</property>
@@ -3257,33 +3143,6 @@
                           <property name="padx">0 5</property>
                           <property name="row">13</property>
                         </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Frame" id="frame51" named="True">
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">13</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="HAM_BAND_RANGE4_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:HAM_BAND_RANGE4_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
                       </object>
                     </child>
                     <child>
@@ -3352,33 +3211,6 @@
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Frame" id="frame52" named="True">
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">14</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="HAM_BAND_RANGE5_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:HAM_BAND_RANGE5_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
                       <object class="ttk.Label" id="label111" named="True">
                         <property name="style">Heading4.TLabel</property>
                         <property name="text" translatable="yes">Band 6</property>
@@ -3441,33 +3273,6 @@
                           <property name="padx">0 5</property>
                           <property name="row">15</property>
                         </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Frame" id="frame53" named="True">
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">15</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="HAM_BAND_RANGE6_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:HAM_BAND_RANGE6_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
                       </object>
                     </child>
                     <child>
@@ -3536,33 +3341,6 @@
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Frame" id="frame54" named="True">
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">16</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="HAM_BAND_RANGE7_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:HAM_BAND_RANGE7_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
                       <object class="ttk.Label" id="label113" named="True">
                         <property name="style">Heading4.TLabel</property>
                         <property name="text" translatable="yes">Band 8</property>
@@ -3625,33 +3403,6 @@
                           <property name="padx">0 5</property>
                           <property name="row">17</property>
                         </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Frame" id="frame55" named="True">
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">17</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="HAM_BAND_RANGE8_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:HAM_BAND_RANGE8_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
                       </object>
                     </child>
                     <child>
@@ -3720,33 +3471,6 @@
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Frame" id="frame56" named="True">
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">18</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="HAM_BAND_RANGE9_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:HAM_BAND_RANGE9_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
                       <object class="ttk.Label" id="label115" named="True">
                         <property name="style">Heading4.TLabel</property>
                         <property name="text" translatable="yes">Band 10</property>
@@ -3810,33 +3534,6 @@
                           <property name="padx">0 5</property>
                           <property name="row">19</property>
                         </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Frame" id="frame57" named="True">
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">19</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="HAM_BAND_RANGE10_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:HAM_BAND_RANGE10_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
                       </object>
                     </child>
                   </object>
@@ -4153,36 +3850,6 @@ Recovery</property>
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Frame" id="MASTER_CAL_INVALID_Frame" named="True">
-                        <property name="height">1</property>
-                        <property name="width">30</property>
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">4</property>
-                          <property name="row">4</property>
-                          <property name="rowspan">1</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="MASTER_CAL_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:MASTER_CAL_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
                       <object class="ttk.Label" id="USB_CAL_LABEL" named="True">
                         <property name="style">Normal.TLabel</property>
                         <property name="text" translatable="yes">SSB BFO</property>
@@ -4236,36 +3903,6 @@ Recovery</property>
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Frame" id="USB_CAL_INVALID_Frame" named="True">
-                        <property name="height">1</property>
-                        <property name="width">30</property>
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">4</property>
-                          <property name="row">5</property>
-                          <property name="rowspan">1</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="USB_CAL_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:USB_CAL_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
                       <object class="ttk.Label" id="CW_CAL_LABEL" named="True">
                         <property name="style">Normal.TLabel</property>
                         <property name="text" translatable="yes">CW BFO</property>
@@ -4292,34 +3929,6 @@ Recovery</property>
                           <property name="row">6</property>
                           <property name="sticky">w</property>
                         </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Frame" id="CW_CAL_INVALID_Frame" named="True">
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">4</property>
-                          <property name="row">6</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="CW_CAL_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:CW_CAL_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="pady">15 0</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
                       </object>
                     </child>
                   </object>

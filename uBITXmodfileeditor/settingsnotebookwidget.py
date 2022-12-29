@@ -1751,27 +1751,6 @@ class SettingsnotebookWidget(ttk.Frame):
             self.HAM_BAND_COUNT_WIDGET.register(
                 self.validate_HAM_BAND_COUNT), "%P", "%V")
         self.HAM_BAND_COUNT_WIDGET.configure(validatecommand=_validatecmd)
-        self.frame47 = ttk.Frame(self.frame46)
-        self.frame47.configure(height=1, width=30)
-        self.HAM_BAND_COUNT_INVALID_WIDGET = tk.Message(self.frame47)
-        self.HAM_BAND_COUNT_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.HAM_BAND_COUNT_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.HAM_BAND_COUNT_INVALID,
-            width=400)
-        self.HAM_BAND_COUNT_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame47.grid(
-            column=11,
-            columnspan=7,
-            row=7,
-            rowspan=1,
-            sticky="w")
         self.label100 = ttk.Label(self.frame46)
         self.label100.configure(
             justify="center",
@@ -1820,27 +1799,6 @@ class SettingsnotebookWidget(ttk.Frame):
         label117 = ttk.Label(self.frame46)
         label117.configure(text='KHz')
         label117.grid(column=6, padx="0 5", row=10)
-        self.frame48 = ttk.Frame(self.frame46)
-        self.frame48.configure(height=1, width=30)
-        self.HAM_BAND_RANGE1_INVALID_WIDGET = tk.Message(self.frame48)
-        self.HAM_BAND_RANGE1_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.HAM_BAND_RANGE1_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.HAM_BAND_RANGE1_INVALID,
-            width=400)
-        self.HAM_BAND_RANGE1_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame48.grid(
-            column=11,
-            columnspan=7,
-            row=10,
-            rowspan=1,
-            sticky="w")
         self.label107 = ttk.Label(self.frame46)
         self.label107.configure(style="Heading4.TLabel", text='Band 2')
         self.label107.grid(column=1, pady="0 5", row=11, sticky="w")
@@ -1877,21 +1835,6 @@ class SettingsnotebookWidget(ttk.Frame):
         label119 = ttk.Label(self.frame46)
         label119.configure(text='KHz')
         label119.grid(column=6, padx="0 5", row=11)
-        self.frame49 = ttk.Frame(self.frame46)
-        self.HAM_BAND_RANGE2_INVALID_WIDGET = tk.Message(self.frame49)
-        self.HAM_BAND_RANGE2_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.HAM_BAND_RANGE2_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.HAM_BAND_RANGE2_INVALID,
-            width=400)
-        self.HAM_BAND_RANGE2_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame49.grid(column=11, columnspan=7, row=11, sticky="w")
         self.label108 = ttk.Label(self.frame46)
         self.label108.configure(style="Heading4.TLabel", text='Band 3')
         self.label108.grid(column=1, pady="0 5", row=12, sticky="w")
@@ -1928,21 +1871,6 @@ class SettingsnotebookWidget(ttk.Frame):
         label121 = ttk.Label(self.frame46)
         label121.configure(text='KHz')
         label121.grid(column=6, padx="0 5", row=12)
-        self.frame50 = ttk.Frame(self.frame46)
-        self.HAM_BAND_RANGE3_INVALID_WIDGET = tk.Message(self.frame50)
-        self.HAM_BAND_RANGE3_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.HAM_BAND_RANGE3_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.HAM_BAND_RANGE3_INVALID,
-            width=400)
-        self.HAM_BAND_RANGE3_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame50.grid(column=11, columnspan=7, row=12, sticky="w")
         self.label109 = ttk.Label(self.frame46)
         self.label109.configure(style="Heading4.TLabel", text='Band 4')
         self.label109.grid(column=1, pady="0 5", row=13, sticky="w")
@@ -1979,21 +1907,6 @@ class SettingsnotebookWidget(ttk.Frame):
         label123 = ttk.Label(self.frame46)
         label123.configure(text='KHz')
         label123.grid(column=6, padx="0 5", row=13)
-        self.frame51 = ttk.Frame(self.frame46)
-        self.HAM_BAND_RANGE4_INVALID_WIDGET = tk.Message(self.frame51)
-        self.HAM_BAND_RANGE4_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.HAM_BAND_RANGE4_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.HAM_BAND_RANGE4_INVALID,
-            width=400)
-        self.HAM_BAND_RANGE4_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame51.grid(column=11, columnspan=7, row=13, sticky="w")
         self.label110 = ttk.Label(self.frame46)
         self.label110.configure(style="Heading4.TLabel", text='Band 5')
         self.label110.grid(column=1, pady="0 5", row=14, sticky="w")
@@ -2030,21 +1943,6 @@ class SettingsnotebookWidget(ttk.Frame):
         label125 = ttk.Label(self.frame46)
         label125.configure(text='KHz')
         label125.grid(column=6, padx="0 5", row=14)
-        self.frame52 = ttk.Frame(self.frame46)
-        self.HAM_BAND_RANGE5_INVALID_WIDGET = tk.Message(self.frame52)
-        self.HAM_BAND_RANGE5_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.HAM_BAND_RANGE5_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.HAM_BAND_RANGE5_INVALID,
-            width=400)
-        self.HAM_BAND_RANGE5_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame52.grid(column=11, columnspan=7, row=14, sticky="w")
         self.label111 = ttk.Label(self.frame46)
         self.label111.configure(style="Heading4.TLabel", text='Band 6')
         self.label111.grid(column=1, pady="0 5", row=15, sticky="w")
@@ -2081,21 +1979,6 @@ class SettingsnotebookWidget(ttk.Frame):
         label127 = ttk.Label(self.frame46)
         label127.configure(text='KHz')
         label127.grid(column=6, padx="0 5", row=15)
-        self.frame53 = ttk.Frame(self.frame46)
-        self.HAM_BAND_RANGE6_INVALID_WIDGET = tk.Message(self.frame53)
-        self.HAM_BAND_RANGE6_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.HAM_BAND_RANGE6_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.HAM_BAND_RANGE6_INVALID,
-            width=400)
-        self.HAM_BAND_RANGE6_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame53.grid(column=11, columnspan=7, row=15, sticky="w")
         self.label112 = ttk.Label(self.frame46)
         self.label112.configure(style="Heading4.TLabel", text='Band 7')
         self.label112.grid(column=1, pady="0 5", row=16, sticky="w")
@@ -2132,21 +2015,6 @@ class SettingsnotebookWidget(ttk.Frame):
         label129 = ttk.Label(self.frame46)
         label129.configure(text='KHz')
         label129.grid(column=6, padx="0 5", row=16)
-        self.frame54 = ttk.Frame(self.frame46)
-        self.HAM_BAND_RANGE7_INVALID_WIDGET = tk.Message(self.frame54)
-        self.HAM_BAND_RANGE7_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.HAM_BAND_RANGE7_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.HAM_BAND_RANGE7_INVALID,
-            width=400)
-        self.HAM_BAND_RANGE7_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame54.grid(column=11, columnspan=7, row=16, sticky="w")
         self.label113 = ttk.Label(self.frame46)
         self.label113.configure(style="Heading4.TLabel", text='Band 8')
         self.label113.grid(column=1, pady="0 5", row=17, sticky="w")
@@ -2183,21 +2051,6 @@ class SettingsnotebookWidget(ttk.Frame):
         label131 = ttk.Label(self.frame46)
         label131.configure(text='KHz')
         label131.grid(column=6, padx="0 5", row=17)
-        self.frame55 = ttk.Frame(self.frame46)
-        self.HAM_BAND_RANGE8_INVALID_WIDGET = tk.Message(self.frame55)
-        self.HAM_BAND_RANGE8_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.HAM_BAND_RANGE8_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.HAM_BAND_RANGE8_INVALID,
-            width=400)
-        self.HAM_BAND_RANGE8_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame55.grid(column=11, columnspan=7, row=17, sticky="w")
         self.label114 = ttk.Label(self.frame46)
         self.label114.configure(style="Heading4.TLabel", text='Band 9')
         self.label114.grid(column=1, pady="0 5", row=18, sticky="w")
@@ -2234,21 +2087,6 @@ class SettingsnotebookWidget(ttk.Frame):
         label133 = ttk.Label(self.frame46)
         label133.configure(text='KHz')
         label133.grid(column=6, padx="0 5", row=18)
-        self.frame56 = ttk.Frame(self.frame46)
-        self.HAM_BAND_RANGE9_INVALID_WIDGET = tk.Message(self.frame56)
-        self.HAM_BAND_RANGE9_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.HAM_BAND_RANGE9_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.HAM_BAND_RANGE9_INVALID,
-            width=400)
-        self.HAM_BAND_RANGE9_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame56.grid(column=11, columnspan=7, row=18, sticky="w")
         self.label115 = ttk.Label(self.frame46)
         self.label115.configure(style="Heading4.TLabel", text='Band 10')
         self.label115.grid(
@@ -2291,21 +2129,6 @@ class SettingsnotebookWidget(ttk.Frame):
         label135 = ttk.Label(self.frame46)
         label135.configure(text='KHz')
         label135.grid(column=6, padx="0 5", row=19)
-        self.frame57 = ttk.Frame(self.frame46)
-        self.HAM_BAND_RANGE10_INVALID_WIDGET = tk.Message(self.frame57)
-        self.HAM_BAND_RANGE10_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.HAM_BAND_RANGE10_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.HAM_BAND_RANGE10_INVALID,
-            width=400)
-        self.HAM_BAND_RANGE10_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.frame57.grid(column=11, columnspan=7, row=19, sticky="w")
         self.frame46.pack(
             anchor="w",
             expand="false",
