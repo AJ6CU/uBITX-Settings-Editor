@@ -2276,11 +2276,9 @@ class SettingsnotebookWidget(ttk.Frame):
         self.MASTER_CAL_COPY_BUTTON.configure(
             command=self.Reset_Master_Cal_To_Factory)
         label23 = ttk.Label(self.Radio_Calibration_Frame)
-        self.FACTORY_VALUES_MASTER_CAL = tk.StringVar(value='99999999')
-        label23.configure(
-            style="Normal.TLabel",
-            text='99999999',
-            textvariable=self.FACTORY_VALUES_MASTER_CAL)
+        self.FACTORY_VALUES_MASTER_CAL = tk.StringVar()
+        label23.configure(style="Normal.TLabel",
+                          textvariable=self.FACTORY_VALUES_MASTER_CAL)
         label23.grid(column=5, row=4, sticky="w")
         self.USB_CAL_LABEL = ttk.Label(self.Radio_Calibration_Frame)
         self.USB_CAL_LABEL.configure(style="Normal.TLabel", text='SSB BFO')
@@ -2307,10 +2305,9 @@ class SettingsnotebookWidget(ttk.Frame):
         self.USB_CAL_COPY_BUTTON.configure(
             command=self.Reset_SSB_BFO_To_Factory)
         label25 = ttk.Label(self.Radio_Calibration_Frame)
-        self.FACTORY_VALUES_USB_CAL = tk.StringVar(value='99999999')
+        self.FACTORY_VALUES_USB_CAL = tk.StringVar()
         label25.configure(
             style="Normal.TLabel",
-            text='99999999',
             textvariable=self.FACTORY_VALUES_USB_CAL)
         label25.grid(column=5, row=5, sticky="w")
         self.CW_CAL_LABEL = ttk.Label(self.Radio_Calibration_Frame)
@@ -2700,7 +2697,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.System_Info_MASTER_CAL_WIDGET = ttk.Label(
             self.System_Info_Calibration_Settings)
         self.System_Info_MASTER_CAL_WIDGET.configure(
-            style="Normal.TLabel", textvariable=self.MASTER_CAL)
+            style="Normal.TLabel", textvariable=self.FACTORY_VALUES_MASTER_CAL)
         self.System_Info_MASTER_CAL_WIDGET.grid(column=2, row=2, sticky="e")
         self.System_Info_Factory_Calibration_BFO_Label = ttk.Label(
             self.System_Info_Calibration_Settings)
@@ -2711,7 +2708,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.System_Info_USB_CAL_WIDGET = ttk.Label(
             self.System_Info_Calibration_Settings)
         self.System_Info_USB_CAL_WIDGET.configure(
-            style="Normal.TLabel", textvariable=self.USB_CAL)
+            style="Normal.TLabel", textvariable=self.FACTORY_VALUES_USB_CAL)
         self.System_Info_USB_CAL_WIDGET.grid(column=2, row=3, sticky="e")
         self.System_Info_Calibration_Settings.pack(
             anchor="w", pady="20 0", side="top")

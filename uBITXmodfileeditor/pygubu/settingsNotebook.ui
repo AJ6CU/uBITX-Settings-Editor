@@ -3840,7 +3840,6 @@ Recovery</property>
                     <child>
                       <object class="ttk.Label" id="label23">
                         <property name="style">Normal.TLabel</property>
-                        <property name="text" translatable="yes">99999999</property>
                         <property name="textvariable">string:FACTORY_VALUES_MASTER_CAL</property>
                         <layout manager="grid">
                           <property name="column">5</property>
@@ -3893,7 +3892,6 @@ Recovery</property>
                     <child>
                       <object class="ttk.Label" id="label25">
                         <property name="style">Normal.TLabel</property>
-                        <property name="text" translatable="yes">99999999</property>
                         <property name="textvariable">string:FACTORY_VALUES_USB_CAL</property>
                         <layout manager="grid">
                           <property name="column">5</property>
@@ -4588,7 +4586,7 @@ Recovery</property>
                     <child>
                       <object class="ttk.Label" id="System_Info_MASTER_CAL_WIDGET" named="True">
                         <property name="style">Normal.TLabel</property>
-                        <property name="textvariable">string:MASTER_CAL</property>
+                        <property name="textvariable">string:FACTORY_VALUES_MASTER_CAL</property>
                         <layout manager="grid">
                           <property name="column">2</property>
                           <property name="row">2</property>
@@ -4612,7 +4610,7 @@ Recovery</property>
                     <child>
                       <object class="ttk.Label" id="System_Info_USB_CAL_WIDGET" named="True">
                         <property name="style">Normal.TLabel</property>
-                        <property name="textvariable">string:USB_CAL</property>
+                        <property name="textvariable">string:FACTORY_VALUES_USB_CAL</property>
                         <layout manager="grid">
                           <property name="column">2</property>
                           <property name="row">3</property>

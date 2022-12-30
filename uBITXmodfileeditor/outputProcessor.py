@@ -23,12 +23,12 @@ class OutputProcessor(Processor):
         style="Heading2.TLabelframe",
         text='Select Target',
         width=200)
-        self.savedFilePathChooserWidget.config(
-            initialdir="~",
-            mustexist=False,
-            textvariable=self.savedFilePathChooser,
-            title="Select Previously Saved Settings File",
-            type="file")
+        # self.savedFilePathChooserWidget.config(
+        #     initialdir="~",
+        #     mustexist=False,
+        #     textvariable=self.savedFilePathChooser,
+        #     title="Select Previously Saved Settings File",
+        #     type="file")
         self.goButton.set("WRITE")
 
     def processFile(self, *args):
