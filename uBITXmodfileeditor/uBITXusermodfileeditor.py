@@ -87,7 +87,7 @@ commandFrame.grid(row=6, column=0, columnspan=2, sticky='ew')
 outputProcessorFrame.grid(row=5, column=0, columnspan=2, pady=(10, 0))
 
 # Define and layout the contents of titleFrame
-titleBar = ttk.Label(titleFrame, text="uBITX Setting Customization Editor", style='Heading1.TLabel')
+titleBar = ttk.Label(titleFrame, text="uBITX Setting Customization Editor - V2.0", style='Heading1.TLabel')
 titleBar.config(anchor=CENTER)
 titleBar.pack()
 

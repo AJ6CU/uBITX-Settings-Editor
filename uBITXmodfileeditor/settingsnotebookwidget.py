@@ -57,24 +57,6 @@ class SettingsnotebookWidget(ttk.Frame):
             self.USER_CALLSIGN_WIDGET.register(
                 self.validate_USER_CALLSIGN), "%P", "%V")
         self.USER_CALLSIGN_WIDGET.configure(validatecommand=_validatecmd)
-        self.USER_CALLSIGN_INVALID_Frame = ttk.Frame(
-            self.General_Operator_Settings_Frame)
-        self.USER_CALLSIGN_INVALID_Frame.configure(width=200)
-        self.USER_CALLSIGN_INVALID_WIDGET = tk.Message(
-            self.USER_CALLSIGN_INVALID_Frame)
-        self.USER_CALLSIGN_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.USER_CALLSIGN_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.USER_CALLSIGN_INVALID,
-            width=400)
-        self.USER_CALLSIGN_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.USER_CALLSIGN_INVALID_Frame.grid(column=2, row=0)
         self.General_Operator_Settings_Frame.pack(padx="50 0", side="top")
         self.General_Operator_Frame.pack(anchor="w", side="top")
         self.frame4 = ttk.Frame(self.General_Frame)
@@ -255,24 +237,6 @@ class SettingsnotebookWidget(ttk.Frame):
             self.TUNING_STEP5_WIDGET.register(
                 self.validate_TUNING_STEP5), "%P", "%V")
         self.TUNING_STEP5_WIDGET.configure(validatecommand=_validatecmd)
-        self.TUNING_STEPS_INVALID_WIDGET_Frame = ttk.Frame(self.frame6)
-        self.TUNING_STEPS_INVALID_WIDGET_Frame.configure(width=200)
-        self.TUNING_STEPS_INVALID_WIDGET = tk.Message(
-            self.TUNING_STEPS_INVALID_WIDGET_Frame)
-        self.TUNING_STEPS_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.TUNING_STEPS_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.TUNING_STEPS_INVALID,
-            width=200)
-        self.TUNING_STEPS_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.TUNING_STEPS_INVALID_WIDGET_Frame.grid(
-            column=7, padx=10, row=0, rowspan=3)
         label26 = ttk.Label(self.frame6)
         label26.grid(row=2)
         self.frame6.pack(anchor="w", padx=50, side="top")
@@ -291,14 +255,11 @@ class SettingsnotebookWidget(ttk.Frame):
             values='10 20 50 100 1000',
             width=5)
         self.TUNING_STEP_INDEX_VALUE_WIDGET.grid(column=1, row=0)
-        frame8 = ttk.Frame(frame1)
-        frame8.configure(height=0, width=0)
-        self.TUNING_STEP_INDEX_WIDGET = ttk.Label(frame8)
+        self.TUNING_STEP_INDEX_WIDGET = ttk.Label(frame1)
         self.TUNING_STEP_INDEX = tk.StringVar()
         self.TUNING_STEP_INDEX_WIDGET.configure(
             textvariable=self.TUNING_STEP_INDEX)
-        self.TUNING_STEP_INDEX_WIDGET.pack()
-        frame8.grid(column=7, pady="20 0", row=1)
+        self.TUNING_STEP_INDEX_WIDGET.grid(column=0, row=1)
         frame1.pack(anchor="w", side="top")
         self.General_Tuning_Steps_Settings_Frame.pack(padx="50 0", side="top")
         self.General_Tuning_Steps_Frame.pack(anchor="w", side="top")
@@ -332,7 +293,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='Key Type')
         self.CW_KEY_TYPE_LABEL.grid(column=0, pady="0 10", row=0)
         self.CW_KEY_TYPE = tk.StringVar(value='STRAIGHT')
-        __values = ['STRAIGHT', ' IAMBICA', ' IAMICAB']
+        __values = ['STRAIGHT', 'IAMBICA', 'IAMICAB']
         self.CW_KEY_TYPE_WIDGET = tk.OptionMenu(
             self.General_CW_Settings_Frame,
             self.CW_KEY_TYPE,
@@ -356,24 +317,6 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CW_SIDETONE_WIDGET.register(
                 self.validate_CW_SIDETONE), "%P", "%V")
         self.CW_SIDETONE_WIDGET.configure(validatecommand=_validatecmd)
-        self.CW_SIDETONE_INVALID_Frame = ttk.Frame(
-            self.General_CW_Settings_Frame)
-        self.CW_SIDETONE_INVALID_Frame.configure(width=200)
-        self.CW_SIDETONE_INVALID_WIDGET = tk.Message(
-            self.CW_SIDETONE_INVALID_Frame)
-        self.CW_SIDETONE_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CW_SIDETONE_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CW_SIDETONE_INVALID,
-            width=400)
-        self.CW_SIDETONE_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.CW_SIDETONE_INVALID_Frame.grid(column=2, row=2)
         self.CW_SPEED_WPM_LABEL = ttk.Label(self.General_CW_Settings_Frame)
         self.CW_SPEED_WPM_LABEL.configure(
             style="Heading4.TLabel", text='Speed (WPM)')
@@ -391,23 +334,6 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CW_SPEED_WPM_WIDGET.register(
                 self.validate_CW_SPEED_WPM), "%P", "%V")
         self.CW_SPEED_WPM_WIDGET.configure(validatecommand=_validatecmd)
-        self.CW_SPEED_WPM_INVALID_Frame = ttk.Frame(
-            self.General_CW_Settings_Frame)
-        self.CW_SPEED_WPM_INVALID_WIDGET = tk.Message(
-            self.CW_SPEED_WPM_INVALID_Frame)
-        self.CW_SPEED_WPM_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CW_SPEED_WPM_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CW_SPEED_WPM_INVALID,
-            width=400)
-        self.CW_SPEED_WPM_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.CW_SPEED_WPM_INVALID_Frame.grid(column=2, row=6)
         self.CW_START_MS_LABEL = ttk.Label(self.General_CW_Settings_Frame)
         self.CW_START_MS_LABEL.configure(
             style="Heading4.TLabel",
@@ -426,23 +352,6 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CW_START_MS_WIDGET.register(
                 self.validate_CW_START_MS), "%P", "%V")
         self.CW_START_MS_WIDGET.configure(validatecommand=_validatecmd)
-        self.CW_START_MS_INVALID_Frame = ttk.Frame(
-            self.General_CW_Settings_Frame)
-        self.CW_START_MS_INVALID_WIDGET = tk.Message(
-            self.CW_START_MS_INVALID_Frame)
-        self.CW_START_MS_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CW_START_MS_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CW_START_MS_INVALID,
-            width=400)
-        self.CW_START_MS_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.CW_START_MS_INVALID_Frame.grid(column=2, row=10)
         self.CW_DELAY_MS_LABEL = ttk.Label(self.General_CW_Settings_Frame)
         self.CW_DELAY_MS_LABEL.configure(
             style="Heading4.TLabel",
@@ -461,23 +370,6 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CW_DELAY_MS_WIDGET.register(
                 self.validate_CW_DELAY_MS), "%P", "%V")
         self.CW_DELAY_MS_WIDGET.configure(validatecommand=_validatecmd)
-        self.CW_DELAY_MS_INVALID_Frame = ttk.Frame(
-            self.General_CW_Settings_Frame)
-        self.CW_DELAY_MS_INVALID_WIDGET = tk.Message(
-            self.CW_DELAY_MS_INVALID_Frame)
-        self.CW_DELAY_MS_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CW_DELAY_MS_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CW_DELAY_MS_INVALID,
-            width=400)
-        self.CW_DELAY_MS_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.CW_DELAY_MS_INVALID_Frame.grid(column=2, row=14)
         self.General_CW_Settings_Frame.pack(padx="50 0", side="top")
         self.frame5 = ttk.Frame(self.General_CW_Frame)
         self.frame5.configure(height=200, width=200)
@@ -538,7 +430,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.CHANNEL_FREQ1_Label.grid(
             column=0, padx="0 10", pady="5 5", row=4, sticky="w")
         self.CHANNEL_FREQ1_SHOW_NAME = tk.StringVar(value='YES')
-        __values = ['YES', ' NO']
+        __values = ['YES', 'NO']
         self.CHANNEL_FREQ1_SHOW_NAME_WIDGET = tk.OptionMenu(
             self.General_Channels_Settings_Frame,
             self.CHANNEL_FREQ1_SHOW_NAME,
@@ -599,7 +491,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='CH.02')
         self.CHANNEL_FREQ2_Label.grid(column=0, pady="5 0", row=5, sticky="w")
         self.CHANNEL_FREQ2_SHOW_NAME = tk.StringVar(value='YES')
-        __values = ['YES', ' NO']
+        __values = ['YES', 'NO']
         self.CHANNEL_FREQ2_SHOW_NAME_WIDGET = tk.OptionMenu(
             self.General_Channels_Settings_Frame,
             self.CHANNEL_FREQ2_SHOW_NAME,
@@ -660,7 +552,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='CH.03')
         self.CHANNEL_FREQ3_Label.grid(column=0, pady="5 0", row=6, sticky="w")
         self.CHANNEL_FREQ3_SHOW_NAME = tk.StringVar(value='YES')
-        __values = ['YES', ' NO']
+        __values = ['YES', 'NO']
         self.CHANNEL_FREQ3_SHOW_NAME_WIDGET = tk.OptionMenu(
             self.General_Channels_Settings_Frame,
             self.CHANNEL_FREQ3_SHOW_NAME,
@@ -721,7 +613,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='CH.04')
         self.CHANNEL_FREQ4_Label.grid(column=0, pady="5 0", row=7, sticky="w")
         self.CHANNEL_FREQ4_SHOW_NAME = tk.StringVar(value='YES')
-        __values = ['YES', ' NO']
+        __values = ['YES', 'NO']
         self.CHANNEL_FREQ4_SHOW_NAME_WIDGET = tk.OptionMenu(
             self.General_Channels_Settings_Frame,
             self.CHANNEL_FREQ4_SHOW_NAME,
@@ -782,7 +674,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='CH.05')
         self.CHANNEL_FREQ5_Label.grid(column=0, pady="5 0", row=8, sticky="w")
         self.CHANNEL_FREQ5_SHOW_NAME = tk.StringVar(value='YES')
-        __values = ['YES', ' NO']
+        __values = ['YES', 'NO']
         self.CHANNEL_FREQ5_SHOW_NAME_WIDGET = tk.OptionMenu(
             self.General_Channels_Settings_Frame,
             self.CHANNEL_FREQ5_SHOW_NAME,
@@ -843,7 +735,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='CH.06')
         self.CHANNEL_FREQ6_Label.grid(column=0, pady="5 0", row=9, sticky="w")
         self.CHANNEL_FREQ6_SHOW_NAME = tk.StringVar(value='YES')
-        __values = ['YES', ' NO']
+        __values = ['YES', 'NO']
         self.CHANNEL_FREQ6_SHOW_NAME_WIDGET = tk.OptionMenu(
             self.General_Channels_Settings_Frame,
             self.CHANNEL_FREQ6_SHOW_NAME,
@@ -904,7 +796,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='CH.07')
         self.CHANNEL_FREQ7_Label.grid(column=0, pady="5 0", row=10, sticky="w")
         self.CHANNEL_FREQ7_SHOW_NAME = tk.StringVar(value='YES')
-        __values = ['YES', ' NO']
+        __values = ['YES', 'NO']
         self.CHANNEL_FREQ7_SHOW_NAME_WIDGET = tk.OptionMenu(
             self.General_Channels_Settings_Frame,
             self.CHANNEL_FREQ7_SHOW_NAME,
@@ -966,7 +858,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='CH.08')
         self.CHANNEL_FREQ8_Label.grid(column=0, pady="5 0", row=11, sticky="w")
         self.CHANNEL_FREQ8_SHOW_NAME = tk.StringVar(value='YES')
-        __values = ['YES', ' NO']
+        __values = ['YES', 'NO']
         self.CHANNEL_FREQ8_SHOW_NAME_WIDGET = tk.OptionMenu(
             self.General_Channels_Settings_Frame,
             self.CHANNEL_FREQ8_SHOW_NAME,
@@ -1028,7 +920,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='CH.09')
         self.CHANNEL_FREQ9_Label.grid(column=0, pady="5 0", row=12, sticky="w")
         self.CHANNEL_FREQ9_SHOW_NAME = tk.StringVar(value='YES')
-        __values = ['YES', ' NO']
+        __values = ['YES', 'NO']
         self.CHANNEL_FREQ9_SHOW_NAME_WIDGET = tk.OptionMenu(
             self.General_Channels_Settings_Frame,
             self.CHANNEL_FREQ9_SHOW_NAME,
@@ -1091,7 +983,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.CHANNEL_FREQ10_Label.grid(
             column=0, padx="0 5", pady="5 0", row=13, sticky="w")
         self.CHANNEL_FREQ10_SHOW_NAME = tk.StringVar(value='YES')
-        __values = ['YES', ' NO']
+        __values = ['YES', 'NO']
         self.CHANNEL_FREQ10_SHOW_NAME_WIDGET = tk.OptionMenu(
             self.General_Channels_Settings_Frame,
             self.CHANNEL_FREQ10_SHOW_NAME,
@@ -1640,69 +1532,37 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='Callsign')
         self.CW_Autokeyer_Callsign_Label.grid(
             column=0, padx="0 10", row=0, sticky="w")
-        self.CW_Autokeyer_Callsign_Entry_Field = ttk.Entry(
+        self.USER_CALLSIGN_WIDGET_2 = ttk.Entry(
             self.CW_Autokeyer_Callsigns_Frame)
-        self.CW_Autokeyer_Callsign_Entry_Field.configure(
-            justify="left", textvariable=self.USER_CALLSIGN, validate="focus", width=18)
-        self.CW_Autokeyer_Callsign_Entry_Field.grid(
+        self.USER_CALLSIGN_WIDGET_2.configure(
+            justify="left",
+            textvariable=self.USER_CALLSIGN,
+            validate="focus",
+            width=18)
+        self.USER_CALLSIGN_WIDGET_2.grid(
             column=1, padx="0 10", row=0, sticky="w")
         _validatecmd = (
-            self.CW_Autokeyer_Callsign_Entry_Field.register(
+            self.USER_CALLSIGN_WIDGET_2.register(
                 self.validate_USER_CALLSIGN), "%P", "%V")
-        self.CW_Autokeyer_Callsign_Entry_Field.configure(
-            validatecommand=_validatecmd)
-        self.CW_Autokeyer_Callsign_Error_Message_Frame = ttk.Frame(
-            self.CW_Autokeyer_Callsigns_Frame)
-        self.CW_Autokeyer_Callsign_Error_Message_Frame.configure(width=200)
-        self.CW_Autokeyer_INVALID_WIDGET = tk.Message(
-            self.CW_Autokeyer_Callsign_Error_Message_Frame)
-        self.CW_Autokeyer_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.USER_CALLSIGN_INVALID,
-            width=400)
-        self.CW_Autokeyer_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.CW_Autokeyer_Callsign_Error_Message_Frame.grid(column=2, row=0)
+        self.USER_CALLSIGN_WIDGET_2.configure(validatecommand=_validatecmd)
         self.CW_Autokeyer_Alt_Callsign_Label = ttk.Label(
             self.CW_Autokeyer_Callsigns_Frame)
         self.CW_Autokeyer_Alt_Callsign_Label.configure(
             style="Heading4.TLabel", text='Alternate QSO Callsign')
         self.CW_Autokeyer_Alt_Callsign_Label.grid(
             column=0, padx="0 10", row=1, sticky="w")
-        self.entry42 = ttk.Entry(self.CW_Autokeyer_Callsigns_Frame)
-        self.entry42.configure(
+        self.QSO_CALLSIGN_WIDGET = ttk.Entry(self.CW_Autokeyer_Callsigns_Frame)
+        self.QSO_CALLSIGN = tk.StringVar()
+        self.QSO_CALLSIGN_WIDGET.configure(
             justify="left",
-            textvariable=self.USER_CALLSIGN,
+            textvariable=self.QSO_CALLSIGN,
             validate="focus",
             width=18)
-        self.entry42.grid(column=1, padx="0 10", row=1, sticky="w")
+        self.QSO_CALLSIGN_WIDGET.grid(column=1, padx="0 10", row=1, sticky="w")
         _validatecmd = (
-            self.entry42.register(
-                self.validate_USER_CALLSIGN),
-            "%P",
-            "%V")
-        self.entry42.configure(validatecommand=_validatecmd)
-        self.frame67 = ttk.Frame(self.CW_Autokeyer_Callsigns_Frame)
-        self.frame67.configure(width=200)
-        self.message32 = tk.Message(self.frame67)
-        self.message32.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.USER_CALLSIGN_INVALID,
-            width=400)
-        self.message32.pack(
-            anchor="center",
-            expand="true",
-            fill="both",
-            side="left")
-        self.frame67.grid(column=2, row=1)
+            self.QSO_CALLSIGN_WIDGET.register(
+                self.validate_QSO_CALLSIGN), "%P", "%V")
+        self.QSO_CALLSIGN_WIDGET.configure(validatecommand=_validatecmd)
         self.CW_Autokeyer_Callsigns_Frame.pack(
             anchor="w", padx="50 0", side="top")
         self.CW_Autokeyer_Callsign_Frame.pack(anchor="w", side="top")
@@ -1758,10 +1618,10 @@ class SettingsnotebookWidget(ttk.Frame):
             text='Frequency Range')
         self.label100.grid(column=3, columnspan=3, pady="20 0", row=8)
         self.label101 = ttk.Label(self.frame46)
-        self.label101.configure(style="Heading4.TLabel", text='From')
+        self.label101.configure(style="Heading4.TLabel", text='Start')
         self.label101.grid(column=3, row=9, sticky="s")
         self.label102 = ttk.Label(self.frame46)
-        self.label102.configure(style="Heading4.TLabel", text='To')
+        self.label102.configure(style="Heading4.TLabel", text='End')
         self.label102.grid(column=5, row=9, sticky="s")
         self.label106 = ttk.Label(self.frame46)
         self.label106.configure(style="Heading4.TLabel", text='Band 1')
@@ -2224,7 +2084,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.General_Settings_.configure(
             justify="center",
             style="Heading2.TLabel",
-            text='General Settings')
+            text='Calibration')
         self.General_Settings_.pack(anchor="n")
         self.Calibration_Settings_Title_Frame.pack(side="top")
         self.Radio_Calibration_Frame = ttk.Frame(
@@ -2346,24 +2206,24 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='ADC Range')
         self.Calibration_Settings_CW_ADC_ADC_Range_Label.grid(
             column=3, columnspan=2, row=5)
-        self.Calibration_Settings_CW_ADC_From_Value_Label = ttk.Label(
-            self.CW_Calibration_Frame)
-        self.Calibration_Settings_CW_ADC_From_Value_Label.configure(
-            style="Heading4.TLabel", text='From')
-        self.Calibration_Settings_CW_ADC_From_Value_Label.grid(
-            column=3, row=6, sticky="s")
-        self.Calibration_Settings_CW_ADC_To_Value_Label = ttk.Label(
-            self.CW_Calibration_Frame)
-        self.Calibration_Settings_CW_ADC_To_Value_Label.configure(
-            style="Heading4.TLabel", text='To')
-        self.Calibration_Settings_CW_ADC_To_Value_Label.grid(
-            column=4, row=6, sticky="n")
         self.Calibration_Settings_CW_ADC_Straight_Key_Label = ttk.Label(
             self.CW_Calibration_Frame)
         self.Calibration_Settings_CW_ADC_Straight_Key_Label.configure(
             style="Heading4.TLabel", text='Straight Key')
         self.Calibration_Settings_CW_ADC_Straight_Key_Label.grid(
             column=1, columnspan=2, row=6, sticky="sw")
+        self.Calibration_Settings_CW_ADC_From_Value_Label = ttk.Label(
+            self.CW_Calibration_Frame)
+        self.Calibration_Settings_CW_ADC_From_Value_Label.configure(
+            style="Heading4.TLabel", text='Start', width=7)
+        self.Calibration_Settings_CW_ADC_From_Value_Label.grid(
+            column=3, padx="18 0", row=6, sticky="s")
+        self.Calibration_Settings_CW_ADC_To_Value_Label = ttk.Label(
+            self.CW_Calibration_Frame)
+        self.Calibration_Settings_CW_ADC_To_Value_Label.configure(
+            style="Heading4.TLabel", text='End\t', width=7)
+        self.Calibration_Settings_CW_ADC_To_Value_Label.grid(
+            column=4, padx="20 0", row=6, sticky="s")
         self.CW_ADC_ST_Lebel = ttk.Label(self.CW_Calibration_Frame)
         self.CW_ADC_ST_Lebel.configure(
             style="Normal.TLabel", text='Key Pressed')
@@ -2381,8 +2241,7 @@ class SettingsnotebookWidget(ttk.Frame):
             textvariable=self.CW_ADC_ST_FROM,
             validate="focus",
             width=5)
-        self.CW_ADC_ST_FROM_WIDGET.grid(
-            column=3, padx="0 5", pady="0 5", row=7, sticky="w")
+        self.CW_ADC_ST_FROM_WIDGET.grid(column=3, pady="0 5", row=7)
         _validatecmd = (
             self.CW_ADC_ST_FROM_WIDGET.register(
                 self.validate_CW_ADC_ST_FROM), "%P", "%V")
@@ -2395,29 +2254,11 @@ class SettingsnotebookWidget(ttk.Frame):
             textvariable=self.CW_ADC_ST_TO,
             validate="focus",
             width=5)
-        self.CW_ADC_ST_TO_WIDGET.grid(
-            column=4, padx="0 5", pady="0 5", row=7, sticky="w")
-        _validatecmd = (self.CW_ADC_ST_TO_WIDGET.register(
-            self.validate_CW_ADC_ST_TO_WIDGET), "%P", "%V")
+        self.CW_ADC_ST_TO_WIDGET.grid(column=4, pady="0 5", row=7)
+        _validatecmd = (
+            self.CW_ADC_ST_TO_WIDGET.register(
+                self.validate_CW_ADC_ST_TO), "%P", "%V")
         self.CW_ADC_ST_TO_WIDGET.configure(validatecommand=_validatecmd)
-        self.CW_ADC_ST_INVALID_Frame = ttk.Frame(self.CW_Calibration_Frame)
-        self.CW_ADC_ST_INVALID_Frame.configure(height=1, width=30)
-        self.CW_ADC_ST_INVALID_WIDGET = tk.Message(
-            self.CW_ADC_ST_INVALID_Frame)
-        self.CW_ADC_ST_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CW_ADC_ST_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CW_ADC_ST_INVALID,
-            width=400)
-        self.CW_ADC_ST_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.CW_ADC_ST_INVALID_Frame.grid(
-            column=11, columnspan=7, row=7, rowspan=1, sticky="w")
         self.Calibration_Settings_CW_ADC_Paddle_Key_Label = ttk.Label(
             self.CW_Calibration_Frame)
         self.Calibration_Settings_CW_ADC_Paddle_Key_Label.configure(
@@ -2436,8 +2277,7 @@ class SettingsnotebookWidget(ttk.Frame):
             textvariable=self.CW_ADC_DOT_FROM,
             validate="focus",
             width=5)
-        self.CW_ADC_DOT_FROM_WIDGET.grid(
-            column=3, pady="0 5", row=9, sticky="w")
+        self.CW_ADC_DOT_FROM_WIDGET.grid(column=3, pady="0 5", row=9)
         _validatecmd = (
             self.CW_ADC_DOT_FROM_WIDGET.register(
                 self.validate_CW_ADC_DOT_FROM), "%P", "%V")
@@ -2450,30 +2290,11 @@ class SettingsnotebookWidget(ttk.Frame):
             textvariable=self.CW_ADC_DOT_TO,
             validate="focus",
             width=5)
-        self.CW_ADC_DOT_TO_WIDGET.grid(
-            column=4, padx="0 5", pady="0 5", row=9, sticky="w")
+        self.CW_ADC_DOT_TO_WIDGET.grid(column=4, padx="0 5", pady="0 5", row=9)
         _validatecmd = (
             self.CW_ADC_DOT_TO_WIDGET.register(
                 self.validate_CW_ADC_DOT_TO), "%P", "%V")
         self.CW_ADC_DOT_TO_WIDGET.configure(validatecommand=_validatecmd)
-        self.CW_ADC_DOT_INVALID_Frame = ttk.Frame(self.CW_Calibration_Frame)
-        self.CW_ADC_DOT_INVALID_Frame.configure(height=1, width=30)
-        self.CW_ADC_DOT_INVALID_WIDGET = tk.Message(
-            self.CW_ADC_DOT_INVALID_Frame)
-        self.CW_ADC_DOT_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CW_ADC_DOT_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CW_ADC_DOT_INVALID,
-            width=400)
-        self.CW_ADC_DOT_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.CW_ADC_DOT_INVALID_Frame.grid(
-            column=11, columnspan=7, row=9, rowspan=1, sticky="w")
         self.CW_ADC_DASH_Lebel = ttk.Label(self.CW_Calibration_Frame)
         self.CW_ADC_DASH_Lebel.configure(
             style="Normal.TLabel", text='Dash Key Pressed')
@@ -2486,8 +2307,7 @@ class SettingsnotebookWidget(ttk.Frame):
             textvariable=self.CW_ADC_DASH_FROM,
             validate="focus",
             width=5)
-        self.CW_ADC_DASH_FROM_WIDGET.grid(
-            column=3, pady="0 5", row=10, sticky="w")
+        self.CW_ADC_DASH_FROM_WIDGET.grid(column=3, pady="0 5", row=10)
         _validatecmd = (
             self.CW_ADC_DASH_FROM_WIDGET.register(
                 self.validate_CW_ADC_DASH_FROM), "%P", "%V")
@@ -2501,28 +2321,11 @@ class SettingsnotebookWidget(ttk.Frame):
             validate="focus",
             width=5)
         self.CW_ADC_DASH_TO_WIDGET.grid(
-            column=4, padx="0 5", pady="0 5", row=10, sticky="w")
+            column=4, padx="0 5", pady="0 5", row=10)
         _validatecmd = (
             self.CW_ADC_DASH_TO_WIDGET.register(
                 self.validate_CW_ADC_DASH_TO), "%P", "%V")
         self.CW_ADC_DASH_TO_WIDGET.configure(validatecommand=_validatecmd)
-        self.CW_ADC_DASH_INVALID_Frame = ttk.Frame(self.CW_Calibration_Frame)
-        self.CW_ADC_DASH_INVALID_WIDGET = tk.Message(
-            self.CW_ADC_DASH_INVALID_Frame)
-        self.CW_ADC_DASH_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CW_ADC_DASH_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CW_ADC_DASH_INVALID,
-            width=400)
-        self.CW_ADC_DASH_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.CW_ADC_DASH_INVALID_Frame.grid(
-            column=11, columnspan=7, row=10, sticky="w")
         self.CW_ADC_BOTH_Lebel = ttk.Label(self.CW_Calibration_Frame)
         self.CW_ADC_BOTH_Lebel.configure(
             style="Normal.TLabel", text='Both Keys Pressed')
@@ -2540,8 +2343,7 @@ class SettingsnotebookWidget(ttk.Frame):
             textvariable=self.CW_ADC_BOTH_FROM,
             validate="focus",
             width=5)
-        self.CW_ADC_BOTH_FROM_WIDGET.grid(
-            column=3, pady="0 5", row=11, sticky="w")
+        self.CW_ADC_BOTH_FROM_WIDGET.grid(column=3, pady="0 5", row=11)
         _validatecmd = (
             self.CW_ADC_BOTH_FROM_WIDGET.register(
                 self.validate_CW_ADC_BOTH_FROM), "%P", "%V")
@@ -2555,30 +2357,231 @@ class SettingsnotebookWidget(ttk.Frame):
             validate="focus",
             width=5)
         self.CW_ADC_BOTH_TO_WIDGET.grid(
-            column=4, padx="0 5", pady="0 5", row=11, sticky="w")
+            column=4, padx="0 5", pady="0 5", row=11)
         _validatecmd = (
             self.CW_ADC_BOTH_TO_WIDGET.register(
                 self.validate_CW_ADC_BOTH_TO), "%P", "%V")
         self.CW_ADC_BOTH_TO_WIDGET.configure(validatecommand=_validatecmd)
-        self.CW_ADC_BOTH_INVALID_Frame = ttk.Frame(self.CW_Calibration_Frame)
-        self.CW_ADC_BOTH_INVALID_WIDGET = tk.Message(
-            self.CW_ADC_BOTH_INVALID_Frame)
-        self.CW_ADC_BOTH_INVALID = tk.StringVar(
-            value='An error message with lots of text and information on it.')
-        self.CW_ADC_BOTH_INVALID_WIDGET.configure(
-            font="{Arial} 10 {bold italic}",
-            foreground="#ff0000",
-            justify="left",
-            takefocus=False,
-            text='An error message with lots of text and information on it.',
-            textvariable=self.CW_ADC_BOTH_INVALID,
-            width=400)
-        self.CW_ADC_BOTH_INVALID_WIDGET.pack(
-            anchor="center", expand="true", fill="both", side="left")
-        self.CW_ADC_BOTH_INVALID_Frame.grid(
-            column=11, columnspan=7, row=11, sticky="w")
+        frame3 = ttk.Frame(self.CW_Calibration_Frame)
+        frame3.configure(height=200, width=200)
+        button4 = ttk.Button(frame3)
+        button4.configure(
+            style="Button4.TButton",
+            text='Load Recommend ADC Settings')
+        button4.grid(column=1, padx=40, row=0, sticky="e")
+        button4.configure(command=self.load_Recommended_ADC_CW_Values)
+        button1 = ttk.Button(frame3)
+        button1.configure(style="Button4.TButton", text='ADC Scanner')
+        button1.grid(column=0, row=0)
+        button1.configure(command=self.runADCScanner)
+        frame3.grid(column=1, columnspan=5, pady=15, row=12, sticky="ew")
         self.CW_Calibration_Frame.pack(fill="x", side="top")
         self.CW_Calibration_Frame.grid_anchor("nw")
+        self.frame8 = ttk.Frame(self.Calibration_SF.innerframe)
+        self.label1 = ttk.Label(self.frame8)
+        self.label1.configure(style="Heading3.TLabel", text='S-Meter')
+        self.label1.grid(column=0, padx=0, pady="20 0", row=1, sticky="ew")
+        self.S_METER_LEVELS_WIDGET = ttk.Checkbutton(self.frame8)
+        self.S_METER_LEVELS = tk.StringVar()
+        self.S_METER_LEVELS_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            style="Checkbox3.TCheckbutton",
+            text='Enable S-Meter',
+            variable=self.S_METER_LEVELS)
+        self.S_METER_LEVELS_WIDGET.grid(
+            column=0, padx=25, pady="15 10", row=2, sticky="w")
+        frame9 = ttk.Frame(self.frame8)
+        frame9.configure(height=200, width=200)
+        self.label29 = ttk.Label(frame9)
+        self.label29.configure(
+            justify="left",
+            relief="flat",
+            style="Heading4.TLabel",
+            text='1')
+        self.label29.grid(column=1, padx="8 0", row=2)
+        self.S_METER_LEVEL1_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL1 = tk.StringVar()
+        self.S_METER_LEVEL1_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.S_METER_LEVEL1,
+            validate="focus",
+            width=5)
+        self.S_METER_LEVEL1_WIDGET.grid(
+            column=1, padx="10 0", row=3, sticky="w")
+        _validatecmd = (
+            self.S_METER_LEVEL1_WIDGET.register(
+                self.validate__METER_LEVEL1), "%P", "%V")
+        self.S_METER_LEVEL1_WIDGET.configure(validatecommand=_validatecmd)
+        self.label15 = ttk.Label(frame9)
+        self.label15.configure(
+            justify="right",
+            style="Heading4.TLabel",
+            takefocus=False,
+            text='ADC Value (0-1023)')
+        self.label15.grid(column=0, padx="15 0", row=3, sticky="w")
+        self.S_METER_LEVEL2_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL2 = tk.StringVar()
+        self.S_METER_LEVEL2_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.S_METER_LEVEL2,
+            validate="focus",
+            width=5)
+        self.S_METER_LEVEL2_WIDGET.grid(
+            column=2, padx="5 0", row=3, sticky="w")
+        _validatecmd = (
+            self.S_METER_LEVEL2_WIDGET.register(
+                self.validate__METER_LEVEL2), "%P", "%V")
+        self.S_METER_LEVEL2_WIDGET.configure(validatecommand=_validatecmd)
+        self.S_METER_LEVEL4_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL4 = tk.StringVar()
+        self.S_METER_LEVEL4_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.S_METER_LEVEL4,
+            validate="focus",
+            width=5)
+        self.S_METER_LEVEL4_WIDGET.grid(
+            column=4, padx="5 0", row=3, sticky="w")
+        _validatecmd = (
+            self.S_METER_LEVEL4_WIDGET.register(
+                self.validate__METER_LEVEL4), "%P", "%V")
+        self.S_METER_LEVEL4_WIDGET.configure(validatecommand=_validatecmd)
+        self.S_METER_LEVEL3_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL3 = tk.StringVar()
+        self.S_METER_LEVEL3_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.S_METER_LEVEL3,
+            validate="focus",
+            width=5)
+        self.S_METER_LEVEL3_WIDGET.grid(
+            column=3, padx="5 0", row=3, sticky="w")
+        _validatecmd = (
+            self.S_METER_LEVEL3_WIDGET.register(
+                self.validate__METER_LEVEL3), "%P", "%V")
+        self.S_METER_LEVEL3_WIDGET.configure(validatecommand=_validatecmd)
+        self.S_METER_LEVEL5_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL5 = tk.StringVar()
+        self.S_METER_LEVEL5_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.S_METER_LEVEL5,
+            validate="focus",
+            width=5)
+        self.S_METER_LEVEL5_WIDGET.grid(
+            column=5, padx="5 0", row=3, sticky="w")
+        _validatecmd = (
+            self.S_METER_LEVEL5_WIDGET.register(
+                self.validate__METER_LEVEL5), "%P", "%V")
+        self.S_METER_LEVEL5_WIDGET.configure(validatecommand=_validatecmd)
+        self.S_METER_LEVEL6_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL6 = tk.StringVar()
+        self.S_METER_LEVEL6_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.S_METER_LEVEL6,
+            validate="focus",
+            width=5)
+        self.S_METER_LEVEL6_WIDGET.grid(
+            column=6, padx="5 0", row=3, sticky="w")
+        _validatecmd = (
+            self.S_METER_LEVEL6_WIDGET.register(
+                self.validate__METER_LEVEL6), "%P", "%V")
+        self.S_METER_LEVEL6_WIDGET.configure(validatecommand=_validatecmd)
+        self.S_METER_LEVEL7_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL7 = tk.StringVar()
+        self.S_METER_LEVEL7_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.S_METER_LEVEL7,
+            validate="focus",
+            width=5)
+        self.S_METER_LEVEL7_WIDGET.grid(
+            column=7, padx="5 0", row=3, sticky="w")
+        _validatecmd = (
+            self.S_METER_LEVEL7_WIDGET.register(
+                self.validate__METER_LEVEL7), "%P", "%V")
+        self.S_METER_LEVEL7_WIDGET.configure(validatecommand=_validatecmd)
+        self.S_METER_LEVEL8_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL8 = tk.StringVar()
+        self.S_METER_LEVEL8_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.S_METER_LEVEL8,
+            validate="focus",
+            width=5)
+        self.S_METER_LEVEL8_WIDGET.grid(
+            column=8, padx="5 0", row=3, sticky="w")
+        _validatecmd = (
+            self.S_METER_LEVEL8_WIDGET.register(
+                self.validate__METER_LEVEL8), "%P", "%V")
+        self.S_METER_LEVEL8_WIDGET.configure(validatecommand=_validatecmd)
+        self.label33 = ttk.Label(frame9)
+        self.label33.configure(
+            justify="left",
+            relief="flat",
+            style="Heading4.TLabel",
+            text='2')
+        self.label33.grid(column=2, padx="7 0", row=2)
+        self.label35 = ttk.Label(frame9)
+        self.label35.configure(
+            justify="left",
+            relief="flat",
+            style="Heading4.TLabel",
+            text='3')
+        self.label35.grid(column=3, padx="7 0", row=2)
+        self.label36 = ttk.Label(frame9)
+        self.label36.configure(
+            justify="left",
+            relief="flat",
+            style="Heading4.TLabel",
+            text='4')
+        self.label36.grid(column=4, padx="7 0", row=2)
+        self.label38 = ttk.Label(frame9)
+        self.label38.configure(
+            justify="left",
+            relief="flat",
+            style="Heading4.TLabel",
+            text='5')
+        self.label38.grid(column=5, padx="7 0", row=2)
+        self.label39 = ttk.Label(frame9)
+        self.label39.configure(
+            justify="left",
+            relief="flat",
+            style="Heading4.TLabel",
+            text='6')
+        self.label39.grid(column=6, padx="7 0", row=2)
+        self.label41 = ttk.Label(frame9)
+        self.label41.configure(
+            justify="left",
+            relief="flat",
+            style="Heading4.TLabel",
+            text='7')
+        self.label41.grid(column=7, padx="7 0", row=2)
+        self.label42 = ttk.Label(frame9)
+        self.label42.configure(
+            justify="left",
+            relief="flat",
+            style="Heading4.TLabel",
+            text='8')
+        self.label42.grid(column=8, padx="7 0", row=2)
+        self.label45 = ttk.Label(frame9)
+        self.label45.configure(
+            justify="center",
+            relief="flat",
+            style="Heading3.TLabel",
+            text='S-Level')
+        self.label45.grid(column=1, columnspan=11, padx="25 20", row=1)
+        button6 = ttk.Button(frame9)
+        button6.configure(style="Button4.TButton", text='S-Meter Assistant')
+        button6.grid(column=1, columnspan=11, pady=25, row=4)
+        button6.configure(command=self.runADCScanner)
+        frame9.grid(column=0, columnspan=5, row=3, sticky="ew")
+        self.frame8.pack(fill="x", side="top")
+        self.frame8.grid_anchor("nw")
         self.Calibration_SF.pack(side="top")
         self.settingsNotebook.add(self.Calibration_SF, text='Calibration')
         self.WSPR_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
@@ -2624,26 +2627,47 @@ class SettingsnotebookWidget(ttk.Frame):
             justify="center",
             style="Heading2.TLabel",
             text='Advanced Settings')
-        label8.grid(column=0, columnspan=5, row=2, sticky="n")
-        label1 = ttk.Label(self.Advanced_Frame)
-        label1.configure(text='label1')
-        label1.grid(column=0, row=3)
-        label9 = ttk.Label(self.Advanced_Frame)
-        label9.configure(text='label9')
-        label9.grid(column=0, row=4)
-        label11 = ttk.Label(self.Advanced_Frame)
-        label11.configure(text='label11')
-        label11.grid(column=0, row=3)
-        label15 = ttk.Label(self.Advanced_Frame)
-        label15.configure(text='label15')
-        label15.grid(column=0, row=4)
-        label16 = ttk.Label(self.Advanced_Frame)
-        label16.configure(text='label16')
-        label16.grid(column=0, row=5)
-        label17 = ttk.Label(self.Advanced_Frame)
-        label17.configure(text='label17')
-        label17.grid(column=0, row=6)
+        label8.pack(side="top")
         self.Advanced_Frame.pack(side="top")
+        self.frame2 = ttk.Frame(self.Advanced_SF.innerframe)
+        self.label22 = ttk.Label(self.frame2)
+        self.label22.configure(
+            style="Heading3.TLabel",
+            text='LCD Configuration')
+        self.label22.grid(column=0, padx=0, pady="20 0", row=2, sticky="ew")
+        self.label28 = ttk.Label(self.frame2)
+        self.label28.configure(style="Normal.TLabel", text='Master I2C LCD')
+        self.label28.grid(column=1, padx="25 5", row=4, sticky="w")
+        self.I2C_LCD_MASTER_WIDGET = ttk.Entry(self.frame2)
+        self.I2C_LCD_MASTER = tk.StringVar()
+        self.I2C_LCD_MASTER_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.I2C_LCD_MASTER,
+            validate="focusin",
+            width=10)
+        self.I2C_LCD_MASTER_WIDGET.grid(
+            column=3, padx="0 5", row=4, sticky="w")
+        self.label32 = ttk.Label(self.frame2)
+        self.label32.configure(
+            style="Normal.TLabel",
+            text='Secondary I2C LCD\nDual LCD Config')
+        self.label32.grid(column=1, padx="25 10", row=6, sticky="w")
+        self.I2C_LCD_SECOND_WIDGET = ttk.Entry(self.frame2)
+        self.I2C_LCD_SECOND = tk.StringVar()
+        self.I2C_LCD_SECOND_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.I2C_LCD_SECOND,
+            validate="focus",
+            width=10)
+        self.I2C_LCD_SECOND_WIDGET.grid(column=3, row=6, sticky="w")
+        button3 = ttk.Button(self.frame2)
+        button3.configure(style="Button4.TButton", text='I2C Scanner')
+        button3.grid(column=4, padx=25, row=5, sticky="e")
+        button3.configure(command=self.runI2CScanner)
+        self.frame2.pack(anchor="w", side="top")
+        self.frame2.grid_anchor("nw")
         self.Advanced_SF.pack(side="top")
         self.settingsNotebook.add(self.Advanced_SF, text='Advanced')
         self.System_Info_SF = ScrolledFrame(
@@ -2841,7 +2865,7 @@ class SettingsnotebookWidget(ttk.Frame):
             self.System_Info_VFO_Frame)
         self.HAM_BAND_FREQS3_MODE = tk.StringVar()
         self.HAM_BAND_FREQS3_MODE_WIDGET.configure(
-            style="Heading4.TLabel", textvariable=self.HAM_BAND_FREQS3_MODE)
+            style="Normal.TLabel", textvariable=self.HAM_BAND_FREQS3_MODE)
         self.HAM_BAND_FREQS3_MODE_WIDGET.grid(
             column=4, padx="5 30", row=10, sticky="w")
         self.HAM_BAND_FREQS4_Label = ttk.Label(self.System_Info_VFO_Frame)
@@ -3186,6 +3210,9 @@ class SettingsnotebookWidget(ttk.Frame):
     def validate_CHANNEL_FREQ20(self, p_entry_value, v_condition):
         pass
 
+    def validate_QSO_CALLSIGN(self, p_entry_value, v_condition):
+        pass
+
     def validate_HAM_BAND_COUNT(self, p_entry_value, v_condition):
         pass
 
@@ -3276,7 +3303,7 @@ class SettingsnotebookWidget(ttk.Frame):
     def validate_CW_ADC_ST_FROM(self, p_entry_value, v_condition):
         pass
 
-    def validate_CW_ADC_ST_TO_WIDGET(self, p_entry_value, v_condition):
+    def validate_CW_ADC_ST_TO(self, p_entry_value, v_condition):
         pass
 
     def validate_CW_ADC_DOT_FROM(self, p_entry_value, v_condition):
@@ -3295,6 +3322,39 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def validate_CW_ADC_BOTH_TO(self, p_entry_value, v_condition):
+        pass
+
+    def load_Recommended_ADC_CW_Values(self):
+        pass
+
+    def runADCScanner(self):
+        pass
+
+    def validate__METER_LEVEL1(self, p_entry_value, v_condition):
+        pass
+
+    def validate__METER_LEVEL2(self, p_entry_value, v_condition):
+        pass
+
+    def validate__METER_LEVEL4(self, p_entry_value, v_condition):
+        pass
+
+    def validate__METER_LEVEL3(self, p_entry_value, v_condition):
+        pass
+
+    def validate__METER_LEVEL5(self, p_entry_value, v_condition):
+        pass
+
+    def validate__METER_LEVEL6(self, p_entry_value, v_condition):
+        pass
+
+    def validate__METER_LEVEL7(self, p_entry_value, v_condition):
+        pass
+
+    def validate__METER_LEVEL8(self, p_entry_value, v_condition):
+        pass
+
+    def runI2CScanner(self):
         pass
 
 

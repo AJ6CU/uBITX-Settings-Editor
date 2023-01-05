@@ -1,79 +1,27 @@
 #!/usr/bin/python3
 import tkinter as tk
 import tkinter.ttk as ttk
-from pygubu.widgets.pathchooserinput import PathChooserInput
 
 
-class SourceselectorWidget(ttk.Labelframe):
+class ComPortmanagerWidget(ttk.Frame):
     def __init__(self, master=None, **kw):
-        super(SourceselectorWidget, self).__init__(master, **kw)
-        self.SourceSelector = ttk.Frame(self)
-        self.SourceSelector.configure(height=200, width=200)
-        radiobutton1 = ttk.Radiobutton(self.SourceSelector)
-        self.sourceSelectorRadioButton = tk.StringVar(value='uBITX')
-        radiobutton1.configure(
-            state="normal",
-            style="RadioButton4.TRadiobutton",
-            text='uBITX',
-            value="uBITX",
-            variable=self.sourceSelectorRadioButton)
-        radiobutton1.pack(anchor="w", side="top")
-        radiobutton1.configure(command=self.sourceSelected)
-        radiobutton2 = ttk.Radiobutton(self.SourceSelector)
-        radiobutton2.configure(
-            state="normal",
-            style="RadioButton4.TRadiobutton",
-            text='Saved File',
-            value="SavedFIle",
-            variable=self.sourceSelectorRadioButton)
-        radiobutton2.pack(anchor="w", side="left")
-        radiobutton2.configure(command=self.sourceSelected)
-        self.SourceSelector.grid(column=0, padx=20, row=0)
-        separator1 = ttk.Separator(self)
-        separator1.configure(orient="vertical")
-        separator1.grid(column=1, padx=5, row=0, sticky="ns")
-        self.sourceBlock = ttk.Frame(self)
-        self.sourceBlock.configure(height=200, padding="10 0", width=400)
-        self.com_portManager_frame = ttk.Frame(self.sourceBlock)
-        self.com_portManager_frame.configure(height=200, width=200)
-        self.com_portManager_frame.pack(anchor="w", expand="false", side="top")
-        self.selectSaveFileFrame = ttk.Frame(self.sourceBlock)
-        self.selectSaveFileFrame.configure(height=200, width=200)
-        label2 = ttk.Label(self.selectSaveFileFrame)
-        label2.configure(style="Normal.TLabel", text='Select Saved File')
-        label2.grid(column=0, padx="0 20", row=0, sticky="w")
-        self.savedFilePathChooserWidget = PathChooserInput(
-            self.selectSaveFileFrame)
-        self.savedFilePathChooser = tk.StringVar()
-        self.savedFilePathChooserWidget.configure(
-            initialdir="~",
-            mustexist="false",
-            textvariable=self.savedFilePathChooser,
-            title="Select Previously Saved Settings File",
-            type="file")
-        self.savedFilePathChooserWidget.grid(
-            column=1, ipadx=70, padx="0 5", row=0)
-        self.savedFilePathChooserWidget.bind(
-            "<<PathChooserPathChanged>>", self.on_path_changed, add="")
-        self.selectSaveFileFrame.pack(anchor="w", expand="false", side="top")
-        self.sourceBlock.grid(column=2, padx="0 70", row=0)
-        self.readButtonFrame = ttk.Frame(self)
-        self.readButtonFrame.configure(height=200, width=200)
-        self.goButtonWidget = ttk.Button(self.readButtonFrame)
-        self.goButton = tk.StringVar(value='READ')
-        self.goButtonWidget.configure(
-            state="disabled",
-            style="Button4.TButton",
-            text='READ',
-            textvariable=self.goButton)
-        self.goButtonWidget.pack(anchor="n", side="left")
-        self.readButtonFrame.grid(column=3, row=0, sticky="e")
-        self.configure(
-            height=300,
-            style="Heading2.TLabelframe",
-            text='Select Source',
-            width=200)
-        self.grid(column=0, row=1, sticky="ew")
+        super(ComPortmanagerWidget, self).__init__(master, **kw)
+        self.comPortListRefresh = ttk.Button(self)
+        self.comPortListRefresh.configure(
+            style="Normal.TButton", text='Refresh Port List')
+        self.comPortListRefresh.grid(column=0, padx="0 15", row=0, sticky="w")
+        self.comPortListRefresh.configure(command=self.updateComPorts)
+        self.availableComPorts = tk.StringVar(value='Select Serial Port')
+        __values = ['Select Serial Port']
+        self.comPortsOptionMenu = ttk.OptionMenu(
+            self,
+            self.availableComPorts,
+            "Select Serial Port",
+            *__values,
+            command=self.comPortSelected)
+        self.comPortsOptionMenu.grid(column=1, row=0, sticky="w")
+        self.configure(height=200, width=200)
+        self.pack(anchor="w", expand="false", side="top")
 
         self.setup_ttk_styles()
 
@@ -154,15 +102,15 @@ class SourceselectorWidget(ttk.Labelframe):
         style.configure('Heading2.TLabelframe')
         style.configure('Normal.TText', font=fontList['Heading3'])
 
-    def sourceSelected(self):
+    def updateComPorts(self):
         pass
 
-    def on_path_changed(self, event=None):
+    def comPortSelected(self, option):
         pass
 
 
 if __name__ == "__main__":
     root = tk.Tk()
-    widget = SourceselectorWidget(root)
+    widget = ComPortmanagerWidget(root)
     widget.pack(expand=True, fill="both")
     root.mainloop()

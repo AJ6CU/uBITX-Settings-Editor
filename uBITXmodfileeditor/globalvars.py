@@ -19,6 +19,7 @@ LPF_CTRL_SELECT = ["TX_LPF_A", "TX_LPF_B", "TX_LPF_C", "D10", "D11", "D12", "D13
 
 READCOMMAND=0xDB
 WRITECOMMAND=0xDC
+READADC=0xDD
 
 OK=0x77
 ACK = 0x00
@@ -36,6 +37,8 @@ WSPRREG2LENGTH = 3
 TOTALCWMESSAGES=10                                  #assumption on number of CW message elements to be provided
 SIZEOFWSPRMESSAGES=41                               #size in bytes of wspr messages
 MAXCALLSIGNLEN = 18                                 #Max length of callsign and alt callsign
+
+DEFAULTCWSPEED = '10'
 
 BAUD = 38400
 

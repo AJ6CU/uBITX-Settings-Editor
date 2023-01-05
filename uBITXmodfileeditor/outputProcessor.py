@@ -51,4 +51,8 @@ class OutputProcessor(Processor):
         userModroot = self.settingsNotebook.getNotebook()
         self.log.println("timestamp", "Finished Updating User Modification File")
 
-        writeEEPROMData (self.COM_PORT, userModroot, self.log)
+        if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
+            self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
+
+
+        writeEEPROMData (self.RS232, userModroot, self.log)

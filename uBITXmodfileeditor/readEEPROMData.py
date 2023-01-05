@@ -34,7 +34,7 @@ def readEEPROMData(portdesc: object, memlocation: int, numBytesToRead: int) -> b
     while i < numBytesToRead:
          if portdesc.in_waiting != 0:
             if i< 0:
-                throwawy = portdesc.read(1)
+                throwaway = portdesc.read(1)
             else:
                 returnBuffer.extend(portdesc.read(1))
                 checkSum = (checkSum+returnBuffer[i] ) & 0xFF

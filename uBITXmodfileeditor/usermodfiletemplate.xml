@@ -40,7 +40,7 @@
 	<SETTING NAME="FACTORY_VALUES_MASTER_CAL">					
 		<label>Mster Calibration (Factory)</label>
 		<value></value>							
-		<tooltip></tooltip>		
+		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="FACTORY_VALUES_USB_CAL">					
 		<label>BFO (USB) Calibration (Factory)</label>
@@ -50,7 +50,7 @@
 	<SETTING NAME="FACTORY_VALUES_VFO_A">							
 		<label>VFO A Saved Frequency (Factory)</label>
 		<value></value>							
-		<tooltip></tooltip>		
+		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="FACTORY_VALUES_VFO_B">
 		<label>VFO B Saved Frequency (Factory)</label>
@@ -139,32 +139,32 @@
 	<SETTING NAME="TUNING_STEP_INDEX">							
 		<label>Default Step#</label>
 		<value></value>							<!--Default tuning step on boot. 1-5 -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Select the default tuning step</tooltip>
 	</SETTING>
 	<SETTING NAME="TUNING_STEP1">							
 		<label>Step #1</label>
 		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Tuning step - leftmost 2 digits *must* be between 1 - 60</tooltip>
 	</SETTING>
 	<SETTING NAME="TUNING_STEP2">							
 		<label>Step #2</label>
 		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Tuning step - leftmost 2 digits *must* be between 1 - 60</tooltip>
 	</SETTING>
 	<SETTING NAME="TUNING_STEP3">							
 		<label>Step #3</label>
 		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Tuning step - leftmost 2 digits *must* be between 1 - 60</tooltip>
 	</SETTING>
 	<SETTING NAME="TUNING_STEP4">							
 		<label>Step #4</label>
 		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Tuning step - leftmost 2 digits *must* be between 1 - 60</tooltip>
 	</SETTING>
 	<SETTING NAME="TUNING_STEP5">							
 		<label>Step #5</label>
 		<value></value>							<!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Tuning step - leftmost 2 digits *must* be between 1 - 60</tooltip>
 	</SETTING>
 <!--
 	*****************************************************************************************************
@@ -229,7 +229,7 @@
 	<SETTING NAME="QSO_CALLSIGN">							
 		<label>Alt Call sign</label>					<!--Substituted in message for '<' Max 18 characters)-->
 		<value></value>
-		<tooltip>to be added</tooltip>
+		<tooltip>Enter an alternative Callsign (perhaps used for QSOs) - max 18 characters</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGS">				<!--Total characters in all memory keyer message <= 200-->
 		<label>Total Messages:</label>					
@@ -1068,12 +1068,12 @@
 	<SETTING NAME="I2C_LCD_MASTER">						
 		<label>Master LCD I2C Address</label>			
 		<value></value>									<!--Default 0x27 -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Typically 0x27 for most 16x2 and 20x4 LCDs</tooltip>
 	</SETTING>
 	<SETTING NAME="I2C_LCD_SECOND">							
 		<label>Secondary LCD I2C Address</label>    
 		<value></value>
-		<tooltip>to be added</tooltip>
+		<tooltip>I2C address varies depending on jumper settings on I2C "backpack"</tooltip>
 	</SETTING>
 	<SETTING NAME="I2C_ADDR_SI5351">					<!--Best to not mess with this one unless you really know what you are doing-->							
 		<label>Si5351 I2C adderss chip</label>

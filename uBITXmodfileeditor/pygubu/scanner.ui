@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.3">
+  <object class="tk.Toplevel" id="toplevel1">
+    <property name="height">200</property>
+    <property name="resizable">both</property>
+    <property name="title" translatable="yes">I2C Scanner</property>
+    <property name="width">600</property>
+    <child>
+      <object class="ttk.Frame" id="scanner_frame" named="True">
+        <property name="height">200</property>
+        <property name="width">800</property>
+        <layout manager="pack">
+          <property name="anchor">center</property>
+          <property name="expand">true</property>
+          <property name="fill">both</property>
+          <property name="side">top</property>
+        </layout>
+        <containerlayout manager="grid">
+          <property type="col" id="0" name="weight">2</property>
+          <property type="col" id="1" name="weight">2</property>
+        </containerlayout>
+        <child>
+          <object class="ttk.Frame" id="com_portManager_frame" named="True">
+            <property name="height">50</property>
+            <property name="width">550</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="columnspan">3</property>
+              <property name="row">0</property>
+              <property name="sticky">ew</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame2">
+            <property name="height">200</property>
+            <property name="width">50</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="ipadx">15</property>
+              <property name="row">1</property>
+              <property name="sticky">new</property>
+            </layout>
+            <child>
+              <object class="ttk.Button" id="scanner_Go_Button_Widget" named="True">
+                <property name="command" type="command" cbtype="simple">scannerStart</property>
+                <property name="state">normal</property>
+                <property name="style">Button4.TButton</property>
+                <property name="text" translatable="yes">Start</property>
+                <layout manager="pack">
+                  <property name="pady">30</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="scanner_Done_Button_Widget" named="True">
+                <property name="command" type="command" cbtype="simple">scannerDone</property>
+                <property name="text" translatable="yes">Done</property>
+                <layout manager="pack" />
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="pygubu.builder.widgets.scrollbarhelper" id="scrollbarhelper1">
+            <property name="scrolltype">vertical</property>
+            <property name="usemousewheel">false</property>
+            <layout manager="grid">
+              <property name="padx">10</property>
+              <property name="pady">15</property>
+              <property name="row">1</property>
+            </layout>
+            <child>
+              <object class="tk.Text" id="scannerLog_Text" named="True">
+                <property name="height">10</property>
+                <property name="state">disabled</property>
+                <property name="width">50</property>
+                <property name="wrap">none</property>
+                <layout manager="pack">
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

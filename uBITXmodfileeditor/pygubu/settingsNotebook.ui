@@ -125,32 +125,6 @@
                                 </layout>
                               </object>
                             </child>
-                            <child>
-                              <object class="ttk.Frame" id="USER_CALLSIGN_INVALID_Frame" named="True">
-                                <property name="width">200</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="row">0</property>
-                                </layout>
-                                <child>
-                                  <object class="tk.Message" id="USER_CALLSIGN_INVALID_WIDGET" named="True">
-                                    <property name="font">{Arial} 10 {bold italic}</property>
-                                    <property name="foreground">#ff0000</property>
-                                    <property name="justify">left</property>
-                                    <property name="takefocus">false</property>
-                                    <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                    <property name="textvariable">string:USER_CALLSIGN_INVALID</property>
-                                    <property name="width">400</property>
-                                    <layout manager="pack">
-                                      <property name="anchor">center</property>
-                                      <property name="expand">true</property>
-                                      <property name="fill">both</property>
-                                      <property name="side">left</property>
-                                    </layout>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
                           </object>
                         </child>
                       </object>
@@ -456,34 +430,6 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="ttk.Frame" id="TUNING_STEPS_INVALID_WIDGET_Frame" named="True">
-                                    <property name="width">200</property>
-                                    <layout manager="grid">
-                                      <property name="column">7</property>
-                                      <property name="padx">10</property>
-                                      <property name="row">0</property>
-                                      <property name="rowspan">3</property>
-                                    </layout>
-                                    <child>
-                                      <object class="tk.Message" id="TUNING_STEPS_INVALID_WIDGET" named="True">
-                                        <property name="font">{Arial} 10 {bold italic}</property>
-                                        <property name="foreground">#ff0000</property>
-                                        <property name="justify">left</property>
-                                        <property name="takefocus">false</property>
-                                        <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                        <property name="textvariable">string:TUNING_STEPS_INVALID</property>
-                                        <property name="width">200</property>
-                                        <layout manager="pack">
-                                          <property name="anchor">center</property>
-                                          <property name="expand">true</property>
-                                          <property name="fill">both</property>
-                                          <property name="side">left</property>
-                                        </layout>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                                <child>
                                   <object class="ttk.Label" id="label26">
                                     <layout manager="grid">
                                       <property name="row">2</property>
@@ -526,20 +472,12 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="ttk.Frame" id="frame8">
-                                    <property name="height">0</property>
-                                    <property name="width">0</property>
+                                  <object class="ttk.Label" id="TUNING_STEP_INDEX_WIDGET" named="True">
+                                    <property name="textvariable">string:TUNING_STEP_INDEX</property>
                                     <layout manager="grid">
-                                      <property name="column">7</property>
-                                      <property name="pady">20 0</property>
+                                      <property name="column">0</property>
                                       <property name="row">1</property>
                                     </layout>
-                                    <child>
-                                      <object class="ttk.Label" id="TUNING_STEP_INDEX_WIDGET" named="True">
-                                        <property name="textvariable">string:TUNING_STEP_INDEX</property>
-                                        <layout manager="pack" />
-                                      </object>
-                                    </child>
                                   </object>
                                 </child>
                               </object>
@@ -626,7 +564,7 @@
                             <child>
                               <object class="tk.OptionMenu" id="CW_KEY_TYPE_WIDGET" named="True">
                                 <property name="value">STRAIGHT</property>
-                                <property name="values">STRAIGHT, IAMBICA, IAMICAB</property>
+                                <property name="values">STRAIGHT,IAMBICA,IAMICAB</property>
                                 <property name="variable">string:CW_KEY_TYPE</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -661,32 +599,6 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Frame" id="CW_SIDETONE_INVALID_Frame" named="True">
-                                <property name="width">200</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="row">2</property>
-                                </layout>
-                                <child>
-                                  <object class="tk.Message" id="CW_SIDETONE_INVALID_WIDGET" named="True">
-                                    <property name="font">{Arial} 10 {bold italic}</property>
-                                    <property name="foreground">#ff0000</property>
-                                    <property name="justify">left</property>
-                                    <property name="takefocus">false</property>
-                                    <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                    <property name="textvariable">string:CW_SIDETONE_INVALID</property>
-                                    <property name="width">400</property>
-                                    <layout manager="pack">
-                                      <property name="anchor">center</property>
-                                      <property name="expand">true</property>
-                                      <property name="fill">both</property>
-                                      <property name="side">left</property>
-                                    </layout>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
-                            <child>
                               <object class="ttk.Label" id="CW_SPEED_WPM_LABEL" named="True">
                                 <property name="style">Heading4.TLabel</property>
                                 <property name="text" translatable="yes">Speed (WPM)</property>
@@ -709,31 +621,6 @@
                                   <property name="column">1</property>
                                   <property name="row">6</property>
                                 </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Frame" id="CW_SPEED_WPM_INVALID_Frame" named="True">
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="row">6</property>
-                                </layout>
-                                <child>
-                                  <object class="tk.Message" id="CW_SPEED_WPM_INVALID_WIDGET" named="True">
-                                    <property name="font">{Arial} 10 {bold italic}</property>
-                                    <property name="foreground">#ff0000</property>
-                                    <property name="justify">left</property>
-                                    <property name="takefocus">false</property>
-                                    <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                    <property name="textvariable">string:CW_SPEED_WPM_INVALID</property>
-                                    <property name="width">400</property>
-                                    <layout manager="pack">
-                                      <property name="anchor">center</property>
-                                      <property name="expand">true</property>
-                                      <property name="fill">both</property>
-                                      <property name="side">left</property>
-                                    </layout>
-                                  </object>
-                                </child>
                               </object>
                             </child>
                             <child>
@@ -762,31 +649,6 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Frame" id="CW_START_MS_INVALID_Frame" named="True">
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="row">10</property>
-                                </layout>
-                                <child>
-                                  <object class="tk.Message" id="CW_START_MS_INVALID_WIDGET" named="True">
-                                    <property name="font">{Arial} 10 {bold italic}</property>
-                                    <property name="foreground">#ff0000</property>
-                                    <property name="justify">left</property>
-                                    <property name="takefocus">false</property>
-                                    <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                    <property name="textvariable">string:CW_START_MS_INVALID</property>
-                                    <property name="width">400</property>
-                                    <layout manager="pack">
-                                      <property name="anchor">center</property>
-                                      <property name="expand">true</property>
-                                      <property name="fill">both</property>
-                                      <property name="side">left</property>
-                                    </layout>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
-                            <child>
                               <object class="ttk.Label" id="CW_DELAY_MS_LABEL" named="True">
                                 <property name="style">Heading4.TLabel</property>
                                 <property name="text" translatable="yes">Delay Returning to RX (ms)</property>
@@ -809,31 +671,6 @@
                                   <property name="column">1</property>
                                   <property name="row">14</property>
                                 </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Frame" id="CW_DELAY_MS_INVALID_Frame" named="True">
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="row">14</property>
-                                </layout>
-                                <child>
-                                  <object class="tk.Message" id="CW_DELAY_MS_INVALID_WIDGET" named="True">
-                                    <property name="font">{Arial} 10 {bold italic}</property>
-                                    <property name="foreground">#ff0000</property>
-                                    <property name="justify">left</property>
-                                    <property name="takefocus">false</property>
-                                    <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                    <property name="textvariable">string:CW_DELAY_MS_INVALID</property>
-                                    <property name="width">400</property>
-                                    <layout manager="pack">
-                                      <property name="anchor">center</property>
-                                      <property name="expand">true</property>
-                                      <property name="fill">both</property>
-                                      <property name="side">left</property>
-                                    </layout>
-                                  </object>
-                                </child>
                               </object>
                             </child>
                           </object>
@@ -1006,7 +843,7 @@
                                     <child>
                                       <object class="tk.OptionMenu" id="CHANNEL_FREQ1_SHOW_NAME_WIDGET" named="True">
                                         <property name="value">YES</property>
-                                        <property name="values">YES, NO</property>
+                                        <property name="values">YES,NO</property>
                                         <property name="variable">string:CHANNEL_FREQ1_SHOW_NAME</property>
                                         <layout manager="grid">
                                           <property name="column">2</property>
@@ -1094,7 +931,7 @@
                                     <child>
                                       <object class="tk.OptionMenu" id="CHANNEL_FREQ2_SHOW_NAME_WIDGET" named="True">
                                         <property name="value">YES</property>
-                                        <property name="values">YES, NO</property>
+                                        <property name="values">YES,NO</property>
                                         <property name="variable">string:CHANNEL_FREQ2_SHOW_NAME</property>
                                         <layout manager="grid">
                                           <property name="column">2</property>
@@ -1182,7 +1019,7 @@
                                     <child>
                                       <object class="tk.OptionMenu" id="CHANNEL_FREQ3_SHOW_NAME_WIDGET" named="True">
                                         <property name="value">YES</property>
-                                        <property name="values">YES, NO</property>
+                                        <property name="values">YES,NO</property>
                                         <property name="variable">string:CHANNEL_FREQ3_SHOW_NAME</property>
                                         <layout manager="grid">
                                           <property name="column">2</property>
@@ -1270,7 +1107,7 @@
                                     <child>
                                       <object class="tk.OptionMenu" id="CHANNEL_FREQ4_SHOW_NAME_WIDGET" named="True">
                                         <property name="value">YES</property>
-                                        <property name="values">YES, NO</property>
+                                        <property name="values">YES,NO</property>
                                         <property name="variable">string:CHANNEL_FREQ4_SHOW_NAME</property>
                                         <layout manager="grid">
                                           <property name="column">2</property>
@@ -1358,7 +1195,7 @@
                                     <child>
                                       <object class="tk.OptionMenu" id="CHANNEL_FREQ5_SHOW_NAME_WIDGET" named="True">
                                         <property name="value">YES</property>
-                                        <property name="values">YES, NO</property>
+                                        <property name="values">YES,NO</property>
                                         <property name="variable">string:CHANNEL_FREQ5_SHOW_NAME</property>
                                         <layout manager="grid">
                                           <property name="column">2</property>
@@ -1446,7 +1283,7 @@
                                     <child>
                                       <object class="tk.OptionMenu" id="CHANNEL_FREQ6_SHOW_NAME_WIDGET" named="True">
                                         <property name="value">YES</property>
-                                        <property name="values">YES, NO</property>
+                                        <property name="values">YES,NO</property>
                                         <property name="variable">string:CHANNEL_FREQ6_SHOW_NAME</property>
                                         <layout manager="grid">
                                           <property name="column">2</property>
@@ -1534,7 +1371,7 @@
                                     <child>
                                       <object class="tk.OptionMenu" id="CHANNEL_FREQ7_SHOW_NAME_WIDGET" named="True">
                                         <property name="value">YES</property>
-                                        <property name="values">YES, NO</property>
+                                        <property name="values">YES,NO</property>
                                         <property name="variable">string:CHANNEL_FREQ7_SHOW_NAME</property>
                                         <layout manager="grid">
                                           <property name="column">2</property>
@@ -1622,7 +1459,7 @@
                                     <child>
                                       <object class="tk.OptionMenu" id="CHANNEL_FREQ8_SHOW_NAME_WIDGET" named="True">
                                         <property name="value">YES</property>
-                                        <property name="values">YES, NO</property>
+                                        <property name="values">YES,NO</property>
                                         <property name="variable">string:CHANNEL_FREQ8_SHOW_NAME</property>
                                         <layout manager="grid">
                                           <property name="column">2</property>
@@ -1710,7 +1547,7 @@
                                     <child>
                                       <object class="tk.OptionMenu" id="CHANNEL_FREQ9_SHOW_NAME_WIDGET" named="True">
                                         <property name="value">YES</property>
-                                        <property name="values">YES, NO</property>
+                                        <property name="values">YES,NO</property>
                                         <property name="variable">string:CHANNEL_FREQ9_SHOW_NAME</property>
                                         <layout manager="grid">
                                           <property name="column">2</property>
@@ -1799,7 +1636,7 @@
                                     <child>
                                       <object class="tk.OptionMenu" id="CHANNEL_FREQ10_SHOW_NAME_WIDGET" named="True">
                                         <property name="value">YES</property>
-                                        <property name="values">YES, NO</property>
+                                        <property name="values">YES,NO</property>
                                         <property name="variable">string:CHANNEL_FREQ10_SHOW_NAME</property>
                                         <layout manager="grid">
                                           <property name="column">2</property>
@@ -2673,7 +2510,7 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="CW_Autokeyer_Callsign_Entry_Field" named="True">
+                              <object class="ttk.Entry" id="USER_CALLSIGN_WIDGET_2" named="True">
                                 <property name="justify">left</property>
                                 <property name="textvariable">string:USER_CALLSIGN</property>
                                 <property name="validate">focus</property>
@@ -2685,32 +2522,6 @@
                                   <property name="row">0</property>
                                   <property name="sticky">w</property>
                                 </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Frame" id="CW_Autokeyer_Callsign_Error_Message_Frame" named="True">
-                                <property name="width">200</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="row">0</property>
-                                </layout>
-                                <child>
-                                  <object class="tk.Message" id="CW_Autokeyer_INVALID_WIDGET" named="True">
-                                    <property name="font">{Arial} 10 {bold italic}</property>
-                                    <property name="foreground">#ff0000</property>
-                                    <property name="justify">left</property>
-                                    <property name="takefocus">false</property>
-                                    <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                    <property name="textvariable">string:USER_CALLSIGN_INVALID</property>
-                                    <property name="width">400</property>
-                                    <layout manager="pack">
-                                      <property name="anchor">center</property>
-                                      <property name="expand">true</property>
-                                      <property name="fill">both</property>
-                                      <property name="side">left</property>
-                                    </layout>
-                                  </object>
-                                </child>
                               </object>
                             </child>
                             <child>
@@ -2726,11 +2537,11 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry42" named="True">
+                              <object class="ttk.Entry" id="QSO_CALLSIGN_WIDGET" named="True">
                                 <property name="justify">left</property>
-                                <property name="textvariable">string:USER_CALLSIGN</property>
+                                <property name="textvariable">string:QSO_CALLSIGN</property>
                                 <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_USER_CALLSIGN</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_QSO_CALLSIGN</property>
                                 <property name="width">18</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -2738,32 +2549,6 @@
                                   <property name="row">1</property>
                                   <property name="sticky">w</property>
                                 </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Frame" id="frame67" named="True">
-                                <property name="width">200</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="row">1</property>
-                                </layout>
-                                <child>
-                                  <object class="tk.Message" id="message32" named="True">
-                                    <property name="font">{Arial} 10 {bold italic}</property>
-                                    <property name="foreground">#ff0000</property>
-                                    <property name="justify">left</property>
-                                    <property name="takefocus">false</property>
-                                    <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                                    <property name="textvariable">string:USER_CALLSIGN_INVALID</property>
-                                    <property name="width">400</property>
-                                    <layout manager="pack">
-                                      <property name="anchor">center</property>
-                                      <property name="expand">true</property>
-                                      <property name="fill">both</property>
-                                      <property name="side">left</property>
-                                    </layout>
-                                  </object>
-                                </child>
                               </object>
                             </child>
                           </object>
@@ -2865,7 +2650,7 @@
                     <child>
                       <object class="ttk.Label" id="label101" named="True">
                         <property name="style">Heading4.TLabel</property>
-                        <property name="text" translatable="yes">From</property>
+                        <property name="text" translatable="yes">Start</property>
                         <layout manager="grid">
                           <property name="column">3</property>
                           <property name="row">9</property>
@@ -2876,7 +2661,7 @@
                     <child>
                       <object class="ttk.Label" id="label102" named="True">
                         <property name="style">Heading4.TLabel</property>
-                        <property name="text" translatable="yes">To</property>
+                        <property name="text" translatable="yes">End</property>
                         <layout manager="grid">
                           <property name="column">5</property>
                           <property name="row">9</property>
@@ -3741,7 +3526,7 @@
                       <object class="ttk.Label" id="General_Settings_" named="True">
                         <property name="justify">center</property>
                         <property name="style">Heading2.TLabel</property>
-                        <property name="text" translatable="yes">General Settings</property>
+                        <property name="text" translatable="yes">Calibration</property>
                         <layout manager="pack">
                           <property name="anchor">n</property>
                         </layout>
@@ -3965,28 +3750,6 @@ Recovery</property>
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Label" id="Calibration_Settings_CW_ADC_From_Value_Label" named="True">
-                        <property name="style">Heading4.TLabel</property>
-                        <property name="text" translatable="yes">From</property>
-                        <layout manager="grid">
-                          <property name="column">3</property>
-                          <property name="row">6</property>
-                          <property name="sticky">s</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Label" id="Calibration_Settings_CW_ADC_To_Value_Label" named="True">
-                        <property name="style">Heading4.TLabel</property>
-                        <property name="text" translatable="yes">To</property>
-                        <layout manager="grid">
-                          <property name="column">4</property>
-                          <property name="row">6</property>
-                          <property name="sticky">n</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
                       <object class="ttk.Label" id="Calibration_Settings_CW_ADC_Straight_Key_Label" named="True">
                         <property name="style">Heading4.TLabel</property>
                         <property name="text" translatable="yes">Straight Key</property>
@@ -3995,6 +3758,32 @@ Recovery</property>
                           <property name="columnspan">2</property>
                           <property name="row">6</property>
                           <property name="sticky">sw</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Label" id="Calibration_Settings_CW_ADC_From_Value_Label" named="True">
+                        <property name="style">Heading4.TLabel</property>
+                        <property name="text" translatable="yes">Start</property>
+                        <property name="width">7</property>
+                        <layout manager="grid">
+                          <property name="column">3</property>
+                          <property name="padx">18 0</property>
+                          <property name="row">6</property>
+                          <property name="sticky">s</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Label" id="Calibration_Settings_CW_ADC_To_Value_Label" named="True">
+                        <property name="style">Heading4.TLabel</property>
+                        <property name="text" translatable="yes">End	</property>
+                        <property name="width">7</property>
+                        <layout manager="grid">
+                          <property name="column">4</property>
+                          <property name="padx">20 0</property>
+                          <property name="row">6</property>
+                          <property name="sticky">s</property>
                         </layout>
                       </object>
                     </child>
@@ -4021,10 +3810,8 @@ Recovery</property>
                         <property name="width">5</property>
                         <layout manager="grid">
                           <property name="column">3</property>
-                          <property name="padx">0 5</property>
                           <property name="pady">0 5</property>
                           <property name="row">7</property>
-                          <property name="sticky">w</property>
                         </layout>
                       </object>
                     </child>
@@ -4034,45 +3821,13 @@ Recovery</property>
                         <property name="style">Normal.TEntry</property>
                         <property name="textvariable">string:CW_ADC_ST_TO</property>
                         <property name="validate">focus</property>
-                        <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_CW_ADC_ST_TO_WIDGET</property>
+                        <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_CW_ADC_ST_TO</property>
                         <property name="width">5</property>
                         <layout manager="grid">
                           <property name="column">4</property>
-                          <property name="padx">0 5</property>
                           <property name="pady">0 5</property>
                           <property name="row">7</property>
-                          <property name="sticky">w</property>
                         </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Frame" id="CW_ADC_ST_INVALID_Frame" named="True">
-                        <property name="height">1</property>
-                        <property name="width">30</property>
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">7</property>
-                          <property name="rowspan">1</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="CW_ADC_ST_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:CW_ADC_ST_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
                       </object>
                     </child>
                     <child>
@@ -4112,7 +3867,6 @@ Recovery</property>
                           <property name="column">3</property>
                           <property name="pady">0 5</property>
                           <property name="row">9</property>
-                          <property name="sticky">w</property>
                         </layout>
                       </object>
                     </child>
@@ -4129,38 +3883,7 @@ Recovery</property>
                           <property name="padx">0 5</property>
                           <property name="pady">0 5</property>
                           <property name="row">9</property>
-                          <property name="sticky">w</property>
                         </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Frame" id="CW_ADC_DOT_INVALID_Frame" named="True">
-                        <property name="height">1</property>
-                        <property name="width">30</property>
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">9</property>
-                          <property name="rowspan">1</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="CW_ADC_DOT_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:CW_ADC_DOT_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
                       </object>
                     </child>
                     <child>
@@ -4187,7 +3910,6 @@ Recovery</property>
                           <property name="column">3</property>
                           <property name="pady">0 5</property>
                           <property name="row">10</property>
-                          <property name="sticky">w</property>
                         </layout>
                       </object>
                     </child>
@@ -4204,35 +3926,7 @@ Recovery</property>
                           <property name="padx">0 5</property>
                           <property name="pady">0 5</property>
                           <property name="row">10</property>
-                          <property name="sticky">w</property>
                         </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Frame" id="CW_ADC_DASH_INVALID_Frame" named="True">
-                        <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">10</property>
-                          <property name="sticky">w</property>
-                        </layout>
-                        <child>
-                          <object class="tk.Message" id="CW_ADC_DASH_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
-                            <property name="justify">left</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:CW_ADC_DASH_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
-                            </layout>
-                          </object>
-                        </child>
                       </object>
                     </child>
                     <child>
@@ -4260,7 +3954,6 @@ Recovery</property>
                           <property name="column">3</property>
                           <property name="pady">0 5</property>
                           <property name="row">11</property>
-                          <property name="sticky">w</property>
                         </layout>
                       </object>
                     </child>
@@ -4277,32 +3970,366 @@ Recovery</property>
                           <property name="padx">0 5</property>
                           <property name="pady">0 5</property>
                           <property name="row">11</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame3">
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="grid">
+                          <property name="column">1</property>
+                          <property name="columnspan">5</property>
+                          <property name="pady">15</property>
+                          <property name="row">12</property>
+                          <property name="sticky">ew</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Button" id="button4">
+                            <property name="command" type="command" cbtype="simple">load_Recommended_ADC_CW_Values</property>
+                            <property name="style">Button4.TButton</property>
+                            <property name="text" translatable="yes">Load Recommend ADC Settings</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="padx">40</property>
+                              <property name="row">0</property>
+                              <property name="sticky">e</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="button1">
+                            <property name="command" type="command" cbtype="simple">runADCScanner</property>
+                            <property name="style">Button4.TButton</property>
+                            <property name="text" translatable="yes">ADC Scanner</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Frame" id="frame8" named="True">
+                    <layout manager="pack">
+                      <property name="fill">x</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <containerlayout manager="grid">
+                      <property name="anchor">nw</property>
+                    </containerlayout>
+                    <child>
+                      <object class="ttk.Label" id="label1" named="True">
+                        <property name="style">Heading3.TLabel</property>
+                        <property name="text" translatable="yes">S-Meter</property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="padx">0</property>
+                          <property name="pady">20 0</property>
+                          <property name="row">1</property>
+                          <property name="sticky">ew</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Checkbutton" id="S_METER_LEVELS_WIDGET" named="True">
+                        <property name="offvalue">NO</property>
+                        <property name="onvalue">YES</property>
+                        <property name="style">Checkbox3.TCheckbutton</property>
+                        <property name="text" translatable="yes">Enable S-Meter</property>
+                        <property name="variable">string:S_METER_LEVELS</property>
+                        <layout manager="grid">
+                          <property name="column">0</property>
+                          <property name="padx">25</property>
+                          <property name="pady">15 10</property>
+                          <property name="row">2</property>
                           <property name="sticky">w</property>
                         </layout>
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Frame" id="CW_ADC_BOTH_INVALID_Frame" named="True">
+                      <object class="ttk.Frame" id="frame9">
+                        <property name="height">200</property>
+                        <property name="width">200</property>
                         <layout manager="grid">
-                          <property name="column">11</property>
-                          <property name="columnspan">7</property>
-                          <property name="row">11</property>
-                          <property name="sticky">w</property>
+                          <property name="column">0</property>
+                          <property name="columnspan">5</property>
+                          <property name="row">3</property>
+                          <property name="sticky">ew</property>
                         </layout>
                         <child>
-                          <object class="tk.Message" id="CW_ADC_BOTH_INVALID_WIDGET" named="True">
-                            <property name="font">{Arial} 10 {bold italic}</property>
-                            <property name="foreground">#ff0000</property>
+                          <object class="ttk.Label" id="label29" named="True">
                             <property name="justify">left</property>
+                            <property name="relief">flat</property>
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">1</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="padx">8 0</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="S_METER_LEVEL1_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">Normal.TEntry</property>
+                            <property name="textvariable">string:S_METER_LEVEL1</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL1</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="padx">10 0</property>
+                              <property name="row">3</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label15" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">Heading4.TLabel</property>
                             <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">An error message with lots of text and information on it.</property>
-                            <property name="textvariable">string:CW_ADC_BOTH_INVALID</property>
-                            <property name="width">400</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="expand">true</property>
-                              <property name="fill">both</property>
-                              <property name="side">left</property>
+                            <property name="text" translatable="yes">ADC Value (0-1023)</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="padx">15 0</property>
+                              <property name="row">3</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="S_METER_LEVEL2_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">Normal.TEntry</property>
+                            <property name="textvariable">string:S_METER_LEVEL2</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL2</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="padx">5 0</property>
+                              <property name="row">3</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="S_METER_LEVEL4_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">Normal.TEntry</property>
+                            <property name="textvariable">string:S_METER_LEVEL4</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL4</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">4</property>
+                              <property name="padx">5 0</property>
+                              <property name="row">3</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="S_METER_LEVEL3_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">Normal.TEntry</property>
+                            <property name="textvariable">string:S_METER_LEVEL3</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL3</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">3</property>
+                              <property name="padx">5 0</property>
+                              <property name="row">3</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="S_METER_LEVEL5_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">Normal.TEntry</property>
+                            <property name="textvariable">string:S_METER_LEVEL5</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL5</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">5</property>
+                              <property name="padx">5 0</property>
+                              <property name="row">3</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="S_METER_LEVEL6_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">Normal.TEntry</property>
+                            <property name="textvariable">string:S_METER_LEVEL6</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL6</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">6</property>
+                              <property name="padx">5 0</property>
+                              <property name="row">3</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="S_METER_LEVEL7_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">Normal.TEntry</property>
+                            <property name="textvariable">string:S_METER_LEVEL7</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL7</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">7</property>
+                              <property name="padx">5 0</property>
+                              <property name="row">3</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="S_METER_LEVEL8_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">Normal.TEntry</property>
+                            <property name="textvariable">string:S_METER_LEVEL8</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL8</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">8</property>
+                              <property name="padx">5 0</property>
+                              <property name="row">3</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label33" named="True">
+                            <property name="justify">left</property>
+                            <property name="relief">flat</property>
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">2</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="padx">7 0</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label35" named="True">
+                            <property name="justify">left</property>
+                            <property name="relief">flat</property>
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">3</property>
+                            <layout manager="grid">
+                              <property name="column">3</property>
+                              <property name="padx">7 0</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label36" named="True">
+                            <property name="justify">left</property>
+                            <property name="relief">flat</property>
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">4</property>
+                            <layout manager="grid">
+                              <property name="column">4</property>
+                              <property name="padx">7 0</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label38" named="True">
+                            <property name="justify">left</property>
+                            <property name="relief">flat</property>
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">5</property>
+                            <layout manager="grid">
+                              <property name="column">5</property>
+                              <property name="padx">7 0</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label39" named="True">
+                            <property name="justify">left</property>
+                            <property name="relief">flat</property>
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">6</property>
+                            <layout manager="grid">
+                              <property name="column">6</property>
+                              <property name="padx">7 0</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label41" named="True">
+                            <property name="justify">left</property>
+                            <property name="relief">flat</property>
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">7</property>
+                            <layout manager="grid">
+                              <property name="column">7</property>
+                              <property name="padx">7 0</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label42" named="True">
+                            <property name="justify">left</property>
+                            <property name="relief">flat</property>
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">8</property>
+                            <layout manager="grid">
+                              <property name="column">8</property>
+                              <property name="padx">7 0</property>
+                              <property name="row">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="label45" named="True">
+                            <property name="justify">center</property>
+                            <property name="relief">flat</property>
+                            <property name="style">Heading3.TLabel</property>
+                            <property name="text" translatable="yes">S-Level</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="columnspan">11</property>
+                              <property name="padx">25 20</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Button" id="button6">
+                            <property name="command" type="command" cbtype="simple">runADCScanner</property>
+                            <property name="style">Button4.TButton</property>
+                            <property name="text" translatable="yes">S-Meter Assistant</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="columnspan">11</property>
+                              <property name="pady">25</property>
+                              <property name="row">4</property>
                             </layout>
                           </object>
                         </child>
@@ -4410,65 +4437,99 @@ Recovery</property>
                         <property name="justify">center</property>
                         <property name="style">Heading2.TLabel</property>
                         <property name="text" translatable="yes">Advanced Settings</property>
+                        <layout manager="pack">
+                          <property name="side">top</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Frame" id="frame2" named="True">
+                    <layout manager="pack">
+                      <property name="anchor">w</property>
+                      <property name="side">top</property>
+                    </layout>
+                    <containerlayout manager="grid">
+                      <property name="anchor">nw</property>
+                    </containerlayout>
+                    <child>
+                      <object class="ttk.Label" id="label22" named="True">
+                        <property name="style">Heading3.TLabel</property>
+                        <property name="text" translatable="yes">LCD Configuration</property>
                         <layout manager="grid">
                           <property name="column">0</property>
-                          <property name="columnspan">5</property>
+                          <property name="padx">0</property>
+                          <property name="pady">20 0</property>
                           <property name="row">2</property>
-                          <property name="sticky">n</property>
+                          <property name="sticky">ew</property>
                         </layout>
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Label" id="label1">
-                        <property name="text" translatable="yes">label1</property>
+                      <object class="ttk.Label" id="label28" named="True">
+                        <property name="style">Normal.TLabel</property>
+                        <property name="text" translatable="yes">Master I2C LCD</property>
                         <layout manager="grid">
-                          <property name="column">0</property>
-                          <property name="row">3</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Label" id="label9">
-                        <property name="text" translatable="yes">label9</property>
-                        <layout manager="grid">
-                          <property name="column">0</property>
+                          <property name="column">1</property>
+                          <property name="padx">25 5</property>
                           <property name="row">4</property>
+                          <property name="sticky">w</property>
                         </layout>
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Label" id="label11">
-                        <property name="text" translatable="yes">label11</property>
+                      <object class="ttk.Entry" id="I2C_LCD_MASTER_WIDGET" named="True">
+                        <property name="justify">right</property>
+                        <property name="style">Normal.TEntry</property>
+                        <property name="textvariable">string:I2C_LCD_MASTER</property>
+                        <property name="validate">focusin</property>
+                        <property name="width">10</property>
                         <layout manager="grid">
-                          <property name="column">0</property>
-                          <property name="row">3</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Label" id="label15">
-                        <property name="text" translatable="yes">label15</property>
-                        <layout manager="grid">
-                          <property name="column">0</property>
+                          <property name="column">3</property>
+                          <property name="padx">0 5</property>
                           <property name="row">4</property>
+                          <property name="sticky">w</property>
                         </layout>
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Label" id="label16">
-                        <property name="text" translatable="yes">label16</property>
+                      <object class="ttk.Label" id="label32" named="True">
+                        <property name="style">Normal.TLabel</property>
+                        <property name="text" translatable="yes">Secondary I2C LCD
+Dual LCD Config</property>
                         <layout manager="grid">
-                          <property name="column">0</property>
-                          <property name="row">5</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Label" id="label17">
-                        <property name="text" translatable="yes">label17</property>
-                        <layout manager="grid">
-                          <property name="column">0</property>
+                          <property name="column">1</property>
+                          <property name="padx">25 10</property>
                           <property name="row">6</property>
+                          <property name="sticky">w</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Entry" id="I2C_LCD_SECOND_WIDGET" named="True">
+                        <property name="justify">right</property>
+                        <property name="style">Normal.TEntry</property>
+                        <property name="textvariable">string:I2C_LCD_SECOND</property>
+                        <property name="validate">focus</property>
+                        <property name="width">10</property>
+                        <layout manager="grid">
+                          <property name="column">3</property>
+                          <property name="row">6</property>
+                          <property name="sticky">w</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Button" id="button3">
+                        <property name="command" type="command" cbtype="simple">runI2CScanner</property>
+                        <property name="style">Button4.TButton</property>
+                        <property name="text" translatable="yes">I2C Scanner</property>
+                        <layout manager="grid">
+                          <property name="column">4</property>
+                          <property name="padx">25</property>
+                          <property name="row">5</property>
+                          <property name="sticky">e</property>
                         </layout>
                       </object>
                     </child>
@@ -4859,7 +4920,7 @@ Recovery</property>
                     </child>
                     <child>
                       <object class="ttk.Label" id="HAM_BAND_FREQS3_MODE_WIDGET" named="True">
-                        <property name="style">Heading4.TLabel</property>
+                        <property name="style">Normal.TLabel</property>
                         <property name="textvariable">string:HAM_BAND_FREQS3_MODE</property>
                         <layout manager="grid">
                           <property name="column">4</property>

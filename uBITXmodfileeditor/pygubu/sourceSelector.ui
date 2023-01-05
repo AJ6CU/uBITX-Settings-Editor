@@ -71,7 +71,7 @@
           <property name="row">0</property>
         </layout>
         <child>
-          <object class="ttk.Frame" id="selectComPortFrame" named="True">
+          <object class="ttk.Frame" id="com_portManager_frame" named="True">
             <property name="height">200</property>
             <property name="width">200</property>
             <layout manager="pack">
@@ -79,33 +79,6 @@
               <property name="expand">false</property>
               <property name="side">top</property>
             </layout>
-            <child>
-              <object class="ttk.Button" id="comPortListRefresh" named="True">
-                <property name="command" type="command" cbtype="simple">updateComPorts</property>
-                <property name="style">Normal.TButton</property>
-                <property name="text" translatable="yes">Refresh Port List</property>
-                <layout manager="grid">
-                  <property name="column">0</property>
-                  <property name="padx">0 15</property>
-                  <property name="row">0</property>
-                  <property name="sticky">w</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="ttk.OptionMenu" id="comPortsOptionMenu" named="True">
-                <property name="command" type="command" cbtype="simple">comPortSelected</property>
-                <property name="value">Select Serial Port</property>
-                <property name="values">Select Serial Port</property>
-                <property name="variable">string:availableComPorts</property>
-                <layout manager="grid">
-                  <property name="column">1</property>
-                  <property name="padx">0 180</property>
-                  <property name="row">0</property>
-                  <property name="sticky">w</property>
-                </layout>
-              </object>
-            </child>
           </object>
         </child>
         <child>

@@ -9,6 +9,8 @@ from globalvars import *
 #from readEEPROMData import readEEPROMData
 #from getters import getters
 #from time import sleep
+from com_portManager import com_portManager
+
 import pathlib
 
 from sourceselectorwidget import SourceselectorWidget
@@ -18,8 +20,6 @@ class Processor(SourceselectorWidget):
         super().__init__(parent)
 
 
-        self.goButtonWidget.configure(state=DISABLED)         # Disable "go" button
-
         # put file selector in default state
         self.selectSaveFileFrame.forget()               #  Want to show the com port option  as default, hide safed file option
         self.savedFilePathChooserWidget.config(filetypes=[('uBITX Saved Files','.xml')])         # Manually add restriction to only XML files
@@ -27,8 +27,8 @@ class Processor(SourceselectorWidget):
         self.savedFilePathChooser.set(USERMODFILE)
         self.lastDir = HOMEDIRECTORY
 
-        # pre-load com ports
-        self.updateComPorts()                                       # Fill in available Com Ports
+        # create com port object
+        self.comPortObj = com_portManager(self.com_portManager_frame, self)
 
 
     def setLog(self, log ):                     # this method is called to tell object where to write the log
@@ -44,8 +44,10 @@ class Processor(SourceselectorWidget):
                                                 # a valid com port or file is selected.
 
         if self.sourceSelectorRadioButton.get() == "uBITX":
-            self.goButtonWidget.unbind("<Button-1>")            # Must explictly unbind button to prevent disabled button from being clickable
-            self.goButtonWidget.configure(state=DISABLED)       # Now fade it out
+           # self.goButtonWidget.unbind("<Button-1>")            # Must explictly unbind button to prevent disabled button from being clickable
+           # self.goButtonWidget.configure(state=DISABLED)       # Now fade it out
+            self.goButtonWidget.bind("<Button-1>", self.processComPort)
+            self.goButtonWidget.configure(state=NORMAL)
 
             # since a user can switch  back and forth, or have to correct errors. update initial directories to make their life easier
             # also reset default file name to a message to select one
@@ -56,13 +58,16 @@ class Processor(SourceselectorWidget):
             self.savedFilePathChooserWidget.config(path=USERMODFILE, initialdir=self.lastDir)
 
             self.selectSaveFileFrame.forget()
-            self.updateComPorts()                                       # Fill in available Com Ports
-            self.selectComPortFrame.pack()
+            self.com_portManager_frame.pack()
+
+            # pre-load com ports
+            self.comPortObj.updateComPorts()                           # Fill in available Com Ports
+            self.comPortObj.pack()                                      # make com it visible
 
         else:
-            self.goButtonWidget.unbind("<Button-1>")            # In this case we have switched into file selection mode. Unbind and disable read button
-            self.goButtonWidget.configure(state=DISABLED)       # If user selects a valid file, the button is re-enabled and callback connected
-            self.selectComPortFrame.forget()                # In the on_path_changed event
+          #  self.goButtonWidget.unbind("<Button-1>")            # In this case we have switched into file selection mode. Unbind and disable read button
+          #  self.goButtonWidget.configure(state=DISABLED)       # If user selects a valid file, the button is re-enabled and callback connected
+            self.com_portManager_frame.forget()                # In the on_path_changed event
             self.selectSaveFileFrame.pack()
 
     def on_path_changed(self, event=None):
@@ -77,25 +82,27 @@ class Processor(SourceselectorWidget):
         pass
 
 
-    def comPortSelected (self, *args):
+    # def comPortSelected (self, *args):
+    #     self.goButtonWidget.bind("<Button-1>", self.processComPort)
+    #     self.goButtonWidget.configure(state=NORMAL)
+    #
+    #     print("port=", self.availableComPorts.get())
+    #     if(self.comPortObj.openComPort(self.availableComPorts.get())):
+    #         self.RS232 = self.comPortObj.getComPortPTR(self.availableComPorts.get())
+
+    # def updateComPorts(self):
+    #     ports = self.comPortObj.getAvailableComPorts()      #Gets list of port
+    #     self.comPortsOptionMenu.set_menu("Select Serial Port", *ports)
+    #
+    # def processComPort(self, *args):
+    #     pass
+
+
+    def enableGoButtonComPort(self):
         self.goButtonWidget.bind("<Button-1>", self.processComPort)
-        self.goButtonWidget.configure(state=NORMAL)
+        self.goButtonWidget.configure(state='normal')
 
-        self.COM_PORT = self.availableComPorts.get()
-
-    def updateComPorts(self):
-        ports = serial.tools.list_ports.comports()      #Gets list of ports
-        self.comPortList =[("Select Serial Port")]           #Seeds option list with Selection instructions
-
-        for p in ports:                                 #this used to strip down to just the com port# or path
-            self.comPortList.append(p.device)
-
-        self.comPortsOptionMenu.set_menu("Select Serial Port", *self.comPortList)
-        self.COM_PORT = "COM PORT"     #reset COM_PORT to an illegal value
-
-    def processComPort(self, *args):
-        pass
-
-
-
+    def disableGoButtonComPort(self):
+        self.goButtonWidget.unbind("<Button-1>")            # In this case we have switched into file selection mode. Unbind and disable read button
+        self.goButtonWidget.configure(state='disabled')       # If user selects a valid file, the button is re-enabled and callback connected
 

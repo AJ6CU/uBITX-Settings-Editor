@@ -121,11 +121,11 @@ def updateEEPROM(portdesc: object, inMemBuffer: bytearray, itsDirty: bitarray, l
         i += 1
     return (0)                      # Success
 
-def writeEEPROMData (COM_PORT, userModroot, log):
+def writeEEPROMData (RS232, userModroot, log):
 
-    log.println("timestamp","Opening connection to radio")
-    RS232 = serial.Serial(COM_PORT, BAUD, timeout=0, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
-    sleep(3)  #this is required to allow Nano to reset after open
+    # log.println("timestamp","Opening connection to radio")
+    # RS232 = serial.Serial(COM_PORT, BAUD, timeout=0, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
+    # sleep(3)  #this is required to allow Nano to reset after open
 
     log.println("timestamp","Reading EEPROM into memory")
     EEPROMBuffer=readEEPROMData(RS232, 0, EEPROMSIZE)       #Read the EEPROM into memory

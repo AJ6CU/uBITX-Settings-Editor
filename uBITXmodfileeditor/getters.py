@@ -60,7 +60,10 @@ class getters(object):
         value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
 
     def FACTORY_VALUES_CW_SPEED (self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        value.text = str(round(1200/self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)))
+        if self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) != 0:
+            value.text = str(round(1200/self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)))
+        else:
+            value.text = DEFAULTCWSPEED
 
 #         #***********************************
 #         #   RADIO CALIBRATION SETTINGS
@@ -142,7 +145,10 @@ class getters(object):
         value.text = str(self.get_uint32_FromEEPROM(EEPROMBuffer, memLocation))
 
     def CW_SPEED_WPM (self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        value.text = str(round(1200/self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)))
+        if self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) != 0:
+            value.text = str(round(1200/self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)))
+        else:
+            value.text = DEFAULTCWSPEED
 
     def CW_DELAY_MS(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
         value.text = str(10 * self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
