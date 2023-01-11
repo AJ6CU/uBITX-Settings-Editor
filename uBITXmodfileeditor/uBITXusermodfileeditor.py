@@ -74,9 +74,6 @@ root.grid_rowconfigure(1,weight=0)
 inputProcessorFrame.grid(row=1, column=0, columnspan=2, pady=(10, 0))
 
 root.grid_rowconfigure(2,weight=1)
-#valueFrame.grid(row=2, column=0, padx=15, sticky='ewns')   #   this is its location, but dont want it enabled
-                                                            #   until there is data in the notebook. use enableNotebook()
-                                                            #   and disableNotebook() to show/hide it
 
 root.grid_rowconfigure(3,weight=0)
 logFrame.grid(row=2, column=1, sticky='ns')

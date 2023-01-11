@@ -4321,8 +4321,8 @@ Recovery</property>
                           </object>
                         </child>
                         <child>
-                          <object class="ttk.Button" id="button6">
-                            <property name="command" type="command" cbtype="simple">runADCScanner</property>
+                          <object class="ttk.Button" id="smeterAssistant_BUTTON_WIDGET" named="True">
+                            <property name="command" type="command" cbtype="simple">runSmeterAssistant</property>
                             <property name="style">Button4.TButton</property>
                             <property name="text" translatable="yes">S-Meter Assistant</property>
                             <layout manager="grid">

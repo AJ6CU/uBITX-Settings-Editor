@@ -2,6 +2,7 @@ from tkinter import *
 import tkinter as tk
 #import os, sys
 #import time
+from os import path
 from printtolog import *
 from lxml import etree as ET
 import serial.tools.list_ports              # Used to get a list of com ports
@@ -25,54 +26,68 @@ class InputProcessor(Processor):
 
     def processFile(self, *args):
 
-        self.log.println("timestamp", "Opening User Modification File")
+        self.log.println("timestamp", "***Opening Save/Backup File***")
+        self.log.println("timestamp", "Selected file: " + self.savedFilePathChooser.get())
 
-    #   try to open and parse usermodfile
-        try:
-            self.userModroot = ET.parse(self.savedFilePathChooser.get())
-        except:
-            self.log.println("timestamp", self.savedFilePathChooser.get() + "is corrupted")
-            tk.messagebox.showerror(title="FATAL ERROR", message=USERMODFILE + " is corrupted. Please correct or recreate. \nEXITING")
-            sys.exit(-1)
+        # Process based on file extension. ".btx" = binary file ".xml" = ascii xml file
 
-        self.log.println("timestamp", "Completed preprocessing of settings file")
+        fileParts = path.splitext(self.savedFilePathChooser.get())
 
-        self.log.println("timestamp", "Loading settings from file")
+        if fileParts[1] == ".xml":
 
-        self.settingsNotebook.setNotebook(self.userModroot)         #update notebook widget with settings
-        self.log.println("timestamp", "Settings loaded")
+            #   try to open and parse save file
+            try:
+                self.UserModroot = ET.parse(self.savedFilePathChooser.get())
+            except:
+                self.log.println("timestamp", self.savedFilePathChooser.get() + "is corrupted")
+                tk.messagebox.showerror(title="FATAL ERROR", message=self.savedFilePathChooser.get() + " is corrupted. Please correct or recreate. \nEXITING")
+                sys.exit(-1)
+
+            self.log.println("timestamp", "Completed preprocessing of settings file")
 
 
-    def processComPort(self, *args):
+        elif fileParts[1] == ".btx":               # have a binary file here to load
+            # confirm file exists
+            if path.exists(self.savedFilePathChooser.get()) == False:
+                self.log.println("timestamp", self.savedFilePathChooser.get() + " does not exist. Please select an existing file.")
+                return
+            else:
+                self.log.println("timestamp", "Loading Backup File")
 
-        #self.log.println("timestamp", "***Starting to read EEPROM of uBITX on " + self.COM_PORT + "***")
+                backup = open(self.savedFilePathChooser.get(), "rb")
+                self.EEPROMBuffer=bytearray(backup.read(EEPROMSIZE))
+                backup.close()
 
-        # try:
-        #     RS232 = serial.Serial(self.COM_PORT, BAUD, timeout=0, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
-        # except:
-        #     self.log.println("timestamp",  self.COM_PORT + " not selected or no uBITX attached")
-        #     self.log.println("timestamp",  "***Reading EEPROM Aborted***")
-        #     self.log.println(" ", " ")                                  #print blank line in case backup run again
-        #     self.log.println(" ", " ")                                  #print blank line in case backup run again
-        #     tk.messagebox.showerror("Error", message="COM Port not selected or no uBITX attached")
-        #     self.availableComPorts.set(self.comPortList[0])
-        # else:
-#        self.log.println("timestamp",  "Establishing Connection to uBITX on " + self.COM_PORT)
+                self.mergeEEPROMData()          # merge the eeprom data into XML tree
+        else:
+                self.log.println("timestamp", self.savedFilePathChooser.get() + " is not a '.xml' or '.btx' file")
+                tk.messagebox.showerror(title="FATAL ERROR", message=self.savedFilePathChooser.get() + " is not a '.xml' or '.btx' file \nEXITING")
+                sys.exit(-1)
+
+
+        self.log.println("timestamp", "Loading Settings into uBITX Memory Manager")
+        #   Having built the tree, we can load it into the Notebook widget
+        self.settingsNotebook.setNotebook(self.UserModroot)         #update notebook widget with settings
+        self.log.println("timestamp", "***Settings Successfully loaded***\n")
+        return
+
+
+    def readFromComPort(self):              # reads from Com POrt using readEEPROMData
+        self.log.println("timestamp",  "\n***Reading EEPROM from uBITX***")
+        self.log.println("timestamp", "From Com Port: " + self.comPortObj.getSelectedComPort())
         self.log.println("timestamp",  "Awaiting Radio Processor Ready this will take 3-5 seconds")
-        #sleep(3)  #this is required to allow Nano to reset after open
-        print("in process comp port")
+
         if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
             self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
 
         self.log.println("timestamp",  "Reading EEPROM into memory")
-        self.EEPROMBuffer=readEEPROMData(self.RS232, 0, EEPROMSIZE)      #Read the EEPROM into memory
+        self.EEPROMBuffer=readEEPROMData(self.RS232, 0, EEPROMSIZE)      #Read the EEPROM into memory using CAT commands
         self.log.println("timestamp",  "Finished reading EEPROM into memory")
 
-        #RS232.close()                                               #done with uBITX connection so close the serial port
-
+    def mergeEEPROMData(self):                  # reads from Com POrt using readEEPROMData
         self.log.println("timestamp",  "Opening EEPROM Memory Mapping file")
 
-        # Try reading the two XML files and flag any erors
+        # Try reading the two XML files and flag any errors
         try:
             EEPROMroot = ET.parse(EEPROMMEMORYMAP)
         except:
@@ -94,10 +109,10 @@ class InputProcessor(Processor):
 
         self.log.println("timestamp",  "Completed preprocessing of User Modification Template")
 
-        #   We have openned the template file, now merge the contents into the tree
+        #   We have opened the template file, now merge the contents into the tree
         UserMods = getters()
 
-        self.log.println("timestamp", "Interpreting EEPROM contents")
+        self.log.println("timestamp", "Interpreting BINARY data")
         #
         # For each setting in the EEPROM Map, there is a "getter" that will process it and write it to the user
         # mod file
@@ -125,14 +140,19 @@ class InputProcessor(Processor):
                 UserMods.get(userSettingName, userSettingName, self.EEPROMBuffer, memLocation, valueTag, EEPROMroot, userSettingTag)
 
 
-        self.log.println("timestamp", "Completed preprocessing of EEPROM contents")
+        self.log.println("timestamp", "Completed Processing of Binary Data")
 
-        self.log.println("timestamp", "Loading Contents User Modification File")
 
+
+    def processComPort(self, *args):
+        self.readFromComPort()          # read the contents of the EEPROM
+        self.mergeEEPROMData()          # merges the eeprom data into XML tree
+
+        self.log.println("timestamp", "Loading Settings into uBITX Memory Manager")
 
         #   Having built the tree, we can load it into the Notebook widget
         self.settingsNotebook.setNotebook(self.UserModroot)         #update notebook widget with settings
-        self.log.println("timestamp", "Settings loaded")
+        self.log.println("timestamp", "***Settings Successfully loaded***\n")
 
 
 

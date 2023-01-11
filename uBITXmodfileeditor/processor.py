@@ -22,8 +22,8 @@ class Processor(SourceselectorWidget):
 
         # put file selector in default state
         self.selectSaveFileFrame.forget()               #  Want to show the com port option  as default, hide safed file option
-        self.savedFilePathChooserWidget.config(filetypes=[('uBITX Saved Files','.xml')])         # Manually add restriction to only XML files
-        self.savedFilePathChooserWidget.config(initialdir=HOMEDIRECTORY)         # Manually add restriction to only XML files
+        self.savedFilePathChooserWidget.config(filetypes=[('uBITX Saved Files','.xml .btx')])         # Manually add restriction to only XML and btx files
+        self.savedFilePathChooserWidget.config(initialdir=HOMEDIRECTORY)         # default to start off in users' home directory
         self.savedFilePathChooser.set(USERMODFILE)
         self.lastDir = HOMEDIRECTORY
 
@@ -80,22 +80,6 @@ class Processor(SourceselectorWidget):
 
     def processFile(self, *args):
         pass
-
-
-    # def comPortSelected (self, *args):
-    #     self.goButtonWidget.bind("<Button-1>", self.processComPort)
-    #     self.goButtonWidget.configure(state=NORMAL)
-    #
-    #     print("port=", self.availableComPorts.get())
-    #     if(self.comPortObj.openComPort(self.availableComPorts.get())):
-    #         self.RS232 = self.comPortObj.getComPortPTR(self.availableComPorts.get())
-
-    # def updateComPorts(self):
-    #     ports = self.comPortObj.getAvailableComPorts()      #Gets list of port
-    #     self.comPortsOptionMenu.set_menu("Select Serial Port", *ports)
-    #
-    # def processComPort(self, *args):
-    #     pass
 
 
     def enableGoButtonComPort(self):

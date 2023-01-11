@@ -55,5 +55,8 @@ style.configure('Heading2.TLabelframe.Label',font=fontList['Heading3'])
 style.configure('Heading2.TLabelframe')
 style.configure('Normal.TText', font=fontList['Heading3'])
 
+style.configure('Highlight.TFrame', background='blue', bd=4 )
+style.configure('Normal.TFrame', background='gray', bd=4)
+
 
 

@@ -2575,10 +2575,13 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading3.TLabel",
             text='S-Level')
         self.label45.grid(column=1, columnspan=11, padx="25 20", row=1)
-        button6 = ttk.Button(frame9)
-        button6.configure(style="Button4.TButton", text='S-Meter Assistant')
-        button6.grid(column=1, columnspan=11, pady=25, row=4)
-        button6.configure(command=self.runADCScanner)
+        self.smeterAssistant_BUTTON_WIDGET = ttk.Button(frame9)
+        self.smeterAssistant_BUTTON_WIDGET.configure(
+            style="Button4.TButton", text='S-Meter Assistant')
+        self.smeterAssistant_BUTTON_WIDGET.grid(
+            column=1, columnspan=11, pady=25, row=4)
+        self.smeterAssistant_BUTTON_WIDGET.configure(
+            command=self.runSmeterAssistant)
         frame9.grid(column=0, columnspan=5, row=3, sticky="ew")
         self.frame8.pack(fill="x", side="top")
         self.frame8.grid_anchor("nw")
@@ -3352,6 +3355,9 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def validate__METER_LEVEL8(self, p_entry_value, v_condition):
+        pass
+
+    def runSmeterAssistant(self):
         pass
 
     def runI2CScanner(self):

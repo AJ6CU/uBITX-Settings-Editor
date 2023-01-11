@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <interface version="1.3">
-  <object class="tk.Toplevel" id="toplevel1">
+  <object class="tk.Toplevel" id="smeterWizard_Toplevel_WIDGET" named="True">
     <property name="height">200</property>
     <property name="title" translatable="yes">S-Meter Helper</property>
     <property name="width">800</property>
@@ -82,7 +82,10 @@
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Entry" id="entry1">
+                      <object class="ttk.Entry" id="smeterWizardManualMin_Entry_WIDGET" named="True">
+                        <property name="textvariable">string:smeterWizardManualMin</property>
+                        <property name="validate">focusout</property>
+                        <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_smeterWizardManualMin</property>
                         <property name="width">5</property>
                         <layout manager="grid">
                           <property name="column">2</property>
@@ -101,7 +104,10 @@
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Entry" id="entry2">
+                      <object class="ttk.Entry" id="smeterWizardManualMax_Entry_WIDGET" named="True">
+                        <property name="textvariable">string:smeterWizardManualMax</property>
+                        <property name="validate">focusout</property>
+                        <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_smeterWizardManualMax</property>
                         <property name="width">5</property>
                         <layout manager="grid">
                           <property name="column">2</property>
@@ -144,32 +150,61 @@
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Label" id="label8">
-                        <property name="style">Normal.TLabel</property>
-                        <property name="text" translatable="yes">0</property>
+                      <object class="ttk.Frame" id="com_portManager_frame" named="True">
+                        <property name="height">50</property>
+                        <property name="width">200</property>
                         <layout manager="grid">
-                          <property name="column">7</property>
+                          <property name="column">0</property>
+                          <property name="columnspan">8</property>
+                          <property name="pady">10</property>
                           <property name="row">1</property>
+                          <property name="sticky">ew</property>
                         </layout>
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Label" id="label9">
-                        <property name="text" translatable="yes">0</property>
+                      <object class="ttk.Label" id="label12">
+                        <property name="style">Heading4.TLabel</property>
+                        <property name="text" translatable="yes">Found:</property>
                         <layout manager="grid">
                           <property name="column">7</property>
+                          <property name="padx">15</property>
                           <property name="row">2</property>
+                          <property name="sticky">e</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Label" id="ADCubitxReadMin_Label_WIDGET" named="True">
+                        <property name="font">TkDefaultFont</property>
+                        <property name="style">Normal.TLabel</property>
+                        <property name="text" translatable="yes">N/A</property>
+                        <property name="textvariable">string:ADCubitxReadMin</property>
+                        <layout manager="grid">
+                          <property name="column">7</property>
+                          <property name="row">3</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Label" id="ADCubitxReadMax_Label_WIDGET" named="True">
+                        <property name="text" translatable="yes">N/A</property>
+                        <property name="textvariable">string:ADCubitxReadMax</property>
+                        <layout manager="grid">
+                          <property name="column">7</property>
+                          <property name="row">4</property>
                         </layout>
                       </object>
                     </child>
                     <child>
                       <object class="ttk.OptionMenu" id="sampleSizeADC_OptionMenu" named="True">
                         <property name="value">1</property>
-                        <property name="values">5 10 15 20 25</property>
+                        <property name="values">1,5,10,15,20,25</property>
+                        <property name="variable">int:sampleSizeADC</property>
                         <layout manager="grid">
                           <property name="column">1</property>
                           <property name="padx">0 25</property>
-                          <property name="row">1</property>
+                          <property name="row">3</property>
                         </layout>
                       </object>
                     </child>
@@ -181,19 +216,20 @@
                         <layout manager="grid">
                           <property name="column">0</property>
                           <property name="padx">0 15</property>
-                          <property name="row">1</property>
+                          <property name="row">3</property>
                           <property name="sticky">e</property>
                         </layout>
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.OptionMenu" id="optionmenu2" named="True">
+                      <object class="ttk.OptionMenu" id="sampleDelayADC_OptionMenu_WIDGET" named="True">
                         <property name="value">5</property>
-                        <property name="values">5 10 50 100 500 1000</property>
+                        <property name="values">5,10,50,100,500,1000</property>
+                        <property name="variable">int:sampleDelayADC</property>
                         <layout manager="grid">
                           <property name="column">1</property>
                           <property name="padx">0 25</property>
-                          <property name="row">2</property>
+                          <property name="row">4</property>
                         </layout>
                       </object>
                     </child>
@@ -208,40 +244,30 @@
                         <layout manager="grid">
                           <property name="column">0</property>
                           <property name="padx">0 15</property>
-                          <property name="row">2</property>
+                          <property name="row">4</property>
                           <property name="sticky">e</property>
                         </layout>
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Button" id="button10">
+                      <object class="ttk.Button" id="sampleADCReadMin_Button_WIDGET" named="True">
+                        <property name="command" type="command" cbtype="simple">sampleADCReadMin</property>
                         <property name="style">Normal.TButton</property>
                         <property name="text" translatable="yes">Read Min</property>
                         <layout manager="grid">
                           <property name="column">6</property>
-                          <property name="row">1</property>
+                          <property name="row">3</property>
                         </layout>
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Button" id="button11">
+                      <object class="ttk.Button" id="sampleADCReadMax_Button_WIDGET" named="True">
+                        <property name="command" type="command" cbtype="simple">sampleADCReadMax</property>
                         <property name="style">Normal.TButton</property>
                         <property name="text" translatable="yes">Read Max</property>
                         <layout manager="grid">
                           <property name="column">6</property>
-                          <property name="row">2</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Label" id="label12">
-                        <property name="style">Heading4.TLabel</property>
-                        <property name="text" translatable="yes">Found:</property>
-                        <layout manager="grid">
-                          <property name="column">7</property>
-                          <property name="padx">15</property>
-                          <property name="row">0</property>
-                          <property name="sticky">e</property>
+                          <property name="row">4</property>
                         </layout>
                       </object>
                     </child>
@@ -267,8 +293,9 @@
               <object class="ttk.Label" id="label1">
                 <property name="justify">left</property>
                 <property name="relief">flat</property>
+                <property name="state">normal</property>
                 <property name="style">Heading3.TLabel</property>
-                <property name="text" translatable="yes">Standard Curve Choices</property>
+                <property name="text" translatable="yes">Curve Style</property>
                 <layout manager="grid">
                   <property name="column">0</property>
                   <property name="padx">10 0</property>
@@ -278,83 +305,184 @@
               </object>
             </child>
             <child>
-              <object class="ttk.Button" id="adcCurve1_Button" named="True">
-                <property name="image">sample1-125x80.png</property>
-                <property name="text" translatable="yes">button3</property>
+              <object class="ttk.Frame" id="adcCurve1_Button_frame" named="True">
+                <property name="borderwidth">4</property>
+                <property name="height">200</property>
+                <property name="relief">raised</property>
+                <property name="style">Normal.TFrame</property>
+                <property name="width">200</property>
                 <layout manager="grid">
                   <property name="column">0</property>
-                  <property name="padx">15</property>
+                  <property name="padx">20 0</property>
                   <property name="pady">15</property>
                   <property name="row">1</property>
                 </layout>
+                <child>
+                  <object class="ttk.Button" id="adcCurve1_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">apply_Sample1</property>
+                    <property name="image">images/sample1-125x80.png</property>
+                    <layout manager="pack">
+                      <property name="anchor">center</property>
+                    </layout>
+                  </object>
+                </child>
               </object>
             </child>
             <child>
-              <object class="ttk.Button" id="adcCurve2_Button" named="True">
-                <property name="image">sample2-125x80.png</property>
-                <property name="text" translatable="yes">button4</property>
+              <object class="ttk.Frame" id="adcCurve2_Button_frame" named="True">
+                <property name="borderwidth">4</property>
+                <property name="height">200</property>
+                <property name="relief">raised</property>
+                <property name="style">Normal.TFrame</property>
+                <property name="width">200</property>
                 <layout manager="grid">
                   <property name="column">1</property>
-                  <property name="padx">0 15</property>
+                  <property name="padx">20 0</property>
                   <property name="pady">15</property>
                   <property name="row">1</property>
                 </layout>
+                <child>
+                  <object class="ttk.Button" id="adcCurve2_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">apply_Sample2</property>
+                    <property name="image">images/sample2-125x80.png</property>
+                    <layout manager="pack">
+                      <property name="anchor">center</property>
+                      <property name="side">top</property>
+                    </layout>
+                  </object>
+                </child>
               </object>
             </child>
             <child>
-              <object class="ttk.Button" id="adcCurve3_Button" named="True">
-                <property name="image">sample3-125x80.png</property>
-                <property name="text" translatable="yes">button5</property>
+              <object class="ttk.Frame" id="adcCurve3_Button_frame" named="True">
+                <property name="borderwidth">4</property>
+                <property name="height">200</property>
+                <property name="relief">raised</property>
+                <property name="style">Normal.TFrame</property>
+                <property name="width">200</property>
                 <layout manager="grid">
                   <property name="column">2</property>
-                  <property name="padx">0 15</property>
+                  <property name="padx">20 0</property>
                   <property name="pady">15</property>
                   <property name="row">1</property>
                 </layout>
+                <child>
+                  <object class="ttk.Button" id="adcCurve3_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">apply_Sample3</property>
+                    <property name="image">images/sample3-125x80.png</property>
+                    <layout manager="pack" />
+                  </object>
+                </child>
               </object>
             </child>
             <child>
-              <object class="ttk.Button" id="adcCurve4_Button" named="True">
-                <property name="image">sample4-125x80.png</property>
-                <property name="text" translatable="yes">button6</property>
+              <object class="ttk.Frame" id="adcCurve4_Button_frame" named="True">
+                <property name="borderwidth">4</property>
+                <property name="height">200</property>
+                <property name="relief">raised</property>
+                <property name="style">Normal.TFrame</property>
+                <property name="width">200</property>
                 <layout manager="grid">
-                  <property name="column">4</property>
-                  <property name="padx">0 15</property>
+                  <property name="column">3</property>
+                  <property name="padx">20 0</property>
                   <property name="pady">15</property>
                   <property name="row">1</property>
                 </layout>
+                <child>
+                  <object class="ttk.Button" id="adcCurve4_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">apply_Sample4</property>
+                    <property name="image">images/sample4-125x80.png</property>
+                    <layout manager="pack" />
+                  </object>
+                </child>
               </object>
             </child>
             <child>
-              <object class="ttk.Button" id="adcCurve5_Button" named="True">
-                <property name="image">sample5-125x80.png</property>
-                <property name="text" translatable="yes">button7</property>
+              <object class="ttk.Frame" id="adcCurve5_Button_frame" named="True">
+                <property name="borderwidth">4</property>
+                <property name="height">200</property>
+                <property name="relief">raised</property>
+                <property name="style">Normal.TFrame</property>
+                <property name="width">200</property>
                 <layout manager="grid">
-                  <property name="column">0</property>
+                  <property name="padx">20 0</property>
+                  <property name="pady">15</property>
                   <property name="row">2</property>
                 </layout>
+                <child>
+                  <object class="ttk.Button" id="adcCurve5_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">apply_Sample5</property>
+                    <property name="image">images/sample5-125x80.png</property>
+                    <layout manager="pack" />
+                  </object>
+                </child>
               </object>
             </child>
             <child>
-              <object class="ttk.Button" id="adcCurve6_Button" named="True">
-                <property name="image">sample6-125x80.png</property>
-                <property name="text" translatable="yes">button7</property>
+              <object class="ttk.Frame" id="adcCurve6_Button_frame" named="True">
+                <property name="borderwidth">4</property>
+                <property name="height">200</property>
+                <property name="relief">raised</property>
+                <property name="style">Normal.TFrame</property>
+                <property name="width">200</property>
                 <layout manager="grid">
                   <property name="column">1</property>
-                  <property name="padx">0 15</property>
+                  <property name="padx">20 0</property>
+                  <property name="pady">15</property>
                   <property name="row">2</property>
                 </layout>
+                <child>
+                  <object class="ttk.Button" id="adcCurve6_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">apply_Sample6</property>
+                    <property name="image">images/sample6-125x80.png</property>
+                    <layout manager="pack" />
+                  </object>
+                </child>
               </object>
             </child>
             <child>
-              <object class="ttk.Button" id="adcCurve7_Button" named="True">
-                <property name="image">sample7-125x80.png</property>
-                <property name="text" translatable="yes">button7</property>
+              <object class="ttk.Frame" id="adcCurve7_Button_frame" named="True">
+                <property name="borderwidth">4</property>
+                <property name="height">200</property>
+                <property name="relief">raised</property>
+                <property name="style">Normal.TFrame</property>
+                <property name="width">200</property>
                 <layout manager="grid">
                   <property name="column">2</property>
-                  <property name="padx">0 15</property>
+                  <property name="padx">20 0</property>
+                  <property name="pady">15</property>
                   <property name="row">2</property>
                 </layout>
+                <child>
+                  <object class="ttk.Button" id="adcCurve7_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">apply_Sample7</property>
+                    <property name="image">images/sample7-125x80.png</property>
+                    <layout manager="pack" />
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="adcManual_Button_frame" named="True">
+                <property name="borderwidth">4</property>
+                <property name="height">200</property>
+                <property name="relief">raised</property>
+                <property name="style">Normal.TFrame</property>
+                <property name="width">200</property>
+                <layout manager="grid">
+                  <property name="column">3</property>
+                  <property name="padx">20 0</property>
+                  <property name="pady">15</property>
+                  <property name="row">2</property>
+                </layout>
+                <child>
+                  <object class="ttk.Button" id="adcCustom_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">apply_Custom</property>
+                    <property name="image">images/Custom-125x80.png</property>
+                    <property name="state">disabled</property>
+                    <layout manager="pack" />
+                  </object>
+                </child>
               </object>
             </child>
           </object>
@@ -372,130 +500,169 @@
               <property name="side">top</property>
             </layout>
             <child>
-              <object class="tk.Scale" id="adc_s1_scale" named="True">
-                <property name="font">TkTextFont</property>
+              <object class="tk.Scale" id="adc_scale_S1" named="True">
+                <property name="command" type="command" cbtype="scale">apply_Custom</property>
+                <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S1</property>
                 <property name="length">300</property>
                 <property name="orient">vertical</property>
+                <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
-                <property name="resolution">0.0</property>
+                <property name="resolution">1</property>
                 <property name="to">0</property>
+                <property name="variable">string:smeterWizard_S1</property>
                 <layout manager="grid">
                   <property name="column">0</property>
                   <property name="padx">33 0</property>
+                  <property name="pady">0 10</property>
                   <property name="row">1</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Scale" id="scale2" named="True">
-                <property name="font">TkTextFont</property>
+              <object class="tk.Scale" id="adc_scale_S2" named="True">
+                <property name="command" type="command" cbtype="scale">apply_Custom</property>
+                <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S2</property>
                 <property name="length">300</property>
                 <property name="orient">vertical</property>
+                <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
-                <property name="resolution">0.0</property>
+                <property name="resolution">1</property>
                 <property name="to">0</property>
+                <property name="variable">string:smeterWizard_S2</property>
                 <layout manager="grid">
                   <property name="column">1</property>
+                  <property name="padx">2 0</property>
+                  <property name="pady">0 10</property>
                   <property name="row">1</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Scale" id="scale3" named="True">
-                <property name="font">TkTextFont</property>
+              <object class="tk.Scale" id="adc_scale_S3" named="True">
+                <property name="command" type="command" cbtype="scale">apply_Custom</property>
+                <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S3</property>
                 <property name="length">300</property>
                 <property name="orient">vertical</property>
+                <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
-                <property name="resolution">0.0</property>
+                <property name="resolution">1</property>
                 <property name="to">0</property>
+                <property name="variable">string:smeterWizard_S3</property>
                 <layout manager="grid">
                   <property name="column">2</property>
+                  <property name="padx">2 0</property>
+                  <property name="pady">0 10</property>
                   <property name="row">1</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Scale" id="scale4" named="True">
-                <property name="font">TkTextFont</property>
+              <object class="tk.Scale" id="adc_scale_S4" named="True">
+                <property name="command" type="command" cbtype="scale">apply_Custom</property>
+                <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S4</property>
                 <property name="length">300</property>
                 <property name="orient">vertical</property>
+                <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
-                <property name="resolution">0.0</property>
+                <property name="resolution">1</property>
                 <property name="to">0</property>
+                <property name="variable">string:smeterWizard_S4</property>
                 <layout manager="grid">
                   <property name="column">3</property>
+                  <property name="padx">2 0</property>
+                  <property name="pady">0 10</property>
                   <property name="row">1</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Scale" id="scale5" named="True">
-                <property name="font">TkTextFont</property>
+              <object class="tk.Scale" id="adc_scale_S5" named="True">
+                <property name="command" type="command" cbtype="scale">apply_Custom</property>
+                <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S5</property>
                 <property name="length">300</property>
                 <property name="orient">vertical</property>
+                <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
-                <property name="resolution">0.0</property>
+                <property name="resolution">1</property>
                 <property name="to">0</property>
+                <property name="variable">string:smeterWizard_S5</property>
                 <layout manager="grid">
                   <property name="column">4</property>
+                  <property name="padx">2 0</property>
+                  <property name="pady">0 10</property>
                   <property name="row">1</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Scale" id="scale6" named="True">
-                <property name="font">TkTextFont</property>
+              <object class="tk.Scale" id="adc_scale_S6" named="True">
+                <property name="command" type="command" cbtype="scale">apply_Custom</property>
+                <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S6</property>
                 <property name="length">300</property>
                 <property name="orient">vertical</property>
+                <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
-                <property name="resolution">0.0</property>
+                <property name="resolution">1</property>
                 <property name="to">0</property>
+                <property name="variable">string:smeterWizard_S6</property>
                 <layout manager="grid">
                   <property name="column">5</property>
+                  <property name="padx">2 0</property>
+                  <property name="pady">0 10</property>
                   <property name="row">1</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Scale" id="scale7" named="True">
-                <property name="font">TkTextFont</property>
+              <object class="tk.Scale" id="adc_scale_S7" named="True">
+                <property name="command" type="command" cbtype="scale">apply_Custom</property>
+                <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S7</property>
                 <property name="length">300</property>
                 <property name="orient">vertical</property>
+                <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
-                <property name="resolution">0.0</property>
+                <property name="resolution">1</property>
                 <property name="to">0</property>
+                <property name="variable">string:smeterWizard_S7</property>
                 <layout manager="grid">
                   <property name="column">6</property>
+                  <property name="padx">2 0</property>
+                  <property name="pady">0 10</property>
                   <property name="row">1</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Scale" id="scale8" named="True">
-                <property name="font">TkTextFont</property>
+              <object class="tk.Scale" id="adc_scale_S8" named="True">
+                <property name="command" type="command" cbtype="scale">apply_Custom</property>
+                <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S8</property>
                 <property name="length">300</property>
                 <property name="orient">vertical</property>
+                <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
-                <property name="resolution">0.0</property>
+                <property name="resolution">1</property>
                 <property name="to">0</property>
+                <property name="variable">string:smeterWizard_S8</property>
                 <layout manager="grid">
                   <property name="column">7</property>
+                  <property name="padx">2 33</property>
+                  <property name="pady">0 10</property>
                   <property name="row">1</property>
                 </layout>
               </object>
@@ -528,9 +695,10 @@
               <property name="side">top</property>
             </layout>
             <child>
-              <object class="ttk.Button" id="button1">
+              <object class="ttk.Button" id="smeterWizard_Apply_Button_WIDGET" named="True">
+                <property name="command" type="command" cbtype="simple">smeterWizard_Apply_Button</property>
                 <property name="style">Button4.TButton</property>
-                <property name="text" translatable="yes">OK</property>
+                <property name="text" translatable="yes">Apply</property>
                 <layout manager="grid">
                   <property name="column">0</property>
                   <property name="padx">0 25</property>
@@ -540,11 +708,25 @@
               </object>
             </child>
             <child>
-              <object class="ttk.Button" id="button2">
+              <object class="ttk.Button" id="smeterWizard_Cancel_Button_WIDGET" named="True">
+                <property name="command" type="command" cbtype="simple">smeterWizard_Cancel_Button</property>
                 <property name="style">Button4.TButton</property>
                 <property name="text" translatable="yes">Cancel</property>
                 <layout manager="grid">
+                  <property name="column">2</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="button4" named="True">
+                <property name="command" type="command" cbtype="simple">resetADCAssistant</property>
+                <property name="style">Button4.TButton</property>
+                <property name="text" translatable="yes">Reset</property>
+                <layout manager="grid">
                   <property name="column">1</property>
+                  <property name="padx">0 25</property>
+                  <property name="pady">15</property>
                   <property name="row">0</property>
                 </layout>
               </object>

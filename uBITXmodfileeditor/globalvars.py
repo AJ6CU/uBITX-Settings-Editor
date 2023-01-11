@@ -29,6 +29,9 @@ RETRIES=3
 EEPROMSIZE=1024
 BACKUPFILESIZE=2048
 
+VREFMAXVALUE=1023
+SMETERPIN=7
+
 
 CHANNELNAMELENGTH = 5                               #Number of characters in the Channel Name
 WSPRNAMELENGTH = 5                                  #Number of characters in the Channel Name

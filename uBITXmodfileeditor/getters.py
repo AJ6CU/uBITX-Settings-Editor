@@ -971,7 +971,12 @@ class getters(object):
 #
 
     def CUST_LPF_ENABLED(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-        value.text = LPF_MODE_SELECT[LPF_MODE_SETTING.index((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)))]
+        try:
+            indexPos = LPF_MODE_SETTING.index((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)))
+        except:
+            value.text = LPF_MODE_SELECT[0]
+        else:
+            value.text = LPF_MODE_SELECT[LPF_MODE_SETTING.index((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)))]
 
     def CUST_LPF_FILTER_ENDFREQ(self, SettingName, EEPROMBuffer, memLocation, value):
         value.text = str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))

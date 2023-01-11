@@ -3,6 +3,7 @@ import pygubu.widgets.simpletooltip as tooltip
 from settingsnotebookwidget import SettingsnotebookWidget
 from I2cscanner import I2Cscanner
 from ADCscanner import ADCscanner
+from SmeterWizard import SmeterWizard
 
 class SettingsNotebook(SettingsnotebookWidget):
     #   temp to control what is processed
@@ -781,7 +782,12 @@ class SettingsNotebook(SettingsnotebookWidget):
     def Refresh_Tuning_Steps(self):
         SettingsNotebook.newTuningSteps = (self.TUNING_STEP1.get(), self.TUNING_STEP2.get(), self.TUNING_STEP3.get(), self.TUNING_STEP4.get(), self.TUNING_STEP5.get())
         self.TUNING_STEP_INDEX_VALUE_WIDGET['values'] = SettingsNotebook.newTuningSteps
-        self.TUNING_STEP_INDEX_VALUE_WIDGET.current(int(self.TUNING_STEP_INDEX.get())-1)
+
+        if (int(self.TUNING_STEP_INDEX.get()) <1) | (int(self.TUNING_STEP_INDEX.get()) > 5):        # protect against bad data
+            self.TUNING_STEP_INDEX_VALUE_WIDGET.current(3)
+        else:
+
+            self.TUNING_STEP_INDEX_VALUE_WIDGET.current(int(self.TUNING_STEP_INDEX.get())-1)
         self.new_Default_Tuning_Step()
 
     def Tuning_Steps_Set_Common(self):
@@ -823,7 +829,7 @@ class SettingsNotebook(SettingsnotebookWidget):
             name = userSetting.get("NAME")
 
             if name in SettingsNotebook.readyToGo:
-                print("name=", name)
+                # print("name=", name)
                 if userSetting.find("value").text != None:
                     getattr(self, name).set(userSetting.find("value").text)
                 else:
@@ -881,6 +887,9 @@ class SettingsNotebook(SettingsnotebookWidget):
 
     def runADCScanner(self):
         adcScanner = ADCscanner (self)
+
+    def runSmeterAssistant(self):
+        smeterAssistant = SmeterWizard(self)
 
 
 
