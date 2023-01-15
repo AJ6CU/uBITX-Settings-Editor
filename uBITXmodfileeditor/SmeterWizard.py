@@ -1,9 +1,9 @@
-# import pygubu.widgets.simpletooltip as tooltip
+from time import sleep
 
 from smeterwizardwidget import SmeterwizardWidget
 from com_portManager import com_portManager
 from globalvars import *
-from time import sleep
+
 
 class SmeterWizard(SmeterwizardWidget):
 

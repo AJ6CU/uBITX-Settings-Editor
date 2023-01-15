@@ -1,17 +1,10 @@
 from tkinter import *
-# import tkinter as tk
-#import os, sys
-#import time
-# from printtolog import *
-#from lxml import etree as ET
-# import serial.tools.list_ports              # Used to get a list of com ports
+import pathlib
+
 from globalvars import *
-#from readEEPROMData import readEEPROMData
-#from getters import getters
-#from time import sleep
 from com_portManager import com_portManager
 
-import pathlib
+
 
 from sourceselectorwidget import SourceselectorWidget
 

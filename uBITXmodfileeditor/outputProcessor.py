@@ -1,16 +1,6 @@
-# from tkinter import *
-# import tkinter as tk
-# import time
-# from printtolog import *
-# from lxml import etree as ET
-# import serial.tools.list_ports              # Used to get a list of com ports
-# from globalvars import *
-# from time import sleep
-# import pathlib
 from os import path
 
 from eepromObj import *
-
 from processor import Processor
 
 class OutputProcessor(Processor):
@@ -65,7 +55,9 @@ class OutputProcessor(Processor):
         self.log.println("timestamp","On Com Port: " + self.comPortObj.getSelectedComPort())
 
         self.log.println("timestamp", "Updating Internal Settings Data Structure")
+
         userModroot = self.settingsNotebook.getNotebook()
+
         self.log.println("timestamp", "Finished Internal Settings Data Structure")
 
         if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
@@ -74,9 +66,9 @@ class OutputProcessor(Processor):
         self.log.println("timestamp",  "Refreshing In-memory Copy of EEPROM")
 
         self.eepromCom = eepromUBITX(self.RS232, self.log)
+
         self.eepromCom.read()
         self.eepromCom.encode(userModroot)
-
 
         self.eepromCom.write()
 

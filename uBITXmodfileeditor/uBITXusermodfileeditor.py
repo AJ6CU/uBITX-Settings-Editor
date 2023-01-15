@@ -1,21 +1,8 @@
-from lxml import etree as ET
 
 #   General System Imports
 
 import platform
-from os.path import exists
 
-#   Tkinter imports
-
-from tkinter import *
-from tkinter import ttk
-
-import tkinter.messagebox
-from tkinter import filedialog as fd
-
-
-from globalvars import *
-from printtolog import *
 
 from helpsubsystem import *
 from SettingsNotebook import SettingsNotebook
