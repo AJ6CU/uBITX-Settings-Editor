@@ -1,8 +1,8 @@
 #import serial.tools.list_ports              # Used to get a list of com ports
-import tkinter
+# import tkinter
 from Scanner import Scanner
 from com_portManager import com_portManager
-from time import sleep
+# from time import sleep
 from globalvars import *
 
 class ADCscanner (Scanner):

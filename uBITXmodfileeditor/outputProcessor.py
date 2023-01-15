@@ -1,16 +1,16 @@
-from tkinter import *
-import tkinter as tk
-import time
-from printtolog import *
-from lxml import etree as ET
-import serial.tools.list_ports              # Used to get a list of com ports
-from globalvars import *
-from readEEPROMData import readEEPROMData
-from getters import getters
-from time import sleep
-import pathlib
+# from tkinter import *
+# import tkinter as tk
+# import time
+# from printtolog import *
+# from lxml import etree as ET
+# import serial.tools.list_ports              # Used to get a list of com ports
+# from globalvars import *
+# from time import sleep
+# import pathlib
+from os import path
 
-from writeEEPROMData import *
+from eepromObj import *
+
 from processor import Processor
 
 class OutputProcessor(Processor):
@@ -23,36 +23,61 @@ class OutputProcessor(Processor):
         style="Heading2.TLabelframe",
         text='Select Target',
         width=200)
-        # self.savedFilePathChooserWidget.config(
-        #     initialdir="~",
-        #     mustexist=False,
-        #     textvariable=self.savedFilePathChooser,
-        #     title="Select Previously Saved Settings File",
-        #     type="file")
+        self.savedFilePathChooserWidget.config(
+            mustexist=False,
+            title="Save Settings to:")
         self.goButton.set("WRITE")
 
     def processFile(self, *args):
-        print("process output file called")
 
-        self.log.println("timestamp", "Updating User Modification File")
+        self.log.println("timestamp", "\n***Saving Settings to File***")
+        self.log.println("timestamp", "Updating Internal Settings Data Structure")
         userModroot = self.settingsNotebook.getNotebook()
-        self.log.println("timestamp", "Finished Updating User Modification File")
+        self.log.println("timestamp", "Finished Internal Settings Data Structure")
 
-        ET.indent(userModroot,'    ')
-        self.log.println("timestamp", "Writing settings to file")
-        userModroot.write(self.savedFilePathChooser.get(),method="html", pretty_print=True)
+        # Process based on file extension. ".btx" = binary file ".xml" = ascii xml file
 
-        self.log.println("timestamp", "***Settings Saved to: " + self.savedFilePathChooser.get() + "***")
+        fileParts = path.splitext(self.savedFilePathChooser.get())
+
+        if(fileParts[1] == ''):
+            self.log.println("timestamp", "No file extension provided, defaulting to '.btx'")
+            self.savedFilePathChooser.set(self.savedFilePathChooser.get()+".btx")
+            fileParts[1] == ".btx"
+
+        if (fileParts[1] == ".xml"):
+
+            ET.indent(userModroot,'    ')
+            self.log.println("timestamp", "Writing settings to file")
+            userModroot.write(self.savedFilePathChooser.get(),method="html", pretty_print=True)
+
+            self.log.println("timestamp", "***Settings Saved to: " + self.savedFilePathChooser.get() + "***\n")
+        else:
+            self.log.println("timestamp", "Writing settings to file")
+            self.eepromFile= eepromFILE(self.savedFilePathChooser.get(), self.log)
+            self.eepromFile.encode(userModroot)
+            self.eepromFile.write()
+            self.log.println("timestamp", "***Settings Saved to: " + self.savedFilePathChooser.get() + "***\n")
+
 
     def processComPort(self, *args):
-        print("process output com port called called")
 
-        self.log.println("timestamp", "Updating User Modification File")
+        self.log.println("timestamp", "***Saving Settings to uBITX***")
+        self.log.println("timestamp","On Com Port: " + self.comPortObj.getSelectedComPort())
+
+        self.log.println("timestamp", "Updating Internal Settings Data Structure")
         userModroot = self.settingsNotebook.getNotebook()
-        self.log.println("timestamp", "Finished Updating User Modification File")
+        self.log.println("timestamp", "Finished Internal Settings Data Structure")
 
         if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
             self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
 
+        self.log.println("timestamp",  "Refreshing In-memory Copy of EEPROM")
 
-        writeEEPROMData (self.RS232, userModroot, self.log)
+        self.eepromCom = eepromUBITX(self.RS232, self.log)
+        self.eepromCom.read()
+        self.eepromCom.encode(userModroot)
+
+
+        self.eepromCom.write()
+
+        self.log.println("timestamp", "***Settings Successfully Written to uBITX***\n")

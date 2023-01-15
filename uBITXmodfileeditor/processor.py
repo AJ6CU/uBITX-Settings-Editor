@@ -1,10 +1,10 @@
 from tkinter import *
-import tkinter as tk
+# import tkinter as tk
 #import os, sys
 #import time
-from printtolog import *
+# from printtolog import *
 #from lxml import etree as ET
-import serial.tools.list_ports              # Used to get a list of com ports
+# import serial.tools.list_ports              # Used to get a list of com ports
 from globalvars import *
 #from readEEPROMData import readEEPROMData
 #from getters import getters
@@ -44,8 +44,6 @@ class Processor(SourceselectorWidget):
                                                 # a valid com port or file is selected.
 
         if self.sourceSelectorRadioButton.get() == "uBITX":
-           # self.goButtonWidget.unbind("<Button-1>")            # Must explictly unbind button to prevent disabled button from being clickable
-           # self.goButtonWidget.configure(state=DISABLED)       # Now fade it out
             self.goButtonWidget.bind("<Button-1>", self.processComPort)
             self.goButtonWidget.configure(state=NORMAL)
 
@@ -65,17 +63,15 @@ class Processor(SourceselectorWidget):
             self.comPortObj.pack()                                      # make com it visible
 
         else:
-          #  self.goButtonWidget.unbind("<Button-1>")            # In this case we have switched into file selection mode. Unbind and disable read button
-          #  self.goButtonWidget.configure(state=DISABLED)       # If user selects a valid file, the button is re-enabled and callback connected
             self.com_portManager_frame.forget()                # In the on_path_changed event
             self.selectSaveFileFrame.pack()
 
     def on_path_changed(self, event=None):
         self.path=self.savedFilePathChooser.get()
-        if (pathlib.Path(self.path).exists()):
-            self.goButtonWidget.bind("<Button-1>", self.processFile)
-            self.goButtonWidget.configure(state=NORMAL)
-            self.lastDir = pathlib.Path(self.savedFilePathChooser.get()).parent
+
+        self.goButtonWidget.bind("<Button-1>", self.processFile)
+        self.goButtonWidget.configure(state=NORMAL)
+        self.lastDir = pathlib.Path(self.savedFilePathChooser.get()).parent
 
 
     def processFile(self, *args):

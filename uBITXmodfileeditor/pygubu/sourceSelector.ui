@@ -105,9 +105,8 @@
             <child>
               <object class="pygubu.builder.widgets.pathchooserinput" id="savedFilePathChooserWidget" named="True">
                 <property name="initialdir">~</property>
-                <property name="mustexist">false</property>
+                <property name="mustexist">true</property>
                 <property name="textvariable">string:savedFilePathChooser</property>
-                <property name="title" translatable="yes">Select Previously Saved Settings File</property>
                 <property name="type">file</property>
                 <bind sequence="&lt;&lt;PathChooserPathChanged&gt;&gt;" handler="on_path_changed" add="" />
                 <layout manager="grid">

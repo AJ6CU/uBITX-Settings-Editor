@@ -47,9 +47,8 @@ class SourceselectorWidget(ttk.Labelframe):
         self.savedFilePathChooser = tk.StringVar()
         self.savedFilePathChooserWidget.configure(
             initialdir="~",
-            mustexist="false",
+            mustexist=True,
             textvariable=self.savedFilePathChooser,
-            title="Select Previously Saved Settings File",
             type="file")
         self.savedFilePathChooserWidget.grid(
             column=1, ipadx=70, padx="0 5", row=0)
@@ -153,6 +152,9 @@ class SourceselectorWidget(ttk.Labelframe):
             font=fontList['Heading3'])
         style.configure('Heading2.TLabelframe')
         style.configure('Normal.TText', font=fontList['Heading3'])
+
+        style.configure('Highlight.TFrame', background='blue', bd=4)
+        style.configure('Normal.TFrame', background='gray', bd=4)
 
     def sourceSelected(self):
         pass

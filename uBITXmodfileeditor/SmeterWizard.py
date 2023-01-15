@@ -1,4 +1,4 @@
-import pygubu.widgets.simpletooltip as tooltip
+# import pygubu.widgets.simpletooltip as tooltip
 
 from smeterwizardwidget import SmeterwizardWidget
 from com_portManager import com_portManager
