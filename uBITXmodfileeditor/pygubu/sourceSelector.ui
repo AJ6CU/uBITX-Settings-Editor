@@ -141,7 +141,7 @@
         <child>
           <object class="ttk.Button" id="goButtonWidget" named="True">
             <property name="state">disabled</property>
-            <property name="style">Button4Blue.TButton</property>
+            <property name="style">Button3Blue.TButton</property>
             <property name="text" translatable="yes">READ</property>
             <property name="textvariable">string:goButton</property>
             <layout manager="grid">

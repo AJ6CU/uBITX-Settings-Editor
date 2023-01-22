@@ -130,9 +130,9 @@ commandFrame.grid_columnconfigure(0, weight=1)
 
 #   Now layout the buttons
 
-quitButton.grid(row=0, column=0, padx=(0,15), pady=5 )
-helpButton.grid(row=0, column=1, padx=15, pady=5)
-aboutButton.grid(row=0, column=2, padx=15, pady=5)
+quitButton.grid(row=0, column=0, padx=(100,15), pady=5, columnspan=2 )
+helpButton.grid(row=0, column=2, padx=15, pady=5)
+aboutButton.grid(row=0, column=3, padx=15, pady=5)
 
 
 #clearValidationMessages()
