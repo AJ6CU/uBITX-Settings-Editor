@@ -18,7 +18,10 @@ The screenshot below shows a snapshot of the work in progress. Unfortunately, it
 
 ![afterloading](https://user-images.githubusercontent.com/70183884/213938796-80d7aedb-5dc3-4eef-a46d-faeb88d0f750.JPG)
 
-There are additional screenshots in the uBITXmodeditor/screenshots directory.
+There are additional screenshots in the uBITXmodeeditor/screenshots directory.
+
+## Obsolete Programs
+Only the software in the modfileeditor directory is under active development. All the python code in the other directories were interm programs that I used to get to the point where I have the GUI editor currently stored in uBITXmodeeditor (this will be renamed ot uBITX Customization Editor at somepoint in the future).
 
 ## USING THE TOOLS
 To use either tool at this stage, you need to know how to use an editor, install python packages, and run python. I happen to be using PyCharm, but admit my ignorance might have led me not to choose the optimal tool. Specific values that need to be changes, are identified in the README files in the appropriate directory.
