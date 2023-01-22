@@ -16,8 +16,9 @@ The code is being written in Python. Eventually, using standard Python tools, I 
 The screenshot below shows a snapshot of the work in progress. Unfortunately, it is taking longer to reverse engineer the uBTIX Memory Manager than I hoped.
 
 
-![ubitx_customizer_v2 0screencapture](https://user-images.githubusercontent.com/70183884/210597541-bc36a5c2-6daf-4490-81ed-8377ad33c3f1.JPG)
+![afterloading](https://user-images.githubusercontent.com/70183884/213938796-80d7aedb-5dc3-4eef-a46d-faeb88d0f750.JPG)
 
+There are additional screenshots in the uBITXmodeditor/screenshots directory.
 
 ## USING THE TOOLS
 To use either tool at this stage, you need to know how to use an editor, install python packages, and run python. I happen to be using PyCharm, but admit my ignorance might have led me not to choose the optimal tool. Specific values that need to be changes, are identified in the README files in the appropriate directory.
