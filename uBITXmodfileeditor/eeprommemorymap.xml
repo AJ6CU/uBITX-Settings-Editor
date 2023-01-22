@@ -1270,6 +1270,13 @@
 		<displayFormat>bool</displayFormat>								
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
+
+	<SETTING NAME="NEXTION_DISPLAY_CALL_SIGN">
+		<EEPROMStart>361</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>bool</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
 <!-- 	
 	NEXTION
  -->
@@ -1282,12 +1289,7 @@
 <!-- 	
 GENERAL UX
  -->
-	<SETTING NAME="NEXTION_DISPLAY_CALL_SIGN">							
-		<EEPROMStart>361</EEPROMStart>
-		<sizeInBytes>1</sizeInBytes>
-		<displayFormat>bool</displayFormat>
-		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
-	</SETTING>
+
 
 	<SETTING NAME="STORED_IF_SHIFT">
 		<EEPROMStart>360</EEPROMStart>

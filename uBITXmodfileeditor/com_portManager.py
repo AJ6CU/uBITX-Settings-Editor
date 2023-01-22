@@ -25,7 +25,7 @@ class com_portManager(ComPortmanagerWidget):
             try:
                 RS232 = serial.Serial(comPort, BAUD, timeout=0, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
             except:
-                print("failed to open port", RS232)
+                print("failed to open port", comPort)
                 return False
             else:
                 com_portManager.open_com_ports[comPort] = RS232

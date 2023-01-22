@@ -21,7 +21,7 @@ class ComPortmanagerWidget(ttk.Frame):
             command=self.comPortSelected)
         self.comPortsOptionMenu.grid(column=1, row=0, sticky="w")
         self.configure(height=200, width=200)
-        self.pack(anchor="w", expand="false", side="top")
+        self.pack(anchor="w", side="top")
 
         self.setup_ttk_styles()
 
@@ -83,6 +83,7 @@ class ComPortmanagerWidget(ttk.Frame):
             font=fontList['Emphasis'])
         style.configure('Checkbox3.TCheckbutton', font=fontList['Heading3'])
         style.configure('Checkbox4.TCheckbutton', font=fontList['Heading4'])
+        style.configure('CheckboxNormal.TCheckbutton', font=fontList['Normal'])
         style.configure(
             'CheckboxEmphasis.TCheckbutton',
             font=fontList['Emphasis'])
@@ -101,6 +102,9 @@ class ComPortmanagerWidget(ttk.Frame):
             font=fontList['Heading3'])
         style.configure('Heading2.TLabelframe')
         style.configure('Normal.TText', font=fontList['Heading3'])
+
+        style.configure('Highlight.TFrame', background='blue', bd=4)
+        style.configure('Normal.TFrame', background='gray', bd=4)
 
     def updateComPorts(self):
         pass

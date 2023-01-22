@@ -84,7 +84,7 @@ outputProcessorFrame.setNotebook(settingsNotebook)
 
 # Add status and buttons to fourth frame
 logLabel = ttk.Label(logFrame, text="Log", style='Heading3.TLabel')
-helpButton = ttk.Button(logFrame, text="Help", command=lambda: helpDialog("Help", "help.xml", status))
+
 
 
 logBox = Text(logFrame, font=('Arial',8))
@@ -98,7 +98,7 @@ status = log(logBox)
 inputProcessorFrame.setLog(status)              #tell input processor where the log is
 outputProcessorFrame.setLog(status)              #tell input processor where the log is
 settingsNotebook.setLog(status)
-copyToClipboardButton = ttk.Button(logFrame, text="Copy Log To Clipboard", width=25, command=status.copyLogToClipboard)
+copyToClipboardButton = ttk.Button(logFrame, text="Copy Log To Clipboard", width=25, command=status.copyLogToClipboard, style='Button4.TButton')
 
 #   Allocate any change in vertical space to row 1 which contains the text widget
 logFrame.grid_rowconfigure(1, weight=1)
@@ -107,12 +107,12 @@ logFrame.grid_rowconfigure(1, weight=1)
 #logFrame.grid_columnconfigure(0, weight=1)
 
 logLabel.grid(row=0, column=0, padx=10, sticky='sw')
-helpButton.grid(row=0,column=0, pady=5, sticky='se')
+#helpButton.grid(row=0,column=0, pady=5, sticky='se')
 logBox.grid(row=1, column=0, padx=(10, 0), sticky="nsew")
 logBoxScrollBar.grid(row=1, column=1, sticky='nsew')
 
 
-copyToClipboardButton.grid(row=2, column=0)
+copyToClipboardButton.grid(row=0, column=0, pady=5, sticky='se')
 
 
 
@@ -120,7 +120,8 @@ copyToClipboardButton.grid(row=2, column=0)
 
 #   Now create and layout the final frame with the commands
 
-quitButton = ttk.Button(commandFrame, text="Quit", command=root.destroy)
+quitButton = ttk.Button(commandFrame, text="Quit", command=root.destroy,  style='Button4.TButton')
+helpButton = ttk.Button(commandFrame, text="Help", command=lambda: helpDialog("Help", "help.xml", status))
 aboutButton = ttk.Button(commandFrame, text="About", command=lambda: helpDialog("About","about.xml", status))
 tooltip.create(aboutButton,"A very long tool tip. \nhow does it work? \nhow does it work?")
 
@@ -129,8 +130,9 @@ commandFrame.grid_columnconfigure(0, weight=1)
 
 #   Now layout the buttons
 
-quitButton.grid(row=0, column=0, padx=(0,15), pady=5, sticky='w')
-aboutButton.grid(row=0, column=0, padx=15, pady=5)
+quitButton.grid(row=0, column=0, padx=(0,15), pady=5 )
+helpButton.grid(row=0, column=1, padx=15, pady=5)
+aboutButton.grid(row=0, column=2, padx=15, pady=5)
 
 
 #clearValidationMessages()

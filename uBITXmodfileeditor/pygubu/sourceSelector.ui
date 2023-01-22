@@ -10,6 +10,9 @@
       <property name="row">1</property>
       <property name="sticky">ew</property>
     </layout>
+    <containerlayout manager="grid">
+      <property name="anchor">w</property>
+    </containerlayout>
     <child>
       <object class="ttk.Frame" id="SourceSelector" named="True">
         <property name="height">200</property>
@@ -62,32 +65,38 @@
     </child>
     <child>
       <object class="ttk.Frame" id="sourceBlock" named="True">
-        <property name="height">200</property>
+        <property name="height">75</property>
         <property name="padding">10 0</property>
-        <property name="width">400</property>
+        <property name="width">500</property>
         <layout manager="grid">
           <property name="column">2</property>
-          <property name="padx">0 70</property>
           <property name="row">0</property>
         </layout>
+        <containerlayout manager="pack">
+          <property name="propagate">False</property>
+        </containerlayout>
         <child>
           <object class="ttk.Frame" id="com_portManager_frame" named="True">
-            <property name="height">200</property>
-            <property name="width">200</property>
+            <property name="height">50</property>
+            <property name="width">400</property>
             <layout manager="pack">
               <property name="anchor">w</property>
-              <property name="expand">false</property>
+              <property name="expand">true</property>
+              <property name="fill">both</property>
+              <property name="pady">23</property>
               <property name="side">top</property>
             </layout>
           </object>
         </child>
         <child>
           <object class="ttk.Frame" id="selectSaveFileFrame" named="True">
-            <property name="height">200</property>
-            <property name="width">200</property>
+            <property name="height">50</property>
+            <property name="width">400</property>
             <layout manager="pack">
               <property name="anchor">w</property>
-              <property name="expand">false</property>
+              <property name="expand">true</property>
+              <property name="fill">both</property>
+              <property name="pady">23</property>
               <property name="side">top</property>
             </layout>
             <child>
@@ -122,24 +131,44 @@
       </object>
     </child>
     <child>
-      <object class="ttk.Frame" id="readButtonFrame" named="True">
+      <object class="ttk.Frame" id="frame2" named="True">
         <property name="height">200</property>
         <property name="width">200</property>
         <layout manager="grid">
           <property name="column">3</property>
           <property name="row">0</property>
-          <property name="sticky">e</property>
         </layout>
         <child>
           <object class="ttk.Button" id="goButtonWidget" named="True">
             <property name="state">disabled</property>
-            <property name="style">Button4.TButton</property>
+            <property name="style">Button4Blue.TButton</property>
             <property name="text" translatable="yes">READ</property>
             <property name="textvariable">string:goButton</property>
-            <layout manager="pack">
-              <property name="anchor">n</property>
-              <property name="side">left</property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="row">0</property>
             </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="resetButton_Frame" named="True">
+            <property name="height">50</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="padx">15</property>
+              <property name="row">0</property>
+            </layout>
+            <child>
+              <object class="ttk.Button" id="resetButton_WIDGET" named="True">
+                <property name="command" type="command" cbtype="simple">reset_ubitx</property>
+                <property name="state">disabled</property>
+                <property name="style">Button4.TButton</property>
+                <property name="takefocus">true</property>
+                <property name="text" translatable="yes">Reset uBITX</property>
+                <property name="textvariable">string:resetButton</property>
+                <layout manager="pack" />
+              </object>
+            </child>
           </object>
         </child>
       </object>

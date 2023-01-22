@@ -12,8 +12,9 @@ class SettingsnotebookWidget(ttk.Frame):
         self.General_SF = ScrolledFrame(
             self.settingsNotebook, scrolltype="both")
         self.General_SF.configure(usemousewheel=True)
-        self.General_Setting_Title_Frame = ttk.Frame(
-            self.General_SF.innerframe)
+        self.frame15 = ttk.Frame(self.General_SF.innerframe)
+        self.frame15.configure(height=200, width=200)
+        self.General_Setting_Title_Frame = ttk.Frame(self.frame15)
         self.General_Setting_Title_Frame.configure(height=200, width=200)
         self.General_Settings_Label = ttk.Label(
             self.General_Setting_Title_Frame)
@@ -21,10 +22,9 @@ class SettingsnotebookWidget(ttk.Frame):
             justify="center",
             style="Heading2.TLabel",
             text='General Settings')
-        self.General_Settings_Label.pack(anchor="n")
-        self.General_Setting_Title_Frame.pack(
-            anchor="center", fill="x", side="top")
-        self.General_Frame = ttk.Frame(self.General_SF.innerframe)
+        self.General_Settings_Label.pack(anchor="w", padx=5, pady="15 25")
+        self.General_Setting_Title_Frame.pack(anchor="w", fill="x", side="top")
+        self.General_Frame = ttk.Frame(self.frame15)
         self.General_Operator_Frame = ttk.Frame(self.General_Frame)
         self.General_Operator_Frame.configure(height=200, width=200)
         self.General_Operator_Title_Frame = ttk.Frame(
@@ -61,9 +61,9 @@ class SettingsnotebookWidget(ttk.Frame):
         self.General_Operator_Frame.pack(anchor="w", side="top")
         self.frame4 = ttk.Frame(self.General_Frame)
         self.frame4.configure(height=200, width=200)
-        separator2 = ttk.Separator(self.frame4)
-        separator2.configure(orient="horizontal")
-        separator2.pack(
+        self.separator2 = ttk.Separator(self.frame4)
+        self.separator2.configure(orient="horizontal")
+        self.separator2.pack(
             anchor="center",
             expand="true",
             fill="x",
@@ -87,14 +87,14 @@ class SettingsnotebookWidget(ttk.Frame):
             self.General_Tuning_Steps_Frame)
         self.General_Tuning_Steps_Settings_Frame.configure(
             height=200, width=200)
-        frame10 = ttk.Frame(self.General_Tuning_Steps_Settings_Frame)
-        frame10.configure(width=200)
-        label105 = ttk.Label(frame10)
-        label105.configure(
+        self.frame10 = ttk.Frame(self.General_Tuning_Steps_Settings_Frame)
+        self.frame10.configure(width=200)
+        self.label105 = ttk.Label(self.frame10)
+        self.label105.configure(
             style="Heading4.TLabel",
             text='Step#\t1\t2\t3\t4\t5')
-        label105.grid(column=0, row=0, sticky="w")
-        self.Tuning_Steps_RadioButton5 = ttk.Radiobutton(frame10)
+        self.label105.grid(column=0, row=0, sticky="w")
+        self.Tuning_Steps_RadioButton5 = ttk.Radiobutton(self.frame10)
         self.Tuning_Steps_Common = tk.StringVar(value='5')
         self.Tuning_Steps_RadioButton5.configure(
             style="RadioButtonNormal.TRadiobutton",
@@ -105,7 +105,7 @@ class SettingsnotebookWidget(ttk.Frame):
             column=0, padx=38, pady=10, row=6, sticky="w")
         self.Tuning_Steps_RadioButton5.configure(
             command=self.Tuning_Steps_Set_Common)
-        self.Tuning_Steps_RadioButton0 = ttk.Radiobutton(frame10)
+        self.Tuning_Steps_RadioButton0 = ttk.Radiobutton(self.frame10)
         self.Tuning_Steps_RadioButton0.configure(
             style="RadioButtonNormal.TRadiobutton",
             text='1\t5\t10\t50\t100 Hz',
@@ -115,7 +115,7 @@ class SettingsnotebookWidget(ttk.Frame):
             column=0, padx=38, row=1, sticky="w")
         self.Tuning_Steps_RadioButton0.configure(
             command=self.Tuning_Steps_Set_Common)
-        self.Tuning_Steps_RadioButton1 = ttk.Radiobutton(frame10)
+        self.Tuning_Steps_RadioButton1 = ttk.Radiobutton(self.frame10)
         self.Tuning_Steps_RadioButton1.configure(
             style="RadioButtonNormal.TRadiobutton",
             text='10\t20\t50\t100\t1000 Hz',
@@ -125,7 +125,7 @@ class SettingsnotebookWidget(ttk.Frame):
             column=0, padx=38, row=2, sticky="w")
         self.Tuning_Steps_RadioButton1.configure(
             command=self.Tuning_Steps_Set_Common)
-        self.Tuning_Steps_RadioButton2 = ttk.Radiobutton(frame10)
+        self.Tuning_Steps_RadioButton2 = ttk.Radiobutton(self.frame10)
         self.Tuning_Steps_RadioButton2.configure(
             style="RadioButtonNormal.TRadiobutton",
             text='1\t10\t100\t1000\t10000 Hz',
@@ -135,7 +135,7 @@ class SettingsnotebookWidget(ttk.Frame):
             column=0, padx=38, row=3, sticky="w")
         self.Tuning_Steps_RadioButton2.configure(
             command=self.Tuning_Steps_Set_Common)
-        self.Tuning_Steps_RadioButton3 = ttk.Radiobutton(frame10)
+        self.Tuning_Steps_RadioButton3 = ttk.Radiobutton(self.frame10)
         self.Tuning_Steps_RadioButton3.configure(
             style="RadioButtonNormal.TRadiobutton",
             text='10\t50\t500\t5000\t10000 Hz',
@@ -145,7 +145,7 @@ class SettingsnotebookWidget(ttk.Frame):
             column=0, padx=38, row=4, sticky="w")
         self.Tuning_Steps_RadioButton3.configure(
             command=self.Tuning_Steps_Set_Common)
-        self.Tuning_Steps_RadioButton4 = ttk.Radiobutton(frame10)
+        self.Tuning_Steps_RadioButton4 = ttk.Radiobutton(self.frame10)
         self.Tuning_Steps_RadioButton4.configure(
             style="RadioButtonNormal.TRadiobutton",
             text='10\t50\t100\t2000\t50000 Hz',
@@ -155,15 +155,20 @@ class SettingsnotebookWidget(ttk.Frame):
             column=0, padx=38, row=5, sticky="w")
         self.Tuning_Steps_RadioButton4.configure(
             command=self.Tuning_Steps_Set_Common)
-        frame10.pack(anchor="w", pady="20 0", side="top")
+        self.frame10.pack(anchor="w", pady="20 0", side="top")
         self.frame6 = ttk.Frame(self.General_Tuning_Steps_Settings_Frame)
         self.frame6.configure(width=200)
-        label20 = ttk.Label(self.frame6)
-        label20.configure(style="Heading4.TLabel", text='Step#')
-        label20.grid(column=0, padx="0 20", row=0, sticky="e")
-        label19 = ttk.Label(self.frame6)
-        label19.configure(style="Heading4.TLabel", text='1\t2\t3\t4\t5')
-        label19.grid(column=1, columnspan=8, padx="0 20", row=0, sticky="w")
+        self.label20 = ttk.Label(self.frame6)
+        self.label20.configure(style="Heading4.TLabel", text='Step#')
+        self.label20.grid(column=0, padx="0 20", row=0, sticky="e")
+        self.label19 = ttk.Label(self.frame6)
+        self.label19.configure(style="Heading4.TLabel", text='1\t2\t3\t4\t5')
+        self.label19.grid(
+            column=1,
+            columnspan=8,
+            padx="0 20",
+            row=0,
+            sticky="w")
         self.label84 = ttk.Label(self.frame6)
         self.label84.configure(style="Heading4.TLabel", text='Steps (HZ)')
         self.label84.grid(column=0, padx="0 20", row=1, sticky="e")
@@ -237,15 +242,15 @@ class SettingsnotebookWidget(ttk.Frame):
             self.TUNING_STEP5_WIDGET.register(
                 self.validate_TUNING_STEP5), "%P", "%V")
         self.TUNING_STEP5_WIDGET.configure(validatecommand=_validatecmd)
-        label26 = ttk.Label(self.frame6)
-        label26.grid(row=2)
+        self.label26 = ttk.Label(self.frame6)
+        self.label26.grid(row=2)
         self.frame6.pack(anchor="w", padx=50, side="top")
-        frame1 = ttk.Frame(self.General_Tuning_Steps_Settings_Frame)
-        frame1.configure(height=200, width=200)
-        label21 = ttk.Label(frame1)
-        label21.configure(style="Heading4.TLabel", text='Default Step:')
-        label21.grid(column=0, padx=5, row=0)
-        self.TUNING_STEP_INDEX_VALUE_WIDGET = ttk.Combobox(frame1)
+        self.frame1 = ttk.Frame(self.General_Tuning_Steps_Settings_Frame)
+        self.frame1.configure(height=200, width=200)
+        self.label21 = ttk.Label(self.frame1)
+        self.label21.configure(style="Heading4.TLabel", text='Default Step:')
+        self.label21.grid(column=0, padx=5, row=0)
+        self.TUNING_STEP_INDEX_VALUE_WIDGET = ttk.Combobox(self.frame1)
         self.TUNING_STEP_INDEX_VALUE = tk.StringVar()
         self.TUNING_STEP_INDEX_VALUE_WIDGET.configure(
             justify="center",
@@ -255,19 +260,19 @@ class SettingsnotebookWidget(ttk.Frame):
             values='10 20 50 100 1000',
             width=5)
         self.TUNING_STEP_INDEX_VALUE_WIDGET.grid(column=1, row=0)
-        self.TUNING_STEP_INDEX_WIDGET = ttk.Label(frame1)
+        self.TUNING_STEP_INDEX_WIDGET = ttk.Label(self.frame1)
         self.TUNING_STEP_INDEX = tk.StringVar()
         self.TUNING_STEP_INDEX_WIDGET.configure(
             textvariable=self.TUNING_STEP_INDEX)
         self.TUNING_STEP_INDEX_WIDGET.grid(column=0, row=1)
-        frame1.pack(anchor="w", side="top")
+        self.frame1.pack(anchor="w", side="top")
         self.General_Tuning_Steps_Settings_Frame.pack(padx="50 0", side="top")
         self.General_Tuning_Steps_Frame.pack(anchor="w", side="top")
         self.frame7 = ttk.Frame(self.General_Frame)
         self.frame7.configure(height=200, width=200)
-        separator4 = ttk.Separator(self.frame7)
-        separator4.configure(orient="horizontal")
-        separator4.pack(
+        self.separator4 = ttk.Separator(self.frame7)
+        self.separator4.configure(orient="horizontal")
+        self.separator4.pack(
             anchor="center",
             expand="true",
             fill="x",
@@ -373,9 +378,9 @@ class SettingsnotebookWidget(ttk.Frame):
         self.General_CW_Settings_Frame.pack(padx="50 0", side="top")
         self.frame5 = ttk.Frame(self.General_CW_Frame)
         self.frame5.configure(height=200, width=200)
-        separator3 = ttk.Separator(self.frame5)
-        separator3.configure(orient="horizontal")
-        separator3.pack(
+        self.separator3 = ttk.Separator(self.frame5)
+        self.separator3.configure(orient="horizontal")
+        self.separator3.pack(
             anchor="center",
             expand="true",
             fill="x",
@@ -467,9 +472,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ1_WIDGET.register(
                 self.validate_CHANNEL_FREQ1), "%P", "%V")
         self.CHANNEL_FREQ1_WIDGET.configure(validatecommand=_validatecmd)
-        label34 = ttk.Label(self.General_Channels_Settings_Frame)
-        label34.configure(text='Hz')
-        label34.grid(column=5, padx="0 10", pady="5 5", row=4)
+        self.label34 = ttk.Label(self.General_Channels_Settings_Frame)
+        self.label34.configure(text='Hz')
+        self.label34.grid(column=5, padx="0 10", pady="5 5", row=4)
         self.CHANNEL_FREQ1_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ1_MODE = tk.StringVar()
@@ -528,9 +533,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ2_WIDGET.register(
                 self.validate_CHANNEL_FREQ2), "%P", "%V")
         self.CHANNEL_FREQ2_WIDGET.configure(validatecommand=_validatecmd)
-        label37 = ttk.Label(self.General_Channels_Settings_Frame)
-        label37.configure(text='Hz')
-        label37.grid(column=5, padx="0 10", pady="5 0", row=5)
+        self.label37 = ttk.Label(self.General_Channels_Settings_Frame)
+        self.label37.configure(text='Hz')
+        self.label37.grid(column=5, padx="0 10", pady="5 0", row=5)
         self.CHANNEL_FREQ2_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ2_MODE = tk.StringVar()
@@ -589,9 +594,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ3_WIDGET.register(
                 self.validate_CHANNEL_FREQ3), "%P", "%V")
         self.CHANNEL_FREQ3_WIDGET.configure(validatecommand=_validatecmd)
-        label40 = ttk.Label(self.General_Channels_Settings_Frame)
-        label40.configure(text='Hz')
-        label40.grid(column=5, padx="0 10", pady="5 0", row=6)
+        self.label40 = ttk.Label(self.General_Channels_Settings_Frame)
+        self.label40.configure(text='Hz')
+        self.label40.grid(column=5, padx="0 10", pady="5 0", row=6)
         self.CHANNEL_FREQ3_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ3_MODE = tk.StringVar()
@@ -650,9 +655,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ4_WIDGET.register(
                 self.validate_CHANNEL_FREQ4), "%P", "%V")
         self.CHANNEL_FREQ4_WIDGET.configure(validatecommand=_validatecmd)
-        label43 = ttk.Label(self.General_Channels_Settings_Frame)
-        label43.configure(text='Hz')
-        label43.grid(column=5, padx="0 10", pady="5 0", row=7)
+        self.label43 = ttk.Label(self.General_Channels_Settings_Frame)
+        self.label43.configure(text='Hz')
+        self.label43.grid(column=5, padx="0 10", pady="5 0", row=7)
         self.CHANNEL_FREQ4_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ4_MODE = tk.StringVar()
@@ -711,9 +716,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ5_WIDGET.register(
                 self.validate_CHANNEL_FREQ5), "%P", "%V")
         self.CHANNEL_FREQ5_WIDGET.configure(validatecommand=_validatecmd)
-        label46 = ttk.Label(self.General_Channels_Settings_Frame)
-        label46.configure(text='Hz')
-        label46.grid(column=5, padx="0 10", pady="5 0", row=8)
+        self.label46 = ttk.Label(self.General_Channels_Settings_Frame)
+        self.label46.configure(text='Hz')
+        self.label46.grid(column=5, padx="0 10", pady="5 0", row=8)
         self.CHANNEL_FREQ5_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ5_MODE = tk.StringVar()
@@ -772,9 +777,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ6_WIDGET.register(
                 self.validate_CHANNEL_FREQ6), "%P", "%V")
         self.CHANNEL_FREQ6_WIDGET.configure(validatecommand=_validatecmd)
-        label49 = ttk.Label(self.General_Channels_Settings_Frame)
-        label49.configure(text='Hz')
-        label49.grid(column=5, padx="0 10", pady="5 0", row=9)
+        self.label49 = ttk.Label(self.General_Channels_Settings_Frame)
+        self.label49.configure(text='Hz')
+        self.label49.grid(column=5, padx="0 10", pady="5 0", row=9)
         self.CHANNEL_FREQ6_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ6_MODE = tk.StringVar()
@@ -834,9 +839,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ7_WIDGET.register(
                 self.validate_CHANNEL_FREQ7), "%P", "%V")
         self.CHANNEL_FREQ7_WIDGET.configure(validatecommand=_validatecmd)
-        label52 = ttk.Label(self.General_Channels_Settings_Frame)
-        label52.configure(text='Hz')
-        label52.grid(column=5, padx="0 10", pady="5 0", row=10)
+        self.label52 = ttk.Label(self.General_Channels_Settings_Frame)
+        self.label52.configure(text='Hz')
+        self.label52.grid(column=5, padx="0 10", pady="5 0", row=10)
         self.CHANNEL_FREQ7_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ7_MODE = tk.StringVar()
@@ -896,9 +901,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ8_WIDGET.register(
                 self.validate_CHANNEL_FREQ8), "%P", "%V")
         self.CHANNEL_FREQ8_WIDGET.configure(validatecommand=_validatecmd)
-        label55 = ttk.Label(self.General_Channels_Settings_Frame)
-        label55.configure(text='Hz')
-        label55.grid(column=5, padx="0 10", pady="5 0", row=11)
+        self.label55 = ttk.Label(self.General_Channels_Settings_Frame)
+        self.label55.configure(text='Hz')
+        self.label55.grid(column=5, padx="0 10", pady="5 0", row=11)
         self.CHANNEL_FREQ8_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ8_MODE = tk.StringVar()
@@ -958,9 +963,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ9_WIDGET.register(
                 self.validate_CHANNEL_FREQ9), "%P", "%V")
         self.CHANNEL_FREQ9_WIDGET.configure(validatecommand=_validatecmd)
-        label58 = ttk.Label(self.General_Channels_Settings_Frame)
-        label58.configure(text='Hz')
-        label58.grid(column=5, padx="0 10", pady="5 0", row=12)
+        self.label58 = ttk.Label(self.General_Channels_Settings_Frame)
+        self.label58.configure(text='Hz')
+        self.label58.grid(column=5, padx="0 10", pady="5 0", row=12)
         self.CHANNEL_FREQ9_MODE_WIDGET = ttk.Combobox(
             self.General_Channels_Settings_Frame)
         self.CHANNEL_FREQ9_MODE = tk.StringVar()
@@ -1035,28 +1040,28 @@ class SettingsnotebookWidget(ttk.Frame):
             column=7, padx="0 2", pady="5 0", row=13, sticky="w")
         self.CHANNEL_FREQ10_MODE_WIDGET.configure(
             validatecommand=self.clearErrorMsgPersistFlag)
-        label61 = ttk.Label(self.General_Channels_Settings_Frame)
-        label61.configure(text='Hz')
-        label61.grid(column=5, padx="0 10", pady="5 0", row=13)
+        self.label61 = ttk.Label(self.General_Channels_Settings_Frame)
+        self.label61.configure(text='Hz')
+        self.label61.grid(column=5, padx="0 10", pady="5 0", row=13)
         self.General_Channels_Settings_Frame.pack(
             anchor="w", expand="false", fill="x", padx="50 0", pady="20 0", side="top")
         self.General_Channels_Settings_Frame.grid_anchor("w")
         self.Standard_Channel_Frame.pack(anchor="w", side="top")
         self.show_extended_channels_frame = ttk.Frame(self.All_Channel_Frame)
         self.show_extended_channels_frame.configure(height=200, width=200)
-        checkbutton2 = ttk.Checkbutton(self.show_extended_channels_frame)
+        self.checkbutton2 = ttk.Checkbutton(self.show_extended_channels_frame)
         self.toggleExtendedChannelsCheckBox = tk.StringVar()
-        checkbutton2.configure(
+        self.checkbutton2.configure(
             offvalue=0,
             onvalue=1,
             style="Checkbox4.TCheckbutton",
             text='Show Extended Channels',
             variable=self.toggleExtendedChannelsCheckBox)
-        checkbutton2.pack(anchor="w", pady="10 0")
-        checkbutton2.configure(command=self.toggleExtendedChannels)
-        separator1 = ttk.Separator(self.show_extended_channels_frame)
-        separator1.configure(orient="horizontal")
-        separator1.pack(
+        self.checkbutton2.pack(anchor="w", pady="10 0")
+        self.checkbutton2.configure(command=self.toggleExtendedChannels)
+        self.separator1 = ttk.Separator(self.show_extended_channels_frame)
+        self.separator1.configure(orient="horizontal")
+        self.separator1.pack(
             anchor="center",
             expand="true",
             fill="x",
@@ -1115,9 +1120,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ11_WIDGET.register(
                 self.validate_CHANNEL_FREQ11), "%P", "%V")
         self.CHANNEL_FREQ11_WIDGET.configure(validatecommand=_validatecmd)
-        label77 = ttk.Label(self.General_Extended_Channel_Frame)
-        label77.configure(text='Hz')
-        label77.grid(column=5, padx="0 10", pady="5 0", row=4)
+        self.label77 = ttk.Label(self.General_Extended_Channel_Frame)
+        self.label77.configure(text='Hz')
+        self.label77.grid(column=5, padx="0 10", pady="5 0", row=4)
         self.CHANNEL_FREQ11_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ11_MODE = tk.StringVar()
@@ -1153,9 +1158,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ12_WIDGET.register(
                 self.validate_CHANNEL_FREQ12), "%P", "%V")
         self.CHANNEL_FREQ12_WIDGET.configure(validatecommand=_validatecmd)
-        label79 = ttk.Label(self.General_Extended_Channel_Frame)
-        label79.configure(text='Hz')
-        label79.grid(column=5, padx="0 10", pady="5 0", row=5)
+        self.label79 = ttk.Label(self.General_Extended_Channel_Frame)
+        self.label79.configure(text='Hz')
+        self.label79.grid(column=5, padx="0 10", pady="5 0", row=5)
         self.CHANNEL_FREQ12_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ12_MODE = tk.StringVar()
@@ -1191,9 +1196,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ13_WIDGET.register(
                 self.validate_CHANNEL_FREQ13), "%P", "%V")
         self.CHANNEL_FREQ13_WIDGET.configure(validatecommand=_validatecmd)
-        label81 = ttk.Label(self.General_Extended_Channel_Frame)
-        label81.configure(text='Hz')
-        label81.grid(column=5, padx="0 10", pady="5 0", row=6)
+        self.label81 = ttk.Label(self.General_Extended_Channel_Frame)
+        self.label81.configure(text='Hz')
+        self.label81.grid(column=5, padx="0 10", pady="5 0", row=6)
         self.CHANNEL_FREQ13_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ13_MODE = tk.StringVar()
@@ -1229,9 +1234,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ14_WIDGET.register(
                 self.validate_CHANNEL_FREQ14), "%P", "%V")
         self.CHANNEL_FREQ14_WIDGET.configure(validatecommand=_validatecmd)
-        label83 = ttk.Label(self.General_Extended_Channel_Frame)
-        label83.configure(text='Hz')
-        label83.grid(column=5, padx="0 10", pady="5 0", row=7)
+        self.label83 = ttk.Label(self.General_Extended_Channel_Frame)
+        self.label83.configure(text='Hz')
+        self.label83.grid(column=5, padx="0 10", pady="5 0", row=7)
         self.CHANNEL_FREQ14_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ14_MODE = tk.StringVar()
@@ -1267,9 +1272,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ15_WIDGET.register(
                 self.validate_CHANNEL_FREQ15), "%P", "%V")
         self.CHANNEL_FREQ15_WIDGET.configure(validatecommand=_validatecmd)
-        label85 = ttk.Label(self.General_Extended_Channel_Frame)
-        label85.configure(text='Hz')
-        label85.grid(column=5, padx="0 10", pady="5 0", row=8)
+        self.label85 = ttk.Label(self.General_Extended_Channel_Frame)
+        self.label85.configure(text='Hz')
+        self.label85.grid(column=5, padx="0 10", pady="5 0", row=8)
         self.CHANNEL_FREQ15_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ15_MODE = tk.StringVar()
@@ -1305,9 +1310,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ16_WIDGET.register(
                 self.validate_CHANNEL_FREQ16), "%P", "%V")
         self.CHANNEL_FREQ16_WIDGET.configure(validatecommand=_validatecmd)
-        label87 = ttk.Label(self.General_Extended_Channel_Frame)
-        label87.configure(text='Hz')
-        label87.grid(column=5, padx="0 10", pady="5 0", row=9)
+        self.label87 = ttk.Label(self.General_Extended_Channel_Frame)
+        self.label87.configure(text='Hz')
+        self.label87.grid(column=5, padx="0 10", pady="5 0", row=9)
         self.CHANNEL_FREQ16_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ16_MODE = tk.StringVar()
@@ -1344,9 +1349,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ17_WIDGET.register(
                 self.validate_CHANNEL_FREQ17), "%P", "%V")
         self.CHANNEL_FREQ17_WIDGET.configure(validatecommand=_validatecmd)
-        label89 = ttk.Label(self.General_Extended_Channel_Frame)
-        label89.configure(text='Hz')
-        label89.grid(column=5, padx="0 10", pady="5 0", row=10)
+        self.label89 = ttk.Label(self.General_Extended_Channel_Frame)
+        self.label89.configure(text='Hz')
+        self.label89.grid(column=5, padx="0 10", pady="5 0", row=10)
         self.CHANNEL_FREQ17_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ17_MODE = tk.StringVar()
@@ -1383,9 +1388,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ18_WIDGET.register(
                 self.validate_CHANNEL_FREQ18), "%P", "%V")
         self.CHANNEL_FREQ18_WIDGET.configure(validatecommand=_validatecmd)
-        label91 = ttk.Label(self.General_Extended_Channel_Frame)
-        label91.configure(text='Hz')
-        label91.grid(column=5, padx="0 10", pady="5 0", row=11)
+        self.label91 = ttk.Label(self.General_Extended_Channel_Frame)
+        self.label91.configure(text='Hz')
+        self.label91.grid(column=5, padx="0 10", pady="5 0", row=11)
         self.CHANNEL_FREQ18_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ18_MODE = tk.StringVar()
@@ -1422,9 +1427,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ19_WIDGET.register(
                 self.validate_CHANNEL_FREQ19), "%P", "%V")
         self.CHANNEL_FREQ19_WIDGET.configure(validatecommand=_validatecmd)
-        label93 = ttk.Label(self.General_Extended_Channel_Frame)
-        label93.configure(text='Hz')
-        label93.grid(column=5, padx="0 10", pady="5 0", row=12)
+        self.label93 = ttk.Label(self.General_Extended_Channel_Frame)
+        self.label93.configure(text='Hz')
+        self.label93.grid(column=5, padx="0 10", pady="5 0", row=12)
         self.CHANNEL_FREQ19_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ19_MODE = tk.StringVar()
@@ -1461,9 +1466,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CHANNEL_FREQ20_WIDGET.register(
                 self.validate_CHANNEL_FREQ20), "%P", "%V")
         self.CHANNEL_FREQ20_WIDGET.configure(validatecommand=_validatecmd)
-        label95 = ttk.Label(self.General_Extended_Channel_Frame)
-        label95.configure(text='Hz')
-        label95.grid(column=5, padx="0 10", pady="5 0", row=13)
+        self.label95 = ttk.Label(self.General_Extended_Channel_Frame)
+        self.label95.configure(text='Hz')
+        self.label95.grid(column=5, padx="0 10", pady="5 0", row=13)
         self.CHANNEL_FREQ20_MODE_WIDGET = ttk.Combobox(
             self.General_Extended_Channel_Frame)
         self.CHANNEL_FREQ20_MODE = tk.StringVar()
@@ -1488,6 +1493,13 @@ class SettingsnotebookWidget(ttk.Frame):
         self.General_Frame.pack(
             expand="true",
             fill="both",
+            padx=20,
+            pady=5,
+            side="top")
+        self.frame15.pack(
+            anchor="center",
+            expand="true",
+            fill="both",
             padx=5,
             pady=5,
             side="top")
@@ -1503,12 +1515,12 @@ class SettingsnotebookWidget(ttk.Frame):
         self.Autokeyer_Frame = ttk.Frame(self.Autokeyer_SF.innerframe)
         self.CW_Autokeyer_Titlle_Frame = ttk.Frame(self.Autokeyer_Frame)
         self.CW_Autokeyer_Titlle_Frame.configure(height=200, width=200)
-        label3 = ttk.Label(self.CW_Autokeyer_Titlle_Frame)
-        label3.configure(
+        self.label3 = ttk.Label(self.CW_Autokeyer_Titlle_Frame)
+        self.label3.configure(
             justify="center",
             style="Heading2.TLabel",
             text='CW Autokeyer Settings')
-        label3.pack()
+        self.label3.pack(anchor="w", padx=5, pady="15 25")
         self.CW_Autokeyer_Titlle_Frame.pack(
             anchor="center", fill="x", side="top")
         self.CW_Autokeyer_Callsign_Frame = ttk.Frame(self.Autokeyer_Frame)
@@ -1565,7 +1577,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.QSO_CALLSIGN_WIDGET.configure(validatecommand=_validatecmd)
         self.CW_Autokeyer_Callsigns_Frame.pack(
             anchor="w", padx="50 0", side="top")
-        self.CW_Autokeyer_Callsign_Frame.pack(anchor="w", side="top")
+        self.CW_Autokeyer_Callsign_Frame.pack(anchor="w", padx=20, side="top")
         self.Autokeyer_Frame.pack(
             anchor="center",
             expand="true",
@@ -1577,16 +1589,20 @@ class SettingsnotebookWidget(ttk.Frame):
         self.settingsNotebook.add(self.Autokeyer_SF, text='CW Autokeyer')
         self.Bands_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
         self.Bands_SF.configure(usemousewheel=True)
-        self.Bands_Setting_Title_Frame = ttk.Frame(self.Bands_SF.innerframe)
+        self.frame16 = ttk.Frame(self.Bands_SF.innerframe)
+        self.frame16.configure(height=200, width=200)
+        self.Bands_Setting_Title_Frame = ttk.Frame(self.frame16)
         self.Bands_Setting_Title_Frame.configure(height=200, width=200)
         self.Bands_Settings_Label = ttk.Label(self.Bands_Setting_Title_Frame)
         self.Bands_Settings_Label.configure(
             justify="center",
             style="Heading2.TLabel",
             text='Bands Settings')
-        self.Bands_Settings_Label.pack(anchor="n", pady="10 0")
+        self.Bands_Settings_Label.pack(anchor="w", padx=5, pady="15 25")
         self.Bands_Setting_Title_Frame.pack(fill="x", side="top")
-        self.frame46 = ttk.Frame(self.Bands_SF.innerframe)
+        self.frame19 = ttk.Frame(self.frame16)
+        self.frame19.configure(height=200, width=200)
+        self.frame46 = ttk.Frame(self.frame19)
         self.label104 = ttk.Label(self.frame46)
         self.label104.configure(
             style="Heading4.TLabel",
@@ -1640,9 +1656,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE1_START), "%P", "%V")
         self.HAM_BAND_RANGE1_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        label116 = ttk.Label(self.frame46)
-        label116.configure(text='KHz')
-        label116.grid(column=4, padx="0 10", row=10, sticky="w")
+        self.label116 = ttk.Label(self.frame46)
+        self.label116.configure(text='KHz')
+        self.label116.grid(column=4, padx="0 10", row=10, sticky="w")
         self.HAM_BAND_RANGE1_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE1_END = tk.StringVar()
         self.HAM_BAND_RANGE1_END_WIDGET.configure(
@@ -1656,9 +1672,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE1_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE1_END), "%P", "%V")
         self.HAM_BAND_RANGE1_END_WIDGET.configure(validatecommand=_validatecmd)
-        label117 = ttk.Label(self.frame46)
-        label117.configure(text='KHz')
-        label117.grid(column=6, padx="0 5", row=10)
+        self.label117 = ttk.Label(self.frame46)
+        self.label117.configure(text='KHz')
+        self.label117.grid(column=6, padx="0 5", row=10)
         self.label107 = ttk.Label(self.frame46)
         self.label107.configure(style="Heading4.TLabel", text='Band 2')
         self.label107.grid(column=1, pady="0 5", row=11, sticky="w")
@@ -1676,9 +1692,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE2_START), "%P", "%V")
         self.HAM_BAND_RANGE2_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        label118 = ttk.Label(self.frame46)
-        label118.configure(text='KHz')
-        label118.grid(column=4, padx="0 10", row=11, sticky="w")
+        self.label118 = ttk.Label(self.frame46)
+        self.label118.configure(text='KHz')
+        self.label118.grid(column=4, padx="0 10", row=11, sticky="w")
         self.HAM_BAND_RANGE2_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE2_END = tk.StringVar()
         self.HAM_BAND_RANGE2_END_WIDGET.configure(
@@ -1692,9 +1708,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE2_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE2_END), "%P", "%V")
         self.HAM_BAND_RANGE2_END_WIDGET.configure(validatecommand=_validatecmd)
-        label119 = ttk.Label(self.frame46)
-        label119.configure(text='KHz')
-        label119.grid(column=6, padx="0 5", row=11)
+        self.label119 = ttk.Label(self.frame46)
+        self.label119.configure(text='KHz')
+        self.label119.grid(column=6, padx="0 5", row=11)
         self.label108 = ttk.Label(self.frame46)
         self.label108.configure(style="Heading4.TLabel", text='Band 3')
         self.label108.grid(column=1, pady="0 5", row=12, sticky="w")
@@ -1712,9 +1728,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE3_START), "%P", "%V")
         self.HAM_BAND_RANGE3_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        label120 = ttk.Label(self.frame46)
-        label120.configure(text='KHz')
-        label120.grid(column=4, padx="0 10", row=12, sticky="w")
+        self.label120 = ttk.Label(self.frame46)
+        self.label120.configure(text='KHz')
+        self.label120.grid(column=4, padx="0 10", row=12, sticky="w")
         self.HAM_BAND_RANGE3_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE3_END = tk.StringVar()
         self.HAM_BAND_RANGE3_END_WIDGET.configure(
@@ -1728,9 +1744,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE3_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE3_END), "%P", "%V")
         self.HAM_BAND_RANGE3_END_WIDGET.configure(validatecommand=_validatecmd)
-        label121 = ttk.Label(self.frame46)
-        label121.configure(text='KHz')
-        label121.grid(column=6, padx="0 5", row=12)
+        self.label121 = ttk.Label(self.frame46)
+        self.label121.configure(text='KHz')
+        self.label121.grid(column=6, padx="0 5", row=12)
         self.label109 = ttk.Label(self.frame46)
         self.label109.configure(style="Heading4.TLabel", text='Band 4')
         self.label109.grid(column=1, pady="0 5", row=13, sticky="w")
@@ -1748,9 +1764,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE4_START), "%P", "%V")
         self.HAM_BAND_RANGE4_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        label122 = ttk.Label(self.frame46)
-        label122.configure(text='KHz')
-        label122.grid(column=4, padx="0 10", row=13, sticky="w")
+        self.label122 = ttk.Label(self.frame46)
+        self.label122.configure(text='KHz')
+        self.label122.grid(column=4, padx="0 10", row=13, sticky="w")
         self.HAM_BAND_RANGE4_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE4_END = tk.StringVar()
         self.HAM_BAND_RANGE4_END_WIDGET.configure(
@@ -1764,9 +1780,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE4_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE4_END), "%P", "%V")
         self.HAM_BAND_RANGE4_END_WIDGET.configure(validatecommand=_validatecmd)
-        label123 = ttk.Label(self.frame46)
-        label123.configure(text='KHz')
-        label123.grid(column=6, padx="0 5", row=13)
+        self.label123 = ttk.Label(self.frame46)
+        self.label123.configure(text='KHz')
+        self.label123.grid(column=6, padx="0 5", row=13)
         self.label110 = ttk.Label(self.frame46)
         self.label110.configure(style="Heading4.TLabel", text='Band 5')
         self.label110.grid(column=1, pady="0 5", row=14, sticky="w")
@@ -1784,9 +1800,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE5_START), "%P", "%V")
         self.HAM_BAND_RANGE5_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        label124 = ttk.Label(self.frame46)
-        label124.configure(text='KHz')
-        label124.grid(column=4, padx="0 10", row=14, sticky="w")
+        self.label124 = ttk.Label(self.frame46)
+        self.label124.configure(text='KHz')
+        self.label124.grid(column=4, padx="0 10", row=14, sticky="w")
         self.HAM_BAND_RANGE5_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE5_END = tk.StringVar()
         self.HAM_BAND_RANGE5_END_WIDGET.configure(
@@ -1800,9 +1816,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE5_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE5_END), "%P", "%V")
         self.HAM_BAND_RANGE5_END_WIDGET.configure(validatecommand=_validatecmd)
-        label125 = ttk.Label(self.frame46)
-        label125.configure(text='KHz')
-        label125.grid(column=6, padx="0 5", row=14)
+        self.label125 = ttk.Label(self.frame46)
+        self.label125.configure(text='KHz')
+        self.label125.grid(column=6, padx="0 5", row=14)
         self.label111 = ttk.Label(self.frame46)
         self.label111.configure(style="Heading4.TLabel", text='Band 6')
         self.label111.grid(column=1, pady="0 5", row=15, sticky="w")
@@ -1820,9 +1836,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE6_START), "%P", "%V")
         self.HAM_BAND_RANGE6_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        label126 = ttk.Label(self.frame46)
-        label126.configure(text='KHz')
-        label126.grid(column=4, padx="0 10", row=15, sticky="w")
+        self.label126 = ttk.Label(self.frame46)
+        self.label126.configure(text='KHz')
+        self.label126.grid(column=4, padx="0 10", row=15, sticky="w")
         self.HAM_BAND_RANGE6_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE6_END = tk.StringVar()
         self.HAM_BAND_RANGE6_END_WIDGET.configure(
@@ -1836,9 +1852,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE6_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE6_END), "%P", "%V")
         self.HAM_BAND_RANGE6_END_WIDGET.configure(validatecommand=_validatecmd)
-        label127 = ttk.Label(self.frame46)
-        label127.configure(text='KHz')
-        label127.grid(column=6, padx="0 5", row=15)
+        self.label127 = ttk.Label(self.frame46)
+        self.label127.configure(text='KHz')
+        self.label127.grid(column=6, padx="0 5", row=15)
         self.label112 = ttk.Label(self.frame46)
         self.label112.configure(style="Heading4.TLabel", text='Band 7')
         self.label112.grid(column=1, pady="0 5", row=16, sticky="w")
@@ -1856,9 +1872,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE7_START), "%P", "%V")
         self.HAM_BAND_RANGE7_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        label128 = ttk.Label(self.frame46)
-        label128.configure(text='KHz')
-        label128.grid(column=4, padx="0 10", row=16, sticky="w")
+        self.label128 = ttk.Label(self.frame46)
+        self.label128.configure(text='KHz')
+        self.label128.grid(column=4, padx="0 10", row=16, sticky="w")
         self.HAM_BAND_RANGE7_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE7_END = tk.StringVar()
         self.HAM_BAND_RANGE7_END_WIDGET.configure(
@@ -1872,9 +1888,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE7_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE7_END), "%P", "%V")
         self.HAM_BAND_RANGE7_END_WIDGET.configure(validatecommand=_validatecmd)
-        label129 = ttk.Label(self.frame46)
-        label129.configure(text='KHz')
-        label129.grid(column=6, padx="0 5", row=16)
+        self.label129 = ttk.Label(self.frame46)
+        self.label129.configure(text='KHz')
+        self.label129.grid(column=6, padx="0 5", row=16)
         self.label113 = ttk.Label(self.frame46)
         self.label113.configure(style="Heading4.TLabel", text='Band 8')
         self.label113.grid(column=1, pady="0 5", row=17, sticky="w")
@@ -1892,9 +1908,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE8_START), "%P", "%V")
         self.HAM_BAND_RANGE8_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        label130 = ttk.Label(self.frame46)
-        label130.configure(text='KHz')
-        label130.grid(column=4, padx="0 10", row=17, sticky="w")
+        self.label130 = ttk.Label(self.frame46)
+        self.label130.configure(text='KHz')
+        self.label130.grid(column=4, padx="0 10", row=17, sticky="w")
         self.HAM_BAND_RANGE8_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE8_END = tk.StringVar()
         self.HAM_BAND_RANGE8_END_WIDGET.configure(
@@ -1908,9 +1924,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE8_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE8_END), "%P", "%V")
         self.HAM_BAND_RANGE8_END_WIDGET.configure(validatecommand=_validatecmd)
-        label131 = ttk.Label(self.frame46)
-        label131.configure(text='KHz')
-        label131.grid(column=6, padx="0 5", row=17)
+        self.label131 = ttk.Label(self.frame46)
+        self.label131.configure(text='KHz')
+        self.label131.grid(column=6, padx="0 5", row=17)
         self.label114 = ttk.Label(self.frame46)
         self.label114.configure(style="Heading4.TLabel", text='Band 9')
         self.label114.grid(column=1, pady="0 5", row=18, sticky="w")
@@ -1928,9 +1944,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE9_START), "%P", "%V")
         self.HAM_BAND_RANGE9_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        label132 = ttk.Label(self.frame46)
-        label132.configure(text='KHz')
-        label132.grid(column=4, padx="0 10", row=18, sticky="w")
+        self.label132 = ttk.Label(self.frame46)
+        self.label132.configure(text='KHz')
+        self.label132.grid(column=4, padx="0 10", row=18, sticky="w")
         self.HAM_BAND_RANGE9_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE9_END = tk.StringVar()
         self.HAM_BAND_RANGE9_END_WIDGET.configure(
@@ -1944,9 +1960,9 @@ class SettingsnotebookWidget(ttk.Frame):
         _validatecmd = (self.HAM_BAND_RANGE9_END_WIDGET.register(
             self.validate_HAM_BAND_RANGE9_END), "%P", "%V")
         self.HAM_BAND_RANGE9_END_WIDGET.configure(validatecommand=_validatecmd)
-        label133 = ttk.Label(self.frame46)
-        label133.configure(text='KHz')
-        label133.grid(column=6, padx="0 5", row=18)
+        self.label133 = ttk.Label(self.frame46)
+        self.label133.configure(text='KHz')
+        self.label133.grid(column=6, padx="0 5", row=18)
         self.label115 = ttk.Label(self.frame46)
         self.label115.configure(style="Heading4.TLabel", text='Band 10')
         self.label115.grid(
@@ -1969,9 +1985,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE10_START), "%P", "%V")
         self.HAM_BAND_RANGE10_START_WIDGET.configure(
             validatecommand=_validatecmd)
-        label134 = ttk.Label(self.frame46)
-        label134.configure(text='KHz')
-        label134.grid(column=4, padx="0 10", row=19, sticky="w")
+        self.label134 = ttk.Label(self.frame46)
+        self.label134.configure(text='KHz')
+        self.label134.grid(column=4, padx="0 10", row=19, sticky="w")
         self.HAM_BAND_RANGE10_END_WIDGET = ttk.Entry(self.frame46)
         self.HAM_BAND_RANGE10_END = tk.StringVar()
         self.HAM_BAND_RANGE10_END_WIDGET.configure(
@@ -1986,18 +2002,17 @@ class SettingsnotebookWidget(ttk.Frame):
             self.validate_HAM_BAND_RANGE10_END), "%P", "%V")
         self.HAM_BAND_RANGE10_END_WIDGET.configure(
             validatecommand=_validatecmd)
-        label135 = ttk.Label(self.frame46)
-        label135.configure(text='KHz')
-        label135.grid(column=6, padx="0 5", row=19)
+        self.label135 = ttk.Label(self.frame46)
+        self.label135.configure(text='KHz')
+        self.label135.grid(column=6, padx="0 5", row=19)
         self.frame46.pack(
             anchor="w",
             expand="false",
             fill="x",
-            padx="60 0",
             pady="20 0",
             side="top")
         self.frame46.grid_anchor("w")
-        self.frame58 = ttk.Frame(self.Bands_SF.innerframe)
+        self.frame58 = ttk.Frame(self.frame19)
         self.frame58.configure(
             height=200,
             padding=10,
@@ -2007,11 +2022,11 @@ class SettingsnotebookWidget(ttk.Frame):
         self.region1.configure(style="Button4.TButton", text='Region 1')
         self.region1.grid(column=1, padx=5, row=1)
         self.region1.configure(command=self.autoInputRegion1)
-        label136 = ttk.Label(self.frame58)
-        label136.configure(
+        self.label136 = ttk.Label(self.frame58)
+        self.label136.configure(
             style="Heading3.TLabel",
             text='Auto Input Bands For:')
-        label136.grid(column=0, ipadx=5, padx=5, row=1)
+        self.label136.grid(column=0, ipadx=5, padx=5, row=1)
         self.region2 = ttk.Button(self.frame58)
         self.region2.configure(style="Button4.TButton", text='Region 2')
         self.region2.grid(column=2, padx=5, row=1)
@@ -2020,52 +2035,123 @@ class SettingsnotebookWidget(ttk.Frame):
         self.region3.configure(style="Button4.TButton", text='Region 3')
         self.region3.grid(column=3, padx=5, row=1)
         self.region3.configure(command=self.autoInputRegion3)
-        label4 = ttk.Label(self.frame58)
-        label4.configure(style="Heading4.TLabel", text='Region 1:')
-        label4.grid(column=0, pady="10 5", row=2, sticky="e")
-        label10 = ttk.Label(self.frame58)
-        label10.configure(style="Heading4.TLabel", text='Region 2:')
-        label10.grid(column=0, pady="0 5", row=3, sticky="e")
-        label12 = ttk.Label(self.frame58)
-        label12.configure(style="Heading4.TLabel", text='Region 3:')
-        label12.grid(column=0, row=4, sticky="e")
-        label13 = ttk.Label(self.frame58)
-        label13.configure(
+        self.label92 = ttk.Label(self.frame58)
+        self.label92.configure(style="Heading4.TLabel", text='Region 1:')
+        self.label92.grid(column=0, pady="10 5", row=2, sticky="e")
+        self.label94 = ttk.Label(self.frame58)
+        self.label94.configure(style="Heading4.TLabel", text='Region 2:')
+        self.label94.grid(column=0, pady="0 5", row=3, sticky="e")
+        self.label96 = ttk.Label(self.frame58)
+        self.label96.configure(style="Heading4.TLabel", text='Region 3:')
+        self.label96.grid(column=0, row=4, sticky="e")
+        self.label97 = ttk.Label(self.frame58)
+        self.label97.configure(
             text='Africa, Europe, Middle East, and northern Asia')
-        label13.grid(
+        self.label97.grid(
             column=1,
             columnspan=3,
             padx="5 0",
             pady="10 5",
             row=2,
             sticky="w")
-        label14 = ttk.Label(self.frame58)
-        label14.configure(text='the Americas')
-        label14.grid(
+        self.label98 = ttk.Label(self.frame58)
+        self.label98.configure(text='the Americas')
+        self.label98.grid(
             column=1,
             columnspan=3,
             padx="5 0",
             pady="0 5",
             row=3,
             sticky="ew")
-        label18 = ttk.Label(self.frame58)
-        label18.configure(text='the rest of Asia and the Pacific')
-        label18.grid(column=1, columnspan=3, padx="5 0", row=4, sticky="ew")
-        self.frame58.pack(anchor="w", padx="60 0", pady="20 0", side="top")
+        self.label99 = ttk.Label(self.frame58)
+        self.label99.configure(text='the rest of Asia and the Pacific')
+        self.label99.grid(
+            column=1,
+            columnspan=3,
+            padx="5 0",
+            row=4,
+            sticky="ew")
+        self.frame58.pack(anchor="w", pady="20 0", side="top")
         self.frame58.grid_anchor("w")
+        self.frame12 = ttk.Frame(self.frame19)
+        self.label144 = ttk.Label(self.frame12)
+        self.label144.configure(
+            justify="left",
+            relief="flat",
+            style="Heading3.TLabel",
+            text='TX/RX Restrictions')
+        self.label144.grid(
+            column=0,
+            columnspan=2,
+            padx="0 15",
+            pady="10 0",
+            row=1,
+            sticky="w")
+        self.label145 = ttk.Label(self.frame12)
+        self.label145.configure(
+            style="Heading4.TLabel",
+            text='Tuning Restriction')
+        self.label145.grid(
+            column=1,
+            padx="80 15",
+            pady="5 10",
+            row=2,
+            sticky="e")
+        self.TUNING_RESTICTIONS = tk.StringVar(value='NONE')
+        __values = ['NONE', 'BAND']
+        self.TUNING_RESTICTIONS_WIDGET = ttk.OptionMenu(
+            self.frame12, self.TUNING_RESTICTIONS, "NONE", *__values, command=None)
+        self.TUNING_RESTICTIONS_WIDGET.grid(column=2, pady="5 10", row=2)
+        self.label146 = ttk.Label(self.frame12)
+        self.label146.configure(
+            style="Heading4.TLabel",
+            text='Transmit Restriction')
+        self.label146.grid(column=1, padx="30 15", row=3, sticky="e")
+        self.TX_RESTRICTIONS = tk.StringVar(value='NONE')
+        __values = ['NONE', 'HAM']
+        self.TX_RESTRICTIONS_WIDGET = ttk.OptionMenu(
+            self.frame12, self.TX_RESTRICTIONS, "NONE", *__values, command=None)
+        self.TX_RESTRICTIONS_WIDGET.grid(column=2, row=3)
+        self.frame12.pack(
+            anchor="w",
+            expand="false",
+            fill="x",
+            pady="20 0",
+            side="top")
+        self.frame12.grid_anchor("w")
+        self.frame19.pack(anchor="w", padx=20, side="top")
+        self.frame16.pack(
+            anchor="center",
+            expand="true",
+            fill="both",
+            padx=5,
+            pady=5,
+            side="top")
         self.Bands_SF.pack(side="top")
         self.settingsNotebook.add(self.Bands_SF, text='Bands')
         self.HW_ADJ_SF = ScrolledFrame(
             self.settingsNotebook, scrolltype="both")
         self.HW_ADJ_SF.configure(usemousewheel=True)
         self.HW_ADJ_Frame = ttk.Frame(self.HW_ADJ_SF.innerframe)
-        label5 = ttk.Label(self.HW_ADJ_Frame)
-        label5.configure(
+        self.frame17 = ttk.Frame(self.HW_ADJ_Frame)
+        self.frame17.configure(height=200, width=200)
+        self.label5 = ttk.Label(self.frame17)
+        self.label5.configure(
             justify="center",
             style="Heading2.TLabel",
             text='Hardware Advanced Settings')
-        label5.grid(column=0, columnspan=5, row=0, sticky="n")
+        self.label5.pack(padx=5, pady="15 25")
+        self.frame17.pack(
+            anchor="w",
+            expand="false",
+            padx=5,
+            pady="15 25",
+            side="top")
+        self.frame18 = ttk.Frame(self.HW_ADJ_Frame)
+        self.frame18.configure(height=200, width=200)
+        self.frame18.pack(anchor="w", padx=20, side="top")
         self.HW_ADJ_Frame.pack(
+            anchor="w",
             expand="true",
             fill="both",
             padx=5,
@@ -2079,22 +2165,21 @@ class SettingsnotebookWidget(ttk.Frame):
         self.Calibration_Settings_Title_Frame = ttk.Frame(
             self.Calibration_SF.innerframe)
         self.Calibration_Settings_Title_Frame.configure(height=200, width=200)
-        self.General_Settings_ = ttk.Label(
+        self.Calibration_Settings_Label = ttk.Label(
             self.Calibration_Settings_Title_Frame)
-        self.General_Settings_.configure(
-            justify="center",
-            style="Heading2.TLabel",
-            text='Calibration')
-        self.General_Settings_.pack(anchor="n")
-        self.Calibration_Settings_Title_Frame.pack(side="top")
-        self.Radio_Calibration_Frame = ttk.Frame(
-            self.Calibration_SF.innerframe)
+        self.Calibration_Settings_Label.configure(
+            justify="center", style="Heading2.TLabel", text='Calibration')
+        self.Calibration_Settings_Label.pack(anchor="w", padx=5, pady="15 25")
+        self.Calibration_Settings_Title_Frame.pack(anchor="w", side="top")
+        self.frame21 = ttk.Frame(self.Calibration_SF.innerframe)
+        self.frame21.configure(height=200, width=200)
+        self.Radio_Calibration_Frame = ttk.Frame(self.frame21)
         self.Calibration_Settings_Radio_Label = ttk.Label(
             self.Radio_Calibration_Frame)
         self.Calibration_Settings_Radio_Label.configure(
             style="Heading3.TLabel", text='Radio')
         self.Calibration_Settings_Radio_Label.grid(
-            column=0, padx=0, pady="20 0", row=2, sticky="ew")
+            column=0, padx=0, row=2, sticky="ew")
         self.Calibration_Settings_Radio_Existing_Value = ttk.Label(
             self.Radio_Calibration_Frame)
         self.Calibration_Settings_Radio_Existing_Value.configure(
@@ -2135,11 +2220,22 @@ class SettingsnotebookWidget(ttk.Frame):
             column=4, padx="0 5", pady=2, row=4, sticky="w")
         self.MASTER_CAL_COPY_BUTTON.configure(
             command=self.Reset_Master_Cal_To_Factory)
-        label23 = ttk.Label(self.Radio_Calibration_Frame)
+        self.button2 = ttk.Button(self.Radio_Calibration_Frame)
+        self.img_redarrowpointingright59x36 = tk.PhotoImage(
+            file="./images/red-arrow-pointing-right59x36.png")
+        self.button2.configure(
+            image=self.img_redarrowpointingright59x36,
+            style="Normal.TButton",
+            width=10)
+        self.button2.grid(column=5, padx="0 5", pady=2, row=4, sticky="w")
+        self.button2.configure(command=self.Copy_Master_Cal_Over_Factory_Value)
+        self.FACTORY_VALUES_MASTER_CAL_LABEL = ttk.Label(
+            self.Radio_Calibration_Frame)
         self.FACTORY_VALUES_MASTER_CAL = tk.StringVar()
-        label23.configure(style="Normal.TLabel",
-                          textvariable=self.FACTORY_VALUES_MASTER_CAL)
-        label23.grid(column=5, row=4, sticky="w")
+        self.FACTORY_VALUES_MASTER_CAL_LABEL.configure(
+            style="Heading4.TLabel", textvariable=self.FACTORY_VALUES_MASTER_CAL)
+        self.FACTORY_VALUES_MASTER_CAL_LABEL.grid(
+            column=6, padx="0 5", row=4, sticky="w")
         self.USB_CAL_LABEL = ttk.Label(self.Radio_Calibration_Frame)
         self.USB_CAL_LABEL.configure(style="Normal.TLabel", text='SSB BFO')
         self.USB_CAL_LABEL.grid(column=1, padx="25 0", row=5, sticky="w")
@@ -2164,12 +2260,19 @@ class SettingsnotebookWidget(ttk.Frame):
         self.USB_CAL_COPY_BUTTON.grid(column=4, pady=2, row=5, sticky="w")
         self.USB_CAL_COPY_BUTTON.configure(
             command=self.Reset_SSB_BFO_To_Factory)
-        label25 = ttk.Label(self.Radio_Calibration_Frame)
+        self.button5 = ttk.Button(self.Radio_Calibration_Frame)
+        self.button5.configure(
+            image=self.img_redarrowpointingright59x36,
+            style="Normal.TButton",
+            width=10)
+        self.button5.grid(column=5, padx="0 5", pady=2, row=5, sticky="w")
+        self.button5.configure(command=self.Copy_SSB_BFO_Over_Factory_Value)
+        self.FACTORY_VALUES_USB_CAL_LABEL = ttk.Label(
+            self.Radio_Calibration_Frame)
         self.FACTORY_VALUES_USB_CAL = tk.StringVar()
-        label25.configure(
-            style="Normal.TLabel",
-            textvariable=self.FACTORY_VALUES_USB_CAL)
-        label25.grid(column=5, row=5, sticky="w")
+        self.FACTORY_VALUES_USB_CAL_LABEL.configure(
+            style="Heading4.TLabel", textvariable=self.FACTORY_VALUES_USB_CAL)
+        self.FACTORY_VALUES_USB_CAL_LABEL.grid(column=6, row=5, sticky="w")
         self.CW_CAL_LABEL = ttk.Label(self.Radio_Calibration_Frame)
         self.CW_CAL_LABEL.configure(style="Normal.TLabel", text='CW BFO')
         self.CW_CAL_LABEL.grid(
@@ -2191,9 +2294,28 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CW_CAL_WIDGET.register(
                 self.validate_CW_CAL), "%P", "%V")
         self.CW_CAL_WIDGET.configure(validatecommand=_validatecmd)
+        self.I2C_ADDR_SI5351_LABEL = ttk.Label(self.Radio_Calibration_Frame)
+        self.I2C_ADDR_SI5351_LABEL.configure(
+            justify="center",
+            relief="flat",
+            style="Normal.TLabel",
+            text='SI5351 I2C Addr ')
+        self.I2C_ADDR_SI5351_LABEL.grid(
+            column=1, padx="25 0", pady="15 00", row=7, sticky="w")
+        self.I2C_ADDR_SI5351_WIDGET = ttk.Entry(self.Radio_Calibration_Frame)
+        self.I2C_ADDR_SI5351 = tk.StringVar()
+        self.I2C_ADDR_SI5351_WIDGET.configure(
+            justify="center",
+            style="Normal.TEntry",
+            takefocus=False,
+            textvariable=self.I2C_ADDR_SI5351,
+            validate="none",
+            width=10)
+        self.I2C_ADDR_SI5351_WIDGET.grid(
+            column=3, pady="15 0", row=7, sticky="w")
         self.Radio_Calibration_Frame.pack(fill="x", side="top")
         self.Radio_Calibration_Frame.grid_anchor("nw")
-        self.CW_Calibration_Frame = ttk.Frame(self.Calibration_SF.innerframe)
+        self.CW_Calibration_Frame = ttk.Frame(self.frame21)
         self.Calibration_Settings_CW_ADC_Label = ttk.Label(
             self.CW_Calibration_Frame)
         self.Calibration_Settings_CW_ADC_Label.configure(
@@ -2362,26 +2484,26 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CW_ADC_BOTH_TO_WIDGET.register(
                 self.validate_CW_ADC_BOTH_TO), "%P", "%V")
         self.CW_ADC_BOTH_TO_WIDGET.configure(validatecommand=_validatecmd)
-        frame3 = ttk.Frame(self.CW_Calibration_Frame)
-        frame3.configure(height=200, width=200)
-        button4 = ttk.Button(frame3)
-        button4.configure(
+        self.frame3 = ttk.Frame(self.CW_Calibration_Frame)
+        self.frame3.configure(height=200, width=200)
+        self.button4 = ttk.Button(self.frame3)
+        self.button4.configure(
             style="Button4.TButton",
             text='Load Recommend ADC Settings')
-        button4.grid(column=1, padx=40, row=0, sticky="e")
-        button4.configure(command=self.load_Recommended_ADC_CW_Values)
-        button1 = ttk.Button(frame3)
-        button1.configure(style="Button4.TButton", text='ADC Scanner')
-        button1.grid(column=0, row=0)
-        button1.configure(command=self.runADCScanner)
-        frame3.grid(column=1, columnspan=5, pady=15, row=12, sticky="ew")
+        self.button4.grid(column=1, padx=40, row=0, sticky="e")
+        self.button4.configure(command=self.load_Recommended_ADC_CW_Values)
+        self.button1 = ttk.Button(self.frame3)
+        self.button1.configure(style="Button4.TButton", text='ADC Scanner')
+        self.button1.grid(column=0, row=0)
+        self.button1.configure(command=self.runADCScanner)
+        self.frame3.grid(column=1, columnspan=5, pady=15, row=12, sticky="ew")
         self.CW_Calibration_Frame.pack(fill="x", side="top")
         self.CW_Calibration_Frame.grid_anchor("nw")
-        self.frame8 = ttk.Frame(self.Calibration_SF.innerframe)
-        self.label1 = ttk.Label(self.frame8)
+        self.S_Meter_Frame = ttk.Frame(self.frame21)
+        self.label1 = ttk.Label(self.S_Meter_Frame)
         self.label1.configure(style="Heading3.TLabel", text='S-Meter')
         self.label1.grid(column=0, padx=0, pady="20 0", row=1, sticky="ew")
-        self.S_METER_LEVELS_WIDGET = ttk.Checkbutton(self.frame8)
+        self.S_METER_LEVELS_WIDGET = ttk.Checkbutton(self.S_Meter_Frame)
         self.S_METER_LEVELS = tk.StringVar()
         self.S_METER_LEVELS_WIDGET.configure(
             offvalue="NO",
@@ -2391,16 +2513,16 @@ class SettingsnotebookWidget(ttk.Frame):
             variable=self.S_METER_LEVELS)
         self.S_METER_LEVELS_WIDGET.grid(
             column=0, padx=25, pady="15 10", row=2, sticky="w")
-        frame9 = ttk.Frame(self.frame8)
-        frame9.configure(height=200, width=200)
-        self.label29 = ttk.Label(frame9)
+        self.frame9 = ttk.Frame(self.S_Meter_Frame)
+        self.frame9.configure(height=200, width=200)
+        self.label29 = ttk.Label(self.frame9)
         self.label29.configure(
             justify="left",
             relief="flat",
             style="Heading4.TLabel",
             text='1')
         self.label29.grid(column=1, padx="8 0", row=2)
-        self.S_METER_LEVEL1_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL1_WIDGET = ttk.Entry(self.frame9)
         self.S_METER_LEVEL1 = tk.StringVar()
         self.S_METER_LEVEL1_WIDGET.configure(
             justify="right",
@@ -2414,14 +2536,14 @@ class SettingsnotebookWidget(ttk.Frame):
             self.S_METER_LEVEL1_WIDGET.register(
                 self.validate__METER_LEVEL1), "%P", "%V")
         self.S_METER_LEVEL1_WIDGET.configure(validatecommand=_validatecmd)
-        self.label15 = ttk.Label(frame9)
+        self.label15 = ttk.Label(self.frame9)
         self.label15.configure(
             justify="right",
             style="Heading4.TLabel",
             takefocus=False,
             text='ADC Value (0-1023)')
         self.label15.grid(column=0, padx="15 0", row=3, sticky="w")
-        self.S_METER_LEVEL2_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL2_WIDGET = ttk.Entry(self.frame9)
         self.S_METER_LEVEL2 = tk.StringVar()
         self.S_METER_LEVEL2_WIDGET.configure(
             justify="right",
@@ -2435,7 +2557,7 @@ class SettingsnotebookWidget(ttk.Frame):
             self.S_METER_LEVEL2_WIDGET.register(
                 self.validate__METER_LEVEL2), "%P", "%V")
         self.S_METER_LEVEL2_WIDGET.configure(validatecommand=_validatecmd)
-        self.S_METER_LEVEL4_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL4_WIDGET = ttk.Entry(self.frame9)
         self.S_METER_LEVEL4 = tk.StringVar()
         self.S_METER_LEVEL4_WIDGET.configure(
             justify="right",
@@ -2449,7 +2571,7 @@ class SettingsnotebookWidget(ttk.Frame):
             self.S_METER_LEVEL4_WIDGET.register(
                 self.validate__METER_LEVEL4), "%P", "%V")
         self.S_METER_LEVEL4_WIDGET.configure(validatecommand=_validatecmd)
-        self.S_METER_LEVEL3_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL3_WIDGET = ttk.Entry(self.frame9)
         self.S_METER_LEVEL3 = tk.StringVar()
         self.S_METER_LEVEL3_WIDGET.configure(
             justify="right",
@@ -2463,7 +2585,7 @@ class SettingsnotebookWidget(ttk.Frame):
             self.S_METER_LEVEL3_WIDGET.register(
                 self.validate__METER_LEVEL3), "%P", "%V")
         self.S_METER_LEVEL3_WIDGET.configure(validatecommand=_validatecmd)
-        self.S_METER_LEVEL5_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL5_WIDGET = ttk.Entry(self.frame9)
         self.S_METER_LEVEL5 = tk.StringVar()
         self.S_METER_LEVEL5_WIDGET.configure(
             justify="right",
@@ -2477,7 +2599,7 @@ class SettingsnotebookWidget(ttk.Frame):
             self.S_METER_LEVEL5_WIDGET.register(
                 self.validate__METER_LEVEL5), "%P", "%V")
         self.S_METER_LEVEL5_WIDGET.configure(validatecommand=_validatecmd)
-        self.S_METER_LEVEL6_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL6_WIDGET = ttk.Entry(self.frame9)
         self.S_METER_LEVEL6 = tk.StringVar()
         self.S_METER_LEVEL6_WIDGET.configure(
             justify="right",
@@ -2491,7 +2613,7 @@ class SettingsnotebookWidget(ttk.Frame):
             self.S_METER_LEVEL6_WIDGET.register(
                 self.validate__METER_LEVEL6), "%P", "%V")
         self.S_METER_LEVEL6_WIDGET.configure(validatecommand=_validatecmd)
-        self.S_METER_LEVEL7_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL7_WIDGET = ttk.Entry(self.frame9)
         self.S_METER_LEVEL7 = tk.StringVar()
         self.S_METER_LEVEL7_WIDGET.configure(
             justify="right",
@@ -2505,7 +2627,7 @@ class SettingsnotebookWidget(ttk.Frame):
             self.S_METER_LEVEL7_WIDGET.register(
                 self.validate__METER_LEVEL7), "%P", "%V")
         self.S_METER_LEVEL7_WIDGET.configure(validatecommand=_validatecmd)
-        self.S_METER_LEVEL8_WIDGET = ttk.Entry(frame9)
+        self.S_METER_LEVEL8_WIDGET = ttk.Entry(self.frame9)
         self.S_METER_LEVEL8 = tk.StringVar()
         self.S_METER_LEVEL8_WIDGET.configure(
             justify="right",
@@ -2519,128 +2641,216 @@ class SettingsnotebookWidget(ttk.Frame):
             self.S_METER_LEVEL8_WIDGET.register(
                 self.validate__METER_LEVEL8), "%P", "%V")
         self.S_METER_LEVEL8_WIDGET.configure(validatecommand=_validatecmd)
-        self.label33 = ttk.Label(frame9)
+        self.label33 = ttk.Label(self.frame9)
         self.label33.configure(
             justify="left",
             relief="flat",
             style="Heading4.TLabel",
             text='2')
         self.label33.grid(column=2, padx="7 0", row=2)
-        self.label35 = ttk.Label(frame9)
+        self.label35 = ttk.Label(self.frame9)
         self.label35.configure(
             justify="left",
             relief="flat",
             style="Heading4.TLabel",
             text='3')
         self.label35.grid(column=3, padx="7 0", row=2)
-        self.label36 = ttk.Label(frame9)
+        self.label36 = ttk.Label(self.frame9)
         self.label36.configure(
             justify="left",
             relief="flat",
             style="Heading4.TLabel",
             text='4')
         self.label36.grid(column=4, padx="7 0", row=2)
-        self.label38 = ttk.Label(frame9)
+        self.label38 = ttk.Label(self.frame9)
         self.label38.configure(
             justify="left",
             relief="flat",
             style="Heading4.TLabel",
             text='5')
         self.label38.grid(column=5, padx="7 0", row=2)
-        self.label39 = ttk.Label(frame9)
+        self.label39 = ttk.Label(self.frame9)
         self.label39.configure(
             justify="left",
             relief="flat",
             style="Heading4.TLabel",
             text='6')
         self.label39.grid(column=6, padx="7 0", row=2)
-        self.label41 = ttk.Label(frame9)
+        self.label41 = ttk.Label(self.frame9)
         self.label41.configure(
             justify="left",
             relief="flat",
             style="Heading4.TLabel",
             text='7')
         self.label41.grid(column=7, padx="7 0", row=2)
-        self.label42 = ttk.Label(frame9)
+        self.label42 = ttk.Label(self.frame9)
         self.label42.configure(
             justify="left",
             relief="flat",
             style="Heading4.TLabel",
             text='8')
         self.label42.grid(column=8, padx="7 0", row=2)
-        self.label45 = ttk.Label(frame9)
+        self.label45 = ttk.Label(self.frame9)
         self.label45.configure(
             justify="center",
             relief="flat",
             style="Heading3.TLabel",
             text='S-Level')
         self.label45.grid(column=1, columnspan=11, padx="25 20", row=1)
-        self.smeterAssistant_BUTTON_WIDGET = ttk.Button(frame9)
+        self.smeterAssistant_BUTTON_WIDGET = ttk.Button(self.frame9)
         self.smeterAssistant_BUTTON_WIDGET.configure(
             style="Button4.TButton", text='S-Meter Assistant')
         self.smeterAssistant_BUTTON_WIDGET.grid(
             column=1, columnspan=11, pady=25, row=4)
         self.smeterAssistant_BUTTON_WIDGET.configure(
             command=self.runSmeterAssistant)
-        frame9.grid(column=0, columnspan=5, row=3, sticky="ew")
-        self.frame8.pack(fill="x", side="top")
-        self.frame8.grid_anchor("nw")
+        self.frame9.grid(column=0, columnspan=5, row=3, sticky="ew")
+        self.S_Meter_Frame.pack(fill="x", side="top")
+        self.S_Meter_Frame.grid_anchor("nw")
+        self.frame21.pack(anchor="w", padx=20, side="top")
         self.Calibration_SF.pack(side="top")
         self.settingsNotebook.add(self.Calibration_SF, text='Calibration')
         self.WSPR_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
         self.WSPR_SF.configure(usemousewheel=True)
-        self.WSPR_Frame = ttk.Frame(self.WSPR_SF.innerframe)
-        label6 = ttk.Label(self.WSPR_Frame)
-        label6.configure(
+        self.frame22 = ttk.Frame(self.WSPR_SF.innerframe)
+        self.frame22.configure(height=200, width=200)
+        self.WSPR_Frame = ttk.Frame(self.frame22)
+        self.label6 = ttk.Label(self.WSPR_Frame)
+        self.label6.configure(
             justify="center",
             style="Heading2.TLabel",
-            text='General Settings')
-        label6.grid(column=0, columnspan=5, row=0, sticky="n")
-        self.WSPR_Frame.pack(
-            expand="true",
-            fill="both",
+            text='WSPR Settings')
+        self.label6.grid(
+            column=0,
+            columnspan=5,
             padx=5,
-            pady=5,
-            side="top")
+            pady="15 25",
+            row=0,
+            sticky="n")
+        self.WSPR_Frame.pack(expand="true", fill="both", side="top")
+        self.frame23 = ttk.Frame(self.frame22)
+        self.frame23.configure(height=200, width=200)
+        self.frame23.pack(expand="true", fill="both", padx=20, side="top")
+        self.frame22.pack(anchor="w", padx=5, pady=5, side="top")
         self.WSPR_SF.pack(side="top")
         self.settingsNotebook.add(self.WSPR_SF, text='WSPR')
         self.SDR_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
         self.SDR_SF.configure(usemousewheel=True)
-        self.SDR_Frame = ttk.Frame(self.SDR_SF.innerframe)
-        label7 = ttk.Label(self.SDR_Frame)
-        label7.configure(
+        self.frame13 = ttk.Frame(self.SDR_SF.innerframe)
+        self.frame13.configure(height=200, width=200)
+        self.SDR_Label_Frame = ttk.Frame(self.frame13)
+        self.label7 = ttk.Label(self.SDR_Label_Frame)
+        self.label7.configure(
             justify="center",
             style="Heading2.TLabel",
             text='SDR Settings')
-        label7.grid(column=0, columnspan=5, row=0, sticky="n")
-        self.SDR_Frame.pack(
+        self.label7.pack(anchor="w", padx=5, pady="15 25", side="top")
+        self.SDR_Label_Frame.pack(
+            anchor="n",
             expand="true",
-            fill="both",
+            fill="x",
+            padx=5,
+            pady=5,
+            side="top")
+        self.frame14 = ttk.Frame(self.frame13)
+        self.label23 = ttk.Label(self.frame14)
+        self.label23.configure(
+            style="Heading4.TLabel",
+            text='SDR Frequency Mode')
+        self.label23.grid(
+            column=1,
+            columnspan=2,
+            padx=10,
+            pady="0 5",
+            row=4,
+            sticky="e")
+        self.SDR_OFFSET_MODE = tk.StringVar(value='NONE')
+        __values = ['NONE', 'FIXED', 'MHZ', 'KHZ']
+        self.SDR_OFFSET_MODE_WIDGET = ttk.OptionMenu(
+            self.frame14, self.SDR_OFFSET_MODE, "NONE", *__values, command=None)
+        self.SDR_OFFSET_MODE_WIDGET.grid(
+            column=3, padx="0 20", pady="0 5", row=4)
+        self.message1 = tk.Message(self.frame14)
+        self.message1.configure(justify="left", relief="raised", text="NONE:\tNo offset is provided to the data send to the \n\tSDR\n\nFIXED:\tThe SDR offset frequency is added to the\n\tfrequency on the display and sent to the SDR\n\nMHZ:\tThe single MHZ digit of the radio's frequency is\n\tadded. For example, if the radio was at\n\t14.032.000, and the offset was at 30.000.000,\n\tthe resulting frequency would be 43.032.000.\n\nKHZ:\tSimilar to MHZ_OFFSET, but using the KHZ\n\tnumber. So with a 30.000.000 offset and and \n\ta 14.032.000 radio setting, the SDR will see \n\ta 30.032.000 frequency.", width=300)
+        self.message1.grid(column=3, columnspan=2, row=5, sticky="ne")
+        self.label24 = ttk.Label(self.frame14)
+        self.label24.configure(
+            justify="left",
+            style="Heading4.TLabel",
+            text='Offset Frequency (mhz)')
+        self.label24.grid(
+            column=1,
+            columnspan=2,
+            padx=10,
+            pady="20 0",
+            row=6,
+            sticky="e")
+        self.SDR_FREQUENCY_WIDGET = ttk.Entry(self.frame14)
+        self.SDR_FREQUENCY = tk.StringVar()
+        self.SDR_FREQUENCY_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.SDR_FREQUENCY,
+            validate="focus",
+            width=10)
+        self.SDR_FREQUENCY_WIDGET.grid(
+            column=3, pady="20 0", row=6, sticky="w")
+        self.BOOT_INTO_SDR_MODE_WIDGET = ttk.Checkbutton(self.frame14)
+        self.BOOT_INTO_SDR_MODE = tk.StringVar()
+        self.BOOT_INTO_SDR_MODE_WIDGET.configure(
+            offvalue="NORMAL",
+            onvalue="SDR",
+            style="Checkbox4.TCheckbutton",
+            text='Boot into SDR Mode',
+            variable=self.BOOT_INTO_SDR_MODE)
+        self.BOOT_INTO_SDR_MODE_WIDGET.grid(
+            column=1, columnspan=4, padx=8, pady=20, row=7, sticky="w")
+        self.frame14.pack(
+            anchor="center",
+            expand="false",
+            fill="x",
+            padx=20,
+            side="top")
+        self.frame14.grid_anchor("nw")
+        self.frame13.pack(
+            anchor="n",
+            expand="true",
+            fill="x",
             padx=5,
             pady=5,
             side="top")
         self.SDR_SF.pack(side="top")
         self.settingsNotebook.add(self.SDR_SF, text='SDR')
-        self.Advanced_SF = ScrolledFrame(
-            self.settingsNotebook, scrolltype="both")
-        self.Advanced_SF.configure(usemousewheel=True)
-        self.Advanced_Frame = ttk.Frame(self.Advanced_SF.innerframe)
-        label8 = ttk.Label(self.Advanced_Frame)
-        label8.configure(
+        self.LCD_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
+        self.LCD_SF.configure(usemousewheel=True)
+        self.frame24 = ttk.Frame(self.LCD_SF.innerframe)
+        self.frame24.configure(height=200, width=200)
+        self.LCD_Frame = ttk.Frame(self.frame24)
+        self.label8 = ttk.Label(self.LCD_Frame)
+        self.label8.configure(
             justify="center",
             style="Heading2.TLabel",
-            text='Advanced Settings')
-        label8.pack(side="top")
-        self.Advanced_Frame.pack(side="top")
-        self.frame2 = ttk.Frame(self.Advanced_SF.innerframe)
+            text='Settings for LCD Displays')
+        self.label8.pack(anchor="w", padx=5, pady="15 25", side="top")
+        self.LCD_Frame.pack(anchor="w", side="top")
+        self.frame25 = ttk.Frame(self.frame24)
+        self.frame25.configure(height=200, width=200)
+        self.frame2 = ttk.Frame(self.frame25)
         self.label22 = ttk.Label(self.frame2)
         self.label22.configure(
+            relief="flat",
             style="Heading3.TLabel",
-            text='LCD Configuration')
-        self.label22.grid(column=0, padx=0, pady="20 0", row=2, sticky="ew")
+            text='LCD Addresses')
+        self.label22.grid(
+            column=0,
+            columnspan=2,
+            padx=5,
+            pady="20 0",
+            row=2,
+            sticky="ew")
         self.label28 = ttk.Label(self.frame2)
         self.label28.configure(style="Normal.TLabel", text='Master I2C LCD')
-        self.label28.grid(column=1, padx="25 5", row=4, sticky="w")
+        self.label28.grid(column=1, padx="75 5", row=4, sticky="w")
         self.I2C_LCD_MASTER_WIDGET = ttk.Entry(self.frame2)
         self.I2C_LCD_MASTER = tk.StringVar()
         self.I2C_LCD_MASTER_WIDGET.configure(
@@ -2655,7 +2865,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label32.configure(
             style="Normal.TLabel",
             text='Secondary I2C LCD\nDual LCD Config')
-        self.label32.grid(column=1, padx="25 10", row=6, sticky="w")
+        self.label32.grid(column=1, padx="75 10", row=6, sticky="w")
         self.I2C_LCD_SECOND_WIDGET = ttk.Entry(self.frame2)
         self.I2C_LCD_SECOND = tk.StringVar()
         self.I2C_LCD_SECOND_WIDGET.configure(
@@ -2665,19 +2875,74 @@ class SettingsnotebookWidget(ttk.Frame):
             validate="focus",
             width=10)
         self.I2C_LCD_SECOND_WIDGET.grid(column=3, row=6, sticky="w")
-        button3 = ttk.Button(self.frame2)
-        button3.configure(style="Button4.TButton", text='I2C Scanner')
-        button3.grid(column=4, padx=25, row=5, sticky="e")
-        button3.configure(command=self.runI2CScanner)
+        self.button3 = ttk.Button(self.frame2)
+        self.button3.configure(style="Button4.TButton", text='I2C Scanner')
+        self.button3.grid(column=4, padx=25, row=5, sticky="e")
+        self.button3.configure(command=self.runI2CScanner)
         self.frame2.pack(anchor="w", side="top")
         self.frame2.grid_anchor("nw")
-        self.Advanced_SF.pack(side="top")
-        self.settingsNotebook.add(self.Advanced_SF, text='Advanced')
+        self.frame11 = ttk.Frame(self.frame25)
+        self.label9 = ttk.Label(self.frame11)
+        self.label9.configure(
+            relief="flat",
+            style="Heading3.TLabel",
+            text='LCD User Interface Customization')
+        self.label9.grid(
+            column=0,
+            columnspan=2,
+            padx=5,
+            pady="20 0",
+            row=2,
+            sticky="ew")
+        self.SCROLLING_DISPLAY_WIDGET = ttk.Checkbutton(self.frame11)
+        self.SCROLLING_DISPLAY = tk.StringVar()
+        self.SCROLLING_DISPLAY_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            style="CheckboxNormal.TCheckbutton",
+            text='When displayed, continuously scroll VFO-B line left to display more info',
+            variable=self.SCROLLING_DISPLAY)
+        self.SCROLLING_DISPLAY_WIDGET.grid(
+            column=0, padx=75, row=5, sticky="w")
+        self.MESSAGE_LINE_WIDGET = ttk.Checkbutton(self.frame11)
+        self.MESSAGE_LINE = tk.StringVar()
+        self.MESSAGE_LINE_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            style="CheckboxNormal.TCheckbutton",
+            text='Do not display VFO-B. Reserve its line for messages (e.g., CW Keyer). Overides above scrolling option.',
+            variable=self.MESSAGE_LINE)
+        self.MESSAGE_LINE_WIDGET.grid(column=0, padx=75, row=6, sticky="w")
+        self.ONE_TWO_LINE_TOGGLE_WIDGET = ttk.Checkbutton(self.frame11)
+        self.ONE_TWO_LINE_TOGGLE = tk.StringVar()
+        self.ONE_TWO_LINE_TOGGLE_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            style="CheckboxNormal.TCheckbutton",
+            text='Put VFO-A on top line',
+            variable=self.ONE_TWO_LINE_TOGGLE)
+        self.ONE_TWO_LINE_TOGGLE_WIDGET.grid(
+            column=0, padx=75, row=4, sticky="w")
+        self.label11 = ttk.Label(self.frame11)
+        self.label11.configure(
+            relief="flat",
+            state="normal",
+            style="Normal.TLabel",
+            text='The default display is for VFO-A and its Mode to be on second line and the top line is used for VFO-B and other info. These checkboxes allow you to customize this display.',
+            wraplength=550)
+        self.label11.grid(column=0, padx=50, pady="5 10", row=3, sticky="w")
+        self.frame11.pack(anchor="w", pady=5, side="top")
+        self.frame11.grid_anchor("nw")
+        self.frame25.pack(anchor="w", padx=20, side="top")
+        self.frame24.pack(anchor="w", padx=5, pady=5, side="top")
+        self.LCD_SF.pack(side="top")
+        self.settingsNotebook.add(self.LCD_SF, text='LCD Displays')
         self.System_Info_SF = ScrolledFrame(
             self.settingsNotebook, scrolltype="both")
         self.System_Info_SF.configure(usemousewheel=True)
-        self.System_Information_Title_Frame = ttk.Frame(
-            self.System_Info_SF.innerframe)
+        self.frame26 = ttk.Frame(self.System_Info_SF.innerframe)
+        self.frame26.configure(height=200, width=200)
+        self.System_Information_Title_Frame = ttk.Frame(self.frame26)
         self.System_Information_Title_Frame.configure(height=200, width=200)
         self.System_Information_Label = ttk.Label(
             self.System_Information_Title_Frame)
@@ -2685,10 +2950,11 @@ class SettingsnotebookWidget(ttk.Frame):
             justify="center",
             style="Heading2.TLabel",
             text='System Information')
-        self.System_Information_Label.pack(anchor="n")
-        self.System_Information_Title_Frame.pack(side="top")
-        self.System_Info_Firmware_Version = ttk.Frame(
-            self.System_Info_SF.innerframe)
+        self.System_Information_Label.pack(anchor="w", padx=5, pady="15 25")
+        self.System_Information_Title_Frame.pack(anchor="w", side="top")
+        self.frame27 = ttk.Frame(self.frame26)
+        self.frame27.configure(height=200, width=200)
+        self.System_Info_Firmware_Version = ttk.Frame(self.frame27)
         self.System_Info_Firmware_Version.configure(width=200)
         self.System_Info_Firmware_Version_Label = ttk.Label(
             self.System_Info_Firmware_Version)
@@ -2706,8 +2972,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.VERSION_ADDRESS_WIDGET.grid(column=2, row=0, sticky="w")
         self.System_Info_Firmware_Version.pack(
             anchor="w", pady="20 0", side="top")
-        self.System_Info_Calibration_Settings = ttk.Frame(
-            self.System_Info_SF.innerframe)
+        self.System_Info_Calibration_Settings = ttk.Frame(self.frame27)
         self.System_Info_Calibration_Settings.configure(width=200)
         self.System_Info_Factory_Calibration_Label = ttk.Label(
             self.System_Info_Calibration_Settings)
@@ -2724,7 +2989,9 @@ class SettingsnotebookWidget(ttk.Frame):
         self.System_Info_MASTER_CAL_WIDGET = ttk.Label(
             self.System_Info_Calibration_Settings)
         self.System_Info_MASTER_CAL_WIDGET.configure(
-            style="Normal.TLabel", textvariable=self.FACTORY_VALUES_MASTER_CAL)
+            compound="top",
+            style="Normal.TLabel",
+            textvariable=self.FACTORY_VALUES_MASTER_CAL)
         self.System_Info_MASTER_CAL_WIDGET.grid(column=2, row=2, sticky="e")
         self.System_Info_Factory_Calibration_BFO_Label = ttk.Label(
             self.System_Info_Calibration_Settings)
@@ -2739,16 +3006,16 @@ class SettingsnotebookWidget(ttk.Frame):
         self.System_Info_USB_CAL_WIDGET.grid(column=2, row=3, sticky="e")
         self.System_Info_Calibration_Settings.pack(
             anchor="w", pady="20 0", side="top")
-        self.System_Info_VFO_Frame = ttk.Frame(self.System_Info_SF.innerframe)
+        self.System_Info_VFO_Frame = ttk.Frame(self.frame27)
         self.sytem_Infor_Last_Saved_Freq_Label = ttk.Label(
             self.System_Info_VFO_Frame)
         self.sytem_Infor_Last_Saved_Freq_Label.configure(
             style="Heading3.TLabel", text='Last Used Frequencies')
         self.sytem_Infor_Last_Saved_Freq_Label.grid(
             column=0, columnspan=2, row=3, sticky="ew")
-        label2 = ttk.Label(self.System_Info_VFO_Frame)
-        label2.configure(style="Heading4.TLabel", text='Current')
-        label2.grid(column=2, columnspan=3, padx="0 25", row=4)
+        self.label2 = ttk.Label(self.System_Info_VFO_Frame)
+        self.label2.configure(style="Heading4.TLabel", text='Current')
+        self.label2.grid(column=2, columnspan=3, padx="0 25", row=4)
         self.System_Info_System_Information_Last_Saved_VFO_Frequency_Label = ttk.Label(
             self.System_Info_VFO_Frame)
         self.System_Info_System_Information_Last_Saved_VFO_Frequency_Label.configure(
@@ -2999,9 +3266,17 @@ class SettingsnotebookWidget(ttk.Frame):
             column=4, padx="5 30", row=17, sticky="w")
         self.System_Info_VFO_Frame.pack(anchor="w", pady="20 0", side="top")
         self.System_Info_VFO_Frame.grid_anchor("nw")
+        self.frame27.pack(anchor="w", padx=20, side="top")
+        self.frame26.pack(anchor="w", padx=5, pady=5, side="top")
         self.System_Info_SF.pack(expand="true", fill="both", side="top")
         self.settingsNotebook.add(self.System_Info_SF, text='System Info')
-        self.settingsNotebook.pack(expand="true", fill="both", side="top")
+        self.settingsNotebook.pack(
+            anchor="w",
+            expand="true",
+            fill="both",
+            padx=5,
+            pady="15 25",
+            side="top")
         self.configure(height=600, padding=5, relief="groove", width=600)
         self.pack(expand="true", fill="both", side="top")
 
@@ -3065,6 +3340,7 @@ class SettingsnotebookWidget(ttk.Frame):
             font=fontList['Emphasis'])
         style.configure('Checkbox3.TCheckbutton', font=fontList['Heading3'])
         style.configure('Checkbox4.TCheckbutton', font=fontList['Heading4'])
+        style.configure('CheckboxNormal.TCheckbutton', font=fontList['Normal'])
         style.configure(
             'CheckboxEmphasis.TCheckbutton',
             font=fontList['Emphasis'])
@@ -3083,6 +3359,9 @@ class SettingsnotebookWidget(ttk.Frame):
             font=fontList['Heading3'])
         style.configure('Heading2.TLabelframe')
         style.configure('Normal.TText', font=fontList['Heading3'])
+
+        style.configure('Highlight.TFrame', background='blue', bd=4)
+        style.configure('Normal.TFrame', background='gray', bd=4)
 
     def validate_USER_CALLSIGN(self, p_entry_value, v_condition):
         pass
@@ -3294,10 +3573,16 @@ class SettingsnotebookWidget(ttk.Frame):
     def Reset_Master_Cal_To_Factory(self):
         pass
 
+    def Copy_Master_Cal_Over_Factory_Value(self):
+        pass
+
     def validate_USB_CAL(self, p_entry_value, v_condition):
         pass
 
     def Reset_SSB_BFO_To_Factory(self):
+        pass
+
+    def Copy_SSB_BFO_Over_Factory_Value(self):
         pass
 
     def validate_CW_CAL(self, p_entry_value, v_condition):

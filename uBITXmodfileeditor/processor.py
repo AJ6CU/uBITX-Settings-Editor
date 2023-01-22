@@ -49,7 +49,7 @@ class Processor(SourceselectorWidget):
             self.savedFilePathChooserWidget.config(path=USERMODFILE, initialdir=self.lastDir)
 
             self.selectSaveFileFrame.forget()
-            self.com_portManager_frame.pack()
+            self.com_portManager_frame.pack(anchor="w", expand="true", fill="both", pady=23, side="top")
 
             # pre-load com ports
             self.comPortObj.updateComPorts()                           # Fill in available Com Ports
@@ -57,7 +57,7 @@ class Processor(SourceselectorWidget):
 
         else:
             self.com_portManager_frame.forget()                # In the on_path_changed event
-            self.selectSaveFileFrame.pack()
+            self.selectSaveFileFrame.pack(anchor="w", expand="true", fill="both", pady=23, side="top")
 
     def on_path_changed(self, event=None):
         self.path=self.savedFilePathChooser.get()

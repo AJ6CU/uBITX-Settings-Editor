@@ -641,12 +641,12 @@
 		<label>Tune Control</label>							
 		<value></value>										<!--Choice of NONE or BAND. NONE means no restrictions. BAND means only    
 																use move BAND+,BAND- to change to a different frequency area (no dial) -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Select None to allow tuning to any Freq with the VFO. Selecting BAND restricts tuning to BAND+/BAND-</tooltip>
 	</SETTING>
 	<SETTING NAME="TX_RESTRICTIONS">
 		<label>Restrictions on TX</label>
 		<value></value>										<!--Choice of NONE or HAM. NONE means no restrictions. HAM means TX only on HAM bands -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Select NONE to allow TX at all frequencies. Selecting HAM resrticts TX to HAM bands only</tooltip>
 	</SETTING>
 	<SETTING NAME="HAM_BAND_COUNT">
 		<label>Countof HAM Bands:</label>		
@@ -871,10 +871,10 @@
 	interesting.  If you search for "SDR" on hamskey.com you will find lots of articles on this method.  
 	*****************************************************************************************************	
 -->	
-	<SETTING NAME="BOOT_INTO_SDR_MODE">							
+	<SETTING NAME="BOOT_INTO_SDR_MODE">
 		<label>Boot into SDR Mode</label>
 		<value></value>									<!--Either NORMAL or SDR  -->
-		<tooltip>to be added</tooltip>
+		<tooltip>If checked, forces SDR mode on reboot.</tooltip>
 	</SETTING>
 <!--		SDR Offset Mode can be one of:
 			NONE: 			No offset is provided to the data send to the SDR  
@@ -887,12 +887,12 @@
 	<SETTING NAME="SDR_OFFSET_MODE">
 		<label>SDR Freq Offset Mode</label>
 		<value></value>									<!--NONE, FIXED, MHZ, KHZ   -->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="SDR_FREQUENCY">							
 		<label>SDR Offset frequency</label>   
 		<value></value>									<!--Check with SDR vendor. Enter frequency in Hz (ie. 32000000) -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Offset in (mhz). Check with your vendor.</tooltip>
 	</SETTING>
 <!--	
 	*****************************************************************************************************
@@ -1095,17 +1095,17 @@
 	<SETTING NAME="MESSAGE_LINE">							
 		<value></value>
 		<label>Message Line?</label>					<!--either YES or NO-->					
-		<tooltip>to be added</tooltip>
+		<tooltip>Checking leaves VFO-B line empty and so that it can be used for messages (e.g. CW Keyer, etc.). This overrides all other settings.</tooltip>
 	</SETTING>
 	<SETTING NAME="SCROLLING_DISPLAY">							
 		<label>SCROLLING DISPLAY</label>					
 		<value></value>									<!--For LCD output either YES or NO-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Checking results in the VFO-B line scrolling left continuously. This provides a little more info.</tooltip>
 	</SETTING>
 	<SETTING NAME="ONE_TWO_LINE_TOGGLE">							
 		<label>One/Two Line Toggle</label>
 		<value></value>									<!--either YES or NO-->		
-		<tooltip>to be added</tooltip>
+		<tooltip>Typially VFO-A and Mode are on bottom line while VFO-B is on top. This reverses this display.</tooltip>
 	</SETTING>
 <!-- 	
 	NEXTION
@@ -1118,9 +1118,9 @@
 <!-- 	
 GENERAL UX
  -->
-	<SETTING NAME="NEXTION_DISPLAY_CALL_SIGN">							
+	<SETTING NAME="NEXTION_DISPLAY_CALL_SIGN">
 		<label>Display Call Sign?</label>
-		<value></value>										<!--either YES or NO-->	
+		<value>Display </value>										<!--either YES or NO-->
 		<tooltip>to be added</tooltip>
 	</SETTING>
 

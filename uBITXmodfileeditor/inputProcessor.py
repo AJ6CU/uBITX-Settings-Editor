@@ -10,6 +10,7 @@ class InputProcessor(Processor):
     def __init__(self, parent):
         super().__init__(parent)
         self.goButton.set("READ")
+        self.resetButton_WIDGET.forget()
         self.savedFilePathChooserWidget.config(
             mustexist=True,
             title="Select Previously Saved Settings File")
@@ -77,23 +78,26 @@ class InputProcessor(Processor):
         if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
             self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
 
-        self.log.println("timestamp",  "Refreshing In-memory Copy of EEPROM")
-        self.eepromCom = eepromUBITX(self.RS232, self.log)
-        self.eepromCom.read()
+            self.log.println("timestamp",  "Refreshing In-memory Copy of EEPROM")
+            self.eepromCom = eepromUBITX(self.RS232, self.log)
+            self.eepromCom.read()
 
-        self.log.println("timestamp",  "Finished reading EEPROM into memory")
+            self.log.println("timestamp",  "Finished reading EEPROM into memory")
+            return True
+        else:
+            return False
 
 
     def processComPort(self, *args):
-        self.readFromComPort()          # read the contents of the EEPROM
-        self.UserModroot = self.eepromCom.decode()
+        if(self.readFromComPort()):          # read the contents of the EEPROM
+            self.UserModroot = self.eepromCom.decode()
 
 
-        self.log.println("timestamp", "Loading Settings into uBITX Memory Manager")
+            self.log.println("timestamp", "Loading Settings into uBITX Memory Manager")
 
-        #   Having built the tree, we can load it into the Notebook widget
-        self.settingsNotebook.setNotebook(self.UserModroot)         #update notebook widget with settings
-        self.log.println("timestamp", "***Settings Successfully loaded***\n")
+            #   Having built the tree, we can load it into the Notebook widget
+            self.settingsNotebook.setNotebook(self.UserModroot)         #update notebook widget with settings
+            self.log.println("timestamp", "***Settings Successfully loaded***\n")
 
 
 

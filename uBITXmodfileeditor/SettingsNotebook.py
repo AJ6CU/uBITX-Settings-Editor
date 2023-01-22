@@ -36,9 +36,11 @@ class SettingsNotebook(SettingsnotebookWidget):
             'HAM_BAND_RANGE10_END',  'HAM_BAND_FREQS1', 'HAM_BAND_FREQS2','HAM_BAND_FREQS3','HAM_BAND_FREQS4','HAM_BAND_FREQS5',
             'HAM_BAND_FREQS6','HAM_BAND_FREQS7','HAM_BAND_FREQS8','HAM_BAND_FREQS9','HAM_BAND_FREQS10', 'HAM_BAND_FREQS1_MODE',
             'HAM_BAND_FREQS2_MODE', 'HAM_BAND_FREQS3_MODE', 'HAM_BAND_FREQS4_MODE', 'HAM_BAND_FREQS5_MODE', 'HAM_BAND_FREQS6_MODE',
-            'HAM_BAND_FREQS7_MODE', 'HAM_BAND_FREQS8_MODE', 'HAM_BAND_FREQS9_MODE', 'HAM_BAND_FREQS10_MODE', 'I2C_LCD_MASTER',
-            'I2C_LCD_SECOND', 'S_METER_LEVELS', 'S_METER_LEVEL1',  'S_METER_LEVEL2', 'S_METER_LEVEL3', 'S_METER_LEVEL4',
-            'S_METER_LEVEL5', 'S_METER_LEVEL6', 'S_METER_LEVEL7', 'S_METER_LEVEL8'
+            'HAM_BAND_FREQS7_MODE', 'HAM_BAND_FREQS8_MODE', 'HAM_BAND_FREQS9_MODE', 'HAM_BAND_FREQS10_MODE',
+            'BOOT_INTO_SDR_MODE', 'SDR_OFFSET_MODE', 'SDR_FREQUENCY',
+            'I2C_LCD_MASTER', 'TUNING_RESTICTIONS', 'TX_RESTRICTIONS',
+            'I2C_LCD_SECOND', 'I2C_ADDR_SI5351','ONE_TWO_LINE_TOGGLE', 'SCROLLING_DISPLAY', 'MESSAGE_LINE', 'S_METER_LEVELS', 'S_METER_LEVEL1',
+            'S_METER_LEVEL2', 'S_METER_LEVEL3', 'S_METER_LEVEL4', 'S_METER_LEVEL5', 'S_METER_LEVEL6', 'S_METER_LEVEL7', 'S_METER_LEVEL8'
             ]
 
     #   this needs to be moved somewhere else too
@@ -661,8 +663,14 @@ class SettingsNotebook(SettingsnotebookWidget):
     def Reset_Master_Cal_To_Factory(self):
         self.MASTER_CAL.set(self.FACTORY_VALUES_MASTER_CAL.get())
 
+    def Copy_Master_Cal_Over_Factory_Value(self):
+        self.FACTORY_VALUES_MASTER_CAL.set(self.MASTER_CAL.get())
+
     def Reset_SSB_BFO_To_Factory(self):
         self.USB_CAL.set(self.FACTORY_VALUES_USB_CAL.get())
+
+    def Copy_SSB_BFO_Over_Factory_Value(self):
+        self.FACTORY_VALUES_USB_CAL.set(self.USB_CAL.get())
 
     def toggleExtendedChannels(self):
         if self.toggleExtendedChannelsCheckBox.get() == "1":

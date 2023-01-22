@@ -5,7 +5,6 @@
     <property name="width">200</property>
     <layout manager="pack">
       <property name="anchor">w</property>
-      <property name="expand">false</property>
       <property name="side">top</property>
     </layout>
     <child>

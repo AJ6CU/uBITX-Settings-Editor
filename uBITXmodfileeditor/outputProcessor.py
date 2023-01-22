@@ -18,6 +18,21 @@ class OutputProcessor(Processor):
             title="Save Settings to:")
         self.goButton.set("WRITE")
 
+    def reset_ubitx(self):
+        print("reset ubitx called")
+
+        if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
+            self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
+
+            magic1 = 0x4B   # 75 decimal
+            magic2 = 0x33   # 51 decimal
+            magic3 = 0x51   # 81 decimal
+            magic4 = (magic1 + magic2 + magic3) % 256       #checksum calculation
+
+            self.RS232.write(bytes([magic1, magic2, magic3, magic4, WRITECOMMAND]))
+            self.RS232.flush()
+
+
     def processFile(self, *args):
 
         self.log.println("timestamp", "\n***Saving Settings to File***")
@@ -73,3 +88,5 @@ class OutputProcessor(Processor):
         self.eepromCom.write()
 
         self.log.println("timestamp", "***Settings Successfully Written to uBITX***\n")
+        self.resetButton_WIDGET.configure(state="normal")
+        self.resetButton_WIDGET.pack()

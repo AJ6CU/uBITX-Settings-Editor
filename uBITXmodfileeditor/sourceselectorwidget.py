@@ -9,39 +9,44 @@ class SourceselectorWidget(ttk.Labelframe):
         super(SourceselectorWidget, self).__init__(master, **kw)
         self.SourceSelector = ttk.Frame(self)
         self.SourceSelector.configure(height=200, width=200)
-        radiobutton1 = ttk.Radiobutton(self.SourceSelector)
+        self.radiobutton1 = ttk.Radiobutton(self.SourceSelector)
         self.sourceSelectorRadioButton = tk.StringVar(value='uBITX')
-        radiobutton1.configure(
+        self.radiobutton1.configure(
             state="normal",
             style="RadioButton4.TRadiobutton",
             text='uBITX',
             value="uBITX",
             variable=self.sourceSelectorRadioButton)
-        radiobutton1.pack(anchor="w", side="top")
-        radiobutton1.configure(command=self.sourceSelected)
-        radiobutton2 = ttk.Radiobutton(self.SourceSelector)
-        radiobutton2.configure(
+        self.radiobutton1.pack(anchor="w", side="top")
+        self.radiobutton1.configure(command=self.sourceSelected)
+        self.radiobutton2 = ttk.Radiobutton(self.SourceSelector)
+        self.radiobutton2.configure(
             state="normal",
             style="RadioButton4.TRadiobutton",
             text='Saved File',
             value="SavedFIle",
             variable=self.sourceSelectorRadioButton)
-        radiobutton2.pack(anchor="w", side="left")
-        radiobutton2.configure(command=self.sourceSelected)
+        self.radiobutton2.pack(anchor="w", side="left")
+        self.radiobutton2.configure(command=self.sourceSelected)
         self.SourceSelector.grid(column=0, padx=20, row=0)
-        separator1 = ttk.Separator(self)
-        separator1.configure(orient="vertical")
-        separator1.grid(column=1, padx=5, row=0, sticky="ns")
+        self.separator1 = ttk.Separator(self)
+        self.separator1.configure(orient="vertical")
+        self.separator1.grid(column=1, padx=5, row=0, sticky="ns")
         self.sourceBlock = ttk.Frame(self)
-        self.sourceBlock.configure(height=200, padding="10 0", width=400)
+        self.sourceBlock.configure(height=75, padding="10 0", width=500)
         self.com_portManager_frame = ttk.Frame(self.sourceBlock)
-        self.com_portManager_frame.configure(height=200, width=200)
-        self.com_portManager_frame.pack(anchor="w", expand="false", side="top")
+        self.com_portManager_frame.configure(height=50, width=400)
+        self.com_portManager_frame.pack(
+            anchor="w",
+            expand="true",
+            fill="both",
+            pady=23,
+            side="top")
         self.selectSaveFileFrame = ttk.Frame(self.sourceBlock)
-        self.selectSaveFileFrame.configure(height=200, width=200)
-        label2 = ttk.Label(self.selectSaveFileFrame)
-        label2.configure(style="Normal.TLabel", text='Select Saved File')
-        label2.grid(column=0, padx="0 20", row=0, sticky="w")
+        self.selectSaveFileFrame.configure(height=50, width=400)
+        self.label2 = ttk.Label(self.selectSaveFileFrame)
+        self.label2.configure(style="Normal.TLabel", text='Select Saved File')
+        self.label2.grid(column=0, padx="0 20", row=0, sticky="w")
         self.savedFilePathChooserWidget = PathChooserInput(
             self.selectSaveFileFrame)
         self.savedFilePathChooser = tk.StringVar()
@@ -54,25 +59,45 @@ class SourceselectorWidget(ttk.Labelframe):
             column=1, ipadx=70, padx="0 5", row=0)
         self.savedFilePathChooserWidget.bind(
             "<<PathChooserPathChanged>>", self.on_path_changed, add="")
-        self.selectSaveFileFrame.pack(anchor="w", expand="false", side="top")
-        self.sourceBlock.grid(column=2, padx="0 70", row=0)
-        self.readButtonFrame = ttk.Frame(self)
-        self.readButtonFrame.configure(height=200, width=200)
-        self.goButtonWidget = ttk.Button(self.readButtonFrame)
+        self.selectSaveFileFrame.pack(
+            anchor="w",
+            expand="true",
+            fill="both",
+            pady=23,
+            side="top")
+        self.sourceBlock.grid(column=2, row=0)
+        self.sourceBlock.pack_propagate(0)
+        self.frame2 = ttk.Frame(self)
+        self.frame2.configure(height=200, width=200)
+        self.goButtonWidget = ttk.Button(self.frame2)
         self.goButton = tk.StringVar(value='READ')
         self.goButtonWidget.configure(
             state="disabled",
-            style="Button4.TButton",
+            style="Button3Blue.TButton",
             text='READ',
             textvariable=self.goButton)
-        self.goButtonWidget.pack(anchor="n", side="left")
-        self.readButtonFrame.grid(column=3, row=0, sticky="e")
+        self.goButtonWidget.grid(column=0, row=0)
+        self.resetButton_Frame = ttk.Frame(self.frame2)
+        self.resetButton_Frame.configure(height=50)
+        self.resetButton_WIDGET = ttk.Button(self.resetButton_Frame)
+        self.resetButton = tk.StringVar(value='Reset uBITX')
+        self.resetButton_WIDGET.configure(
+            state="disabled",
+            style="Button4.TButton",
+            takefocus=True,
+            text='Reset uBITX',
+            textvariable=self.resetButton)
+        self.resetButton_WIDGET.pack()
+        self.resetButton_WIDGET.configure(command=self.reset_ubitx)
+        self.resetButton_Frame.grid(column=1, padx=15, row=0)
+        self.frame2.grid(column=3, row=0)
         self.configure(
             height=300,
             style="Heading2.TLabelframe",
             text='Select Source',
             width=200)
         self.grid(column=0, row=1, sticky="ew")
+        self.grid_anchor("w")
 
         self.setup_ttk_styles()
 
@@ -120,6 +145,10 @@ class SourceselectorWidget(ttk.Labelframe):
         style.configure('Symbol1.TLabel', font=fontList['Symbol1'])
         style.configure('Button3.TButton', font=fontList['Heading3'])
         style.configure('Button4.TButton', font=fontList['Heading4'])
+        style.configure(
+            'Button3Blue.TButton',
+            font=fontList['Heading3'],
+            foreground='blue')
         style.configure('Normal.TButton', font=fontList['Normal'])
         style.configure('Symbol1.TButton', font=fontList['Symbol1'])
         style.configure('Symbol3.TButton', font=fontList['Symbol3'])
@@ -134,6 +163,7 @@ class SourceselectorWidget(ttk.Labelframe):
             font=fontList['Emphasis'])
         style.configure('Checkbox3.TCheckbutton', font=fontList['Heading3'])
         style.configure('Checkbox4.TCheckbutton', font=fontList['Heading4'])
+        style.configure('CheckboxNormal.TCheckbutton', font=fontList['Normal'])
         style.configure(
             'CheckboxEmphasis.TCheckbutton',
             font=fontList['Emphasis'])
@@ -160,6 +190,9 @@ class SourceselectorWidget(ttk.Labelframe):
         pass
 
     def on_path_changed(self, event=None):
+        pass
+
+    def reset_ubitx(self):
         pass
 
 
