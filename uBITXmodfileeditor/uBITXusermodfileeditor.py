@@ -35,7 +35,7 @@ root.title("uBITX Setting Customization")
 root.geometry('1024x800')            # width x height
 root.minsize(650,650)
 
-ttk.Style().theme_use('vista')
+ttk.Style().theme_use(appTheme)
 
 
 #   define and layout the 5 frames
@@ -136,5 +136,6 @@ aboutButton.grid(row=0, column=3, padx=15, pady=5)
 
 
 #clearValidationMessages()
+
 
 root.mainloop()
