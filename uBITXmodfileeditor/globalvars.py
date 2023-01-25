@@ -53,8 +53,9 @@ USERMODFILETEMPLACE="usermodfiletemplate.xml"       #Template file used to fill 
 
 
 USERMODFILE="Select Saved File"                       #Output of process - file that User can customize
-USERMODFILE="c:/Users/markj/Documents/backups/usermodfiles"                        #Output of process - file that User can customize
-HOMEDIRECTORY="c:/Users/markj/Documents/backups/usermodfiles"                                     #Initial directory for file selector
+
+#HOMEDIRECTORY="c:/Users/markj/Documents/backups/usermodfiles"                      #Initial directory for file selector
+HOMEDIRECTORY="~"                      #Initial directory for file selector
 
 # #   Dictionary to hold current values of usermodfile and whether dirty or not
 # userModFileValues = {}
