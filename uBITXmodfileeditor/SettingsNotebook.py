@@ -4,6 +4,7 @@ from settingsnotebookwidget import SettingsnotebookWidget
 from I2cscanner import I2Cscanner
 from ADCscanner import ADCscanner
 from SmeterWizard import SmeterWizard
+from globalvars import *
 
 class SettingsNotebook(SettingsnotebookWidget):
     #   temp to control what is processed
@@ -849,7 +850,8 @@ class SettingsNotebook(SettingsnotebookWidget):
                     tooltip.create(getattr(self, name + "_WIDGET"), toolTip)
                     # Check for special processing
             else:
-                print("Not ready=",  name)
+                if(DEBUGAPP):
+                    print("Not ready=",  name)
 
 
         # Post process some special cases
@@ -874,10 +876,12 @@ class SettingsNotebook(SettingsnotebookWidget):
             name = userSetting.get("NAME")
 
             if name in SettingsNotebook.readyToGo:
-                print("name=", name)
+                if(DEBUGAPP):
+                    print("name=", name)
                 userSetting.find("value").text=getattr(self, name).get()
             else:
-                print("Not ready=",  name)
+                if(DEBUGAPP):
+                    print("Not ready=",  name)
 
         return self.userModroot
 

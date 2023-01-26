@@ -61,6 +61,7 @@ HOMEDIRECTORY="~"                      #Initial directory for file selector
 # userModFileValues = {}
 # userModFileDirty = {}
 # userModFileToolTips = {}
+DEBUGAPP=False
 
 
 
