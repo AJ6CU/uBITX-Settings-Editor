@@ -1,4 +1,5 @@
 from time import sleep
+import tkinter as tk
 
 from smeterwizardwidget import SmeterwizardWidget
 from com_portManager import com_portManager
@@ -17,7 +18,29 @@ class SmeterWizard(SmeterwizardWidget):
 
 
     def __init__(self, parent):
+
+        #   Set up image files first
+        self.img_img_sample1125x80 = tk.PhotoImage(file=SAMPLE1ICON)
+        self.img_img_sample2125x80 = tk.PhotoImage(file=SAMPLE2ICON)
+        self.img_img_sample3125x80 = tk.PhotoImage(file=SAMPLE3ICON)
+        self.img_img_sample4125x80 = tk.PhotoImage(file=SAMPLE4ICON)
+        self.img_img_sample5125x80 = tk.PhotoImage(file=SAMPLE5ICON)
+        self.img_img_sample6125x80 = tk.PhotoImage(file=SAMPLE6ICON)
+        self.img_img_sample7125x80 = tk.PhotoImage(file=SAMPLE7ICON)
+        self.img_img_Custom125x80 = tk.PhotoImage(file=CUSTOMICON)
+
         super().__init__(parent)
+
+        #   now configure the buttons to display the thumbnails of the graphs
+
+        self.adcCurve1_Button.configure(image=self.img_img_sample1125x80)
+        self.adcCurve2_Button.configure(image=self.img_img_sample2125x80)
+        self.adcCurve3_Button.configure(image=self.img_img_sample3125x80)
+        self.adcCurve4_Button.configure(image=self.img_img_sample4125x80)
+        self.adcCurve5_Button.configure(image=self.img_img_sample5125x80)
+        self.adcCurve6_Button.configure(image=self.img_img_sample6125x80)
+        self.adcCurve7_Button.configure(image=self.img_img_sample7125x80)
+        self.adcCustom_Button.configure(image=self.img_img_Custom125x80)
 
         self.myparent = parent
 

@@ -2579,6 +2579,27 @@
                         </child>
                       </object>
                     </child>
+                    <child>
+                      <object class="ttk.Frame" id="frame8">
+                        <property name="height">200</property>
+                        <property name="width">200</property>
+                        <layout manager="pack">
+                          <property name="anchor">w</property>
+                          <property name="pady">15</property>
+                          <property name="side">top</property>
+                        </layout>
+                        <child>
+                          <object class="ttk.Label" id="label10">
+                            <property name="justify">right</property>
+                            <property name="style">Heading3.TLabel</property>
+                            <property name="text" translatable="yes">Stay tuned... More to come</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -3646,6 +3667,27 @@
                           <property name="padx">20</property>
                           <property name="side">top</property>
                         </layout>
+                        <child>
+                          <object class="ttk.Frame" id="frame20">
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="anchor">w</property>
+                              <property name="pady">15</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="label12">
+                                <property name="justify">right</property>
+                                <property name="style">Heading3.TLabel</property>
+                                <property name="text" translatable="yes">Stay tuned... More to come</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
@@ -3770,7 +3812,6 @@ Recovery</property>
                         <child>
                           <object class="ttk.Button" id="MASTER_CAL_COPY_BUTTON" named="True">
                             <property name="command" type="command" cbtype="simple">Reset_Master_Cal_To_Factory</property>
-                            <property name="image">./images/red-arrow-pointing-left59x36.png</property>
                             <property name="style">Normal.TButton</property>
                             <property name="width">10</property>
                             <layout manager="grid">
@@ -3783,9 +3824,8 @@ Recovery</property>
                           </object>
                         </child>
                         <child>
-                          <object class="ttk.Button" id="button2" named="True">
+                          <object class="ttk.Button" id="MASTER_CAL_COPY_FACTORY_BUTTON" named="True">
                             <property name="command" type="command" cbtype="simple">Copy_Master_Cal_Over_Factory_Value</property>
-                            <property name="image">./images/red-arrow-pointing-right59x36.png</property>
                             <property name="style">Normal.TButton</property>
                             <property name="width">10</property>
                             <layout manager="grid">
@@ -3839,7 +3879,6 @@ Recovery</property>
                         <child>
                           <object class="ttk.Button" id="USB_CAL_COPY_BUTTON" named="True">
                             <property name="command" type="command" cbtype="simple">Reset_SSB_BFO_To_Factory</property>
-                            <property name="image">./images/red-arrow-pointing-left59x36.png</property>
                             <property name="style">Normal.TButton</property>
                             <property name="width">10</property>
                             <layout manager="grid">
@@ -3851,9 +3890,8 @@ Recovery</property>
                           </object>
                         </child>
                         <child>
-                          <object class="ttk.Button" id="button5" named="True">
+                          <object class="ttk.Button" id="USB_CAL_COPY_FACTORY_BUTTON" named="True">
                             <property name="command" type="command" cbtype="simple">Copy_SSB_BFO_Over_Factory_Value</property>
-                            <property name="image">./images/red-arrow-pointing-right59x36.png</property>
                             <property name="style">Normal.TButton</property>
                             <property name="width">10</property>
                             <layout manager="grid">
@@ -4619,6 +4657,27 @@ Recovery</property>
                           <property name="padx">20</property>
                           <property name="side">top</property>
                         </layout>
+                        <child>
+                          <object class="ttk.Frame" id="frame28">
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="anchor">w</property>
+                              <property name="pady">15</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="label13">
+                                <property name="justify">right</property>
+                                <property name="style">Heading3.TLabel</property>
+                                <property name="text" translatable="yes">Stay tuned... More to come</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>

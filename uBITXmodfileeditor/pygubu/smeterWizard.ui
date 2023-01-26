@@ -320,7 +320,6 @@
                 <child>
                   <object class="ttk.Button" id="adcCurve1_Button" named="True">
                     <property name="command" type="command" cbtype="simple">apply_Sample1</property>
-                    <property name="image">images/sample1-125x80.png</property>
                     <layout manager="pack">
                       <property name="anchor">center</property>
                     </layout>
@@ -344,7 +343,6 @@
                 <child>
                   <object class="ttk.Button" id="adcCurve2_Button" named="True">
                     <property name="command" type="command" cbtype="simple">apply_Sample2</property>
-                    <property name="image">images/sample2-125x80.png</property>
                     <layout manager="pack">
                       <property name="anchor">center</property>
                       <property name="side">top</property>
@@ -369,7 +367,6 @@
                 <child>
                   <object class="ttk.Button" id="adcCurve3_Button" named="True">
                     <property name="command" type="command" cbtype="simple">apply_Sample3</property>
-                    <property name="image">images/sample3-125x80.png</property>
                     <layout manager="pack" />
                   </object>
                 </child>
@@ -391,7 +388,6 @@
                 <child>
                   <object class="ttk.Button" id="adcCurve4_Button" named="True">
                     <property name="command" type="command" cbtype="simple">apply_Sample4</property>
-                    <property name="image">images/sample4-125x80.png</property>
                     <layout manager="pack" />
                   </object>
                 </child>
@@ -412,7 +408,6 @@
                 <child>
                   <object class="ttk.Button" id="adcCurve5_Button" named="True">
                     <property name="command" type="command" cbtype="simple">apply_Sample5</property>
-                    <property name="image">images/sample5-125x80.png</property>
                     <layout manager="pack" />
                   </object>
                 </child>
@@ -434,7 +429,6 @@
                 <child>
                   <object class="ttk.Button" id="adcCurve6_Button" named="True">
                     <property name="command" type="command" cbtype="simple">apply_Sample6</property>
-                    <property name="image">images/sample6-125x80.png</property>
                     <layout manager="pack" />
                   </object>
                 </child>
@@ -456,7 +450,6 @@
                 <child>
                   <object class="ttk.Button" id="adcCurve7_Button" named="True">
                     <property name="command" type="command" cbtype="simple">apply_Sample7</property>
-                    <property name="image">images/sample7-125x80.png</property>
                     <layout manager="pack" />
                   </object>
                 </child>
@@ -478,7 +471,6 @@
                 <child>
                   <object class="ttk.Button" id="adcCustom_Button" named="True">
                     <property name="command" type="command" cbtype="simple">apply_Custom</property>
-                    <property name="image">images/Custom-125x80.png</property>
                     <property name="state">disabled</property>
                     <layout manager="pack" />
                   </object>

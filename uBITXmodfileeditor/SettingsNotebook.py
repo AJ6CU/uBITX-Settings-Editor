@@ -1,4 +1,5 @@
 import pygubu.widgets.simpletooltip as tooltip
+import tkinter as tk
 
 from settingsnotebookwidget import SettingsnotebookWidget
 from I2cscanner import I2Cscanner
@@ -7,6 +8,21 @@ from SmeterWizard import SmeterWizard
 from globalvars import *
 
 class SettingsNotebook(SettingsnotebookWidget):
+    def __init__(self, parent):
+        #   Set up image files first
+        self.img_img_redarrowpointingleft59x36 = tk.PhotoImage(file=LEFTCOPYARROW)
+        self.img_img_redarrowpointingright59x36 = tk.PhotoImage(file=RIGHTCOPYARROW)
+
+        super().__init__(parent)
+
+        #   now configure the buttons to display the arrows.
+        self.MASTER_CAL_COPY_BUTTON.configure(image=self.img_img_redarrowpointingleft59x36)
+        self.MASTER_CAL_COPY_FACTORY_BUTTON.configure(image=self.img_img_redarrowpointingright59x36)
+
+        self.USB_CAL_COPY_BUTTON.configure(image=self.img_img_redarrowpointingleft59x36)
+        self.USB_CAL_COPY_FACTORY_BUTTON.configure(image=self.img_img_redarrowpointingright59x36)
+
+
     #   temp to control what is processed
     readyToGo = ['VERSION_ADDRESS', 'FACTORY_VALUES_MASTER_CAL', 'FACTORY_VALUES_USB_CAL',
              'MASTER_CAL', 'USB_CAL', 'CW_CAL', 'VFO_A', 'VFO_A_MODE', 'VFO_B', 'VFO_B_MODE',

@@ -1,7 +1,7 @@
 <data>
 	<FORMAT NAME="Heading1">
 		<TEXT>
-			uBITX BACKUP HELP
+			uBITX Settings Editor Help
 		</TEXT>
 	</FORMAT>
 	<FORMAT NAME="Heading3">
@@ -21,57 +21,18 @@
 	</FORMAT>
 	<FORMAT NAME="Normal">
 		<TEXT>
-            This backup only works with KD8CEC derived firmware. The original KD8CEC is available at: https://github.com/phdlee/ubitx That version only supports Arduino Nano based version of the uBITX. For uBITX's which have had their Raduinos replaced with designs derived from AJ6CU (which includes faster processors and an external larger EEPROM), that source code (as well as the source code to this application) resides at: https://github.com/aj6cu .
+            This appllication is designed to allow you to edit the various settings stored in the uBITX EEPROM. This application only works with KD8CEC derived firmware. The original KD8CEC is available at: https://github.com/phdlee/ubitx That version only supports Arduino Nano based version of the uBITX. For uBITX's which have had their Raduinos replaced with designs derived from AJ6CU (which includes faster processors and an external larger EEPROM), that source code (as well as the source code to this application) resides at: https://github.com/aj6cu .
 		</TEXT>
 	</FORMAT>
-		<FORMAT NAME="Heading3">
+
+	<FORMAT NAME="Heading3">
 		<TEXT>
-			Backing Up Your uBITX
-		</TEXT>
-	</FORMAT>
-	<FORMAT NAME="Normal">
-		<TEXT>
-            1. Turn on your uBITX. Wait for it to fully start and display a frequency on the VFO.
+			Compatibiity
 		</TEXT>
 	</FORMAT>
 	<FORMAT NAME="Normal">
 		<TEXT>
-            2. Plug the USB cable from your uBITX to your computer.
-		</TEXT>
-	</FORMAT>
-	<FORMAT NAME="Normal">
-		<TEXT>
-            3.	Start this program. If you plugged the USB cable in after starting this program, hit the Refresh Port List button to detect the uBITX.
-		</TEXT>
-	</FORMAT>
-	<FORMAT NAME="Normal">
-		<TEXT>
-            4.	From the "Select Serial Port" drop down, select the COM Port that is used by your uBITX.
-		</TEXT>
-	</FORMAT>
-	<FORMAT NAME="Normal">
-		<TEXT>
-            5.	Click the "Save Backup To" button and select a convenient place to save the backup file. You do not need to add the ".btx" extension.
-		</TEXT>
-	</FORMAT>
-	<FORMAT NAME="Normal">
-		<TEXT>
-            6.	Click the "RBACKUP" button to start the backup. The processing of the backup is recorded in the Backup Log in the center of the page.
-		</TEXT>
-	</FORMAT>
-	<FORMAT NAME="Normal">
-		<TEXT>
-            7.	If an error occurs, for example you selected the wrong COM Port, correct it and click Run Backup again. You can save the record of the backup (which includes the location of the backup file) by clicking the "Copy Log To Clipboard" and then pasting it into an email or word processing program of your choice. Once you receive the "Backup Successfuly Completed" message, click the Quit key to exit. 
-		</TEXT>
-	</FORMAT>
-		<FORMAT NAME="Heading3">
-		<TEXT>
-			Compatibility
-		</TEXT>
-	</FORMAT>
-	<FORMAT NAME="Normal">
-		<TEXT>
-            The backup file created by this program is compatible with the original uBITX Memory Manager that was written by KD8CEC. 
+            The save file created by this program is compatible with the original uBITX Memory Manager that was written by KD8CEC. 
 		</TEXT>
 	</FORMAT>
 </data>

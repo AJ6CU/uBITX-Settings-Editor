@@ -1,3 +1,7 @@
+import os
+import sys
+
+
 #ENUMS#####################################################
 INTERNAL_FIRMWARE_VERSION = ["NA", "V1.061", "V1.07", "V1.08", "V1.09", "V2.0"]
 MODE_SELECT = ["DEFAULT","xxx","LSB","USB","CWL","CWU"]
@@ -47,9 +51,39 @@ BAUD = 38400
 
 #application required files################################################
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
 
-EEPROMMEMORYMAP="eeprommemorymap.xml"               #Maps EEPROM locations to settings
-USERMODFILETEMPLACE="usermodfiletemplate.xml"       #Template file used to fill in with data from EEPROM
+    return os.path.join(base_path, relative_path)
+
+# to use pyinstaller we need to get the resource not the path
+# resource_path is in globalvars
+#
+
+
+EEPROMMEMORYMAP=resource_path("eeprommemorymap.xml")               #Maps EEPROM locations to settings
+USERMODFILETEMPLACE=resource_path("usermodfiletemplate.xml")       #Template file used to fill in with data from EEPROM
+
+HELPFILE = resource_path("help.xml")
+ABOUTFILE = resource_path("about.xml")
+
+LEFTCOPYARROW = resource_path("img_red-arrow-pointing-left59x36.png")
+RIGHTCOPYARROW = resource_path("img_red-arrow-pointing-right59x36.png")
+
+SAMPLE1ICON = resource_path("img_sample1-125x80.png")
+SAMPLE2ICON = resource_path("img_sample2-125x80.png")
+SAMPLE3ICON = resource_path("img_sample3-125x80.png")
+SAMPLE4ICON = resource_path("img_sample4-125x80.png")
+SAMPLE5ICON = resource_path("img_sample5-125x80.png")
+SAMPLE6ICON = resource_path("img_sample6-125x80.png")
+SAMPLE7ICON = resource_path("img_sample7-125x80.png")
+CUSTOMICON = resource_path("img_Custom-125x80.png")
+
 
 
 USERMODFILE="Select Saved File"                       #Output of process - file that User can customize

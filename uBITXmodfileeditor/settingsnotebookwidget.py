@@ -1578,6 +1578,15 @@ class SettingsnotebookWidget(ttk.Frame):
         self.CW_Autokeyer_Callsigns_Frame.pack(
             anchor="w", padx="50 0", side="top")
         self.CW_Autokeyer_Callsign_Frame.pack(anchor="w", padx=20, side="top")
+        self.frame8 = ttk.Frame(self.Autokeyer_Frame)
+        self.frame8.configure(height=200, width=200)
+        self.label10 = ttk.Label(self.frame8)
+        self.label10.configure(
+            justify="right",
+            style="Heading3.TLabel",
+            text='Stay tuned... More to come')
+        self.label10.pack(side="top")
+        self.frame8.pack(anchor="w", pady=15, side="top")
         self.Autokeyer_Frame.pack(
             anchor="center",
             expand="true",
@@ -2149,6 +2158,15 @@ class SettingsnotebookWidget(ttk.Frame):
             side="top")
         self.frame18 = ttk.Frame(self.HW_ADJ_Frame)
         self.frame18.configure(height=200, width=200)
+        self.frame20 = ttk.Frame(self.frame18)
+        self.frame20.configure(height=200, width=200)
+        self.label12 = ttk.Label(self.frame20)
+        self.label12.configure(
+            justify="right",
+            style="Heading3.TLabel",
+            text='Stay tuned... More to come')
+        self.label12.pack(side="top")
+        self.frame20.pack(anchor="w", pady=15, side="top")
         self.frame18.pack(anchor="w", padx=20, side="top")
         self.HW_ADJ_Frame.pack(
             anchor="w",
@@ -2210,25 +2228,19 @@ class SettingsnotebookWidget(ttk.Frame):
                 self.validate_MASTER_CAL), "%P", "%V")
         self.MASTER_CAL_WIDGET.configure(validatecommand=_validatecmd)
         self.MASTER_CAL_COPY_BUTTON = ttk.Button(self.Radio_Calibration_Frame)
-        self.img_redarrowpointingleft59x36 = tk.PhotoImage(
-            file="./images/red-arrow-pointing-left59x36.png")
-        self.MASTER_CAL_COPY_BUTTON.configure(
-            image=self.img_redarrowpointingleft59x36,
-            style="Normal.TButton",
-            width=10)
+        self.MASTER_CAL_COPY_BUTTON.configure(style="Normal.TButton", width=10)
         self.MASTER_CAL_COPY_BUTTON.grid(
             column=4, padx="0 5", pady=2, row=4, sticky="w")
         self.MASTER_CAL_COPY_BUTTON.configure(
             command=self.Reset_Master_Cal_To_Factory)
-        self.button2 = ttk.Button(self.Radio_Calibration_Frame)
-        self.img_redarrowpointingright59x36 = tk.PhotoImage(
-            file="./images/red-arrow-pointing-right59x36.png")
-        self.button2.configure(
-            image=self.img_redarrowpointingright59x36,
-            style="Normal.TButton",
-            width=10)
-        self.button2.grid(column=5, padx="0 5", pady=2, row=4, sticky="w")
-        self.button2.configure(command=self.Copy_Master_Cal_Over_Factory_Value)
+        self.MASTER_CAL_COPY_FACTORY_BUTTON = ttk.Button(
+            self.Radio_Calibration_Frame)
+        self.MASTER_CAL_COPY_FACTORY_BUTTON.configure(
+            style="Normal.TButton", width=10)
+        self.MASTER_CAL_COPY_FACTORY_BUTTON.grid(
+            column=5, padx="0 5", pady=2, row=4, sticky="w")
+        self.MASTER_CAL_COPY_FACTORY_BUTTON.configure(
+            command=self.Copy_Master_Cal_Over_Factory_Value)
         self.FACTORY_VALUES_MASTER_CAL_LABEL = ttk.Label(
             self.Radio_Calibration_Frame)
         self.FACTORY_VALUES_MASTER_CAL = tk.StringVar()
@@ -2253,20 +2265,18 @@ class SettingsnotebookWidget(ttk.Frame):
                 self.validate_USB_CAL), "%P", "%V")
         self.USB_CAL_WIDGET.configure(validatecommand=_validatecmd)
         self.USB_CAL_COPY_BUTTON = ttk.Button(self.Radio_Calibration_Frame)
-        self.USB_CAL_COPY_BUTTON.configure(
-            image=self.img_redarrowpointingleft59x36,
-            style="Normal.TButton",
-            width=10)
+        self.USB_CAL_COPY_BUTTON.configure(style="Normal.TButton", width=10)
         self.USB_CAL_COPY_BUTTON.grid(column=4, pady=2, row=5, sticky="w")
         self.USB_CAL_COPY_BUTTON.configure(
             command=self.Reset_SSB_BFO_To_Factory)
-        self.button5 = ttk.Button(self.Radio_Calibration_Frame)
-        self.button5.configure(
-            image=self.img_redarrowpointingright59x36,
-            style="Normal.TButton",
-            width=10)
-        self.button5.grid(column=5, padx="0 5", pady=2, row=5, sticky="w")
-        self.button5.configure(command=self.Copy_SSB_BFO_Over_Factory_Value)
+        self.USB_CAL_COPY_FACTORY_BUTTON = ttk.Button(
+            self.Radio_Calibration_Frame)
+        self.USB_CAL_COPY_FACTORY_BUTTON.configure(
+            style="Normal.TButton", width=10)
+        self.USB_CAL_COPY_FACTORY_BUTTON.grid(
+            column=5, padx="0 5", pady=2, row=5, sticky="w")
+        self.USB_CAL_COPY_FACTORY_BUTTON.configure(
+            command=self.Copy_SSB_BFO_Over_Factory_Value)
         self.FACTORY_VALUES_USB_CAL_LABEL = ttk.Label(
             self.Radio_Calibration_Frame)
         self.FACTORY_VALUES_USB_CAL = tk.StringVar()
@@ -2730,6 +2740,15 @@ class SettingsnotebookWidget(ttk.Frame):
         self.WSPR_Frame.pack(expand="true", fill="both", side="top")
         self.frame23 = ttk.Frame(self.frame22)
         self.frame23.configure(height=200, width=200)
+        self.frame28 = ttk.Frame(self.frame23)
+        self.frame28.configure(height=200, width=200)
+        self.label13 = ttk.Label(self.frame28)
+        self.label13.configure(
+            justify="right",
+            style="Heading3.TLabel",
+            text='Stay tuned... More to come')
+        self.label13.pack(side="top")
+        self.frame28.pack(anchor="w", pady=15, side="top")
         self.frame23.pack(expand="true", fill="both", padx=20, side="top")
         self.frame22.pack(anchor="w", padx=5, pady=5, side="top")
         self.WSPR_SF.pack(side="top")
@@ -3326,6 +3345,10 @@ class SettingsnotebookWidget(ttk.Frame):
         style.configure('Symbol1.TLabel', font=fontList['Symbol1'])
         style.configure('Button3.TButton', font=fontList['Heading3'])
         style.configure('Button4.TButton', font=fontList['Heading4'])
+        style.configure(
+            'Button3Blue.TButton',
+            font=fontList['Heading3'],
+            foreground='blue')
         style.configure('Normal.TButton', font=fontList['Normal'])
         style.configure('Symbol1.TButton', font=fontList['Symbol1'])
         style.configure('Symbol3.TButton', font=fontList['Symbol3'])

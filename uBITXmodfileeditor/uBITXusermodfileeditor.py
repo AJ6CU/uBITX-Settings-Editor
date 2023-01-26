@@ -9,6 +9,8 @@ from SettingsNotebook import SettingsNotebook
 from inputProcessor import InputProcessor
 from outputProcessor import  OutputProcessor
 
+from globalvars import *
+
 
 import pygubu.widgets.simpletooltip as tooltip
 
@@ -71,7 +73,7 @@ commandFrame.grid(row=6, column=0, columnspan=2, sticky='ew')
 outputProcessorFrame.grid(row=5, column=0, columnspan=2, pady=(10, 0))
 
 # Define and layout the contents of titleFrame
-titleBar = ttk.Label(titleFrame, text="uBITX Setting Customization Editor - V2.0", style='Heading1.TLabel')
+titleBar = ttk.Label(titleFrame, text="uBITX Settings Editor - V2.0", style='Heading1.TLabel')
 titleBar.config(anchor=CENTER)
 titleBar.pack()
 
@@ -121,8 +123,8 @@ copyToClipboardButton.grid(row=0, column=0, pady=5, sticky='se')
 #   Now create and layout the final frame with the commands
 
 quitButton = ttk.Button(commandFrame, text="Quit", command=root.destroy,  style='Button4.TButton')
-helpButton = ttk.Button(commandFrame, text="Help", command=lambda: helpDialog("Help", "help.xml", status))
-aboutButton = ttk.Button(commandFrame, text="About", command=lambda: helpDialog("About","about.xml", status))
+helpButton = ttk.Button(commandFrame, text="Help", command=lambda: helpDialog("Help", HELPFILE, status))
+aboutButton = ttk.Button(commandFrame, text="About", command=lambda: helpDialog("About", ABOUTFILE, status))
 tooltip.create(aboutButton,"A very long tool tip. \nhow does it work? \nhow does it work?")
 
 #   Adjust the weight of how free space is allocated to the only column in the frame
