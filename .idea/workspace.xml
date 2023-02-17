@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e85a717e-9a6b-4207-a5e5-020bc857f603" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uBITXmodfileeditor/macosBITXusermodfileeditor.spec" beforeDir="false" afterPath="$PROJECT_DIR$/uBITXmodfileeditor/macosBITXusermodfileeditor.spec.save" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uBITXmodfileeditor/settingsnotebookwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/uBITXmodfileeditor/settingsnotebookwidget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uBITXmodfileeditor/uBITXusermodfileeditor_win.spec" beforeDir="false" afterPath="$PROJECT_DIR$/uBITXmodfileeditor/uBITXusermodfileeditor_win.spec" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

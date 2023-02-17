@@ -8,24 +8,89 @@
 	-->
     <!--
 	***************************************************************************************************** 
+	Firmware identification field - Read only
+	***************************************************************************************************** 
+-->
+    <SETTING NAME="FIRMWAR_ID_ADDR1">
+        <label>FIRMWAR_ID_ADDR1</label>
+        <value>0x59</value>
+        <!--0x59-->
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="FIRMWAR_ID_ADDR2">
+        <label>FIRMWAR_ID_ADDR2</label>
+        <value>0x58</value>
+        <!--0x58-->
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="FIRMWAR_ID_ADDR3">
+        <label>FIRMWAR_ID_ADDR3</label>
+        <value>0x68</value>
+        <!--0x68-->
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="VERSION_ADDRESS">
+        <label>VERSION_ADDRESS</label>
+        <value>V2.0</value>
+        <!--internal numbering for version. 1=V1.061, 2=1.07,
+														3=1.08, 4=1.09, 5=2.0 -->
+        <tooltip></tooltip>
+    </SETTING>
+    <!--
+	***************************************************************************************************** 
+	Settings saved for Factory Reset - Read only; used for if factory reset needed
+	***************************************************************************************************** 
+-->
+    <SETTING NAME="FACTORY_VALUES_MASTER_CAL">
+        <label>Mster Calibration (Factory)</label>
+        <value>-1</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="FACTORY_VALUES_USB_CAL">
+        <label>BFO (USB) Calibration (Factory)</label>
+        <value>4294967295</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="FACTORY_VALUES_VFO_A">
+        <label>VFO A Saved Frequency (Factory)</label>
+        <value>4294967295</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="FACTORY_VALUES_VFO_B">
+        <label>VFO B Saved Frequency (Factory)</label>
+        <value>4294967295</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="FACTORY_VALUES_CW_SIDETONE">
+        <label>CW Sidetone (Factory)</label>
+        <value>4294967295</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="FACTORY_VALUES_CW_SPEED">
+        <value>5</value>
+        <label>CW Speed (Factory)</label>
+        <tooltip></tooltip>
+    </SETTING>
+    <!--
+	***************************************************************************************************** 
 	RADIO CALIBRATION SETTINGS 
 	***************************************************************************************************** 
 -->
     <SETTING NAME="MASTER_CAL">
         <label>Master Calibration</label>
-        <value>14665</value>
+        <value>15105</value>
         <!--every radio is unique but often around 161875-->
         <tooltip>Adjusts radio frequency to correct for hardware differences</tooltip>
     </SETTING>
     <SETTING NAME="USB_CAL">
         <label>BFO (USB) Calibration</label>
         <!--previously called USB Calibration. Often around 11996450-->
-        <value>11997345</value>
+        <value>11056937</value>
         <tooltip>Adjusts BFO for best SSB reception. See HF Signals V6 Calibration video</tooltip>
     </SETTING>
     <SETTING NAME="CW_CAL">
         <label>CW BFO Calibration</label>
-        <value>11997315</value>
+        <value>11056870</value>
         <!--CW calibration factor, typically within a few khz of USB callibration-->
         <tooltip>Adjusts BFO for best CW reception. See HF Signals V6 Calibration video</tooltip>
     </SETTING>
@@ -54,26 +119,26 @@
 	*****************************************************************************************************	
 -->
     <SETTING NAME="VFO_A">
-        <label>VFO A Bootup Freq</label>
-        <value>7290000</value>
+        <label>VFO A Last Used Freq</label>
+        <value>14.040.400</value>
         <!--The last frequency used on VFO A - Read Only-->
         <tooltip></tooltip>
     </SETTING>
     <SETTING NAME="VFO_A_MODE">
-        <label>VFO A Mode Upon Boot</label>
-        <value>LSB</value>
+        <label>VFO A Mode Last Used Freq</label>
+        <value>CWU</value>
         <!--Last Mode for VFO A one of: DEFAULT, LSB, USB, CWL, CWU-->
         <tooltip></tooltip>
     </SETTING>
     <SETTING NAME="VFO_B">
-        <label>VFO B Bootup Freq</label>
-        <value>7043760</value>
+        <label>VFO B Last Used Freq</label>
+        <value>14.032.000</value>
         <!--The last frequency used on VFO B - Read Only-->
         <tooltip></tooltip>
     </SETTING>
     <SETTING NAME="VFO_B_MODE">
-        <label>VFO B Mode Upon Boot</label>
-        <value>USB</value>
+        <label>VFO B Mode Last Used Freq</label>
+        <value>CWU</value>
         <!--Sast Mode for VFO A one of: DEFAULT, LSB, USB, CWL, CWU-->
         <tooltip></tooltip>
     </SETTING>
@@ -84,37 +149,37 @@
 -->
     <SETTING NAME="TUNING_STEP_INDEX">
         <label>Default Step#</label>
-        <value>5</value>
+        <value>3</value>
         <!--Default tuning step on boot. 1-5 -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP1">
         <label>Step #1</label>
-        <value>0</value>
+        <value>1</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP2">
         <label>Step #2</label>
-        <value>0</value>
+        <value>10</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP3">
         <label>Step #3</label>
-        <value>0</value>
+        <value>100</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP4">
         <label>Step #4</label>
-        <value>0</value>
+        <value>1000</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP5">
         <label>Step #5</label>
-        <value>0</value>
+        <value>10000</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -186,24 +251,68 @@
     <SETTING NAME="QSO_CALLSIGN">
         <label>Alt Call sign</label>
         <!--Substituted in message for '<' Max 18 characters)-->
-        <value>AJ6CU1</value>
+        <value></value>
         <tooltip>to be added</tooltip>
     </SETTING>
-    <SETTING NAME="CW_MEMORY_KEYER_MSGS">
-        <!--Total characters in all memory keyer message <= 200-->
+    <SETTING NAME="CW_AUTO_COUNT">
         <label>Total Messages:</label>
-        <value>0</value>
+        <value>5</value>
         <tooltip>to be added</tooltip>
-        <message></message>
-        <message></message>
-        <message></message>
-        <message></message>
-        <message></message>
-        <message></message>
-        <message></message>
-        <message></message>
-        <message></message>
-        <message></message>
+    </SETTING>
+    <SETTING NAME="CW_AUTO_DATA">
+        <label>Total Messages:</label>
+        <value></value>
+        <tooltip>to be added</tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG01">
+        <label>Message 1</label>
+        <value>Message 1</value>
+        <tooltip>to be added</tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG02">
+        <label>Message 2</label>
+        <value>Message 2</value>
+        <tooltip>to be added</tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG03">
+        <label>Message 3</label>
+        <value>Message 3</value>
+        <tooltip>to be added</tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG04">
+        <label>Message 4</label>
+        <value>Message 4</value>
+        <tooltip>to be added</tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG05">
+        <label>Message 5</label>
+        <value>Message 5</value>
+        <tooltip>to be added</tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG06">
+        <label>Message 6</label>
+        <value>Message 6</value>
+        <tooltip>to be added</tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG07">
+        <label>Message 7</label>
+        <value>Message 7</value>
+        <tooltip>to be added</tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG08">
+        <label>Message 8</label>
+        <value>Message 8</value>
+        <tooltip>to be added</tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG09">
+        <label>Message 9</label>
+        <value>Message 9</value>
+        <tooltip>to be added</tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG10">
+        <label>Message 10</label>
+        <value>Message 10</value>
+        <tooltip>to be added</tooltip>
     </SETTING>
     <!--	
 	*****************************************************************************************************
@@ -289,7 +398,7 @@
 -->
     <SETTING NAME="CHANNEL_FREQ1">
         <label>CH.01</label>
-        <value>3919000</value>
+        <value>3.919.000</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
         <tooltip>Enter frequency (in Hz) for this channel</tooltip>
     </SETTING>
@@ -361,7 +470,7 @@
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ4">
         <label>CH.04</label>
-        <value>7255000</value>
+        <value>7.255.000</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
         <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
@@ -385,7 +494,7 @@
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ5">
         <label>CH.05</label>
-        <value>14300000</value>
+        <value>14.300.000</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
         <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
@@ -409,7 +518,7 @@
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ6">
         <label>CH.06</label>
-        <value>5330500</value>
+        <value>5.330.500</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
         <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
@@ -433,7 +542,7 @@
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ7">
         <label>CH.07</label>
-        <value>5346500</value>
+        <value>5.346.500</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
         <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
@@ -457,7 +566,7 @@
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ8">
         <label>CH.08</label>
-        <value>5357000</value>
+        <value>5.357.000</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
         <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
@@ -481,7 +590,7 @@
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ9">
         <label>CH.09</label>
-        <value>5371500</value>
+        <value>5.371.500</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
         <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
@@ -505,7 +614,7 @@
     </SETTING>
     <SETTING NAME="CHANNEL_FREQ10">
         <label>CH.10</label>
-        <value>5403500</value>
+        <value>5.403.500</value>
         <!--In Hz. eg.g 14032000 is entered 14032000 -->
         <tooltip>Enter frequency (in Hz, e.g., 14032000) for this channel</tooltip>
     </SETTING>
@@ -676,7 +785,7 @@
     <SETTING NAME="TUNING_RESTICTIONS">
         <!--Not clear this works at the moment....	-->
         <label>Tune Control</label>
-        <value>NONE</value>
+        <value>BAND</value>
         <!--Choice of NONE or BAND. NONE means no restrictions. BAND means only    
 																use move BAND+,BAND- to change to a different frequency area (no dial) -->
         <tooltip>to be added</tooltip>
@@ -689,128 +798,235 @@
     </SETTING>
     <SETTING NAME="HAM_BAND_COUNT">
         <label>Countof HAM Bands:</label>
-        <value>0</value>
+        <value>10</value>
         <tooltip>Enter the total number of Ham Bands defined (no more than 10)</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE1_START">
         <label>Band 1 Start</label>
-        <value>0</value>
+        <value>1.810</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE1_END">
-        <value>0</value>
+        <value>2.000</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 1 End</label>
         <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE2_START">
         <label>Band 2 Start</label>
-        <value>0</value>
+        <value>3.500</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE2_END">
-        <value>0</value>
+        <value>4.000</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 2 End</label>
         <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE3_START">
         <label>Band 3 Start</label>
-        <value>0</value>
+        <value>5.330</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE3_END">
-        <value>0</value>
+        <value>5.404</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 3 End</label>
         <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE4_START">
         <label>Band 4 Start</label>
-        <value>0</value>
+        <value>7.000</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE4_END">
-        <value>0</value>
+        <value>7.300</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 4 End</label>
         <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE5_START">
         <label>Band 5 Start</label>
-        <value>0</value>
+        <value>10.100</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE5_END">
-        <value>0</value>
+        <value>10.150</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 5 End</label>
         <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE6_START">
         <label>Band 6 Start</label>
-        <value>0</value>
+        <value>14.000</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE6_END">
-        <value>0</value>
+        <value>14.350</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 6 End</label>
         <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE7_START">
         <label>Band 7 Start</label>
-        <value>0</value>
+        <value>18.068</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE7_END">
-        <value>0</value>
+        <value>18.168</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 7 End</label>
         <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE8_START">
         <label>Band 8 Start</label>
-        <value>0</value>
+        <value>21.000</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE8_END">
-        <value>0</value>
+        <value>21.450</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 8 End</label>
         <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE9_START">
         <label>Band 9 Start</label>
-        <value>0</value>
+        <value>24.890</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE9_END">
-        <value>0</value>
+        <value>24.990</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 9 End</label>
         <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE10_START">
         <label>Band 10 Start</label>
-        <value>0</value>
+        <value>28.000</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <tooltip>Enter the lowest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_RANGE10_END">
-        <value>0</value>
+        <value>29.700</value>
         <!--In khz. e.g., 14000000 is entered 14000  -->
         <label>Band 10 End</label>
         <tooltip>Enter the highest frquency (in KHz e.g., 14.000.000 would be 14000) for this band</tooltip>
+    </SETTING>
+    <!--
+	*****************************************************************************************************
+	Last Used Frequency for Band
+	KD8CEC provides tracks the last used frequency and mode on each band. This allows you to band up/band down
+	and get back to a familiar frequency.  This is Read Only Information
+	*****************************************************************************************************
+-->
+    <SETTING NAME="HAM_BAND_FREQS1">
+        <label>Band 1 Last Used Frequency</label>
+        <value>1.872.000</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS1_MODE">
+        <label>Band 1 Last Used Mode</label>
+        <value>USB</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS2">
+        <label>Band 2 Last Used Frequency</label>
+        <value>3.532.000</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS2_MODE">
+        <label>Band 2 Last Used Mode</label>
+        <value>CWU</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS3">
+        <label>Band 3 Last Used Frequency</label>
+        <value>5.356.000</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS3_MODE">
+        <label>Band 3 Last Used Mode</label>
+        <value>USB</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS4">
+        <label>Band 4 Last Used Frequency</label>
+        <value>7.033.700</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS4_MODE">
+        <label>Band 4 Last Used Mode</label>
+        <value>CWL</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS5">
+        <label>Band 5 Last Used Frequency</label>
+        <value>10.100.000</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS5_MODE">
+        <label>Band 5 Last Used Mode</label>
+        <value>USB</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS6">
+        <label>Band 6 Last Used Frequency</label>
+        <value>14.034.000</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS6_MODE">
+        <label>Band 6 Last Used Mode</label>
+        <value>CWU</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS7">
+        <label>Band 7 Last Used Frequency</label>
+        <value>18.124.200</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS7_MODE">
+        <label>Band 7 Last Used Mode</label>
+        <value>CWU</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS8">
+        <label>Band 8 Last Used Frequency</label>
+        <value>21.027.900</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS8_MODE">
+        <label>Band 8 Last Used Mode</label>
+        <value>CWU</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS9">
+        <label>Band 9 Last Used Frequency</label>
+        <value>24.932.200</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS9_MODE">
+        <label>Band 9 Last Used Mode</label>
+        <value>CWU</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS10">
+        <label>Band 10 Last Used Frequency</label>
+        <value>28.024.400</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="HAM_BAND_FREQS10_MODE">
+        <label>Band 10 Last Used Mode</label>
+        <value>CWU</value>
+        <tooltip></tooltip>
     </SETTING>
     <!--
 	*****************************************************************************************************
@@ -857,7 +1073,7 @@
 -->
     <SETTING NAME="WSPR_BAND1_TXFREQ">
         <label>TX frequency for Band 1</label>
-        <value>7040117</value>
+        <value>7.040.118</value>
         <!--entered in HZ-->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -869,7 +1085,7 @@
     </SETTING>
     <SETTING NAME="WSPR_BAND1_REG1">
         <label>Contents of WSPR Reg 1</label>
-        <value>0F,BD,FA,43,7A</value>
+        <value>0F,BD,F4,B3,7A</value>
         <!--5 hex bytes separated by a comma-->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -881,7 +1097,7 @@
     </SETTING>
     <SETTING NAME="WSPR_BAND2_TXFREQ">
         <label>TX frequency for Band 2</label>
-        <value>14097117</value>
+        <value>14.097.118</value>
         <!--entered in HZ-->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -893,7 +1109,7 @@
     </SETTING>
     <SETTING NAME="WSPR_BAND2_REG1">
         <label>Contents of WSPR Reg 1</label>
-        <value>0F,7A,FE,93,74</value>
+        <value>0F,7A,F9,18,74</value>
         <!--5 hex bytes separated by a comma-->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -905,7 +1121,7 @@
     </SETTING>
     <SETTING NAME="WSPR_BAND3_TXFREQ">
         <label>TX frequency for Band 3</label>
-        <value>21096117</value>
+        <value>21.096.118</value>
         <!--entered in HZ-->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -917,7 +1133,7 @@
     </SETTING>
     <SETTING NAME="WSPR_BAND3_REG1">
         <label>Contents of WSPR Reg 1</label>
-        <value>0F,B8,F6,E2,70</value>
+        <value>0F,B8,F1,52,F0</value>
         <!--5 hex bytes separated by a comma-->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -929,55 +1145,55 @@
     </SETTING>
     <SETTING NAME="WSPR_COUNT">
         <label>WSPR Messages to Use</label>
-        <value>0</value>
+        <value>3</value>
         <!--value 0-4. e.g., 3 would mean to use first 3 messages and ignore the 4th-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE1_NAME">
         <label>Name</label>
-        <value>     </value>
+        <value>msg1  </value>
         <!--5 Character name for this message-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE1">
         <label>Encoded MSG1:</label>
-        <value>00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
+        <value>01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
         <!--Generate using uBITX Manager for now -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE2_NAME">
         <label>Name</label>
-        <value>     </value>
+        <value>msg2</value>
         <!--5 Character name for this message-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE2">
         <label>Encoded MSG2:</label>
-        <value>00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
+        <value>02,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
         <!--Generate using uBITX Manager for now -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE3_NAME">
         <label>Name</label>
-        <value>     </value>
+        <value>msg3   </value>
         <!--5 Character name for this message-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE3">
         <label>Encoded MSG3:</label>
-        <value>00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
+        <value>03,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
         <!--Generate using uBITX Manager for now -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE4_NAME">
         <label>Name</label>
-        <value>     </value>
+        <value>msg4  </value>
         <!--5 Character name for this message-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE4">
         <label>Encoded MSG4:</label>
-        <value>00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
+        <value>04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
         <!--Generate using uBITX Manager for now -->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -1049,7 +1265,7 @@
     <!--OEM display is parallel. To save chip pins some changed to I2C -->
     <SETTING NAME="I2C_LCD_MASTER">
         <label>Master LCD I2C Address</label>
-        <value>0x0</value>
+        <value>0x23</value>
         <!--Default 0x27 -->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -1061,7 +1277,7 @@
     <SETTING NAME="I2C_ADDR_SI5351">
         <!--Best to not mess with this one unless you really know what you are doing-->
         <label>Si5351 I2C adderss chip</label>
-        <value>0xff</value>
+        <value>0x60</value>
         <!-- 0 or 0x60 unless hardware modified -->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -1278,7 +1494,7 @@ GENERAL UX
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER1_ENDFREQ">
         <label>Ending frequency of LPF1</label>
-        <value></value>
+        <value>255</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
         <tooltip>to be added</tooltip>
     </SETTING>

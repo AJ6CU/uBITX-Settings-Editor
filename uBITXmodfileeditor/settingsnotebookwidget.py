@@ -257,6 +257,7 @@ class SettingsnotebookWidget(ttk.Frame):
             state="readonly",
             style="ComboBox4.TCombobox",
             textvariable=self.TUNING_STEP_INDEX_VALUE,
+            validate="all",
             values='10 20 50 100 1000',
             width=5)
         self.TUNING_STEP_INDEX_VALUE_WIDGET.grid(column=1, row=0)
@@ -1520,9 +1521,9 @@ class SettingsnotebookWidget(ttk.Frame):
             justify="center",
             style="Heading2.TLabel",
             text='CW Autokeyer Settings')
-        self.label3.pack(anchor="w", padx=5, pady="15 25")
+        self.label3.pack(anchor="w", padx=5)
         self.CW_Autokeyer_Titlle_Frame.pack(
-            anchor="center", fill="x", side="top")
+            anchor="center", fill="x", pady="15 25", side="top")
         self.CW_Autokeyer_Callsign_Frame = ttk.Frame(self.Autokeyer_Frame)
         self.CW_Autokeyer_Callsign_Frame.configure(height=200, width=200)
         self.CW_Autokeyer_Callsigns_Label_Frame = ttk.Frame(
@@ -1578,15 +1579,175 @@ class SettingsnotebookWidget(ttk.Frame):
         self.CW_Autokeyer_Callsigns_Frame.pack(
             anchor="w", padx="50 0", side="top")
         self.CW_Autokeyer_Callsign_Frame.pack(anchor="w", padx=20, side="top")
-        self.frame8 = ttk.Frame(self.Autokeyer_Frame)
-        self.frame8.configure(height=200, width=200)
-        self.label10 = ttk.Label(self.frame8)
-        self.label10.configure(
-            justify="right",
+        self.frame31 = ttk.Frame(self.Autokeyer_Frame)
+        self.frame31.configure(height=200, width=200)
+        self.frame32 = ttk.Frame(self.frame31)
+        self.frame32.configure(height=200, width=200)
+        self.label25 = ttk.Label(self.frame32)
+        self.label25.configure(
+            compound="top",
+            justify="left",
             style="Heading3.TLabel",
-            text='Stay tuned... More to come')
-        self.label10.pack(side="top")
-        self.frame8.pack(anchor="w", pady=15, side="top")
+            text='CW Keyer Messages')
+        self.label25.pack()
+        self.frame32.pack(anchor="w", side="top")
+        self.frame33 = ttk.Frame(self.frame31)
+        self.frame33.configure(height=200, width=200)
+        self.CW_AUTO_COUNT_LABEL = ttk.Label(self.frame33)
+        self.CW_AUTO_COUNT_LABEL.configure(
+            style="Heading4.TLabel", text='Total Msgs')
+        self.CW_AUTO_COUNT_LABEL.grid(column=0, padx="0 10", row=0, sticky="w")
+        self.CW_AUTO_COUNT_WIDGET = ttk.Entry(self.frame33)
+        self.CW_AUTO_COUNT = tk.StringVar()
+        self.CW_AUTO_COUNT_WIDGET.configure(
+            justify="left",
+            textvariable=self.CW_AUTO_COUNT,
+            validate="none",
+            width=3)
+        self.CW_AUTO_COUNT_WIDGET.grid(
+            column=1, padx="0 10", row=0, sticky="w")
+        self.CW_MEMORY_KEYER_MSG01_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG01_LABEL.configure(
+            style="Heading4.TLabel", text='Message 1')
+        self.CW_MEMORY_KEYER_MSG01_LABEL.grid(
+            column=0, padx="0 10", row=1, sticky="w")
+        self.CW_MEMORY_KEYER_MSG01_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG01 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG01_WIDGET.configure(
+            justify="left",
+            textvariable=self.CW_MEMORY_KEYER_MSG01,
+            validate="none",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG01_WIDGET.grid(
+            column=1, padx="0 10", row=1, sticky="w")
+        self.CW_MEMORY_KEYER_MSG02_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG02_LABEL.configure(
+            style="Heading4.TLabel", text='Message 2')
+        self.CW_MEMORY_KEYER_MSG02_LABEL.grid(
+            column=0, padx="0 10", row=2, sticky="w")
+        self.CW_MEMORY_KEYER_MSG02_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG02 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG02_WIDGET.configure(
+            justify="left",
+            textvariable=self.CW_MEMORY_KEYER_MSG02,
+            validate="none",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG02_WIDGET.grid(
+            column=1, padx="0 10", row=2, sticky="w")
+        self.CW_MEMORY_KEYER_MSG03_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG03_LABEL.configure(
+            style="Heading4.TLabel", text='Message 3')
+        self.CW_MEMORY_KEYER_MSG03_LABEL.grid(
+            column=0, padx="0 10", row=3, sticky="w")
+        self.CW_MEMORY_KEYER_MSG03_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG03 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG03_WIDGET.configure(
+            justify="left",
+            textvariable=self.CW_MEMORY_KEYER_MSG03,
+            validate="none",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG03_WIDGET.grid(
+            column=1, padx="0 10", row=3, sticky="w")
+        self.CW_MEMORY_KEYER_MSG04_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG04_LABEL.configure(
+            style="Heading4.TLabel", text='Message 4')
+        self.CW_MEMORY_KEYER_MSG04_LABEL.grid(
+            column=0, padx="0 10", row=4, sticky="w")
+        self.CW_MEMORY_KEYER_MSG04_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG04 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG04_WIDGET.configure(
+            justify="left",
+            textvariable=self.CW_MEMORY_KEYER_MSG04,
+            validate="none",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG04_WIDGET.grid(
+            column=1, padx="0 10", row=4, sticky="w")
+        self.CW_MEMORY_KEYER_MSG05_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG05_LABEL.configure(
+            style="Heading4.TLabel", text='Message 5')
+        self.CW_MEMORY_KEYER_MSG05_LABEL.grid(
+            column=0, padx="0 10", row=5, sticky="w")
+        self.CW_MEMORY_KEYER_MSG05_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG05 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG05_WIDGET.configure(
+            justify="left",
+            textvariable=self.CW_MEMORY_KEYER_MSG05,
+            validate="none",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG05_WIDGET.grid(
+            column=1, padx="0 10", row=5, sticky="w")
+        self.CW_MEMORY_KEYER_MSG06_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG06_LABEL.configure(
+            style="Heading4.TLabel", text='Message 6')
+        self.CW_MEMORY_KEYER_MSG06_LABEL.grid(
+            column=0, padx="0 10", row=6, sticky="w")
+        self.CW_MEMORY_KEYER_MSG06_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG06 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG06_WIDGET.configure(
+            justify="left",
+            textvariable=self.CW_MEMORY_KEYER_MSG06,
+            validate="none",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG06_WIDGET.grid(
+            column=1, padx="0 10", row=6, sticky="w")
+        self.CW_MEMORY_KEYER_MSG07_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG07_LABEL.configure(
+            style="Heading4.TLabel", text='Message 7')
+        self.CW_MEMORY_KEYER_MSG07_LABEL.grid(
+            column=0, padx="0 10", row=7, sticky="w")
+        self.CW_MEMORY_KEYER_MSG07_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG07 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG07_WIDGET.configure(
+            justify="left",
+            textvariable=self.CW_MEMORY_KEYER_MSG07,
+            validate="none",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG07_WIDGET.grid(
+            column=1, padx="0 10", row=7, sticky="w")
+        self.CW_MEMORY_KEYER_MSG08_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG08_LABEL.configure(
+            style="Heading4.TLabel", text='Message 8')
+        self.CW_MEMORY_KEYER_MSG08_LABEL.grid(
+            column=0, padx="0 10", row=8, sticky="w")
+        self.CW_MEMORY_KEYER_MSG08_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG08 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG08_WIDGET.configure(
+            justify="left",
+            textvariable=self.CW_MEMORY_KEYER_MSG08,
+            validate="none",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG08_WIDGET.grid(
+            column=1, padx="0 10", row=8, sticky="w")
+        self.CW_MEMORY_KEYER_MSG09_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG09_LABEL.configure(
+            style="Heading4.TLabel", text='Message 9')
+        self.CW_MEMORY_KEYER_MSG09_LABEL.grid(
+            column=0, padx="0 10", row=9, sticky="w")
+        self.CW_MEMORY_KEYER_MSG09_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG09 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG09_WIDGET.configure(
+            justify="left",
+            textvariable=self.CW_MEMORY_KEYER_MSG09,
+            validate="none",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG09_WIDGET.grid(
+            column=1, padx="0 10", row=9, sticky="w")
+        self.CW_MEMORY_KEYER_MSG10_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG10_LABEL.configure(
+            style="Heading4.TLabel", text='Message 10')
+        self.CW_MEMORY_KEYER_MSG10_LABEL.grid(
+            column=0, padx="0 10", row=10, sticky="w")
+        self.CW_MEMORY_KEYER_MSG10_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG10 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG10_WIDGET.configure(
+            justify="left",
+            textvariable=self.CW_MEMORY_KEYER_MSG10,
+            validate="none",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG10_WIDGET.grid(
+            column=1, padx="0 10", row=10, sticky="w")
+        self.frame33.pack(anchor="w", padx="50 0", side="top")
+        self.frame31.pack(anchor="w", padx=20, side="top")
         self.Autokeyer_Frame.pack(
             anchor="center",
             expand="true",
@@ -2148,35 +2309,923 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label5.configure(
             justify="center",
             style="Heading2.TLabel",
-            text='Hardware Advanced Settings')
-        self.label5.pack(padx=5, pady="15 25")
-        self.frame17.pack(
-            anchor="w",
-            expand="false",
-            padx=5,
-            pady="15 25",
-            side="top")
-        self.frame18 = ttk.Frame(self.HW_ADJ_Frame)
-        self.frame18.configure(height=200, width=200)
-        self.frame20 = ttk.Frame(self.frame18)
-        self.frame20.configure(height=200, width=200)
-        self.label12 = ttk.Label(self.frame20)
-        self.label12.configure(
-            justify="right",
+            text='Extentions')
+        self.label5.pack(anchor="w", padx=5)
+        self.frame17.pack(anchor="w", expand="false", padx=5, side="top")
+        self.frame29 = ttk.Frame(self.HW_ADJ_Frame)
+        self.label4 = ttk.Label(self.frame29)
+        self.label4.configure(
+            justify="left",
             style="Heading3.TLabel",
-            text='Stay tuned... More to come')
-        self.label12.pack(side="top")
-        self.frame20.pack(anchor="w", pady=15, side="top")
-        self.frame18.pack(anchor="w", padx=20, side="top")
+            text='Extended Key')
+        self.label4.grid(column=0, pady="20 0", row=1, sticky="ew")
+        self.label14 = ttk.Label(self.frame29)
+        self.label14.configure(style="Heading4.TLabel", text='ADC Range')
+        self.label14.grid(column=4, columnspan=2, row=5)
+        self.label16 = ttk.Label(self.frame29)
+        self.label16.configure(style="Heading4.TLabel", text='Function')
+        self.label16.grid(column=2, columnspan=2, row=6, sticky="s")
+        self.label17 = ttk.Label(self.frame29)
+        self.label17.configure(style="Heading4.TLabel", text='Start', width=7)
+        self.label17.grid(column=4, padx="18 0", row=6, sticky="s")
+        self.label18 = ttk.Label(self.frame29)
+        self.label18.configure(style="Heading4.TLabel", text='End\t', width=7)
+        self.label18.grid(column=5, padx="20 0", row=6, sticky="s")
+        self.EXTENDED_KEY1_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY1_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 1')
+        self.EXTENDED_KEY1_FUNC_LABEL.grid(
+            column=1, padx="0 15", pady="0 5", row=7, sticky="w")
+        self.EXTENDED_KEY1_FUNC_WIDGET = ttk.Combobox(self.frame29)
+        self.EXTENDED_KEY1_FUNC = tk.StringVar()
+        self.EXTENDED_KEY1_FUNC_WIDGET.configure(
+            textvariable=self.EXTENDED_KEY1_FUNC,
+            values='NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT',
+            width=10)
+        self.EXTENDED_KEY1_FUNC_WIDGET.grid(column=2, row=7)
+        self.EXTENDED_KEY1_START_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY1_START = tk.StringVar()
+        self.EXTENDED_KEY1_START_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY1_START,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY1_START_WIDGET.grid(column=4, pady="0 5", row=7)
+        _validatecmd = (
+            self.EXTENDED_KEY1_START_WIDGET.register(
+                self.validate_EXTENDED_KEY_START), "%P", "%V")
+        self.EXTENDED_KEY1_START_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY1_END_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY1_END = tk.StringVar()
+        self.EXTENDED_KEY1_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.EXTENDED_KEY1_END,
+            validate="none",
+            width=5)
+        self.EXTENDED_KEY1_END_WIDGET.grid(column=5, pady="0 5", row=7)
+        _validatecmd = (
+            self.EXTENDED_KEY1_END_WIDGET.register(
+                self.validate_EXTENDED_KEY_END), "%P", "%V")
+        self.EXTENDED_KEY1_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY2_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY2_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 2')
+        self.EXTENDED_KEY2_FUNC_LABEL.grid(
+            column=1, pady="0 5", row=8, sticky="w")
+        self.EXTENDED_KEY2_FUNC_WIDGET = ttk.Combobox(self.frame29)
+        self.EXTENDED_KEY2_FUNC = tk.StringVar()
+        self.EXTENDED_KEY2_FUNC_WIDGET.configure(
+            textvariable=self.EXTENDED_KEY2_FUNC,
+            values='NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT',
+            width=10)
+        self.EXTENDED_KEY2_FUNC_WIDGET.grid(column=2, row=8)
+        self.EXTENDED_KEY2_START_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY2_START = tk.StringVar()
+        self.EXTENDED_KEY2_START_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY2_START,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY2_START_WIDGET.grid(column=4, pady="0 5", row=8)
+        _validatecmd = (
+            self.EXTENDED_KEY2_START_WIDGET.register(
+                self.validate_EXTENDED_KEY_START), "%P", "%V")
+        self.EXTENDED_KEY2_START_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY2_END_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY2_END = tk.StringVar()
+        self.EXTENDED_KEY2_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.EXTENDED_KEY2_END,
+            validate="none",
+            width=5)
+        self.EXTENDED_KEY2_END_WIDGET.grid(column=5, pady="0 5", row=8)
+        _validatecmd = (
+            self.EXTENDED_KEY2_END_WIDGET.register(
+                self.validate_EXTENDED_KEY_END), "%P", "%V")
+        self.EXTENDED_KEY2_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY3_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY3_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 3')
+        self.EXTENDED_KEY3_FUNC_LABEL.grid(
+            column=1, pady="0 5", row=10, sticky="w")
+        self.EXTENDED_KEY3_FUNC_WIDGET = ttk.Combobox(self.frame29)
+        self.EXTENDED_KEY3_FUNC = tk.StringVar()
+        self.EXTENDED_KEY3_FUNC_WIDGET.configure(
+            textvariable=self.EXTENDED_KEY3_FUNC,
+            values='NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT',
+            width=10)
+        self.EXTENDED_KEY3_FUNC_WIDGET.grid(column=2, row=10)
+        self.EXTENDED_KEY3_START_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY3_START = tk.StringVar()
+        self.EXTENDED_KEY3_START_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY3_START,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY3_START_WIDGET.grid(column=4, pady="0 5", row=10)
+        _validatecmd = (
+            self.EXTENDED_KEY3_START_WIDGET.register(
+                self.validate_EXTENDED_KEY_START), "%P", "%V")
+        self.EXTENDED_KEY3_START_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY3_END_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY3_END = tk.StringVar()
+        self.EXTENDED_KEY3_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.EXTENDED_KEY3_END,
+            validate="none",
+            width=5)
+        self.EXTENDED_KEY3_END_WIDGET.grid(column=5, pady="0 5", row=10)
+        _validatecmd = (
+            self.EXTENDED_KEY3_END_WIDGET.register(
+                self.validate_EXTENDED_KEY_END), "%P", "%V")
+        self.EXTENDED_KEY3_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY4_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY4_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 4')
+        self.EXTENDED_KEY4_FUNC_LABEL.grid(
+            column=1, padx="0 5", pady="0 5", row=11, sticky="w")
+        self.EXTENDED_KEY4_FUNC_WIDGET = ttk.Combobox(self.frame29)
+        self.EXTENDED_KEY4_FUNC = tk.StringVar()
+        self.EXTENDED_KEY4_FUNC_WIDGET.configure(
+            textvariable=self.EXTENDED_KEY4_FUNC,
+            values='NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT',
+            width=10)
+        self.EXTENDED_KEY4_FUNC_WIDGET.grid(column=2, row=11)
+        self.EXTENDED_KEY4_START_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY4_START = tk.StringVar()
+        self.EXTENDED_KEY4_START_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY4_START,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY4_START_WIDGET.grid(column=4, pady="0 5", row=11)
+        _validatecmd = (
+            self.EXTENDED_KEY4_START_WIDGET.register(
+                self.validate_EXTENDED_KEY_START), "%P", "%V")
+        self.EXTENDED_KEY4_START_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY4_END_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY4_END = tk.StringVar()
+        self.EXTENDED_KEY4_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.EXTENDED_KEY4_END,
+            validate="none",
+            width=5)
+        self.EXTENDED_KEY4_END_WIDGET.grid(column=5, pady="0 5", row=11)
+        _validatecmd = (
+            self.EXTENDED_KEY4_END_WIDGET.register(
+                self.validate_EXTENDED_KEY_END), "%P", "%V")
+        self.EXTENDED_KEY4_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY5_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY5_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 5')
+        self.EXTENDED_KEY5_FUNC_LABEL.grid(
+            column=1, padx="0 5", pady="0 5", row=13, sticky="w")
+        self.frame30 = ttk.Frame(self.frame29)
+        self.frame30.configure(height=200, width=200)
+        self.button5 = ttk.Button(self.frame30)
+        self.button5.configure(style="Button4.TButton", text='ADC Scanner')
+        self.button5.grid(column=0, row=0)
+        self.button5.configure(command=self.runADCScanner)
+        self.frame30.grid(column=1, columnspan=5, pady=15, row=16, sticky="ew")
+        self.EXTENDED_KEY6_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY6_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 6')
+        self.EXTENDED_KEY6_FUNC_LABEL.grid(
+            column=1, padx="0 5", pady="0 5", row=14, sticky="w")
+        self.EXTENDED_KEY5_FUNC_WIDGET = ttk.Combobox(self.frame29)
+        self.EXTENDED_KEY5_FUNC = tk.StringVar()
+        self.EXTENDED_KEY5_FUNC_WIDGET.configure(
+            textvariable=self.EXTENDED_KEY5_FUNC,
+            values='NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT',
+            width=10)
+        self.EXTENDED_KEY5_FUNC_WIDGET.grid(column=2, row=13)
+        self.EXTENDED_KEY5_START_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY5_START = tk.StringVar()
+        self.EXTENDED_KEY5_START_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY5_START,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY5_START_WIDGET.grid(column=4, pady="0 5", row=13)
+        _validatecmd = (
+            self.EXTENDED_KEY5_START_WIDGET.register(
+                self.validate_EXTENDED_KEY_START), "%P", "%V")
+        self.EXTENDED_KEY5_START_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY5_END_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY5_END = tk.StringVar()
+        self.EXTENDED_KEY5_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.EXTENDED_KEY5_END,
+            validate="none",
+            width=5)
+        self.EXTENDED_KEY5_END_WIDGET.grid(column=5, pady="0 5", row=13)
+        _validatecmd = (
+            self.EXTENDED_KEY5_END_WIDGET.register(
+                self.validate_EXTENDED_KEY_END), "%P", "%V")
+        self.EXTENDED_KEY5_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY6_FUNC_WIDGET = ttk.Combobox(self.frame29)
+        self.EXTENDED_KEY6_FUNC = tk.StringVar()
+        self.EXTENDED_KEY6_FUNC_WIDGET.configure(
+            textvariable=self.EXTENDED_KEY6_FUNC,
+            values='NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT',
+            width=10)
+        self.EXTENDED_KEY6_FUNC_WIDGET.grid(column=2, row=14)
+        self.EXTENDED_KEY6_START_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY6_START = tk.StringVar()
+        self.EXTENDED_KEY6_START_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY6_START,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY6_START_WIDGET.grid(column=4, pady="0 5", row=14)
+        _validatecmd = (
+            self.EXTENDED_KEY6_START_WIDGET.register(
+                self.validate_EXTENDED_KEY_START), "%P", "%V")
+        self.EXTENDED_KEY6_START_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY6_END_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY6_END = tk.StringVar()
+        self.EXTENDED_KEY6_END_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY6_END,
+            validate="none",
+            width=5)
+        self.EXTENDED_KEY6_END_WIDGET.grid(column=5, pady="0 5", row=14)
+        _validatecmd = (
+            self.EXTENDED_KEY6_END_WIDGET.register(
+                self.validate_EXTENDED_KEY_END), "%P", "%V")
+        self.EXTENDED_KEY6_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.frame29.pack(fill="x", padx="20 0", side="top")
+        self.frame29.grid_anchor("nw")
+        self.frame8 = ttk.Frame(self.HW_ADJ_Frame)
+        self.label10 = ttk.Label(self.frame8)
+        self.label10.configure(
+            justify="left",
+            style="Heading3.TLabel",
+            text='Custom Bandpass Filters')
+        self.label10.grid(column=0, pady="20 0", row=1, sticky="ew")
+        self.frame18 = ttk.Frame(self.frame8)
+        self.frame18.configure(height=200, width=200)
+        self.CUST_LPF_ENABLED_Label = ttk.Label(self.frame18)
+        self.CUST_LPF_ENABLED_Label.configure(
+            style="Heading4.TLabel", text='Filter control')
+        self.CUST_LPF_ENABLED_Label.grid(column=0, padx=10, row=0)
+        self.CUST_LPF_ENABLED = tk.StringVar(value='OFF')
+        __values = ['OFF', 'STANDARD', 'EXTENSION']
+        self.CUST_LPF_ENABLED_WIDGET = ttk.OptionMenu(
+            self.frame18,
+            self.CUST_LPF_ENABLED,
+            "OFF",
+            *__values,
+            command=self.CUST_LPF_SELECTION_CB)
+        self.CUST_LPF_ENABLED_WIDGET.grid(column=1, row=0)
+        self.frame18.grid(column=0, pady=10, row=2, sticky="w")
+        self.CUST_LPF_ENABLED_Frame = ttk.Frame(self.frame8)
+        self.CUST_LPF_ENABLED_Frame.configure(height=200, width=200)
+        self.CUSTOM_BANDPASS_FILTER_Frame = ttk.Frame(
+            self.CUST_LPF_ENABLED_Frame)
+        self.CUSTOM_BANDPASS_FILTER_Frame.configure(height=200, width=200)
+        self.frame54 = ttk.Frame(self.CUSTOM_BANDPASS_FILTER_Frame)
+        self.frame54.configure(height=200, width=200)
+        self.label172 = ttk.Label(self.frame54)
+        self.label172.configure(style="Heading4.TLabel", text='From (MHz)')
+        self.label172.grid(column=0, row=0)
+        self.label174 = ttk.Label(self.frame54)
+        self.label174.configure(style="Heading4.TLabel", text='    ')
+        self.label174.grid(column=1, row=0)
+        self.label173 = ttk.Label(self.frame54)
+        self.label173.configure(style="Heading4.TLabel", text='To (MHz)')
+        self.label173.grid(column=2, row=0)
+        self.label175 = ttk.Label(self.frame54)
+        self.label175.configure(style="Heading4.TLabel", text='    ')
+        self.label175.grid(column=3, row=0)
+        self.label176 = ttk.Label(self.frame54)
+        self.label176.configure(
+            style="Heading4.TLabel",
+            text='TXA(D5)',
+            width=7)
+        self.label176.grid(column=4, padx="5 0", row=0, sticky="w")
+        self.label177 = ttk.Label(self.frame54)
+        self.label177.configure(
+            style="Heading4.TLabel",
+            text='TXB(D4)',
+            width=7)
+        self.label177.grid(column=5, padx="5 0", row=0, sticky="w")
+        self.label178 = ttk.Label(self.frame54)
+        self.label178.configure(
+            style="Heading4.TLabel",
+            text='TXC(D3)',
+            width=7)
+        self.label178.grid(column=6, padx="5 0", row=0, sticky="w")
+        self.entry52 = ttk.Entry(self.frame54)
+        self.CUST_LPF_FILTER1_BEGFREQ = tk.StringVar(value='200')
+        self.entry52.configure(
+            justify="right",
+            state="readonly",
+            textvariable=self.CUST_LPF_FILTER1_BEGFREQ,
+            width=5)
+        _text_ = '200'
+        self.entry52["state"] = "normal"
+        self.entry52.delete("0", "end")
+        self.entry52.insert("0", _text_)
+        self.entry52["state"] = "readonly"
+        self.entry52.grid(column=0, pady="0 5", row=1, sticky="w")
+        self.label12 = ttk.Label(self.frame54)
+        self.label12.configure(style="Normal.TLabel", text='MHz -  ')
+        self.label12.grid(column=1, pady="0 5", row=1, sticky="w")
+        self.CUST_LPF_FILTER1_ENDFREQ_WIDGET = ttk.Entry(self.frame54)
+        self.CUST_LPF_FILTER1_ENDFREQ = tk.StringVar()
+        self.CUST_LPF_FILTER1_ENDFREQ_WIDGET.configure(
+            justify="right",
+            textvariable=self.CUST_LPF_FILTER1_ENDFREQ,
+            validate="focusout",
+            width=5)
+        self.CUST_LPF_FILTER1_ENDFREQ_WIDGET.grid(column=2, pady="0 5", row=1)
+        _validatecmd = (self.CUST_LPF_FILTER1_ENDFREQ_WIDGET.register(
+            self.validate_CUST_LPF_FILTER1_ENDFREQ), "%P", "%V")
+        self.CUST_LPF_FILTER1_ENDFREQ_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label13 = ttk.Label(self.frame54)
+        self.label13.configure(style="Normal.TLabel", text=' MHz')
+        self.label13.grid(column=3, pady="0 5", row=1)
+        self.CUST_LPF_FILTER1_CONTROL_TXA_Checkbutton = ttk.Checkbutton(
+            self.frame54)
+        self.CUST_LPF_FILTER1_CONTROL_TXA_Checkbutton.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXA')
+        self.CUST_LPF_FILTER1_CONTROL_TXA_Checkbutton.grid(
+            column=4, pady="0 5", row=1)
+        self.CUST_LPF_FILTER1_CONTROL_TXA_Checkbutton.configure(
+            command=self.CUST_LPF_FILTER1_CONTROL_TXA_CB)
+        self.checkbutton5 = ttk.Checkbutton(self.frame54)
+        self.checkbutton5.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXB')
+        self.checkbutton5.grid(column=5, pady="0 5", row=1)
+        self.checkbutton5.configure(
+            command=self.CUST_LPF_FILTER1_CONTROL_TXB_CB)
+        self.checkbutton6 = ttk.Checkbutton(self.frame54)
+        self.checkbutton6.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXC')
+        self.checkbutton6.grid(column=6, pady="0 5", row=1)
+        self.checkbutton6.configure(
+            command=self.CUST_LPF_FILTER1_CONTROL_TXC_CB)
+        self.entry10 = ttk.Entry(self.frame54)
+        self.CUST_LPF_FILTER2_BEGFREQ = tk.StringVar()
+        self.entry10.configure(
+            justify="right",
+            state="readonly",
+            textvariable=self.CUST_LPF_FILTER2_BEGFREQ,
+            width=5)
+        self.entry10.grid(column=0, pady="0 5", row=2, sticky="w")
+        self.label139 = ttk.Label(self.frame54)
+        self.label139.configure(style="Normal.TLabel", text='MHz -  ')
+        self.label139.grid(column=1, pady="0 5", row=2, sticky="w")
+        self.CUST_LPF_FILTER2_ENDFREQ_WIDGET = ttk.Entry(self.frame54)
+        self.CUST_LPF_FILTER2_ENDFREQ = tk.StringVar()
+        self.CUST_LPF_FILTER2_ENDFREQ_WIDGET.configure(
+            justify="right",
+            textvariable=self.CUST_LPF_FILTER2_ENDFREQ,
+            validate="focusout",
+            width=5)
+        self.CUST_LPF_FILTER2_ENDFREQ_WIDGET.grid(column=2, pady="0 5", row=2)
+        _validatecmd = (self.CUST_LPF_FILTER2_ENDFREQ_WIDGET.register(
+            self.validate_CUST_LPF_FILTER2_ENDFREQ), "%P", "%V")
+        self.CUST_LPF_FILTER2_ENDFREQ_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label140 = ttk.Label(self.frame54)
+        self.label140.configure(style="Normal.TLabel", text=' MHz')
+        self.label140.grid(column=3, pady="0 5", row=2)
+        self.checkbutton23 = ttk.Checkbutton(self.frame54)
+        self.checkbutton23.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXA')
+        self.checkbutton23.grid(column=4, pady="0 5", row=2)
+        self.checkbutton24 = ttk.Checkbutton(self.frame54)
+        self.checkbutton24.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXB')
+        self.checkbutton24.grid(column=5, pady="0 5", row=2)
+        self.checkbutton25 = ttk.Checkbutton(self.frame54)
+        self.checkbutton25.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXC')
+        self.checkbutton25.grid(column=6, pady="0 5", row=2)
+        self.entry12 = ttk.Entry(self.frame54)
+        self.CUST_LPF_FILTER3_BEGFREQ = tk.StringVar()
+        self.entry12.configure(
+            justify="right",
+            state="readonly",
+            textvariable=self.CUST_LPF_FILTER3_BEGFREQ,
+            width=5)
+        self.entry12.grid(column=0, pady="0 5", row=3, sticky="w")
+        self.label141 = ttk.Label(self.frame54)
+        self.label141.configure(style="Normal.TLabel", text='MHz -  ')
+        self.label141.grid(column=1, pady="0 5", row=3, sticky="w")
+        self.CUST_LPF_FILTER3_ENDFREQ_WIDGET = ttk.Entry(self.frame54)
+        self.CUST_LPF_FILTER3_ENDFREQ = tk.StringVar()
+        self.CUST_LPF_FILTER3_ENDFREQ_WIDGET.configure(
+            justify="right",
+            textvariable=self.CUST_LPF_FILTER3_ENDFREQ,
+            validate="focusout",
+            width=5)
+        self.CUST_LPF_FILTER3_ENDFREQ_WIDGET.grid(column=2, pady="0 5", row=3)
+        _validatecmd = (self.CUST_LPF_FILTER3_ENDFREQ_WIDGET.register(
+            self.validate_CUST_LPF_FILTER3_ENDFREQ), "%P", "%V")
+        self.CUST_LPF_FILTER3_ENDFREQ_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label142 = ttk.Label(self.frame54)
+        self.label142.configure(style="Normal.TLabel", text=' MHz')
+        self.label142.grid(column=3, pady="0 5", row=3)
+        self.checkbutton26 = ttk.Checkbutton(self.frame54)
+        self.checkbutton26.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXA')
+        self.checkbutton26.grid(column=4, pady="0 5", row=3)
+        self.checkbutton27 = ttk.Checkbutton(self.frame54)
+        self.checkbutton27.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXB')
+        self.checkbutton27.grid(column=5, pady="0 5", row=3)
+        self.checkbutton28 = ttk.Checkbutton(self.frame54)
+        self.checkbutton28.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXC')
+        self.checkbutton28.grid(column=6, pady="0 5", row=3)
+        self.entry14 = ttk.Entry(self.frame54)
+        self.CUST_LPF_FILTER4_BEGFREQ = tk.StringVar()
+        self.entry14.configure(
+            justify="right",
+            state="readonly",
+            textvariable=self.CUST_LPF_FILTER4_BEGFREQ,
+            width=5)
+        self.entry14.grid(column=0, pady="0 5", row=4, sticky="w")
+        self.label143 = ttk.Label(self.frame54)
+        self.label143.configure(style="Normal.TLabel", text='MHz -  ')
+        self.label143.grid(column=1, pady="0 5", row=4, sticky="w")
+        self.CUST_LPF_FILTER4_ENDFREQ_WIDGET = ttk.Entry(self.frame54)
+        self.CUST_LPF_FILTER4_ENDFREQ = tk.StringVar()
+        self.CUST_LPF_FILTER4_ENDFREQ_WIDGET.configure(
+            justify="right",
+            textvariable=self.CUST_LPF_FILTER4_ENDFREQ,
+            validate="focusout",
+            width=5)
+        self.CUST_LPF_FILTER4_ENDFREQ_WIDGET.grid(column=2, pady="0 5", row=4)
+        _validatecmd = (self.CUST_LPF_FILTER4_ENDFREQ_WIDGET.register(
+            self.validate_CUST_LPF_FILTER4_ENDFREQ), "%P", "%V")
+        self.CUST_LPF_FILTER4_ENDFREQ_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label147 = ttk.Label(self.frame54)
+        self.label147.configure(style="Normal.TLabel", text=' MHz')
+        self.label147.grid(column=3, pady="0 5", row=4)
+        self.checkbutton29 = ttk.Checkbutton(self.frame54)
+        self.checkbutton29.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXA')
+        self.checkbutton29.grid(column=4, pady="0 5", row=4)
+        self.checkbutton30 = ttk.Checkbutton(self.frame54)
+        self.checkbutton30.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXB')
+        self.checkbutton30.grid(column=5, pady="0 5", row=4)
+        self.checkbutton31 = ttk.Checkbutton(self.frame54)
+        self.checkbutton31.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXC')
+        self.checkbutton31.grid(column=6, pady="0 5", row=4)
+        self.entry16 = ttk.Entry(self.frame54)
+        self.CUST_LPF_FILTER5_BEGFREQ = tk.StringVar()
+        self.entry16.configure(
+            justify="right",
+            state="readonly",
+            textvariable=self.CUST_LPF_FILTER5_BEGFREQ,
+            width=5)
+        self.entry16.grid(column=0, pady="0 5", row=5, sticky="w")
+        self.label148 = ttk.Label(self.frame54)
+        self.label148.configure(style="Normal.TLabel", text='MHz -  ')
+        self.label148.grid(column=1, pady="0 5", row=5, sticky="w")
+        self.CUST_LPF_FILTER5_ENDFREQ_WIDGET = ttk.Entry(self.frame54)
+        self.CUST_LPF_FILTER5_ENDFREQ = tk.StringVar()
+        self.CUST_LPF_FILTER5_ENDFREQ_WIDGET.configure(
+            justify="right",
+            textvariable=self.CUST_LPF_FILTER5_ENDFREQ,
+            validate="focusout",
+            width=5)
+        self.CUST_LPF_FILTER5_ENDFREQ_WIDGET.grid(column=2, pady="0 5", row=5)
+        _validatecmd = (self.CUST_LPF_FILTER5_ENDFREQ_WIDGET.register(
+            self.validate_CUST_LPF_FILTER5_ENDFREQ), "%P", "%V")
+        self.CUST_LPF_FILTER5_ENDFREQ_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label149 = ttk.Label(self.frame54)
+        self.label149.configure(style="Normal.TLabel", text=' MHz')
+        self.label149.grid(column=3, pady="0 5", row=5)
+        self.checkbutton32 = ttk.Checkbutton(self.frame54)
+        self.checkbutton32.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXA')
+        self.checkbutton32.grid(column=4, pady="0 5", row=5)
+        self.checkbutton33 = ttk.Checkbutton(self.frame54)
+        self.checkbutton33.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXB')
+        self.checkbutton33.grid(column=5, pady="0 5", row=5)
+        self.checkbutton34 = ttk.Checkbutton(self.frame54)
+        self.checkbutton34.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXC')
+        self.checkbutton34.grid(column=6, pady="0 5", row=5)
+        self.entry18 = ttk.Entry(self.frame54)
+        self.CUST_LPF_FILTER6_BEGFREQ = tk.StringVar()
+        self.entry18.configure(
+            justify="right",
+            state="readonly",
+            textvariable=self.CUST_LPF_FILTER6_BEGFREQ,
+            width=5)
+        self.entry18.grid(column=0, pady="0 5", row=6, sticky="w")
+        self.label150 = ttk.Label(self.frame54)
+        self.label150.configure(style="Normal.TLabel", text='MHz -  ')
+        self.label150.grid(column=1, pady="0 5", row=6, sticky="w")
+        self.CUST_LPF_FILTER6_ENDFREQ_WIDGET = ttk.Entry(self.frame54)
+        self.CUST_LPF_FILTER6_ENDFREQ = tk.StringVar()
+        self.CUST_LPF_FILTER6_ENDFREQ_WIDGET.configure(
+            justify="right",
+            textvariable=self.CUST_LPF_FILTER6_ENDFREQ,
+            validate="focusout",
+            width=5)
+        self.CUST_LPF_FILTER6_ENDFREQ_WIDGET.grid(column=2, pady="0 5", row=6)
+        _validatecmd = (self.CUST_LPF_FILTER6_ENDFREQ_WIDGET.register(
+            self.validate_CUST_LPF_FILTER6_ENDFREQ), "%P", "%V")
+        self.CUST_LPF_FILTER6_ENDFREQ_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label151 = ttk.Label(self.frame54)
+        self.label151.configure(style="Normal.TLabel", text=' MHz')
+        self.label151.grid(column=3, pady="0 5", row=6)
+        self.checkbutton35 = ttk.Checkbutton(self.frame54)
+        self.checkbutton35.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXA')
+        self.checkbutton35.grid(column=4, pady="0 5", row=6)
+        self.checkbutton36 = ttk.Checkbutton(self.frame54)
+        self.checkbutton36.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXB')
+        self.checkbutton36.grid(column=5, pady="0 5", row=6)
+        self.checkbutton37 = ttk.Checkbutton(self.frame54)
+        self.checkbutton37.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXC')
+        self.checkbutton37.grid(column=6, pady="0 5", row=6)
+        self.entry20 = ttk.Entry(self.frame54)
+        self.CUST_LPF_FILTER7_BEGFREQ = tk.StringVar()
+        self.entry20.configure(
+            justify="right",
+            state="readonly",
+            textvariable=self.CUST_LPF_FILTER7_BEGFREQ,
+            width=5)
+        self.entry20.grid(column=0, pady="0 5", row=7, sticky="w")
+        self.label152 = ttk.Label(self.frame54)
+        self.label152.configure(style="Normal.TLabel", text='MHz -  ')
+        self.label152.grid(column=1, pady="0 5", row=7, sticky="w")
+        self.CUST_LPF_FILTER7_ENDFREQ_WIDGET = ttk.Entry(self.frame54)
+        self.CUST_LPF_FILTER7_ENDFREQ = tk.StringVar()
+        self.CUST_LPF_FILTER7_ENDFREQ_WIDGET.configure(
+            justify="right",
+            textvariable=self.CUST_LPF_FILTER7_ENDFREQ,
+            validate="focusout",
+            width=5)
+        self.CUST_LPF_FILTER7_ENDFREQ_WIDGET.grid(column=2, pady="0 5", row=7)
+        _validatecmd = (self.CUST_LPF_FILTER7_ENDFREQ_WIDGET.register(
+            self.validate_CUST_LPF_FILTER7_ENDFREQ), "%P", "%V")
+        self.CUST_LPF_FILTER7_ENDFREQ_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label153 = ttk.Label(self.frame54)
+        self.label153.configure(style="Normal.TLabel", text=' MHz')
+        self.label153.grid(column=3, pady="0 5", row=7)
+        self.checkbutton38 = ttk.Checkbutton(self.frame54)
+        self.checkbutton38.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXA')
+        self.checkbutton38.grid(column=4, pady="0 5", row=7)
+        self.checkbutton39 = ttk.Checkbutton(self.frame54)
+        self.checkbutton39.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXB')
+        self.checkbutton39.grid(column=5, pady="0 5", row=7)
+        self.checkbutton40 = ttk.Checkbutton(self.frame54)
+        self.checkbutton40.configure(
+            style="CheckboxNormal.TCheckbutton", text='TXC')
+        self.checkbutton40.grid(column=6, pady="0 5", row=7)
+        self.frame54.pack(anchor="n", side="left")
+        self.CUSTOM_BANDPASS_EXTENSION_Frame = ttk.Frame(
+            self.CUSTOM_BANDPASS_FILTER_Frame)
+        self.CUSTOM_BANDPASS_EXTENSION_Frame.configure(height=200, width=200)
+        self.label179 = ttk.Label(self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.label179.configure(style="Heading4.TLabel", text='D10', width=7)
+        self.label179.grid(column=0, padx="8 0", row=0, sticky="w")
+        self.label180 = ttk.Label(self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.label180.configure(style="Heading4.TLabel", text='D11', width=7)
+        self.label180.grid(column=1, padx="6 0", row=0, sticky="w")
+        self.label181 = ttk.Label(self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.label181.configure(style="Heading4.TLabel", text='D12', width=7)
+        self.label181.grid(column=2, padx="6 0", row=0, sticky="w")
+        self.label182 = ttk.Label(self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.label182.configure(style="Heading4.TLabel", text='D13', width=7)
+        self.label182.grid(column=3, padx="6 0", row=0, sticky="w")
+        self.checkbutton7 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton7.configure(
+            style="CheckboxNormal.TCheckbutton", text='D10')
+        self.checkbutton7.grid(
+            column=0,
+            padx="7 0",
+            pady="3 12",
+            row=1,
+            sticky="w")
+        self.checkbutton7.configure(
+            command=self.CUST_LPF_FILTER1_CONTROL_D10_CB)
+        self.checkbutton8 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton8.configure(
+            style="CheckboxNormal.TCheckbutton", text='D11')
+        self.checkbutton8.grid(
+            column=1,
+            padx="5 0",
+            pady="3 12",
+            row=1,
+            sticky="w")
+        self.checkbutton8.configure(
+            command=self.CUST_LPF_FILTER1_CONTROL_D11_CB)
+        self.checkbutton9 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton9.configure(
+            style="CheckboxNormal.TCheckbutton", text='D12')
+        self.checkbutton9.grid(
+            column=2,
+            padx="5 0",
+            pady="3 12",
+            row=1,
+            sticky="w")
+        self.checkbutton9.configure(
+            command=self.CUST_LPF_FILTER1_CONTROL_D12_CB)
+        self.checkbutton10 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton10.configure(
+            style="CheckboxNormal.TCheckbutton", text='D13')
+        self.checkbutton10.grid(
+            column=3,
+            padx="5 0",
+            pady="3 12",
+            row=1,
+            sticky="w")
+        self.checkbutton10.configure(
+            command=self.CUST_LPF_FILTER1_CONTROL_D13_CB)
+        self.checkbutton41 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton41.configure(
+            style="CheckboxNormal.TCheckbutton", text='D10')
+        self.checkbutton41.grid(
+            column=0,
+            padx="7 0",
+            pady="0 12",
+            row=2,
+            sticky="w")
+        self.checkbutton42 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton42.configure(
+            style="CheckboxNormal.TCheckbutton", text='D11')
+        self.checkbutton42.grid(
+            column=1,
+            padx="5 0",
+            pady="0 12",
+            row=2,
+            sticky="w")
+        self.checkbutton43 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton43.configure(
+            style="CheckboxNormal.TCheckbutton", text='D12')
+        self.checkbutton43.grid(
+            column=2,
+            padx="5 0",
+            pady="0 12",
+            row=2,
+            sticky="w")
+        self.checkbutton44 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton44.configure(
+            style="CheckboxNormal.TCheckbutton", text='D13')
+        self.checkbutton44.grid(
+            column=3,
+            padx="5 0",
+            pady="0 12",
+            row=2,
+            sticky="w")
+        self.checkbutton45 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton45.configure(
+            style="CheckboxNormal.TCheckbutton", text='D10')
+        self.checkbutton45.grid(
+            column=0,
+            padx="7 0",
+            pady="0 12",
+            row=3,
+            sticky="w")
+        self.checkbutton46 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton46.configure(
+            style="CheckboxNormal.TCheckbutton", text='D11')
+        self.checkbutton46.grid(
+            column=1,
+            padx="5 0",
+            pady="0 12",
+            row=3,
+            sticky="w")
+        self.checkbutton47 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton47.configure(
+            style="CheckboxNormal.TCheckbutton", text='D12')
+        self.checkbutton47.grid(
+            column=2,
+            padx="5 0",
+            pady="0 12",
+            row=3,
+            sticky="w")
+        self.checkbutton48 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton48.configure(
+            style="CheckboxNormal.TCheckbutton", text='D13')
+        self.checkbutton48.grid(
+            column=3,
+            padx="5 0",
+            pady="0 12",
+            row=3,
+            sticky="w")
+        self.checkbutton49 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton49.configure(
+            style="CheckboxNormal.TCheckbutton", text='D10')
+        self.checkbutton49.grid(
+            column=0,
+            padx="7 0",
+            pady="0 12",
+            row=4,
+            sticky="w")
+        self.checkbutton50 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton50.configure(
+            style="CheckboxNormal.TCheckbutton", text='D11')
+        self.checkbutton50.grid(
+            column=1,
+            padx="5 0",
+            pady="0 12",
+            row=4,
+            sticky="w")
+        self.checkbutton51 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton51.configure(
+            style="CheckboxNormal.TCheckbutton", text='D12')
+        self.checkbutton51.grid(
+            column=2,
+            padx="5 0",
+            pady="0 12",
+            row=4,
+            sticky="w")
+        self.checkbutton52 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton52.configure(
+            style="CheckboxNormal.TCheckbutton", text='D13')
+        self.checkbutton52.grid(
+            column=3,
+            padx="5 0",
+            pady="0 12",
+            row=4,
+            sticky="w")
+        self.checkbutton53 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton53.configure(
+            style="CheckboxNormal.TCheckbutton", text='D10')
+        self.checkbutton53.grid(
+            column=0,
+            padx="7 0",
+            pady="0 12",
+            row=5,
+            sticky="w")
+        self.checkbutton54 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton54.configure(
+            style="CheckboxNormal.TCheckbutton", text='D11')
+        self.checkbutton54.grid(
+            column=1,
+            padx="5 0",
+            pady="0 12",
+            row=5,
+            sticky="w")
+        self.checkbutton55 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton55.configure(
+            style="CheckboxNormal.TCheckbutton", text='D12')
+        self.checkbutton55.grid(
+            column=2,
+            padx="5 0",
+            pady="0 12",
+            row=5,
+            sticky="w")
+        self.checkbutton56 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton56.configure(
+            style="CheckboxNormal.TCheckbutton", text='D13')
+        self.checkbutton56.grid(
+            column=3,
+            padx="5 0",
+            pady="0 12",
+            row=5,
+            sticky="w")
+        self.checkbutton57 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton57.configure(
+            style="CheckboxNormal.TCheckbutton", text='D10')
+        self.checkbutton57.grid(
+            column=0,
+            padx="7 0",
+            pady="0 12",
+            row=6,
+            sticky="w")
+        self.checkbutton58 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton58.configure(
+            style="CheckboxNormal.TCheckbutton", text='D11')
+        self.checkbutton58.grid(
+            column=1,
+            padx="5 0",
+            pady="0 12",
+            row=6,
+            sticky="w")
+        self.checkbutton59 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton59.configure(
+            style="CheckboxNormal.TCheckbutton", text='D12')
+        self.checkbutton59.grid(
+            column=2,
+            padx="5 0",
+            pady="0 12",
+            row=6,
+            sticky="w")
+        self.checkbutton60 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton60.configure(
+            style="CheckboxNormal.TCheckbutton", text='D13')
+        self.checkbutton60.grid(
+            column=3,
+            padx="5 0",
+            pady="0 12",
+            row=6,
+            sticky="w")
+        self.checkbutton61 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton61.configure(
+            style="CheckboxNormal.TCheckbutton", text='D10')
+        self.checkbutton61.grid(
+            column=0,
+            padx="7 0",
+            pady="0 8",
+            row=7,
+            sticky="w")
+        self.checkbutton62 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton62.configure(
+            style="CheckboxNormal.TCheckbutton", text='D11')
+        self.checkbutton62.grid(
+            column=1,
+            padx="5 0",
+            pady="0 8",
+            row=7,
+            sticky="w")
+        self.checkbutton63 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton63.configure(
+            style="CheckboxNormal.TCheckbutton", text='D12')
+        self.checkbutton63.grid(
+            column=2,
+            padx="5 0",
+            pady="0 8",
+            row=7,
+            sticky="w")
+        self.checkbutton64 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.checkbutton64.configure(
+            style="CheckboxNormal.TCheckbutton", text='D13')
+        self.checkbutton64.grid(
+            column=3,
+            padx="5 0",
+            pady="0 8",
+            row=7,
+            sticky="w")
+        self.CUSTOM_BANDPASS_EXTENSION_Frame.pack(anchor="n", side="right")
+        self.CUSTOM_BANDPASS_FILTER_Frame.pack(
+            anchor="w", pady="10 0", side="top")
+        self.CUST_LPF_ENABLED_Frame.grid(column=0, pady="5 0", row=5)
+        self.frame8.pack(fill="x", padx="20 0", side="top")
+        self.frame8.grid_anchor("nw")
         self.HW_ADJ_Frame.pack(
             anchor="w",
             expand="true",
             fill="both",
             padx=5,
-            pady=5,
+            pady="15 10",
             side="top")
         self.HW_ADJ_SF.pack(expand="true", fill="both", side="top")
-        self.settingsNotebook.add(self.HW_ADJ_SF, text='HW ADV')
+        self.settingsNotebook.add(self.HW_ADJ_SF, text='Extensions')
         self.Calibration_SF = ScrolledFrame(
             self.settingsNotebook, scrolltype="both")
         self.Calibration_SF.configure(usemousewheel=True)
@@ -2738,18 +3787,258 @@ class SettingsnotebookWidget(ttk.Frame):
             row=0,
             sticky="n")
         self.WSPR_Frame.pack(expand="true", fill="both", side="top")
-        self.frame23 = ttk.Frame(self.frame22)
-        self.frame23.configure(height=200, width=200)
-        self.frame28 = ttk.Frame(self.frame23)
-        self.frame28.configure(height=200, width=200)
-        self.label13 = ttk.Label(self.frame28)
-        self.label13.configure(
-            justify="right",
+        self.frame34 = ttk.Frame(self.frame22)
+        self.frame34.configure(height=200, width=200)
+        self.frame35 = ttk.Frame(self.frame34)
+        self.frame35.configure(height=200, width=200)
+        self.label27 = ttk.Label(self.frame35)
+        self.label27.configure(
+            compound="top",
+            justify="left",
             style="Heading3.TLabel",
-            text='Stay tuned... More to come')
-        self.label13.pack(side="top")
-        self.frame28.pack(anchor="w", pady=15, side="top")
-        self.frame23.pack(expand="true", fill="both", padx=20, side="top")
+            text='Messages')
+        self.label27.pack()
+        self.frame35.pack(anchor="w", side="top")
+        self.frame36 = ttk.Frame(self.frame34)
+        self.frame36.configure(height=200, width=200)
+        self.label44 = ttk.Label(self.frame36)
+        self.label44.configure(style="Heading4.TLabel", text='Total Msgs')
+        self.label44.grid(
+            column=0,
+            columnspan=2,
+            padx="0 10",
+            pady="10 15",
+            row=0,
+            sticky="e")
+        self.WSPR_COUNT_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_COUNT = tk.StringVar()
+        self.WSPR_COUNT_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_COUNT,
+            validate="none",
+            width=3)
+        self.WSPR_COUNT_WIDGET.grid(
+            column=2,
+            padx="0 10",
+            pady="10 15",
+            row=0,
+            sticky="w")
+        self.label73 = ttk.Label(self.frame36)
+        self.label73.configure(style="Heading4.TLabel", text='Name')
+        self.label73.grid(column=1, padx="0 10", row=1)
+        self.label76 = ttk.Label(self.frame36)
+        self.label76.configure(style="Heading4.TLabel", text='WSPR Message')
+        self.label76.grid(column=3, padx="0 10", row=1, sticky="w")
+        self.label47 = ttk.Label(self.frame36)
+        self.label47.configure(style="Heading4.TLabel", text='1')
+        self.label47.grid(column=0, padx="0 10", pady=10, row=2, sticky="e")
+        self.WSPR_MESSAGE1_NAME_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE1_NAME = tk.StringVar()
+        self.WSPR_MESSAGE1_NAME_WIDGET.configure(
+            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE1_NAME, width=5)
+        self.WSPR_MESSAGE1_NAME_WIDGET.grid(column=1, padx="0 10", row=2)
+        self.button2 = ttk.Button(self.frame36)
+        self.button2.configure(style="Button3.TButton", text='Gen Msg')
+        self.button2.grid(column=2, padx="0 10", row=2)
+        self.WSPR_MESSAGE1_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE1 = tk.StringVar()
+        self.WSPR_MESSAGE1_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_MESSAGE1,
+            validate="none",
+            width=50)
+        self.WSPR_MESSAGE1_WIDGET.grid(
+            column=3, padx="0 10", row=2, sticky="w")
+        self.label48 = ttk.Label(self.frame36)
+        self.label48.configure(style="Heading4.TLabel", text='2')
+        self.label48.grid(column=0, padx="0 10", row=3, sticky="e")
+        self.WSPR_MESSAGE2_NAME_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE2_NAME = tk.StringVar()
+        self.WSPR_MESSAGE2_NAME_WIDGET.configure(
+            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE2_NAME, width=5)
+        self.WSPR_MESSAGE2_NAME_WIDGET.grid(column=1, padx="0 10", row=3)
+        self.button6 = ttk.Button(self.frame36)
+        self.button6.configure(style="Button3.TButton", text='Gen Msg')
+        self.button6.grid(column=2, padx="0 10", row=3)
+        self.WSPR_MESSAGE2_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE2 = tk.StringVar()
+        self.WSPR_MESSAGE2_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_MESSAGE2,
+            validate="none",
+            width=50)
+        self.WSPR_MESSAGE2_WIDGET.grid(
+            column=3, padx="0 10", row=3, sticky="w")
+        self.label50 = ttk.Label(self.frame36)
+        self.label50.configure(style="Heading4.TLabel", text='3')
+        self.label50.grid(column=0, padx="0 10", row=4, sticky="e")
+        self.WSPR_MESSAGE3_NAME_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE3_NAME = tk.StringVar()
+        self.WSPR_MESSAGE3_NAME_WIDGET.configure(
+            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE3_NAME, width=5)
+        self.WSPR_MESSAGE3_NAME_WIDGET.grid(column=1, padx="0 10", row=4)
+        self.button7 = ttk.Button(self.frame36)
+        self.button7.configure(style="Button3.TButton", text='Gen Msg')
+        self.button7.grid(column=2, padx="0 10", row=4)
+        self.WSPR_MESSAGE3_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE3 = tk.StringVar()
+        self.WSPR_MESSAGE3_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_MESSAGE3,
+            validate="none",
+            width=50)
+        self.WSPR_MESSAGE3_WIDGET.grid(
+            column=3, padx="0 10", row=4, sticky="w")
+        self.label51 = ttk.Label(self.frame36)
+        self.label51.configure(style="Heading4.TLabel", text='4')
+        self.label51.grid(column=0, padx="0 10", row=5, sticky="e")
+        self.WSPR_MESSAGE4_NAME_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE4_NAME = tk.StringVar()
+        self.WSPR_MESSAGE4_NAME_WIDGET.configure(
+            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE4_NAME, width=5)
+        self.WSPR_MESSAGE4_NAME_WIDGET.grid(column=1, padx="0 10", row=5)
+        self.button8 = ttk.Button(self.frame36)
+        self.button8.configure(style="Button3.TButton", text='Gen Msg')
+        self.button8.grid(column=2, padx="0 10", row=5)
+        self.WSPR_MESSAGE4_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE4 = tk.StringVar()
+        self.WSPR_MESSAGE4_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_MESSAGE4,
+            validate="none",
+            width=50)
+        self.WSPR_MESSAGE4_WIDGET.grid(
+            column=3, padx="0 10", row=5, sticky="w")
+        self.frame36.pack(anchor="w", padx="20 0", side="top")
+        self.frame34.pack(anchor="w", padx=20, side="top")
+        self.frame37 = ttk.Frame(self.frame22)
+        self.frame37.configure(height=200, width=200)
+        self.frame38 = ttk.Frame(self.frame37)
+        self.frame38.configure(height=200, width=200)
+        self.label62 = ttk.Label(self.frame38)
+        self.label62.configure(
+            compound="top",
+            justify="left",
+            style="Heading3.TLabel",
+            text='Bands')
+        self.label62.pack()
+        self.frame38.pack(anchor="w", side="top")
+        self.frame39 = ttk.Frame(self.frame37)
+        self.frame39.configure(height=200, width=200)
+        self.label64 = ttk.Label(self.frame39)
+        self.label64.configure(style="Heading4.TLabel", text='1')
+        self.label64.grid(column=0, padx="0 10", pady=10, row=1, sticky="e")
+        self.WSPR_BAND1_TXFREQ_WIDGET = ttk.Entry(self.frame39)
+        self.WSPR_BAND1_TXFREQ = tk.StringVar()
+        self.WSPR_BAND1_TXFREQ_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_BAND1_TXFREQ,
+            validate="none",
+            width=12)
+        self.WSPR_BAND1_TXFREQ_WIDGET.grid(column=2, row=1, sticky="w")
+        self.label78 = ttk.Label(self.frame39)
+        self.label78.configure(style="Heading4.TLabel", text='Hz')
+        self.label78.grid(column=3, padx="0 10", row=1, sticky="w")
+        self.button9 = ttk.Button(self.frame39)
+        self.button9.configure(
+            style="Button3.TButton",
+            text='Select Band and Freq')
+        self.button9.grid(column=4, padx="0 10", row=1)
+        self.label65 = ttk.Label(self.frame39)
+        self.label65.configure(style="Heading4.TLabel", text='2')
+        self.label65.grid(column=0, padx="0 10", row=2, sticky="e")
+        self.WSPR_BAND2_TXFREQ_WIDGET = ttk.Entry(self.frame39)
+        self.WSPR_BAND2_TXFREQ = tk.StringVar()
+        self.WSPR_BAND2_TXFREQ_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_BAND2_TXFREQ,
+            validate="none",
+            width=12)
+        self.WSPR_BAND2_TXFREQ_WIDGET.grid(column=2, row=2, sticky="w")
+        self.label80 = ttk.Label(self.frame39)
+        self.label80.configure(style="Heading4.TLabel", text='Hz')
+        self.label80.grid(column=3, padx="0 10", row=2, sticky="w")
+        self.button10 = ttk.Button(self.frame39)
+        self.button10.configure(
+            style="Button3.TButton",
+            text='Select Band and Freq')
+        self.button10.grid(column=4, padx="0 10", row=2)
+        self.label66 = ttk.Label(self.frame39)
+        self.label66.configure(style="Heading4.TLabel", text='3')
+        self.label66.grid(column=0, padx="0 10", row=3, sticky="e")
+        self.WSPR_BAND3_TXFREQ_WIDGET = ttk.Entry(self.frame39)
+        self.WSPR_BAND3_TXFREQ = tk.StringVar()
+        self.WSPR_BAND3_TXFREQ_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_BAND3_TXFREQ,
+            validate="none",
+            width=12)
+        self.WSPR_BAND3_TXFREQ_WIDGET.grid(column=2, row=3, sticky="w")
+        self.label82 = ttk.Label(self.frame39)
+        self.label82.configure(style="Heading4.TLabel", text='Hz')
+        self.label82.grid(column=3, padx="0 10", row=3, sticky="w")
+        self.button11 = ttk.Button(self.frame39)
+        self.button11.configure(
+            style="Button3.TButton",
+            text='Select Band and Freq')
+        self.button11.grid(column=4, padx="0 10", row=3)
+        self.frame39.pack(anchor="w", padx="20 0", side="top")
+        self.frame37.pack(anchor="w", padx=20, pady=20, side="top")
+        self.frame40 = ttk.Frame(self.frame22)
+        self.frame40.configure(height=200, width=200)
+        self.frame41 = ttk.Frame(self.frame40)
+        self.frame41.configure(height=200, width=200)
+        self.label86 = ttk.Label(self.frame41)
+        self.label86.configure(
+            compound="top",
+            justify="left",
+            style="Heading3.TLabel",
+            text='Calibration')
+        self.label86.pack()
+        self.frame41.pack(anchor="w", side="top")
+        self.frame42 = ttk.Frame(self.frame40)
+        self.frame42.configure(height=200, width=200)
+        self.label88 = ttk.Label(self.frame42)
+        self.label88.configure(style="Heading4.TLabel", text='X-TAL')
+        self.label88.grid(column=0, padx="0 10", pady=10, row=1, sticky="e")
+        self.entry25 = ttk.Entry(self.frame42)
+        self.entry25.configure(
+            justify="left",
+            style="Normal.TEntry",
+            validate="none",
+            width=12)
+        self.entry25.grid(column=2, row=1, sticky="w")
+        self.label90 = ttk.Label(self.frame42)
+        self.label90.configure(style="Normal.TLabel", text='Hz')
+        self.label90.grid(column=3, padx="0 10", row=1, sticky="w")
+        self.label137 = ttk.Label(self.frame42)
+        self.label137.configure(style="Heading4.TLabel", text='Calibration')
+        self.label137.grid(column=0, padx="0 10", row=2, sticky="e")
+        self.entry26 = ttk.Entry(self.frame42)
+        self.entry26.configure(
+            justify="left",
+            style="Normal.TEntry",
+            validate="none",
+            width=12)
+        self.entry26.grid(column=2, row=2, sticky="w")
+        self.label138 = ttk.Label(self.frame42)
+        self.label138.configure(style="Normal.TLabel", text='Hz')
+        self.label138.grid(column=3, padx="0 10", row=2, sticky="w")
+        self.message2 = tk.Message(self.frame42)
+        self.message2.configure(
+            text='Correct the calibration value according to the WSPR result (example: 147000, 145000)',
+            width=300)
+        self.message2.grid(column=4, row=2)
+        self.frame42.pack(anchor="w", padx="20 0", side="top")
+        self.frame40.pack(anchor="w", padx=20, pady=20, side="top")
         self.frame22.pack(anchor="w", padx=5, pady=5, side="top")
         self.WSPR_SF.pack(side="top")
         self.settingsNotebook.add(self.WSPR_SF, text='WSPR')
@@ -3590,6 +4879,60 @@ class SettingsnotebookWidget(ttk.Frame):
     def autoInputRegion3(self):
         pass
 
+    def validate_EXTENDED_KEY_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY_END(self, p_entry_value, v_condition):
+        pass
+
+    def runADCScanner(self):
+        pass
+
+    def CUST_LPF_SELECTION_CB(self, option):
+        pass
+
+    def validate_CUST_LPF_FILTER1_ENDFREQ(self, p_entry_value, v_condition):
+        pass
+
+    def CUST_LPF_FILTER1_CONTROL_TXA_CB(self):
+        pass
+
+    def CUST_LPF_FILTER1_CONTROL_TXB_CB(self):
+        pass
+
+    def CUST_LPF_FILTER1_CONTROL_TXC_CB(self):
+        pass
+
+    def validate_CUST_LPF_FILTER2_ENDFREQ(self, p_entry_value, v_condition):
+        pass
+
+    def validate_CUST_LPF_FILTER3_ENDFREQ(self, p_entry_value, v_condition):
+        pass
+
+    def validate_CUST_LPF_FILTER4_ENDFREQ(self, p_entry_value, v_condition):
+        pass
+
+    def validate_CUST_LPF_FILTER5_ENDFREQ(self, p_entry_value, v_condition):
+        pass
+
+    def validate_CUST_LPF_FILTER6_ENDFREQ(self, p_entry_value, v_condition):
+        pass
+
+    def validate_CUST_LPF_FILTER7_ENDFREQ(self, p_entry_value, v_condition):
+        pass
+
+    def CUST_LPF_FILTER1_CONTROL_D10_CB(self):
+        pass
+
+    def CUST_LPF_FILTER1_CONTROL_D11_CB(self):
+        pass
+
+    def CUST_LPF_FILTER1_CONTROL_D12_CB(self):
+        pass
+
+    def CUST_LPF_FILTER1_CONTROL_D13_CB(self):
+        pass
+
     def validate_MASTER_CAL(self, p_entry_value, v_condition):
         pass
 
@@ -3636,9 +4979,6 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def load_Recommended_ADC_CW_Values(self):
-        pass
-
-    def runADCScanner(self):
         pass
 
     def validate__METER_LEVEL1(self, p_entry_value, v_condition):

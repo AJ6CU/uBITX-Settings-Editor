@@ -57,8 +57,18 @@ class SettingsNotebook(SettingsnotebookWidget):
             'BOOT_INTO_SDR_MODE', 'SDR_OFFSET_MODE', 'SDR_FREQUENCY',
             'I2C_LCD_MASTER', 'TUNING_RESTICTIONS', 'TX_RESTRICTIONS',
             'I2C_LCD_SECOND', 'I2C_ADDR_SI5351','ONE_TWO_LINE_TOGGLE', 'SCROLLING_DISPLAY', 'MESSAGE_LINE', 'S_METER_LEVELS', 'S_METER_LEVEL1',
-            'S_METER_LEVEL2', 'S_METER_LEVEL3', 'S_METER_LEVEL4', 'S_METER_LEVEL5', 'S_METER_LEVEL6', 'S_METER_LEVEL7', 'S_METER_LEVEL8'
-            ]
+            'S_METER_LEVEL2', 'S_METER_LEVEL3', 'S_METER_LEVEL4', 'S_METER_LEVEL5', 'S_METER_LEVEL6', 'S_METER_LEVEL7', 'S_METER_LEVEL8',
+            'EXTENDED_KEY1_FUNC', 'EXTENDED_KEY1_START', 'EXTENDED_KEY1_END', 'EXTENDED_KEY2_FUNC', 'EXTENDED_KEY2_START', 'EXTENDED_KEY2_END',
+            'EXTENDED_KEY3_FUNC', 'EXTENDED_KEY3_START', 'EXTENDED_KEY3_END', 'EXTENDED_KEY4_FUNC', 'EXTENDED_KEY4_START', 'EXTENDED_KEY4_END',
+            'EXTENDED_KEY5_FUNC', 'EXTENDED_KEY5_START', 'EXTENDED_KEY5_END', 'EXTENDED_KEY6_FUNC', 'EXTENDED_KEY6_START', 'EXTENDED_KEY6_END',
+            'CW_MEMORY_KEYER_MSG01', 'CW_MEMORY_KEYER_MSG02', 'CW_MEMORY_KEYER_MSG03', 'CW_MEMORY_KEYER_MSG04',
+            'CW_MEMORY_KEYER_MSG05', 'CW_MEMORY_KEYER_MSG06', 'CW_MEMORY_KEYER_MSG07', 'CW_MEMORY_KEYER_MSG08',
+            'CW_MEMORY_KEYER_MSG09', 'CW_MEMORY_KEYER_MSG10', 'CW_AUTO_COUNT', 'WSPR_COUNT',
+            'WSPR_BAND1_TXFREQ', 'WSPR_BAND2_TXFREQ', 'WSPR_BAND3_TXFREQ', 'WSPR_MESSAGE1_NAME', 'WSPR_MESSAGE2_NAME',
+            'WSPR_MESSAGE3_NAME', 'WSPR_MESSAGE4_NAME', 'WSPR_MESSAGE1', 'WSPR_MESSAGE2', 'WSPR_MESSAGE3', 'WSPR_MESSAGE4',
+            'CUST_LPF_ENABLED', 'CUST_LPF_FILTER1_ENDFREQ', 'CUST_LPF_FILTER2_ENDFREQ', 'CUST_LPF_FILTER3_ENDFREQ',
+            'CUST_LPF_FILTER4_ENDFREQ', 'CUST_LPF_FILTER5_ENDFREQ', 'CUST_LPF_FILTER6_ENDFREQ', 'CUST_LPF_FILTER7_ENDFREQ'
+             ]
 
     #   this needs to be moved somewhere else too
     clearErrorMessages = ['Extended_Channel_Frame', "TUNING_STEP_INDEX_VALUE_WIDGET", "TUNING_STEP_INDEX_WIDGET"]
@@ -671,6 +681,63 @@ class SettingsNotebook(SettingsnotebookWidget):
     def validate_HAM_BAND_RANGE10_END(self, p_entry_value, v_condition):
         return self.validate_HAM_BAND_END(p_entry_value, v_condition, "RANGE10")
 
+    def CUST_LPF_SELECTION_CB(self, *args):
+        if (self.CUST_LPF_ENABLED.get() == 'OFF'):
+            self.CUSTOM_BANDPASS_FILTER_Frame.forget()
+        elif (self.CUST_LPF_ENABLED.get() == 'STANDARD'):
+            self.CUSTOM_BANDPASS_EXTENSION_Frame.forget()
+            self.CUSTOM_BANDPASS_FILTER_Frame.pack()
+        else:
+            self.CUSTOM_BANDPASS_EXTENSION_Frame.pack()
+            self.CUSTOM_BANDPASS_EXTENSION_Frame.pack()
+
+
+    def validate_CUST_LPF_FILTER1_ENDFREQ(self, p_entry_value, v_condition):
+        self.CUST_LPF_FILTER2_BEGFREQ.set(str(int(p_entry_value)+1))
+        if (self.CUST_LPF_FILTER2_BEGFREQ.get() > self.CUST_LPF_FILTER2_ENDFREQ.get()):
+            self.CUST_LPF_FILTER2_ENDFREQ.set(str(int(p_entry_value)+2))
+        return True
+
+    # def validate_CUST_LPF_FILTER1_ENDFREQ(self, p_entry_value, v_condition):
+    #     self.CUST_LPF_FILTER2_BEGFREQ.set(str(int(p_entry_value)))
+    #     if (self.CUST_LPF_FILTER2_BEGFREQ.get() < self.CUST_LPF_FILTER2_ENDFREQ.get()):
+    #         self.CUST_LPF_FILTER2_ENDFREQ.set(str(int(p_entry_value)-1))
+    #     return True
+    #
+    def validate_CUST_LPF_FILTER2_ENDFREQ(self, p_entry_value, v_condition):
+        self.CUST_LPF_FILTER3_BEGFREQ.set(str(int(p_entry_value)+1))
+        if (self.CUST_LPF_FILTER3_BEGFREQ.get() > self.CUST_LPF_FILTER3_ENDFREQ.get()):
+            self.CUST_LPF_FILTER3_ENDFREQ.set(str(int(p_entry_value)+2))
+        return True
+
+
+    def validate_CUST_LPF_FILTER3_ENDFREQ(self, p_entry_value, v_condition):
+        self.CUST_LPF_FILTER4_BEGFREQ.set(str(int(p_entry_value)+1))
+        if (self.CUST_LPF_FILTER4_BEGFREQ.get() > self.CUST_LPF_FILTER4_ENDFREQ.get()):
+            self.CUST_LPF_FILTER4_ENDFREQ.set(str(int(p_entry_value)+2))
+        return True
+
+    def validate_CUST_LPF_FILTER4_ENDFREQ(self, p_entry_value, v_condition):
+        self.CUST_LPF_FILTER5_BEGFREQ.set(str(int(p_entry_value)+1))
+        if (self.CUST_LPF_FILTER5_BEGFREQ.get() > self.CUST_LPF_FILTER5_ENDFREQ.get()):
+            self.CUST_LPF_FILTER5_ENDFREQ.set(str(int(p_entry_value)+2))
+        return True
+
+    def validate_CUST_LPF_FILTER5_ENDFREQ(self, p_entry_value, v_condition):
+        self.CUST_LPF_FILTER6_BEGFREQ.set(str(int(p_entry_value)+1))
+        if (self.CUST_LPF_FILTER6_BEGFREQ.get() > self.CUST_LPF_FILTER6_ENDFREQ.get()):
+            self.CUST_LPF_FILTER6_ENDFREQ.set(str(int(p_entry_value)+2))
+        return True
+
+    def validate_CUST_LPF_FILTER6_ENDFREQ(self, p_entry_value, v_condition):
+        self.CUST_LPF_FILTER7_BEGFREQ.set(str(int(p_entry_value)+1))
+        if (self.CUST_LPF_FILTER7_BEGFREQ.get() > self.CUST_LPF_FILTER7_ENDFREQ.get()):
+            self.CUST_LPF_FILTER7_ENDFREQ.set(str(int(p_entry_value)+2))
+        return True
+
+    def validate_CUST_LPF_FILTER7_ENDFREQ(self, p_entry_value, v_condition):
+        return True
+
 
     ##############################
     #  Functional Callbacks
@@ -837,6 +904,25 @@ class SettingsNotebook(SettingsnotebookWidget):
             self.TUNING_STEP5_WIDGET.configure(state='normal')
 
         self.Refresh_Tuning_Steps()
+    def Set_LPF_Beginning_Freq(self):
+        if (self.CUST_LPF_FILTER1_ENDFREQ.get() != None) & (self.CUST_LPF_FILTER1_ENDFREQ.get() != ''):
+            self.CUST_LPF_FILTER2_BEGFREQ.set(str(int(self.CUST_LPF_FILTER1_ENDFREQ.get())+1))
+
+        if (self.CUST_LPF_FILTER2_ENDFREQ.get() != None) & (self.CUST_LPF_FILTER2_ENDFREQ.get() != ''):
+            self.CUST_LPF_FILTER3_BEGFREQ.set(str(int(self.CUST_LPF_FILTER2_ENDFREQ.get())+1))
+
+        if (self.CUST_LPF_FILTER3_ENDFREQ.get() != None) & (self.CUST_LPF_FILTER3_ENDFREQ.get() != ''):
+            self.CUST_LPF_FILTER4_BEGFREQ.set(str(int(self.CUST_LPF_FILTER3_ENDFREQ.get())+1))
+
+        if (self.CUST_LPF_FILTER4_ENDFREQ.get() != None) & (self.CUST_LPF_FILTER4_ENDFREQ.get() != ''):
+            self.CUST_LPF_FILTER5_BEGFREQ.set(str(int(self.CUST_LPF_FILTER4_ENDFREQ.get())+1))
+
+        if (self.CUST_LPF_FILTER5_ENDFREQ.get() != None) & (self.CUST_LPF_FILTER5_ENDFREQ.get() != ''):
+            self.CUST_LPF_FILTER6_BEGFREQ.set(str(int(self.CUST_LPF_FILTER5_ENDFREQ.get())+1))
+
+        if (self.CUST_LPF_FILTER6_ENDFREQ.get() != None) & (self.CUST_LPF_FILTER6_ENDFREQ.get() != ''):
+            self.CUST_LPF_FILTER7_BEGFREQ.set(str(int(self.CUST_LPF_FILTER6_ENDFREQ.get())+1))
+
 
     def load_Recommended_ADC_CW_Values(self):
         pass
@@ -871,6 +957,8 @@ class SettingsNotebook(SettingsnotebookWidget):
 
 
         # Post process some special cases
+
+        # Tuning steps prep
         self.TUNING_STEP_INDEX_VALUE.trace_add('write',self.new_Default_Tuning_Step)
         self.Refresh_Tuning_Steps()
         self.TUNING_STEP_INDEX_WIDGET.grid_forget()
@@ -879,6 +967,9 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.TUNING_STEP3_WIDGET.configure(state='normal')
         self.TUNING_STEP4_WIDGET.configure(state='normal')
         self.TUNING_STEP5_WIDGET.configure(state='normal')
+
+        # LPF Beginning Frequencies
+        self.Set_LPF_Beginning_Freq()
 
         #   Clear error messages
         for widget in SettingsNotebook.clearErrorMessages:

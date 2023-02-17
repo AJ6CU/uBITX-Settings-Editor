@@ -231,11 +231,68 @@
 		<value></value>
 		<tooltip>Enter an alternative Callsign (perhaps used for QSOs) - max 18 characters</tooltip>
 	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSGS">				<!--Total characters in all memory keyer message <= 200-->
-		<label>Total Messages:</label>					
+	<SETTING NAME="CW_AUTO_COUNT">				<!--Total characters in all memory keyer message <= 200-->
+		<label>Total Messages:</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_AUTO_DATA">				<!--Offset in heap of first message, varies with number msgs-->
+		<label>Total Messages:</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG01">				<!--First saved message-->
+		<label>Message 1</label>
 		<value></value>		
 		<tooltip>to be added</tooltip>
 	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG02">				<!--second saved message-->
+		<label>Message 2</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG03">				<!--third saved message-->
+		<label>Message 3</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG04">				<!--fourth saved message-->
+		<label>Message 4</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG05">				<!--fifth saved message-->
+		<label>Message 5</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG06">				<!--sixth saved message-->
+		<label>Message 6</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG07">				<!--seventh saved message-->
+		<label>Message 7</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG08">				<!--eight saved message-->
+		<label>Message 8</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG09">				<!--ninth saved message-->
+		<label>Message 9</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG10">				<!--tenth saved message-->
+		<label>Message 10</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+
+
 <!--	
 	*****************************************************************************************************
 	CW ADC Settings

@@ -33,7 +33,7 @@ class SourceselectorWidget(ttk.Labelframe):
         self.separator1.configure(orient="vertical")
         self.separator1.grid(column=1, padx=5, row=0, sticky="ns")
         self.sourceBlock = ttk.Frame(self)
-        self.sourceBlock.configure(height=75, padding="10 0", width=500)
+        self.sourceBlock.configure(height=75, padding="10 0", width=550)
         self.com_portManager_frame = ttk.Frame(self.sourceBlock)
         self.com_portManager_frame.configure(height=50, width=400)
         self.com_portManager_frame.pack(

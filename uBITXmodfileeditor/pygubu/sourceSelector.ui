@@ -67,7 +67,7 @@
       <object class="ttk.Frame" id="sourceBlock" named="True">
         <property name="height">75</property>
         <property name="padding">10 0</property>
-        <property name="width">500</property>
+        <property name="width">550</property>
         <layout manager="grid">
           <property name="column">2</property>
           <property name="row">0</property>
