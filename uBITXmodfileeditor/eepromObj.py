@@ -1,8 +1,8 @@
 from lxml import etree as ET
 from bitarray import bitarray
 from time import sleep
-import sys
-
+import tkinter as tk
+from tkinter import messagebox
 
 from globalvars import *
 from printtolog import *
@@ -1056,6 +1056,8 @@ class eepromObj:
 
         def CUST_LPF_FILTER_ENDFREQ(self, SettingName, EEPROMBuffer, memLocation, value):
             value.text = str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+            if value.text == '0' :
+                value.text = ''
 
         def CUST_LPF_FILTER1_ENDFREQ(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             self.CUST_LPF_FILTER_ENDFREQ(SettingName, EEPROMBuffer, memLocation, value)
@@ -1080,7 +1082,7 @@ class eepromObj:
 
 
         def CUST_LPF_FILTER_CONTROL(self, SettingName, EEPROMBuffer, memLocation, value):
-
+            #print(SettingName)
             j = 0
             tmpStr = ""
             LPFControlByte = self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)
@@ -1089,6 +1091,7 @@ class eepromObj:
             else:
                 while j < 7:
                     if ((LPFControlByte>>j)&0x01):
+
                         tmpStr += (LPF_CTRL_SELECT[j] + ",")
                     j += 1
                 value.text = tmpStr.rstrip(',')
@@ -1970,7 +1973,7 @@ class eepromObj:
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, tmpByte)
 
         def SDR_OFFSET_MODE(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-            tmpByte: Bytes = (SDR_OFFSET_MODE.index(userSettingValue)<<2) | EEPROMBuffer[memLocation] & (~0xC)
+            tmpByte: bytes = (SDR_OFFSET_MODE.index(userSettingValue)<<2) | EEPROMBuffer[memLocation] & (~0xC)
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, tmpByte)
 
         def SDR_FREQUENCY(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
@@ -2273,10 +2276,11 @@ class eepromObj:
 
 
         def CUST_LPF_FILTER_ENDFREQ(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue):
-            self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue))
-
+            if userSettingValue != '':
+                self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue))
+            else:
+                self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, 0)
         def CUST_LPF_FILTER1_ENDFREQ(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-            print("LPF_Filter1=", userSettingValue)
             self.CUST_LPF_FILTER_ENDFREQ(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
 
         def CUST_LPF_FILTER2_ENDFREQ(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):

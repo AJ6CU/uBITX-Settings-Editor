@@ -255,67 +255,157 @@
 		<displayFormat>int</displayFormat>
 		<SPECIAL_PROCESSING>skip</SPECIAL_PROCESSING>
 	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG01">				<!--This is the first message -->
+	<SETTING NAME="CW_MEMORY_KEYER_MSG0">				<!--This is the first message -->
 		<EEPROMStart>803</EEPROMStart>
 		<sizeInBytes>200</sizeInBytes>
 		<displayFormat>str</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-		<SETTING NAME="CW_MEMORY_KEYER_MSG02">				<!--This is the second message -->
+	<SETTING NAME="CW_MEMORY_KEYER_MSG1">				<!--This is the second message -->
 		<EEPROMStart>803</EEPROMStart>
 		<sizeInBytes>200</sizeInBytes>
 		<displayFormat>str</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-		<SETTING NAME="CW_MEMORY_KEYER_MSG03">				<!--This is the third message -->
+	<SETTING NAME="CW_MEMORY_KEYER_MSG2">				<!--This is the third message -->
 		<EEPROMStart>803</EEPROMStart>
 		<sizeInBytes>200</sizeInBytes>
 		<displayFormat>str</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-		<SETTING NAME="CW_MEMORY_KEYER_MSG04">				<!--This is the fourth message -->
+	<SETTING NAME="CW_MEMORY_KEYER_MSG3">				<!--This is the fourth message -->
 		<EEPROMStart>803</EEPROMStart>
 		<sizeInBytes>200</sizeInBytes>
 		<displayFormat>str</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-		<SETTING NAME="CW_MEMORY_KEYER_MSG05">				<!--This is the fifth message -->
+	<SETTING NAME="CW_MEMORY_KEYER_MSG4">				<!--This is the fifth message -->
 		<EEPROMStart>803</EEPROMStart>
 		<sizeInBytes>200</sizeInBytes>
 		<displayFormat>str</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-		<SETTING NAME="CW_MEMORY_KEYER_MSG06">				<!--This is the sixth message -->
+	<SETTING NAME="CW_MEMORY_KEYER_MSG5">				<!--This is the sixth message -->
 		<EEPROMStart>803</EEPROMStart>
 		<sizeInBytes>200</sizeInBytes>
 		<displayFormat>str</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-		<SETTING NAME="CW_MEMORY_KEYER_MSG07">				<!--This is the seventh message -->
+	<SETTING NAME="CW_MEMORY_KEYER_MSG6">				<!--This is the seventh message -->
 		<EEPROMStart>803</EEPROMStart>
 		<sizeInBytes>200</sizeInBytes>
 		<displayFormat>str</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-		<SETTING NAME="CW_MEMORY_KEYER_MSG08">				<!--This is the eight message -->
+	<SETTING NAME="CW_MEMORY_KEYER_MSG7">				<!--This is the eighth message -->
 		<EEPROMStart>803</EEPROMStart>
 		<sizeInBytes>200</sizeInBytes>
 		<displayFormat>str</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-		<SETTING NAME="CW_MEMORY_KEYER_MSG09">				<!--This is the ninth message -->
+	<SETTING NAME="CW_MEMORY_KEYER_MSG8">				<!--This is the nineth message -->
 		<EEPROMStart>803</EEPROMStart>
 		<sizeInBytes>200</sizeInBytes>
 		<displayFormat>str</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-		<SETTING NAME="CW_MEMORY_KEYER_MSG10">				<!--This is the tenth message -->
+	<SETTING NAME="CW_MEMORY_KEYER_MSG9">				<!--This is the tenth message -->
 		<EEPROMStart>803</EEPROMStart>
 		<sizeInBytes>200</sizeInBytes>
 		<displayFormat>str</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-	
+	<SETTING NAME="CW_MEMORY_KEYER_MSGA">				<!--This is the eleventh message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGB>				<!--This is the twelfth message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGC">				<!--This is the thirteenth message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGC">				<!--This is the fourteenth message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGE">				<!--This is the fifteenth message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGF">				<!--This is the sixteenth message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGG">				<!--This is the seventeenth message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGH">				<!--This is the eighteenth message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGI">				<!--This is the nineteenth message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGJ">				<!--This is the twentieth message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGK">				<!--This is the twenty-first message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGL">				<!--This is the twenty-second message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGM">				<!--This is the twenty-third message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGN">				<!--This is the twenty-fourth message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGO">				<!--This is the twenty-fifth message -->
+		<EEPROMStart>803</EEPROMStart>
+		<sizeInBytes>200</sizeInBytes>
+		<displayFormat>str</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+
 <!--	
 	*****************************************************************************************************
 	CW ADC Settings              
@@ -1520,7 +1610,7 @@ GENERAL UX
 		<displayFormat>bool</displayFormat>															
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-
+	<SETTING NAME="CUST_LPF_FILTER1_ENDFREQ">
 		<EEPROMStart>49</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>int</displayFormat>														

@@ -1,5 +1,3 @@
-#import serial.tools.list_ports              # Used to get a list of com ports
-import tkinter
 from Scanner import Scanner
 from com_portManager import com_portManager
 from time import sleep

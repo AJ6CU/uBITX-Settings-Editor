@@ -241,53 +241,128 @@
 		<value></value>
 		<tooltip>to be added</tooltip>
 	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG01">				<!--First saved message-->
-		<label>Message 1</label>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG0">				<!--First saved message-->
+		<label>Msg:0</label>
 		<value></value>		
 		<tooltip>to be added</tooltip>
 	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG02">				<!--second saved message-->
-		<label>Message 2</label>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG1">				<!--second saved message-->
+		<label>Msg:1</label>
 		<value></value>
 		<tooltip>to be added</tooltip>
 	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG03">				<!--third saved message-->
-		<label>Message 3</label>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG2">				<!--third saved message-->
+		<label>Msg:2</label>
 		<value></value>
 		<tooltip>to be added</tooltip>
 	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG04">				<!--fourth saved message-->
-		<label>Message 4</label>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG3">				<!--fourth saved message-->
+		<label>Msg:3</label>
 		<value></value>
 		<tooltip>to be added</tooltip>
 	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG05">				<!--fifth saved message-->
-		<label>Message 5</label>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG4">				<!--fifth saved message-->
+		<label>Msg:4</label>
 		<value></value>
 		<tooltip>to be added</tooltip>
 	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG06">				<!--sixth saved message-->
-		<label>Message 6</label>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG5">				<!--sixth saved message-->
+		<label>MSG:5</label>
 		<value></value>
 		<tooltip>to be added</tooltip>
 	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG07">				<!--seventh saved message-->
-		<label>Message 7</label>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG6">				<!--seventh saved message-->
+		<label>MSG:6</label>
 		<value></value>
 		<tooltip>to be added</tooltip>
 	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG08">				<!--eight saved message-->
-		<label>Message 8</label>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG7">				<!--eight saved message-->
+		<label>Msg:7</label>
 		<value></value>
 		<tooltip>to be added</tooltip>
 	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG09">				<!--ninth saved message-->
-		<label>Message 9</label>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG8">				<!--ninth saved message-->
+		<label>Msg:8</label>
 		<value></value>
 		<tooltip>to be added</tooltip>
 	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSG10">				<!--tenth saved message-->
-		<label>Message 10</label>
+	<SETTING NAME="CW_MEMORY_KEYER_MSG9">				<!--tenth saved message-->
+		<label>Msg:9</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGA">				<!--eleventh saved message-->
+		<label>Msg:A</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGB">				<!--twelfth saved message-->
+		<label>Msg:B</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGC">				<!--thirteenth saved message-->
+		<label>Msg:C</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGD">				<!--fourteenth saved message-->
+		<label>Msg:D</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGE">				<!--fifteenth saved message-->
+		<label>Msg:E</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGF">				<!--sixteenth saved message-->
+		<label>Msg:F</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGG">				<!--seventeenth saved message-->
+		<label>Msg:G</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGH">				<!--eighteenth saved message-->
+		<label>Msg:H</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGI">				<!--nineteenth saved message-->
+		<label>Msg:I</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGJ">				<!--twentieth saved message-->
+		<label>Msg:J</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGK">				<!--twenty first saved message-->
+		<label>Msg:K</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGL">				<!--twenty second saved message-->
+		<label>Msg:L</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGM">				<!--twenty third saved message-->
+		<label>Msg:M</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGN">				<!--twenthy fourth saved message-->
+		<label>Msg:N</label>
+		<value></value>
+		<tooltip>to be added</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_MEMORY_KEYER_MSGO">				<!--twenty fifth saved message-->
+		<label>Msg:O</label>
 		<value></value>
 		<tooltip>to be added</tooltip>
 	</SETTING>
@@ -1350,7 +1425,7 @@ GENERAL UX
 	</SETTING>
   
 	<SETTING NAME="CUST_LPF_FILTER2_ENDFREQ">							
-		<label>Ending frequency of LPF1</label>
+		<label>Ending frequency of LPF2</label>
 		<value></value>														<!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
 		<tooltip>to be added</tooltip>
 	</SETTING>

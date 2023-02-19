@@ -67,11 +67,17 @@ class SettingsNotebook(SettingsnotebookWidget):
             'WSPR_BAND1_TXFREQ', 'WSPR_BAND2_TXFREQ', 'WSPR_BAND3_TXFREQ', 'WSPR_MESSAGE1_NAME', 'WSPR_MESSAGE2_NAME',
             'WSPR_MESSAGE3_NAME', 'WSPR_MESSAGE4_NAME', 'WSPR_MESSAGE1', 'WSPR_MESSAGE2', 'WSPR_MESSAGE3', 'WSPR_MESSAGE4',
             'CUST_LPF_ENABLED', 'CUST_LPF_FILTER1_ENDFREQ', 'CUST_LPF_FILTER2_ENDFREQ', 'CUST_LPF_FILTER3_ENDFREQ',
-            'CUST_LPF_FILTER4_ENDFREQ', 'CUST_LPF_FILTER5_ENDFREQ', 'CUST_LPF_FILTER6_ENDFREQ', 'CUST_LPF_FILTER7_ENDFREQ'
+            'CUST_LPF_FILTER4_ENDFREQ', 'CUST_LPF_FILTER5_ENDFREQ', 'CUST_LPF_FILTER6_ENDFREQ', 'CUST_LPF_FILTER7_ENDFREQ',
+            'CUST_LPF_FILTER1_CONTROL', 'CUST_LPF_FILTER2_CONTROL', 'CUST_LPF_FILTER3_CONTROL', 'CUST_LPF_FILTER4_CONTROL',
+            'CUST_LPF_FILTER5_CONTROL', 'CUST_LPF_FILTER6_CONTROL', 'CUST_LPF_FILTER7_CONTROL'
              ]
 
     #   this needs to be moved somewhere else too
-    clearErrorMessages = ['Extended_Channel_Frame', "TUNING_STEP_INDEX_VALUE_WIDGET", "TUNING_STEP_INDEX_WIDGET"]
+    hideOnStartup = ['Extended_Channel_Frame', "TUNING_STEP_INDEX_VALUE_WIDGET", "TUNING_STEP_INDEX_WIDGET"]
+                          # 'CUST_LPF_FILTER1_CONTROL_WIDGET', 'CUST_LPF_FILTER2_CONTROL_WIDGET',
+                          # 'CUST_LPF_FILTER3_CONTROL_WIDGET', 'CUST_LPF_FILTER4_CONTROL_WIDGET',
+                          # 'CUST_LPF_FILTER5_CONTROL_WIDGET', 'CUST_LPF_FILTER6_CONTROL_WIDGET',
+                          # 'CUST_LPF_FILTER7_CONTROL_WIDGET']
     #   Class variables
     #
     newTuningSteps = ()
@@ -377,7 +383,7 @@ class SettingsNotebook(SettingsnotebookWidget):
 
             # if we reach this point, there is an error...
             self.log.printerror("timestamp", "CW DOT ADC beginning value "+SettingsNotebook.validationErrorMsg)
-            getattr(self,"CW_ADC_DOT_FROM").set( priorValues["CW_ADC_DOT_FROM"])
+            getattr(self,"CW_ADC_DOT_FROM").set(self.priorValues["CW_ADC_DOT_FROM"])
             return False
         return True
 
@@ -567,11 +573,6 @@ class SettingsNotebook(SettingsnotebookWidget):
     def validate_CHANNEL_FREQ20(self, p_entry_value, v_condition):
         return self.validate_CHANNEL_FREQ(p_entry_value, v_condition, "FREQ20")
 
-    def clearHAM_BAND_Error_MSGS(self):
-        self.HAM_BAND_COUNT_INVALID_WIDGET.forget()
-        for i in range(1,11):
-            getattr(self, "HAM_BAND_RANGE"+str(i)+"_INVALID_WIDGET").forget()
-
     def validate_HAM_BAND_COUNT(self, p_entry_value, v_condition):
         if (v_condition == "focusin"):
             self.priorValues["HAM_BAND_COUNT"] = p_entry_value
@@ -685,57 +686,73 @@ class SettingsNotebook(SettingsnotebookWidget):
         if (self.CUST_LPF_ENABLED.get() == 'OFF'):
             self.CUSTOM_BANDPASS_FILTER_Frame.forget()
         elif (self.CUST_LPF_ENABLED.get() == 'STANDARD'):
-            self.CUSTOM_BANDPASS_EXTENSION_Frame.forget()
+            self.CUSTOM_BANDPASS_EXTENDED_Frame.forget()
             self.CUSTOM_BANDPASS_FILTER_Frame.pack()
         else:
-            self.CUSTOM_BANDPASS_EXTENSION_Frame.pack()
-            self.CUSTOM_BANDPASS_EXTENSION_Frame.pack()
+            self.CUSTOM_BANDPASS_EXTENDED_Frame.pack()
+            self.CUSTOM_BANDPASS_FILTER_Frame.pack()
 
 
     def validate_CUST_LPF_FILTER1_ENDFREQ(self, p_entry_value, v_condition):
-        self.CUST_LPF_FILTER2_BEGFREQ.set(str(int(p_entry_value)+1))
-        if (self.CUST_LPF_FILTER2_BEGFREQ.get() > self.CUST_LPF_FILTER2_ENDFREQ.get()):
-            self.CUST_LPF_FILTER2_ENDFREQ.set(str(int(p_entry_value)+2))
+        if ( p_entry_value != '') & (p_entry_value != '0'):
+            self.CUST_LPF_FILTER2_BEGFREQ.set(str(int(p_entry_value)))
+            if (self.CUST_LPF_FILTER2_BEGFREQ.get() > self.CUST_LPF_FILTER2_ENDFREQ.get()):
+                self.CUST_LPF_FILTER2_ENDFREQ.set(str(int(p_entry_value)-1))
         return True
 
-    # def validate_CUST_LPF_FILTER1_ENDFREQ(self, p_entry_value, v_condition):
-    #     self.CUST_LPF_FILTER2_BEGFREQ.set(str(int(p_entry_value)))
-    #     if (self.CUST_LPF_FILTER2_BEGFREQ.get() < self.CUST_LPF_FILTER2_ENDFREQ.get()):
-    #         self.CUST_LPF_FILTER2_ENDFREQ.set(str(int(p_entry_value)-1))
-    #     return True
-    #
     def validate_CUST_LPF_FILTER2_ENDFREQ(self, p_entry_value, v_condition):
-        self.CUST_LPF_FILTER3_BEGFREQ.set(str(int(p_entry_value)+1))
-        if (self.CUST_LPF_FILTER3_BEGFREQ.get() > self.CUST_LPF_FILTER3_ENDFREQ.get()):
-            self.CUST_LPF_FILTER3_ENDFREQ.set(str(int(p_entry_value)+2))
+        if ( p_entry_value == ''):
+            self.CUST_LPF_FILTER2_BEGFREQ.set("")
+        elif (p_entry_value != '0'):
+            self.CUST_LPF_FILTER3_BEGFREQ.set(str(int(p_entry_value)))
+            if (self.CUST_LPF_FILTER3_BEGFREQ.get() > self.CUST_LPF_FILTER3_ENDFREQ.get()):
+                self.CUST_LPF_FILTER3_ENDFREQ.set(str(int(p_entry_value)-1))
+
         return True
 
 
     def validate_CUST_LPF_FILTER3_ENDFREQ(self, p_entry_value, v_condition):
-        self.CUST_LPF_FILTER4_BEGFREQ.set(str(int(p_entry_value)+1))
-        if (self.CUST_LPF_FILTER4_BEGFREQ.get() > self.CUST_LPF_FILTER4_ENDFREQ.get()):
-            self.CUST_LPF_FILTER4_ENDFREQ.set(str(int(p_entry_value)+2))
+        if ( p_entry_value == ''):
+            self.CUST_LPF_FILTER3_BEGFREQ.set("")
+        elif (p_entry_value != '0'):
+            self.CUST_LPF_FILTER4_BEGFREQ.set(str(int(p_entry_value)))
+            if (self.CUST_LPF_FILTER4_BEGFREQ.get() > self.CUST_LPF_FILTER4_ENDFREQ.get()):
+                self.CUST_LPF_FILTER4_ENDFREQ.set(str(int(p_entry_value)-1))
+
         return True
 
     def validate_CUST_LPF_FILTER4_ENDFREQ(self, p_entry_value, v_condition):
-        self.CUST_LPF_FILTER5_BEGFREQ.set(str(int(p_entry_value)+1))
-        if (self.CUST_LPF_FILTER5_BEGFREQ.get() > self.CUST_LPF_FILTER5_ENDFREQ.get()):
-            self.CUST_LPF_FILTER5_ENDFREQ.set(str(int(p_entry_value)+2))
+        if ( p_entry_value == ''):
+            self.CUST_LPF_FILTER4_BEGFREQ.set("")
+        elif (p_entry_value != '0'):
+            self.CUST_LPF_FILTER5_BEGFREQ.set(str(int(p_entry_value)))
+            if (self.CUST_LPF_FILTER5_BEGFREQ.get() > self.CUST_LPF_FILTER5_ENDFREQ.get()):
+                self.CUST_LPF_FILTER5_ENDFREQ.set(str(int(p_entry_value)-1))
+
         return True
 
     def validate_CUST_LPF_FILTER5_ENDFREQ(self, p_entry_value, v_condition):
-        self.CUST_LPF_FILTER6_BEGFREQ.set(str(int(p_entry_value)+1))
-        if (self.CUST_LPF_FILTER6_BEGFREQ.get() > self.CUST_LPF_FILTER6_ENDFREQ.get()):
-            self.CUST_LPF_FILTER6_ENDFREQ.set(str(int(p_entry_value)+2))
+        if ( p_entry_value == ''):
+            self.CUST_LPF_FILTER5_BEGFREQ.set("")
+        elif (p_entry_value != '0'):
+            self.CUST_LPF_FILTER6_BEGFREQ.set(str(int(p_entry_value)))
+            if (self.CUST_LPF_FILTER6_BEGFREQ.get() > self.CUST_LPF_FILTER6_ENDFREQ.get()):
+                self.CUST_LPF_FILTER6_ENDFREQ.set(str(int(p_entry_value)-1))
+
         return True
 
     def validate_CUST_LPF_FILTER6_ENDFREQ(self, p_entry_value, v_condition):
-        self.CUST_LPF_FILTER7_BEGFREQ.set(str(int(p_entry_value)+1))
-        if (self.CUST_LPF_FILTER7_BEGFREQ.get() > self.CUST_LPF_FILTER7_ENDFREQ.get()):
-            self.CUST_LPF_FILTER7_ENDFREQ.set(str(int(p_entry_value)+2))
+        if ( p_entry_value == ''):
+            self.CUST_LPF_FILTER6_BEGFREQ.set("")
+        elif  (p_entry_value != '0'):
+            self.CUST_LPF_FILTER7_BEGFREQ.set(str(int(p_entry_value)))
+            if (self.CUST_LPF_FILTER7_BEGFREQ.get() > self.CUST_LPF_FILTER7_ENDFREQ.get()):
+                self.CUST_LPF_FILTER7_ENDFREQ.set(str(int(p_entry_value)-1))
         return True
 
     def validate_CUST_LPF_FILTER7_ENDFREQ(self, p_entry_value, v_condition):
+        if ( p_entry_value == ''):
+            self.CUST_LPF_FILTER7_BEGFREQ.set("")
         return True
 
 
@@ -763,7 +780,6 @@ class SettingsNotebook(SettingsnotebookWidget):
             self.Extended_Channel_Frame.forget()
 
     def autoInputRegion1(self):
-        self.clearHAM_BAND_Error_MSGS()
 
         self.HAM_BAND_COUNT.set(9)
 
@@ -799,7 +815,6 @@ class SettingsNotebook(SettingsnotebookWidget):
 
 
     def autoInputRegion2(self):
-        self.clearHAM_BAND_Error_MSGS()
 
         self.HAM_BAND_COUNT.set(10)
 
@@ -834,7 +849,6 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.HAM_BAND_RANGE10_END.set("29.700")
 
     def autoInputRegion3(self):
-        self.clearHAM_BAND_Error_MSGS()
 
         self.HAM_BAND_COUNT.set(10)
 
@@ -867,6 +881,43 @@ class SettingsNotebook(SettingsnotebookWidget):
 
         self.HAM_BAND_RANGE10_START.set("28.000")
         self.HAM_BAND_RANGE10_END.set("29.700")
+
+    def CUST_LPF_FILTER_CONTROL(self, filter):
+
+        theFilter = getattr(self,"CUST_LPF_"+filter+"_CONTROL")
+        theFilter.set('')
+
+        for dataline in LPF_CTRL_SELECT:
+            if (dataline != '0') & (dataline != "NONE"):
+                checkBoxValue = getattr(self,"CUST_LPF_"+filter+"_CONTROL_"+dataline).get()
+                if (checkBoxValue != '0') & (checkBoxValue != '') :
+                    theFilter.set(theFilter.get() + "," + checkBoxValue)
+        if (len(theFilter.get()) == 0):
+            theFilter.set("NONE")
+        elif (theFilter.get()[0] == ','):
+            theFilter.set(theFilter.get()[1:])      #delete leading comma
+        print(filter, " CB called=", theFilter.get() )
+
+    def CUST_LPF_FILTER1_CONTROL_CB(self):
+        self.CUST_LPF_FILTER_CONTROL("FILTER1")
+
+    def CUST_LPF_FILTER2_CONTROL_CB(self):
+        self.CUST_LPF_FILTER_CONTROL("FILTER2")
+
+    def CUST_LPF_FILTER3_CONTROL_CB(self):
+        self.CUST_LPF_FILTER_CONTROL("FILTER3")
+
+    def CUST_LPF_FILTER4_CONTROL_CB(self):
+        self.CUST_LPF_FILTER_CONTROL("FILTER4")
+
+    def CUST_LPF_FILTER5_CONTROL_CB(self):
+        self.CUST_LPF_FILTER_CONTROL("FILTER5")
+
+    def CUST_LPF_FILTER6_CONTROL_CB(self):
+        self.CUST_LPF_FILTER_CONTROL("FILTER6")
+
+    def CUST_LPF_FILTER7_CONTROL_CB(self):
+        self.CUST_LPF_FILTER_CONTROL("FILTER7")
 
     def new_Default_Tuning_Step(self, *args):
         self.TUNING_STEP_INDEX.set(SettingsNotebook.newTuningSteps.index(self.TUNING_STEP_INDEX_VALUE.get())+1)
@@ -906,22 +957,34 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.Refresh_Tuning_Steps()
     def Set_LPF_Beginning_Freq(self):
         if (self.CUST_LPF_FILTER1_ENDFREQ.get() != None) & (self.CUST_LPF_FILTER1_ENDFREQ.get() != ''):
-            self.CUST_LPF_FILTER2_BEGFREQ.set(str(int(self.CUST_LPF_FILTER1_ENDFREQ.get())+1))
+            self.CUST_LPF_FILTER2_BEGFREQ.set(str(int(self.CUST_LPF_FILTER1_ENDFREQ.get())))
 
         if (self.CUST_LPF_FILTER2_ENDFREQ.get() != None) & (self.CUST_LPF_FILTER2_ENDFREQ.get() != ''):
-            self.CUST_LPF_FILTER3_BEGFREQ.set(str(int(self.CUST_LPF_FILTER2_ENDFREQ.get())+1))
+            self.CUST_LPF_FILTER3_BEGFREQ.set(str(int(self.CUST_LPF_FILTER2_ENDFREQ.get())))
 
         if (self.CUST_LPF_FILTER3_ENDFREQ.get() != None) & (self.CUST_LPF_FILTER3_ENDFREQ.get() != ''):
-            self.CUST_LPF_FILTER4_BEGFREQ.set(str(int(self.CUST_LPF_FILTER3_ENDFREQ.get())+1))
+            self.CUST_LPF_FILTER4_BEGFREQ.set(str(int(self.CUST_LPF_FILTER3_ENDFREQ.get())))
 
         if (self.CUST_LPF_FILTER4_ENDFREQ.get() != None) & (self.CUST_LPF_FILTER4_ENDFREQ.get() != ''):
-            self.CUST_LPF_FILTER5_BEGFREQ.set(str(int(self.CUST_LPF_FILTER4_ENDFREQ.get())+1))
+            self.CUST_LPF_FILTER5_BEGFREQ.set(str(int(self.CUST_LPF_FILTER4_ENDFREQ.get())))
 
         if (self.CUST_LPF_FILTER5_ENDFREQ.get() != None) & (self.CUST_LPF_FILTER5_ENDFREQ.get() != ''):
-            self.CUST_LPF_FILTER6_BEGFREQ.set(str(int(self.CUST_LPF_FILTER5_ENDFREQ.get())+1))
+            self.CUST_LPF_FILTER6_BEGFREQ.set(str(int(self.CUST_LPF_FILTER5_ENDFREQ.get())))
 
         if (self.CUST_LPF_FILTER6_ENDFREQ.get() != None) & (self.CUST_LPF_FILTER6_ENDFREQ.get() != ''):
-            self.CUST_LPF_FILTER7_BEGFREQ.set(str(int(self.CUST_LPF_FILTER6_ENDFREQ.get())+1))
+            self.CUST_LPF_FILTER7_BEGFREQ.set(str(int(self.CUST_LPF_FILTER6_ENDFREQ.get())))
+
+    def Set_LPF_Control_Lines(self):
+        # loop thru all control lines and set checkboxes
+        i=1
+        while i<8:
+            theControlLine=getattr(self,"CUST_LPF_FILTER"+str(i)+"_CONTROL").get()
+            for dataline in LPF_CTRL_SELECT:
+                if dataline != "NONE":
+                    if dataline in theControlLine:
+                        getattr(self, "CUST_LPF_FILTER" + str(i) +"_CONTROL_" + dataline).set(dataline)
+            i += 1
+
 
 
     def load_Recommended_ADC_CW_Values(self):
@@ -971,8 +1034,11 @@ class SettingsNotebook(SettingsnotebookWidget):
         # LPF Beginning Frequencies
         self.Set_LPF_Beginning_Freq()
 
+        # LPF Control Lines
+        self.Set_LPF_Control_Lines()
+
         #   Clear error messages
-        for widget in SettingsNotebook.clearErrorMessages:
+        for widget in SettingsNotebook.hideOnStartup:
             getattr(self, widget).forget()
 
         self.enableNotebook()

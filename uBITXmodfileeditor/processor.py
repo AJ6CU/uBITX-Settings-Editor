@@ -30,6 +30,8 @@ class Processor(SourceselectorWidget):
     def setNotebook(self, settingsNotebook):
         self.settingsNotebook = settingsNotebook
 
+    def processComPort(self):                   #Overridden by children
+        pass
 
     def sourceSelected(self):                   # this method allows user to select comport vs file and loads the right UX to select
                                                 # the desired object

@@ -242,8 +242,6 @@ class SettingsnotebookWidget(ttk.Frame):
             self.TUNING_STEP5_WIDGET.register(
                 self.validate_TUNING_STEP5), "%P", "%V")
         self.TUNING_STEP5_WIDGET.configure(validatecommand=_validatecmd)
-        self.label26 = ttk.Label(self.frame6)
-        self.label26.grid(row=2)
         self.frame6.pack(anchor="w", padx=50, side="top")
         self.frame1 = ttk.Frame(self.General_Tuning_Steps_Settings_Frame)
         self.frame1.configure(height=200, width=200)
@@ -266,7 +264,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.TUNING_STEP_INDEX_WIDGET.configure(
             textvariable=self.TUNING_STEP_INDEX)
         self.TUNING_STEP_INDEX_WIDGET.grid(column=0, row=1)
-        self.frame1.pack(anchor="w", side="top")
+        self.frame1.pack(anchor="w", pady="10 0", side="top")
         self.General_Tuning_Steps_Settings_Frame.pack(padx="50 0", side="top")
         self.General_Tuning_Steps_Frame.pack(anchor="w", side="top")
         self.frame7 = ttk.Frame(self.General_Frame)
@@ -2582,7 +2580,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='Filter control')
         self.CUST_LPF_ENABLED_Label.grid(column=0, padx=10, row=0)
         self.CUST_LPF_ENABLED = tk.StringVar(value='OFF')
-        __values = ['OFF', 'STANDARD', 'EXTENSION']
+        __values = ['OFF', 'STANDARD', 'EXTENDED']
         self.CUST_LPF_ENABLED_WIDGET = ttk.OptionMenu(
             self.frame18,
             self.CUST_LPF_ENABLED,
@@ -2596,43 +2594,54 @@ class SettingsnotebookWidget(ttk.Frame):
         self.CUSTOM_BANDPASS_FILTER_Frame = ttk.Frame(
             self.CUST_LPF_ENABLED_Frame)
         self.CUSTOM_BANDPASS_FILTER_Frame.configure(height=200, width=200)
-        self.frame54 = ttk.Frame(self.CUSTOM_BANDPASS_FILTER_Frame)
-        self.frame54.configure(height=200, width=200)
-        self.label172 = ttk.Label(self.frame54)
-        self.label172.configure(style="Heading4.TLabel", text='From (MHz)')
-        self.label172.grid(column=0, row=0)
-        self.label174 = ttk.Label(self.frame54)
+        self.CUSTOM_BANDPASS_STANDARD_Frame = ttk.Frame(
+            self.CUSTOM_BANDPASS_FILTER_Frame)
+        self.CUSTOM_BANDPASS_STANDARD_Frame.configure(height=200, width=200)
+        self.CUStOM_BANDPASS_STANDARD_LABELS_Frame = ttk.Frame(
+            self.CUSTOM_BANDPASS_STANDARD_Frame)
+        self.CUStOM_BANDPASS_STANDARD_LABELS_Frame.configure(
+            height=200, width=200)
+        self.label172 = ttk.Label(self.CUStOM_BANDPASS_STANDARD_LABELS_Frame)
+        self.label172.configure(style="Heading4.TLabel", text='High Freq')
+        self.label172.grid(column=0, row=0, sticky="w")
+        self.label174 = ttk.Label(self.CUStOM_BANDPASS_STANDARD_LABELS_Frame)
         self.label174.configure(style="Heading4.TLabel", text='    ')
         self.label174.grid(column=1, row=0)
-        self.label173 = ttk.Label(self.frame54)
-        self.label173.configure(style="Heading4.TLabel", text='To (MHz)')
-        self.label173.grid(column=2, row=0)
-        self.label175 = ttk.Label(self.frame54)
+        self.label173 = ttk.Label(self.CUStOM_BANDPASS_STANDARD_LABELS_Frame)
+        self.label173.configure(style="Heading4.TLabel", text='Low Freq')
+        self.label173.grid(column=2, row=0, sticky="w")
+        self.label175 = ttk.Label(self.CUStOM_BANDPASS_STANDARD_LABELS_Frame)
         self.label175.configure(style="Heading4.TLabel", text='    ')
         self.label175.grid(column=3, row=0)
-        self.label176 = ttk.Label(self.frame54)
+        self.label176 = ttk.Label(self.CUStOM_BANDPASS_STANDARD_LABELS_Frame)
         self.label176.configure(
             style="Heading4.TLabel",
             text='TXA(D5)',
             width=7)
-        self.label176.grid(column=4, padx="5 0", row=0, sticky="w")
-        self.label177 = ttk.Label(self.frame54)
+        self.label176.grid(column=4, row=0, sticky="w")
+        self.label177 = ttk.Label(self.CUStOM_BANDPASS_STANDARD_LABELS_Frame)
         self.label177.configure(
             style="Heading4.TLabel",
             text='TXB(D4)',
             width=7)
         self.label177.grid(column=5, padx="5 0", row=0, sticky="w")
-        self.label178 = ttk.Label(self.frame54)
+        self.label178 = ttk.Label(self.CUStOM_BANDPASS_STANDARD_LABELS_Frame)
         self.label178.configure(
             style="Heading4.TLabel",
             text='TXC(D3)',
             width=7)
         self.label178.grid(column=6, padx="5 0", row=0, sticky="w")
-        self.entry52 = ttk.Entry(self.frame54)
+        self.CUStOM_BANDPASS_STANDARD_LABELS_Frame.pack(anchor="w", side="top")
+        self.CUSTOM_BANDPASS_STANDARD_DATA_Frame = ttk.Frame(
+            self.CUSTOM_BANDPASS_STANDARD_Frame)
+        self.CUSTOM_BANDPASS_STANDARD_DATA_Frame.configure(
+            height=200, width=200)
+        self.entry52 = ttk.Entry(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.CUST_LPF_FILTER1_BEGFREQ = tk.StringVar(value='200')
         self.entry52.configure(
             justify="right",
             state="readonly",
+            style="Normal.TEntry",
             textvariable=self.CUST_LPF_FILTER1_BEGFREQ,
             width=5)
         _text_ = '200'
@@ -2640,581 +2649,768 @@ class SettingsnotebookWidget(ttk.Frame):
         self.entry52.delete("0", "end")
         self.entry52.insert("0", _text_)
         self.entry52["state"] = "readonly"
-        self.entry52.grid(column=0, pady="0 5", row=1, sticky="w")
-        self.label12 = ttk.Label(self.frame54)
+        self.entry52.grid(column=0, row=0)
+        self.label12 = ttk.Label(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.label12.configure(style="Normal.TLabel", text='MHz -  ')
-        self.label12.grid(column=1, pady="0 5", row=1, sticky="w")
-        self.CUST_LPF_FILTER1_ENDFREQ_WIDGET = ttk.Entry(self.frame54)
+        self.label12.grid(column=1, row=0)
+        self.CUST_LPF_FILTER1_ENDFREQ_WIDGET = ttk.Entry(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.CUST_LPF_FILTER1_ENDFREQ = tk.StringVar()
         self.CUST_LPF_FILTER1_ENDFREQ_WIDGET.configure(
             justify="right",
+            style="Normal.TEntry",
             textvariable=self.CUST_LPF_FILTER1_ENDFREQ,
             validate="focusout",
             width=5)
-        self.CUST_LPF_FILTER1_ENDFREQ_WIDGET.grid(column=2, pady="0 5", row=1)
+        self.CUST_LPF_FILTER1_ENDFREQ_WIDGET.grid(column=2, row=0)
         _validatecmd = (self.CUST_LPF_FILTER1_ENDFREQ_WIDGET.register(
             self.validate_CUST_LPF_FILTER1_ENDFREQ), "%P", "%V")
         self.CUST_LPF_FILTER1_ENDFREQ_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label13 = ttk.Label(self.frame54)
+        self.label13 = ttk.Label(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.label13.configure(style="Normal.TLabel", text=' MHz')
-        self.label13.grid(column=3, pady="0 5", row=1)
-        self.CUST_LPF_FILTER1_CONTROL_TXA_Checkbutton = ttk.Checkbutton(
-            self.frame54)
-        self.CUST_LPF_FILTER1_CONTROL_TXA_Checkbutton.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXA')
-        self.CUST_LPF_FILTER1_CONTROL_TXA_Checkbutton.grid(
-            column=4, pady="0 5", row=1)
-        self.CUST_LPF_FILTER1_CONTROL_TXA_Checkbutton.configure(
-            command=self.CUST_LPF_FILTER1_CONTROL_TXA_CB)
-        self.checkbutton5 = ttk.Checkbutton(self.frame54)
+        self.label13.grid(column=3, row=0)
+        self.checkbutton4 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER1_CONTROL_TX_LPF_A = tk.StringVar()
+        self.checkbutton4.configure(
+            onvalue="TX_LPF_A",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER1_CONTROL_TX_LPF_A,
+            width=0)
+        self.checkbutton4.grid(column=4, padx="35 0", row=0, sticky="w")
+        self.checkbutton4.configure(command=self.CUST_LPF_FILTER1_CONTROL_CB)
+        self.checkbutton5 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER1_CONTROL_TX_LPF_B = tk.StringVar()
         self.checkbutton5.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXB')
-        self.checkbutton5.grid(column=5, pady="0 5", row=1)
-        self.checkbutton5.configure(
-            command=self.CUST_LPF_FILTER1_CONTROL_TXB_CB)
-        self.checkbutton6 = ttk.Checkbutton(self.frame54)
+            onvalue="TX_LPF_B",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER1_CONTROL_TX_LPF_B,
+            width=0)
+        self.checkbutton5.grid(column=5, padx="35 0", row=0, sticky="w")
+        self.checkbutton5.configure(command=self.CUST_LPF_FILTER1_CONTROL_CB)
+        self.checkbutton6 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER1_CONTROL_TX_LPF_C = tk.StringVar()
         self.checkbutton6.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXC')
-        self.checkbutton6.grid(column=6, pady="0 5", row=1)
-        self.checkbutton6.configure(
-            command=self.CUST_LPF_FILTER1_CONTROL_TXC_CB)
-        self.entry10 = ttk.Entry(self.frame54)
+            onvalue="TX_LPF_C",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER1_CONTROL_TX_LPF_C,
+            width=0)
+        self.checkbutton6.grid(column=6, row=0, sticky="w")
+        self.checkbutton6.configure(command=self.CUST_LPF_FILTER1_CONTROL_CB)
+        self.entry10 = ttk.Entry(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.CUST_LPF_FILTER2_BEGFREQ = tk.StringVar()
         self.entry10.configure(
             justify="right",
             state="readonly",
+            style="Normal.TEntry",
             textvariable=self.CUST_LPF_FILTER2_BEGFREQ,
             width=5)
-        self.entry10.grid(column=0, pady="0 5", row=2, sticky="w")
-        self.label139 = ttk.Label(self.frame54)
+        self.entry10.grid(column=0, row=1)
+        self.label139 = ttk.Label(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.label139.configure(style="Normal.TLabel", text='MHz -  ')
-        self.label139.grid(column=1, pady="0 5", row=2, sticky="w")
-        self.CUST_LPF_FILTER2_ENDFREQ_WIDGET = ttk.Entry(self.frame54)
+        self.label139.grid(column=1, row=1)
+        self.CUST_LPF_FILTER2_ENDFREQ_WIDGET = ttk.Entry(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.CUST_LPF_FILTER2_ENDFREQ = tk.StringVar()
         self.CUST_LPF_FILTER2_ENDFREQ_WIDGET.configure(
             justify="right",
+            style="Normal.TEntry",
             textvariable=self.CUST_LPF_FILTER2_ENDFREQ,
             validate="focusout",
             width=5)
-        self.CUST_LPF_FILTER2_ENDFREQ_WIDGET.grid(column=2, pady="0 5", row=2)
+        self.CUST_LPF_FILTER2_ENDFREQ_WIDGET.grid(column=2, row=1)
         _validatecmd = (self.CUST_LPF_FILTER2_ENDFREQ_WIDGET.register(
             self.validate_CUST_LPF_FILTER2_ENDFREQ), "%P", "%V")
         self.CUST_LPF_FILTER2_ENDFREQ_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label140 = ttk.Label(self.frame54)
+        self.label140 = ttk.Label(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.label140.configure(style="Normal.TLabel", text=' MHz')
-        self.label140.grid(column=3, pady="0 5", row=2)
-        self.checkbutton23 = ttk.Checkbutton(self.frame54)
+        self.label140.grid(column=3, row=1)
+        self.checkbutton23 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER2_CONTROL_TX_LPF_A = tk.StringVar()
         self.checkbutton23.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXA')
-        self.checkbutton23.grid(column=4, pady="0 5", row=2)
-        self.checkbutton24 = ttk.Checkbutton(self.frame54)
+            onvalue="TX_LPF_A",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER2_CONTROL_TX_LPF_A,
+            width=0)
+        self.checkbutton23.grid(column=4, padx="35 0", row=1, sticky="w")
+        self.checkbutton23.configure(command=self.CUST_LPF_FILTER2_CONTROL_CB)
+        self.checkbutton24 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER2_CONTROL_TX_LPF_B = tk.StringVar()
         self.checkbutton24.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXB')
-        self.checkbutton24.grid(column=5, pady="0 5", row=2)
-        self.checkbutton25 = ttk.Checkbutton(self.frame54)
+            onvalue="TX_LPF_B",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER2_CONTROL_TX_LPF_B,
+            width=5)
+        self.checkbutton24.grid(column=5, padx="35 0", row=1, sticky="w")
+        self.checkbutton24.configure(command=self.CUST_LPF_FILTER2_CONTROL_CB)
+        self.checkbutton25 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER2_CONTROL_TX_LPF_C = tk.StringVar()
         self.checkbutton25.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXC')
-        self.checkbutton25.grid(column=6, pady="0 5", row=2)
-        self.entry12 = ttk.Entry(self.frame54)
+            onvalue="TX_LPF_C",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER2_CONTROL_TX_LPF_C,
+            width=5)
+        self.checkbutton25.grid(column=6, row=1, sticky="w")
+        self.checkbutton25.configure(command=self.CUST_LPF_FILTER2_CONTROL_CB)
+        self.entry12 = ttk.Entry(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.CUST_LPF_FILTER3_BEGFREQ = tk.StringVar()
         self.entry12.configure(
             justify="right",
             state="readonly",
+            style="Normal.TEntry",
             textvariable=self.CUST_LPF_FILTER3_BEGFREQ,
             width=5)
-        self.entry12.grid(column=0, pady="0 5", row=3, sticky="w")
-        self.label141 = ttk.Label(self.frame54)
+        self.entry12.grid(column=0, row=2)
+        self.label141 = ttk.Label(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.label141.configure(style="Normal.TLabel", text='MHz -  ')
-        self.label141.grid(column=1, pady="0 5", row=3, sticky="w")
-        self.CUST_LPF_FILTER3_ENDFREQ_WIDGET = ttk.Entry(self.frame54)
+        self.label141.grid(column=1, row=2)
+        self.CUST_LPF_FILTER3_ENDFREQ_WIDGET = ttk.Entry(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.CUST_LPF_FILTER3_ENDFREQ = tk.StringVar()
         self.CUST_LPF_FILTER3_ENDFREQ_WIDGET.configure(
             justify="right",
+            style="Normal.TEntry",
             textvariable=self.CUST_LPF_FILTER3_ENDFREQ,
             validate="focusout",
             width=5)
-        self.CUST_LPF_FILTER3_ENDFREQ_WIDGET.grid(column=2, pady="0 5", row=3)
+        self.CUST_LPF_FILTER3_ENDFREQ_WIDGET.grid(column=2, row=2)
         _validatecmd = (self.CUST_LPF_FILTER3_ENDFREQ_WIDGET.register(
             self.validate_CUST_LPF_FILTER3_ENDFREQ), "%P", "%V")
         self.CUST_LPF_FILTER3_ENDFREQ_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label142 = ttk.Label(self.frame54)
+        self.label142 = ttk.Label(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.label142.configure(style="Normal.TLabel", text=' MHz')
-        self.label142.grid(column=3, pady="0 5", row=3)
-        self.checkbutton26 = ttk.Checkbutton(self.frame54)
+        self.label142.grid(column=3, row=2)
+        self.checkbutton26 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER3_CONTROL_TX_LPF_A = tk.StringVar()
         self.checkbutton26.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXA')
-        self.checkbutton26.grid(column=4, pady="0 5", row=3)
-        self.checkbutton27 = ttk.Checkbutton(self.frame54)
+            onvalue="TX_LPF_A",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER3_CONTROL_TX_LPF_A,
+            width=0)
+        self.checkbutton26.grid(column=4, padx="35 0", row=2, sticky="w")
+        self.checkbutton26.configure(command=self.CUST_LPF_FILTER3_CONTROL_CB)
+        self.checkbutton27 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER3_CONTROL_TX_LPF_B = tk.StringVar()
         self.checkbutton27.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXB')
-        self.checkbutton27.grid(column=5, pady="0 5", row=3)
-        self.checkbutton28 = ttk.Checkbutton(self.frame54)
+            onvalue="TX_LPF_B",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER3_CONTROL_TX_LPF_B,
+            width=5)
+        self.checkbutton27.grid(column=5, padx="35 0", row=2, sticky="w")
+        self.checkbutton27.configure(command=self.CUST_LPF_FILTER3_CONTROL_CB)
+        self.checkbutton28 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER3_CONTROL_TX_LPF_C = tk.StringVar()
         self.checkbutton28.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXC')
-        self.checkbutton28.grid(column=6, pady="0 5", row=3)
-        self.entry14 = ttk.Entry(self.frame54)
+            onvalue="TX_LPF_C",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER3_CONTROL_TX_LPF_C,
+            width=5)
+        self.checkbutton28.grid(column=6, row=2, sticky="w")
+        self.checkbutton28.configure(command=self.CUST_LPF_FILTER3_CONTROL_CB)
+        self.entry14 = ttk.Entry(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.CUST_LPF_FILTER4_BEGFREQ = tk.StringVar()
         self.entry14.configure(
             justify="right",
             state="readonly",
+            style="Normal.TEntry",
             textvariable=self.CUST_LPF_FILTER4_BEGFREQ,
             width=5)
-        self.entry14.grid(column=0, pady="0 5", row=4, sticky="w")
-        self.label143 = ttk.Label(self.frame54)
+        self.entry14.grid(column=0, row=3)
+        self.label143 = ttk.Label(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.label143.configure(style="Normal.TLabel", text='MHz -  ')
-        self.label143.grid(column=1, pady="0 5", row=4, sticky="w")
-        self.CUST_LPF_FILTER4_ENDFREQ_WIDGET = ttk.Entry(self.frame54)
+        self.label143.grid(column=1, row=3)
+        self.CUST_LPF_FILTER4_ENDFREQ_WIDGET = ttk.Entry(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.CUST_LPF_FILTER4_ENDFREQ = tk.StringVar()
         self.CUST_LPF_FILTER4_ENDFREQ_WIDGET.configure(
             justify="right",
+            style="Normal.TEntry",
             textvariable=self.CUST_LPF_FILTER4_ENDFREQ,
             validate="focusout",
             width=5)
-        self.CUST_LPF_FILTER4_ENDFREQ_WIDGET.grid(column=2, pady="0 5", row=4)
+        self.CUST_LPF_FILTER4_ENDFREQ_WIDGET.grid(column=2, row=3)
         _validatecmd = (self.CUST_LPF_FILTER4_ENDFREQ_WIDGET.register(
             self.validate_CUST_LPF_FILTER4_ENDFREQ), "%P", "%V")
         self.CUST_LPF_FILTER4_ENDFREQ_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label147 = ttk.Label(self.frame54)
+        self.label147 = ttk.Label(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.label147.configure(style="Normal.TLabel", text=' MHz')
-        self.label147.grid(column=3, pady="0 5", row=4)
-        self.checkbutton29 = ttk.Checkbutton(self.frame54)
+        self.label147.grid(column=3, row=3)
+        self.checkbutton29 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER4_CONTROL_TX_LPF_A = tk.StringVar()
         self.checkbutton29.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXA')
-        self.checkbutton29.grid(column=4, pady="0 5", row=4)
-        self.checkbutton30 = ttk.Checkbutton(self.frame54)
+            onvalue="TX_LPF_A",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER4_CONTROL_TX_LPF_A,
+            width=0)
+        self.checkbutton29.grid(column=4, padx="35 0", row=3, sticky="w")
+        self.checkbutton29.configure(command=self.CUST_LPF_FILTER4_CONTROL_CB)
+        self.checkbutton30 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER4_CONTROL_TX_LPF_B = tk.StringVar()
         self.checkbutton30.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXB')
-        self.checkbutton30.grid(column=5, pady="0 5", row=4)
-        self.checkbutton31 = ttk.Checkbutton(self.frame54)
+            onvalue="TX_LPF_B",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER4_CONTROL_TX_LPF_B,
+            width=5)
+        self.checkbutton30.grid(column=5, padx="35 0", row=3, sticky="w")
+        self.checkbutton30.configure(command=self.CUST_LPF_FILTER4_CONTROL_CB)
+        self.checkbutton31 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER4_CONTROL_TX_LPF_C = tk.StringVar()
         self.checkbutton31.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXC')
-        self.checkbutton31.grid(column=6, pady="0 5", row=4)
-        self.entry16 = ttk.Entry(self.frame54)
+            onvalue="TX_LPF_C",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER4_CONTROL_TX_LPF_C,
+            width=5)
+        self.checkbutton31.grid(column=6, row=3, sticky="w")
+        self.checkbutton31.configure(command=self.CUST_LPF_FILTER4_CONTROL_CB)
+        self.entry16 = ttk.Entry(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.CUST_LPF_FILTER5_BEGFREQ = tk.StringVar()
         self.entry16.configure(
             justify="right",
             state="readonly",
+            style="Normal.TEntry",
             textvariable=self.CUST_LPF_FILTER5_BEGFREQ,
             width=5)
-        self.entry16.grid(column=0, pady="0 5", row=5, sticky="w")
-        self.label148 = ttk.Label(self.frame54)
+        self.entry16.grid(column=0, row=4)
+        self.label148 = ttk.Label(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.label148.configure(style="Normal.TLabel", text='MHz -  ')
-        self.label148.grid(column=1, pady="0 5", row=5, sticky="w")
-        self.CUST_LPF_FILTER5_ENDFREQ_WIDGET = ttk.Entry(self.frame54)
+        self.label148.grid(column=1, row=4)
+        self.CUST_LPF_FILTER5_ENDFREQ_WIDGET = ttk.Entry(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.CUST_LPF_FILTER5_ENDFREQ = tk.StringVar()
         self.CUST_LPF_FILTER5_ENDFREQ_WIDGET.configure(
             justify="right",
+            style="Normal.TEntry",
             textvariable=self.CUST_LPF_FILTER5_ENDFREQ,
             validate="focusout",
             width=5)
-        self.CUST_LPF_FILTER5_ENDFREQ_WIDGET.grid(column=2, pady="0 5", row=5)
+        self.CUST_LPF_FILTER5_ENDFREQ_WIDGET.grid(column=2, row=4)
         _validatecmd = (self.CUST_LPF_FILTER5_ENDFREQ_WIDGET.register(
             self.validate_CUST_LPF_FILTER5_ENDFREQ), "%P", "%V")
         self.CUST_LPF_FILTER5_ENDFREQ_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label149 = ttk.Label(self.frame54)
+        self.label149 = ttk.Label(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.label149.configure(style="Normal.TLabel", text=' MHz')
-        self.label149.grid(column=3, pady="0 5", row=5)
-        self.checkbutton32 = ttk.Checkbutton(self.frame54)
+        self.label149.grid(column=3, row=4)
+        self.checkbutton32 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER5_CONTROL_TX_LPF_A = tk.StringVar()
         self.checkbutton32.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXA')
-        self.checkbutton32.grid(column=4, pady="0 5", row=5)
-        self.checkbutton33 = ttk.Checkbutton(self.frame54)
+            onvalue="TX_LPF_A",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER5_CONTROL_TX_LPF_A,
+            width=0)
+        self.checkbutton32.grid(column=4, padx="35 0", row=4, sticky="w")
+        self.checkbutton32.configure(command=self.CUST_LPF_FILTER5_CONTROL_CB)
+        self.checkbutton33 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER5_CONTROL_TX_LPF_B = tk.StringVar()
         self.checkbutton33.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXB')
-        self.checkbutton33.grid(column=5, pady="0 5", row=5)
-        self.checkbutton34 = ttk.Checkbutton(self.frame54)
+            onvalue="TX_LPF_B",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER5_CONTROL_TX_LPF_B,
+            width=5)
+        self.checkbutton33.grid(column=5, padx="35 0", row=4, sticky="w")
+        self.checkbutton33.configure(command=self.CUST_LPF_FILTER5_CONTROL_CB)
+        self.checkbutton34 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER5_CONTROL_TX_LPF_C = tk.StringVar()
         self.checkbutton34.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXC')
-        self.checkbutton34.grid(column=6, pady="0 5", row=5)
-        self.entry18 = ttk.Entry(self.frame54)
+            onvalue="TX_LPF_C",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER5_CONTROL_TX_LPF_C,
+            width=5)
+        self.checkbutton34.grid(column=6, row=4, sticky="w")
+        self.checkbutton34.configure(command=self.CUST_LPF_FILTER5_CONTROL_CB)
+        self.entry18 = ttk.Entry(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.CUST_LPF_FILTER6_BEGFREQ = tk.StringVar()
         self.entry18.configure(
             justify="right",
             state="readonly",
+            style="Normal.TEntry",
             textvariable=self.CUST_LPF_FILTER6_BEGFREQ,
             width=5)
-        self.entry18.grid(column=0, pady="0 5", row=6, sticky="w")
-        self.label150 = ttk.Label(self.frame54)
+        self.entry18.grid(column=0, row=5)
+        self.label150 = ttk.Label(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.label150.configure(style="Normal.TLabel", text='MHz -  ')
-        self.label150.grid(column=1, pady="0 5", row=6, sticky="w")
-        self.CUST_LPF_FILTER6_ENDFREQ_WIDGET = ttk.Entry(self.frame54)
+        self.label150.grid(column=1, row=5)
+        self.CUST_LPF_FILTER6_ENDFREQ_WIDGET = ttk.Entry(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.CUST_LPF_FILTER6_ENDFREQ = tk.StringVar()
         self.CUST_LPF_FILTER6_ENDFREQ_WIDGET.configure(
             justify="right",
+            style="Normal.TEntry",
             textvariable=self.CUST_LPF_FILTER6_ENDFREQ,
             validate="focusout",
             width=5)
-        self.CUST_LPF_FILTER6_ENDFREQ_WIDGET.grid(column=2, pady="0 5", row=6)
+        self.CUST_LPF_FILTER6_ENDFREQ_WIDGET.grid(column=2, row=5)
         _validatecmd = (self.CUST_LPF_FILTER6_ENDFREQ_WIDGET.register(
             self.validate_CUST_LPF_FILTER6_ENDFREQ), "%P", "%V")
         self.CUST_LPF_FILTER6_ENDFREQ_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label151 = ttk.Label(self.frame54)
+        self.label151 = ttk.Label(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.label151.configure(style="Normal.TLabel", text=' MHz')
-        self.label151.grid(column=3, pady="0 5", row=6)
-        self.checkbutton35 = ttk.Checkbutton(self.frame54)
+        self.label151.grid(column=3, row=5)
+        self.checkbutton35 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER6_CONTROL_TX_LPF_A = tk.StringVar()
         self.checkbutton35.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXA')
-        self.checkbutton35.grid(column=4, pady="0 5", row=6)
-        self.checkbutton36 = ttk.Checkbutton(self.frame54)
+            onvalue="TX_LPF_A",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER6_CONTROL_TX_LPF_A,
+            width=0)
+        self.checkbutton35.grid(column=4, padx="35 0", row=5, sticky="w")
+        self.checkbutton35.configure(command=self.CUST_LPF_FILTER6_CONTROL_CB)
+        self.checkbutton36 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER6_CONTROL_TX_LPF_B = tk.StringVar()
         self.checkbutton36.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXB')
-        self.checkbutton36.grid(column=5, pady="0 5", row=6)
-        self.checkbutton37 = ttk.Checkbutton(self.frame54)
+            onvalue="TX_LPF_B",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER6_CONTROL_TX_LPF_B,
+            width=5)
+        self.checkbutton36.grid(column=5, padx="35 0", row=5, sticky="w")
+        self.checkbutton36.configure(command=self.CUST_LPF_FILTER6_CONTROL_CB)
+        self.checkbutton37 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER6_CONTROL_TX_LPF_C = tk.StringVar()
         self.checkbutton37.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXC')
-        self.checkbutton37.grid(column=6, pady="0 5", row=6)
-        self.entry20 = ttk.Entry(self.frame54)
+            onvalue="TX_LPF_C",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER6_CONTROL_TX_LPF_C,
+            width=5)
+        self.checkbutton37.grid(column=6, row=5, sticky="w")
+        self.checkbutton37.configure(command=self.CUST_LPF_FILTER6_CONTROL_CB)
+        self.entry20 = ttk.Entry(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.CUST_LPF_FILTER7_BEGFREQ = tk.StringVar()
         self.entry20.configure(
             justify="right",
             state="readonly",
+            style="Normal.TEntry",
             textvariable=self.CUST_LPF_FILTER7_BEGFREQ,
             width=5)
-        self.entry20.grid(column=0, pady="0 5", row=7, sticky="w")
-        self.label152 = ttk.Label(self.frame54)
+        self.entry20.grid(column=0, row=6)
+        self.label152 = ttk.Label(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.label152.configure(style="Normal.TLabel", text='MHz -  ')
-        self.label152.grid(column=1, pady="0 5", row=7, sticky="w")
-        self.CUST_LPF_FILTER7_ENDFREQ_WIDGET = ttk.Entry(self.frame54)
+        self.label152.grid(column=1, row=6)
+        self.CUST_LPF_FILTER7_ENDFREQ_WIDGET = ttk.Entry(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.CUST_LPF_FILTER7_ENDFREQ = tk.StringVar()
         self.CUST_LPF_FILTER7_ENDFREQ_WIDGET.configure(
             justify="right",
+            style="Normal.TEntry",
             textvariable=self.CUST_LPF_FILTER7_ENDFREQ,
             validate="focusout",
             width=5)
-        self.CUST_LPF_FILTER7_ENDFREQ_WIDGET.grid(column=2, pady="0 5", row=7)
+        self.CUST_LPF_FILTER7_ENDFREQ_WIDGET.grid(column=2, row=6)
         _validatecmd = (self.CUST_LPF_FILTER7_ENDFREQ_WIDGET.register(
             self.validate_CUST_LPF_FILTER7_ENDFREQ), "%P", "%V")
         self.CUST_LPF_FILTER7_ENDFREQ_WIDGET.configure(
             validatecommand=_validatecmd)
-        self.label153 = ttk.Label(self.frame54)
+        self.label153 = ttk.Label(self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
         self.label153.configure(style="Normal.TLabel", text=' MHz')
-        self.label153.grid(column=3, pady="0 5", row=7)
-        self.checkbutton38 = ttk.Checkbutton(self.frame54)
+        self.label153.grid(column=3, row=6)
+        self.checkbutton38 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER7_CONTROL_TX_LPF_A = tk.StringVar()
         self.checkbutton38.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXA')
-        self.checkbutton38.grid(column=4, pady="0 5", row=7)
-        self.checkbutton39 = ttk.Checkbutton(self.frame54)
+            onvalue="TX_LPF_A",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER7_CONTROL_TX_LPF_A,
+            width=0)
+        self.checkbutton38.grid(column=4, padx="35 0", row=6, sticky="w")
+        self.checkbutton38.configure(command=self.CUST_LPF_FILTER7_CONTROL_CB)
+        self.checkbutton39 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER7_CONTROL_TX_LPF_B = tk.StringVar()
         self.checkbutton39.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXB')
-        self.checkbutton39.grid(column=5, pady="0 5", row=7)
-        self.checkbutton40 = ttk.Checkbutton(self.frame54)
+            onvalue="TX_LPF_B",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER7_CONTROL_TX_LPF_B,
+            width=5)
+        self.checkbutton39.grid(column=5, padx="35 0", row=6, sticky="w")
+        self.checkbutton39.configure(command=self.CUST_LPF_FILTER7_CONTROL_CB)
+        self.checkbutton40 = ttk.Checkbutton(
+            self.CUSTOM_BANDPASS_STANDARD_DATA_Frame)
+        self.CUST_LPF_FILTER7_CONTROL_TX_LPF_C = tk.StringVar()
         self.checkbutton40.configure(
-            style="CheckboxNormal.TCheckbutton", text='TXC')
-        self.checkbutton40.grid(column=6, pady="0 5", row=7)
-        self.frame54.pack(anchor="n", side="left")
-        self.CUSTOM_BANDPASS_EXTENSION_Frame = ttk.Frame(
+            onvalue="TX_LPF_C",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER7_CONTROL_TX_LPF_C,
+            width=5)
+        self.checkbutton40.grid(column=6, row=6, sticky="w")
+        self.checkbutton40.configure(command=self.CUST_LPF_FILTER7_CONTROL_CB)
+        self.CUSTOM_BANDPASS_STANDARD_DATA_Frame.pack(anchor="w", side="top")
+        self.CUSTOM_BANDPASS_STANDARD_Frame.pack(anchor="n", side="left")
+        self.CUSTOM_BANDPASS_EXTENDED_Frame = ttk.Frame(
             self.CUSTOM_BANDPASS_FILTER_Frame)
-        self.CUSTOM_BANDPASS_EXTENSION_Frame.configure(height=200, width=200)
-        self.label179 = ttk.Label(self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.CUSTOM_BANDPASS_EXTENDED_Frame.configure(height=200, width=200)
+        self.CUSTOM_BANDPASS_EXTENDED_LABEL_Frame = ttk.Frame(
+            self.CUSTOM_BANDPASS_EXTENDED_Frame)
+        self.CUSTOM_BANDPASS_EXTENDED_LABEL_Frame.configure(
+            height=200, width=200)
+        self.label179 = ttk.Label(self.CUSTOM_BANDPASS_EXTENDED_LABEL_Frame)
         self.label179.configure(style="Heading4.TLabel", text='D10', width=7)
-        self.label179.grid(column=0, padx="8 0", row=0, sticky="w")
-        self.label180 = ttk.Label(self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.label179.grid(column=0, row=0, sticky="w")
+        self.label180 = ttk.Label(self.CUSTOM_BANDPASS_EXTENDED_LABEL_Frame)
         self.label180.configure(style="Heading4.TLabel", text='D11', width=7)
-        self.label180.grid(column=1, padx="6 0", row=0, sticky="w")
-        self.label181 = ttk.Label(self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.label180.grid(column=1, padx="5 0", row=0, sticky="w")
+        self.label181 = ttk.Label(self.CUSTOM_BANDPASS_EXTENDED_LABEL_Frame)
         self.label181.configure(style="Heading4.TLabel", text='D12', width=7)
-        self.label181.grid(column=2, padx="6 0", row=0, sticky="w")
-        self.label182 = ttk.Label(self.CUSTOM_BANDPASS_EXTENSION_Frame)
+        self.label181.grid(column=2, row=0, sticky="w")
+        self.label182 = ttk.Label(self.CUSTOM_BANDPASS_EXTENDED_LABEL_Frame)
         self.label182.configure(style="Heading4.TLabel", text='D13', width=7)
-        self.label182.grid(column=3, padx="6 0", row=0, sticky="w")
+        self.label182.grid(column=3, row=0, sticky="w")
+        self.CUSTOM_BANDPASS_EXTENDED_LABEL_Frame.pack(anchor="w", side="top")
+        self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame = ttk.Frame(
+            self.CUSTOM_BANDPASS_EXTENDED_Frame)
+        self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame.configure(
+            height=200, width=200)
         self.checkbutton7 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER1_CONTROL_D10 = tk.StringVar()
         self.checkbutton7.configure(
-            style="CheckboxNormal.TCheckbutton", text='D10')
-        self.checkbutton7.grid(
-            column=0,
-            padx="7 0",
-            pady="3 12",
-            row=1,
-            sticky="w")
-        self.checkbutton7.configure(
-            command=self.CUST_LPF_FILTER1_CONTROL_D10_CB)
+            onvalue="D10",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER1_CONTROL_D10,
+            width=0)
+        self.checkbutton7.grid(column=0, padx="3 0", row=0, sticky="w")
+        self.checkbutton7.configure(command=self.CUST_LPF_FILTER1_CONTROL_CB)
         self.checkbutton8 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER1_CONTROL_D11 = tk.StringVar()
         self.checkbutton8.configure(
-            style="CheckboxNormal.TCheckbutton", text='D11')
-        self.checkbutton8.grid(
-            column=1,
-            padx="5 0",
-            pady="3 12",
-            row=1,
-            sticky="w")
-        self.checkbutton8.configure(
-            command=self.CUST_LPF_FILTER1_CONTROL_D11_CB)
+            onvalue="D11",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER1_CONTROL_D11,
+            width=0)
+        self.checkbutton8.grid(column=1, padx="35 0", row=0, sticky="w")
+        self.checkbutton8.configure(command=self.CUST_LPF_FILTER1_CONTROL_CB)
         self.checkbutton9 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER1_CONTROL_D12 = tk.StringVar()
         self.checkbutton9.configure(
-            style="CheckboxNormal.TCheckbutton", text='D12')
-        self.checkbutton9.grid(
-            column=2,
-            padx="5 0",
-            pady="3 12",
-            row=1,
-            sticky="w")
-        self.checkbutton9.configure(
-            command=self.CUST_LPF_FILTER1_CONTROL_D12_CB)
+            onvalue="D12",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER1_CONTROL_D12,
+            width=0)
+        self.checkbutton9.grid(column=2, padx="30 0", row=0, sticky="w")
+        self.checkbutton9.configure(command=self.CUST_LPF_FILTER1_CONTROL_CB)
         self.checkbutton10 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER1_CONTROL_D13 = tk.StringVar()
         self.checkbutton10.configure(
-            style="CheckboxNormal.TCheckbutton", text='D13')
-        self.checkbutton10.grid(
-            column=3,
-            padx="5 0",
-            pady="3 12",
-            row=1,
-            sticky="w")
-        self.checkbutton10.configure(
-            command=self.CUST_LPF_FILTER1_CONTROL_D13_CB)
+            onvalue="D13",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER1_CONTROL_D13,
+            width=0)
+        self.checkbutton10.grid(column=3, padx="28 0", row=0, sticky="w")
+        self.checkbutton10.configure(command=self.CUST_LPF_FILTER1_CONTROL_CB)
         self.checkbutton41 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER2_CONTROL_D10 = tk.StringVar()
         self.checkbutton41.configure(
-            style="CheckboxNormal.TCheckbutton", text='D10')
-        self.checkbutton41.grid(
-            column=0,
-            padx="7 0",
-            pady="0 12",
-            row=2,
-            sticky="w")
+            onvalue="D10",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER2_CONTROL_D10,
+            width=0)
+        self.checkbutton41.grid(column=0, padx="3 0", row=1, sticky="w")
+        self.checkbutton41.configure(command=self.CUST_LPF_FILTER2_CONTROL_CB)
         self.checkbutton42 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER2_CONTROL_D11 = tk.StringVar()
         self.checkbutton42.configure(
-            style="CheckboxNormal.TCheckbutton", text='D11')
-        self.checkbutton42.grid(
-            column=1,
-            padx="5 0",
-            pady="0 12",
-            row=2,
-            sticky="w")
+            onvalue="D11",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER2_CONTROL_D11,
+            width=0)
+        self.checkbutton42.grid(column=1, padx="35 0", row=1, sticky="w")
+        self.checkbutton42.configure(command=self.CUST_LPF_FILTER2_CONTROL_CB)
         self.checkbutton43 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER2_CONTROL_D12 = tk.StringVar()
         self.checkbutton43.configure(
-            style="CheckboxNormal.TCheckbutton", text='D12')
-        self.checkbutton43.grid(
-            column=2,
-            padx="5 0",
-            pady="0 12",
-            row=2,
-            sticky="w")
+            onvalue="D12",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER2_CONTROL_D12,
+            width=0)
+        self.checkbutton43.grid(column=2, padx="30 0", row=1, sticky="w")
+        self.checkbutton43.configure(command=self.CUST_LPF_FILTER2_CONTROL_CB)
         self.checkbutton44 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER2_CONTROL_D13 = tk.StringVar()
         self.checkbutton44.configure(
-            style="CheckboxNormal.TCheckbutton", text='D13')
-        self.checkbutton44.grid(
-            column=3,
-            padx="5 0",
-            pady="0 12",
-            row=2,
-            sticky="w")
+            onvalue="D13",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER2_CONTROL_D13,
+            width=0)
+        self.checkbutton44.grid(column=3, padx="28 0", row=1, sticky="w")
+        self.checkbutton44.configure(command=self.CUST_LPF_FILTER2_CONTROL_CB)
         self.checkbutton45 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER3_CONTROL_D10 = tk.StringVar()
         self.checkbutton45.configure(
-            style="CheckboxNormal.TCheckbutton", text='D10')
-        self.checkbutton45.grid(
-            column=0,
-            padx="7 0",
-            pady="0 12",
-            row=3,
-            sticky="w")
+            onvalue="D10",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER3_CONTROL_D10,
+            width=0)
+        self.checkbutton45.grid(column=0, padx="3 0", row=2, sticky="w")
+        self.checkbutton45.configure(command=self.CUST_LPF_FILTER3_CONTROL_CB)
         self.checkbutton46 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER3_CONTROL_D11 = tk.StringVar()
         self.checkbutton46.configure(
-            style="CheckboxNormal.TCheckbutton", text='D11')
-        self.checkbutton46.grid(
-            column=1,
-            padx="5 0",
-            pady="0 12",
-            row=3,
-            sticky="w")
+            onvalue="D11",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER3_CONTROL_D11,
+            width=0)
+        self.checkbutton46.grid(column=1, padx="35 0", row=2, sticky="w")
+        self.checkbutton46.configure(command=self.CUST_LPF_FILTER3_CONTROL_CB)
         self.checkbutton47 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER3_CONTROL_D12 = tk.StringVar()
         self.checkbutton47.configure(
-            style="CheckboxNormal.TCheckbutton", text='D12')
-        self.checkbutton47.grid(
-            column=2,
-            padx="5 0",
-            pady="0 12",
-            row=3,
-            sticky="w")
+            onvalue="D12",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER3_CONTROL_D12,
+            width=0)
+        self.checkbutton47.grid(column=2, padx="30 0", row=2, sticky="w")
+        self.checkbutton47.configure(command=self.CUST_LPF_FILTER3_CONTROL_CB)
         self.checkbutton48 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER3_CONTROL_D13 = tk.StringVar()
         self.checkbutton48.configure(
-            style="CheckboxNormal.TCheckbutton", text='D13')
-        self.checkbutton48.grid(
-            column=3,
-            padx="5 0",
-            pady="0 12",
-            row=3,
-            sticky="w")
+            onvalue="D13",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER3_CONTROL_D13,
+            width=0)
+        self.checkbutton48.grid(column=3, padx="28 0", row=2, sticky="w")
+        self.checkbutton48.configure(command=self.CUST_LPF_FILTER3_CONTROL_CB)
         self.checkbutton49 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER4_CONTROL_D10 = tk.StringVar()
         self.checkbutton49.configure(
-            style="CheckboxNormal.TCheckbutton", text='D10')
-        self.checkbutton49.grid(
-            column=0,
-            padx="7 0",
-            pady="0 12",
-            row=4,
-            sticky="w")
+            onvalue="D10",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER4_CONTROL_D10,
+            width=0)
+        self.checkbutton49.grid(column=0, padx="3 0", row=3, sticky="w")
+        self.checkbutton49.configure(command=self.CUST_LPF_FILTER4_CONTROL_CB)
         self.checkbutton50 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER4_CONTROL_D11 = tk.StringVar()
         self.checkbutton50.configure(
-            style="CheckboxNormal.TCheckbutton", text='D11')
-        self.checkbutton50.grid(
-            column=1,
-            padx="5 0",
-            pady="0 12",
-            row=4,
-            sticky="w")
+            onvalue="D11",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER4_CONTROL_D11,
+            width=0)
+        self.checkbutton50.grid(column=1, padx="35 0", row=3, sticky="w")
+        self.checkbutton50.configure(command=self.CUST_LPF_FILTER4_CONTROL_CB)
         self.checkbutton51 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER4_CONTROL_D12 = tk.StringVar()
         self.checkbutton51.configure(
-            style="CheckboxNormal.TCheckbutton", text='D12')
-        self.checkbutton51.grid(
-            column=2,
-            padx="5 0",
-            pady="0 12",
-            row=4,
-            sticky="w")
+            onvalue="D12",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER4_CONTROL_D12,
+            width=0)
+        self.checkbutton51.grid(column=2, padx="30 0", row=3, sticky="w")
+        self.checkbutton51.configure(command=self.CUST_LPF_FILTER4_CONTROL_CB)
         self.checkbutton52 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER4_CONTROL_D13 = tk.StringVar()
         self.checkbutton52.configure(
-            style="CheckboxNormal.TCheckbutton", text='D13')
-        self.checkbutton52.grid(
-            column=3,
-            padx="5 0",
-            pady="0 12",
-            row=4,
-            sticky="w")
+            onvalue="D13",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER4_CONTROL_D13,
+            width=0)
+        self.checkbutton52.grid(column=3, padx="28 0", row=3, sticky="w")
+        self.checkbutton52.configure(command=self.CUST_LPF_FILTER4_CONTROL_CB)
         self.checkbutton53 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER5_CONTROL_D10 = tk.StringVar()
         self.checkbutton53.configure(
-            style="CheckboxNormal.TCheckbutton", text='D10')
-        self.checkbutton53.grid(
-            column=0,
-            padx="7 0",
-            pady="0 12",
-            row=5,
-            sticky="w")
+            onvalue="D10",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER5_CONTROL_D10,
+            width=0)
+        self.checkbutton53.grid(column=0, padx="3 0", row=4, sticky="w")
+        self.checkbutton53.configure(command=self.CUST_LPF_FILTER5_CONTROL_CB)
         self.checkbutton54 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER5_CONTROL_D11 = tk.StringVar()
         self.checkbutton54.configure(
-            style="CheckboxNormal.TCheckbutton", text='D11')
-        self.checkbutton54.grid(
-            column=1,
-            padx="5 0",
-            pady="0 12",
-            row=5,
-            sticky="w")
+            onvalue="D11",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER5_CONTROL_D11,
+            width=0)
+        self.checkbutton54.grid(column=1, padx="35 0", row=4, sticky="w")
+        self.checkbutton54.configure(command=self.CUST_LPF_FILTER5_CONTROL_CB)
         self.checkbutton55 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER5_CONTROL_D12 = tk.StringVar()
         self.checkbutton55.configure(
-            style="CheckboxNormal.TCheckbutton", text='D12')
-        self.checkbutton55.grid(
-            column=2,
-            padx="5 0",
-            pady="0 12",
-            row=5,
-            sticky="w")
+            onvalue="D12",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER5_CONTROL_D12,
+            width=0)
+        self.checkbutton55.grid(column=2, padx="30 0", row=4, sticky="w")
+        self.checkbutton55.configure(command=self.CUST_LPF_FILTER5_CONTROL_CB)
         self.checkbutton56 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER5_CONTROL_D13 = tk.StringVar()
         self.checkbutton56.configure(
-            style="CheckboxNormal.TCheckbutton", text='D13')
-        self.checkbutton56.grid(
-            column=3,
-            padx="5 0",
-            pady="0 12",
-            row=5,
-            sticky="w")
+            onvalue="D13",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER5_CONTROL_D13,
+            width=0)
+        self.checkbutton56.grid(column=3, padx="28 0", row=4, sticky="w")
+        self.checkbutton56.configure(command=self.CUST_LPF_FILTER5_CONTROL_CB)
         self.checkbutton57 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER6_CONTROL_D10 = tk.StringVar()
         self.checkbutton57.configure(
-            style="CheckboxNormal.TCheckbutton", text='D10')
-        self.checkbutton57.grid(
-            column=0,
-            padx="7 0",
-            pady="0 12",
-            row=6,
-            sticky="w")
+            onvalue="D10",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER6_CONTROL_D10,
+            width=0)
+        self.checkbutton57.grid(column=0, padx="3 0", row=5, sticky="w")
+        self.checkbutton57.configure(command=self.CUST_LPF_FILTER6_CONTROL_CB)
         self.checkbutton58 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER6_CONTROL_D11 = tk.StringVar()
         self.checkbutton58.configure(
-            style="CheckboxNormal.TCheckbutton", text='D11')
-        self.checkbutton58.grid(
-            column=1,
-            padx="5 0",
-            pady="0 12",
-            row=6,
-            sticky="w")
+            onvalue="D11",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER6_CONTROL_D11,
+            width=0)
+        self.checkbutton58.grid(column=1, padx="35 0", row=5, sticky="w")
+        self.checkbutton58.configure(command=self.CUST_LPF_FILTER6_CONTROL_CB)
         self.checkbutton59 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER6_CONTROL_D12 = tk.StringVar()
         self.checkbutton59.configure(
-            style="CheckboxNormal.TCheckbutton", text='D12')
-        self.checkbutton59.grid(
-            column=2,
-            padx="5 0",
-            pady="0 12",
-            row=6,
-            sticky="w")
+            onvalue="D12",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER6_CONTROL_D12,
+            width=0)
+        self.checkbutton59.grid(column=2, padx="30 0", row=5, sticky="w")
+        self.checkbutton59.configure(command=self.CUST_LPF_FILTER6_CONTROL_CB)
         self.checkbutton60 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER6_CONTROL_D13 = tk.StringVar()
         self.checkbutton60.configure(
-            style="CheckboxNormal.TCheckbutton", text='D13')
-        self.checkbutton60.grid(
-            column=3,
-            padx="5 0",
-            pady="0 12",
-            row=6,
-            sticky="w")
+            onvalue="D13",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER6_CONTROL_D13,
+            width=0)
+        self.checkbutton60.grid(column=3, padx="28 0", row=5, sticky="w")
+        self.checkbutton60.configure(command=self.CUST_LPF_FILTER6_CONTROL_CB)
         self.checkbutton61 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER7_CONTROL_D10 = tk.StringVar()
         self.checkbutton61.configure(
-            style="CheckboxNormal.TCheckbutton", text='D10')
-        self.checkbutton61.grid(
-            column=0,
-            padx="7 0",
-            pady="0 8",
-            row=7,
-            sticky="w")
+            onvalue="D10",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER7_CONTROL_D10,
+            width=0)
+        self.checkbutton61.grid(column=0, padx="3 0", row=6, sticky="w")
+        self.checkbutton61.configure(command=self.CUST_LPF_FILTER7_CONTROL_CB)
         self.checkbutton62 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER7_CONTROL_D11 = tk.StringVar()
         self.checkbutton62.configure(
-            style="CheckboxNormal.TCheckbutton", text='D11')
-        self.checkbutton62.grid(
-            column=1,
-            padx="5 0",
-            pady="0 8",
-            row=7,
-            sticky="w")
+            onvalue="D11",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER7_CONTROL_D11,
+            width=0)
+        self.checkbutton62.grid(column=1, padx="35 0", row=6, sticky="w")
+        self.checkbutton62.configure(command=self.CUST_LPF_FILTER7_CONTROL_CB)
         self.checkbutton63 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER7_CONTROL_D12 = tk.StringVar()
         self.checkbutton63.configure(
-            style="CheckboxNormal.TCheckbutton", text='D12')
-        self.checkbutton63.grid(
-            column=2,
-            padx="5 0",
-            pady="0 8",
-            row=7,
-            sticky="w")
+            onvalue="D12",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER7_CONTROL_D12,
+            width=0)
+        self.checkbutton63.grid(column=2, padx="30 0", row=6, sticky="w")
+        self.checkbutton63.configure(command=self.CUST_LPF_FILTER7_CONTROL_CB)
         self.checkbutton64 = ttk.Checkbutton(
-            self.CUSTOM_BANDPASS_EXTENSION_Frame)
+            self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame)
+        self.CUST_LPF_FILTER7_CONTROL_D13 = tk.StringVar()
         self.checkbutton64.configure(
-            style="CheckboxNormal.TCheckbutton", text='D13')
-        self.checkbutton64.grid(
-            column=3,
-            padx="5 0",
-            pady="0 8",
-            row=7,
-            sticky="w")
-        self.CUSTOM_BANDPASS_EXTENSION_Frame.pack(anchor="n", side="right")
+            onvalue="D13",
+            style="CheckboxNormal.TCheckbutton",
+            variable=self.CUST_LPF_FILTER7_CONTROL_D13,
+            width=0)
+        self.checkbutton64.grid(column=3, padx="28 0", row=6, sticky="w")
+        self.checkbutton64.configure(command=self.CUST_LPF_FILTER7_CONTROL_CB)
+        self.CUSTOM_BANDPASS_EXTENDED_DATA_Frame.pack(
+            anchor="w", padx=5, side="top")
+        self.CUSTOM_BANDPASS_EXTENDED_Frame.pack(anchor="w", side="left")
         self.CUSTOM_BANDPASS_FILTER_Frame.pack(
             anchor="w", pady="10 0", side="top")
         self.CUST_LPF_ENABLED_Frame.grid(column=0, pady="5 0", row=5)
+        self.hidden_data_items = ttk.Frame(self.frame8)
+        self.hidden_data_items.configure(height=0, width=0)
+        self.CUST_LPF_FILTER1_CONTROL_WIDGET = ttk.Label(
+            self.hidden_data_items)
+        self.CUST_LPF_FILTER1_CONTROL = tk.StringVar()
+        self.CUST_LPF_FILTER1_CONTROL_WIDGET.configure(
+            textvariable=self.CUST_LPF_FILTER1_CONTROL)
+        self.CUST_LPF_FILTER1_CONTROL_WIDGET.pack()
+        self.CUST_LPF_FILTER2_CONTROL_WIDGET = ttk.Label(
+            self.hidden_data_items)
+        self.CUST_LPF_FILTER2_CONTROL = tk.StringVar()
+        self.CUST_LPF_FILTER2_CONTROL_WIDGET.configure(
+            textvariable=self.CUST_LPF_FILTER2_CONTROL)
+        self.CUST_LPF_FILTER2_CONTROL_WIDGET.pack()
+        self.CUST_LPF_FILTER3_CONTROL_WIDGET = ttk.Label(
+            self.hidden_data_items)
+        self.CUST_LPF_FILTER3_CONTROL = tk.StringVar()
+        self.CUST_LPF_FILTER3_CONTROL_WIDGET.configure(
+            textvariable=self.CUST_LPF_FILTER3_CONTROL)
+        self.CUST_LPF_FILTER3_CONTROL_WIDGET.pack()
+        self.CUST_LPF_FILTER4_CONTROL_WIDGET = ttk.Label(
+            self.hidden_data_items)
+        self.CUST_LPF_FILTER4_CONTROL = tk.StringVar()
+        self.CUST_LPF_FILTER4_CONTROL_WIDGET.configure(
+            textvariable=self.CUST_LPF_FILTER4_CONTROL)
+        self.CUST_LPF_FILTER4_CONTROL_WIDGET.pack()
+        self.CUST_LPF_FILTER5_CONTROL_WIDGET = ttk.Label(
+            self.hidden_data_items)
+        self.CUST_LPF_FILTER5_CONTROL = tk.StringVar()
+        self.CUST_LPF_FILTER5_CONTROL_WIDGET.configure(
+            textvariable=self.CUST_LPF_FILTER5_CONTROL)
+        self.CUST_LPF_FILTER5_CONTROL_WIDGET.pack()
+        self.CUST_LPF_FILTER6_CONTROL_WIDGET = ttk.Label(
+            self.hidden_data_items)
+        self.CUST_LPF_FILTER6_CONTROL = tk.StringVar()
+        self.CUST_LPF_FILTER6_CONTROL_WIDGET.configure(
+            textvariable=self.CUST_LPF_FILTER6_CONTROL)
+        self.CUST_LPF_FILTER6_CONTROL_WIDGET.pack()
+        self.CUST_LPF_FILTER7_CONTROL_WIDGET = ttk.Label(
+            self.hidden_data_items)
+        self.CUST_LPF_FILTER7_CONTROL = tk.StringVar()
+        self.CUST_LPF_FILTER7_CONTROL_WIDGET.configure(
+            textvariable=self.CUST_LPF_FILTER7_CONTROL)
+        self.CUST_LPF_FILTER7_CONTROL_WIDGET.pack()
+        self.hidden_data_items.grid(column=0, row=13)
         self.frame8.pack(fill="x", padx="20 0", side="top")
         self.frame8.grid_anchor("nw")
         self.HW_ADJ_Frame.pack(
@@ -4654,6 +4850,12 @@ class SettingsnotebookWidget(ttk.Frame):
         style.configure('Checkbox4.TCheckbutton', font=fontList['Heading4'])
         style.configure('CheckboxNormal.TCheckbutton', font=fontList['Normal'])
         style.configure(
+            'CheckboxNormalNoBorder.TCheckbutton',
+            font=fontList['Normal'],
+            highlightthickness=0,
+            borderwidth=0,
+            bd=0)
+        style.configure(
             'CheckboxEmphasis.TCheckbutton',
             font=fontList['Emphasis'])
         style.configure('ComboBox3.TCombobox', font=fontList['Heading3'])
@@ -4894,43 +5096,43 @@ class SettingsnotebookWidget(ttk.Frame):
     def validate_CUST_LPF_FILTER1_ENDFREQ(self, p_entry_value, v_condition):
         pass
 
-    def CUST_LPF_FILTER1_CONTROL_TXA_CB(self):
-        pass
-
-    def CUST_LPF_FILTER1_CONTROL_TXB_CB(self):
-        pass
-
-    def CUST_LPF_FILTER1_CONTROL_TXC_CB(self):
+    def CUST_LPF_FILTER1_CONTROL_CB(self):
         pass
 
     def validate_CUST_LPF_FILTER2_ENDFREQ(self, p_entry_value, v_condition):
         pass
 
+    def CUST_LPF_FILTER2_CONTROL_CB(self):
+        pass
+
     def validate_CUST_LPF_FILTER3_ENDFREQ(self, p_entry_value, v_condition):
+        pass
+
+    def CUST_LPF_FILTER3_CONTROL_CB(self):
         pass
 
     def validate_CUST_LPF_FILTER4_ENDFREQ(self, p_entry_value, v_condition):
         pass
 
+    def CUST_LPF_FILTER4_CONTROL_CB(self):
+        pass
+
     def validate_CUST_LPF_FILTER5_ENDFREQ(self, p_entry_value, v_condition):
+        pass
+
+    def CUST_LPF_FILTER5_CONTROL_CB(self):
         pass
 
     def validate_CUST_LPF_FILTER6_ENDFREQ(self, p_entry_value, v_condition):
         pass
 
+    def CUST_LPF_FILTER6_CONTROL_CB(self):
+        pass
+
     def validate_CUST_LPF_FILTER7_ENDFREQ(self, p_entry_value, v_condition):
         pass
 
-    def CUST_LPF_FILTER1_CONTROL_D10_CB(self):
-        pass
-
-    def CUST_LPF_FILTER1_CONTROL_D11_CB(self):
-        pass
-
-    def CUST_LPF_FILTER1_CONTROL_D12_CB(self):
-        pass
-
-    def CUST_LPF_FILTER1_CONTROL_D13_CB(self):
+    def CUST_LPF_FILTER7_CONTROL_CB(self):
         pass
 
     def validate_MASTER_CAL(self, p_entry_value, v_condition):
