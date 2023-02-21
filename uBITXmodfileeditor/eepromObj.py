@@ -1199,6 +1199,9 @@ class eepromObj:
     #******************************************************************************************
 
     class setters(object):
+        def __init__(self, **kw):
+            super().__init__ (**kw)
+            self.CW_Messages_Buffer = {}
 
     #         #***********************************
     #         #   SHARED UTILITY ROUTINES
@@ -1432,6 +1435,7 @@ class eepromObj:
                     i += 1
         def CW_AUTO_COUNT(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue))
+            self.CW_Number_of_Msgs = int(userSettingValue)
 
         def CW_AUTO_DATA(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
             pass
@@ -1465,57 +1469,62 @@ class eepromObj:
             #  The number of messages actually stored is stored in the location "CW_AUTO_COUNT".  That will tell you how
             #  many of start/end offsets you have at starting at location 803...
             #
-            # find index in offset table
-            i = int(SettingName[19]+SettingName[20]) - 1
-
-            # Starting location is the *address* of "CW_AUTO_DATA" get that first
-            cwAutoDataMemLocation = self.XML_MemLocation_FromEEPROM(EEPROMroot, "CW_AUTO_DATA")
-
-            messageHeap: str = ''
-            messageStart: int = []
-            messageEnd: int =[]
-            messageLoc = 0
-            messageOffset = 0
-
-            messageTag = userSetting.findall('message')             # get the tags to all the message elements
-            for tag in messageTag:
-                if(tag.text != None):                               # don't process empty message tags
-                    messageStart.append(messageLoc)
-                    messageEnd.append (messageLoc + len(tag.text) -1)
-                    messageLoc += len(tag.text)                     # this updates pointer for next place a message can go
-                    messageOffset += 2                              # track the extra offsets because of leading start, ends
-                    messageHeap += tag.text
-
-            # At this point we have the raw start end of each message, just need to offset them by the bytes
-            # Occupied by the start,end pairs. And then we can write the start end to EEPROM
+            #  To add to your oonfusion, this function serves as an aggregator of the Cw messages. It is called once for every
+            #   CW message, collects the message, *and* with the call to the *last message, actually starts processing
+            #   and storing the messages in the EEPROM.
             #
+            msgLabel = SettingName[19]
 
-            numMessage = len (messageStart)
+            #   collect the message
+            self.CW_Messages_Buffer[msgLabel] = userSettingValue
+            if len(self.CW_Messages_Buffer) == CW_MSG_TOTAL:        # collected all the message buffers
+                # Starting location is the *address* of "CW_AUTO_DATA" get that first
+                cwAutoDataMemLocation = self.XML_MemLocation_FromEEPROM(EEPROMroot, "CW_AUTO_DATA")
 
-            while (i < numMessage):
-                messageStart[i] += messageOffset                    #offset the start,end pairs by the size of the start,end list
-                messageEnd[i] += messageOffset
-                self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, cwAutoDataMemLocation + (2*i), messageStart[i])
-                self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, cwAutoDataMemLocation + (2 * i) +1, messageEnd[i])
-                i += 1
+                messageHeap: str = ''
+                messageStart: int = []
+                messageEnd: int =[]
+                messageLoc = 0
+                messageOffset = 0
 
-            # Write the message heap to EEPROM
-            i: int = 0
-            offset: int = cwAutoDataMemLocation + messageOffset
-            while (i < messageLoc):
-                self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, i+offset, ord(messageHeap[i]))
-                i += 1
+                for msgkey in CW_MSG_LABEL:
+                    if len(self.CW_Messages_Buffer[msgkey]) != 0:           # ignore empty messages
+                        messageStart.append(messageLoc)
+                        messageEnd.append (messageLoc + len(self.CW_Messages_Buffer[msgkey]) -1)
+                        messageLoc += len(self.CW_Messages_Buffer[msgkey])                     # this updates pointer for next place a message can go
+                        messageOffset += 2                                                     # track the extra offsets because of leading start, ends
+                        messageHeap += self.CW_Messages_Buffer[msgkey]
 
-            # Finally need to update the total CW message  count in EEPROM. First gets its location, and then update
-            cwAutoCountMemLocation = self.XML_MemLocation_FromEEPROM(EEPROMroot, "CW_AUTO_COUNT")
-            self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, cwAutoCountMemLocation, numMessage)
+                # At this point we have the raw start end of each message, just need to offset them by the bytes
+                # Occupied by the start,end pairs. And then we can write the start end to EEPROM
+                #
+
+                numMessage = len (messageStart)
+
+                i=0
+                while (i < numMessage):
+                    messageStart[i] += messageOffset                    #offset the start,end pairs by the size of the start,end list
+                    messageEnd[i] += messageOffset
+                    self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, cwAutoDataMemLocation + (2*i), messageStart[i])
+                    self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, cwAutoDataMemLocation + (2 * i) +1, messageEnd[i])
+                    i += 1
+
+                # Write the message heap to EEPROM
+                i: int = 0
+                offset: int = cwAutoDataMemLocation + messageOffset
+                while (i < messageLoc):
+                    self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, i+offset, ord(messageHeap[i]))
+                    i += 1
+
+                # Finally need to update the total CW message  count in EEPROM. First gets its location, and then update
+                cwAutoCountMemLocation = self.XML_MemLocation_FromEEPROM(EEPROMroot, "CW_AUTO_COUNT")
+                self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, cwAutoCountMemLocation, numMessage)
 
         def CW_MEMORY_KEYER_MSG0(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
 
         def CW_MEMORY_KEYER_MSG1(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
-
         def CW_MEMORY_KEYER_MSG2(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
 
@@ -2547,6 +2556,7 @@ class eepromObj:
             #get setting name and value
             userSettingName = userSetting.get("NAME")
             userSettingValue = userSetting.find("value").text
+            print(userSettingName)
 
             #now look in eeprom map for buffer memory location, size (in bytes) and data type
 

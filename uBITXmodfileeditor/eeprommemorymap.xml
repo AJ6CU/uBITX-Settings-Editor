@@ -333,7 +333,7 @@
 		<displayFormat>str</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
-	<SETTING NAME="CW_MEMORY_KEYER_MSGC">				<!--This is the fourteenth message -->
+	<SETTING NAME="CW_MEMORY_KEYER_MSGD">				<!--This is the fourteenth message -->
 		<EEPROMStart>803</EEPROMStart>
 		<sizeInBytes>200</sizeInBytes>
 		<displayFormat>str</displayFormat>
