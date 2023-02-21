@@ -1574,6 +1574,12 @@ class SettingsnotebookWidget(ttk.Frame):
             self.QSO_CALLSIGN_WIDGET.register(
                 self.validate_QSO_CALLSIGN), "%P", "%V")
         self.QSO_CALLSIGN_WIDGET.configure(validatecommand=_validatecmd)
+        self.label164 = ttk.Label(self.CW_Autokeyer_Callsigns_Frame)
+        self.QSO_CALLSIGN_LENGTH = tk.StringVar()
+        self.label164.configure(
+            justify="left",
+            textvariable=self.QSO_CALLSIGN_LENGTH)
+        self.label164.grid(column=0, row=2)
         self.CW_Autokeyer_Callsigns_Frame.pack(
             anchor="w", padx="50 0", side="top")
         self.CW_Autokeyer_Callsign_Frame.pack(anchor="w", padx=20, side="top")
@@ -1589,163 +1595,540 @@ class SettingsnotebookWidget(ttk.Frame):
             text='CW Keyer Messages')
         self.label25.pack()
         self.frame32.pack(anchor="w", side="top")
-        self.frame33 = ttk.Frame(self.frame31)
-        self.frame33.configure(height=200, width=200)
-        self.CW_AUTO_COUNT_LABEL = ttk.Label(self.frame33)
+        self.frame20 = ttk.Frame(self.frame31)
+        self.frame20.configure(height=200, width=200)
+        self.CW_AUTO_COUNT_LABEL = ttk.Label(self.frame20)
         self.CW_AUTO_COUNT_LABEL.configure(
-            style="Heading4.TLabel", text='Total Msgs')
-        self.CW_AUTO_COUNT_LABEL.grid(column=0, padx="0 10", row=0, sticky="w")
-        self.CW_AUTO_COUNT_WIDGET = ttk.Entry(self.frame33)
+            style="Heading4.TLabel",
+            text='Total Msgs Used (max 25)')
+        self.CW_AUTO_COUNT_LABEL.pack(padx="10 10", side="left")
+        self.CW_AUTO_COUNT_WIDGET = ttk.Entry(self.frame20)
         self.CW_AUTO_COUNT = tk.StringVar()
         self.CW_AUTO_COUNT_WIDGET.configure(
             justify="left",
+            state="readonly",
             textvariable=self.CW_AUTO_COUNT,
             validate="none",
             width=3)
-        self.CW_AUTO_COUNT_WIDGET.grid(
-            column=1, padx="0 10", row=0, sticky="w")
+        self.CW_AUTO_COUNT_WIDGET.pack(anchor="w", side="left")
+        self.label53 = ttk.Label(self.frame20)
+        self.label53.configure(
+            relief="flat",
+            style="Heading4.TLabel",
+            text='Total Bytes Used:')
+        self.label53.pack(padx="20 10", side="left")
+        self.CW_AUTO_BYTES_USED_WIDGET = ttk.Entry(self.frame20)
+        self.CW_AUTO_BYTES_USED = tk.StringVar()
+        self.CW_AUTO_BYTES_USED_WIDGET.configure(
+            justify="left",
+            state="readonly",
+            style="Normal.TEntry",
+            takefocus=False,
+            textvariable=self.CW_AUTO_BYTES_USED,
+            validate="none",
+            width=3)
+        self.CW_AUTO_BYTES_USED_WIDGET.pack(anchor="w", side="left")
+        self.label163 = ttk.Label(self.frame20)
+        self.label163.configure(
+            relief="flat",
+            style="Heading4.TLabel",
+            takefocus=False,
+            text='Remaining Bytes')
+        self.label163.pack(padx="20 10", side="left")
+        self.entry1 = ttk.Entry(self.frame20)
+        self.CW_AUTO_REMAINING_BYTES = tk.StringVar()
+        self.entry1.configure(
+            justify="left",
+            state="readonly",
+            takefocus=False,
+            textvariable=self.CW_AUTO_REMAINING_BYTES,
+            validate="none",
+            width=3)
+        self.entry1.pack(anchor="w", side="left")
+        self.frame20.pack(anchor="center", padx="10 0", pady="10 20")
+        self.frame33 = ttk.Frame(self.frame31)
+        self.frame33.configure(height=200, width=200)
+        self.label54 = ttk.Label(self.frame33)
+        self.label54.configure(style="Heading4.TLabel", text='Msg#')
+        self.label54.grid(column=0, padx="0 10", row=0, sticky="e")
+        self.label57 = ttk.Label(self.frame33)
+        self.label57.configure(style="Heading4.TLabel", text='Message Content')
+        self.label57.grid(column=1, padx="0 10", row=0)
+        self.label26 = ttk.Label(self.frame33)
+        self.label26.configure(style="Heading4.TLabel", text='0')
+        self.label26.grid(column=0, padx="0 10", row=1, sticky="e")
+        self.CW_MEMORY_KEYER_MSG0_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG0 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG0_WIDGET.configure(
+            justify="left",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG0,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG0_WIDGET.grid(
+            column=1, padx="0 10", row=1, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG0_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG0_WIDGET.configure(
+            validatecommand=_validatecmd)
         self.CW_MEMORY_KEYER_MSG01_LABEL = ttk.Label(self.frame33)
         self.CW_MEMORY_KEYER_MSG01_LABEL.configure(
-            style="Heading4.TLabel", text='Message 1')
+            style="Heading4.TLabel", text='1')
         self.CW_MEMORY_KEYER_MSG01_LABEL.grid(
-            column=0, padx="0 10", row=1, sticky="w")
-        self.CW_MEMORY_KEYER_MSG01_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG01 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG01_WIDGET.configure(
+            column=0, padx="0 10", row=2, sticky="e")
+        self.CW_MEMORY_KEYER_MSG1_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG1 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG1_WIDGET.configure(
             justify="left",
-            textvariable=self.CW_MEMORY_KEYER_MSG01,
-            validate="none",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG1,
+            validate="focus",
             width=50)
-        self.CW_MEMORY_KEYER_MSG01_WIDGET.grid(
-            column=1, padx="0 10", row=1, sticky="w")
+        self.CW_MEMORY_KEYER_MSG1_WIDGET.grid(
+            column=1, padx="0 10", row=2, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG1_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG1_WIDGET.configure(
+            validatecommand=_validatecmd)
         self.CW_MEMORY_KEYER_MSG02_LABEL = ttk.Label(self.frame33)
         self.CW_MEMORY_KEYER_MSG02_LABEL.configure(
-            style="Heading4.TLabel", text='Message 2')
+            style="Heading4.TLabel", text='2')
         self.CW_MEMORY_KEYER_MSG02_LABEL.grid(
-            column=0, padx="0 10", row=2, sticky="w")
-        self.CW_MEMORY_KEYER_MSG02_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG02 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG02_WIDGET.configure(
+            column=0, padx="0 10", row=3, sticky="e")
+        self.CW_MEMORY_KEYER_MSG2_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG2 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG2_WIDGET.configure(
             justify="left",
-            textvariable=self.CW_MEMORY_KEYER_MSG02,
-            validate="none",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG2,
+            validate="focus",
             width=50)
-        self.CW_MEMORY_KEYER_MSG02_WIDGET.grid(
-            column=1, padx="0 10", row=2, sticky="w")
+        self.CW_MEMORY_KEYER_MSG2_WIDGET.grid(
+            column=1, padx="0 10", row=3, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG2_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG2_WIDGET.configure(
+            validatecommand=_validatecmd)
         self.CW_MEMORY_KEYER_MSG03_LABEL = ttk.Label(self.frame33)
         self.CW_MEMORY_KEYER_MSG03_LABEL.configure(
-            style="Heading4.TLabel", text='Message 3')
+            style="Heading4.TLabel", text='3')
         self.CW_MEMORY_KEYER_MSG03_LABEL.grid(
-            column=0, padx="0 10", row=3, sticky="w")
-        self.CW_MEMORY_KEYER_MSG03_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG03 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG03_WIDGET.configure(
+            column=0, padx="0 10", row=4, sticky="e")
+        self.CW_MEMORY_KEYER_MSG3_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG3 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG3_WIDGET.configure(
             justify="left",
-            textvariable=self.CW_MEMORY_KEYER_MSG03,
-            validate="none",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG3,
+            validate="focus",
             width=50)
-        self.CW_MEMORY_KEYER_MSG03_WIDGET.grid(
-            column=1, padx="0 10", row=3, sticky="w")
+        self.CW_MEMORY_KEYER_MSG3_WIDGET.grid(
+            column=1, padx="0 10", row=4, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG3_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG3_WIDGET.configure(
+            validatecommand=_validatecmd)
         self.CW_MEMORY_KEYER_MSG04_LABEL = ttk.Label(self.frame33)
         self.CW_MEMORY_KEYER_MSG04_LABEL.configure(
-            style="Heading4.TLabel", text='Message 4')
+            style="Heading4.TLabel", text='4')
         self.CW_MEMORY_KEYER_MSG04_LABEL.grid(
-            column=0, padx="0 10", row=4, sticky="w")
-        self.CW_MEMORY_KEYER_MSG04_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG04 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG04_WIDGET.configure(
+            column=0, padx="0 10", row=5, sticky="e")
+        self.CW_MEMORY_KEYER_MSG4_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG4 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG4_WIDGET.configure(
             justify="left",
-            textvariable=self.CW_MEMORY_KEYER_MSG04,
-            validate="none",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG4,
+            validate="focus",
             width=50)
-        self.CW_MEMORY_KEYER_MSG04_WIDGET.grid(
-            column=1, padx="0 10", row=4, sticky="w")
+        self.CW_MEMORY_KEYER_MSG4_WIDGET.grid(
+            column=1, padx="0 10", row=5, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG4_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG4_WIDGET.configure(
+            validatecommand=_validatecmd)
         self.CW_MEMORY_KEYER_MSG05_LABEL = ttk.Label(self.frame33)
         self.CW_MEMORY_KEYER_MSG05_LABEL.configure(
-            style="Heading4.TLabel", text='Message 5')
+            style="Heading4.TLabel", text='5')
         self.CW_MEMORY_KEYER_MSG05_LABEL.grid(
-            column=0, padx="0 10", row=5, sticky="w")
-        self.CW_MEMORY_KEYER_MSG05_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG05 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG05_WIDGET.configure(
+            column=0, padx="0 10", row=6, sticky="e")
+        self.CW_MEMORY_KEYER_MSG5_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG5 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG5_WIDGET.configure(
             justify="left",
-            textvariable=self.CW_MEMORY_KEYER_MSG05,
-            validate="none",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG5,
+            validate="focus",
             width=50)
-        self.CW_MEMORY_KEYER_MSG05_WIDGET.grid(
-            column=1, padx="0 10", row=5, sticky="w")
+        self.CW_MEMORY_KEYER_MSG5_WIDGET.grid(
+            column=1, padx="0 10", row=6, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG5_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG5_WIDGET.configure(
+            validatecommand=_validatecmd)
         self.CW_MEMORY_KEYER_MSG06_LABEL = ttk.Label(self.frame33)
         self.CW_MEMORY_KEYER_MSG06_LABEL.configure(
-            style="Heading4.TLabel", text='Message 6')
+            style="Heading4.TLabel", text='6')
         self.CW_MEMORY_KEYER_MSG06_LABEL.grid(
-            column=0, padx="0 10", row=6, sticky="w")
-        self.CW_MEMORY_KEYER_MSG06_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG06 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG06_WIDGET.configure(
+            column=0, padx="0 10", row=7, sticky="e")
+        self.CW_MEMORY_KEYER_MSG6_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG6 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG6_WIDGET.configure(
             justify="left",
-            textvariable=self.CW_MEMORY_KEYER_MSG06,
-            validate="none",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG6,
+            validate="focus",
             width=50)
-        self.CW_MEMORY_KEYER_MSG06_WIDGET.grid(
-            column=1, padx="0 10", row=6, sticky="w")
+        self.CW_MEMORY_KEYER_MSG6_WIDGET.grid(
+            column=1, padx="0 10", row=7, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG6_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG6_WIDGET.configure(
+            validatecommand=_validatecmd)
         self.CW_MEMORY_KEYER_MSG07_LABEL = ttk.Label(self.frame33)
         self.CW_MEMORY_KEYER_MSG07_LABEL.configure(
-            style="Heading4.TLabel", text='Message 7')
+            style="Heading4.TLabel", text='7')
         self.CW_MEMORY_KEYER_MSG07_LABEL.grid(
-            column=0, padx="0 10", row=7, sticky="w")
-        self.CW_MEMORY_KEYER_MSG07_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG07 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG07_WIDGET.configure(
+            column=0, padx="0 10", row=8, sticky="e")
+        self.CW_MEMORY_KEYER_MSG7_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG7 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG7_WIDGET.configure(
             justify="left",
-            textvariable=self.CW_MEMORY_KEYER_MSG07,
-            validate="none",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG7,
+            validate="focus",
             width=50)
-        self.CW_MEMORY_KEYER_MSG07_WIDGET.grid(
-            column=1, padx="0 10", row=7, sticky="w")
+        self.CW_MEMORY_KEYER_MSG7_WIDGET.grid(
+            column=1, padx="0 10", row=8, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG7_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG7_WIDGET.configure(
+            validatecommand=_validatecmd)
         self.CW_MEMORY_KEYER_MSG08_LABEL = ttk.Label(self.frame33)
         self.CW_MEMORY_KEYER_MSG08_LABEL.configure(
-            style="Heading4.TLabel", text='Message 8')
+            style="Heading4.TLabel", text='8')
         self.CW_MEMORY_KEYER_MSG08_LABEL.grid(
-            column=0, padx="0 10", row=8, sticky="w")
-        self.CW_MEMORY_KEYER_MSG08_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG08 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG08_WIDGET.configure(
+            column=0, padx="0 10", row=9, sticky="e")
+        self.CW_MEMORY_KEYER_MSG8_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG8 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG8_WIDGET.configure(
             justify="left",
-            textvariable=self.CW_MEMORY_KEYER_MSG08,
-            validate="none",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG8,
+            validate="focus",
             width=50)
-        self.CW_MEMORY_KEYER_MSG08_WIDGET.grid(
-            column=1, padx="0 10", row=8, sticky="w")
+        self.CW_MEMORY_KEYER_MSG8_WIDGET.grid(
+            column=1, padx="0 10", row=9, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG8_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG8_WIDGET.configure(
+            validatecommand=_validatecmd)
         self.CW_MEMORY_KEYER_MSG09_LABEL = ttk.Label(self.frame33)
         self.CW_MEMORY_KEYER_MSG09_LABEL.configure(
-            style="Heading4.TLabel", text='Message 9')
+            style="Heading4.TLabel", text='9')
         self.CW_MEMORY_KEYER_MSG09_LABEL.grid(
-            column=0, padx="0 10", row=9, sticky="w")
-        self.CW_MEMORY_KEYER_MSG09_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG09 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG09_WIDGET.configure(
+            column=0, padx="0 10", row=10, sticky="e")
+        self.CW_MEMORY_KEYER_MSG9_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG9 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG9_WIDGET.configure(
             justify="left",
-            textvariable=self.CW_MEMORY_KEYER_MSG09,
-            validate="none",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG9,
+            validate="focus",
             width=50)
-        self.CW_MEMORY_KEYER_MSG09_WIDGET.grid(
-            column=1, padx="0 10", row=9, sticky="w")
+        self.CW_MEMORY_KEYER_MSG9_WIDGET.grid(
+            column=1, padx="0 10", row=10, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG9_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG9_WIDGET.configure(
+            validatecommand=_validatecmd)
         self.CW_MEMORY_KEYER_MSG10_LABEL = ttk.Label(self.frame33)
         self.CW_MEMORY_KEYER_MSG10_LABEL.configure(
-            style="Heading4.TLabel", text='Message 10')
+            style="Heading4.TLabel", text='A')
         self.CW_MEMORY_KEYER_MSG10_LABEL.grid(
-            column=0, padx="0 10", row=10, sticky="w")
-        self.CW_MEMORY_KEYER_MSG10_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG10 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG10_WIDGET.configure(
+            column=0, padx="0 10", row=11, sticky="e")
+        self.CW_MEMORY_KEYER_MSGA_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGA = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGA_WIDGET.configure(
             justify="left",
-            textvariable=self.CW_MEMORY_KEYER_MSG10,
-            validate="none",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGA,
+            validate="focus",
             width=50)
-        self.CW_MEMORY_KEYER_MSG10_WIDGET.grid(
-            column=1, padx="0 10", row=10, sticky="w")
+        self.CW_MEMORY_KEYER_MSGA_WIDGET.grid(
+            column=1, padx="0 10", row=11, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGA_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGA_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label56 = ttk.Label(self.frame33)
+        self.label56.configure(style="Heading4.TLabel", text='B')
+        self.label56.grid(column=0, padx="0 10", row=12, sticky="e")
+        self.CW_MEMORY_KEYER_MSGB_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGB = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGB_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGB,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGB_WIDGET.grid(
+            column=1, padx="0 10", row=12, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGB_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGB_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label59 = ttk.Label(self.frame33)
+        self.label59.configure(style="Heading4.TLabel", text='C')
+        self.label59.grid(column=0, padx="0 10", row=13, sticky="e")
+        self.CW_MEMORY_KEYER_MSGC_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGC = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGC_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGC,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGC_WIDGET.grid(
+            column=1, padx="0 10", row=13, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGC_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGC_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label60 = ttk.Label(self.frame33)
+        self.label60.configure(style="Heading4.TLabel", text='D')
+        self.label60.grid(column=0, padx="0 10", row=14, sticky="e")
+        self.CW_MEMORY_KEYER_MSGD_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGD = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGD_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGD,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGD_WIDGET.grid(
+            column=1, padx="0 10", row=14, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGD_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGD_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label63 = ttk.Label(self.frame33)
+        self.label63.configure(style="Heading4.TLabel", text='E')
+        self.label63.grid(column=0, padx="0 10", row=15, sticky="e")
+        self.CW_MEMORY_KEYER_MSGE_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGE = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGE_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGE,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGE_WIDGET.grid(
+            column=1, padx="0 10", row=15, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGE_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGE_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label67 = ttk.Label(self.frame33)
+        self.label67.configure(style="Heading4.TLabel", text='F')
+        self.label67.grid(column=0, padx="0 10", row=16, sticky="e")
+        self.CW_MEMORY_KEYER_MSGF_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGF = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGF_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGF,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGF_WIDGET.grid(
+            column=1, padx="0 10", row=16, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGF_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGF_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label154 = ttk.Label(self.frame33)
+        self.label154.configure(style="Heading4.TLabel", text='G')
+        self.label154.grid(column=0, padx="0 10", row=17, sticky="e")
+        self.CW_MEMORY_KEYER_MSGG_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGG = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGG_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGG,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGG_WIDGET.grid(
+            column=1, padx="0 10", row=17, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGG_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGG_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label155 = ttk.Label(self.frame33)
+        self.label155.configure(style="Heading4.TLabel", text='H')
+        self.label155.grid(column=0, padx="0 10", row=18, sticky="e")
+        self.CW_MEMORY_KEYER_MSGH_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGH = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGH_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGH,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGH_WIDGET.grid(
+            column=1, padx="0 10", row=18, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGH_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGH_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label156 = ttk.Label(self.frame33)
+        self.label156.configure(style="Heading4.TLabel", text='I')
+        self.label156.grid(column=0, padx="0 10", row=19, sticky="e")
+        self.CW_MEMORY_KEYER_MSGI_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGI = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGI_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGI,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGI_WIDGET.grid(
+            column=1, padx="0 10", row=19, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGI_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGI_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label157 = ttk.Label(self.frame33)
+        self.label157.configure(style="Heading4.TLabel", text='J')
+        self.label157.grid(column=0, padx="0 10", row=20, sticky="e")
+        self.CW_MEMORY_KEYER_MSGJ_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGJ = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGJ_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGJ,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGJ_WIDGET.grid(
+            column=1, padx="0 10", row=20, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGJ_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGJ_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label158 = ttk.Label(self.frame33)
+        self.label158.configure(style="Heading4.TLabel", text='K')
+        self.label158.grid(column=0, padx="0 10", row=21, sticky="e")
+        self.CW_MEMORY_KEYER_MSGK_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGK = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGK_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGK,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGK_WIDGET.grid(
+            column=1, padx="0 10", row=21, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGK_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGK_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label159 = ttk.Label(self.frame33)
+        self.label159.configure(style="Heading4.TLabel", text='L')
+        self.label159.grid(column=0, padx="0 10", row=22, sticky="e")
+        self.CW_MEMORY_KEYER_MSGL_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGL = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGL_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGL,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGL_WIDGET.grid(
+            column=1, padx="0 10", row=22, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGL_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGL_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label160 = ttk.Label(self.frame33)
+        self.label160.configure(style="Heading4.TLabel", text='M')
+        self.label160.grid(column=0, padx="0 10", row=23, sticky="e")
+        self.CW_MEMORY_KEYER_MSGM_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGM = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGM_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGM,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGM_WIDGET.grid(
+            column=1, padx="0 10", row=23, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGM_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGM_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label161 = ttk.Label(self.frame33)
+        self.label161.configure(style="Heading4.TLabel", text='N')
+        self.label161.grid(column=0, padx="0 10", row=24, sticky="e")
+        self.CW_MEMORY_KEYER_MSGN_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGN = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGN_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGN,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGN_WIDGET.grid(
+            column=1, padx="0 10", row=24, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGN_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGN_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label162 = ttk.Label(self.frame33)
+        self.label162.configure(style="Heading4.TLabel", text='O')
+        self.label162.grid(column=0, padx="0 10", row=25, sticky="e")
+        self.CW_MEMORY_KEYER_MSGO_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGO = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGO_WIDGET.configure(
+            justify="left",
+            state="readonly",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGO,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGO_WIDGET.grid(
+            column=1, padx="0 10", row=25, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGO_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGO_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.button12 = ttk.Button(self.frame33)
+        self.button12.configure(style="Button4.TButton", text='Cleanup')
+        self.button12.grid(column=2, padx=10, row=0)
+        self.button12.configure(command=self.CW_Auto_Msg_Cleanup_CB)
         self.frame33.pack(anchor="w", padx="50 0", side="top")
-        self.frame31.pack(anchor="w", padx=20, side="top")
+        self.frame31.pack(anchor="w", padx=20, pady=15, side="top")
         self.Autokeyer_Frame.pack(
             anchor="center",
             expand="true",
@@ -5007,6 +5390,13 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def validate_QSO_CALLSIGN(self, p_entry_value, v_condition):
+        pass
+
+    def validate_CW_Message_Change(
+            self, p_entry_value, v_condition, w_entry_name):
+        pass
+
+    def CW_Auto_Msg_Cleanup_CB(self):
         pass
 
     def validate_HAM_BAND_COUNT(self, p_entry_value, v_condition):

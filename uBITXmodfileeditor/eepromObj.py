@@ -231,8 +231,11 @@ class eepromObj:
                     callSignStr += str(chr(self.get_uint8_FromEEPROM(EEPROMBuffer, callSignOffset + j)))
                     j += 1
                 value.text = str(callSignStr)
+
         def CW_AUTO_COUNT(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1 ):
-            value.text = str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+            self.CW_Number_of_Msgs = self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)
+            value.text = str(self.CW_Number_of_Msgs)
+
 
         def CW_AUTO_DATA(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1 ):
             self.cwAutoDataPtr = memLocation
@@ -240,79 +243,132 @@ class eepromObj:
 
         def CW_MEMORY_KEYER_MSGS(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, valueElement):
 
+            # #
+            # # We are now going to set the offset in the heap for each message that exists
+            # # msg1 will get slot 803/804 for stat end, msg2 will get slot 805/806, etc.
+            # # each message will start at self.totalMsgChar and end at self.totalMsgChar + lenght(msg)-1
+            # # and then self.totalmsgChar will be incremented by length(msg)
+            # # Note:self.totalChar starts at 20 to allow for the pairs of index used for offsets
+            # #
             #
-            # We are now going to set the offset in the heap for each message that exists
-            # msg1 will get slot 803/804 for stat end, msg2 will get slot 805/806, etc.
-            # each message will start at self.totalMsgChar and end at self.totalMsgChar + lenght(msg)-1
-            # and then self.totalmsgChar will be incremented by length(msg)
-            # Note:self.totalChar starts at 20 to allow for the pairs of index used for offsets
+            # # find index in offset table
             #
+            if SettingName[19] in CW_MSG_LABEL:
 
-            # find index in offset table
+                i = CW_MSG_LABEL.index(SettingName[19])
 
-            i = int(SettingName[19]+SettingName[20]) - 1
+                #   Only fetch the number of known messages
+                if i < self.CW_Number_of_Msgs:
 
-            #
-            # cwAutoDataPtr points to first location in the heap
-            # Starting there, each two bytes is start/end pairs. So if there are 3 messages
-            # cwAutoDataPtr = location containing the start byte of 1st message, +1 the byte containing the end location
-            # +2 is start of second message, +3 end of second message, etc. Note these are locations, you got to
-            # get the data in these locations to actually get the offset for each message.
-            #
+                    #
+                    # #
+                    # # cwAutoDataPtr points to first location in the heap
+                    # # Starting there, each two bytes is start/end pairs. So if there are 3 messages
+                    # # cwAutoDataPtr = location containing the start byte of 1st message, +1 the byte containing the end location
+                    # # +2 is start of second message, +3 end of second message, etc. Note these are locations, you got to
+                    # # get the data in these locations to actually get the offset for each message.
+                    # #
+                    #
+                    msgStartInHeapLocation = self.cwAutoDataPtr +(i*2)       #The start ends are are beginning of heap. 1st msg has start at
+                    msgStartInHeap = self.cwAutoDataPtr + self.get_uint8_FromEEPROM(EEPROMBuffer, msgStartInHeapLocation)
+                    #
+                    msgEndInHeapLocation = self.cwAutoDataPtr + (i*2)+1      #cwAutoDataptr , end at cwAutoDataPtr+1, 2nd cwAutoDataPtr+2, cwAutoDataPtr+3), etc.
+                    msgEndInHeap = self.cwAutoDataPtr + self.get_uint8_FromEEPROM(EEPROMBuffer, msgEndInHeapLocation)
+                    # #
+                    # #so at this point we have the locations of start/end of each message. Now go collect the actual characters
+                    # #
+                    #
+                    j = 0
+                    msgStr: str = ''
+                    numBytes = (msgEndInHeap+1) - msgStartInHeap
+                    while j< int(numBytes):
+                        msgStr += str(chr(self.get_uint8_FromEEPROM(EEPROMBuffer, msgStartInHeap + j)))
+                        j+=1
 
-            msgStartInHeapLocation = self.cwAutoDataPtr +(i*2)       #The start ends are are beginning of heap. 1st msg has start at
-            msgStartInHeap = self.cwAutoDataPtr + self.get_uint8_FromEEPROM(EEPROMBuffer, msgStartInHeapLocation)
-
-            msgEndInHeapLocation = self.cwAutoDataPtr + (i*2)+1      #cwAutoDataptr , end at cwAutoDataPtr+1, 2nd cwAutoDataPtr+2, cwAutoDataPtr+3), etc.
-            msgEndInHeap = self.cwAutoDataPtr + self.get_uint8_FromEEPROM(EEPROMBuffer, msgEndInHeapLocation)
-            #
-            #so at this point we have the locations of start/end of each message. Now go collect the actual characters
-            #
-
-            j: int = 0
-            msgStr: str = ''
-            numBytes = (msgEndInHeap+1) - msgStartInHeap
-            while j< int(numBytes):
-                msgStr += str(chr(self.get_uint8_FromEEPROM(EEPROMBuffer, msgStartInHeap + j)))
-                j+=1
-            print('msgstr=', msgStr,"*")
-            if len(msgStr) > 0:
-                value.text = msgStr
-            else:
-                value.text = ''
+                    if len(msgStr) > 0:
+                        value.text = msgStr
+                        return
+            value.text = ''
 
 
 
+
+        def CW_MEMORY_KEYER_MSG0(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
                 
-        def CW_MEMORY_KEYER_MSG01(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG1(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG02(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG2(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG03(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG3(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG04(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG4(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG05(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG5(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG06(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG6(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG07(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG7(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG08(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG8(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG09(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG9(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer,  memLocation, value, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG10(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSGA(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGB(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGC(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGD(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGE(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGF(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGG(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGH(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGI(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGJ(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGK(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGL(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGM(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGN(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGO(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, userSetting)
+
+
 
     #
     #         #***********************************
@@ -1377,9 +1433,9 @@ class eepromObj:
         def CW_AUTO_COUNT(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue))
 
-
         def CW_AUTO_DATA(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
             pass
+
         def CW_MEMORY_KEYER_MSGS(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
             # Welcome to one of the more complex storage data structure: CW Keyer Messages...
             #
@@ -1454,36 +1510,80 @@ class eepromObj:
             cwAutoCountMemLocation = self.XML_MemLocation_FromEEPROM(EEPROMroot, "CW_AUTO_COUNT")
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, cwAutoCountMemLocation, numMessage)
 
-        def CW_MEMORY_KEYER_MSG01(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG0(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG02(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG1(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG03(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG2(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG04(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG3(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG05(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG4(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG06(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG5(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG07(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG6(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG08(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG7(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG09(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG8(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
 
-        def CW_MEMORY_KEYER_MSG10(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+        def CW_MEMORY_KEYER_MSG9(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
             self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
 
+        def CW_MEMORY_KEYER_MSGA(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGB(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGC(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGD(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGE(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGF(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGG(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGH(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGI(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGJ(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGK(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGL(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGM(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
+
+        def CW_MEMORY_KEYER_MSGO(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting):
+            self.CW_MEMORY_KEYER_MSGS(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, userSetting)
     #
     #         #***********************************
     #         #   CW ADC SETTINGS

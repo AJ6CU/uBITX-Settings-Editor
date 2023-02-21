@@ -9,9 +9,14 @@ from globalvars import *
 
 class SettingsNotebook(SettingsnotebookWidget):
     def __init__(self, parent):
+        #   Save root (parent)
+        self.root = parent
+
         #   Set up image files first
         self.img_img_redarrowpointingleft59x36 = tk.PhotoImage(file=LEFTCOPYARROW)
         self.img_img_redarrowpointingright59x36 = tk.PhotoImage(file=RIGHTCOPYARROW)
+
+
 
         super().__init__(parent)
 
@@ -22,6 +27,9 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.USB_CAL_COPY_BUTTON.configure(image=self.img_img_redarrowpointingleft59x36)
         self.USB_CAL_COPY_FACTORY_BUTTON.configure(image=self.img_img_redarrowpointingright59x36)
 
+        #   Initialize maximum available bytes to 0
+        self.CW_AUTO_BYTES_USED.set('0')
+
 
     #   temp to control what is processed
     readyToGo = ['VERSION_ADDRESS', 'FACTORY_VALUES_MASTER_CAL', 'FACTORY_VALUES_USB_CAL',
@@ -30,6 +38,11 @@ class SettingsNotebook(SettingsnotebookWidget):
              'CW_KEY_TYPE',
             'CW_SIDETONE',  'CW_SPEED_WPM', 'CW_DELAY_MS','CW_START_MS', 'USER_CALLSIGN', 'QSO_CALLSIGN', 'CW_ADC_ST_FROM', 'CW_ADC_ST_TO',
             'CW_ADC_DOT_FROM', 'CW_ADC_DOT_TO', 'CW_ADC_DASH_FROM', 'CW_ADC_DASH_TO', 'CW_ADC_BOTH_FROM', 'CW_ADC_BOTH_TO',
+            'CW_MEMORY_KEYER_MSG0', 'CW_MEMORY_KEYER_MSG1', 'CW_MEMORY_KEYER_MSG2', 'CW_MEMORY_KEYER_MSG3', 'CW_MEMORY_KEYER_MSG4',
+            'CW_MEMORY_KEYER_MSG5', 'CW_MEMORY_KEYER_MSG6', 'CW_MEMORY_KEYER_MSG7', 'CW_MEMORY_KEYER_MSG8', 'CW_MEMORY_KEYER_MSG9',
+            'CW_MEMORY_KEYER_MSGA', 'CW_MEMORY_KEYER_MSGB', 'CW_MEMORY_KEYER_MSGC', 'CW_MEMORY_KEYER_MSGD', 'CW_MEMORY_KEYER_MSGE',
+            'CW_MEMORY_KEYER_MSGF', 'CW_MEMORY_KEYER_MSGG', 'CW_MEMORY_KEYER_MSGH', 'CW_MEMORY_KEYER_MSGI', 'CW_MEMORY_KEYER_MSGJ',
+            'CW_MEMORY_KEYER_MSGK', 'CW_MEMORY_KEYER_MSGL', 'CW_MEMORY_KEYER_MSGM', 'CW_MEMORY_KEYER_MSGN', 'CW_MEMORY_KEYER_MSGO',
             'CHANNEL_FREQ1', 'CHANNEL_FREQ1_MODE', 'CHANNEL_FREQ1_SHOW_NAME', 'CHANNEL_FREQ1_NAME',
             'CHANNEL_FREQ1', 'CHANNEL_FREQ1_MODE', 'CHANNEL_FREQ1_SHOW_NAME', 'CHANNEL_FREQ1_NAME',
             'CHANNEL_FREQ2', 'CHANNEL_FREQ2_MODE', 'CHANNEL_FREQ2_SHOW_NAME', 'CHANNEL_FREQ2_NAME',
@@ -91,7 +104,8 @@ class SettingsNotebook(SettingsnotebookWidget):
         "NOTLOWER":"must be lower than {:,}, prior value restored",
         "NOTHIGHER":"must be higher than {:,}, prior value restored",
         "STRINGTOOLONG": "longer than {} characters, prior value restored",
-        "NOTVALIDTUNINGSTEP": "Left most two digits of any tuning step must be {:,} to {:,}, prior value restored"
+        "NOTVALIDTUNINGSTEP": "Left most two digits of any tuning step must be {:,} to {:,}, prior value restored",
+        "TOOMANYCWCHARS": "Required {:,} bytes for CW Message but ony {:,} available, prior message restored"
     }
 
     priorValues={}
@@ -254,6 +268,7 @@ class SettingsNotebook(SettingsnotebookWidget):
                                                                              SettingsNotebook.TUNING_STEPS_BOUNDS['HIGH'])
 
         # if we reach this point, there is an error...
+        SettingsNotebook.validationErrorMsg = SettingsNotebook.error_Msgs["STRINGTOOLONG"].format(maxChars)
         self.log.printerror("timestamp",  SettingsNotebook.validationErrorMsg)
         getattr(self, "TUNING_"+currentStep).set(self.priorValues["TUNING_"+currentStep])
         return False
@@ -335,6 +350,9 @@ class SettingsNotebook(SettingsnotebookWidget):
         if (v_condition == "focusin"):
             self.priorValues["QSO_CALLSIGN"] = p_entry_value
         if(self.checkLength(p_entry_value, SettingsNotebook.USER_CALLSIGN_BOUNDS['HIGH']) ):
+            # Update maximum available bytes
+            self.CW_AUTO_REMAINING_BYTES.set(str(EEPROMSIZE - 1 - len(p_entry_value) - CW_MEMORY_KEYER_BUFFER_START - int(self.CW_AUTO_BYTES_USED.get())))
+
             return True
         else:
             self.log.printerror("timestamp",  "QSO Callsign is " + SettingsNotebook.validationErrorMsg)
@@ -457,6 +475,87 @@ class SettingsNotebook(SettingsnotebookWidget):
             getattr(self, "CW_ADC_BOTH_TO").set(self.priorValues["CW_ADC_BOTH_TO"])
             return False
         return True
+
+
+    def validate_CW_Message_Change(self, p_entry_value, v_condition, w_entry_name):
+
+        widgetHandle = self.root.nametowidget(w_entry_name)             # get pointer to the actual widget
+        stringVarHandle = widgetHandle.cget("textvariable")             # use the widget ptr to get to the strvar
+                                                                        # The symbol table entry for the stringvar
+                                                                        # is used to save the prior value
+
+        if v_condition == "focusin":
+            self.priorValues[stringVarHandle] = p_entry_value.upper()        #   save the focus in value
+            print("focusin", self.priorValues[stringVarHandle])
+            return True
+        else:
+            #
+            #   we have a focus out condition
+            #
+
+            print ('focus out, prior value', self.priorValues[stringVarHandle])
+
+
+            if (self.priorValues[stringVarHandle] == '') & (p_entry_value != ''):         #  New msg added
+
+
+                newBytesUsed = len(p_entry_value) + 2
+                #
+                #   confirm that we have these bytes available
+                #
+                if int(self.CW_AUTO_REMAINING_BYTES.get()) >= newBytesUsed:
+
+                    # Increment number of message count and make next message widget visible
+                    self.CW_AUTO_COUNT.set(str(int(self.CW_AUTO_COUNT.get())+1))
+
+                    # Increment number of bytes used - the + 2 is result of the added beg/end pointer for a new entry
+                    # Then update remaining available bytes
+                    self.CW_AUTO_BYTES_USED.set(str(int(self.CW_AUTO_BYTES_USED.get()) + newBytesUsed))
+                    self.CW_AUTO_REMAINING_BYTES.set(str(int(self.CW_AUTO_REMAINING_BYTES.get()) - newBytesUsed))
+
+
+                    # upperCase = widgetHandle.getvar(stringVarHandle).upper()        # get upper upper case version
+                    upperCase = p_entry_value.upper()
+                    widgetHandle.setvar(stringVarHandle, upperCase)                 # replace mixed case with upper
+
+                    #if we don't have 25 messages, enable the next one too
+                    if int(self.CW_AUTO_COUNT.get()) < CW_MSG_TOTAL :
+                        getattr(self, "CW_MEMORY_KEYER_MSG" + CW_MSG_LABEL[int(self.CW_AUTO_COUNT.get())] + "_WIDGET").configure (state="enabled")
+                    #
+                    #   updated byte oounts, so can return True
+                    #
+                    return True
+
+            else:                           # message modified, update used count
+                # Increment number of bytes used - the + 2 is result of the added beg/end pointer for a new entry
+                # Then update remaining available bytes
+
+                newBytesUsed = len(p_entry_value) - len(self.priorValues[stringVarHandle])
+                #
+                #   confirm that we have these bytes available
+                #
+                if int(self.CW_AUTO_REMAINING_BYTES.get()) >= newBytesUsed:
+                    self.CW_AUTO_BYTES_USED.set(str(int(self.CW_AUTO_BYTES_USED.get()) + newBytesUsed))
+                    self.CW_AUTO_REMAINING_BYTES.set(str(int(self.CW_AUTO_REMAINING_BYTES.get()) - newBytesUsed))
+
+                    upperCase = p_entry_value.upper()
+                    print("convert to uppercase", upperCase)
+                    widgetHandle.setvar(stringVarHandle, upperCase)                 # replace mixed case with upper
+                    #
+                    #   updated byte counts, and translated it to upper, so can return True
+                    #
+                    return True
+            #
+            #   If we have reached this point, then we did not have sufficient characters for the message. Log error message
+            #   and restore original value
+            #
+            SettingsNotebook.validationErrorMsg = SettingsNotebook.error_Msgs["TOOMANYCWCHARS"].format(newBytesUsed,int(self.CW_AUTO_REMAINING_BYTES.get()))
+
+            self.log.printerror("timestamp", SettingsNotebook.validationErrorMsg)
+            print('restoring old value', self.priorValues[stringVarHandle])
+            widgetHandle.setvar(stringVarHandle, self.priorValues[stringVarHandle])                # restore prior value
+
+            return False
 
     def validate_CHANNEL_FREQ(self, p_entry_value, v_condition, bandName):
         if (v_condition == "focusin"):
@@ -779,6 +878,59 @@ class SettingsNotebook(SettingsnotebookWidget):
         else:
             self.Extended_Channel_Frame.forget()
 
+    def CW_Auto_Msg_Cleanup_CB(self):
+        # this function just deletes empty CW Autokey Messages and frees up space
+        #
+        #   save starting positions to adjust used characters and disable extra messages
+
+        msgCount = int(self.CW_AUTO_COUNT.get())
+        numEmptyMsgsFound=0
+
+        i = 0
+        # Primary loop to go thru all active messages
+        while i < msgCount:
+            if (getattr(self, "CW_MEMORY_KEYER_MSG" + CW_MSG_LABEL[i]).get() == ''):
+                #   Found an empty messsage, start moving the rest up
+                numEmptyMsgsFound += 1
+
+                j=i
+                while (j < msgCount) & (j < CW_MSG_TOTAL-1) :               # J<CW_MSG_TOTAL-1 is boundary condition for last msg in list
+                    getattr(self, "CW_MEMORY_KEYER_MSG" + CW_MSG_LABEL[j]).set(getattr(self, "CW_MEMORY_KEYER_MSG" + CW_MSG_LABEL[j+1]).get())
+                    j +=1
+                #
+                #   zap contents of last message as it has been moved down
+                #   for now set it to disable, will enable the last one at the end of processing
+                #
+                getattr(self, "CW_MEMORY_KEYER_MSG" + CW_MSG_LABEL[j]).set('')
+                getattr(self, "CW_MEMORY_KEYER_MSG" + CW_MSG_LABEL[j]+"_WIDGET").configure(state='disabled')
+
+                msgCount -= 1                       # one fewer message to look at
+            else:
+                i+=1            # not incremented in case of a move down. Only bump the pointer if the message is non-empty
+
+        #   At this point, we have moved up all the non-empty messages and we just need to do some cleanup
+        #   First delete 2 bytes used (and add 2 more available) for every empty slot we processed
+
+        i = 0
+        while i < numEmptyMsgsFound:
+            # j = int(self.CW_AUTO_COUNT.get()) - i
+#            print(CW_MSG_LABEL[j], j, i)
+
+            #   Update count of bytes used (2 fewer since we recovered an empty slot and dont need beg end pointers)
+            self.CW_AUTO_BYTES_USED.set(str(int(self.CW_AUTO_BYTES_USED.get()) - 2))
+            self.CW_AUTO_REMAINING_BYTES.set(str(int(self.CW_AUTO_REMAINING_BYTES.get()) + 2))
+            i += 1
+        #
+        #   Update message count
+        #
+        self.CW_AUTO_COUNT.set(str(int(self.CW_AUTO_COUNT.get()) - numEmptyMsgsFound))
+
+        #
+        #   Finally, (re)enable last location for input
+        #
+        getattr(self, "CW_MEMORY_KEYER_MSG" + CW_MSG_LABEL[int(self.CW_AUTO_COUNT.get())]+"_WIDGET").configure(state='enabled')
+
+
     def autoInputRegion1(self):
 
         self.HAM_BAND_COUNT.set(9)
@@ -985,6 +1137,21 @@ class SettingsNotebook(SettingsnotebookWidget):
                         getattr(self, "CUST_LPF_FILTER" + str(i) +"_CONTROL_" + dataline).set(dataline)
             i += 1
 
+    def enable_CW_Widgets(self):
+        i = 0
+        while i < int(self.CW_AUTO_COUNT.get()):
+            #   Enable associate entry field
+            getattr(self, "CW_MEMORY_KEYER_MSG" + CW_MSG_LABEL[i]  + "_WIDGET").configure (state="enabled")
+            #   Calculate initial bytes used + 2 is for the bytes used to set begin/end
+            self.CW_AUTO_BYTES_USED.set(str(int(self.CW_AUTO_BYTES_USED.get()) +
+                                       len(getattr(self, "CW_MEMORY_KEYER_MSG" + CW_MSG_LABEL[i]).get())
+                                       + 2))
+            i+=1
+
+        #if we don't have 25 messages, enable the next one too
+        if i < CW_MSG_TOTAL :
+            getattr(self, "CW_MEMORY_KEYER_MSG" + str(i) + "_WIDGET").configure (state="enabled")
+
 
 
     def load_Recommended_ADC_CW_Values(self):
@@ -1037,7 +1204,17 @@ class SettingsNotebook(SettingsnotebookWidget):
         # LPF Control Lines
         self.Set_LPF_Control_Lines()
 
-        #   Clear error messages
+        # Enable CW Message Widgets
+        self.enable_CW_Widgets()
+
+        # Set maximum available bytes
+        # Length of QSO call sign
+        self.CW_AUTO_REMAINING_BYTES.set(str(EEPROMSIZE - 1 - len(self.QSO_CALLSIGN.get())
+                                             - CW_MEMORY_KEYER_BUFFER_START - int(self.CW_AUTO_BYTES_USED.get())))
+
+
+
+        #   Clear hidden widgets
         for widget in SettingsNotebook.hideOnStartup:
             getattr(self, widget).forget()
 
@@ -1062,10 +1239,10 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.log = log
 
     def enableNotebook(self):
-        self.master.grid(row=2, column=0, padx=15, sticky='ewns')
+        self.root.grid(row=2, column=0, padx=15, sticky='ewns')
 
     def disableNotebook(self):
-        self.master.forget()
+        self.root.forget()
 
     def runI2CScanner(self):
         i2cScanner = I2Cscanner(self)

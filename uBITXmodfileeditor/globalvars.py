@@ -19,6 +19,9 @@ FTN_KEY_SELECT = ["NONE", "MODE", "BAND-UP", "BAND-DN", "TUNE-STEP", "VFO-A/B", 
 LPF_MODE_SELECT = ["OFF", "STANDARD", "EXTENDED"]
 LPF_MODE_SETTING = [0x00, 0x57, 0x58]
 LPF_CTRL_SELECT = ["TX_LPF_A", "TX_LPF_B", "TX_LPF_C", "D10", "D11", "D12", "D13","NONE"]
+CW_MSG_TOTAL = 25
+CW_MSG_LABEL = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H",
+                "I", "J", "K", "L", "M", "N", "O"]
 #end ENUMS#################################################
 
 READCOMMAND=0xDB
@@ -31,6 +34,7 @@ RETRIES=3
 
 
 EEPROMSIZE=1024
+CW_MEMORY_KEYER_BUFFER_START = 803              #  Magic - Location of the CW_AUTO_DATA pointer
 BACKUPFILESIZE=2048
 
 VREFMAXVALUE=1023

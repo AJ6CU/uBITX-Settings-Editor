@@ -2570,6 +2570,16 @@
                                 </layout>
                               </object>
                             </child>
+                            <child>
+                              <object class="ttk.Label" id="label164">
+                                <property name="justify">left</property>
+                                <property name="textvariable">string:QSO_CALLSIGN_LENGTH</property>
+                                <layout manager="grid">
+                                  <property name="column">0</property>
+                                  <property name="row">2</property>
+                                </layout>
+                              </object>
+                            </child>
                           </object>
                         </child>
                       </object>
@@ -2609,7 +2619,7 @@
                             <property name="width">200</property>
                             <layout manager="pack">
                               <property name="anchor">center</property>
-                              <property name="padx">50 0</property>
+                              <property name="padx">10 0</property>
                               <property name="pady">10 20</property>
                             </layout>
                             <child>
@@ -2639,7 +2649,7 @@
                               <object class="ttk.Label" id="label53" named="True">
                                 <property name="relief">flat</property>
                                 <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">Total Bytes Used (max 200)</property>
+                                <property name="text" translatable="yes">Total Bytes Used:</property>
                                 <layout manager="pack">
                                   <property name="padx">20 10</property>
                                   <property name="side">left</property>
@@ -2650,7 +2660,35 @@
                               <object class="ttk.Entry" id="CW_AUTO_BYTES_USED_WIDGET" named="True">
                                 <property name="justify">left</property>
                                 <property name="state">readonly</property>
+                                <property name="style">Normal.TEntry</property>
+                                <property name="takefocus">false</property>
                                 <property name="textvariable">string:CW_AUTO_BYTES_USED</property>
+                                <property name="validate">none</property>
+                                <property name="width">3</property>
+                                <layout manager="pack">
+                                  <property name="anchor">w</property>
+                                  <property name="side">left</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="label163" named="True">
+                                <property name="relief">flat</property>
+                                <property name="style">Heading4.TLabel</property>
+                                <property name="takefocus">false</property>
+                                <property name="text" translatable="yes">Remaining Bytes</property>
+                                <layout manager="pack">
+                                  <property name="padx">20 10</property>
+                                  <property name="side">left</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Entry" id="entry1" named="True">
+                                <property name="justify">left</property>
+                                <property name="state">readonly</property>
+                                <property name="takefocus">false</property>
+                                <property name="textvariable">string:CW_AUTO_REMAINING_BYTES</property>
                                 <property name="validate">none</property>
                                 <property name="width">3</property>
                                 <layout manager="pack">
@@ -2673,7 +2711,7 @@
                             <child>
                               <object class="ttk.Label" id="label54">
                                 <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">Mag#</property>
+                                <property name="text" translatable="yes">Msg#</property>
                                 <layout manager="grid">
                                   <property name="column">0</property>
                                   <property name="padx">0 10</property>
@@ -2706,10 +2744,12 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry1" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG0_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSG0</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -2732,10 +2772,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG01_WIDGET" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG1_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSG1</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -2758,10 +2801,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG02_WIDGET" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG2_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSG2</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -2784,10 +2830,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG03_WIDGET" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG3_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSG3</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -2810,10 +2859,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG04_WIDGET" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG4_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSG4</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -2836,10 +2888,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG05_WIDGET" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG5_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSG5</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -2862,10 +2917,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG06_WIDGET" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG6_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSG6</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -2888,10 +2946,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG07_WIDGET" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG7_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSG7</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -2914,10 +2975,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG08_WIDGET" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG8_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSG8</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -2940,10 +3004,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG09_WIDGET" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG9_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSG9</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -2966,10 +3033,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG10_WIDGET" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGA_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGA</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -2992,10 +3062,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry3" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGB_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGB</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -3018,10 +3091,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry8" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGC_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGC</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -3044,10 +3120,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry9" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGD_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGD</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -3070,10 +3149,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry11" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGE_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGE</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -3096,10 +3178,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry13" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGF_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGF</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -3122,10 +3207,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry15" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGG_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGG</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -3148,10 +3236,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry17" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGH_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGH</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -3174,10 +3265,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry19" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGI_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGI</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -3200,10 +3294,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry21" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGJ_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGJ</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -3226,10 +3323,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry22" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGK_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGK</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -3252,10 +3352,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry23" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGL_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGL</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -3278,10 +3381,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry24" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGM_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGM</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -3304,10 +3410,13 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry27" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGN_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGN</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -3330,16 +3439,31 @@
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="entry28" named="True">
+                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGO_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">readonly</property>
+                                <property name="takefocus">true</property>
                                 <property name="textvariable">string:CW_MEMORY_KEYER_MSGO</property>
-                                <property name="validate">none</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
                                 <property name="width">50</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
                                   <property name="padx">0 10</property>
                                   <property name="row">25</property>
                                   <property name="sticky">w</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="button12">
+                                <property name="command" type="command" cbtype="simple">CW_Auto_Msg_Cleanup_CB</property>
+                                <property name="style">Button4.TButton</property>
+                                <property name="text" translatable="yes">Cleanup</property>
+                                <layout manager="grid">
+                                  <property name="column">2</property>
+                                  <property name="padx">10</property>
+                                  <property name="row">0</property>
                                 </layout>
                               </object>
                             </child>
