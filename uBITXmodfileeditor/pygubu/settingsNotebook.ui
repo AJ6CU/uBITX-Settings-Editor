@@ -3469,6 +3469,34 @@
                             </child>
                           </object>
                         </child>
+                        <child>
+                          <object class="ttk.Frame" id="CW_Autokeyer_Hidden_Frame" named="True">
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="CW_AUTO_MAGIC_KEY_WIDGET" named="True">
+                                <property name="state">normal</property>
+                                <property name="text" translatable="yes">label165</property>
+                                <property name="textvariable">string:CW_AUTO_MAGIC_KEY</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="USER_CALLSIGN_KEY_WIDGET" named="True">
+                                <property name="text" translatable="yes">label166</property>
+                                <property name="textvariable">string:USER_CALLSIGN_KEY</property>
+                                <layout manager="pack">
+                                  <property name="side">top</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>

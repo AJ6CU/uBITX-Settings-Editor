@@ -38,6 +38,7 @@ class SettingsNotebook(SettingsnotebookWidget):
              'CW_KEY_TYPE',
             'CW_SIDETONE',  'CW_SPEED_WPM', 'CW_DELAY_MS','CW_START_MS', 'USER_CALLSIGN', 'QSO_CALLSIGN', 'CW_ADC_ST_FROM', 'CW_ADC_ST_TO',
             'CW_ADC_DOT_FROM', 'CW_ADC_DOT_TO', 'CW_ADC_DASH_FROM', 'CW_ADC_DASH_TO', 'CW_ADC_BOTH_FROM', 'CW_ADC_BOTH_TO',
+            'CW_AUTO_MAGIC_KEY', 'USER_CALLSIGN_KEY',
             'CW_MEMORY_KEYER_MSG0', 'CW_MEMORY_KEYER_MSG1', 'CW_MEMORY_KEYER_MSG2', 'CW_MEMORY_KEYER_MSG3', 'CW_MEMORY_KEYER_MSG4',
             'CW_MEMORY_KEYER_MSG5', 'CW_MEMORY_KEYER_MSG6', 'CW_MEMORY_KEYER_MSG7', 'CW_MEMORY_KEYER_MSG8', 'CW_MEMORY_KEYER_MSG9',
             'CW_MEMORY_KEYER_MSGA', 'CW_MEMORY_KEYER_MSGB', 'CW_MEMORY_KEYER_MSGC', 'CW_MEMORY_KEYER_MSGD', 'CW_MEMORY_KEYER_MSGE',
@@ -86,11 +87,9 @@ class SettingsNotebook(SettingsnotebookWidget):
              ]
 
     #   this needs to be moved somewhere else too
-    hideOnStartup = ['Extended_Channel_Frame', "TUNING_STEP_INDEX_VALUE_WIDGET", "TUNING_STEP_INDEX_WIDGET"]
-                          # 'CUST_LPF_FILTER1_CONTROL_WIDGET', 'CUST_LPF_FILTER2_CONTROL_WIDGET',
-                          # 'CUST_LPF_FILTER3_CONTROL_WIDGET', 'CUST_LPF_FILTER4_CONTROL_WIDGET',
-                          # 'CUST_LPF_FILTER5_CONTROL_WIDGET', 'CUST_LPF_FILTER6_CONTROL_WIDGET',
-                          # 'CUST_LPF_FILTER7_CONTROL_WIDGET']
+    hideOnStartup = ['Extended_Channel_Frame', "TUNING_STEP_INDEX_VALUE_WIDGET", "TUNING_STEP_INDEX_WIDGET",
+                    'CW_AUTO_MAGIC_KEY_WIDGET',  'USER_CALLSIGN_KEY_WIDGET']
+
     #   Class variables
     #
     newTuningSteps = ()
@@ -486,14 +485,11 @@ class SettingsNotebook(SettingsnotebookWidget):
 
         if v_condition == "focusin":
             self.priorValues[stringVarHandle] = p_entry_value.upper()        #   save the focus in value
-            print("focusin", self.priorValues[stringVarHandle])
             return True
         else:
             #
             #   we have a focus out condition
             #
-
-            print ('focus out, prior value', self.priorValues[stringVarHandle])
 
 
             if (self.priorValues[stringVarHandle] == '') & (p_entry_value != ''):         #  New msg added
@@ -539,7 +535,7 @@ class SettingsNotebook(SettingsnotebookWidget):
                     self.CW_AUTO_REMAINING_BYTES.set(str(int(self.CW_AUTO_REMAINING_BYTES.get()) - newBytesUsed))
 
                     upperCase = p_entry_value.upper()
-                    print("convert to uppercase", upperCase)
+
                     widgetHandle.setvar(stringVarHandle, upperCase)                 # replace mixed case with upper
                     #
                     #   updated byte counts, and translated it to upper, so can return True
@@ -552,7 +548,6 @@ class SettingsNotebook(SettingsnotebookWidget):
             SettingsNotebook.validationErrorMsg = SettingsNotebook.error_Msgs["TOOMANYCWCHARS"].format(newBytesUsed,int(self.CW_AUTO_REMAINING_BYTES.get()))
 
             self.log.printerror("timestamp", SettingsNotebook.validationErrorMsg)
-            print('restoring old value', self.priorValues[stringVarHandle])
             widgetHandle.setvar(stringVarHandle, self.priorValues[stringVarHandle])                # restore prior value
 
             return False
@@ -1139,6 +1134,7 @@ class SettingsNotebook(SettingsnotebookWidget):
 
     def enable_CW_Widgets(self):
         i = 0
+
         while i < int(self.CW_AUTO_COUNT.get()):
             #   Enable associate entry field
             getattr(self, "CW_MEMORY_KEYER_MSG" + CW_MSG_LABEL[i]  + "_WIDGET").configure (state="enabled")
@@ -1170,7 +1166,6 @@ class SettingsNotebook(SettingsnotebookWidget):
             name = userSetting.get("NAME")
 
             if name in SettingsNotebook.readyToGo:
-                # print("name=", name)
                 if userSetting.find("value").text != None:
                     getattr(self, name).set(userSetting.find("value").text)
                 else:
@@ -1198,14 +1193,16 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.TUNING_STEP4_WIDGET.configure(state='normal')
         self.TUNING_STEP5_WIDGET.configure(state='normal')
 
+        # Enable CW Message Widgets
+        self.enable_CW_Widgets()
+
         # LPF Beginning Frequencies
         self.Set_LPF_Beginning_Freq()
 
         # LPF Control Lines
         self.Set_LPF_Control_Lines()
 
-        # Enable CW Message Widgets
-        self.enable_CW_Widgets()
+
 
         # Set maximum available bytes
         # Length of QSO call sign

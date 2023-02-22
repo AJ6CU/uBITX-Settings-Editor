@@ -39,6 +39,9 @@ class eepromObj:
     #******************************************************************************************
 
     class getters(object):
+        def __init__(self, log, **kw):
+            super().__init__ (**kw)
+            self.log = log
         # utility functions
         def get_uint8_FromEEPROM(self, memBuffer: bytearray, memlocation: int) -> int:
             return (memBuffer[memlocation])
@@ -196,11 +199,16 @@ class eepromObj:
     #         #***********************************
     #
 
+        def USER_CALLSIGN_KEY (self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = str(MAGIC_USER_CALLSIGN_KEY)                       # Set for output, validation done later
+                                                                            # goes back to the original memory contents
+
+
         def USER_CALLSIGN(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, _unused1):
     #       First need to confirm that a valid call sign has been entered by looking for 0x59 in
     #       "USER_CALLSIGN_KEY"
 
-            if ((self.XML_Get_uint8_FromEEPROM  (EEPROMroot, "USER_CALLSIGN_KEY", EEPROMBuffer) & 0xff) == 0x59):     # good a good one, can continue
+            if ((self.XML_Get_uint8_FromEEPROM(EEPROMroot, "USER_CALLSIGN_KEY", EEPROMBuffer) & 0xff) == MAGIC_USER_CALLSIGN_KEY):     # good a good one, can continue
                 callSignLength = self.XML_Get_uint8_FromEEPROM (EEPROMroot, "USER_CALLSIGN_LEN", EEPROMBuffer) & 0x7f   #Important to mask it here as
 
                 j: int = 0                                                                                        #Upper bit used to for LCD display callsign on startup
@@ -209,7 +217,12 @@ class eepromObj:
                     callSignStr += str(chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation + j)))
                     j += 1
                 value.text = str(callSignStr)
+            else:           # bad magic number, set value to null ('')
+                value.text = ''
+                self.log.println("timestamp",  "WARNING!: Bad Magic# for User Callsign, Callsign data ignored")
 
+        def CW_AUTO_MAGIC_KEY (self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = str(MAGIC_CW_AUTO_MAGIC_KEY)
 
         def QSO_CALLSIGN(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, _unused1):
 
@@ -232,9 +245,14 @@ class eepromObj:
                     j += 1
                 value.text = str(callSignStr)
 
-        def CW_AUTO_COUNT(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1 ):
-            self.CW_Number_of_Msgs = self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)
-            value.text = str(self.CW_Number_of_Msgs)
+        def CW_AUTO_COUNT(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, _unused1 ):
+            if ((self.XML_Get_uint8_FromEEPROM(EEPROMroot, "CW_AUTO_MAGIC_KEY", EEPROMBuffer) & 0xff) == MAGIC_CW_AUTO_MAGIC_KEY):     # good a good one, can continue
+                self.CW_Number_of_Msgs = self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)
+                value.text = str(self.CW_Number_of_Msgs)
+            else:           # bad magic number, set value to 0
+                self.CW_Number_of_Msgs = 0
+                value.text = '0'
+                self.log.println("timestamp",  "WARNING!: Bad Magic# for CW Autokeyer Message storage, message data ignored")
 
 
         def CW_AUTO_DATA(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1 ):
@@ -1396,6 +1414,10 @@ class eepromObj:
     #         #   COMMON MEMORY KEYER
     #         #***********************************
     #
+        def USER_CALLSIGN_KEY (self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, value, _unused, _unused1):
+            self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, MAGIC_USER_CALLSIGN_KEY )
+
+
         def USER_CALLSIGN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, _unused1):
             # Get memory location assigned to Call Sign Key and CW Key Lenght
             callSignKeyLocation: int = self.XML_MemLocation_FromEEPROM(EEPROMroot, "USER_CALLSIGN_KEY")
@@ -1433,6 +1455,10 @@ class eepromObj:
                 while (i < altCallSignLen):
                     self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, startingLoc+i, ord(userSettingValue[i]))
                     i += 1
+
+        def CW_AUTO_MAGIC_KEY (self, SettingName, EEPROMBuffer, EEPROMBufferDirty,  memLocation, value, _unused, _unused1):
+            self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, MAGIC_CW_AUTO_MAGIC_KEY )
+
         def CW_AUTO_COUNT(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue))
             self.CW_Number_of_Msgs = int(userSettingValue)
@@ -2507,7 +2533,7 @@ class eepromObj:
         #
         #
         #   We have opened the template file, now merge the contents into the tree
-        UserMods = self.getters()
+        UserMods = self.getters(self.log)
 
         self.log.println("timestamp", "Interpreting BINARY data")
         #
@@ -2531,6 +2557,7 @@ class eepromObj:
             #get tag for where data will be stored withing UserModroot
 
             userSettingTag = eepromObj.UserModroot.find('.//SETTING[@NAME="{}"]'.format(userSettingName))
+
             if (userSettingTag != None):
                 valueTag=userSettingTag.find('.//value')
                 UserMods.get(userSettingName, userSettingName, self.EEPROMBuffer, memLocation, valueTag, eepromObj.EEPROMroot, userSettingTag)

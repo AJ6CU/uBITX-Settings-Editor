@@ -2128,6 +2128,21 @@ class SettingsnotebookWidget(ttk.Frame):
         self.button12.grid(column=2, padx=10, row=0)
         self.button12.configure(command=self.CW_Auto_Msg_Cleanup_CB)
         self.frame33.pack(anchor="w", padx="50 0", side="top")
+        self.CW_Autokeyer_Hidden_Frame = ttk.Frame(self.frame31)
+        self.CW_Autokeyer_Hidden_Frame.configure(height=200, width=200)
+        self.CW_AUTO_MAGIC_KEY_WIDGET = ttk.Label(
+            self.CW_Autokeyer_Hidden_Frame)
+        self.CW_AUTO_MAGIC_KEY = tk.StringVar(value='label165')
+        self.CW_AUTO_MAGIC_KEY_WIDGET.configure(
+            state="normal", text='label165', textvariable=self.CW_AUTO_MAGIC_KEY)
+        self.CW_AUTO_MAGIC_KEY_WIDGET.pack(side="top")
+        self.USER_CALLSIGN_KEY_WIDGET = ttk.Label(
+            self.CW_Autokeyer_Hidden_Frame)
+        self.USER_CALLSIGN_KEY = tk.StringVar(value='label166')
+        self.USER_CALLSIGN_KEY_WIDGET.configure(
+            text='label166', textvariable=self.USER_CALLSIGN_KEY)
+        self.USER_CALLSIGN_KEY_WIDGET.pack(side="top")
+        self.CW_Autokeyer_Hidden_Frame.pack(side="top")
         self.frame31.pack(anchor="w", padx=20, pady=15, side="top")
         self.Autokeyer_Frame.pack(
             anchor="center",

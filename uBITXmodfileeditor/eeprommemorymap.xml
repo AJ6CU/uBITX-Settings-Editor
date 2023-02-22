@@ -243,6 +243,12 @@
 		<displayFormat>str</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
+	<SETTING NAME="CW_AUTO_MAGIC_KEY">						<!--This is a magic key to ensure msg heap is correct = 0x73 -->
+		<EEPROMStart>800</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>skip</SPECIAL_PROCESSING>
+	</SETTING>
 	<SETTING NAME="CW_AUTO_COUNT">						<!--This is the count of either messages or total chars??? -->
 		<EEPROMStart>801</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>

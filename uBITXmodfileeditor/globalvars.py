@@ -32,6 +32,10 @@ OK=0x77
 ACK = 0x00
 RETRIES=3
 
+# Magic numbers used for validation of EEPROM
+MAGIC_USER_CALLSIGN_KEY = 0x59
+MAGIC_CW_AUTO_MAGIC_KEY = 0x73
+
 
 EEPROMSIZE=1024
 CW_MEMORY_KEYER_BUFFER_START = 803              #  Magic - Location of the CW_AUTO_DATA pointer

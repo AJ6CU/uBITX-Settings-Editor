@@ -221,7 +221,12 @@
 	release. I have added an issue on github for this.
 	*****************************************************************************************************	
 -->	
-	<SETTING NAME="USER_CALLSIGN">							
+	<SETTING NAME="USER_CALLSIGN_KEY">
+		<label>Magic Key validating Callsign</label>
+		<value></value>									<!--should be 0x59 if valid-->
+		<tooltip>Enter your Callsign - max 18 characters</tooltip>
+	</SETTING>
+	<SETTING NAME="USER_CALLSIGN">
 		<label>Primary call sign</label>
 		<value></value>									<!--Substituted in message for '>' Max 18 characters)-->
 		<tooltip>Enter your Callsign - max 18 characters</tooltip>
@@ -230,6 +235,11 @@
 		<label>Alt Call sign</label>					<!--Substituted in message for '<' Max 18 characters)-->
 		<value></value>
 		<tooltip>Enter an alternative Callsign (perhaps used for QSOs) - max 18 characters</tooltip>
+	</SETTING>
+	<SETTING NAME="CW_AUTO_MAGIC_KEY">				<!--Should be 0x73 (115 decimal) if valid-->
+		<label>Total Messages:</label>
+		<value></value>
+		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="CW_AUTO_COUNT">				<!--Total characters in all memory keyer message <= 200-->
 		<label>Total Messages:</label>
