@@ -34,8 +34,8 @@ else:
 #   defines the root window
 root = Tk()
 root.title("uBITX Setting Customization")
-root.geometry('1024x800')            # width x height
-root.minsize(650,650)
+root.geometry('1280x800')            # width x height
+root.minsize(1024,650)
 
 ttk.Style().theme_use(appTheme)
 
@@ -73,7 +73,7 @@ commandFrame.grid(row=6, column=0, columnspan=2, sticky='ew')
 outputProcessorFrame.grid(row=5, column=0, columnspan=2, pady=(10, 0))
 
 # Define and layout the contents of titleFrame
-titleBar = ttk.Label(titleFrame, text="uBITX Settings Editor - V2.0", style='Heading1.TLabel')
+titleBar = ttk.Label(titleFrame, text="uBITX Settings Editor - "+ VERSION, style='Heading1.TLabel')
 titleBar.config(anchor=CENTER)
 titleBar.pack()
 
@@ -90,7 +90,7 @@ logLabel = ttk.Label(logFrame, text="Log", style='Heading3.TLabel')
 
 
 logBox = Text(logFrame, font=('Arial',8))
-logBox.configure(width=60)
+logBox.configure(width=70)
 logBoxScrollBar = ttk.Scrollbar(logFrame, command=logBox.yview)     #   these two lines attach a scroll bar on right
 logBox['yscrollcommand'] = logBoxScrollBar.set                      #   side of the text box
 

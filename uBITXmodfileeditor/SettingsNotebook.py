@@ -5,6 +5,7 @@ from settingsnotebookwidget import SettingsnotebookWidget
 from I2cscanner import I2Cscanner
 from ADCscanner import ADCscanner
 from SmeterWizard import SmeterWizard
+from wsprmsggen import WSPRmsggen
 from globalvars import *
 
 class SettingsNotebook(SettingsnotebookWidget):
@@ -33,12 +34,13 @@ class SettingsNotebook(SettingsnotebookWidget):
 
     #   temp to control what is processed
     readyToGo = ['VERSION_ADDRESS', 'FACTORY_VALUES_MASTER_CAL', 'FACTORY_VALUES_USB_CAL',
+             'FACTORY_VALUES_CW_SPEED', 'FACTORY_VALUES_CW_SIDETONE',
              'MASTER_CAL', 'USB_CAL', 'CW_CAL', 'VFO_A', 'VFO_A_MODE', 'VFO_B', 'VFO_B_MODE',
              'TUNING_STEP_INDEX', 'TUNING_STEP1', 'TUNING_STEP2', 'TUNING_STEP3', 'TUNING_STEP4', 'TUNING_STEP5',
              'CW_KEY_TYPE',
             'CW_SIDETONE',  'CW_SPEED_WPM', 'CW_DELAY_MS','CW_START_MS', 'USER_CALLSIGN', 'QSO_CALLSIGN', 'CW_ADC_ST_FROM', 'CW_ADC_ST_TO',
             'CW_ADC_DOT_FROM', 'CW_ADC_DOT_TO', 'CW_ADC_DASH_FROM', 'CW_ADC_DASH_TO', 'CW_ADC_BOTH_FROM', 'CW_ADC_BOTH_TO',
-            'CW_AUTO_MAGIC_KEY', 'USER_CALLSIGN_KEY',
+            'CW_AUTO_MAGIC_KEY', 'USER_CALLSIGN_KEY', 'CW_AUTO_DATA',
             'CW_MEMORY_KEYER_MSG0', 'CW_MEMORY_KEYER_MSG1', 'CW_MEMORY_KEYER_MSG2', 'CW_MEMORY_KEYER_MSG3', 'CW_MEMORY_KEYER_MSG4',
             'CW_MEMORY_KEYER_MSG5', 'CW_MEMORY_KEYER_MSG6', 'CW_MEMORY_KEYER_MSG7', 'CW_MEMORY_KEYER_MSG8', 'CW_MEMORY_KEYER_MSG9',
             'CW_MEMORY_KEYER_MSGA', 'CW_MEMORY_KEYER_MSGB', 'CW_MEMORY_KEYER_MSGC', 'CW_MEMORY_KEYER_MSGD', 'CW_MEMORY_KEYER_MSGE',
@@ -68,7 +70,7 @@ class SettingsNotebook(SettingsnotebookWidget):
             'HAM_BAND_FREQS6','HAM_BAND_FREQS7','HAM_BAND_FREQS8','HAM_BAND_FREQS9','HAM_BAND_FREQS10', 'HAM_BAND_FREQS1_MODE',
             'HAM_BAND_FREQS2_MODE', 'HAM_BAND_FREQS3_MODE', 'HAM_BAND_FREQS4_MODE', 'HAM_BAND_FREQS5_MODE', 'HAM_BAND_FREQS6_MODE',
             'HAM_BAND_FREQS7_MODE', 'HAM_BAND_FREQS8_MODE', 'HAM_BAND_FREQS9_MODE', 'HAM_BAND_FREQS10_MODE',
-            'BOOT_INTO_SDR_MODE', 'SDR_OFFSET_MODE', 'SDR_FREQUENCY',
+            'BOOT_INTO_SDR_MODE', 'SDR_OFFSET_MODE', 'SDR_FREQUENCY', 'NEXTION_DISPLAY_CALL_SIGN', 'MAIN_SCREEN_FORMAT',
             'I2C_LCD_MASTER', 'TUNING_RESTICTIONS', 'TX_RESTRICTIONS',
             'I2C_LCD_SECOND', 'I2C_ADDR_SI5351','ONE_TWO_LINE_TOGGLE', 'SCROLLING_DISPLAY', 'MESSAGE_LINE', 'S_METER_LEVELS', 'S_METER_LEVEL1',
             'S_METER_LEVEL2', 'S_METER_LEVEL3', 'S_METER_LEVEL4', 'S_METER_LEVEL5', 'S_METER_LEVEL6', 'S_METER_LEVEL7', 'S_METER_LEVEL8',
@@ -80,15 +82,28 @@ class SettingsNotebook(SettingsnotebookWidget):
             'CW_MEMORY_KEYER_MSG09', 'CW_MEMORY_KEYER_MSG10', 'CW_AUTO_COUNT', 'WSPR_COUNT',
             'WSPR_BAND1_TXFREQ', 'WSPR_BAND2_TXFREQ', 'WSPR_BAND3_TXFREQ', 'WSPR_MESSAGE1_NAME', 'WSPR_MESSAGE2_NAME',
             'WSPR_MESSAGE3_NAME', 'WSPR_MESSAGE4_NAME', 'WSPR_MESSAGE1', 'WSPR_MESSAGE2', 'WSPR_MESSAGE3', 'WSPR_MESSAGE4',
+            'WSPR_BAND1_MULTICHAN', 'WSPR_BAND2_MULTICHAN', 'WSPR_BAND3_MULTICHAN',
+            'WSPR_BAND1_REG1', 'WSPR_BAND2_REG1', 'WSPR_BAND3_REG1', 'WSPR_BAND1_REG2', 'WSPR_BAND2_REG2', 'WSPR_BAND3_REG2',
             'CUST_LPF_ENABLED', 'CUST_LPF_FILTER1_ENDFREQ', 'CUST_LPF_FILTER2_ENDFREQ', 'CUST_LPF_FILTER3_ENDFREQ',
             'CUST_LPF_FILTER4_ENDFREQ', 'CUST_LPF_FILTER5_ENDFREQ', 'CUST_LPF_FILTER6_ENDFREQ', 'CUST_LPF_FILTER7_ENDFREQ',
             'CUST_LPF_FILTER1_CONTROL', 'CUST_LPF_FILTER2_CONTROL', 'CUST_LPF_FILTER3_CONTROL', 'CUST_LPF_FILTER4_CONTROL',
-            'CUST_LPF_FILTER5_CONTROL', 'CUST_LPF_FILTER6_CONTROL', 'CUST_LPF_FILTER7_CONTROL'
+            'CUST_LPF_FILTER5_CONTROL', 'CUST_LPF_FILTER6_CONTROL', 'CUST_LPF_FILTER7_CONTROL',
+            'FIRMWARE_ID_ADDR1', 'FIRMWARE_ID_ADDR2', 'FIRMWARE_ID_ADDR3', 'FACTORY_VALUES_VFO_A', 'FACTORY_VALUES_VFO_B',
+            'IF1_CAL_ON_OFF_SWITCH',  'IF1_CAL', 'IF1_CAL_ADD_SUB', 'STORED_IF_SHIFT', 'IF_SHIFTVALUE', 'CW_DISPLAY_FREQ'
              ]
 
     #   this needs to be moved somewhere else too
     hideOnStartup = ['Extended_Channel_Frame', "TUNING_STEP_INDEX_VALUE_WIDGET", "TUNING_STEP_INDEX_WIDGET",
-                    'CW_AUTO_MAGIC_KEY_WIDGET',  'USER_CALLSIGN_KEY_WIDGET']
+                    'CW_AUTO_MAGIC_KEY_WIDGET',  'USER_CALLSIGN_KEY_WIDGET',
+                    'FIRMWARE_ID_ADDR1_WIDGET','FIRMWARE_ID_ADDR2_WIDGET', 'FIRMWARE_ID_ADDR3_WIDGET',
+                    'FACTORY_VALUES_VFO_A_WIDGET', 'FACTORY_VALUES_VFO_B_WIDGET',
+                    'CUST_LPF_FILTER1_CONTROL_WIDGET', 'CUST_LPF_FILTER2_CONTROL_WIDGET', 'CUST_LPF_FILTER3_CONTROL_WIDGET',
+                    'CUST_LPF_FILTER4_CONTROL_WIDGET', 'CUST_LPF_FILTER5_CONTROL_WIDGET', 'CUST_LPF_FILTER6_CONTROL_WIDGET',
+                    'CUST_LPF_FILTER7_CONTROL_WIDGET',
+                    'WSPR_BAND1_MULTICHAN_WIDGET',  'WSPR_BAND2_MULTICHAN_WIDGET', 'WSPR_BAND3_MULTICHAN_WIDGET',
+                    'WSPR_BAND1_REG1_WIDGET', 'WSPR_BAND2_REG1_WIDGET', 'WSPR_BAND3_REG1_WIDGET',
+                    'WSPR_BAND1_REG2_WIDGET', 'WSPR_BAND2_REG2_WIDGET', 'WSPR_BAND3_REG2_WIDGET',
+                    'NEXTION_DISPLAY_CALL_SIGN_WIDGET', 'MAIN_SCREEN_FORMAT_WIDGET']
 
     #   Class variables
     #
@@ -1029,6 +1044,12 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.HAM_BAND_RANGE10_START.set("28.000")
         self.HAM_BAND_RANGE10_END.set("29.700")
 
+    def toggle_IF1_Calibration_Frame(self):
+        if self.IF1_CAL_ON_OFF_SWITCH.get() == "YES":
+            self.IF1_Calibration_Frame.pack()
+        else:
+            self.IF1_Calibration_Frame.forget()
+
     def CUST_LPF_FILTER_CONTROL(self, filter):
 
         theFilter = getattr(self,"CUST_LPF_"+filter+"_CONTROL")
@@ -1193,6 +1214,9 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.TUNING_STEP4_WIDGET.configure(state='normal')
         self.TUNING_STEP5_WIDGET.configure(state='normal')
 
+        # Enable or disable IF1 Calibration details
+        self.toggle_IF1_Calibration_Frame()
+
         # Enable CW Message Widgets
         self.enable_CW_Widgets()
 
@@ -1249,6 +1273,34 @@ class SettingsNotebook(SettingsnotebookWidget):
 
     def runSmeterAssistant(self):
         smeterAssistant = SmeterWizard(self)
+
+    def runWSPRMsg1Gen_CB(self):
+        self.WSPR_MESSAGE1.set("whisper")
+        print("before:", self.WSPR_MESSAGE1.get())
+        runWSPRMsgGen = WSPRmsggen(1, self.WSPR_MESSAGE1)
+        print("after:", self.WSPR_MESSAGE1.get())
+
+    def runWSPRMsg2Gen_CB(self):
+        self.WSPR_MESSAGE2.set("whisper2")
+        print("before:", self.WSPR_MESSAGE2.get())
+        runWSPRMsgGen = WSPRmsggen(2, self.WSPR_MESSAGE2)
+        print("after:", self.WSPR_MESSAGE2.get())
+
+    def runWSPRMsg3Gen_CB(self):
+        self.WSPR_MESSAGE3.set("whisper3")
+        print("before:", self.WSPR_MESSAGE3.get())
+        runWSPRMsgGen = WSPRmsggen(3,self.WSPR_MESSAGE3)
+        print("after:", self.WSPR_MESSAGE3.get())
+
+    def runWSPRMsg4Gen_CB(self):
+        self.WSPR_MESSAGE4.set("whisper4")
+        print("before:", self.WSPR_MESSAGE4.get())
+        runWSPRMsgGen = WSPRmsggen(4, self.WSPR_MESSAGE4)
+        print("after:", self.WSPR_MESSAGE4.get())
+
+
+    def runWSPRMsgGen(self):
+        runWSPRMsgGen = WSPRmsggen(self)
 
 
 

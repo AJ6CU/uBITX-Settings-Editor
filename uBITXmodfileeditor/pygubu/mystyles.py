@@ -61,5 +61,8 @@ style.configure('Normal.TText', font=fontList['Heading3'])
 style.configure('Highlight.TFrame', background='blue', bd=4 )
 style.configure('Normal.TFrame', background='gray', bd=4)
 
+style.configure('Fixed.TNotebook')
+style.configure('Fixed.TNotebook.Tab',padding=[5,2])
+
 
 

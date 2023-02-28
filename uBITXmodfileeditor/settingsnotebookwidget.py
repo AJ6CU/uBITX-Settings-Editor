@@ -8,7 +8,8 @@ class SettingsnotebookWidget(ttk.Frame):
     def __init__(self, master=None, **kw):
         super(SettingsnotebookWidget, self).__init__(master, **kw)
         self.settingsNotebook = ttk.Notebook(self)
-        self.settingsNotebook.configure(height=800, width=800)
+        self.settingsNotebook.configure(
+            height=800, style="Fixed.TNotebook", width=800)
         self.General_SF = ScrolledFrame(
             self.settingsNotebook, scrolltype="both")
         self.General_SF.configure(usemousewheel=True)
@@ -67,7 +68,7 @@ class SettingsnotebookWidget(ttk.Frame):
             anchor="center",
             expand="true",
             fill="x",
-            pady="10 0",
+            pady=10,
             side="top")
         self.frame4.pack(anchor="w", expand="true", fill="x", side="top")
         self.General_Tuning_Steps_Frame = ttk.Frame(self.General_Frame)
@@ -82,7 +83,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.General_Tuning_Steps_Label.pack(
             anchor="w", expand="true", fill="x")
         self.Tuning_Steps_Title_Frame.pack(
-            anchor="w", expand="true", fill="x", pady="20 0", side="top")
+            anchor="w", expand="true", fill="x", pady="10 0", side="top")
         self.General_Tuning_Steps_Settings_Frame = ttk.Frame(
             self.General_Tuning_Steps_Frame)
         self.General_Tuning_Steps_Settings_Frame.configure(
@@ -259,11 +260,15 @@ class SettingsnotebookWidget(ttk.Frame):
             values='10 20 50 100 1000',
             width=5)
         self.TUNING_STEP_INDEX_VALUE_WIDGET.grid(column=1, row=0)
-        self.TUNING_STEP_INDEX_WIDGET = ttk.Label(self.frame1)
+        self.TUNING_STEP_HIDDEN_Frame = ttk.Frame(self.frame1)
+        self.TUNING_STEP_HIDDEN_Frame.configure(height=200, width=200)
+        self.TUNING_STEP_INDEX_WIDGET = ttk.Label(
+            self.TUNING_STEP_HIDDEN_Frame)
         self.TUNING_STEP_INDEX = tk.StringVar()
         self.TUNING_STEP_INDEX_WIDGET.configure(
             textvariable=self.TUNING_STEP_INDEX)
-        self.TUNING_STEP_INDEX_WIDGET.grid(column=0, row=1)
+        self.TUNING_STEP_INDEX_WIDGET.pack()
+        self.TUNING_STEP_HIDDEN_Frame.grid(column=0, row=2)
         self.frame1.pack(anchor="w", pady="10 0", side="top")
         self.General_Tuning_Steps_Settings_Frame.pack(padx="50 0", side="top")
         self.General_Tuning_Steps_Frame.pack(anchor="w", side="top")
@@ -275,7 +280,6 @@ class SettingsnotebookWidget(ttk.Frame):
             anchor="center",
             expand="true",
             fill="x",
-            pady="10 0",
             side="top")
         self.frame7.pack(anchor="w", expand="true", fill="x", side="top")
         self.General_CW_Frame = ttk.Frame(self.General_Frame)
@@ -303,7 +307,7 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CW_KEY_TYPE,
             *__values,
             command=None)
-        self.CW_KEY_TYPE_WIDGET.grid(column=1, pady="0 10", row=0)
+        self.CW_KEY_TYPE_WIDGET.grid(column=1, row=0, sticky="w")
         self.CW_SIDETONE_LABEL = ttk.Label(self.General_CW_Settings_Frame)
         self.CW_SIDETONE_LABEL.configure(
             style="Heading4.TLabel", text='Sidetone (HZ)')
@@ -374,20 +378,1304 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CW_DELAY_MS_WIDGET.register(
                 self.validate_CW_DELAY_MS), "%P", "%V")
         self.CW_DELAY_MS_WIDGET.configure(validatecommand=_validatecmd)
+        self.label209 = ttk.Label(self.General_CW_Settings_Frame)
+        self.label209.configure(
+            style="Heading4.TLabel",
+            text='VFO Freq displays')
+        self.label209.grid(column=0, pady="0 10", row=15)
+        self.CW_DISPLAY_FREQ = tk.StringVar(value='TX')
+        __values = ['TX', 'RX']
+        self.CW_DISPLAY_FREQ_WIDGET = tk.OptionMenu(
+            self.General_CW_Settings_Frame, self.CW_DISPLAY_FREQ, *__values, command=None)
+        self.CW_DISPLAY_FREQ_WIDGET.grid(column=1, pady=10, row=15)
+        self.message8 = tk.Message(self.General_CW_Settings_Frame)
+        self.message8.configure(
+            borderwidth=2,
+            font="TkTextFont",
+            justify="left",
+            pady=5,
+            relief="ridge",
+            takefocus=False,
+            text='When in CW mode, your VFO can display either your TX or RX frequency. TX seems to be generally the preferred choice. For more details, see:\nhttp://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html',
+            width=350)
+        self.message8.grid(column=2, padx=10, row=15)
         self.General_CW_Settings_Frame.pack(padx="50 0", side="top")
-        self.frame5 = ttk.Frame(self.General_CW_Frame)
-        self.frame5.configure(height=200, width=200)
-        self.separator3 = ttk.Separator(self.frame5)
-        self.separator3.configure(orient="horizontal")
-        self.separator3.pack(
+        self.General_CW_Frame.pack(anchor="w", side="top")
+        self.frame48 = ttk.Frame(self.General_Frame)
+        self.frame48.configure(height=200, width=200)
+        self.separator5 = ttk.Separator(self.frame48)
+        self.separator5.configure(orient="horizontal")
+        self.separator5.pack(
             anchor="center",
             expand="true",
             fill="x",
-            pady="10 0",
+            pady=10,
             side="top")
-        self.frame5.pack(anchor="w", expand="true", fill="x", side="top")
-        self.General_CW_Frame.pack(anchor="w", side="top")
-        self.Operator_Channel_Frame = ttk.Frame(self.General_Frame)
+        self.frame48.pack(anchor="w", expand="true", fill="x", side="top")
+        self.IF_CUSTOMIZATION_Frame = ttk.Frame(self.General_Frame)
+        self.IF_CUSTOMIZATION_Frame.configure(height=200, width=200)
+        self.frame61 = ttk.Frame(self.IF_CUSTOMIZATION_Frame)
+        self.frame61.configure(height=200, width=200)
+        self.label207 = ttk.Label(self.frame61)
+        self.label207.configure(
+            style="Heading3.TLabel",
+            text='Personalized IF Shift')
+        self.label207.grid(column=0, row=0)
+        self.frame61.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame62 = ttk.Frame(self.IF_CUSTOMIZATION_Frame)
+        self.frame62.configure(height=200, width=200)
+        self.STORED_IF_SHIFT_WIDGET = ttk.Checkbutton(self.frame62)
+        self.STORED_IF_SHIFT = tk.StringVar()
+        self.STORED_IF_SHIFT_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            style="Checkbox4.TCheckbutton",
+            text='Preserve IF Shift',
+            variable=self.STORED_IF_SHIFT)
+        self.STORED_IF_SHIFT_WIDGET.pack(anchor="w", side="top")
+        self.STORED_IF_SHIFT_WIDGET.configure(
+            command=self.toggle_IF1_Calibration_Frame)
+        self.frame63 = ttk.Frame(self.frame62)
+        self.frame63.configure(height=200, width=200)
+        self.label208 = ttk.Label(self.frame63)
+        self.label208.configure(
+            style="Heading4.TLabel",
+            text='Amount to Shift IF:')
+        self.label208.grid(column=0, row=0)
+        self.IF_SHIFTVALUE_WIDGET = ttk.Entry(self.frame63)
+        self.IF_SHIFTVALUE = tk.StringVar()
+        self.IF_SHIFTVALUE_WIDGET.configure(
+            textvariable=self.IF_SHIFTVALUE, validate="none")
+        self.IF_SHIFTVALUE_WIDGET.grid(column=1, row=0)
+        self.frame63.pack(anchor="e", padx=70, side="top")
+        self.frame62.pack(anchor="w", padx="50 0", side="top")
+        self.IF_CUSTOMIZATION_Frame.pack(anchor="w", side="top")
+        self.General_Frame.pack(
+            expand="true",
+            fill="both",
+            padx=20,
+            pady=5,
+            side="top")
+        self.frame15.pack(
+            anchor="center",
+            expand="true",
+            fill="both",
+            padx=5,
+            pady=5,
+            side="top")
+        self.General_SF.pack(
+            anchor="center",
+            expand="true",
+            fill="both",
+            side="top")
+        self.settingsNotebook.add(self.General_SF, text='General')
+        self.Autokeyer_SF = ScrolledFrame(
+            self.settingsNotebook, scrolltype="both")
+        self.Autokeyer_SF.configure(usemousewheel=True)
+        self.Autokeyer_Frame = ttk.Frame(self.Autokeyer_SF.innerframe)
+        self.CW_Autokeyer_Titlle_Frame = ttk.Frame(self.Autokeyer_Frame)
+        self.CW_Autokeyer_Titlle_Frame.configure(height=200, width=200)
+        self.label3 = ttk.Label(self.CW_Autokeyer_Titlle_Frame)
+        self.label3.configure(
+            justify="center",
+            style="Heading2.TLabel",
+            text='CW Autokeyer Settings')
+        self.label3.pack(anchor="w", padx=5)
+        self.CW_Autokeyer_Titlle_Frame.pack(
+            anchor="center", fill="x", pady="15 25", side="top")
+        self.CW_Autokeyer_Callsign_Frame = ttk.Frame(self.Autokeyer_Frame)
+        self.CW_Autokeyer_Callsign_Frame.configure(height=200, width=200)
+        self.CW_Autokeyer_Callsigns_Label_Frame = ttk.Frame(
+            self.CW_Autokeyer_Callsign_Frame)
+        self.CW_Autokeyer_Callsigns_Label_Frame.configure(
+            height=200, width=200)
+        self.CW_Autokeyer_Callsign_Title_Label = ttk.Label(
+            self.CW_Autokeyer_Callsigns_Label_Frame)
+        self.CW_Autokeyer_Callsign_Title_Label.configure(
+            justify="left", style="Heading3.TLabel", text='Callsigns')
+        self.CW_Autokeyer_Callsign_Title_Label.pack()
+        self.CW_Autokeyer_Callsigns_Label_Frame.pack(anchor="w", side="top")
+        self.CW_Autokeyer_Callsigns_Frame = ttk.Frame(
+            self.CW_Autokeyer_Callsign_Frame)
+        self.CW_Autokeyer_Callsigns_Frame.configure(height=200, width=200)
+        self.CW_Autokeyer_Callsign_Label = ttk.Label(
+            self.CW_Autokeyer_Callsigns_Frame)
+        self.CW_Autokeyer_Callsign_Label.configure(
+            style="Heading4.TLabel", text='Callsign')
+        self.CW_Autokeyer_Callsign_Label.grid(
+            column=0, padx="0 10", row=0, sticky="w")
+        self.USER_CALLSIGN_WIDGET_2 = ttk.Entry(
+            self.CW_Autokeyer_Callsigns_Frame)
+        self.USER_CALLSIGN_WIDGET_2.configure(
+            justify="left",
+            textvariable=self.USER_CALLSIGN,
+            validate="focus",
+            width=18)
+        self.USER_CALLSIGN_WIDGET_2.grid(
+            column=1, padx="0 10", row=0, sticky="w")
+        _validatecmd = (
+            self.USER_CALLSIGN_WIDGET_2.register(
+                self.validate_USER_CALLSIGN), "%P", "%V")
+        self.USER_CALLSIGN_WIDGET_2.configure(validatecommand=_validatecmd)
+        self.CW_Autokeyer_Alt_Callsign_Label = ttk.Label(
+            self.CW_Autokeyer_Callsigns_Frame)
+        self.CW_Autokeyer_Alt_Callsign_Label.configure(
+            style="Heading4.TLabel", text='Alternate QSO Callsign')
+        self.CW_Autokeyer_Alt_Callsign_Label.grid(
+            column=0, padx="0 10", row=1, sticky="w")
+        self.QSO_CALLSIGN_WIDGET = ttk.Entry(self.CW_Autokeyer_Callsigns_Frame)
+        self.QSO_CALLSIGN = tk.StringVar()
+        self.QSO_CALLSIGN_WIDGET.configure(
+            justify="left",
+            textvariable=self.QSO_CALLSIGN,
+            validate="focus",
+            width=18)
+        self.QSO_CALLSIGN_WIDGET.grid(column=1, padx="0 10", row=1, sticky="w")
+        _validatecmd = (
+            self.QSO_CALLSIGN_WIDGET.register(
+                self.validate_QSO_CALLSIGN), "%P", "%V")
+        self.QSO_CALLSIGN_WIDGET.configure(validatecommand=_validatecmd)
+        self.label164 = ttk.Label(self.CW_Autokeyer_Callsigns_Frame)
+        self.QSO_CALLSIGN_LENGTH = tk.StringVar()
+        self.label164.configure(
+            justify="left",
+            textvariable=self.QSO_CALLSIGN_LENGTH)
+        self.label164.grid(column=0, row=2)
+        self.CW_Autokeyer_Callsigns_Frame.pack(
+            anchor="w", padx="50 0", side="top")
+        self.CW_Autokeyer_Callsign_Frame.pack(anchor="w", padx=20, side="top")
+        self.frame31 = ttk.Frame(self.Autokeyer_Frame)
+        self.frame31.configure(height=200, width=200)
+        self.frame32 = ttk.Frame(self.frame31)
+        self.frame32.configure(height=200, width=200)
+        self.label25 = ttk.Label(self.frame32)
+        self.label25.configure(
+            compound="top",
+            justify="left",
+            style="Heading3.TLabel",
+            text='CW Keyer Messages')
+        self.label25.pack()
+        self.frame32.pack(anchor="w", side="top")
+        self.frame20 = ttk.Frame(self.frame31)
+        self.frame20.configure(height=200, width=200)
+        self.CW_AUTO_COUNT_LABEL = ttk.Label(self.frame20)
+        self.CW_AUTO_COUNT_LABEL.configure(
+            style="Heading4.TLabel", text='Total Msgs (max 25)')
+        self.CW_AUTO_COUNT_LABEL.pack(padx="10 10", side="left")
+        self.CW_AUTO_COUNT_WIDGET = ttk.Entry(self.frame20)
+        self.CW_AUTO_COUNT = tk.StringVar()
+        self.CW_AUTO_COUNT_WIDGET.configure(
+            justify="left",
+            state="readonly",
+            textvariable=self.CW_AUTO_COUNT,
+            validate="none",
+            width=3)
+        self.CW_AUTO_COUNT_WIDGET.pack(anchor="w", side="left")
+        self.label53 = ttk.Label(self.frame20)
+        self.label53.configure(
+            relief="flat",
+            style="Heading4.TLabel",
+            text='Total Bytes Used:')
+        self.label53.pack(padx="20 10", side="left")
+        self.CW_AUTO_BYTES_USED_WIDGET = ttk.Entry(self.frame20)
+        self.CW_AUTO_BYTES_USED = tk.StringVar()
+        self.CW_AUTO_BYTES_USED_WIDGET.configure(
+            justify="left",
+            state="readonly",
+            style="Normal.TEntry",
+            takefocus=False,
+            textvariable=self.CW_AUTO_BYTES_USED,
+            validate="none",
+            width=3)
+        self.CW_AUTO_BYTES_USED_WIDGET.pack(anchor="w", side="left")
+        self.label163 = ttk.Label(self.frame20)
+        self.label163.configure(
+            relief="flat",
+            style="Heading4.TLabel",
+            takefocus=False,
+            text='Remaining Bytes')
+        self.label163.pack(padx="20 10", side="left")
+        self.entry1 = ttk.Entry(self.frame20)
+        self.CW_AUTO_REMAINING_BYTES = tk.StringVar()
+        self.entry1.configure(
+            justify="left",
+            state="readonly",
+            takefocus=False,
+            textvariable=self.CW_AUTO_REMAINING_BYTES,
+            validate="none",
+            width=3)
+        self.entry1.pack(anchor="w", side="left")
+        self.frame20.pack(anchor="center", padx="10 0", pady="10 20")
+        self.frame33 = ttk.Frame(self.frame31)
+        self.frame33.configure(height=200, width=200)
+        self.label54 = ttk.Label(self.frame33)
+        self.label54.configure(style="Heading4.TLabel", text='Msg#')
+        self.label54.grid(column=0, padx="0 10", row=0, sticky="e")
+        self.label57 = ttk.Label(self.frame33)
+        self.label57.configure(style="Heading4.TLabel", text='Message Content')
+        self.label57.grid(column=1, padx="0 10", row=0)
+        self.label26 = ttk.Label(self.frame33)
+        self.label26.configure(style="Heading4.TLabel", text='0')
+        self.label26.grid(column=0, padx="0 10", row=1, sticky="e")
+        self.CW_MEMORY_KEYER_MSG0_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG0 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG0_WIDGET.configure(
+            justify="left",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG0,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG0_WIDGET.grid(
+            column=1, padx="0 10", row=1, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG0_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG0_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.CW_MEMORY_KEYER_MSG01_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG01_LABEL.configure(
+            style="Heading4.TLabel", text='1')
+        self.CW_MEMORY_KEYER_MSG01_LABEL.grid(
+            column=0, padx="0 10", row=2, sticky="e")
+        self.CW_MEMORY_KEYER_MSG1_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG1 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG1_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG1,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG1_WIDGET.grid(
+            column=1, padx="0 10", row=2, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG1_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG1_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.CW_MEMORY_KEYER_MSG02_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG02_LABEL.configure(
+            style="Heading4.TLabel", text='2')
+        self.CW_MEMORY_KEYER_MSG02_LABEL.grid(
+            column=0, padx="0 10", row=3, sticky="e")
+        self.CW_MEMORY_KEYER_MSG2_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG2 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG2_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG2,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG2_WIDGET.grid(
+            column=1, padx="0 10", row=3, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG2_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG2_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.CW_MEMORY_KEYER_MSG03_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG03_LABEL.configure(
+            style="Heading4.TLabel", text='3')
+        self.CW_MEMORY_KEYER_MSG03_LABEL.grid(
+            column=0, padx="0 10", row=4, sticky="e")
+        self.CW_MEMORY_KEYER_MSG3_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG3 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG3_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG3,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG3_WIDGET.grid(
+            column=1, padx="0 10", row=4, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG3_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG3_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.CW_MEMORY_KEYER_MSG04_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG04_LABEL.configure(
+            style="Heading4.TLabel", text='4')
+        self.CW_MEMORY_KEYER_MSG04_LABEL.grid(
+            column=0, padx="0 10", row=5, sticky="e")
+        self.CW_MEMORY_KEYER_MSG4_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG4 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG4_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG4,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG4_WIDGET.grid(
+            column=1, padx="0 10", row=5, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG4_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG4_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.CW_MEMORY_KEYER_MSG05_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG05_LABEL.configure(
+            style="Heading4.TLabel", text='5')
+        self.CW_MEMORY_KEYER_MSG05_LABEL.grid(
+            column=0, padx="0 10", row=6, sticky="e")
+        self.CW_MEMORY_KEYER_MSG5_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG5 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG5_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG5,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG5_WIDGET.grid(
+            column=1, padx="0 10", row=6, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG5_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG5_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.CW_MEMORY_KEYER_MSG06_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG06_LABEL.configure(
+            style="Heading4.TLabel", text='6')
+        self.CW_MEMORY_KEYER_MSG06_LABEL.grid(
+            column=0, padx="0 10", row=7, sticky="e")
+        self.CW_MEMORY_KEYER_MSG6_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG6 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG6_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG6,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG6_WIDGET.grid(
+            column=1, padx="0 10", row=7, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG6_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG6_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.CW_MEMORY_KEYER_MSG07_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG07_LABEL.configure(
+            style="Heading4.TLabel", text='7')
+        self.CW_MEMORY_KEYER_MSG07_LABEL.grid(
+            column=0, padx="0 10", row=8, sticky="e")
+        self.CW_MEMORY_KEYER_MSG7_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG7 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG7_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG7,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG7_WIDGET.grid(
+            column=1, padx="0 10", row=8, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG7_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG7_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.CW_MEMORY_KEYER_MSG08_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG08_LABEL.configure(
+            style="Heading4.TLabel", text='8')
+        self.CW_MEMORY_KEYER_MSG08_LABEL.grid(
+            column=0, padx="0 10", row=9, sticky="e")
+        self.CW_MEMORY_KEYER_MSG8_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG8 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG8_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG8,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG8_WIDGET.grid(
+            column=1, padx="0 10", row=9, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG8_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG8_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.CW_MEMORY_KEYER_MSG09_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG09_LABEL.configure(
+            style="Heading4.TLabel", text='9')
+        self.CW_MEMORY_KEYER_MSG09_LABEL.grid(
+            column=0, padx="0 10", row=10, sticky="e")
+        self.CW_MEMORY_KEYER_MSG9_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSG9 = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSG9_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSG9,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSG9_WIDGET.grid(
+            column=1, padx="0 10", row=10, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSG9_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSG9_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.CW_MEMORY_KEYER_MSG10_LABEL = ttk.Label(self.frame33)
+        self.CW_MEMORY_KEYER_MSG10_LABEL.configure(
+            style="Heading4.TLabel", text='A')
+        self.CW_MEMORY_KEYER_MSG10_LABEL.grid(
+            column=0, padx="0 10", row=11, sticky="e")
+        self.CW_MEMORY_KEYER_MSGA_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGA = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGA_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGA,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGA_WIDGET.grid(
+            column=1, padx="0 10", row=11, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGA_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGA_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label56 = ttk.Label(self.frame33)
+        self.label56.configure(style="Heading4.TLabel", text='B')
+        self.label56.grid(column=0, padx="0 10", row=12, sticky="e")
+        self.CW_MEMORY_KEYER_MSGB_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGB = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGB_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGB,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGB_WIDGET.grid(
+            column=1, padx="0 10", row=12, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGB_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGB_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label59 = ttk.Label(self.frame33)
+        self.label59.configure(style="Heading4.TLabel", text='C')
+        self.label59.grid(column=0, padx="0 10", row=13, sticky="e")
+        self.CW_MEMORY_KEYER_MSGC_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGC = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGC_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGC,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGC_WIDGET.grid(
+            column=1, padx="0 10", row=13, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGC_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGC_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label60 = ttk.Label(self.frame33)
+        self.label60.configure(style="Heading4.TLabel", text='D')
+        self.label60.grid(column=0, padx="0 10", row=14, sticky="e")
+        self.CW_MEMORY_KEYER_MSGD_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGD = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGD_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGD,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGD_WIDGET.grid(
+            column=1, padx="0 10", row=14, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGD_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGD_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label63 = ttk.Label(self.frame33)
+        self.label63.configure(style="Heading4.TLabel", text='E')
+        self.label63.grid(column=0, padx="0 10", row=15, sticky="e")
+        self.CW_MEMORY_KEYER_MSGE_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGE = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGE_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGE,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGE_WIDGET.grid(
+            column=1, padx="0 10", row=15, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGE_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGE_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label67 = ttk.Label(self.frame33)
+        self.label67.configure(style="Heading4.TLabel", text='F')
+        self.label67.grid(column=0, padx="0 10", row=16, sticky="e")
+        self.CW_MEMORY_KEYER_MSGF_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGF = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGF_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGF,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGF_WIDGET.grid(
+            column=1, padx="0 10", row=16, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGF_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGF_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label154 = ttk.Label(self.frame33)
+        self.label154.configure(style="Heading4.TLabel", text='G')
+        self.label154.grid(column=0, padx="0 10", row=17, sticky="e")
+        self.CW_MEMORY_KEYER_MSGG_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGG = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGG_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGG,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGG_WIDGET.grid(
+            column=1, padx="0 10", row=17, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGG_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGG_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label155 = ttk.Label(self.frame33)
+        self.label155.configure(style="Heading4.TLabel", text='H')
+        self.label155.grid(column=0, padx="0 10", row=18, sticky="e")
+        self.CW_MEMORY_KEYER_MSGH_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGH = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGH_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGH,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGH_WIDGET.grid(
+            column=1, padx="0 10", row=18, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGH_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGH_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label156 = ttk.Label(self.frame33)
+        self.label156.configure(style="Heading4.TLabel", text='I')
+        self.label156.grid(column=0, padx="0 10", row=19, sticky="e")
+        self.CW_MEMORY_KEYER_MSGI_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGI = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGI_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGI,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGI_WIDGET.grid(
+            column=1, padx="0 10", row=19, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGI_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGI_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label157 = ttk.Label(self.frame33)
+        self.label157.configure(style="Heading4.TLabel", text='J')
+        self.label157.grid(column=0, padx="0 10", row=20, sticky="e")
+        self.CW_MEMORY_KEYER_MSGJ_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGJ = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGJ_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGJ,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGJ_WIDGET.grid(
+            column=1, padx="0 10", row=20, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGJ_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGJ_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label158 = ttk.Label(self.frame33)
+        self.label158.configure(style="Heading4.TLabel", text='K')
+        self.label158.grid(column=0, padx="0 10", row=21, sticky="e")
+        self.CW_MEMORY_KEYER_MSGK_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGK = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGK_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGK,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGK_WIDGET.grid(
+            column=1, padx="0 10", row=21, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGK_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGK_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label159 = ttk.Label(self.frame33)
+        self.label159.configure(style="Heading4.TLabel", text='L')
+        self.label159.grid(column=0, padx="0 10", row=22, sticky="e")
+        self.CW_MEMORY_KEYER_MSGL_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGL = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGL_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGL,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGL_WIDGET.grid(
+            column=1, padx="0 10", row=22, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGL_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGL_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label160 = ttk.Label(self.frame33)
+        self.label160.configure(style="Heading4.TLabel", text='M')
+        self.label160.grid(column=0, padx="0 10", row=23, sticky="e")
+        self.CW_MEMORY_KEYER_MSGM_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGM = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGM_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGM,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGM_WIDGET.grid(
+            column=1, padx="0 10", row=23, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGM_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGM_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label161 = ttk.Label(self.frame33)
+        self.label161.configure(style="Heading4.TLabel", text='N')
+        self.label161.grid(column=0, padx="0 10", row=24, sticky="e")
+        self.CW_MEMORY_KEYER_MSGN_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGN = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGN_WIDGET.configure(
+            justify="left",
+            state="disabled",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGN,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGN_WIDGET.grid(
+            column=1, padx="0 10", row=24, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGN_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGN_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label162 = ttk.Label(self.frame33)
+        self.label162.configure(style="Heading4.TLabel", text='O')
+        self.label162.grid(column=0, padx="0 10", row=25, sticky="e")
+        self.CW_MEMORY_KEYER_MSGO_WIDGET = ttk.Entry(self.frame33)
+        self.CW_MEMORY_KEYER_MSGO = tk.StringVar()
+        self.CW_MEMORY_KEYER_MSGO_WIDGET.configure(
+            justify="left",
+            state="readonly",
+            takefocus=True,
+            textvariable=self.CW_MEMORY_KEYER_MSGO,
+            validate="focus",
+            width=50)
+        self.CW_MEMORY_KEYER_MSGO_WIDGET.grid(
+            column=1, padx="0 10", row=25, sticky="w")
+        _validatecmd = (self.CW_MEMORY_KEYER_MSGO_WIDGET.register(
+            self.validate_CW_Message_Change), "%P", "%V", "%W")
+        self.CW_MEMORY_KEYER_MSGO_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.button12 = ttk.Button(self.frame33)
+        self.button12.configure(style="Button4.TButton", text='Cleanup')
+        self.button12.grid(column=2, padx=10, row=0)
+        self.button12.configure(command=self.CW_Auto_Msg_Cleanup_CB)
+        self.frame33.pack(anchor="w", padx="50 0", side="top")
+        self.CW_Autokeyer_Hidden_Frame = ttk.Frame(self.frame31)
+        self.CW_Autokeyer_Hidden_Frame.configure(height=200, width=200)
+        self.CW_AUTO_MAGIC_KEY_WIDGET = ttk.Label(
+            self.CW_Autokeyer_Hidden_Frame)
+        self.CW_AUTO_MAGIC_KEY = tk.StringVar()
+        self.CW_AUTO_MAGIC_KEY_WIDGET.configure(
+            state="disabled", textvariable=self.CW_AUTO_MAGIC_KEY)
+        self.CW_AUTO_MAGIC_KEY_WIDGET.pack(side="top")
+        self.USER_CALLSIGN_KEY_WIDGET = ttk.Label(
+            self.CW_Autokeyer_Hidden_Frame)
+        self.USER_CALLSIGN_KEY = tk.StringVar()
+        self.USER_CALLSIGN_KEY_WIDGET.configure(
+            state="disabled", textvariable=self.USER_CALLSIGN_KEY)
+        self.USER_CALLSIGN_KEY_WIDGET.pack(side="top")
+        self.CW_AUTO_DATA_WIDGET = ttk.Label(self.CW_Autokeyer_Hidden_Frame)
+        self.CW_AUTO_DATA = tk.StringVar()
+        self.CW_AUTO_DATA_WIDGET.configure(
+            state="disabled",
+            takefocus=False,
+            textvariable=self.CW_AUTO_DATA)
+        self.CW_AUTO_DATA_WIDGET.pack(side="top")
+        self.CW_Autokeyer_Hidden_Frame.pack(side="top")
+        self.frame31.pack(anchor="w", padx=20, pady=15, side="top")
+        self.Autokeyer_Frame.pack(
+            anchor="center",
+            expand="true",
+            fill="both",
+            padx=5,
+            pady=5,
+            side="top")
+        self.Autokeyer_SF.pack(side="top")
+        self.settingsNotebook.add(self.Autokeyer_SF, text='CW Keyer')
+        self.Bands_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
+        self.Bands_SF.configure(usemousewheel=True)
+        self.frame16 = ttk.Frame(self.Bands_SF.innerframe)
+        self.frame16.configure(height=200, width=200)
+        self.Bands_Setting_Title_Frame = ttk.Frame(self.frame16)
+        self.Bands_Setting_Title_Frame.configure(height=200, width=200)
+        self.Bands_Settings_Label = ttk.Label(self.Bands_Setting_Title_Frame)
+        self.Bands_Settings_Label.configure(
+            justify="center",
+            style="Heading2.TLabel",
+            text='Bands Settings')
+        self.Bands_Settings_Label.pack(anchor="w", padx=5, pady="15 25")
+        self.Bands_Setting_Title_Frame.pack(fill="x", side="top")
+        self.frame19 = ttk.Frame(self.frame16)
+        self.frame19.configure(height=200, width=200)
+        self.frame46 = ttk.Frame(self.frame19)
+        self.label104 = ttk.Label(self.frame46)
+        self.label104.configure(
+            style="Heading4.TLabel",
+            text='# of Bands Defined')
+        self.label104.grid(
+            column=1,
+            columnspan=3,
+            padx="0 15",
+            row=7,
+            sticky="w")
+        self.HAM_BAND_COUNT_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_COUNT = tk.StringVar()
+        self.HAM_BAND_COUNT_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_COUNT,
+            validate="focus",
+            width=3)
+        self.HAM_BAND_COUNT_WIDGET.grid(
+            column=4, padx="0 5", row=7, sticky="w")
+        _validatecmd = (
+            self.HAM_BAND_COUNT_WIDGET.register(
+                self.validate_HAM_BAND_COUNT), "%P", "%V")
+        self.HAM_BAND_COUNT_WIDGET.configure(validatecommand=_validatecmd)
+        self.label100 = ttk.Label(self.frame46)
+        self.label100.configure(
+            justify="center",
+            style="Heading4.TLabel",
+            text='Frequency Range')
+        self.label100.grid(column=3, columnspan=3, pady="20 0", row=8)
+        self.label101 = ttk.Label(self.frame46)
+        self.label101.configure(style="Heading4.TLabel", text='Start')
+        self.label101.grid(column=3, row=9, sticky="s")
+        self.label102 = ttk.Label(self.frame46)
+        self.label102.configure(style="Heading4.TLabel", text='End')
+        self.label102.grid(column=5, row=9, sticky="s")
+        self.label106 = ttk.Label(self.frame46)
+        self.label106.configure(style="Heading4.TLabel", text='Band 1')
+        self.label106.grid(column=1, pady="0 5", row=10, sticky="w")
+        self.HAM_BAND_RANGE1_START_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE1_START = tk.StringVar()
+        self.HAM_BAND_RANGE1_START_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE1_START,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE1_START_WIDGET.grid(
+            column=3, padx="0 2", pady="0 5", row=10, sticky="w")
+        _validatecmd = (self.HAM_BAND_RANGE1_START_WIDGET.register(
+            self.validate_HAM_BAND_RANGE1_START), "%P", "%V")
+        self.HAM_BAND_RANGE1_START_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label116 = ttk.Label(self.frame46)
+        self.label116.configure(text='KHz')
+        self.label116.grid(column=4, padx="0 10", row=10, sticky="w")
+        self.HAM_BAND_RANGE1_END_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE1_END = tk.StringVar()
+        self.HAM_BAND_RANGE1_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE1_END,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE1_END_WIDGET.grid(
+            column=5, padx="0 2", pady="0 5", row=10)
+        _validatecmd = (self.HAM_BAND_RANGE1_END_WIDGET.register(
+            self.validate_HAM_BAND_RANGE1_END), "%P", "%V")
+        self.HAM_BAND_RANGE1_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.label117 = ttk.Label(self.frame46)
+        self.label117.configure(text='KHz')
+        self.label117.grid(column=6, padx="0 5", row=10)
+        self.label107 = ttk.Label(self.frame46)
+        self.label107.configure(style="Heading4.TLabel", text='Band 2')
+        self.label107.grid(column=1, pady="0 5", row=11, sticky="w")
+        self.HAM_BAND_RANGE2_START_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE2_START = tk.StringVar()
+        self.HAM_BAND_RANGE2_START_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE2_START,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE2_START_WIDGET.grid(
+            column=3, pady="0 5", row=11, sticky="w")
+        _validatecmd = (self.HAM_BAND_RANGE2_START_WIDGET.register(
+            self.validate_HAM_BAND_RANGE2_START), "%P", "%V")
+        self.HAM_BAND_RANGE2_START_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label118 = ttk.Label(self.frame46)
+        self.label118.configure(text='KHz')
+        self.label118.grid(column=4, padx="0 10", row=11, sticky="w")
+        self.HAM_BAND_RANGE2_END_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE2_END = tk.StringVar()
+        self.HAM_BAND_RANGE2_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE2_END,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE2_END_WIDGET.grid(
+            column=5, padx="0 5", pady="0 5", row=11)
+        _validatecmd = (self.HAM_BAND_RANGE2_END_WIDGET.register(
+            self.validate_HAM_BAND_RANGE2_END), "%P", "%V")
+        self.HAM_BAND_RANGE2_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.label119 = ttk.Label(self.frame46)
+        self.label119.configure(text='KHz')
+        self.label119.grid(column=6, padx="0 5", row=11)
+        self.label108 = ttk.Label(self.frame46)
+        self.label108.configure(style="Heading4.TLabel", text='Band 3')
+        self.label108.grid(column=1, pady="0 5", row=12, sticky="w")
+        self.HAM_BAND_RANGE3_START_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE3_START = tk.StringVar()
+        self.HAM_BAND_RANGE3_START_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE3_START,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE3_START_WIDGET.grid(
+            column=3, pady="0 5", row=12, sticky="w")
+        _validatecmd = (self.HAM_BAND_RANGE3_START_WIDGET.register(
+            self.validate_HAM_BAND_RANGE3_START), "%P", "%V")
+        self.HAM_BAND_RANGE3_START_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label120 = ttk.Label(self.frame46)
+        self.label120.configure(text='KHz')
+        self.label120.grid(column=4, padx="0 10", row=12, sticky="w")
+        self.HAM_BAND_RANGE3_END_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE3_END = tk.StringVar()
+        self.HAM_BAND_RANGE3_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE3_END,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE3_END_WIDGET.grid(
+            column=5, padx="0 5", pady="0 5", row=12)
+        _validatecmd = (self.HAM_BAND_RANGE3_END_WIDGET.register(
+            self.validate_HAM_BAND_RANGE3_END), "%P", "%V")
+        self.HAM_BAND_RANGE3_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.label121 = ttk.Label(self.frame46)
+        self.label121.configure(text='KHz')
+        self.label121.grid(column=6, padx="0 5", row=12)
+        self.label109 = ttk.Label(self.frame46)
+        self.label109.configure(style="Heading4.TLabel", text='Band 4')
+        self.label109.grid(column=1, pady="0 5", row=13, sticky="w")
+        self.HAM_BAND_RANGE4_START_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE4_START = tk.StringVar()
+        self.HAM_BAND_RANGE4_START_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE4_START,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE4_START_WIDGET.grid(
+            column=3, pady="0 5", row=13, sticky="w")
+        _validatecmd = (self.HAM_BAND_RANGE4_START_WIDGET.register(
+            self.validate_HAM_BAND_RANGE4_START), "%P", "%V")
+        self.HAM_BAND_RANGE4_START_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label122 = ttk.Label(self.frame46)
+        self.label122.configure(text='KHz')
+        self.label122.grid(column=4, padx="0 10", row=13, sticky="w")
+        self.HAM_BAND_RANGE4_END_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE4_END = tk.StringVar()
+        self.HAM_BAND_RANGE4_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE4_END,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE4_END_WIDGET.grid(
+            column=5, padx="0 5", pady="0 5", row=13)
+        _validatecmd = (self.HAM_BAND_RANGE4_END_WIDGET.register(
+            self.validate_HAM_BAND_RANGE4_END), "%P", "%V")
+        self.HAM_BAND_RANGE4_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.label123 = ttk.Label(self.frame46)
+        self.label123.configure(text='KHz')
+        self.label123.grid(column=6, padx="0 5", row=13)
+        self.label110 = ttk.Label(self.frame46)
+        self.label110.configure(style="Heading4.TLabel", text='Band 5')
+        self.label110.grid(column=1, pady="0 5", row=14, sticky="w")
+        self.HAM_BAND_RANGE5_START_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE5_START = tk.StringVar()
+        self.HAM_BAND_RANGE5_START_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE5_START,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE5_START_WIDGET.grid(
+            column=3, pady="0 5", row=14, sticky="w")
+        _validatecmd = (self.HAM_BAND_RANGE5_START_WIDGET.register(
+            self.validate_HAM_BAND_RANGE5_START), "%P", "%V")
+        self.HAM_BAND_RANGE5_START_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label124 = ttk.Label(self.frame46)
+        self.label124.configure(text='KHz')
+        self.label124.grid(column=4, padx="0 10", row=14, sticky="w")
+        self.HAM_BAND_RANGE5_END_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE5_END = tk.StringVar()
+        self.HAM_BAND_RANGE5_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE5_END,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE5_END_WIDGET.grid(
+            column=5, padx="0 5", pady="0 5", row=14)
+        _validatecmd = (self.HAM_BAND_RANGE5_END_WIDGET.register(
+            self.validate_HAM_BAND_RANGE5_END), "%P", "%V")
+        self.HAM_BAND_RANGE5_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.label125 = ttk.Label(self.frame46)
+        self.label125.configure(text='KHz')
+        self.label125.grid(column=6, padx="0 5", row=14)
+        self.label111 = ttk.Label(self.frame46)
+        self.label111.configure(style="Heading4.TLabel", text='Band 6')
+        self.label111.grid(column=1, pady="0 5", row=15, sticky="w")
+        self.HAM_BAND_RANGE6_START_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE6_START = tk.StringVar()
+        self.HAM_BAND_RANGE6_START_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE6_START,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE6_START_WIDGET.grid(
+            column=3, pady="0 5", row=15, sticky="w")
+        _validatecmd = (self.HAM_BAND_RANGE6_START_WIDGET.register(
+            self.validate_HAM_BAND_RANGE6_START), "%P", "%V")
+        self.HAM_BAND_RANGE6_START_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label126 = ttk.Label(self.frame46)
+        self.label126.configure(text='KHz')
+        self.label126.grid(column=4, padx="0 10", row=15, sticky="w")
+        self.HAM_BAND_RANGE6_END_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE6_END = tk.StringVar()
+        self.HAM_BAND_RANGE6_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE6_END,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE6_END_WIDGET.grid(
+            column=5, padx="0 5", pady="0 5", row=15)
+        _validatecmd = (self.HAM_BAND_RANGE6_END_WIDGET.register(
+            self.validate_HAM_BAND_RANGE6_END), "%P", "%V")
+        self.HAM_BAND_RANGE6_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.label127 = ttk.Label(self.frame46)
+        self.label127.configure(text='KHz')
+        self.label127.grid(column=6, padx="0 5", row=15)
+        self.label112 = ttk.Label(self.frame46)
+        self.label112.configure(style="Heading4.TLabel", text='Band 7')
+        self.label112.grid(column=1, pady="0 5", row=16, sticky="w")
+        self.HAM_BAND_RANGE7_START_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE7_START = tk.StringVar()
+        self.HAM_BAND_RANGE7_START_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE7_START,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE7_START_WIDGET.grid(
+            column=3, pady="0 5", row=16, sticky="w")
+        _validatecmd = (self.HAM_BAND_RANGE7_START_WIDGET.register(
+            self.validate_HAM_BAND_RANGE7_START), "%P", "%V")
+        self.HAM_BAND_RANGE7_START_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label128 = ttk.Label(self.frame46)
+        self.label128.configure(text='KHz')
+        self.label128.grid(column=4, padx="0 10", row=16, sticky="w")
+        self.HAM_BAND_RANGE7_END_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE7_END = tk.StringVar()
+        self.HAM_BAND_RANGE7_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE7_END,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE7_END_WIDGET.grid(
+            column=5, padx="0 5", pady="0 5", row=16)
+        _validatecmd = (self.HAM_BAND_RANGE7_END_WIDGET.register(
+            self.validate_HAM_BAND_RANGE7_END), "%P", "%V")
+        self.HAM_BAND_RANGE7_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.label129 = ttk.Label(self.frame46)
+        self.label129.configure(text='KHz')
+        self.label129.grid(column=6, padx="0 5", row=16)
+        self.label113 = ttk.Label(self.frame46)
+        self.label113.configure(style="Heading4.TLabel", text='Band 8')
+        self.label113.grid(column=1, pady="0 5", row=17, sticky="w")
+        self.HAM_BAND_RANGE8_START_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE8_START = tk.StringVar()
+        self.HAM_BAND_RANGE8_START_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE8_START,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE8_START_WIDGET.grid(
+            column=3, pady="0 5", row=17, sticky="w")
+        _validatecmd = (self.HAM_BAND_RANGE8_START_WIDGET.register(
+            self.validate_HAM_BAND_RANGE8_START), "%P", "%V")
+        self.HAM_BAND_RANGE8_START_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label130 = ttk.Label(self.frame46)
+        self.label130.configure(text='KHz')
+        self.label130.grid(column=4, padx="0 10", row=17, sticky="w")
+        self.HAM_BAND_RANGE8_END_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE8_END = tk.StringVar()
+        self.HAM_BAND_RANGE8_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE8_END,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE8_END_WIDGET.grid(
+            column=5, padx="0 5", pady="0 5", row=17)
+        _validatecmd = (self.HAM_BAND_RANGE8_END_WIDGET.register(
+            self.validate_HAM_BAND_RANGE8_END), "%P", "%V")
+        self.HAM_BAND_RANGE8_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.label131 = ttk.Label(self.frame46)
+        self.label131.configure(text='KHz')
+        self.label131.grid(column=6, padx="0 5", row=17)
+        self.label114 = ttk.Label(self.frame46)
+        self.label114.configure(style="Heading4.TLabel", text='Band 9')
+        self.label114.grid(column=1, pady="0 5", row=18, sticky="w")
+        self.HAM_BAND_RANGE9_START_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE9_START = tk.StringVar()
+        self.HAM_BAND_RANGE9_START_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE9_START,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE9_START_WIDGET.grid(
+            column=3, pady="0 5", row=18, sticky="w")
+        _validatecmd = (self.HAM_BAND_RANGE9_START_WIDGET.register(
+            self.validate_HAM_BAND_RANGE9_START), "%P", "%V")
+        self.HAM_BAND_RANGE9_START_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label132 = ttk.Label(self.frame46)
+        self.label132.configure(text='KHz')
+        self.label132.grid(column=4, padx="0 10", row=18, sticky="w")
+        self.HAM_BAND_RANGE9_END_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE9_END = tk.StringVar()
+        self.HAM_BAND_RANGE9_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE9_END,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE9_END_WIDGET.grid(
+            column=5, padx="0 5", pady="0 5", row=18)
+        _validatecmd = (self.HAM_BAND_RANGE9_END_WIDGET.register(
+            self.validate_HAM_BAND_RANGE9_END), "%P", "%V")
+        self.HAM_BAND_RANGE9_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.label133 = ttk.Label(self.frame46)
+        self.label133.configure(text='KHz')
+        self.label133.grid(column=6, padx="0 5", row=18)
+        self.label115 = ttk.Label(self.frame46)
+        self.label115.configure(style="Heading4.TLabel", text='Band 10')
+        self.label115.grid(
+            column=1,
+            padx="0 5",
+            pady="0 5",
+            row=19,
+            sticky="w")
+        self.HAM_BAND_RANGE10_START_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE10_START = tk.StringVar()
+        self.HAM_BAND_RANGE10_START_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE10_START,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE10_START_WIDGET.grid(
+            column=3, pady="0 5", row=19, sticky="w")
+        _validatecmd = (self.HAM_BAND_RANGE10_START_WIDGET.register(
+            self.validate_HAM_BAND_RANGE10_START), "%P", "%V")
+        self.HAM_BAND_RANGE10_START_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label134 = ttk.Label(self.frame46)
+        self.label134.configure(text='KHz')
+        self.label134.grid(column=4, padx="0 10", row=19, sticky="w")
+        self.HAM_BAND_RANGE10_END_WIDGET = ttk.Entry(self.frame46)
+        self.HAM_BAND_RANGE10_END = tk.StringVar()
+        self.HAM_BAND_RANGE10_END_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.HAM_BAND_RANGE10_END,
+            validate="focus",
+            width=10)
+        self.HAM_BAND_RANGE10_END_WIDGET.grid(
+            column=5, padx="0 5", pady="0 5", row=19)
+        _validatecmd = (self.HAM_BAND_RANGE10_END_WIDGET.register(
+            self.validate_HAM_BAND_RANGE10_END), "%P", "%V")
+        self.HAM_BAND_RANGE10_END_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.label135 = ttk.Label(self.frame46)
+        self.label135.configure(text='KHz')
+        self.label135.grid(column=6, padx="0 5", row=19)
+        self.frame46.pack(
+            anchor="w",
+            expand="false",
+            fill="x",
+            pady="20 0",
+            side="top")
+        self.frame46.grid_anchor("w")
+        self.frame58 = ttk.Frame(self.frame19)
+        self.frame58.configure(
+            height=200,
+            padding=10,
+            relief="groove",
+            width=200)
+        self.region1 = ttk.Button(self.frame58)
+        self.region1.configure(style="Button4.TButton", text='Region 1')
+        self.region1.grid(column=1, padx=5, row=1)
+        self.region1.configure(command=self.autoInputRegion1)
+        self.label136 = ttk.Label(self.frame58)
+        self.label136.configure(
+            style="Heading3.TLabel",
+            text='Auto Input Bands For:')
+        self.label136.grid(column=0, ipadx=5, padx=5, row=1)
+        self.region2 = ttk.Button(self.frame58)
+        self.region2.configure(style="Button4.TButton", text='Region 2')
+        self.region2.grid(column=2, padx=5, row=1)
+        self.region2.configure(command=self.autoInputRegion2)
+        self.region3 = ttk.Button(self.frame58)
+        self.region3.configure(style="Button4.TButton", text='Region 3')
+        self.region3.grid(column=3, padx=5, row=1)
+        self.region3.configure(command=self.autoInputRegion3)
+        self.label92 = ttk.Label(self.frame58)
+        self.label92.configure(style="Heading4.TLabel", text='Region 1:')
+        self.label92.grid(column=0, pady="10 5", row=2, sticky="e")
+        self.label94 = ttk.Label(self.frame58)
+        self.label94.configure(style="Heading4.TLabel", text='Region 2:')
+        self.label94.grid(column=0, pady="0 5", row=3, sticky="e")
+        self.label96 = ttk.Label(self.frame58)
+        self.label96.configure(style="Heading4.TLabel", text='Region 3:')
+        self.label96.grid(column=0, row=4, sticky="e")
+        self.label97 = ttk.Label(self.frame58)
+        self.label97.configure(
+            text='Africa, Europe, Middle East, and northern Asia')
+        self.label97.grid(
+            column=1,
+            columnspan=3,
+            padx="5 0",
+            pady="10 5",
+            row=2,
+            sticky="w")
+        self.label98 = ttk.Label(self.frame58)
+        self.label98.configure(text='the Americas')
+        self.label98.grid(
+            column=1,
+            columnspan=3,
+            padx="5 0",
+            pady="0 5",
+            row=3,
+            sticky="ew")
+        self.label99 = ttk.Label(self.frame58)
+        self.label99.configure(text='the rest of Asia and the Pacific')
+        self.label99.grid(
+            column=1,
+            columnspan=3,
+            padx="5 0",
+            row=4,
+            sticky="ew")
+        self.frame58.pack(anchor="w", pady="20 0", side="top")
+        self.frame58.grid_anchor("w")
+        self.frame12 = ttk.Frame(self.frame19)
+        self.label144 = ttk.Label(self.frame12)
+        self.label144.configure(
+            justify="left",
+            relief="flat",
+            style="Heading3.TLabel",
+            text='TX/RX Restrictions')
+        self.label144.grid(
+            column=0,
+            columnspan=2,
+            padx="0 15",
+            pady="10 0",
+            row=1,
+            sticky="w")
+        self.label145 = ttk.Label(self.frame12)
+        self.label145.configure(
+            style="Heading4.TLabel",
+            text='Tuning Restriction')
+        self.label145.grid(
+            column=1,
+            padx="80 15",
+            pady="5 10",
+            row=2,
+            sticky="e")
+        self.TUNING_RESTICTIONS = tk.StringVar(value='NONE')
+        __values = ['NONE', 'BAND']
+        self.TUNING_RESTICTIONS_WIDGET = ttk.OptionMenu(
+            self.frame12, self.TUNING_RESTICTIONS, "NONE", *__values, command=None)
+        self.TUNING_RESTICTIONS_WIDGET.grid(column=2, pady="5 10", row=2)
+        self.label146 = ttk.Label(self.frame12)
+        self.label146.configure(
+            style="Heading4.TLabel",
+            text='Transmit Restriction')
+        self.label146.grid(column=1, padx="30 15", row=3, sticky="e")
+        self.TX_RESTRICTIONS = tk.StringVar(value='NONE')
+        __values = ['NONE', 'HAM']
+        self.TX_RESTRICTIONS_WIDGET = ttk.OptionMenu(
+            self.frame12, self.TX_RESTRICTIONS, "NONE", *__values, command=None)
+        self.TX_RESTRICTIONS_WIDGET.grid(column=2, row=3)
+        self.frame12.pack(
+            anchor="w",
+            expand="false",
+            fill="x",
+            pady="20 0",
+            side="top")
+        self.frame12.grid_anchor("w")
+        self.frame19.pack(anchor="w", padx=20, side="top")
+        self.frame16.pack(
+            anchor="center",
+            expand="true",
+            fill="both",
+            padx=5,
+            pady=5,
+            side="top")
+        self.Bands_SF.pack(side="top")
+        self.settingsNotebook.add(self.Bands_SF, text='Bands')
+        self.Channels_SF = ScrolledFrame(
+            self.settingsNotebook, scrolltype="both")
+        self.Channels_SF.configure(usemousewheel=False)
+        self.frame45 = ttk.Frame(self.Channels_SF.innerframe)
+        self.frame45.configure(height=200, width=200)
+        self.frame47 = ttk.Frame(self.frame45)
+        self.label199 = ttk.Label(self.frame47)
+        self.label199.configure(
+            justify="center",
+            style="Heading2.TLabel",
+            text='Channels')
+        self.label199.pack(anchor="w", padx=5, pady="15 25", side="top")
+        self.frame47.pack(anchor="w", side="top")
+        self.Operator_Channel_Frame = ttk.Frame(self.frame45)
         self.Operator_Channel_Frame.configure(height=200, width=200)
         self.All_Channel_Frame = ttk.Frame(self.Operator_Channel_Frame)
         self.All_Channel_Frame.configure(height=200, width=200)
@@ -1489,1232 +2777,590 @@ class SettingsnotebookWidget(ttk.Frame):
         self.Extended_Channel_Frame.pack(anchor="w")
         self.All_Channel_Frame.pack(side="top")
         self.Operator_Channel_Frame.pack(anchor="w", side="top")
-        self.General_Frame.pack(
-            expand="true",
-            fill="both",
-            padx=20,
-            pady=5,
-            side="top")
-        self.frame15.pack(
-            anchor="center",
-            expand="true",
-            fill="both",
-            padx=5,
-            pady=5,
-            side="top")
-        self.General_SF.pack(
-            anchor="center",
-            expand="true",
-            fill="both",
-            side="top")
-        self.settingsNotebook.add(self.General_SF, text='General')
-        self.Autokeyer_SF = ScrolledFrame(
-            self.settingsNotebook, scrolltype="both")
-        self.Autokeyer_SF.configure(usemousewheel=True)
-        self.Autokeyer_Frame = ttk.Frame(self.Autokeyer_SF.innerframe)
-        self.CW_Autokeyer_Titlle_Frame = ttk.Frame(self.Autokeyer_Frame)
-        self.CW_Autokeyer_Titlle_Frame.configure(height=200, width=200)
-        self.label3 = ttk.Label(self.CW_Autokeyer_Titlle_Frame)
-        self.label3.configure(
+        self.frame45.pack(anchor="w", expand="true", fill="both", side="top")
+        self.Channels_SF.pack(side="top")
+        self.settingsNotebook.add(self.Channels_SF, text='Channels')
+        self.WSPR_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
+        self.WSPR_SF.configure(usemousewheel=True)
+        self.frame22 = ttk.Frame(self.WSPR_SF.innerframe)
+        self.frame22.configure(height=200, width=200)
+        self.WSPR_Frame = ttk.Frame(self.frame22)
+        self.label6 = ttk.Label(self.WSPR_Frame)
+        self.label6.configure(
             justify="center",
             style="Heading2.TLabel",
-            text='CW Autokeyer Settings')
-        self.label3.pack(anchor="w", padx=5)
-        self.CW_Autokeyer_Titlle_Frame.pack(
-            anchor="center", fill="x", pady="15 25", side="top")
-        self.CW_Autokeyer_Callsign_Frame = ttk.Frame(self.Autokeyer_Frame)
-        self.CW_Autokeyer_Callsign_Frame.configure(height=200, width=200)
-        self.CW_Autokeyer_Callsigns_Label_Frame = ttk.Frame(
-            self.CW_Autokeyer_Callsign_Frame)
-        self.CW_Autokeyer_Callsigns_Label_Frame.configure(
-            height=200, width=200)
-        self.CW_Autokeyer_Callsign_Title_Label = ttk.Label(
-            self.CW_Autokeyer_Callsigns_Label_Frame)
-        self.CW_Autokeyer_Callsign_Title_Label.configure(
-            justify="left", style="Heading3.TLabel", text='Callsigns')
-        self.CW_Autokeyer_Callsign_Title_Label.pack()
-        self.CW_Autokeyer_Callsigns_Label_Frame.pack(anchor="w", side="top")
-        self.CW_Autokeyer_Callsigns_Frame = ttk.Frame(
-            self.CW_Autokeyer_Callsign_Frame)
-        self.CW_Autokeyer_Callsigns_Frame.configure(height=200, width=200)
-        self.CW_Autokeyer_Callsign_Label = ttk.Label(
-            self.CW_Autokeyer_Callsigns_Frame)
-        self.CW_Autokeyer_Callsign_Label.configure(
-            style="Heading4.TLabel", text='Callsign')
-        self.CW_Autokeyer_Callsign_Label.grid(
-            column=0, padx="0 10", row=0, sticky="w")
-        self.USER_CALLSIGN_WIDGET_2 = ttk.Entry(
-            self.CW_Autokeyer_Callsigns_Frame)
-        self.USER_CALLSIGN_WIDGET_2.configure(
-            justify="left",
-            textvariable=self.USER_CALLSIGN,
-            validate="focus",
-            width=18)
-        self.USER_CALLSIGN_WIDGET_2.grid(
-            column=1, padx="0 10", row=0, sticky="w")
-        _validatecmd = (
-            self.USER_CALLSIGN_WIDGET_2.register(
-                self.validate_USER_CALLSIGN), "%P", "%V")
-        self.USER_CALLSIGN_WIDGET_2.configure(validatecommand=_validatecmd)
-        self.CW_Autokeyer_Alt_Callsign_Label = ttk.Label(
-            self.CW_Autokeyer_Callsigns_Frame)
-        self.CW_Autokeyer_Alt_Callsign_Label.configure(
-            style="Heading4.TLabel", text='Alternate QSO Callsign')
-        self.CW_Autokeyer_Alt_Callsign_Label.grid(
-            column=0, padx="0 10", row=1, sticky="w")
-        self.QSO_CALLSIGN_WIDGET = ttk.Entry(self.CW_Autokeyer_Callsigns_Frame)
-        self.QSO_CALLSIGN = tk.StringVar()
-        self.QSO_CALLSIGN_WIDGET.configure(
-            justify="left",
-            textvariable=self.QSO_CALLSIGN,
-            validate="focus",
-            width=18)
-        self.QSO_CALLSIGN_WIDGET.grid(column=1, padx="0 10", row=1, sticky="w")
-        _validatecmd = (
-            self.QSO_CALLSIGN_WIDGET.register(
-                self.validate_QSO_CALLSIGN), "%P", "%V")
-        self.QSO_CALLSIGN_WIDGET.configure(validatecommand=_validatecmd)
-        self.label164 = ttk.Label(self.CW_Autokeyer_Callsigns_Frame)
-        self.QSO_CALLSIGN_LENGTH = tk.StringVar()
-        self.label164.configure(
-            justify="left",
-            textvariable=self.QSO_CALLSIGN_LENGTH)
-        self.label164.grid(column=0, row=2)
-        self.CW_Autokeyer_Callsigns_Frame.pack(
-            anchor="w", padx="50 0", side="top")
-        self.CW_Autokeyer_Callsign_Frame.pack(anchor="w", padx=20, side="top")
-        self.frame31 = ttk.Frame(self.Autokeyer_Frame)
-        self.frame31.configure(height=200, width=200)
-        self.frame32 = ttk.Frame(self.frame31)
-        self.frame32.configure(height=200, width=200)
-        self.label25 = ttk.Label(self.frame32)
-        self.label25.configure(
+            text='WSPR Settings')
+        self.label6.grid(
+            column=0,
+            columnspan=5,
+            padx=5,
+            pady="15 25",
+            row=0,
+            sticky="n")
+        self.WSPR_Frame.pack(expand="true", fill="both", side="top")
+        self.frame34 = ttk.Frame(self.frame22)
+        self.frame34.configure(height=200, width=200)
+        self.frame35 = ttk.Frame(self.frame34)
+        self.frame35.configure(height=200, width=200)
+        self.label27 = ttk.Label(self.frame35)
+        self.label27.configure(
             compound="top",
             justify="left",
             style="Heading3.TLabel",
-            text='CW Keyer Messages')
-        self.label25.pack()
-        self.frame32.pack(anchor="w", side="top")
-        self.frame20 = ttk.Frame(self.frame31)
-        self.frame20.configure(height=200, width=200)
-        self.CW_AUTO_COUNT_LABEL = ttk.Label(self.frame20)
-        self.CW_AUTO_COUNT_LABEL.configure(
-            style="Heading4.TLabel",
-            text='Total Msgs Used (max 25)')
-        self.CW_AUTO_COUNT_LABEL.pack(padx="10 10", side="left")
-        self.CW_AUTO_COUNT_WIDGET = ttk.Entry(self.frame20)
-        self.CW_AUTO_COUNT = tk.StringVar()
-        self.CW_AUTO_COUNT_WIDGET.configure(
-            justify="left",
-            state="readonly",
-            textvariable=self.CW_AUTO_COUNT,
-            validate="none",
-            width=3)
-        self.CW_AUTO_COUNT_WIDGET.pack(anchor="w", side="left")
-        self.label53 = ttk.Label(self.frame20)
-        self.label53.configure(
-            relief="flat",
-            style="Heading4.TLabel",
-            text='Total Bytes Used:')
-        self.label53.pack(padx="20 10", side="left")
-        self.CW_AUTO_BYTES_USED_WIDGET = ttk.Entry(self.frame20)
-        self.CW_AUTO_BYTES_USED = tk.StringVar()
-        self.CW_AUTO_BYTES_USED_WIDGET.configure(
-            justify="left",
-            state="readonly",
-            style="Normal.TEntry",
-            takefocus=False,
-            textvariable=self.CW_AUTO_BYTES_USED,
-            validate="none",
-            width=3)
-        self.CW_AUTO_BYTES_USED_WIDGET.pack(anchor="w", side="left")
-        self.label163 = ttk.Label(self.frame20)
-        self.label163.configure(
-            relief="flat",
-            style="Heading4.TLabel",
-            takefocus=False,
-            text='Remaining Bytes')
-        self.label163.pack(padx="20 10", side="left")
-        self.entry1 = ttk.Entry(self.frame20)
-        self.CW_AUTO_REMAINING_BYTES = tk.StringVar()
-        self.entry1.configure(
-            justify="left",
-            state="readonly",
-            takefocus=False,
-            textvariable=self.CW_AUTO_REMAINING_BYTES,
-            validate="none",
-            width=3)
-        self.entry1.pack(anchor="w", side="left")
-        self.frame20.pack(anchor="center", padx="10 0", pady="10 20")
-        self.frame33 = ttk.Frame(self.frame31)
-        self.frame33.configure(height=200, width=200)
-        self.label54 = ttk.Label(self.frame33)
-        self.label54.configure(style="Heading4.TLabel", text='Msg#')
-        self.label54.grid(column=0, padx="0 10", row=0, sticky="e")
-        self.label57 = ttk.Label(self.frame33)
-        self.label57.configure(style="Heading4.TLabel", text='Message Content')
-        self.label57.grid(column=1, padx="0 10", row=0)
-        self.label26 = ttk.Label(self.frame33)
-        self.label26.configure(style="Heading4.TLabel", text='0')
-        self.label26.grid(column=0, padx="0 10", row=1, sticky="e")
-        self.CW_MEMORY_KEYER_MSG0_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG0 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG0_WIDGET.configure(
-            justify="left",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSG0,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSG0_WIDGET.grid(
-            column=1, padx="0 10", row=1, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSG0_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSG0_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.CW_MEMORY_KEYER_MSG01_LABEL = ttk.Label(self.frame33)
-        self.CW_MEMORY_KEYER_MSG01_LABEL.configure(
-            style="Heading4.TLabel", text='1')
-        self.CW_MEMORY_KEYER_MSG01_LABEL.grid(
-            column=0, padx="0 10", row=2, sticky="e")
-        self.CW_MEMORY_KEYER_MSG1_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG1 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG1_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSG1,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSG1_WIDGET.grid(
-            column=1, padx="0 10", row=2, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSG1_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSG1_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.CW_MEMORY_KEYER_MSG02_LABEL = ttk.Label(self.frame33)
-        self.CW_MEMORY_KEYER_MSG02_LABEL.configure(
-            style="Heading4.TLabel", text='2')
-        self.CW_MEMORY_KEYER_MSG02_LABEL.grid(
-            column=0, padx="0 10", row=3, sticky="e")
-        self.CW_MEMORY_KEYER_MSG2_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG2 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG2_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSG2,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSG2_WIDGET.grid(
-            column=1, padx="0 10", row=3, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSG2_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSG2_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.CW_MEMORY_KEYER_MSG03_LABEL = ttk.Label(self.frame33)
-        self.CW_MEMORY_KEYER_MSG03_LABEL.configure(
-            style="Heading4.TLabel", text='3')
-        self.CW_MEMORY_KEYER_MSG03_LABEL.grid(
-            column=0, padx="0 10", row=4, sticky="e")
-        self.CW_MEMORY_KEYER_MSG3_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG3 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG3_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSG3,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSG3_WIDGET.grid(
-            column=1, padx="0 10", row=4, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSG3_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSG3_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.CW_MEMORY_KEYER_MSG04_LABEL = ttk.Label(self.frame33)
-        self.CW_MEMORY_KEYER_MSG04_LABEL.configure(
-            style="Heading4.TLabel", text='4')
-        self.CW_MEMORY_KEYER_MSG04_LABEL.grid(
-            column=0, padx="0 10", row=5, sticky="e")
-        self.CW_MEMORY_KEYER_MSG4_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG4 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG4_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSG4,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSG4_WIDGET.grid(
-            column=1, padx="0 10", row=5, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSG4_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSG4_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.CW_MEMORY_KEYER_MSG05_LABEL = ttk.Label(self.frame33)
-        self.CW_MEMORY_KEYER_MSG05_LABEL.configure(
-            style="Heading4.TLabel", text='5')
-        self.CW_MEMORY_KEYER_MSG05_LABEL.grid(
-            column=0, padx="0 10", row=6, sticky="e")
-        self.CW_MEMORY_KEYER_MSG5_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG5 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG5_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSG5,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSG5_WIDGET.grid(
-            column=1, padx="0 10", row=6, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSG5_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSG5_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.CW_MEMORY_KEYER_MSG06_LABEL = ttk.Label(self.frame33)
-        self.CW_MEMORY_KEYER_MSG06_LABEL.configure(
-            style="Heading4.TLabel", text='6')
-        self.CW_MEMORY_KEYER_MSG06_LABEL.grid(
-            column=0, padx="0 10", row=7, sticky="e")
-        self.CW_MEMORY_KEYER_MSG6_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG6 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG6_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSG6,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSG6_WIDGET.grid(
-            column=1, padx="0 10", row=7, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSG6_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSG6_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.CW_MEMORY_KEYER_MSG07_LABEL = ttk.Label(self.frame33)
-        self.CW_MEMORY_KEYER_MSG07_LABEL.configure(
-            style="Heading4.TLabel", text='7')
-        self.CW_MEMORY_KEYER_MSG07_LABEL.grid(
-            column=0, padx="0 10", row=8, sticky="e")
-        self.CW_MEMORY_KEYER_MSG7_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG7 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG7_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSG7,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSG7_WIDGET.grid(
-            column=1, padx="0 10", row=8, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSG7_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSG7_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.CW_MEMORY_KEYER_MSG08_LABEL = ttk.Label(self.frame33)
-        self.CW_MEMORY_KEYER_MSG08_LABEL.configure(
-            style="Heading4.TLabel", text='8')
-        self.CW_MEMORY_KEYER_MSG08_LABEL.grid(
-            column=0, padx="0 10", row=9, sticky="e")
-        self.CW_MEMORY_KEYER_MSG8_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG8 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG8_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSG8,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSG8_WIDGET.grid(
-            column=1, padx="0 10", row=9, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSG8_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSG8_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.CW_MEMORY_KEYER_MSG09_LABEL = ttk.Label(self.frame33)
-        self.CW_MEMORY_KEYER_MSG09_LABEL.configure(
-            style="Heading4.TLabel", text='9')
-        self.CW_MEMORY_KEYER_MSG09_LABEL.grid(
-            column=0, padx="0 10", row=10, sticky="e")
-        self.CW_MEMORY_KEYER_MSG9_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSG9 = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSG9_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSG9,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSG9_WIDGET.grid(
-            column=1, padx="0 10", row=10, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSG9_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSG9_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.CW_MEMORY_KEYER_MSG10_LABEL = ttk.Label(self.frame33)
-        self.CW_MEMORY_KEYER_MSG10_LABEL.configure(
-            style="Heading4.TLabel", text='A')
-        self.CW_MEMORY_KEYER_MSG10_LABEL.grid(
-            column=0, padx="0 10", row=11, sticky="e")
-        self.CW_MEMORY_KEYER_MSGA_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGA = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGA_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGA,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGA_WIDGET.grid(
-            column=1, padx="0 10", row=11, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGA_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGA_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label56 = ttk.Label(self.frame33)
-        self.label56.configure(style="Heading4.TLabel", text='B')
-        self.label56.grid(column=0, padx="0 10", row=12, sticky="e")
-        self.CW_MEMORY_KEYER_MSGB_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGB = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGB_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGB,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGB_WIDGET.grid(
-            column=1, padx="0 10", row=12, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGB_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGB_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label59 = ttk.Label(self.frame33)
-        self.label59.configure(style="Heading4.TLabel", text='C')
-        self.label59.grid(column=0, padx="0 10", row=13, sticky="e")
-        self.CW_MEMORY_KEYER_MSGC_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGC = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGC_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGC,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGC_WIDGET.grid(
-            column=1, padx="0 10", row=13, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGC_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGC_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label60 = ttk.Label(self.frame33)
-        self.label60.configure(style="Heading4.TLabel", text='D')
-        self.label60.grid(column=0, padx="0 10", row=14, sticky="e")
-        self.CW_MEMORY_KEYER_MSGD_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGD = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGD_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGD,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGD_WIDGET.grid(
-            column=1, padx="0 10", row=14, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGD_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGD_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label63 = ttk.Label(self.frame33)
-        self.label63.configure(style="Heading4.TLabel", text='E')
-        self.label63.grid(column=0, padx="0 10", row=15, sticky="e")
-        self.CW_MEMORY_KEYER_MSGE_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGE = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGE_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGE,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGE_WIDGET.grid(
-            column=1, padx="0 10", row=15, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGE_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGE_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label67 = ttk.Label(self.frame33)
-        self.label67.configure(style="Heading4.TLabel", text='F')
-        self.label67.grid(column=0, padx="0 10", row=16, sticky="e")
-        self.CW_MEMORY_KEYER_MSGF_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGF = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGF_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGF,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGF_WIDGET.grid(
-            column=1, padx="0 10", row=16, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGF_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGF_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label154 = ttk.Label(self.frame33)
-        self.label154.configure(style="Heading4.TLabel", text='G')
-        self.label154.grid(column=0, padx="0 10", row=17, sticky="e")
-        self.CW_MEMORY_KEYER_MSGG_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGG = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGG_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGG,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGG_WIDGET.grid(
-            column=1, padx="0 10", row=17, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGG_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGG_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label155 = ttk.Label(self.frame33)
-        self.label155.configure(style="Heading4.TLabel", text='H')
-        self.label155.grid(column=0, padx="0 10", row=18, sticky="e")
-        self.CW_MEMORY_KEYER_MSGH_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGH = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGH_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGH,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGH_WIDGET.grid(
-            column=1, padx="0 10", row=18, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGH_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGH_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label156 = ttk.Label(self.frame33)
-        self.label156.configure(style="Heading4.TLabel", text='I')
-        self.label156.grid(column=0, padx="0 10", row=19, sticky="e")
-        self.CW_MEMORY_KEYER_MSGI_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGI = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGI_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGI,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGI_WIDGET.grid(
-            column=1, padx="0 10", row=19, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGI_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGI_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label157 = ttk.Label(self.frame33)
-        self.label157.configure(style="Heading4.TLabel", text='J')
-        self.label157.grid(column=0, padx="0 10", row=20, sticky="e")
-        self.CW_MEMORY_KEYER_MSGJ_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGJ = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGJ_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGJ,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGJ_WIDGET.grid(
-            column=1, padx="0 10", row=20, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGJ_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGJ_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label158 = ttk.Label(self.frame33)
-        self.label158.configure(style="Heading4.TLabel", text='K')
-        self.label158.grid(column=0, padx="0 10", row=21, sticky="e")
-        self.CW_MEMORY_KEYER_MSGK_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGK = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGK_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGK,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGK_WIDGET.grid(
-            column=1, padx="0 10", row=21, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGK_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGK_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label159 = ttk.Label(self.frame33)
-        self.label159.configure(style="Heading4.TLabel", text='L')
-        self.label159.grid(column=0, padx="0 10", row=22, sticky="e")
-        self.CW_MEMORY_KEYER_MSGL_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGL = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGL_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGL,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGL_WIDGET.grid(
-            column=1, padx="0 10", row=22, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGL_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGL_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label160 = ttk.Label(self.frame33)
-        self.label160.configure(style="Heading4.TLabel", text='M')
-        self.label160.grid(column=0, padx="0 10", row=23, sticky="e")
-        self.CW_MEMORY_KEYER_MSGM_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGM = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGM_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGM,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGM_WIDGET.grid(
-            column=1, padx="0 10", row=23, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGM_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGM_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label161 = ttk.Label(self.frame33)
-        self.label161.configure(style="Heading4.TLabel", text='N')
-        self.label161.grid(column=0, padx="0 10", row=24, sticky="e")
-        self.CW_MEMORY_KEYER_MSGN_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGN = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGN_WIDGET.configure(
-            justify="left",
-            state="disabled",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGN,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGN_WIDGET.grid(
-            column=1, padx="0 10", row=24, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGN_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGN_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label162 = ttk.Label(self.frame33)
-        self.label162.configure(style="Heading4.TLabel", text='O')
-        self.label162.grid(column=0, padx="0 10", row=25, sticky="e")
-        self.CW_MEMORY_KEYER_MSGO_WIDGET = ttk.Entry(self.frame33)
-        self.CW_MEMORY_KEYER_MSGO = tk.StringVar()
-        self.CW_MEMORY_KEYER_MSGO_WIDGET.configure(
-            justify="left",
-            state="readonly",
-            takefocus=True,
-            textvariable=self.CW_MEMORY_KEYER_MSGO,
-            validate="focus",
-            width=50)
-        self.CW_MEMORY_KEYER_MSGO_WIDGET.grid(
-            column=1, padx="0 10", row=25, sticky="w")
-        _validatecmd = (self.CW_MEMORY_KEYER_MSGO_WIDGET.register(
-            self.validate_CW_Message_Change), "%P", "%V", "%W")
-        self.CW_MEMORY_KEYER_MSGO_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.button12 = ttk.Button(self.frame33)
-        self.button12.configure(style="Button4.TButton", text='Cleanup')
-        self.button12.grid(column=2, padx=10, row=0)
-        self.button12.configure(command=self.CW_Auto_Msg_Cleanup_CB)
-        self.frame33.pack(anchor="w", padx="50 0", side="top")
-        self.CW_Autokeyer_Hidden_Frame = ttk.Frame(self.frame31)
-        self.CW_Autokeyer_Hidden_Frame.configure(height=200, width=200)
-        self.CW_AUTO_MAGIC_KEY_WIDGET = ttk.Label(
-            self.CW_Autokeyer_Hidden_Frame)
-        self.CW_AUTO_MAGIC_KEY = tk.StringVar(value='label165')
-        self.CW_AUTO_MAGIC_KEY_WIDGET.configure(
-            state="normal", text='label165', textvariable=self.CW_AUTO_MAGIC_KEY)
-        self.CW_AUTO_MAGIC_KEY_WIDGET.pack(side="top")
-        self.USER_CALLSIGN_KEY_WIDGET = ttk.Label(
-            self.CW_Autokeyer_Hidden_Frame)
-        self.USER_CALLSIGN_KEY = tk.StringVar(value='label166')
-        self.USER_CALLSIGN_KEY_WIDGET.configure(
-            text='label166', textvariable=self.USER_CALLSIGN_KEY)
-        self.USER_CALLSIGN_KEY_WIDGET.pack(side="top")
-        self.CW_Autokeyer_Hidden_Frame.pack(side="top")
-        self.frame31.pack(anchor="w", padx=20, pady=15, side="top")
-        self.Autokeyer_Frame.pack(
-            anchor="center",
-            expand="true",
-            fill="both",
-            padx=5,
-            pady=5,
-            side="top")
-        self.Autokeyer_SF.pack(side="top")
-        self.settingsNotebook.add(self.Autokeyer_SF, text='CW Autokeyer')
-        self.Bands_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
-        self.Bands_SF.configure(usemousewheel=True)
-        self.frame16 = ttk.Frame(self.Bands_SF.innerframe)
-        self.frame16.configure(height=200, width=200)
-        self.Bands_Setting_Title_Frame = ttk.Frame(self.frame16)
-        self.Bands_Setting_Title_Frame.configure(height=200, width=200)
-        self.Bands_Settings_Label = ttk.Label(self.Bands_Setting_Title_Frame)
-        self.Bands_Settings_Label.configure(
-            justify="center",
-            style="Heading2.TLabel",
-            text='Bands Settings')
-        self.Bands_Settings_Label.pack(anchor="w", padx=5, pady="15 25")
-        self.Bands_Setting_Title_Frame.pack(fill="x", side="top")
-        self.frame19 = ttk.Frame(self.frame16)
-        self.frame19.configure(height=200, width=200)
-        self.frame46 = ttk.Frame(self.frame19)
-        self.label104 = ttk.Label(self.frame46)
-        self.label104.configure(
-            style="Heading4.TLabel",
-            text='# of Bands Defined')
-        self.label104.grid(
-            column=1,
-            columnspan=3,
-            padx="0 15",
-            row=7,
-            sticky="w")
-        self.HAM_BAND_COUNT_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_COUNT = tk.StringVar()
-        self.HAM_BAND_COUNT_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_COUNT,
-            validate="focus",
-            width=3)
-        self.HAM_BAND_COUNT_WIDGET.grid(
-            column=4, padx="0 5", row=7, sticky="w")
-        _validatecmd = (
-            self.HAM_BAND_COUNT_WIDGET.register(
-                self.validate_HAM_BAND_COUNT), "%P", "%V")
-        self.HAM_BAND_COUNT_WIDGET.configure(validatecommand=_validatecmd)
-        self.label100 = ttk.Label(self.frame46)
-        self.label100.configure(
-            justify="center",
-            style="Heading4.TLabel",
-            text='Frequency Range')
-        self.label100.grid(column=3, columnspan=3, pady="20 0", row=8)
-        self.label101 = ttk.Label(self.frame46)
-        self.label101.configure(style="Heading4.TLabel", text='Start')
-        self.label101.grid(column=3, row=9, sticky="s")
-        self.label102 = ttk.Label(self.frame46)
-        self.label102.configure(style="Heading4.TLabel", text='End')
-        self.label102.grid(column=5, row=9, sticky="s")
-        self.label106 = ttk.Label(self.frame46)
-        self.label106.configure(style="Heading4.TLabel", text='Band 1')
-        self.label106.grid(column=1, pady="0 5", row=10, sticky="w")
-        self.HAM_BAND_RANGE1_START_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE1_START = tk.StringVar()
-        self.HAM_BAND_RANGE1_START_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE1_START,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE1_START_WIDGET.grid(
-            column=3, padx="0 2", pady="0 5", row=10, sticky="w")
-        _validatecmd = (self.HAM_BAND_RANGE1_START_WIDGET.register(
-            self.validate_HAM_BAND_RANGE1_START), "%P", "%V")
-        self.HAM_BAND_RANGE1_START_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label116 = ttk.Label(self.frame46)
-        self.label116.configure(text='KHz')
-        self.label116.grid(column=4, padx="0 10", row=10, sticky="w")
-        self.HAM_BAND_RANGE1_END_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE1_END = tk.StringVar()
-        self.HAM_BAND_RANGE1_END_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE1_END,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE1_END_WIDGET.grid(
-            column=5, padx="0 2", pady="0 5", row=10)
-        _validatecmd = (self.HAM_BAND_RANGE1_END_WIDGET.register(
-            self.validate_HAM_BAND_RANGE1_END), "%P", "%V")
-        self.HAM_BAND_RANGE1_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label117 = ttk.Label(self.frame46)
-        self.label117.configure(text='KHz')
-        self.label117.grid(column=6, padx="0 5", row=10)
-        self.label107 = ttk.Label(self.frame46)
-        self.label107.configure(style="Heading4.TLabel", text='Band 2')
-        self.label107.grid(column=1, pady="0 5", row=11, sticky="w")
-        self.HAM_BAND_RANGE2_START_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE2_START = tk.StringVar()
-        self.HAM_BAND_RANGE2_START_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE2_START,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE2_START_WIDGET.grid(
-            column=3, pady="0 5", row=11, sticky="w")
-        _validatecmd = (self.HAM_BAND_RANGE2_START_WIDGET.register(
-            self.validate_HAM_BAND_RANGE2_START), "%P", "%V")
-        self.HAM_BAND_RANGE2_START_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label118 = ttk.Label(self.frame46)
-        self.label118.configure(text='KHz')
-        self.label118.grid(column=4, padx="0 10", row=11, sticky="w")
-        self.HAM_BAND_RANGE2_END_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE2_END = tk.StringVar()
-        self.HAM_BAND_RANGE2_END_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE2_END,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE2_END_WIDGET.grid(
-            column=5, padx="0 5", pady="0 5", row=11)
-        _validatecmd = (self.HAM_BAND_RANGE2_END_WIDGET.register(
-            self.validate_HAM_BAND_RANGE2_END), "%P", "%V")
-        self.HAM_BAND_RANGE2_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label119 = ttk.Label(self.frame46)
-        self.label119.configure(text='KHz')
-        self.label119.grid(column=6, padx="0 5", row=11)
-        self.label108 = ttk.Label(self.frame46)
-        self.label108.configure(style="Heading4.TLabel", text='Band 3')
-        self.label108.grid(column=1, pady="0 5", row=12, sticky="w")
-        self.HAM_BAND_RANGE3_START_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE3_START = tk.StringVar()
-        self.HAM_BAND_RANGE3_START_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE3_START,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE3_START_WIDGET.grid(
-            column=3, pady="0 5", row=12, sticky="w")
-        _validatecmd = (self.HAM_BAND_RANGE3_START_WIDGET.register(
-            self.validate_HAM_BAND_RANGE3_START), "%P", "%V")
-        self.HAM_BAND_RANGE3_START_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label120 = ttk.Label(self.frame46)
-        self.label120.configure(text='KHz')
-        self.label120.grid(column=4, padx="0 10", row=12, sticky="w")
-        self.HAM_BAND_RANGE3_END_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE3_END = tk.StringVar()
-        self.HAM_BAND_RANGE3_END_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE3_END,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE3_END_WIDGET.grid(
-            column=5, padx="0 5", pady="0 5", row=12)
-        _validatecmd = (self.HAM_BAND_RANGE3_END_WIDGET.register(
-            self.validate_HAM_BAND_RANGE3_END), "%P", "%V")
-        self.HAM_BAND_RANGE3_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label121 = ttk.Label(self.frame46)
-        self.label121.configure(text='KHz')
-        self.label121.grid(column=6, padx="0 5", row=12)
-        self.label109 = ttk.Label(self.frame46)
-        self.label109.configure(style="Heading4.TLabel", text='Band 4')
-        self.label109.grid(column=1, pady="0 5", row=13, sticky="w")
-        self.HAM_BAND_RANGE4_START_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE4_START = tk.StringVar()
-        self.HAM_BAND_RANGE4_START_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE4_START,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE4_START_WIDGET.grid(
-            column=3, pady="0 5", row=13, sticky="w")
-        _validatecmd = (self.HAM_BAND_RANGE4_START_WIDGET.register(
-            self.validate_HAM_BAND_RANGE4_START), "%P", "%V")
-        self.HAM_BAND_RANGE4_START_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label122 = ttk.Label(self.frame46)
-        self.label122.configure(text='KHz')
-        self.label122.grid(column=4, padx="0 10", row=13, sticky="w")
-        self.HAM_BAND_RANGE4_END_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE4_END = tk.StringVar()
-        self.HAM_BAND_RANGE4_END_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE4_END,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE4_END_WIDGET.grid(
-            column=5, padx="0 5", pady="0 5", row=13)
-        _validatecmd = (self.HAM_BAND_RANGE4_END_WIDGET.register(
-            self.validate_HAM_BAND_RANGE4_END), "%P", "%V")
-        self.HAM_BAND_RANGE4_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label123 = ttk.Label(self.frame46)
-        self.label123.configure(text='KHz')
-        self.label123.grid(column=6, padx="0 5", row=13)
-        self.label110 = ttk.Label(self.frame46)
-        self.label110.configure(style="Heading4.TLabel", text='Band 5')
-        self.label110.grid(column=1, pady="0 5", row=14, sticky="w")
-        self.HAM_BAND_RANGE5_START_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE5_START = tk.StringVar()
-        self.HAM_BAND_RANGE5_START_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE5_START,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE5_START_WIDGET.grid(
-            column=3, pady="0 5", row=14, sticky="w")
-        _validatecmd = (self.HAM_BAND_RANGE5_START_WIDGET.register(
-            self.validate_HAM_BAND_RANGE5_START), "%P", "%V")
-        self.HAM_BAND_RANGE5_START_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label124 = ttk.Label(self.frame46)
-        self.label124.configure(text='KHz')
-        self.label124.grid(column=4, padx="0 10", row=14, sticky="w")
-        self.HAM_BAND_RANGE5_END_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE5_END = tk.StringVar()
-        self.HAM_BAND_RANGE5_END_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE5_END,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE5_END_WIDGET.grid(
-            column=5, padx="0 5", pady="0 5", row=14)
-        _validatecmd = (self.HAM_BAND_RANGE5_END_WIDGET.register(
-            self.validate_HAM_BAND_RANGE5_END), "%P", "%V")
-        self.HAM_BAND_RANGE5_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label125 = ttk.Label(self.frame46)
-        self.label125.configure(text='KHz')
-        self.label125.grid(column=6, padx="0 5", row=14)
-        self.label111 = ttk.Label(self.frame46)
-        self.label111.configure(style="Heading4.TLabel", text='Band 6')
-        self.label111.grid(column=1, pady="0 5", row=15, sticky="w")
-        self.HAM_BAND_RANGE6_START_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE6_START = tk.StringVar()
-        self.HAM_BAND_RANGE6_START_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE6_START,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE6_START_WIDGET.grid(
-            column=3, pady="0 5", row=15, sticky="w")
-        _validatecmd = (self.HAM_BAND_RANGE6_START_WIDGET.register(
-            self.validate_HAM_BAND_RANGE6_START), "%P", "%V")
-        self.HAM_BAND_RANGE6_START_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label126 = ttk.Label(self.frame46)
-        self.label126.configure(text='KHz')
-        self.label126.grid(column=4, padx="0 10", row=15, sticky="w")
-        self.HAM_BAND_RANGE6_END_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE6_END = tk.StringVar()
-        self.HAM_BAND_RANGE6_END_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE6_END,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE6_END_WIDGET.grid(
-            column=5, padx="0 5", pady="0 5", row=15)
-        _validatecmd = (self.HAM_BAND_RANGE6_END_WIDGET.register(
-            self.validate_HAM_BAND_RANGE6_END), "%P", "%V")
-        self.HAM_BAND_RANGE6_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label127 = ttk.Label(self.frame46)
-        self.label127.configure(text='KHz')
-        self.label127.grid(column=6, padx="0 5", row=15)
-        self.label112 = ttk.Label(self.frame46)
-        self.label112.configure(style="Heading4.TLabel", text='Band 7')
-        self.label112.grid(column=1, pady="0 5", row=16, sticky="w")
-        self.HAM_BAND_RANGE7_START_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE7_START = tk.StringVar()
-        self.HAM_BAND_RANGE7_START_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE7_START,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE7_START_WIDGET.grid(
-            column=3, pady="0 5", row=16, sticky="w")
-        _validatecmd = (self.HAM_BAND_RANGE7_START_WIDGET.register(
-            self.validate_HAM_BAND_RANGE7_START), "%P", "%V")
-        self.HAM_BAND_RANGE7_START_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label128 = ttk.Label(self.frame46)
-        self.label128.configure(text='KHz')
-        self.label128.grid(column=4, padx="0 10", row=16, sticky="w")
-        self.HAM_BAND_RANGE7_END_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE7_END = tk.StringVar()
-        self.HAM_BAND_RANGE7_END_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE7_END,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE7_END_WIDGET.grid(
-            column=5, padx="0 5", pady="0 5", row=16)
-        _validatecmd = (self.HAM_BAND_RANGE7_END_WIDGET.register(
-            self.validate_HAM_BAND_RANGE7_END), "%P", "%V")
-        self.HAM_BAND_RANGE7_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label129 = ttk.Label(self.frame46)
-        self.label129.configure(text='KHz')
-        self.label129.grid(column=6, padx="0 5", row=16)
-        self.label113 = ttk.Label(self.frame46)
-        self.label113.configure(style="Heading4.TLabel", text='Band 8')
-        self.label113.grid(column=1, pady="0 5", row=17, sticky="w")
-        self.HAM_BAND_RANGE8_START_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE8_START = tk.StringVar()
-        self.HAM_BAND_RANGE8_START_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE8_START,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE8_START_WIDGET.grid(
-            column=3, pady="0 5", row=17, sticky="w")
-        _validatecmd = (self.HAM_BAND_RANGE8_START_WIDGET.register(
-            self.validate_HAM_BAND_RANGE8_START), "%P", "%V")
-        self.HAM_BAND_RANGE8_START_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label130 = ttk.Label(self.frame46)
-        self.label130.configure(text='KHz')
-        self.label130.grid(column=4, padx="0 10", row=17, sticky="w")
-        self.HAM_BAND_RANGE8_END_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE8_END = tk.StringVar()
-        self.HAM_BAND_RANGE8_END_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE8_END,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE8_END_WIDGET.grid(
-            column=5, padx="0 5", pady="0 5", row=17)
-        _validatecmd = (self.HAM_BAND_RANGE8_END_WIDGET.register(
-            self.validate_HAM_BAND_RANGE8_END), "%P", "%V")
-        self.HAM_BAND_RANGE8_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label131 = ttk.Label(self.frame46)
-        self.label131.configure(text='KHz')
-        self.label131.grid(column=6, padx="0 5", row=17)
-        self.label114 = ttk.Label(self.frame46)
-        self.label114.configure(style="Heading4.TLabel", text='Band 9')
-        self.label114.grid(column=1, pady="0 5", row=18, sticky="w")
-        self.HAM_BAND_RANGE9_START_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE9_START = tk.StringVar()
-        self.HAM_BAND_RANGE9_START_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE9_START,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE9_START_WIDGET.grid(
-            column=3, pady="0 5", row=18, sticky="w")
-        _validatecmd = (self.HAM_BAND_RANGE9_START_WIDGET.register(
-            self.validate_HAM_BAND_RANGE9_START), "%P", "%V")
-        self.HAM_BAND_RANGE9_START_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label132 = ttk.Label(self.frame46)
-        self.label132.configure(text='KHz')
-        self.label132.grid(column=4, padx="0 10", row=18, sticky="w")
-        self.HAM_BAND_RANGE9_END_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE9_END = tk.StringVar()
-        self.HAM_BAND_RANGE9_END_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE9_END,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE9_END_WIDGET.grid(
-            column=5, padx="0 5", pady="0 5", row=18)
-        _validatecmd = (self.HAM_BAND_RANGE9_END_WIDGET.register(
-            self.validate_HAM_BAND_RANGE9_END), "%P", "%V")
-        self.HAM_BAND_RANGE9_END_WIDGET.configure(validatecommand=_validatecmd)
-        self.label133 = ttk.Label(self.frame46)
-        self.label133.configure(text='KHz')
-        self.label133.grid(column=6, padx="0 5", row=18)
-        self.label115 = ttk.Label(self.frame46)
-        self.label115.configure(style="Heading4.TLabel", text='Band 10')
-        self.label115.grid(
-            column=1,
-            padx="0 5",
-            pady="0 5",
-            row=19,
-            sticky="w")
-        self.HAM_BAND_RANGE10_START_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE10_START = tk.StringVar()
-        self.HAM_BAND_RANGE10_START_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE10_START,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE10_START_WIDGET.grid(
-            column=3, pady="0 5", row=19, sticky="w")
-        _validatecmd = (self.HAM_BAND_RANGE10_START_WIDGET.register(
-            self.validate_HAM_BAND_RANGE10_START), "%P", "%V")
-        self.HAM_BAND_RANGE10_START_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label134 = ttk.Label(self.frame46)
-        self.label134.configure(text='KHz')
-        self.label134.grid(column=4, padx="0 10", row=19, sticky="w")
-        self.HAM_BAND_RANGE10_END_WIDGET = ttk.Entry(self.frame46)
-        self.HAM_BAND_RANGE10_END = tk.StringVar()
-        self.HAM_BAND_RANGE10_END_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.HAM_BAND_RANGE10_END,
-            validate="focus",
-            width=10)
-        self.HAM_BAND_RANGE10_END_WIDGET.grid(
-            column=5, padx="0 5", pady="0 5", row=19)
-        _validatecmd = (self.HAM_BAND_RANGE10_END_WIDGET.register(
-            self.validate_HAM_BAND_RANGE10_END), "%P", "%V")
-        self.HAM_BAND_RANGE10_END_WIDGET.configure(
-            validatecommand=_validatecmd)
-        self.label135 = ttk.Label(self.frame46)
-        self.label135.configure(text='KHz')
-        self.label135.grid(column=6, padx="0 5", row=19)
-        self.frame46.pack(
-            anchor="w",
-            expand="false",
-            fill="x",
-            pady="20 0",
-            side="top")
-        self.frame46.grid_anchor("w")
-        self.frame58 = ttk.Frame(self.frame19)
-        self.frame58.configure(
-            height=200,
-            padding=10,
-            relief="groove",
-            width=200)
-        self.region1 = ttk.Button(self.frame58)
-        self.region1.configure(style="Button4.TButton", text='Region 1')
-        self.region1.grid(column=1, padx=5, row=1)
-        self.region1.configure(command=self.autoInputRegion1)
-        self.label136 = ttk.Label(self.frame58)
-        self.label136.configure(
-            style="Heading3.TLabel",
-            text='Auto Input Bands For:')
-        self.label136.grid(column=0, ipadx=5, padx=5, row=1)
-        self.region2 = ttk.Button(self.frame58)
-        self.region2.configure(style="Button4.TButton", text='Region 2')
-        self.region2.grid(column=2, padx=5, row=1)
-        self.region2.configure(command=self.autoInputRegion2)
-        self.region3 = ttk.Button(self.frame58)
-        self.region3.configure(style="Button4.TButton", text='Region 3')
-        self.region3.grid(column=3, padx=5, row=1)
-        self.region3.configure(command=self.autoInputRegion3)
-        self.label92 = ttk.Label(self.frame58)
-        self.label92.configure(style="Heading4.TLabel", text='Region 1:')
-        self.label92.grid(column=0, pady="10 5", row=2, sticky="e")
-        self.label94 = ttk.Label(self.frame58)
-        self.label94.configure(style="Heading4.TLabel", text='Region 2:')
-        self.label94.grid(column=0, pady="0 5", row=3, sticky="e")
-        self.label96 = ttk.Label(self.frame58)
-        self.label96.configure(style="Heading4.TLabel", text='Region 3:')
-        self.label96.grid(column=0, row=4, sticky="e")
-        self.label97 = ttk.Label(self.frame58)
-        self.label97.configure(
-            text='Africa, Europe, Middle East, and northern Asia')
-        self.label97.grid(
-            column=1,
-            columnspan=3,
-            padx="5 0",
-            pady="10 5",
-            row=2,
-            sticky="w")
-        self.label98 = ttk.Label(self.frame58)
-        self.label98.configure(text='the Americas')
-        self.label98.grid(
-            column=1,
-            columnspan=3,
-            padx="5 0",
-            pady="0 5",
-            row=3,
-            sticky="ew")
-        self.label99 = ttk.Label(self.frame58)
-        self.label99.configure(text='the rest of Asia and the Pacific')
-        self.label99.grid(
-            column=1,
-            columnspan=3,
-            padx="5 0",
-            row=4,
-            sticky="ew")
-        self.frame58.pack(anchor="w", pady="20 0", side="top")
-        self.frame58.grid_anchor("w")
-        self.frame12 = ttk.Frame(self.frame19)
-        self.label144 = ttk.Label(self.frame12)
-        self.label144.configure(
-            justify="left",
-            relief="flat",
-            style="Heading3.TLabel",
-            text='TX/RX Restrictions')
-        self.label144.grid(
+            text='Messages')
+        self.label27.pack()
+        self.frame35.pack(anchor="w", side="top")
+        self.frame36 = ttk.Frame(self.frame34)
+        self.frame36.configure(height=200, width=200)
+        self.label44 = ttk.Label(self.frame36)
+        self.label44.configure(style="Heading4.TLabel", text='Total Msgs')
+        self.label44.grid(
             column=0,
             columnspan=2,
-            padx="0 15",
-            pady="10 0",
-            row=1,
-            sticky="w")
-        self.label145 = ttk.Label(self.frame12)
-        self.label145.configure(
-            style="Heading4.TLabel",
-            text='Tuning Restriction')
-        self.label145.grid(
-            column=1,
-            padx="80 15",
-            pady="5 10",
-            row=2,
+            padx="0 10",
+            pady="10 15",
+            row=0,
             sticky="e")
-        self.TUNING_RESTICTIONS = tk.StringVar(value='NONE')
-        __values = ['NONE', 'BAND']
-        self.TUNING_RESTICTIONS_WIDGET = ttk.OptionMenu(
-            self.frame12, self.TUNING_RESTICTIONS, "NONE", *__values, command=None)
-        self.TUNING_RESTICTIONS_WIDGET.grid(column=2, pady="5 10", row=2)
-        self.label146 = ttk.Label(self.frame12)
-        self.label146.configure(
-            style="Heading4.TLabel",
-            text='Transmit Restriction')
-        self.label146.grid(column=1, padx="30 15", row=3, sticky="e")
-        self.TX_RESTRICTIONS = tk.StringVar(value='NONE')
-        __values = ['NONE', 'HAM']
-        self.TX_RESTRICTIONS_WIDGET = ttk.OptionMenu(
-            self.frame12, self.TX_RESTRICTIONS, "NONE", *__values, command=None)
-        self.TX_RESTRICTIONS_WIDGET.grid(column=2, row=3)
-        self.frame12.pack(
-            anchor="w",
-            expand="false",
-            fill="x",
+        self.WSPR_COUNT_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_COUNT = tk.StringVar()
+        self.WSPR_COUNT_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_COUNT,
+            validate="none",
+            width=3)
+        self.WSPR_COUNT_WIDGET.grid(
+            column=2,
+            padx="0 10",
+            pady="10 15",
+            row=0,
+            sticky="w")
+        self.label73 = ttk.Label(self.frame36)
+        self.label73.configure(style="Heading4.TLabel", text='Name')
+        self.label73.grid(column=1, padx="0 10", row=1, sticky="w")
+        self.label76 = ttk.Label(self.frame36)
+        self.label76.configure(style="Heading4.TLabel", text='WSPR Message')
+        self.label76.grid(column=3, padx="0 10", row=1, sticky="w")
+        self.label47 = ttk.Label(self.frame36)
+        self.label47.configure(style="Heading4.TLabel", text='1')
+        self.label47.grid(column=0, padx="0 10", pady=10, row=2, sticky="e")
+        self.WSPR_MESSAGE1_NAME_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE1_NAME = tk.StringVar()
+        self.WSPR_MESSAGE1_NAME_WIDGET.configure(
+            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE1_NAME, width=5)
+        self.WSPR_MESSAGE1_NAME_WIDGET.grid(column=1, padx="0 10", row=2)
+        self.WSPR_Msg1_WIDGET = ttk.Button(self.frame36)
+        self.WSPR_Msg1_WIDGET.configure(style="Normal.TButton", text='Gen Msg')
+        self.WSPR_Msg1_WIDGET.grid(column=2, padx="0 10", pady=10, row=2)
+        self.WSPR_Msg1_WIDGET.configure(command=self.runWSPRMsg1Gen_CB)
+        self.WSPR_MESSAGE1_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE1 = tk.StringVar()
+        self.WSPR_MESSAGE1_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_MESSAGE1,
+            validate="none",
+            width=80)
+        self.WSPR_MESSAGE1_WIDGET.grid(
+            column=3, padx="0 10", row=2, sticky="w")
+        self.label48 = ttk.Label(self.frame36)
+        self.label48.configure(style="Heading4.TLabel", text='2')
+        self.label48.grid(column=0, padx="0 10", row=3, sticky="e")
+        self.WSPR_MESSAGE2_NAME_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE2_NAME = tk.StringVar()
+        self.WSPR_MESSAGE2_NAME_WIDGET.configure(
+            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE2_NAME, width=5)
+        self.WSPR_MESSAGE2_NAME_WIDGET.grid(column=1, padx="0 10", row=3)
+        self.WSPR_Msg2_WIDGET = ttk.Button(self.frame36)
+        self.WSPR_Msg2_WIDGET.configure(style="Normal.TButton", text='Gen Msg')
+        self.WSPR_Msg2_WIDGET.grid(column=2, padx="0 10", pady=10, row=3)
+        self.WSPR_Msg2_WIDGET.configure(command=self.runWSPRMsg2Gen_CB)
+        self.WSPR_MESSAGE2_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE2 = tk.StringVar()
+        self.WSPR_MESSAGE2_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_MESSAGE2,
+            validate="none",
+            width=80)
+        self.WSPR_MESSAGE2_WIDGET.grid(
+            column=3, padx="0 10", row=3, sticky="w")
+        self.label50 = ttk.Label(self.frame36)
+        self.label50.configure(style="Heading4.TLabel", text='3')
+        self.label50.grid(column=0, padx="0 10", row=4, sticky="e")
+        self.WSPR_MESSAGE3_NAME_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE3_NAME = tk.StringVar()
+        self.WSPR_MESSAGE3_NAME_WIDGET.configure(
+            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE3_NAME, width=5)
+        self.WSPR_MESSAGE3_NAME_WIDGET.grid(column=1, padx="0 10", row=4)
+        self.WSPR_Msg3_WIDGET = ttk.Button(self.frame36)
+        self.WSPR_Msg3_WIDGET.configure(style="Normal.TButton", text='Gen Msg')
+        self.WSPR_Msg3_WIDGET.grid(column=2, padx="0 10", pady=10, row=4)
+        self.WSPR_Msg3_WIDGET.configure(command=self.runWSPRMsg3Gen_CB)
+        self.WSPR_MESSAGE3_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE3 = tk.StringVar()
+        self.WSPR_MESSAGE3_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_MESSAGE3,
+            validate="none",
+            width=80)
+        self.WSPR_MESSAGE3_WIDGET.grid(
+            column=3, padx="0 10", row=4, sticky="w")
+        self.label51 = ttk.Label(self.frame36)
+        self.label51.configure(style="Heading4.TLabel", text='4')
+        self.label51.grid(column=0, padx="0 10", row=5, sticky="e")
+        self.WSPR_MESSAGE4_NAME_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE4_NAME = tk.StringVar()
+        self.WSPR_MESSAGE4_NAME_WIDGET.configure(
+            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE4_NAME, width=5)
+        self.WSPR_MESSAGE4_NAME_WIDGET.grid(column=1, padx="0 10", row=5)
+        self.WSPR_Msg4_WIDGET = ttk.Button(self.frame36)
+        self.WSPR_Msg4_WIDGET.configure(style="Normal.TButton", text='Gen Msg')
+        self.WSPR_Msg4_WIDGET.grid(column=2, padx="0 10", pady=10, row=5)
+        self.WSPR_Msg4_WIDGET.configure(command=self.runWSPRMsg4Gen_CB)
+        self.WSPR_MESSAGE4_WIDGET = ttk.Entry(self.frame36)
+        self.WSPR_MESSAGE4 = tk.StringVar()
+        self.WSPR_MESSAGE4_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_MESSAGE4,
+            validate="none",
+            width=80)
+        self.WSPR_MESSAGE4_WIDGET.grid(
+            column=3, padx="0 10", row=5, sticky="w")
+        self.frame36.pack(anchor="w", padx="20 0", side="top")
+        self.frame34.pack(anchor="w", padx=20, side="top")
+        self.frame37 = ttk.Frame(self.frame22)
+        self.frame37.configure(height=200, width=200)
+        self.frame38 = ttk.Frame(self.frame37)
+        self.frame38.configure(height=200, width=200)
+        self.label62 = ttk.Label(self.frame38)
+        self.label62.configure(
+            compound="top",
+            justify="left",
+            style="Heading3.TLabel",
+            text='Bands')
+        self.label62.pack()
+        self.frame38.pack(anchor="w", side="top")
+        self.frame39 = ttk.Frame(self.frame37)
+        self.frame39.configure(height=200, width=200)
+        self.label64 = ttk.Label(self.frame39)
+        self.label64.configure(style="Heading4.TLabel", text='1')
+        self.label64.grid(column=0, padx="0 10", pady=10, row=1, sticky="e")
+        self.WSPR_BAND1_TXFREQ_WIDGET = ttk.Entry(self.frame39)
+        self.WSPR_BAND1_TXFREQ = tk.StringVar()
+        self.WSPR_BAND1_TXFREQ_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_BAND1_TXFREQ,
+            validate="none",
+            width=12)
+        self.WSPR_BAND1_TXFREQ_WIDGET.grid(column=2, row=1, sticky="w")
+        self.label78 = ttk.Label(self.frame39)
+        self.label78.configure(style="Heading4.TLabel", text='Hz')
+        self.label78.grid(column=3, padx="0 10", row=1, sticky="w")
+        self.button9 = ttk.Button(self.frame39)
+        self.button9.configure(
+            style="Button4.TButton",
+            text='Select Band and Freq')
+        self.button9.grid(column=4, padx="0 10", row=1)
+        self.label65 = ttk.Label(self.frame39)
+        self.label65.configure(style="Heading4.TLabel", text='2')
+        self.label65.grid(column=0, padx="0 10", row=2, sticky="e")
+        self.WSPR_BAND2_TXFREQ_WIDGET = ttk.Entry(self.frame39)
+        self.WSPR_BAND2_TXFREQ = tk.StringVar()
+        self.WSPR_BAND2_TXFREQ_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_BAND2_TXFREQ,
+            validate="none",
+            width=12)
+        self.WSPR_BAND2_TXFREQ_WIDGET.grid(column=2, row=2, sticky="w")
+        self.label80 = ttk.Label(self.frame39)
+        self.label80.configure(style="Heading4.TLabel", text='Hz')
+        self.label80.grid(column=3, padx="0 10", row=2, sticky="w")
+        self.button10 = ttk.Button(self.frame39)
+        self.button10.configure(
+            style="Button4.TButton",
+            text='Select Band and Freq')
+        self.button10.grid(column=4, padx="0 10", row=2)
+        self.label66 = ttk.Label(self.frame39)
+        self.label66.configure(style="Heading4.TLabel", text='3')
+        self.label66.grid(column=0, padx="0 10", row=3, sticky="e")
+        self.WSPR_BAND3_TXFREQ_WIDGET = ttk.Entry(self.frame39)
+        self.WSPR_BAND3_TXFREQ = tk.StringVar()
+        self.WSPR_BAND3_TXFREQ_WIDGET.configure(
+            justify="left",
+            style="Normal.TEntry",
+            textvariable=self.WSPR_BAND3_TXFREQ,
+            validate="none",
+            width=12)
+        self.WSPR_BAND3_TXFREQ_WIDGET.grid(column=2, row=3, sticky="w")
+        self.label82 = ttk.Label(self.frame39)
+        self.label82.configure(style="Heading4.TLabel", text='Hz')
+        self.label82.grid(column=3, padx="0 10", row=3, sticky="w")
+        self.button11 = ttk.Button(self.frame39)
+        self.button11.configure(
+            style="Button4.TButton",
+            text='Select Band and Freq')
+        self.button11.grid(column=4, padx="0 10", row=3)
+        self.frame39.pack(anchor="w", padx="20 0", side="top")
+        self.frame37.pack(anchor="w", padx=20, pady=20, side="top")
+        self.frame40 = ttk.Frame(self.frame22)
+        self.frame40.configure(height=200, width=200)
+        self.frame41 = ttk.Frame(self.frame40)
+        self.frame41.configure(height=200, width=200)
+        self.label86 = ttk.Label(self.frame41)
+        self.label86.configure(
+            compound="top",
+            justify="left",
+            style="Heading3.TLabel",
+            text='Calibration')
+        self.label86.pack()
+        self.frame41.pack(anchor="w", side="top")
+        self.frame42 = ttk.Frame(self.frame40)
+        self.frame42.configure(height=200, width=200)
+        self.label88 = ttk.Label(self.frame42)
+        self.label88.configure(style="Heading4.TLabel", text='X-TAL')
+        self.label88.grid(column=0, padx="0 10", pady=10, row=1, sticky="e")
+        self.entry25 = ttk.Entry(self.frame42)
+        self.entry25.configure(
+            justify="left",
+            style="Normal.TEntry",
+            validate="none",
+            width=12)
+        self.entry25.grid(column=2, row=1, sticky="w")
+        self.label90 = ttk.Label(self.frame42)
+        self.label90.configure(style="Normal.TLabel", text='Hz')
+        self.label90.grid(column=3, padx="0 10", row=1, sticky="w")
+        self.label137 = ttk.Label(self.frame42)
+        self.label137.configure(style="Heading4.TLabel", text='Calibration')
+        self.label137.grid(column=0, padx="0 10", row=2, sticky="e")
+        self.entry26 = ttk.Entry(self.frame42)
+        self.entry26.configure(
+            justify="left",
+            style="Normal.TEntry",
+            validate="none",
+            width=12)
+        self.entry26.grid(column=2, row=2, sticky="w")
+        self.label138 = ttk.Label(self.frame42)
+        self.label138.configure(style="Normal.TLabel", text='Hz')
+        self.label138.grid(column=3, padx="0 10", row=2, sticky="w")
+        self.message2 = tk.Message(self.frame42)
+        self.message2.configure(
+            text='Correct the calibration value according to the WSPR result (example: 147000, 145000)',
+            width=300)
+        self.message2.grid(column=4, row=2)
+        self.frame42.pack(anchor="w", padx="20 0", side="top")
+        self.frame40.pack(anchor="w", padx=20, pady=20, side="top")
+        self.WSPR_HIDDEN = ttk.Frame(self.frame22)
+        self.WSPR_HIDDEN.configure(height=200, width=200)
+        self.WSPR_BAND1_MULTICHAN_WIDGET = ttk.Label(self.WSPR_HIDDEN)
+        self.WSPR_BAND1_MULTICHAN = tk.StringVar()
+        self.WSPR_BAND1_MULTICHAN_WIDGET.configure(
+            textvariable=self.WSPR_BAND1_MULTICHAN)
+        self.WSPR_BAND1_MULTICHAN_WIDGET.pack(anchor="nw", side="left")
+        self.WSPR_BAND1_REG1_WIDGET = ttk.Label(self.WSPR_HIDDEN)
+        self.WSPR_BAND1_REG1 = tk.StringVar()
+        self.WSPR_BAND1_REG1_WIDGET.configure(
+            textvariable=self.WSPR_BAND1_REG1)
+        self.WSPR_BAND1_REG1_WIDGET.pack(anchor="nw", side="left")
+        self.WSPR_BAND1_REG2_WIDGET = ttk.Label(self.WSPR_HIDDEN)
+        self.WSPR_BAND1_REG2 = tk.StringVar()
+        self.WSPR_BAND1_REG2_WIDGET.configure(
+            textvariable=self.WSPR_BAND1_REG2)
+        self.WSPR_BAND1_REG2_WIDGET.pack(anchor="nw", side="left")
+        self.WSPR_BAND2_MULTICHAN_WIDGET = ttk.Label(self.WSPR_HIDDEN)
+        self.WSPR_BAND2_MULTICHAN = tk.StringVar()
+        self.WSPR_BAND2_MULTICHAN_WIDGET.configure(
+            textvariable=self.WSPR_BAND2_MULTICHAN)
+        self.WSPR_BAND2_MULTICHAN_WIDGET.pack(anchor="w", side="left")
+        self.WSPR_BAND2_REG1_WIDGET = ttk.Label(self.WSPR_HIDDEN)
+        self.WSPR_BAND2_REG1 = tk.StringVar()
+        self.WSPR_BAND2_REG1_WIDGET.configure(
+            textvariable=self.WSPR_BAND2_REG1)
+        self.WSPR_BAND2_REG1_WIDGET.pack(anchor="w", side="left")
+        self.WSPR_BAND2_REG2_WIDGET = ttk.Label(self.WSPR_HIDDEN)
+        self.WSPR_BAND2_REG2 = tk.StringVar()
+        self.WSPR_BAND2_REG2_WIDGET.configure(
+            textvariable=self.WSPR_BAND2_REG2)
+        self.WSPR_BAND2_REG2_WIDGET.pack(anchor="w", side="left")
+        self.WSPR_BAND3_MULTICHAN_WIDGET = ttk.Label(self.WSPR_HIDDEN)
+        self.WSPR_BAND3_MULTICHAN = tk.StringVar()
+        self.WSPR_BAND3_MULTICHAN_WIDGET.configure(
+            textvariable=self.WSPR_BAND3_MULTICHAN)
+        self.WSPR_BAND3_MULTICHAN_WIDGET.pack(anchor="sw", side="left")
+        self.WSPR_BAND3_REG1_WIDGET = ttk.Label(self.WSPR_HIDDEN)
+        self.WSPR_BAND3_REG1 = tk.StringVar()
+        self.WSPR_BAND3_REG1_WIDGET.configure(
+            textvariable=self.WSPR_BAND3_REG1)
+        self.WSPR_BAND3_REG1_WIDGET.pack(anchor="sw", side="left")
+        self.WSPR_BAND3_REG2_WIDGET = ttk.Label(self.WSPR_HIDDEN)
+        self.WSPR_BAND3_REG2 = tk.StringVar()
+        self.WSPR_BAND3_REG2_WIDGET.configure(
+            textvariable=self.WSPR_BAND3_REG2)
+        self.WSPR_BAND3_REG2_WIDGET.pack(anchor="sw", side="left")
+        self.WSPR_HIDDEN.pack(side="top")
+        self.frame22.pack(anchor="w", padx=5, pady=5, side="top")
+        self.WSPR_SF.pack(side="top")
+        self.settingsNotebook.add(self.WSPR_SF, text='WSPR')
+        self.LCD_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
+        self.LCD_SF.configure(usemousewheel=True)
+        self.frame24 = ttk.Frame(self.LCD_SF.innerframe)
+        self.frame24.configure(height=200, width=200)
+        self.LCD_Frame = ttk.Frame(self.frame24)
+        self.label8 = ttk.Label(self.LCD_Frame)
+        self.label8.configure(
+            justify="center",
+            style="Heading2.TLabel",
+            text='Settings for LCD Displays')
+        self.label8.pack(anchor="w", padx=5, pady="15 25", side="top")
+        self.LCD_Frame.pack(anchor="w", side="top")
+        self.frame25 = ttk.Frame(self.frame24)
+        self.frame25.configure(height=200, width=200)
+        self.frame2 = ttk.Frame(self.frame25)
+        self.label22 = ttk.Label(self.frame2)
+        self.label22.configure(
+            relief="flat",
+            style="Heading3.TLabel",
+            text='LCD Addresses')
+        self.label22.grid(
+            column=0,
+            columnspan=2,
+            padx=5,
             pady="20 0",
-            side="top")
-        self.frame12.grid_anchor("w")
-        self.frame19.pack(anchor="w", padx=20, side="top")
-        self.frame16.pack(
-            anchor="center",
+            row=2,
+            sticky="ew")
+        self.label28 = ttk.Label(self.frame2)
+        self.label28.configure(style="Normal.TLabel", text='Master I2C LCD')
+        self.label28.grid(column=1, padx="75 5", row=4, sticky="w")
+        self.I2C_LCD_MASTER_WIDGET = ttk.Entry(self.frame2)
+        self.I2C_LCD_MASTER = tk.StringVar()
+        self.I2C_LCD_MASTER_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.I2C_LCD_MASTER,
+            validate="focusin",
+            width=10)
+        self.I2C_LCD_MASTER_WIDGET.grid(
+            column=3, padx="0 5", row=4, sticky="w")
+        self.label32 = ttk.Label(self.frame2)
+        self.label32.configure(
+            style="Normal.TLabel",
+            text='Secondary I2C LCD\nDual LCD Config')
+        self.label32.grid(column=1, padx="75 10", row=6, sticky="w")
+        self.I2C_LCD_SECOND_WIDGET = ttk.Entry(self.frame2)
+        self.I2C_LCD_SECOND = tk.StringVar()
+        self.I2C_LCD_SECOND_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.I2C_LCD_SECOND,
+            validate="focus",
+            width=10)
+        self.I2C_LCD_SECOND_WIDGET.grid(column=3, row=6, sticky="w")
+        self.button3 = ttk.Button(self.frame2)
+        self.button3.configure(style="Button4.TButton", text='I2C Scanner')
+        self.button3.grid(column=4, padx=25, row=5, sticky="e")
+        self.button3.configure(command=self.runI2CScanner)
+        self.frame2.pack(anchor="w", side="top")
+        self.frame2.grid_anchor("nw")
+        self.frame11 = ttk.Frame(self.frame25)
+        self.label9 = ttk.Label(self.frame11)
+        self.label9.configure(
+            relief="flat",
+            style="Heading3.TLabel",
+            text='LCD User Interface Customization')
+        self.label9.grid(
+            column=0,
+            columnspan=2,
+            padx=5,
+            pady="20 0",
+            row=2,
+            sticky="ew")
+        self.SCROLLING_DISPLAY_WIDGET = ttk.Checkbutton(self.frame11)
+        self.SCROLLING_DISPLAY = tk.StringVar()
+        self.SCROLLING_DISPLAY_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            style="CheckboxNormal.TCheckbutton",
+            text='When displayed, continuously scroll VFO-B line left to display more info',
+            variable=self.SCROLLING_DISPLAY)
+        self.SCROLLING_DISPLAY_WIDGET.grid(
+            column=0, padx=75, row=5, sticky="w")
+        self.MESSAGE_LINE_WIDGET = ttk.Checkbutton(self.frame11)
+        self.MESSAGE_LINE = tk.StringVar()
+        self.MESSAGE_LINE_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            style="CheckboxNormal.TCheckbutton",
+            text='Do not display VFO-B. Reserve its line for messages (e.g., CW Keyer). Overides above scrolling option.',
+            variable=self.MESSAGE_LINE)
+        self.MESSAGE_LINE_WIDGET.grid(column=0, padx=75, row=6, sticky="w")
+        self.ONE_TWO_LINE_TOGGLE_WIDGET = ttk.Checkbutton(self.frame11)
+        self.ONE_TWO_LINE_TOGGLE = tk.StringVar()
+        self.ONE_TWO_LINE_TOGGLE_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            style="CheckboxNormal.TCheckbutton",
+            text='Put VFO-A on top line',
+            variable=self.ONE_TWO_LINE_TOGGLE)
+        self.ONE_TWO_LINE_TOGGLE_WIDGET.grid(
+            column=0, padx=75, row=4, sticky="w")
+        self.label11 = ttk.Label(self.frame11)
+        self.label11.configure(
+            relief="flat",
+            state="normal",
+            style="Normal.TLabel",
+            text='The default display is for VFO-A and its Mode to be on second line and the top line is used for VFO-B and other info. These checkboxes allow you to customize this display.',
+            wraplength=550)
+        self.label11.grid(column=0, padx=50, pady="5 10", row=3, sticky="w")
+        self.frame11.pack(anchor="w", pady=5, side="top")
+        self.frame11.grid_anchor("nw")
+        self.frame25.pack(anchor="w", padx=20, side="top")
+        self.frame24.pack(
+            anchor="n",
             expand="true",
             fill="both",
             padx=5,
             pady=5,
             side="top")
-        self.Bands_SF.pack(side="top")
-        self.settingsNotebook.add(self.Bands_SF, text='Bands')
-        self.HW_ADJ_SF = ScrolledFrame(
+        self.LCD_HIDDEN = ttk.Frame(self.LCD_SF.innerframe)
+        self.LCD_HIDDEN.configure(height=200, width=200)
+        self.MAIN_SCREEN_FORMAT_WIDGET = ttk.Label(self.LCD_HIDDEN)
+        self.MAIN_SCREEN_FORMAT = tk.StringVar()
+        self.MAIN_SCREEN_FORMAT_WIDGET.configure(
+            textvariable=self.MAIN_SCREEN_FORMAT)
+        self.MAIN_SCREEN_FORMAT_WIDGET.pack(side="top")
+        self.NEXTION_DISPLAY_CALL_SIGN_WIDGET = ttk.Label(self.LCD_HIDDEN)
+        self.NEXTION_DISPLAY_CALL_SIGN = tk.StringVar()
+        self.NEXTION_DISPLAY_CALL_SIGN_WIDGET.configure(
+            textvariable=self.NEXTION_DISPLAY_CALL_SIGN)
+        self.NEXTION_DISPLAY_CALL_SIGN_WIDGET.pack(side="top")
+        self.LCD_HIDDEN.pack(side="top")
+        self.LCD_SF.pack(side="top")
+        self.settingsNotebook.add(self.LCD_SF, text='Displays')
+        self.SDR_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
+        self.SDR_SF.configure(usemousewheel=True)
+        self.frame13 = ttk.Frame(self.SDR_SF.innerframe)
+        self.frame13.configure(height=200, width=200)
+        self.SDR_Label_Frame = ttk.Frame(self.frame13)
+        self.label7 = ttk.Label(self.SDR_Label_Frame)
+        self.label7.configure(
+            justify="center",
+            style="Heading2.TLabel",
+            text='SDR Settings')
+        self.label7.pack(anchor="w", padx=5, pady="15 25", side="top")
+        self.SDR_Label_Frame.pack(
+            anchor="n",
+            expand="true",
+            fill="x",
+            padx=5,
+            pady=5,
+            side="top")
+        self.frame14 = ttk.Frame(self.frame13)
+        self.label23 = ttk.Label(self.frame14)
+        self.label23.configure(
+            style="Heading4.TLabel",
+            text='SDR Frequency Mode')
+        self.label23.grid(
+            column=1,
+            columnspan=2,
+            padx=10,
+            pady="0 5",
+            row=4,
+            sticky="e")
+        self.SDR_OFFSET_MODE = tk.StringVar(value='NONE')
+        __values = ['NONE', 'FIXED', 'MHZ', 'KHZ']
+        self.SDR_OFFSET_MODE_WIDGET = ttk.OptionMenu(
+            self.frame14, self.SDR_OFFSET_MODE, "NONE", *__values, command=None)
+        self.SDR_OFFSET_MODE_WIDGET.grid(
+            column=3, padx="0 20", pady="0 5", row=4)
+        self.message1 = tk.Message(self.frame14)
+        self.message1.configure(justify="left", relief="raised", text="NONE:\tNo offset is provided to the data send to the \n\tSDR\n\nFIXED:\tThe SDR offset frequency is added to the\n\tfrequency on the display and sent to the SDR\n\nMHZ:\tThe single MHZ digit of the radio's frequency is\n\tadded. For example, if the radio was at\n\t14.032.000, and the offset was at 30.000.000,\n\tthe resulting frequency would be 43.032.000.\n\nKHZ:\tSimilar to MHZ_OFFSET, but using the KHZ\n\tnumber. So with a 30.000.000 offset and and \n\ta 14.032.000 radio setting, the SDR will see \n\ta 30.032.000 frequency.", width=300)
+        self.message1.grid(column=3, columnspan=2, row=5, sticky="ne")
+        self.label24 = ttk.Label(self.frame14)
+        self.label24.configure(
+            justify="left",
+            style="Heading4.TLabel",
+            text='Offset Frequency (mhz)')
+        self.label24.grid(
+            column=1,
+            columnspan=2,
+            padx=10,
+            pady="20 0",
+            row=6,
+            sticky="e")
+        self.SDR_FREQUENCY_WIDGET = ttk.Entry(self.frame14)
+        self.SDR_FREQUENCY = tk.StringVar()
+        self.SDR_FREQUENCY_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.SDR_FREQUENCY,
+            validate="focus",
+            width=10)
+        self.SDR_FREQUENCY_WIDGET.grid(
+            column=3, pady="20 0", row=6, sticky="w")
+        self.BOOT_INTO_SDR_MODE_WIDGET = ttk.Checkbutton(self.frame14)
+        self.BOOT_INTO_SDR_MODE = tk.StringVar()
+        self.BOOT_INTO_SDR_MODE_WIDGET.configure(
+            offvalue="NORMAL",
+            onvalue="SDR",
+            style="Checkbox4.TCheckbutton",
+            text='Boot into SDR Mode',
+            variable=self.BOOT_INTO_SDR_MODE)
+        self.BOOT_INTO_SDR_MODE_WIDGET.grid(
+            column=1, columnspan=4, padx=8, pady=20, row=7, sticky="w")
+        self.frame14.pack(
+            anchor="center",
+            expand="false",
+            fill="x",
+            padx=20,
+            side="top")
+        self.frame14.grid_anchor("nw")
+        self.frame13.pack(
+            anchor="n",
+            expand="true",
+            fill="x",
+            padx=5,
+            pady=5,
+            side="top")
+        self.SDR_SF.pack(side="top")
+        self.settingsNotebook.add(self.SDR_SF, text='SDR')
+        self.Extensions_SF = ScrolledFrame(
             self.settingsNotebook, scrolltype="both")
-        self.HW_ADJ_SF.configure(usemousewheel=True)
-        self.HW_ADJ_Frame = ttk.Frame(self.HW_ADJ_SF.innerframe)
-        self.frame17 = ttk.Frame(self.HW_ADJ_Frame)
+        self.Extensions_SF.configure(usemousewheel=True)
+        self.Extensions_Frame = ttk.Frame(self.Extensions_SF.innerframe)
+        self.frame17 = ttk.Frame(self.Extensions_Frame)
         self.frame17.configure(height=200, width=200)
         self.label5 = ttk.Label(self.frame17)
         self.label5.configure(
             justify="center",
             style="Heading2.TLabel",
-            text='Extentions')
+            text='KD8CEC Extentions')
         self.label5.pack(anchor="w", padx=5)
         self.frame17.pack(anchor="w", expand="false", padx=5, side="top")
-        self.frame29 = ttk.Frame(self.HW_ADJ_Frame)
-        self.label4 = ttk.Label(self.frame29)
+        self.frame29 = ttk.Frame(self.Extensions_Frame)
+        self.frame55 = ttk.Frame(self.frame29)
+        self.frame55.configure(height=200, width=200)
+        self.label4 = ttk.Label(self.frame55)
         self.label4.configure(
             justify="left",
             style="Heading3.TLabel",
-            text='Extended Key')
-        self.label4.grid(column=0, pady="20 0", row=1, sticky="ew")
+            text='Extended Keys')
+        self.label4.grid(column=0, row=0)
+        self.message6 = tk.Message(self.frame55)
+        self.message6.configure(
+            borderwidth=2,
+            font="TkTextFont",
+            justify="left",
+            pady=5,
+            relief="ridge",
+            takefocus=False,
+            text='Supports attachment and control of an external button box. For details, see: \nhttp://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html',
+            width=500)
+        self.message6.grid(column=2, padx=10, row=0)
+        self.frame55.grid(column=0, columnspan=10, pady="10 5", row=0)
         self.label14 = ttk.Label(self.frame29)
         self.label14.configure(style="Heading4.TLabel", text='ADC Range')
         self.label14.grid(column=4, columnspan=2, row=5)
@@ -2964,13 +3610,37 @@ class SettingsnotebookWidget(ttk.Frame):
         self.EXTENDED_KEY6_END_WIDGET.configure(validatecommand=_validatecmd)
         self.frame29.pack(fill="x", padx="20 0", side="top")
         self.frame29.grid_anchor("nw")
-        self.frame8 = ttk.Frame(self.HW_ADJ_Frame)
-        self.label10 = ttk.Label(self.frame8)
+        self.frame57 = ttk.Frame(self.Extensions_Frame)
+        self.frame57.configure(height=200, width=200)
+        self.separator7 = ttk.Separator(self.frame57)
+        self.separator7.configure(orient="horizontal")
+        self.separator7.pack(
+            anchor="center",
+            expand="true",
+            fill="x",
+            side="top")
+        self.frame57.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame8 = ttk.Frame(self.Extensions_Frame)
+        self.frame56 = ttk.Frame(self.frame8)
+        self.frame56.configure(height=200, width=200)
+        self.label10 = ttk.Label(self.frame56)
         self.label10.configure(
             justify="left",
             style="Heading3.TLabel",
             text='Custom Bandpass Filters')
-        self.label10.grid(column=0, pady="20 0", row=1, sticky="ew")
+        self.label10.grid(column=0, row=0, sticky="w")
+        self.message4 = tk.Message(self.frame56)
+        self.message4.configure(
+            borderwidth=2,
+            font="TkTextFont",
+            justify="left",
+            pady=5,
+            relief="ridge",
+            takefocus=False,
+            text="Provides customization of uBITX's LPF as well as external LPF attached to PA. For details, see: \nhttp://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html",
+            width=500)
+        self.message4.grid(column=1, padx=10, row=0, sticky="w")
+        self.frame56.grid(column=0, row=0)
         self.frame18 = ttk.Frame(self.frame8)
         self.frame18.configure(height=200, width=200)
         self.CUST_LPF_ENABLED_Label = ttk.Label(self.frame18)
@@ -3771,55 +4441,125 @@ class SettingsnotebookWidget(ttk.Frame):
         self.CUST_LPF_FILTER1_CONTROL = tk.StringVar()
         self.CUST_LPF_FILTER1_CONTROL_WIDGET.configure(
             textvariable=self.CUST_LPF_FILTER1_CONTROL)
-        self.CUST_LPF_FILTER1_CONTROL_WIDGET.pack()
+        self.CUST_LPF_FILTER1_CONTROL_WIDGET.pack(side="left")
         self.CUST_LPF_FILTER2_CONTROL_WIDGET = ttk.Label(
             self.hidden_data_items)
         self.CUST_LPF_FILTER2_CONTROL = tk.StringVar()
         self.CUST_LPF_FILTER2_CONTROL_WIDGET.configure(
             textvariable=self.CUST_LPF_FILTER2_CONTROL)
-        self.CUST_LPF_FILTER2_CONTROL_WIDGET.pack()
+        self.CUST_LPF_FILTER2_CONTROL_WIDGET.pack(side="left")
         self.CUST_LPF_FILTER3_CONTROL_WIDGET = ttk.Label(
             self.hidden_data_items)
         self.CUST_LPF_FILTER3_CONTROL = tk.StringVar()
         self.CUST_LPF_FILTER3_CONTROL_WIDGET.configure(
             textvariable=self.CUST_LPF_FILTER3_CONTROL)
-        self.CUST_LPF_FILTER3_CONTROL_WIDGET.pack()
+        self.CUST_LPF_FILTER3_CONTROL_WIDGET.pack(side="left")
         self.CUST_LPF_FILTER4_CONTROL_WIDGET = ttk.Label(
             self.hidden_data_items)
         self.CUST_LPF_FILTER4_CONTROL = tk.StringVar()
         self.CUST_LPF_FILTER4_CONTROL_WIDGET.configure(
             textvariable=self.CUST_LPF_FILTER4_CONTROL)
-        self.CUST_LPF_FILTER4_CONTROL_WIDGET.pack()
+        self.CUST_LPF_FILTER4_CONTROL_WIDGET.pack(side="left")
         self.CUST_LPF_FILTER5_CONTROL_WIDGET = ttk.Label(
             self.hidden_data_items)
         self.CUST_LPF_FILTER5_CONTROL = tk.StringVar()
         self.CUST_LPF_FILTER5_CONTROL_WIDGET.configure(
             textvariable=self.CUST_LPF_FILTER5_CONTROL)
-        self.CUST_LPF_FILTER5_CONTROL_WIDGET.pack()
+        self.CUST_LPF_FILTER5_CONTROL_WIDGET.pack(side="left")
         self.CUST_LPF_FILTER6_CONTROL_WIDGET = ttk.Label(
             self.hidden_data_items)
         self.CUST_LPF_FILTER6_CONTROL = tk.StringVar()
         self.CUST_LPF_FILTER6_CONTROL_WIDGET.configure(
             textvariable=self.CUST_LPF_FILTER6_CONTROL)
-        self.CUST_LPF_FILTER6_CONTROL_WIDGET.pack()
+        self.CUST_LPF_FILTER6_CONTROL_WIDGET.pack(side="left")
         self.CUST_LPF_FILTER7_CONTROL_WIDGET = ttk.Label(
             self.hidden_data_items)
         self.CUST_LPF_FILTER7_CONTROL = tk.StringVar()
         self.CUST_LPF_FILTER7_CONTROL_WIDGET.configure(
             textvariable=self.CUST_LPF_FILTER7_CONTROL)
-        self.CUST_LPF_FILTER7_CONTROL_WIDGET.pack()
+        self.CUST_LPF_FILTER7_CONTROL_WIDGET.pack(side="left")
         self.hidden_data_items.grid(column=0, row=13)
         self.frame8.pack(fill="x", padx="20 0", side="top")
         self.frame8.grid_anchor("nw")
-        self.HW_ADJ_Frame.pack(
+        self.frame59 = ttk.Frame(self.Extensions_Frame)
+        self.frame59.configure(height=200, width=200)
+        self.separator8 = ttk.Separator(self.frame59)
+        self.separator8.configure(orient="horizontal")
+        self.separator8.pack(
+            anchor="center",
+            expand="true",
+            fill="x",
+            side="top")
+        self.frame59.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame49 = ttk.Frame(self.Extensions_Frame)
+        self.frame49.configure(height=200, width=200)
+        self.frame50 = ttk.Frame(self.frame49)
+        self.frame50.configure(height=200, width=200)
+        self.label200 = ttk.Label(self.frame50)
+        self.label200.configure(style="Heading3.TLabel", text='IF Adjustments')
+        self.label200.grid(column=0, row=0)
+        self.message3 = tk.Message(self.frame50)
+        self.message3.configure(
+            borderwidth=2,
+            font="TkDefaultFont",
+            justify="left",
+            pady=5,
+            relief="ridge",
+            text='Can improve receiver performance. For details, see:\nhttp://www.hamskey.com/2018/04/improves-ubitx-receive-performance-by.html',
+            width=500)
+        self.message3.grid(column=1, padx=10, row=0, sticky="w")
+        self.frame50.pack(
+            anchor="w",
+            expand="true",
+            fill="x",
+            padx="20 0",
+            side="top")
+        self.frame51 = ttk.Frame(self.frame49)
+        self.frame51.configure(height=200, width=200)
+        self.IF1_CAL_ON_OFF_SWITCH_WIDGET = ttk.Checkbutton(self.frame51)
+        self.IF1_CAL_ON_OFF_SWITCH = tk.StringVar()
+        self.IF1_CAL_ON_OFF_SWITCH_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            style="Checkbox4.TCheckbutton",
+            text='Enable IF1 Calibration Value',
+            variable=self.IF1_CAL_ON_OFF_SWITCH)
+        self.IF1_CAL_ON_OFF_SWITCH_WIDGET.pack(anchor="w", side="top")
+        self.IF1_CAL_ON_OFF_SWITCH_WIDGET.configure(
+            command=self.toggle_IF1_Calibration_Frame)
+        self.IF1_Calibration_Frame = ttk.Frame(self.frame51)
+        self.IF1_Calibration_Frame.configure(height=200, width=200)
+        self.label202 = ttk.Label(self.IF1_Calibration_Frame)
+        self.label202.configure(
+            style="Heading4.TLabel",
+            text='IF1 (45Mhz) Calibration: ')
+        self.label202.grid(column=0, row=0)
+        self.IF1_CAL_ADD_SUB_WIDGET = ttk.Checkbutton(
+            self.IF1_Calibration_Frame)
+        self.IF1_CAL_ADD_SUB = tk.StringVar()
+        self.IF1_CAL_ADD_SUB_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            style="Checkbox4.TCheckbutton",
+            text='Calibration is a Negative Value',
+            variable=self.IF1_CAL_ADD_SUB)
+        self.IF1_CAL_ADD_SUB_WIDGET.grid(column=1, row=1)
+        self.IF1_CAL_WIDGET = ttk.Entry(self.IF1_Calibration_Frame)
+        self.IF1_CAL = tk.StringVar()
+        self.IF1_CAL_WIDGET.configure(textvariable=self.IF1_CAL)
+        self.IF1_CAL_WIDGET.grid(column=1, row=0)
+        self.IF1_Calibration_Frame.pack(anchor="e", padx=70, side="top")
+        self.frame51.pack(anchor="w", padx="50 0", side="top")
+        self.frame49.pack(anchor="w", side="top")
+        self.Extensions_Frame.pack(
             anchor="w",
             expand="true",
             fill="both",
             padx=5,
             pady="15 10",
             side="top")
-        self.HW_ADJ_SF.pack(expand="true", fill="both", side="top")
-        self.settingsNotebook.add(self.HW_ADJ_SF, text='Extensions')
+        self.Extensions_SF.pack(expand="true", fill="both", side="top")
+        self.settingsNotebook.add(self.Extensions_SF, text='Extensions')
         self.Calibration_SF = ScrolledFrame(
             self.settingsNotebook, scrolltype="both")
         self.Calibration_SF.configure(usemousewheel=True)
@@ -4363,482 +5103,6 @@ class SettingsnotebookWidget(ttk.Frame):
         self.frame21.pack(anchor="w", padx=20, side="top")
         self.Calibration_SF.pack(side="top")
         self.settingsNotebook.add(self.Calibration_SF, text='Calibration')
-        self.WSPR_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
-        self.WSPR_SF.configure(usemousewheel=True)
-        self.frame22 = ttk.Frame(self.WSPR_SF.innerframe)
-        self.frame22.configure(height=200, width=200)
-        self.WSPR_Frame = ttk.Frame(self.frame22)
-        self.label6 = ttk.Label(self.WSPR_Frame)
-        self.label6.configure(
-            justify="center",
-            style="Heading2.TLabel",
-            text='WSPR Settings')
-        self.label6.grid(
-            column=0,
-            columnspan=5,
-            padx=5,
-            pady="15 25",
-            row=0,
-            sticky="n")
-        self.WSPR_Frame.pack(expand="true", fill="both", side="top")
-        self.frame34 = ttk.Frame(self.frame22)
-        self.frame34.configure(height=200, width=200)
-        self.frame35 = ttk.Frame(self.frame34)
-        self.frame35.configure(height=200, width=200)
-        self.label27 = ttk.Label(self.frame35)
-        self.label27.configure(
-            compound="top",
-            justify="left",
-            style="Heading3.TLabel",
-            text='Messages')
-        self.label27.pack()
-        self.frame35.pack(anchor="w", side="top")
-        self.frame36 = ttk.Frame(self.frame34)
-        self.frame36.configure(height=200, width=200)
-        self.label44 = ttk.Label(self.frame36)
-        self.label44.configure(style="Heading4.TLabel", text='Total Msgs')
-        self.label44.grid(
-            column=0,
-            columnspan=2,
-            padx="0 10",
-            pady="10 15",
-            row=0,
-            sticky="e")
-        self.WSPR_COUNT_WIDGET = ttk.Entry(self.frame36)
-        self.WSPR_COUNT = tk.StringVar()
-        self.WSPR_COUNT_WIDGET.configure(
-            justify="left",
-            style="Normal.TEntry",
-            textvariable=self.WSPR_COUNT,
-            validate="none",
-            width=3)
-        self.WSPR_COUNT_WIDGET.grid(
-            column=2,
-            padx="0 10",
-            pady="10 15",
-            row=0,
-            sticky="w")
-        self.label73 = ttk.Label(self.frame36)
-        self.label73.configure(style="Heading4.TLabel", text='Name')
-        self.label73.grid(column=1, padx="0 10", row=1)
-        self.label76 = ttk.Label(self.frame36)
-        self.label76.configure(style="Heading4.TLabel", text='WSPR Message')
-        self.label76.grid(column=3, padx="0 10", row=1, sticky="w")
-        self.label47 = ttk.Label(self.frame36)
-        self.label47.configure(style="Heading4.TLabel", text='1')
-        self.label47.grid(column=0, padx="0 10", pady=10, row=2, sticky="e")
-        self.WSPR_MESSAGE1_NAME_WIDGET = ttk.Entry(self.frame36)
-        self.WSPR_MESSAGE1_NAME = tk.StringVar()
-        self.WSPR_MESSAGE1_NAME_WIDGET.configure(
-            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE1_NAME, width=5)
-        self.WSPR_MESSAGE1_NAME_WIDGET.grid(column=1, padx="0 10", row=2)
-        self.button2 = ttk.Button(self.frame36)
-        self.button2.configure(style="Button3.TButton", text='Gen Msg')
-        self.button2.grid(column=2, padx="0 10", row=2)
-        self.WSPR_MESSAGE1_WIDGET = ttk.Entry(self.frame36)
-        self.WSPR_MESSAGE1 = tk.StringVar()
-        self.WSPR_MESSAGE1_WIDGET.configure(
-            justify="left",
-            style="Normal.TEntry",
-            textvariable=self.WSPR_MESSAGE1,
-            validate="none",
-            width=50)
-        self.WSPR_MESSAGE1_WIDGET.grid(
-            column=3, padx="0 10", row=2, sticky="w")
-        self.label48 = ttk.Label(self.frame36)
-        self.label48.configure(style="Heading4.TLabel", text='2')
-        self.label48.grid(column=0, padx="0 10", row=3, sticky="e")
-        self.WSPR_MESSAGE2_NAME_WIDGET = ttk.Entry(self.frame36)
-        self.WSPR_MESSAGE2_NAME = tk.StringVar()
-        self.WSPR_MESSAGE2_NAME_WIDGET.configure(
-            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE2_NAME, width=5)
-        self.WSPR_MESSAGE2_NAME_WIDGET.grid(column=1, padx="0 10", row=3)
-        self.button6 = ttk.Button(self.frame36)
-        self.button6.configure(style="Button3.TButton", text='Gen Msg')
-        self.button6.grid(column=2, padx="0 10", row=3)
-        self.WSPR_MESSAGE2_WIDGET = ttk.Entry(self.frame36)
-        self.WSPR_MESSAGE2 = tk.StringVar()
-        self.WSPR_MESSAGE2_WIDGET.configure(
-            justify="left",
-            style="Normal.TEntry",
-            textvariable=self.WSPR_MESSAGE2,
-            validate="none",
-            width=50)
-        self.WSPR_MESSAGE2_WIDGET.grid(
-            column=3, padx="0 10", row=3, sticky="w")
-        self.label50 = ttk.Label(self.frame36)
-        self.label50.configure(style="Heading4.TLabel", text='3')
-        self.label50.grid(column=0, padx="0 10", row=4, sticky="e")
-        self.WSPR_MESSAGE3_NAME_WIDGET = ttk.Entry(self.frame36)
-        self.WSPR_MESSAGE3_NAME = tk.StringVar()
-        self.WSPR_MESSAGE3_NAME_WIDGET.configure(
-            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE3_NAME, width=5)
-        self.WSPR_MESSAGE3_NAME_WIDGET.grid(column=1, padx="0 10", row=4)
-        self.button7 = ttk.Button(self.frame36)
-        self.button7.configure(style="Button3.TButton", text='Gen Msg')
-        self.button7.grid(column=2, padx="0 10", row=4)
-        self.WSPR_MESSAGE3_WIDGET = ttk.Entry(self.frame36)
-        self.WSPR_MESSAGE3 = tk.StringVar()
-        self.WSPR_MESSAGE3_WIDGET.configure(
-            justify="left",
-            style="Normal.TEntry",
-            textvariable=self.WSPR_MESSAGE3,
-            validate="none",
-            width=50)
-        self.WSPR_MESSAGE3_WIDGET.grid(
-            column=3, padx="0 10", row=4, sticky="w")
-        self.label51 = ttk.Label(self.frame36)
-        self.label51.configure(style="Heading4.TLabel", text='4')
-        self.label51.grid(column=0, padx="0 10", row=5, sticky="e")
-        self.WSPR_MESSAGE4_NAME_WIDGET = ttk.Entry(self.frame36)
-        self.WSPR_MESSAGE4_NAME = tk.StringVar()
-        self.WSPR_MESSAGE4_NAME_WIDGET.configure(
-            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE4_NAME, width=5)
-        self.WSPR_MESSAGE4_NAME_WIDGET.grid(column=1, padx="0 10", row=5)
-        self.button8 = ttk.Button(self.frame36)
-        self.button8.configure(style="Button3.TButton", text='Gen Msg')
-        self.button8.grid(column=2, padx="0 10", row=5)
-        self.WSPR_MESSAGE4_WIDGET = ttk.Entry(self.frame36)
-        self.WSPR_MESSAGE4 = tk.StringVar()
-        self.WSPR_MESSAGE4_WIDGET.configure(
-            justify="left",
-            style="Normal.TEntry",
-            textvariable=self.WSPR_MESSAGE4,
-            validate="none",
-            width=50)
-        self.WSPR_MESSAGE4_WIDGET.grid(
-            column=3, padx="0 10", row=5, sticky="w")
-        self.frame36.pack(anchor="w", padx="20 0", side="top")
-        self.frame34.pack(anchor="w", padx=20, side="top")
-        self.frame37 = ttk.Frame(self.frame22)
-        self.frame37.configure(height=200, width=200)
-        self.frame38 = ttk.Frame(self.frame37)
-        self.frame38.configure(height=200, width=200)
-        self.label62 = ttk.Label(self.frame38)
-        self.label62.configure(
-            compound="top",
-            justify="left",
-            style="Heading3.TLabel",
-            text='Bands')
-        self.label62.pack()
-        self.frame38.pack(anchor="w", side="top")
-        self.frame39 = ttk.Frame(self.frame37)
-        self.frame39.configure(height=200, width=200)
-        self.label64 = ttk.Label(self.frame39)
-        self.label64.configure(style="Heading4.TLabel", text='1')
-        self.label64.grid(column=0, padx="0 10", pady=10, row=1, sticky="e")
-        self.WSPR_BAND1_TXFREQ_WIDGET = ttk.Entry(self.frame39)
-        self.WSPR_BAND1_TXFREQ = tk.StringVar()
-        self.WSPR_BAND1_TXFREQ_WIDGET.configure(
-            justify="left",
-            style="Normal.TEntry",
-            textvariable=self.WSPR_BAND1_TXFREQ,
-            validate="none",
-            width=12)
-        self.WSPR_BAND1_TXFREQ_WIDGET.grid(column=2, row=1, sticky="w")
-        self.label78 = ttk.Label(self.frame39)
-        self.label78.configure(style="Heading4.TLabel", text='Hz')
-        self.label78.grid(column=3, padx="0 10", row=1, sticky="w")
-        self.button9 = ttk.Button(self.frame39)
-        self.button9.configure(
-            style="Button3.TButton",
-            text='Select Band and Freq')
-        self.button9.grid(column=4, padx="0 10", row=1)
-        self.label65 = ttk.Label(self.frame39)
-        self.label65.configure(style="Heading4.TLabel", text='2')
-        self.label65.grid(column=0, padx="0 10", row=2, sticky="e")
-        self.WSPR_BAND2_TXFREQ_WIDGET = ttk.Entry(self.frame39)
-        self.WSPR_BAND2_TXFREQ = tk.StringVar()
-        self.WSPR_BAND2_TXFREQ_WIDGET.configure(
-            justify="left",
-            style="Normal.TEntry",
-            textvariable=self.WSPR_BAND2_TXFREQ,
-            validate="none",
-            width=12)
-        self.WSPR_BAND2_TXFREQ_WIDGET.grid(column=2, row=2, sticky="w")
-        self.label80 = ttk.Label(self.frame39)
-        self.label80.configure(style="Heading4.TLabel", text='Hz')
-        self.label80.grid(column=3, padx="0 10", row=2, sticky="w")
-        self.button10 = ttk.Button(self.frame39)
-        self.button10.configure(
-            style="Button3.TButton",
-            text='Select Band and Freq')
-        self.button10.grid(column=4, padx="0 10", row=2)
-        self.label66 = ttk.Label(self.frame39)
-        self.label66.configure(style="Heading4.TLabel", text='3')
-        self.label66.grid(column=0, padx="0 10", row=3, sticky="e")
-        self.WSPR_BAND3_TXFREQ_WIDGET = ttk.Entry(self.frame39)
-        self.WSPR_BAND3_TXFREQ = tk.StringVar()
-        self.WSPR_BAND3_TXFREQ_WIDGET.configure(
-            justify="left",
-            style="Normal.TEntry",
-            textvariable=self.WSPR_BAND3_TXFREQ,
-            validate="none",
-            width=12)
-        self.WSPR_BAND3_TXFREQ_WIDGET.grid(column=2, row=3, sticky="w")
-        self.label82 = ttk.Label(self.frame39)
-        self.label82.configure(style="Heading4.TLabel", text='Hz')
-        self.label82.grid(column=3, padx="0 10", row=3, sticky="w")
-        self.button11 = ttk.Button(self.frame39)
-        self.button11.configure(
-            style="Button3.TButton",
-            text='Select Band and Freq')
-        self.button11.grid(column=4, padx="0 10", row=3)
-        self.frame39.pack(anchor="w", padx="20 0", side="top")
-        self.frame37.pack(anchor="w", padx=20, pady=20, side="top")
-        self.frame40 = ttk.Frame(self.frame22)
-        self.frame40.configure(height=200, width=200)
-        self.frame41 = ttk.Frame(self.frame40)
-        self.frame41.configure(height=200, width=200)
-        self.label86 = ttk.Label(self.frame41)
-        self.label86.configure(
-            compound="top",
-            justify="left",
-            style="Heading3.TLabel",
-            text='Calibration')
-        self.label86.pack()
-        self.frame41.pack(anchor="w", side="top")
-        self.frame42 = ttk.Frame(self.frame40)
-        self.frame42.configure(height=200, width=200)
-        self.label88 = ttk.Label(self.frame42)
-        self.label88.configure(style="Heading4.TLabel", text='X-TAL')
-        self.label88.grid(column=0, padx="0 10", pady=10, row=1, sticky="e")
-        self.entry25 = ttk.Entry(self.frame42)
-        self.entry25.configure(
-            justify="left",
-            style="Normal.TEntry",
-            validate="none",
-            width=12)
-        self.entry25.grid(column=2, row=1, sticky="w")
-        self.label90 = ttk.Label(self.frame42)
-        self.label90.configure(style="Normal.TLabel", text='Hz')
-        self.label90.grid(column=3, padx="0 10", row=1, sticky="w")
-        self.label137 = ttk.Label(self.frame42)
-        self.label137.configure(style="Heading4.TLabel", text='Calibration')
-        self.label137.grid(column=0, padx="0 10", row=2, sticky="e")
-        self.entry26 = ttk.Entry(self.frame42)
-        self.entry26.configure(
-            justify="left",
-            style="Normal.TEntry",
-            validate="none",
-            width=12)
-        self.entry26.grid(column=2, row=2, sticky="w")
-        self.label138 = ttk.Label(self.frame42)
-        self.label138.configure(style="Normal.TLabel", text='Hz')
-        self.label138.grid(column=3, padx="0 10", row=2, sticky="w")
-        self.message2 = tk.Message(self.frame42)
-        self.message2.configure(
-            text='Correct the calibration value according to the WSPR result (example: 147000, 145000)',
-            width=300)
-        self.message2.grid(column=4, row=2)
-        self.frame42.pack(anchor="w", padx="20 0", side="top")
-        self.frame40.pack(anchor="w", padx=20, pady=20, side="top")
-        self.frame22.pack(anchor="w", padx=5, pady=5, side="top")
-        self.WSPR_SF.pack(side="top")
-        self.settingsNotebook.add(self.WSPR_SF, text='WSPR')
-        self.SDR_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
-        self.SDR_SF.configure(usemousewheel=True)
-        self.frame13 = ttk.Frame(self.SDR_SF.innerframe)
-        self.frame13.configure(height=200, width=200)
-        self.SDR_Label_Frame = ttk.Frame(self.frame13)
-        self.label7 = ttk.Label(self.SDR_Label_Frame)
-        self.label7.configure(
-            justify="center",
-            style="Heading2.TLabel",
-            text='SDR Settings')
-        self.label7.pack(anchor="w", padx=5, pady="15 25", side="top")
-        self.SDR_Label_Frame.pack(
-            anchor="n",
-            expand="true",
-            fill="x",
-            padx=5,
-            pady=5,
-            side="top")
-        self.frame14 = ttk.Frame(self.frame13)
-        self.label23 = ttk.Label(self.frame14)
-        self.label23.configure(
-            style="Heading4.TLabel",
-            text='SDR Frequency Mode')
-        self.label23.grid(
-            column=1,
-            columnspan=2,
-            padx=10,
-            pady="0 5",
-            row=4,
-            sticky="e")
-        self.SDR_OFFSET_MODE = tk.StringVar(value='NONE')
-        __values = ['NONE', 'FIXED', 'MHZ', 'KHZ']
-        self.SDR_OFFSET_MODE_WIDGET = ttk.OptionMenu(
-            self.frame14, self.SDR_OFFSET_MODE, "NONE", *__values, command=None)
-        self.SDR_OFFSET_MODE_WIDGET.grid(
-            column=3, padx="0 20", pady="0 5", row=4)
-        self.message1 = tk.Message(self.frame14)
-        self.message1.configure(justify="left", relief="raised", text="NONE:\tNo offset is provided to the data send to the \n\tSDR\n\nFIXED:\tThe SDR offset frequency is added to the\n\tfrequency on the display and sent to the SDR\n\nMHZ:\tThe single MHZ digit of the radio's frequency is\n\tadded. For example, if the radio was at\n\t14.032.000, and the offset was at 30.000.000,\n\tthe resulting frequency would be 43.032.000.\n\nKHZ:\tSimilar to MHZ_OFFSET, but using the KHZ\n\tnumber. So with a 30.000.000 offset and and \n\ta 14.032.000 radio setting, the SDR will see \n\ta 30.032.000 frequency.", width=300)
-        self.message1.grid(column=3, columnspan=2, row=5, sticky="ne")
-        self.label24 = ttk.Label(self.frame14)
-        self.label24.configure(
-            justify="left",
-            style="Heading4.TLabel",
-            text='Offset Frequency (mhz)')
-        self.label24.grid(
-            column=1,
-            columnspan=2,
-            padx=10,
-            pady="20 0",
-            row=6,
-            sticky="e")
-        self.SDR_FREQUENCY_WIDGET = ttk.Entry(self.frame14)
-        self.SDR_FREQUENCY = tk.StringVar()
-        self.SDR_FREQUENCY_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.SDR_FREQUENCY,
-            validate="focus",
-            width=10)
-        self.SDR_FREQUENCY_WIDGET.grid(
-            column=3, pady="20 0", row=6, sticky="w")
-        self.BOOT_INTO_SDR_MODE_WIDGET = ttk.Checkbutton(self.frame14)
-        self.BOOT_INTO_SDR_MODE = tk.StringVar()
-        self.BOOT_INTO_SDR_MODE_WIDGET.configure(
-            offvalue="NORMAL",
-            onvalue="SDR",
-            style="Checkbox4.TCheckbutton",
-            text='Boot into SDR Mode',
-            variable=self.BOOT_INTO_SDR_MODE)
-        self.BOOT_INTO_SDR_MODE_WIDGET.grid(
-            column=1, columnspan=4, padx=8, pady=20, row=7, sticky="w")
-        self.frame14.pack(
-            anchor="center",
-            expand="false",
-            fill="x",
-            padx=20,
-            side="top")
-        self.frame14.grid_anchor("nw")
-        self.frame13.pack(
-            anchor="n",
-            expand="true",
-            fill="x",
-            padx=5,
-            pady=5,
-            side="top")
-        self.SDR_SF.pack(side="top")
-        self.settingsNotebook.add(self.SDR_SF, text='SDR')
-        self.LCD_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
-        self.LCD_SF.configure(usemousewheel=True)
-        self.frame24 = ttk.Frame(self.LCD_SF.innerframe)
-        self.frame24.configure(height=200, width=200)
-        self.LCD_Frame = ttk.Frame(self.frame24)
-        self.label8 = ttk.Label(self.LCD_Frame)
-        self.label8.configure(
-            justify="center",
-            style="Heading2.TLabel",
-            text='Settings for LCD Displays')
-        self.label8.pack(anchor="w", padx=5, pady="15 25", side="top")
-        self.LCD_Frame.pack(anchor="w", side="top")
-        self.frame25 = ttk.Frame(self.frame24)
-        self.frame25.configure(height=200, width=200)
-        self.frame2 = ttk.Frame(self.frame25)
-        self.label22 = ttk.Label(self.frame2)
-        self.label22.configure(
-            relief="flat",
-            style="Heading3.TLabel",
-            text='LCD Addresses')
-        self.label22.grid(
-            column=0,
-            columnspan=2,
-            padx=5,
-            pady="20 0",
-            row=2,
-            sticky="ew")
-        self.label28 = ttk.Label(self.frame2)
-        self.label28.configure(style="Normal.TLabel", text='Master I2C LCD')
-        self.label28.grid(column=1, padx="75 5", row=4, sticky="w")
-        self.I2C_LCD_MASTER_WIDGET = ttk.Entry(self.frame2)
-        self.I2C_LCD_MASTER = tk.StringVar()
-        self.I2C_LCD_MASTER_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.I2C_LCD_MASTER,
-            validate="focusin",
-            width=10)
-        self.I2C_LCD_MASTER_WIDGET.grid(
-            column=3, padx="0 5", row=4, sticky="w")
-        self.label32 = ttk.Label(self.frame2)
-        self.label32.configure(
-            style="Normal.TLabel",
-            text='Secondary I2C LCD\nDual LCD Config')
-        self.label32.grid(column=1, padx="75 10", row=6, sticky="w")
-        self.I2C_LCD_SECOND_WIDGET = ttk.Entry(self.frame2)
-        self.I2C_LCD_SECOND = tk.StringVar()
-        self.I2C_LCD_SECOND_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.I2C_LCD_SECOND,
-            validate="focus",
-            width=10)
-        self.I2C_LCD_SECOND_WIDGET.grid(column=3, row=6, sticky="w")
-        self.button3 = ttk.Button(self.frame2)
-        self.button3.configure(style="Button4.TButton", text='I2C Scanner')
-        self.button3.grid(column=4, padx=25, row=5, sticky="e")
-        self.button3.configure(command=self.runI2CScanner)
-        self.frame2.pack(anchor="w", side="top")
-        self.frame2.grid_anchor("nw")
-        self.frame11 = ttk.Frame(self.frame25)
-        self.label9 = ttk.Label(self.frame11)
-        self.label9.configure(
-            relief="flat",
-            style="Heading3.TLabel",
-            text='LCD User Interface Customization')
-        self.label9.grid(
-            column=0,
-            columnspan=2,
-            padx=5,
-            pady="20 0",
-            row=2,
-            sticky="ew")
-        self.SCROLLING_DISPLAY_WIDGET = ttk.Checkbutton(self.frame11)
-        self.SCROLLING_DISPLAY = tk.StringVar()
-        self.SCROLLING_DISPLAY_WIDGET.configure(
-            offvalue="NO",
-            onvalue="YES",
-            style="CheckboxNormal.TCheckbutton",
-            text='When displayed, continuously scroll VFO-B line left to display more info',
-            variable=self.SCROLLING_DISPLAY)
-        self.SCROLLING_DISPLAY_WIDGET.grid(
-            column=0, padx=75, row=5, sticky="w")
-        self.MESSAGE_LINE_WIDGET = ttk.Checkbutton(self.frame11)
-        self.MESSAGE_LINE = tk.StringVar()
-        self.MESSAGE_LINE_WIDGET.configure(
-            offvalue="NO",
-            onvalue="YES",
-            style="CheckboxNormal.TCheckbutton",
-            text='Do not display VFO-B. Reserve its line for messages (e.g., CW Keyer). Overides above scrolling option.',
-            variable=self.MESSAGE_LINE)
-        self.MESSAGE_LINE_WIDGET.grid(column=0, padx=75, row=6, sticky="w")
-        self.ONE_TWO_LINE_TOGGLE_WIDGET = ttk.Checkbutton(self.frame11)
-        self.ONE_TWO_LINE_TOGGLE = tk.StringVar()
-        self.ONE_TWO_LINE_TOGGLE_WIDGET.configure(
-            offvalue="NO",
-            onvalue="YES",
-            style="CheckboxNormal.TCheckbutton",
-            text='Put VFO-A on top line',
-            variable=self.ONE_TWO_LINE_TOGGLE)
-        self.ONE_TWO_LINE_TOGGLE_WIDGET.grid(
-            column=0, padx=75, row=4, sticky="w")
-        self.label11 = ttk.Label(self.frame11)
-        self.label11.configure(
-            relief="flat",
-            state="normal",
-            style="Normal.TLabel",
-            text='The default display is for VFO-A and its Mode to be on second line and the top line is used for VFO-B and other info. These checkboxes allow you to customize this display.',
-            wraplength=550)
-        self.label11.grid(column=0, padx=50, pady="5 10", row=3, sticky="w")
-        self.frame11.pack(anchor="w", pady=5, side="top")
-        self.frame11.grid_anchor("nw")
-        self.frame25.pack(anchor="w", padx=20, side="top")
-        self.frame24.pack(anchor="w", padx=5, pady=5, side="top")
-        self.LCD_SF.pack(side="top")
-        self.settingsNotebook.add(self.LCD_SF, text='LCD Displays')
         self.System_Info_SF = ScrolledFrame(
             self.settingsNotebook, scrolltype="both")
         self.System_Info_SF.configure(usemousewheel=True)
@@ -4879,13 +5143,13 @@ class SettingsnotebookWidget(ttk.Frame):
         self.System_Info_Factory_Calibration_Label = ttk.Label(
             self.System_Info_Calibration_Settings)
         self.System_Info_Factory_Calibration_Label.configure(
-            style="Heading3.TLabel", text='Factory Calibration Data')
+            style="Heading3.TLabel", text='Factory Data')
         self.System_Info_Factory_Calibration_Label.grid(
             column=0, columnspan=3, row=0, sticky="w")
         self.System_Info_Factory_Calibration_Master_Label = ttk.Label(
             self.System_Info_Calibration_Settings)
         self.System_Info_Factory_Calibration_Master_Label.configure(
-            style="Heading4.TLabel", text='Master:')
+            style="Heading4.TLabel", text='Master Calibration:')
         self.System_Info_Factory_Calibration_Master_Label.grid(
             column=1, padx="75 50", row=2, sticky="e")
         self.System_Info_MASTER_CAL_WIDGET = ttk.Label(
@@ -4898,7 +5162,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.System_Info_Factory_Calibration_BFO_Label = ttk.Label(
             self.System_Info_Calibration_Settings)
         self.System_Info_Factory_Calibration_BFO_Label.configure(
-            style="Heading4.TLabel", text='SSB BFO:')
+            style="Heading4.TLabel", text='SSB BFO Calibration:')
         self.System_Info_Factory_Calibration_BFO_Label.grid(
             column=1, padx="75 50", pady="0 3", row=3, sticky="e")
         self.System_Info_USB_CAL_WIDGET = ttk.Label(
@@ -4906,6 +5170,35 @@ class SettingsnotebookWidget(ttk.Frame):
         self.System_Info_USB_CAL_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.FACTORY_VALUES_USB_CAL)
         self.System_Info_USB_CAL_WIDGET.grid(column=2, row=3, sticky="e")
+        self.label171 = ttk.Label(self.System_Info_Calibration_Settings)
+        self.label171.configure(style="Heading4.TLabel", text='CW Sidetone:')
+        self.label171.grid(
+            column=1,
+            padx="75 50",
+            pady="0 3",
+            row=4,
+            sticky="e")
+        self.FACTORY_VALUES_CW_SIDETONE_WIDGET = ttk.Label(
+            self.System_Info_Calibration_Settings)
+        self.FACTORY_VALUES_CW_SIDETONE = tk.StringVar()
+        self.FACTORY_VALUES_CW_SIDETONE_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.FACTORY_VALUES_CW_SIDETONE)
+        self.FACTORY_VALUES_CW_SIDETONE_WIDGET.grid(
+            column=2, row=4, sticky="e")
+        self.label184 = ttk.Label(self.System_Info_Calibration_Settings)
+        self.label184.configure(style="Heading4.TLabel", text='CW Speed:')
+        self.label184.grid(
+            column=1,
+            padx="75 50",
+            pady="0 3",
+            row=5,
+            sticky="e")
+        self.FACTORY_VALUES_CW_SPEED_WIDGET = ttk.Label(
+            self.System_Info_Calibration_Settings)
+        self.FACTORY_VALUES_CW_SPEED = tk.StringVar()
+        self.FACTORY_VALUES_CW_SPEED_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.FACTORY_VALUES_CW_SPEED)
+        self.FACTORY_VALUES_CW_SPEED_WIDGET.grid(column=2, row=5, sticky="e")
         self.System_Info_Calibration_Settings.pack(
             anchor="w", pady="20 0", side="top")
         self.System_Info_VFO_Frame = ttk.Frame(self.frame27)
@@ -5170,6 +5463,40 @@ class SettingsnotebookWidget(ttk.Frame):
         self.System_Info_VFO_Frame.grid_anchor("nw")
         self.frame27.pack(anchor="w", padx=20, side="top")
         self.frame26.pack(anchor="w", padx=5, pady=5, side="top")
+        self.SYSTEM_INFO_HIDDEN_Frame = ttk.Frame(
+            self.System_Info_SF.innerframe)
+        self.SYSTEM_INFO_HIDDEN_Frame.configure(height=200, width=200)
+        self.FIRMWARE_ID_ADDR1_WIDGET = ttk.Label(
+            self.SYSTEM_INFO_HIDDEN_Frame)
+        self.FIRMWARE_ID_ADDR1 = tk.StringVar()
+        self.FIRMWARE_ID_ADDR1_WIDGET.configure(
+            textvariable=self.FIRMWARE_ID_ADDR1)
+        self.FIRMWARE_ID_ADDR1_WIDGET.pack(side="top")
+        self.FIRMWARE_ID_ADDR2_WIDGET = ttk.Label(
+            self.SYSTEM_INFO_HIDDEN_Frame)
+        self.FIRMWARE_ID_ADDR2 = tk.StringVar()
+        self.FIRMWARE_ID_ADDR2_WIDGET.configure(
+            relief="flat", textvariable=self.FIRMWARE_ID_ADDR2)
+        self.FIRMWARE_ID_ADDR2_WIDGET.pack(side="top")
+        self.FIRMWARE_ID_ADDR3_WIDGET = ttk.Label(
+            self.SYSTEM_INFO_HIDDEN_Frame)
+        self.FIRMWARE_ID_ADDR3 = tk.StringVar()
+        self.FIRMWARE_ID_ADDR3_WIDGET.configure(
+            textvariable=self.FIRMWARE_ID_ADDR3)
+        self.FIRMWARE_ID_ADDR3_WIDGET.pack(side="top")
+        self.FACTORY_VALUES_VFO_A_WIDGET = ttk.Label(
+            self.SYSTEM_INFO_HIDDEN_Frame)
+        self.FACTORY_VALUES_VFO_A = tk.StringVar()
+        self.FACTORY_VALUES_VFO_A_WIDGET.configure(
+            textvariable=self.FACTORY_VALUES_VFO_A)
+        self.FACTORY_VALUES_VFO_A_WIDGET.pack(side="top")
+        self.FACTORY_VALUES_VFO_B_WIDGET = ttk.Label(
+            self.SYSTEM_INFO_HIDDEN_Frame)
+        self.FACTORY_VALUES_VFO_B = tk.StringVar()
+        self.FACTORY_VALUES_VFO_B_WIDGET.configure(
+            textvariable=self.FACTORY_VALUES_VFO_B)
+        self.FACTORY_VALUES_VFO_B_WIDGET.pack(side="top")
+        self.SYSTEM_INFO_HIDDEN_Frame.pack(side="top")
         self.System_Info_SF.pack(expand="true", fill="both", side="top")
         self.settingsNotebook.add(self.System_Info_SF, text='System Info')
         self.settingsNotebook.pack(
@@ -5275,6 +5602,9 @@ class SettingsnotebookWidget(ttk.Frame):
         style.configure('Highlight.TFrame', background='blue', bd=4)
         style.configure('Normal.TFrame', background='gray', bd=4)
 
+        style.configure('Fixed.TNotebook')
+        style.configure('Fixed.TNotebook.Tab', padding=[5, 2])
+
     def validate_USER_CALLSIGN(self, p_entry_value, v_condition):
         pass
 
@@ -5306,6 +5636,91 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def validate_CW_DELAY_MS(self, p_entry_value, v_condition):
+        pass
+
+    def toggle_IF1_Calibration_Frame(self):
+        pass
+
+    def validate_QSO_CALLSIGN(self, p_entry_value, v_condition):
+        pass
+
+    def validate_CW_Message_Change(
+            self, p_entry_value, v_condition, w_entry_name):
+        pass
+
+    def CW_Auto_Msg_Cleanup_CB(self):
+        pass
+
+    def validate_HAM_BAND_COUNT(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE1_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE1_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE2_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE2_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE3_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE3_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE4_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE4_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE5_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE5_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE6_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE6_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE7_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE7_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE8_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE8_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE9_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE9_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE10_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_HAM_BAND_RANGE10_END(self, p_entry_value, v_condition):
+        pass
+
+    def autoInputRegion1(self):
+        pass
+
+    def autoInputRegion2(self):
+        pass
+
+    def autoInputRegion3(self):
         pass
 
     def validate_CHANNEL_FREQ1_NAME(self, p_entry_value, v_condition):
@@ -5404,86 +5819,19 @@ class SettingsnotebookWidget(ttk.Frame):
     def validate_CHANNEL_FREQ20(self, p_entry_value, v_condition):
         pass
 
-    def validate_QSO_CALLSIGN(self, p_entry_value, v_condition):
+    def runWSPRMsg1Gen_CB(self):
         pass
 
-    def validate_CW_Message_Change(
-            self, p_entry_value, v_condition, w_entry_name):
+    def runWSPRMsg2Gen_CB(self):
         pass
 
-    def CW_Auto_Msg_Cleanup_CB(self):
+    def runWSPRMsg3Gen_CB(self):
         pass
 
-    def validate_HAM_BAND_COUNT(self, p_entry_value, v_condition):
+    def runWSPRMsg4Gen_CB(self):
         pass
 
-    def validate_HAM_BAND_RANGE1_START(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE1_END(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE2_START(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE2_END(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE3_START(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE3_END(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE4_START(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE4_END(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE5_START(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE5_END(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE6_START(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE6_END(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE7_START(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE7_END(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE8_START(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE8_END(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE9_START(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE9_END(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE10_START(self, p_entry_value, v_condition):
-        pass
-
-    def validate_HAM_BAND_RANGE10_END(self, p_entry_value, v_condition):
-        pass
-
-    def autoInputRegion1(self):
-        pass
-
-    def autoInputRegion2(self):
-        pass
-
-    def autoInputRegion3(self):
+    def runI2CScanner(self):
         pass
 
     def validate_EXTENDED_KEY_START(self, p_entry_value, v_condition):
@@ -5613,9 +5961,6 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def runSmeterAssistant(self):
-        pass
-
-    def runI2CScanner(self):
         pass
 
 

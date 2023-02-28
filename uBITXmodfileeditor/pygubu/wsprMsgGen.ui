@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.3">
+  <object class="tk.Toplevel" id="toplevel1">
+    <property name="height">200</property>
+    <property name="resizable">both</property>
+    <property name="title" translatable="yes">Create WSPR Tone Code</property>
+    <property name="width">600</property>
+    <child>
+      <object class="ttk.Frame" id="WSPR_MSG_GEN_Frame" named="True">
+        <property name="height">200</property>
+        <property name="width">800</property>
+        <layout manager="pack">
+          <property name="anchor">center</property>
+          <property name="expand">true</property>
+          <property name="fill">both</property>
+          <property name="side">top</property>
+        </layout>
+        <containerlayout manager="grid">
+          <property type="col" id="0" name="weight">2</property>
+          <property type="col" id="1" name="weight">2</property>
+        </containerlayout>
+        <child>
+          <object class="ttk.Frame" id="frame2">
+            <property name="height">200</property>
+            <property name="width">50</property>
+            <layout manager="pack">
+              <property name="padx">10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Frame" id="frame1">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="pady">5 10</property>
+                  <property name="row">0</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label1">
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">Callsign</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">0 5</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="entry1">
+                    <property name="style">Normal.TEntry</property>
+                    <property name="textvariable">string:callsign</property>
+                    <property name="width">11</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">0 10</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label2">
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">Grid</property>
+                    <layout manager="grid">
+                      <property name="column">2</property>
+                      <property name="padx">0 5</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="entry2">
+                    <property name="style">Normal.TEntry</property>
+                    <property name="textvariable">string:gridSq</property>
+                    <property name="width">4</property>
+                    <layout manager="grid">
+                      <property name="column">3</property>
+                      <property name="padx">0 10</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label3">
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">dbm</property>
+                    <layout manager="grid">
+                      <property name="column">4</property>
+                      <property name="padx">0 5</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="entry3">
+                    <property name="style">Normal.TEntry</property>
+                    <property name="text" translatable="yes">10</property>
+                    <property name="textvariable">string:dbm</property>
+                    <property name="width">3</property>
+                    <layout manager="grid">
+                      <property name="column">5</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame3">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="pady">0 5</property>
+                  <property name="row">1</property>
+                </layout>
+                <child>
+                  <object class="ttk.Button" id="button1">
+                    <property name="command" type="command" cbtype="simple">WSPR_Msg_Gen_Button</property>
+                    <property name="style">Normal.TButton</property>
+                    <property name="text" translatable="yes">Generate WSPR Message</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">0 10</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="button2">
+                    <property name="command" type="command" cbtype="simple">WSPR_Msg_Gen_Cancel_Button</property>
+                    <property name="style">Normal.TButton</property>
+                    <property name="text" translatable="yes">Cancel</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

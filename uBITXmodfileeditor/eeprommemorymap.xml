@@ -4,19 +4,19 @@
 	Firmware identification
 	***************************************************************************************************** 
 -->	
-	<SETTING NAME="FIRMWAR_ID_ADDR1">					
+	<SETTING NAME="FIRMWARE_ID_ADDR1">
 		<EEPROMStart>776</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>int</displayFormat>									
 		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
 	</SETTING>
-	<SETTING NAME="FIRMWAR_ID_ADDR2">					
+	<SETTING NAME="FIRMWARE_ID_ADDR2">
 		<EEPROMStart>777</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>int</displayFormat>									
 		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
 	</SETTING>
-	<SETTING NAME="FIRMWAR_ID_ADDR3">					
+	<SETTING NAME="FIRMWARE_ID_ADDR3">
 		<EEPROMStart>778</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>int</displayFormat>									

@@ -11,17 +11,17 @@
 	Firmware identification field - Read only
 	***************************************************************************************************** 
 -->	
-	<SETTING NAME="FIRMWAR_ID_ADDR1">					
+	<SETTING NAME="FIRMWARE_ID_ADDR1">
 		<label>FIRMWAR_ID_ADDR1</label>
 		<value></value>							<!--0x59-->
 		<tooltip></tooltip>
 	</SETTING>
-	<SETTING NAME="FIRMWAR_ID_ADDR2">					
+	<SETTING NAME="FIRMWARE_ID_ADDR2">
 		<label>FIRMWAR_ID_ADDR2</label>
 		<value></value>							<!--0x58-->
 		<tooltip></tooltip>		
 	</SETTING>
-	<SETTING NAME="FIRMWAR_ID_ADDR3">					
+	<SETTING NAME="FIRMWARE_ID_ADDR3">
 		<label>FIRMWAR_ID_ADDR3</label>
 		<value></value>							<!--0x68-->
 		<tooltip></tooltip>
@@ -92,7 +92,7 @@
 	<SETTING NAME="IF1_CAL_ON_OFF_SWITCH">		<!--Enables calibration of IF -->
 		<label>Enable IF1_CAL?</label>
 		<value></value>							<!--either YES or NO-->
-		<tooltip>Enable if you find you are often adjusting the IF on your radio</tooltip>
+		<tooltip>Check if you find you are often adjusting the IF on your radio</tooltip>
 	</SETTING>	
 	<SETTING NAME="IF1_CAL">							
 		<label>IF1 Calibration Factor</label>
@@ -102,7 +102,7 @@
 	<SETTING NAME="IF1_CAL_ADD_SUB">
 		<label>Subtract IF1 Calibration Factor?</label>
 		<value></value>							<!--either YES or NO To subtract calibration, set this value to YES -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Check if Calibration factor is to be SUBTRACTED</tooltip>
 	</SETTING>
 <!-- 
 	*****************************************************************************************************
@@ -1118,7 +1118,7 @@
 	<SETTING NAME="WSPR_MESSAGE1">							
 		<label>Encoded MSG1:</label>  
 		<value></value>								<!--Generate using uBITX Manager for now -->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="WSPR_MESSAGE2_NAME">							
 		<label>Name</label>
@@ -1128,7 +1128,7 @@
 	<SETTING NAME="WSPR_MESSAGE2">							
 		<label>Encoded MSG2:</label>  
 		<value></value>								<!--Generate using uBITX Manager for now -->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="WSPR_MESSAGE3_NAME">							
 		<label>Name</label>
@@ -1138,7 +1138,7 @@
 	<SETTING NAME="WSPR_MESSAGE3">							
 		<label>Encoded MSG3:</label>  
 		<value></value>								<!--Generate using uBITX Manager for now -->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="WSPR_MESSAGE4_NAME">							
 		<label>Name</label>
@@ -1148,7 +1148,7 @@
 	<SETTING NAME="WSPR_MESSAGE4">							
 		<label>Encoded MSG4:</label>  
 		<value></value>								<!--Generate using uBITX Manager for now -->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING>
 <!-- 	
 	*****************************************************************************************************
@@ -1269,12 +1269,12 @@ GENERAL UX
 	<SETTING NAME="STORED_IF_SHIFT">
 		<label>Preserve IF Shift?</label>
 		<value></value>											<!--either YES or NO. YES allows IF Shift value to be reused between boots -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Checking allows you to set an IF shift value that is maintained across reboots</tooltip>
 	</SETTING>
 	<SETTING NAME="IF_SHIFTVALUE">							
 		<label>Shift hz (+/-)</label>
 		<value></value>											<!-- 10,000 to -9999hz-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Set to your preferred IF Shift value. Valid values are between -9,999hz and 10,000hz</tooltip>
 	</SETTING>
 	
 	<SETTING NAME="CW_DISPLAY_FREQ">
@@ -1282,7 +1282,7 @@ GENERAL UX
 		<value></value>											<!--Select TX to have display show the actual TX frequency when sending CW
 																	Select RX to have the display show the actual RX frequency when sending CW
 																	See http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html  -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Select whether your VFO displays the TX or RX Frequency while in CW mode</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_FREQUENCY_ADJUSTMENT">
 		<label>CW Freq Adjust Value</label>						<!--Extra adjustment to the displayed frequency. 0-600 -->

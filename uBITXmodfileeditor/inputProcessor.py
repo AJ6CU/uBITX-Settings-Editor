@@ -63,7 +63,7 @@ class InputProcessor(Processor):
                 sys.exit(-1)
 
 
-        self.log.println("timestamp", "Loading Settings into uBITX Memory Manager")
+        self.log.println("timestamp", "Loading Settings into uBITX Settings Editor")
 
         #   Having built the tree, we can load it into the Notebook widget
         self.settingsNotebook.setNotebook(self.UserModroot)         #update notebook widget with settings
@@ -94,7 +94,7 @@ class InputProcessor(Processor):
             self.UserModroot = self.eepromCom.decode()
 
 
-            self.log.println("timestamp", "Loading Settings into uBITX Memory Manager")
+            self.log.println("timestamp", "Loading Settings into uBITX Settings Editor")
 
             #   Having built the tree, we can load it into the Notebook widget
             self.settingsNotebook.setNotebook(self.UserModroot)         #update notebook widget with settings

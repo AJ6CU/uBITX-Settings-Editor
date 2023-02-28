@@ -67,13 +67,13 @@ class eepromObj:
     #         #***********************************
     #         #   Firmware validation and factory defaults
     #         #***********************************
-        def FIRMWAR_ID_ADDR1(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        def FIRMWARE_ID_ADDR1(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
 
-        def FIRMWAR_ID_ADDR2(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        def FIRMWARE_ID_ADDR2(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
 
-        def FIRMWAR_ID_ADDR3(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+        def FIRMWARE_ID_ADDR3(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
 
         def VERSION_ADDRESS(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
@@ -1279,13 +1279,13 @@ class eepromObj:
     #         #   Firmware validation and factory defaults
     #         #***********************************
 
-        def FIRMWAR_ID_ADDR1(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+        def FIRMWARE_ID_ADDR1(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue,16))
 
-        def FIRMWAR_ID_ADDR2(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+        def FIRMWARE_ID_ADDR2(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue,16))
 
-        def FIRMWAR_ID_ADDR3(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+        def FIRMWARE_ID_ADDR3(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue,16))
 
         def VERSION_ADDRESS(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
@@ -1342,6 +1342,8 @@ class eepromObj:
 
 
         def IF1_CAL(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            if userSettingValue == '':
+                userSettingValue = 0            # protect against an empty field
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, int(userSettingValue))
 
 

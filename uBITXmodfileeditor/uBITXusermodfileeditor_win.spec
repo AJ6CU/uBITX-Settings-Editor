@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(
-    ['uBITXusermodfileeditor.py'],
+    ['uBITX_Settings_Editor.py'],
     pathex=[],
     binaries=[],
     datas=[('img_red-arrow-pointing-left59x36.png','.'),('img_red-arrow-pointing-right59x36.png','.'),('eeprommemorymap.xml','.'), ('usermodfiletemplate.xml','.'),('help.xml','.'), ('about.xml','.'), ('img_Custom-125x80.png','.'),('img_sample1-125x80.png','.'),('img_sample2-125x80.png','.'),('img_sample3-125x80.png','.'),('img_sample4-125x80.png','.'),('img_sample5-125x80.png','.'),('img_sample6-125x80.png','.'),('img_sample7-125x80.png','.')],
