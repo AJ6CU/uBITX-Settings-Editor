@@ -43,31 +43,31 @@
 -->
     <SETTING NAME="FACTORY_VALUES_MASTER_CAL">
         <label>Mster Calibration (Factory)</label>
-        <value>-1</value>
+        <value>85351</value>
         <tooltip></tooltip>
     </SETTING>
     <SETTING NAME="FACTORY_VALUES_USB_CAL">
         <label>BFO (USB) Calibration (Factory)</label>
-        <value>4294967295</value>
+        <value>11056992</value>
         <tooltip></tooltip>
     </SETTING>
     <SETTING NAME="FACTORY_VALUES_VFO_A">
         <label>VFO A Saved Frequency (Factory)</label>
-        <value>4294967295</value>
+        <value>14032000</value>
         <tooltip></tooltip>
     </SETTING>
     <SETTING NAME="FACTORY_VALUES_VFO_B">
         <label>VFO B Saved Frequency (Factory)</label>
-        <value>4294967295</value>
+        <value>14032000</value>
         <tooltip></tooltip>
     </SETTING>
     <SETTING NAME="FACTORY_VALUES_CW_SIDETONE">
         <label>CW Sidetone (Factory)</label>
-        <value>4294967295</value>
+        <value>700</value>
         <tooltip></tooltip>
     </SETTING>
     <SETTING NAME="FACTORY_VALUES_CW_SPEED">
-        <value>5</value>
+        <value>15</value>
         <label>CW Speed (Factory)</label>
         <tooltip></tooltip>
     </SETTING>
@@ -78,19 +78,19 @@
 -->
     <SETTING NAME="MASTER_CAL">
         <label>Master Calibration</label>
-        <value>15105</value>
+        <value>85351</value>
         <!--every radio is unique but often around 161875-->
         <tooltip>Adjusts radio frequency to correct for hardware differences</tooltip>
     </SETTING>
     <SETTING NAME="USB_CAL">
         <label>BFO (USB) Calibration</label>
         <!--previously called USB Calibration. Often around 11996450-->
-        <value>11056937</value>
+        <value>11056992</value>
         <tooltip>Adjusts BFO for best SSB reception. See HF Signals V6 Calibration video</tooltip>
     </SETTING>
     <SETTING NAME="CW_CAL">
         <label>CW BFO Calibration</label>
-        <value>11056870</value>
+        <value>11056960</value>
         <!--CW calibration factor, typically within a few khz of USB callibration-->
         <tooltip>Adjusts BFO for best CW reception. See HF Signals V6 Calibration video</tooltip>
     </SETTING>
@@ -120,7 +120,7 @@
 -->
     <SETTING NAME="VFO_A">
         <label>VFO A Last Used Freq</label>
-        <value>14.040.400</value>
+        <value>14.030.100</value>
         <!--The last frequency used on VFO A - Read Only-->
         <tooltip></tooltip>
     </SETTING>
@@ -151,37 +151,37 @@
         <label>Default Step#</label>
         <value>3</value>
         <!--Default tuning step on boot. 1-5 -->
-        <tooltip>to be added</tooltip>
+        <tooltip>Select the default tuning step</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP1">
         <label>Step #1</label>
         <value>1</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
-        <tooltip>to be added</tooltip>
+        <tooltip>Tuning step - leftmost 2 digits *must* be between 1 - 60</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP2">
         <label>Step #2</label>
         <value>10</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
-        <tooltip>to be added</tooltip>
+        <tooltip>Tuning step - leftmost 2 digits *must* be between 1 - 60</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP3">
         <label>Step #3</label>
         <value>100</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
-        <tooltip>to be added</tooltip>
+        <tooltip>Tuning step - leftmost 2 digits *must* be between 1 - 60</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP4">
         <label>Step #4</label>
         <value>1000</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
-        <tooltip>to be added</tooltip>
+        <tooltip>Tuning step - leftmost 2 digits *must* be between 1 - 60</tooltip>
     </SETTING>
     <SETTING NAME="TUNING_STEP5">
         <label>Step #5</label>
         <value>10000</value>
         <!--Leftmost two digits must be between 0-60, i.e. 59 or 590 is ok, 61 or 610 is not allowed-->
-        <tooltip>to be added</tooltip>
+        <tooltip>Tuning step - leftmost 2 digits *must* be between 1 - 60</tooltip>
     </SETTING>
     <!--
 	*****************************************************************************************************
@@ -244,75 +244,177 @@
 -->
     <SETTING NAME="USER_CALLSIGN">
         <label>Primary call sign</label>
-        <value>AJ6CU</value>
+        <value>OS</value>
         <!--Substituted in message for '>' Max 18 characters)-->
         <tooltip>Enter your Callsign - max 18 characters</tooltip>
     </SETTING>
     <SETTING NAME="QSO_CALLSIGN">
         <label>Alt Call sign</label>
         <!--Substituted in message for '<' Max 18 characters)-->
-        <value></value>
-        <tooltip>to be added</tooltip>
+        <value>CQCQ</value>
+        <tooltip>Enter an alternative Callsign (perhaps used for QSOs) - max 18 characters</tooltip>
     </SETTING>
     <SETTING NAME="CW_AUTO_COUNT">
+        <!--Total characters in all memory keyer message <= 200-->
         <label>Total Messages:</label>
-        <value>5</value>
-        <tooltip>to be added</tooltip>
+        <value>9</value>
+        <tooltip></tooltip>
     </SETTING>
     <SETTING NAME="CW_AUTO_DATA">
+        <!--Offset in heap of first message, varies with number msgs-->
         <label>Total Messages:</label>
+        <value>803</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG0">
+        <!--First saved message-->
+        <label>Msg:0</label>
+        <value>01234567890123456789ABC</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG1">
+        <!--second saved message-->
+        <label>Msg:1</label>
+        <value>01234567890123456789ABC</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG2">
+        <!--third saved message-->
+        <label>Msg:2</label>
+        <value>01234567890123456789ABC</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG3">
+        <!--fourth saved message-->
+        <label>Msg:3</label>
+        <value>01234567890123456789ABC</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG4">
+        <!--fifth saved message-->
+        <label>Msg:4</label>
+        <value>01234567890123456789ABC</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG5">
+        <!--sixth saved message-->
+        <label>MSG:5</label>
+        <value>01234567890123456789ABC</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG6">
+        <!--seventh saved message-->
+        <label>MSG:6</label>
+        <value>01234567890123456789ABC</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG7">
+        <!--eight saved message-->
+        <label>Msg:7</label>
+        <value>01234567890123456789ABC</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG8">
+        <!--ninth saved message-->
+        <label>Msg:8</label>
+        <value>01234567890123</value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSG9">
+        <!--tenth saved message-->
+        <label>Msg:9</label>
         <value></value>
-        <tooltip>to be added</tooltip>
+        <tooltip></tooltip>
     </SETTING>
-    <SETTING NAME="CW_MEMORY_KEYER_MSG01">
-        <label>Message 1</label>
-        <value>Message 1</value>
-        <tooltip>to be added</tooltip>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGA">
+        <!--eleventh saved message-->
+        <label>Msg:A</label>
+        <value></value>
+        <tooltip></tooltip>
     </SETTING>
-    <SETTING NAME="CW_MEMORY_KEYER_MSG02">
-        <label>Message 2</label>
-        <value>Message 2</value>
-        <tooltip>to be added</tooltip>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGB">
+        <!--twelfth saved message-->
+        <label>Msg:B</label>
+        <value></value>
+        <tooltip></tooltip>
     </SETTING>
-    <SETTING NAME="CW_MEMORY_KEYER_MSG03">
-        <label>Message 3</label>
-        <value>Message 3</value>
-        <tooltip>to be added</tooltip>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGC">
+        <!--thirteenth saved message-->
+        <label>Msg:C</label>
+        <value></value>
+        <tooltip></tooltip>
     </SETTING>
-    <SETTING NAME="CW_MEMORY_KEYER_MSG04">
-        <label>Message 4</label>
-        <value>Message 4</value>
-        <tooltip>to be added</tooltip>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGD">
+        <!--fourteenth saved message-->
+        <label>Msg:D</label>
+        <value></value>
+        <tooltip></tooltip>
     </SETTING>
-    <SETTING NAME="CW_MEMORY_KEYER_MSG05">
-        <label>Message 5</label>
-        <value>Message 5</value>
-        <tooltip>to be added</tooltip>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGE">
+        <!--fifteenth saved message-->
+        <label>Msg:E</label>
+        <value></value>
+        <tooltip></tooltip>
     </SETTING>
-    <SETTING NAME="CW_MEMORY_KEYER_MSG06">
-        <label>Message 6</label>
-        <value>Message 6</value>
-        <tooltip>to be added</tooltip>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGF">
+        <!--sixteenth saved message-->
+        <label>Msg:F</label>
+        <value></value>
+        <tooltip></tooltip>
     </SETTING>
-    <SETTING NAME="CW_MEMORY_KEYER_MSG07">
-        <label>Message 7</label>
-        <value>Message 7</value>
-        <tooltip>to be added</tooltip>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGG">
+        <!--seventeenth saved message-->
+        <label>Msg:G</label>
+        <value></value>
+        <tooltip></tooltip>
     </SETTING>
-    <SETTING NAME="CW_MEMORY_KEYER_MSG08">
-        <label>Message 8</label>
-        <value>Message 8</value>
-        <tooltip>to be added</tooltip>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGH">
+        <!--eighteenth saved message-->
+        <label>Msg:H</label>
+        <value></value>
+        <tooltip></tooltip>
     </SETTING>
-    <SETTING NAME="CW_MEMORY_KEYER_MSG09">
-        <label>Message 9</label>
-        <value>Message 9</value>
-        <tooltip>to be added</tooltip>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGI">
+        <!--nineteenth saved message-->
+        <label>Msg:I</label>
+        <value></value>
+        <tooltip></tooltip>
     </SETTING>
-    <SETTING NAME="CW_MEMORY_KEYER_MSG10">
-        <label>Message 10</label>
-        <value>Message 10</value>
-        <tooltip>to be added</tooltip>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGJ">
+        <!--twentieth saved message-->
+        <label>Msg:J</label>
+        <value></value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGK">
+        <!--twenty first saved message-->
+        <label>Msg:K</label>
+        <value></value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGL">
+        <!--twenty second saved message-->
+        <label>Msg:L</label>
+        <value></value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGM">
+        <!--twenty third saved message-->
+        <label>Msg:M</label>
+        <value></value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGN">
+        <!--twenthy fourth saved message-->
+        <label>Msg:N</label>
+        <value></value>
+        <tooltip></tooltip>
+    </SETTING>
+    <SETTING NAME="CW_MEMORY_KEYER_MSGO">
+        <!--twenty fifth saved message-->
+        <label>Msg:O</label>
+        <value></value>
+        <tooltip></tooltip>
     </SETTING>
     <!--	
 	*****************************************************************************************************
@@ -788,13 +890,13 @@
         <value>BAND</value>
         <!--Choice of NONE or BAND. NONE means no restrictions. BAND means only    
 																use move BAND+,BAND- to change to a different frequency area (no dial) -->
-        <tooltip>to be added</tooltip>
+        <tooltip>Select None to allow tuning to any Freq with the VFO. Selecting BAND restricts tuning to BAND+/BAND-</tooltip>
     </SETTING>
     <SETTING NAME="TX_RESTRICTIONS">
         <label>Restrictions on TX</label>
         <value>NONE</value>
         <!--Choice of NONE or HAM. NONE means no restrictions. HAM means TX only on HAM bands -->
-        <tooltip>to be added</tooltip>
+        <tooltip>Select NONE to allow TX at all frequencies. Selecting HAM resrticts TX to HAM bands only</tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_COUNT">
         <label>Countof HAM Bands:</label>
@@ -980,7 +1082,7 @@
     </SETTING>
     <SETTING NAME="HAM_BAND_FREQS6">
         <label>Band 6 Last Used Frequency</label>
-        <value>14.034.000</value>
+        <value>14.032.000</value>
         <tooltip></tooltip>
     </SETTING>
     <SETTING NAME="HAM_BAND_FREQS6_MODE">
@@ -1040,7 +1142,7 @@
         <label>Boot into SDR Mode</label>
         <value>SDR</value>
         <!--Either NORMAL or SDR  -->
-        <tooltip>to be added</tooltip>
+        <tooltip>If checked, forces SDR mode on reboot.</tooltip>
     </SETTING>
     <!--		SDR Offset Mode can be one of:
 			NONE: 			No offset is provided to the data send to the SDR  
@@ -1054,13 +1156,13 @@
         <label>SDR Freq Offset Mode</label>
         <value>NONE</value>
         <!--NONE, FIXED, MHZ, KHZ   -->
-        <tooltip>to be added</tooltip>
+        <tooltip></tooltip>
     </SETTING>
     <SETTING NAME="SDR_FREQUENCY">
         <label>SDR Offset frequency</label>
         <value>0</value>
         <!--Check with SDR vendor. Enter frequency in Hz (ie. 32000000) -->
-        <tooltip>to be added</tooltip>
+        <tooltip>Offset in (mhz). Check with your vendor.</tooltip>
     </SETTING>
     <!--	
 	*****************************************************************************************************
@@ -1073,19 +1175,19 @@
 -->
     <SETTING NAME="WSPR_BAND1_TXFREQ">
         <label>TX frequency for Band 1</label>
-        <value>7.040.118</value>
+        <value>7.040.117</value>
         <!--entered in HZ-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_BAND1_MULTICHAN">
         <label>Frequency offset for mutlichannels</label>
-        <value>1000</value>
+        <value>969</value>
         <!--entered in HZ-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_BAND1_REG1">
         <label>Contents of WSPR Reg 1</label>
-        <value>0F,BD,F4,B3,7A</value>
+        <value>0F,BD,F4,71,7A</value>
         <!--5 hex bytes separated by a comma-->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -1097,7 +1199,7 @@
     </SETTING>
     <SETTING NAME="WSPR_BAND2_TXFREQ">
         <label>TX frequency for Band 2</label>
-        <value>14.097.118</value>
+        <value>14.097.117</value>
         <!--entered in HZ-->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -1109,7 +1211,7 @@
     </SETTING>
     <SETTING NAME="WSPR_BAND2_REG1">
         <label>Contents of WSPR Reg 1</label>
-        <value>0F,7A,F9,18,74</value>
+        <value>0F,7A,F8,D5,F4</value>
         <!--5 hex bytes separated by a comma-->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -1121,7 +1223,7 @@
     </SETTING>
     <SETTING NAME="WSPR_BAND3_TXFREQ">
         <label>TX frequency for Band 3</label>
-        <value>21.096.118</value>
+        <value>21.096.117</value>
         <!--entered in HZ-->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -1133,7 +1235,7 @@
     </SETTING>
     <SETTING NAME="WSPR_BAND3_REG1">
         <label>Contents of WSPR Reg 1</label>
-        <value>0F,B8,F1,52,F0</value>
+        <value>0F,B8,F1,10,F0</value>
         <!--5 hex bytes separated by a comma-->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -1145,55 +1247,55 @@
     </SETTING>
     <SETTING NAME="WSPR_COUNT">
         <label>WSPR Messages to Use</label>
-        <value>3</value>
+        <value>0</value>
         <!--value 0-4. e.g., 3 would mean to use first 3 messages and ignore the 4th-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE1_NAME">
         <label>Name</label>
-        <value>msg1  </value>
+        <value>     </value>
         <!--5 Character name for this message-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE1">
         <label>Encoded MSG1:</label>
-        <value>01,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
+        <value>00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
         <!--Generate using uBITX Manager for now -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE2_NAME">
         <label>Name</label>
-        <value>msg2</value>
+        <value>     </value>
         <!--5 Character name for this message-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE2">
         <label>Encoded MSG2:</label>
-        <value>02,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
+        <value>00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
         <!--Generate using uBITX Manager for now -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE3_NAME">
         <label>Name</label>
-        <value>msg3   </value>
+        <value>     </value>
         <!--5 Character name for this message-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE3">
         <label>Encoded MSG3:</label>
-        <value>03,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
+        <value>00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
         <!--Generate using uBITX Manager for now -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE4_NAME">
         <label>Name</label>
-        <value>msg4  </value>
+        <value>     </value>
         <!--5 Character name for this message-->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="WSPR_MESSAGE4">
         <label>Encoded MSG4:</label>
-        <value>04,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
+        <value>00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00</value>
         <!--Generate using uBITX Manager for now -->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -1210,7 +1312,7 @@
 -->
     <SETTING NAME="S_METER_LEVELS">
         <label>Enable S-Meter?</label>
-        <value>NO</value>
+        <value>YES</value>
         <!--either YES or NO. YES enables this feature-->
         <tooltip>to be added</tooltip>
     </SETTING>
@@ -1267,12 +1369,12 @@
         <label>Master LCD I2C Address</label>
         <value>0x23</value>
         <!--Default 0x27 -->
-        <tooltip>to be added</tooltip>
+        <tooltip>Typically 0x27 for most 16x2 and 20x4 LCDs</tooltip>
     </SETTING>
     <SETTING NAME="I2C_LCD_SECOND">
         <label>Secondary LCD I2C Address</label>
         <value>0x0</value>
-        <tooltip>to be added</tooltip>
+        <tooltip>I2C address varies depending on jumper settings on I2C "backpack"</tooltip>
     </SETTING>
     <SETTING NAME="I2C_ADDR_SI5351">
         <!--Best to not mess with this one unless you really know what you are doing-->
@@ -1297,19 +1399,19 @@
         <value>NO</value>
         <label>Message Line?</label>
         <!--either YES or NO-->
-        <tooltip>to be added</tooltip>
+        <tooltip>Checking leaves VFO-B line empty and so that it can be used for messages (e.g. CW Keyer, etc.). This overrides all other settings.</tooltip>
     </SETTING>
     <SETTING NAME="SCROLLING_DISPLAY">
         <label>SCROLLING DISPLAY</label>
         <value>NO</value>
         <!--For LCD output either YES or NO-->
-        <tooltip>to be added</tooltip>
+        <tooltip>Checking results in the VFO-B line scrolling left continuously. This provides a little more info.</tooltip>
     </SETTING>
     <SETTING NAME="ONE_TWO_LINE_TOGGLE">
         <label>One/Two Line Toggle</label>
         <value>NO</value>
         <!--either YES or NO-->
-        <tooltip>to be added</tooltip>
+        <tooltip>Typially VFO-A and Mode are on bottom line while VFO-B is on top. This reverses this display.</tooltip>
     </SETTING>
     <!-- 	
 	NEXTION
@@ -1488,19 +1590,19 @@ GENERAL UX
  -->
     <SETTING NAME="CUST_LPF_ENABLED">
         <label>Enable Custom LPF</label>
-        <value>EXTENDED</value>
+        <value>OFF</value>
         <!--One of OFF, STANDARD, EXTENDED -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER1_ENDFREQ">
         <label>Ending frequency of LPF1</label>
-        <value>340</value>
+        <value>30</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER1_CONTROL">
         <label>Filter Ctrl1</label>
-        <value>TX_LPF_A,TX_LPF_B,TX_LPF_C,D10</value>
+        <value>TX_LPF_A</value>
         <!--Either NONE *or* Comma separated list of any combination of:		 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
@@ -1508,14 +1610,14 @@ GENERAL UX
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER2_ENDFREQ">
-        <label>Ending frequency of LPF1</label>
-        <value>342</value>
+        <label>Ending frequency of LPF2</label>
+        <value>25</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER2_CONTROL">
         <label>Filter Ctrl2</label>
-        <value>TX_LPF_A,TX_LPF_B,TX_LPF_C,D10</value>
+        <value>TX_LPF_B</value>
         <!--Either NONE *or* Comma separated list of any combination of:	 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
@@ -1524,13 +1626,13 @@ GENERAL UX
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER3_ENDFREQ">
         <label>Ending frequency of LPF3</label>
-        <value>344</value>
+        <value>20</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER3_CONTROL">
         <label>Filter Ctrl1</label>
-        <value>TX_LPF_A,TX_LPF_B,TX_LPF_C,D10</value>
+        <value>TX_LPF_C</value>
         <!--Either NONE *or* Comma separated list of any combination of:	 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
@@ -1539,13 +1641,13 @@ GENERAL UX
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER4_ENDFREQ">
         <label>Ending frequency of LPF4</label>
-        <value>346</value>
+        <value>15</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER4_CONTROL">
         <label>Filter Ctrl4</label>
-        <value>TX_LPF_A,TX_LPF_B,TX_LPF_C,D10</value>
+        <value>D10</value>
         <!--Either NONE *or* Comma separated list of any combination of:		 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
@@ -1554,13 +1656,13 @@ GENERAL UX
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER5_ENDFREQ">
         <label>Ending frequency of LPF5</label>
-        <value>348</value>
+        <value>10</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER5_CONTROL">
         <label>Filter Ctrl5</label>
-        <value>TX_LPF_A,TX_LPF_B,TX_LPF_C,D10</value>
+        <value>D11</value>
         <!--Either NONE *or* Comma separated list of any combination of:		 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
@@ -1569,13 +1671,13 @@ GENERAL UX
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER6_ENDFREQ">
         <label>Ending frequency of LPF6</label>
-        <value>350</value>
+        <value>5</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER6_CONTROL">
         <label>Filter Ctrl6</label>
-        <value>TX_LPF_A,TX_LPF_B,TX_LPF_C,D10</value>
+        <value>D12</value>
         <!--Either NONE *or* Comma separated list of any combination of:		 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
@@ -1584,13 +1686,13 @@ GENERAL UX
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER7_ENDFREQ">
         <label>Ending frequency of LPF1</label>
-        <value>352</value>
+        <value>1</value>
         <!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
         <tooltip>to be added</tooltip>
     </SETTING>
     <SETTING NAME="CUST_LPF_FILTER7_CONTROL">
         <label>Filter Ctrl1</label>
-        <value>TX_LPF_A,TX_LPF_B,TX_LPF_C,D10</value>
+        <value>D13</value>
         <!--Either NONE *or* Comma separated list of any combination of: 
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)

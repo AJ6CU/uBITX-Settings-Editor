@@ -1488,7 +1488,7 @@ GENERAL UX
  -->
     <SETTING NAME="CUST_LPF_ENABLED">
         <label>Enable Custom LPF</label>
-        <value>EXTENSION</value>
+        <value>EXTENDED</value>
         <!--One of OFF, STANDARD, EXTENDED -->
         <tooltip>to be added</tooltip>
     </SETTING>
