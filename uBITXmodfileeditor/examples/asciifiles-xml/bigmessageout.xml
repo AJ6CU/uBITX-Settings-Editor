@@ -11,19 +11,19 @@
 	Firmware identification field - Read only
 	***************************************************************************************************** 
 -->
-    <SETTING NAME="FIRMWAR_ID_ADDR1">
+    <SETTING NAME="FIRMWARE_ID_ADDR1">
         <label>FIRMWAR_ID_ADDR1</label>
         <value>0x59</value>
         <!--0x59-->
         <tooltip></tooltip>
     </SETTING>
-    <SETTING NAME="FIRMWAR_ID_ADDR2">
+    <SETTING NAME="FIRMWARE_ID_ADDR2">
         <label>FIRMWAR_ID_ADDR2</label>
         <value>0x58</value>
         <!--0x58-->
         <tooltip></tooltip>
     </SETTING>
-    <SETTING NAME="FIRMWAR_ID_ADDR3">
+    <SETTING NAME="FIRMWARE_ID_ADDR3">
         <label>FIRMWAR_ID_ADDR3</label>
         <value>0x68</value>
         <!--0x68-->
