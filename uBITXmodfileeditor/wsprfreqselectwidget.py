@@ -39,16 +39,21 @@ class WsprfreqselectWidget(tk.Toplevel):
         self.frame4.configure(height=200, width=200)
         self.WSPR_SLIDER_MOVED_WIDGET = ttk.Scale(self.frame4)
         self.WSPR_SLIDER_MOVED_WIDGET.configure(
-            from_=1400, length=100, orient="horizontal", to=1600, value=1500)
+            from_=0,
+            length=100,
+            orient="horizontal",
+            state="normal",
+            to=200,
+            value=100)
         self.WSPR_SLIDER_MOVED_WIDGET.pack(expand="true", fill="x", side="top")
         self.WSPR_SLIDER_MOVED_WIDGET.configure(
             command=self.WSPR_SLIDER_MOVED_CB)
         self.frame4.pack(expand="true", fill="x", pady="0 10", side="top")
         self.frame5 = ttk.Frame(self.frame2)
-        self.frame5.configure(height=200, width=200)
+        self.frame5.configure(height=40, width=100)
         self.label3 = ttk.Label(self.frame5)
-        self.label3.configure(style="Heading3.TLabel", text='TX Freq')
-        self.label3.pack(anchor="w", side="left")
+        self.label3.configure(style="Heading3.TLabel", text='TX Freq:')
+        self.label3.place(anchor="n", relx=0.35, rely=0.0, x=0, y=0)
         self.frame6 = ttk.Frame(self.frame5)
         self.frame6.configure(height=200, width=200)
         self.WSPR_CURRENT_FREQUENCY_WIDGET = ttk.Label(self.frame6)
@@ -58,15 +63,24 @@ class WsprfreqselectWidget(tk.Toplevel):
             text='14,097,100 Hz',
             textvariable=self.WSPR_CURRENT_FREQUENCY)
         self.WSPR_CURRENT_FREQUENCY_WIDGET.pack(anchor="center", side="top")
-        self.frame6.pack(expand="true", fill="x", side="left")
+        self.frame6.place(anchor="n", relx=0.5, x=0, y=0)
         self.WSPR_CURRENT_BANDWIDTH_WIDGET = ttk.Label(self.frame5)
-        self.WSPR_CURRENT_BANDWIDTH = tk.StringVar(value='1.500 Hz')
+        self.WSPR_CURRENT_BANDWIDTH = tk.StringVar(value='1.500')
         self.WSPR_CURRENT_BANDWIDTH_WIDGET.configure(
-            style="Heading3.TLabel",
-            text='1.500 Hz',
+            style="Heading4.TLabel",
+            text='1.500',
             textvariable=self.WSPR_CURRENT_BANDWIDTH)
-        self.WSPR_CURRENT_BANDWIDTH_WIDGET.pack(anchor="e", side="right")
-        self.frame5.pack(expand="true", fill="x", pady="0 10", side="top")
+        self.WSPR_CURRENT_BANDWIDTH_WIDGET.place(
+            anchor="n", relx=.92, x=0, y=0)
+        self.label2 = ttk.Label(self.frame5)
+        self.label2.configure(style="Heading4.TLabel", text='Hz')
+        self.label2.place(anchor="n", relx=.97, x=0, y=0)
+        self.frame5.pack(
+            anchor="center",
+            expand="false",
+            fill="x",
+            pady="0 10",
+            side="top")
         self.frame3 = ttk.Frame(self.frame2)
         self.frame3.configure(height=200, width=200)
         self.WSPR_BAND_OK_CB_Button = ttk.Button(self.frame3)
