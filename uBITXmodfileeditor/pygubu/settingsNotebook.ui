@@ -5096,7 +5096,6 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                                 <layout manager="grid">
                                   <property name="column">0</property>
                                   <property name="padx">0 10</property>
-                                  <property name="pady">10</property>
                                   <property name="row">1</property>
                                   <property name="sticky">e</property>
                                 </layout>
@@ -5111,6 +5110,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                                 <property name="width">12</property>
                                 <layout manager="grid">
                                   <property name="column">2</property>
+                                  <property name="pady">0 10</property>
                                   <property name="row">1</property>
                                   <property name="sticky">w</property>
                                 </layout>
@@ -5130,6 +5130,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                             </child>
                             <child>
                               <object class="ttk.Button" id="button9">
+                                <property name="command" type="command" cbtype="simple">runWSPR_Band1_Select_Button_CB</property>
                                 <property name="style">Button4.TButton</property>
                                 <property name="text" translatable="yes">Select Band and Freq</property>
                                 <layout manager="grid">
@@ -5160,6 +5161,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                                 <property name="width">12</property>
                                 <layout manager="grid">
                                   <property name="column">2</property>
+                                  <property name="pady">0 10</property>
                                   <property name="row">2</property>
                                   <property name="sticky">w</property>
                                 </layout>
@@ -5179,6 +5181,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                             </child>
                             <child>
                               <object class="ttk.Button" id="button10">
+                                <property name="command" type="command" cbtype="simple">runWSPR_Band2_Select_Button_CB</property>
                                 <property name="style">Button4.TButton</property>
                                 <property name="text" translatable="yes">Select Band and Freq</property>
                                 <layout manager="grid">
@@ -5228,6 +5231,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                             </child>
                             <child>
                               <object class="ttk.Button" id="button11">
+                                <property name="command" type="command" cbtype="simple">runWSPR_Band3_Select_Button_CB</property>
                                 <property name="style">Button4.TButton</property>
                                 <property name="text" translatable="yes">Select Band and Freq</property>
                                 <layout manager="grid">

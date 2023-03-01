@@ -2947,7 +2947,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.frame39.configure(height=200, width=200)
         self.label64 = ttk.Label(self.frame39)
         self.label64.configure(style="Heading4.TLabel", text='1')
-        self.label64.grid(column=0, padx="0 10", pady=10, row=1, sticky="e")
+        self.label64.grid(column=0, padx="0 10", row=1, sticky="e")
         self.WSPR_BAND1_TXFREQ_WIDGET = ttk.Entry(self.frame39)
         self.WSPR_BAND1_TXFREQ = tk.StringVar()
         self.WSPR_BAND1_TXFREQ_WIDGET.configure(
@@ -2956,7 +2956,8 @@ class SettingsnotebookWidget(ttk.Frame):
             textvariable=self.WSPR_BAND1_TXFREQ,
             validate="none",
             width=12)
-        self.WSPR_BAND1_TXFREQ_WIDGET.grid(column=2, row=1, sticky="w")
+        self.WSPR_BAND1_TXFREQ_WIDGET.grid(
+            column=2, pady="0 10", row=1, sticky="w")
         self.label78 = ttk.Label(self.frame39)
         self.label78.configure(style="Heading4.TLabel", text='Hz')
         self.label78.grid(column=3, padx="0 10", row=1, sticky="w")
@@ -2965,6 +2966,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Button4.TButton",
             text='Select Band and Freq')
         self.button9.grid(column=4, padx="0 10", row=1)
+        self.button9.configure(command=self.runWSPR_Band1_Select_Button_CB)
         self.label65 = ttk.Label(self.frame39)
         self.label65.configure(style="Heading4.TLabel", text='2')
         self.label65.grid(column=0, padx="0 10", row=2, sticky="e")
@@ -2976,7 +2978,8 @@ class SettingsnotebookWidget(ttk.Frame):
             textvariable=self.WSPR_BAND2_TXFREQ,
             validate="none",
             width=12)
-        self.WSPR_BAND2_TXFREQ_WIDGET.grid(column=2, row=2, sticky="w")
+        self.WSPR_BAND2_TXFREQ_WIDGET.grid(
+            column=2, pady="0 10", row=2, sticky="w")
         self.label80 = ttk.Label(self.frame39)
         self.label80.configure(style="Heading4.TLabel", text='Hz')
         self.label80.grid(column=3, padx="0 10", row=2, sticky="w")
@@ -2985,6 +2988,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Button4.TButton",
             text='Select Band and Freq')
         self.button10.grid(column=4, padx="0 10", row=2)
+        self.button10.configure(command=self.runWSPR_Band2_Select_Button_CB)
         self.label66 = ttk.Label(self.frame39)
         self.label66.configure(style="Heading4.TLabel", text='3')
         self.label66.grid(column=0, padx="0 10", row=3, sticky="e")
@@ -3005,6 +3009,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Button4.TButton",
             text='Select Band and Freq')
         self.button11.grid(column=4, padx="0 10", row=3)
+        self.button11.configure(command=self.runWSPR_Band3_Select_Button_CB)
         self.frame39.pack(anchor="w", padx="20 0", side="top")
         self.frame37.pack(anchor="w", padx=20, pady=20, side="top")
         self.frame40 = ttk.Frame(self.frame22)
@@ -5829,6 +5834,15 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def runWSPRMsg4Gen_CB(self):
+        pass
+
+    def runWSPR_Band1_Select_Button_CB(self):
+        pass
+
+    def runWSPR_Band2_Select_Button_CB(self):
+        pass
+
+    def runWSPR_Band3_Select_Button_CB(self):
         pass
 
     def runI2CScanner(self):

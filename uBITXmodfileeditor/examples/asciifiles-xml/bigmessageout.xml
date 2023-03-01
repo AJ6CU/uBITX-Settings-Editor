@@ -1175,7 +1175,7 @@
 -->
     <SETTING NAME="WSPR_BAND1_TXFREQ">
         <label>TX frequency for Band 1</label>
-        <value>7.040.117</value>
+        <value></value>
         <!--entered in HZ-->
         <tooltip>to be added</tooltip>
     </SETTING>

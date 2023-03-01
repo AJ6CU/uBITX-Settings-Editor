@@ -6,6 +6,7 @@ from I2cscanner import I2Cscanner
 from ADCscanner import ADCscanner
 from SmeterWizard import SmeterWizard
 from wsprmsggen import WSPRmsggen
+from WsprFreqSelect import WSPRFreqSelect
 from globalvars import *
 
 class SettingsNotebook(SettingsnotebookWidget):
@@ -1301,6 +1302,20 @@ class SettingsNotebook(SettingsnotebookWidget):
 
     def runWSPRMsgGen(self):
         runWSPRMsgGen = WSPRmsggen(self)
+
+
+
+    def runWSPR_Band1_Select_Button_CB(self):
+        print("WSPR Band 1")
+        runWSPRBandSelection = WSPRFreqSelect(1, self.WSPR_BAND1_TXFREQ.get())
+
+    def runWSPR_Band2_Select_Button_CB(self):
+        print("WSPR Band 2")
+        runWSPRBandSelection = WSPRFreqSelect(2, self.WSPR_BAND2_TXFREQ.get())
+
+    def runWSPR_Band3_Select_Button_CB(self):
+        print("WSPR Band 3")
+        runWSPRBandSelection = WSPRFreqSelect(3,  self.WSPR_BAND3_TXFREQ.get())
 
 
 
