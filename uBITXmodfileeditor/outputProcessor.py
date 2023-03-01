@@ -45,7 +45,7 @@ class OutputProcessor(Processor):
         fileParts = path.splitext(self.savedFilePathChooser.get())
 
         if(fileParts[1] == ''):
-            self.log.println("timestamp", "No file extension provided, defaulting to '.btx'")
+            self.log.printerror("timestamp", "No file extension provided, defaulting to '.btx'")
             self.savedFilePathChooser.set(self.savedFilePathChooser.get()+".btx")
             fileParts[1] == ".btx"
 

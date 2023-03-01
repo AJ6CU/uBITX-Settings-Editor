@@ -13,7 +13,6 @@ class WSPRmsggen(WsprmsggenWidget):
         super().__init__()
         self.counter = num
         self.mymessage =msg
-        print("wspr init", self.mymessage.get() )
 
     def WSPR_Msg_Gen_Button(self):
         # Clicking the Apply button means we need to update the original ADC values

@@ -38,13 +38,15 @@ class WsprfreqselectWidget(tk.Toplevel):
         self.frame4 = ttk.Frame(self.frame2)
         self.frame4.configure(height=200, width=200)
         self.WSPR_SLIDER_MOVED_WIDGET = ttk.Scale(self.frame4)
+        self.WSPR_SLIDER = tk.StringVar(value='100')
         self.WSPR_SLIDER_MOVED_WIDGET.configure(
             from_=0,
             length=100,
             orient="horizontal",
             state="normal",
             to=200,
-            value=100)
+            value=100,
+            variable=self.WSPR_SLIDER)
         self.WSPR_SLIDER_MOVED_WIDGET.pack(expand="true", fill="x", side="top")
         self.WSPR_SLIDER_MOVED_WIDGET.configure(
             command=self.WSPR_SLIDER_MOVED_CB)
@@ -67,13 +69,13 @@ class WsprfreqselectWidget(tk.Toplevel):
         self.WSPR_CURRENT_BANDWIDTH_WIDGET = ttk.Label(self.frame5)
         self.WSPR_CURRENT_BANDWIDTH = tk.StringVar(value='1.500')
         self.WSPR_CURRENT_BANDWIDTH_WIDGET.configure(
-            style="Heading4.TLabel",
+            style="Heading3.TLabel",
             text='1.500',
             textvariable=self.WSPR_CURRENT_BANDWIDTH)
         self.WSPR_CURRENT_BANDWIDTH_WIDGET.place(
-            anchor="n", relx=.92, x=0, y=0)
+            anchor="n", relx=.91, x=0, y=0)
         self.label2 = ttk.Label(self.frame5)
-        self.label2.configure(style="Heading4.TLabel", text='Hz')
+        self.label2.configure(style="Heading3.TLabel", text='Hz')
         self.label2.place(anchor="n", relx=.97, x=0, y=0)
         self.frame5.pack(
             anchor="center",

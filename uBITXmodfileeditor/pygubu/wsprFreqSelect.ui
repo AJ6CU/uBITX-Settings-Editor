@@ -98,6 +98,7 @@
                     <property name="state">normal</property>
                     <property name="to">200</property>
                     <property name="value">100</property>
+                    <property name="variable">string:WSPR_SLIDER</property>
                     <layout manager="pack">
                       <property name="expand">true</property>
                       <property name="fill">x</property>
@@ -156,12 +157,12 @@
                 </child>
                 <child>
                   <object class="ttk.Label" id="WSPR_CURRENT_BANDWIDTH_WIDGET" named="True">
-                    <property name="style">Heading4.TLabel</property>
+                    <property name="style">Heading3.TLabel</property>
                     <property name="text" translatable="yes">1.500</property>
                     <property name="textvariable">string:WSPR_CURRENT_BANDWIDTH</property>
                     <layout manager="place">
                       <property name="anchor">n</property>
-                      <property name="relx">.92</property>
+                      <property name="relx">.91</property>
                       <property name="x">0</property>
                       <property name="y">0</property>
                     </layout>
@@ -169,7 +170,7 @@
                 </child>
                 <child>
                   <object class="ttk.Label" id="label2">
-                    <property name="style">Heading4.TLabel</property>
+                    <property name="style">Heading3.TLabel</property>
                     <property name="text" translatable="yes">Hz</property>
                     <layout manager="place">
                       <property name="anchor">n</property>

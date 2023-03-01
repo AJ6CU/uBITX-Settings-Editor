@@ -2847,7 +2847,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.WSPR_MESSAGE1_NAME_WIDGET = ttk.Entry(self.frame36)
         self.WSPR_MESSAGE1_NAME = tk.StringVar()
         self.WSPR_MESSAGE1_NAME_WIDGET.configure(
-            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE1_NAME, width=5)
+            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE1_NAME, width=6)
         self.WSPR_MESSAGE1_NAME_WIDGET.grid(column=1, padx="0 10", row=2)
         self.WSPR_Msg1_WIDGET = ttk.Button(self.frame36)
         self.WSPR_Msg1_WIDGET.configure(style="Normal.TButton", text='Gen Msg')
@@ -2869,7 +2869,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.WSPR_MESSAGE2_NAME_WIDGET = ttk.Entry(self.frame36)
         self.WSPR_MESSAGE2_NAME = tk.StringVar()
         self.WSPR_MESSAGE2_NAME_WIDGET.configure(
-            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE2_NAME, width=5)
+            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE2_NAME, width=6)
         self.WSPR_MESSAGE2_NAME_WIDGET.grid(column=1, padx="0 10", row=3)
         self.WSPR_Msg2_WIDGET = ttk.Button(self.frame36)
         self.WSPR_Msg2_WIDGET.configure(style="Normal.TButton", text='Gen Msg')
@@ -2891,7 +2891,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.WSPR_MESSAGE3_NAME_WIDGET = ttk.Entry(self.frame36)
         self.WSPR_MESSAGE3_NAME = tk.StringVar()
         self.WSPR_MESSAGE3_NAME_WIDGET.configure(
-            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE3_NAME, width=5)
+            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE3_NAME, width=6)
         self.WSPR_MESSAGE3_NAME_WIDGET.grid(column=1, padx="0 10", row=4)
         self.WSPR_Msg3_WIDGET = ttk.Button(self.frame36)
         self.WSPR_Msg3_WIDGET.configure(style="Normal.TButton", text='Gen Msg')
@@ -2913,7 +2913,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.WSPR_MESSAGE4_NAME_WIDGET = ttk.Entry(self.frame36)
         self.WSPR_MESSAGE4_NAME = tk.StringVar()
         self.WSPR_MESSAGE4_NAME_WIDGET.configure(
-            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE4_NAME, width=5)
+            style="Normal.TEntry", textvariable=self.WSPR_MESSAGE4_NAME, width=6)
         self.WSPR_MESSAGE4_NAME_WIDGET.grid(column=1, padx="0 10", row=5)
         self.WSPR_Msg4_WIDGET = ttk.Button(self.frame36)
         self.WSPR_Msg4_WIDGET.configure(style="Normal.TButton", text='Gen Msg')
@@ -2951,7 +2951,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.WSPR_BAND1_TXFREQ_WIDGET = ttk.Entry(self.frame39)
         self.WSPR_BAND1_TXFREQ = tk.StringVar()
         self.WSPR_BAND1_TXFREQ_WIDGET.configure(
-            justify="left",
+            justify="right",
             style="Normal.TEntry",
             textvariable=self.WSPR_BAND1_TXFREQ,
             validate="none",
@@ -2973,7 +2973,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.WSPR_BAND2_TXFREQ_WIDGET = ttk.Entry(self.frame39)
         self.WSPR_BAND2_TXFREQ = tk.StringVar()
         self.WSPR_BAND2_TXFREQ_WIDGET.configure(
-            justify="left",
+            justify="right",
             style="Normal.TEntry",
             textvariable=self.WSPR_BAND2_TXFREQ,
             validate="none",
@@ -2995,7 +2995,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.WSPR_BAND3_TXFREQ_WIDGET = ttk.Entry(self.frame39)
         self.WSPR_BAND3_TXFREQ = tk.StringVar()
         self.WSPR_BAND3_TXFREQ_WIDGET.configure(
-            justify="left",
+            justify="right",
             style="Normal.TEntry",
             textvariable=self.WSPR_BAND3_TXFREQ,
             validate="none",
@@ -3012,53 +3012,6 @@ class SettingsnotebookWidget(ttk.Frame):
         self.button11.configure(command=self.runWSPR_Band3_Select_Button_CB)
         self.frame39.pack(anchor="w", padx="20 0", side="top")
         self.frame37.pack(anchor="w", padx=20, pady=20, side="top")
-        self.frame40 = ttk.Frame(self.frame22)
-        self.frame40.configure(height=200, width=200)
-        self.frame41 = ttk.Frame(self.frame40)
-        self.frame41.configure(height=200, width=200)
-        self.label86 = ttk.Label(self.frame41)
-        self.label86.configure(
-            compound="top",
-            justify="left",
-            style="Heading3.TLabel",
-            text='Calibration')
-        self.label86.pack()
-        self.frame41.pack(anchor="w", side="top")
-        self.frame42 = ttk.Frame(self.frame40)
-        self.frame42.configure(height=200, width=200)
-        self.label88 = ttk.Label(self.frame42)
-        self.label88.configure(style="Heading4.TLabel", text='X-TAL')
-        self.label88.grid(column=0, padx="0 10", pady=10, row=1, sticky="e")
-        self.entry25 = ttk.Entry(self.frame42)
-        self.entry25.configure(
-            justify="left",
-            style="Normal.TEntry",
-            validate="none",
-            width=12)
-        self.entry25.grid(column=2, row=1, sticky="w")
-        self.label90 = ttk.Label(self.frame42)
-        self.label90.configure(style="Normal.TLabel", text='Hz')
-        self.label90.grid(column=3, padx="0 10", row=1, sticky="w")
-        self.label137 = ttk.Label(self.frame42)
-        self.label137.configure(style="Heading4.TLabel", text='Calibration')
-        self.label137.grid(column=0, padx="0 10", row=2, sticky="e")
-        self.entry26 = ttk.Entry(self.frame42)
-        self.entry26.configure(
-            justify="left",
-            style="Normal.TEntry",
-            validate="none",
-            width=12)
-        self.entry26.grid(column=2, row=2, sticky="w")
-        self.label138 = ttk.Label(self.frame42)
-        self.label138.configure(style="Normal.TLabel", text='Hz')
-        self.label138.grid(column=3, padx="0 10", row=2, sticky="w")
-        self.message2 = tk.Message(self.frame42)
-        self.message2.configure(
-            text='Correct the calibration value according to the WSPR result (example: 147000, 145000)',
-            width=300)
-        self.message2.grid(column=4, row=2)
-        self.frame42.pack(anchor="w", padx="20 0", side="top")
-        self.frame40.pack(anchor="w", padx=20, pady=20, side="top")
         self.WSPR_HIDDEN = ttk.Frame(self.frame22)
         self.WSPR_HIDDEN.configure(height=200, width=200)
         self.WSPR_BAND1_MULTICHAN_WIDGET = ttk.Label(self.WSPR_HIDDEN)
@@ -4711,6 +4664,16 @@ class SettingsnotebookWidget(ttk.Frame):
             width=10)
         self.I2C_ADDR_SI5351_WIDGET.grid(
             column=3, pady="15 0", row=7, sticky="w")
+        self.Calibration_Screen_Hidden = ttk.Frame(
+            self.Radio_Calibration_Frame)
+        self.Calibration_Screen_Hidden.configure(height=200, width=200)
+        self.CW_FREQUENCY_ADJUSTMENT_WIDGET = ttk.Label(
+            self.Calibration_Screen_Hidden)
+        self.CW_FREQUENCY_ADJUSTMENT = tk.StringVar()
+        self.CW_FREQUENCY_ADJUSTMENT_WIDGET.configure(
+            state="disabled", textvariable=self.CW_FREQUENCY_ADJUSTMENT)
+        self.CW_FREQUENCY_ADJUSTMENT_WIDGET.pack()
+        self.Calibration_Screen_Hidden.grid(column=5, row=7)
         self.Radio_Calibration_Frame.pack(fill="x", side="top")
         self.Radio_Calibration_Frame.grid_anchor("nw")
         self.CW_Calibration_Frame = ttk.Frame(self.frame21)

@@ -72,7 +72,8 @@ class InputProcessor(Processor):
 
 
     def readFromComPort(self):              # reads from Com POrt using readEEPROMData
-        self.log.println("timestamp",  "\n***Reading EEPROM from uBITX***")
+        self.log.println("","")
+        self.log.println("timestamp",  "***Reading EEPROM from uBITX***")
         self.log.println("timestamp", "From Com Port: " + self.comPortObj.getSelectedComPort())
         self.log.println("timestamp",  "Awaiting Radio Processor Ready this will take 3-5 seconds")
 

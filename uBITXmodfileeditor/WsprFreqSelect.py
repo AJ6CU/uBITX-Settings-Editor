@@ -5,45 +5,56 @@ from wsprfreqselectwidget import WsprfreqselectWidget
 from globalvars import *
 
 class WSPRFreqSelect(WsprfreqselectWidget):
-    def __init__(self, num, currentValue):
+    def getBandFromFreq(self, freq):
+        for bands in WSPRBANDS:         #[1] = begin freq of band; [3] = end freq, [2]= central freq
+            if (WSPRBANDS[bands][1] <= int(freq)) and (int(freq) <= WSPRBANDS[bands][3]):
+                return bands
+
+    def __init__(self, num, freq):
 
         super().__init__()
+        self.freq_ptr = freq
 
-        self.band='20m'
-        self.scale_value = 100
-        if currentValue != '':
-            self.WSPR_BAND_SELECTION.set(self.band)
-        else:
-            self.band='20m'
-            self.WSPR_BAND_SELECTION.set(self.band)
-        self.freq = WSPRBANDS[self.band][1] +  self.scale_value
-        self.WSPR_CURRENT_FREQUENCY.set(str(self.freq))
-        self.WSPR_CURRENT_BANDWIDTH.set(str(1400 + self.scale_value))
+        currentFreq = self.freq_ptr.get().replace(".","")
 
-        self.WSPR_BAND_DESCRIPTION.set(("DIAL: " + '{:,}'.format(WSPRBANDS[self.band][0]) + " Hz - TX: " +
-                                       '{:,}'.format(WSPRBANDS[self.band][1]) + " Hz thru "  +
-                                        '{:,}'.format(WSPRBANDS[self.band][3])+ " Hz").replace(",","."))
+        if currentFreq == '':                   #   Empty value, so go for the default band and center frequency
+            theBand = DEFAULTWSPRBAND
+            self.WSPR_BAND_SELECTION.set(theBand)
+            self.WSPR_SLIDER.set(str(DEFAULTWSPRTONE))
+            theFreq = WSPRBANDS[theBand][1] +  int(self.WSPR_SLIDER.get())
+
+        else:                                   #   Existing value, set from input
+            theBand = self.getBandFromFreq(int(currentFreq))
+            self.WSPR_BAND_SELECTION.set(theBand)
+            self.WSPR_SLIDER.set(str(float(int(currentFreq) - WSPRBANDS[theBand][1])))
+            theFreq = currentFreq
+
+        self.WSPR_CURRENT_FREQUENCY.set('{:,}'.format(int(float(theFreq))).replace(",","."))
+        self.WSPR_CURRENT_BANDWIDTH.set('{:,}'.format(1400 + int(float(self.WSPR_SLIDER.get()))).replace(",","."))
+
+        self.WSPR_BAND_DESCRIPTION.set(("DIAL: " + '{:,}'.format(WSPRBANDS[theBand][0]) + " Hz - TX: " +
+                                       '{:,}'.format(WSPRBANDS[theBand][1]) + " Hz thru "  +
+                                        '{:,}'.format(WSPRBANDS[theBand][3])+ " Hz").replace(",","."))
+
     def WSPR_BAND_SELECTED_CB(self, event=None):
-        self.band = self.WSPR_BAND_SELECTION.get()
-        self.WSPR_BAND_DESCRIPTION.set(("DIAL: " + '{:,}'.format(WSPRBANDS[self.band][0]) + " Hz - TX: " +
-                                       '{:,}'.format(WSPRBANDS[self.band][1]) + " Hz thru "  +
-                                        '{:,}'.format(WSPRBANDS[self.band][3])+ " Hz").replace(",","."))
-        self.freq = WSPRBANDS[self.band][1] + self.scale_value
-        self.WSPR_CURRENT_FREQUENCY.set(str(self.freq))
-        self.WSPR_CURRENT_BANDWIDTH.set(str(1400 + self.scale_value))
+        theBand = self.WSPR_BAND_SELECTION.get()
+        self.WSPR_BAND_DESCRIPTION.set(("DIAL: " + '{:,}'.format(WSPRBANDS[theBand][0]) + " Hz - TX: " +
+                                       '{:,}'.format(WSPRBANDS[theBand][1]) + " Hz thru "  +
+                                        '{:,}'.format(WSPRBANDS[theBand][3])+ " Hz").replace(",","."))
+        theFreq = WSPRBANDS[theBand][1] + int(float(self.WSPR_SLIDER.get()))
+        self.WSPR_CURRENT_FREQUENCY.set('{:,}'.format(theFreq).replace(",","."))
+        self.WSPR_CURRENT_BANDWIDTH.set('{:,}'.format(1400 + int(float(self.WSPR_SLIDER.get()))).replace(",","."))
 
-
-    def wsprBandSelected(self, option):
-        print("wspr band selected")
 
     def WSPR_SLIDER_MOVED_CB(self, scale_value):
         self.scale_value = int(float(scale_value))
-        self.freq = WSPRBANDS[self.band][1] + self.scale_value
-        self.WSPR_CURRENT_FREQUENCY.set(str(self.freq))
-        self.WSPR_CURRENT_BANDWIDTH.set(str(1400 + self.scale_value))
+        theFreq = WSPRBANDS[self.WSPR_BAND_SELECTION.get()][1] + self.scale_value
+        self.WSPR_CURRENT_FREQUENCY.set('{:,}'.format(theFreq).replace(",","."))
+        self.WSPR_CURRENT_BANDWIDTH.set('{:,}'.format(1400 + int(float(scale_value))).replace(",","."))
 
     def WSPR_BAND_OK_Button_CB(self):
         print("wspr OK button clicked")
+        self.freq_ptr.set(self.WSPR_CURRENT_FREQUENCY.get())
         self.destroy()
 
     def WSPR_BAND_CANCEL_Button_CB(self):

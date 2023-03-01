@@ -34,6 +34,9 @@ class SettingsNotebook(SettingsnotebookWidget):
 
 
 
+
+
+
     #   temp to control what is processed
     readyToGo = ['VERSION_ADDRESS', 'FACTORY_VALUES_MASTER_CAL', 'FACTORY_VALUES_USB_CAL',
              'FACTORY_VALUES_CW_SPEED', 'FACTORY_VALUES_CW_SIDETONE',
@@ -91,7 +94,8 @@ class SettingsNotebook(SettingsnotebookWidget):
             'CUST_LPF_FILTER1_CONTROL', 'CUST_LPF_FILTER2_CONTROL', 'CUST_LPF_FILTER3_CONTROL', 'CUST_LPF_FILTER4_CONTROL',
             'CUST_LPF_FILTER5_CONTROL', 'CUST_LPF_FILTER6_CONTROL', 'CUST_LPF_FILTER7_CONTROL',
             'FIRMWARE_ID_ADDR1', 'FIRMWARE_ID_ADDR2', 'FIRMWARE_ID_ADDR3', 'FACTORY_VALUES_VFO_A', 'FACTORY_VALUES_VFO_B',
-            'IF1_CAL_ON_OFF_SWITCH',  'IF1_CAL', 'IF1_CAL_ADD_SUB', 'STORED_IF_SHIFT', 'IF_SHIFTVALUE', 'CW_DISPLAY_FREQ'
+            'IF1_CAL_ON_OFF_SWITCH',  'IF1_CAL', 'IF1_CAL_ADD_SUB', 'STORED_IF_SHIFT', 'IF_SHIFTVALUE', 'CW_DISPLAY_FREQ',
+            'CW_FREQUENCY_ADJUSTMENT'
              ]
 
     #   this needs to be moved somewhere else too
@@ -105,7 +109,7 @@ class SettingsNotebook(SettingsnotebookWidget):
                     'WSPR_BAND1_MULTICHAN_WIDGET',  'WSPR_BAND2_MULTICHAN_WIDGET', 'WSPR_BAND3_MULTICHAN_WIDGET',
                     'WSPR_BAND1_REG1_WIDGET', 'WSPR_BAND2_REG1_WIDGET', 'WSPR_BAND3_REG1_WIDGET',
                     'WSPR_BAND1_REG2_WIDGET', 'WSPR_BAND2_REG2_WIDGET', 'WSPR_BAND3_REG2_WIDGET',
-                    'NEXTION_DISPLAY_CALL_SIGN_WIDGET', 'MAIN_SCREEN_FORMAT_WIDGET']
+                    'NEXTION_DISPLAY_CALL_SIGN_WIDGET', 'MAIN_SCREEN_FORMAT_WIDGET', 'CW_FREQUENCY_ADJUSTMENT_WIDGET']
 
     #   Class variables
     #
@@ -399,8 +403,7 @@ class SettingsNotebook(SettingsnotebookWidget):
                 return True
 
             # if we reach this point, there is an error...
-            print(self.getNumber(p_entry_value) )
-            print("lower is", getattr(self, "CW_ADC_ST_FROM").get())
+
             self.log.printerror("timestamp", "CW Straight Key ADC ending value "+SettingsNotebook.validationErrorMsg)
             getattr(self, "CW_ADC_ST_TO").set(self.priorValues["CW_ADC_ST_TO"])
             return False
@@ -1066,7 +1069,7 @@ class SettingsNotebook(SettingsnotebookWidget):
             theFilter.set("NONE")
         elif (theFilter.get()[0] == ','):
             theFilter.set(theFilter.get()[1:])      #delete leading comma
-        print(filter, " CB called=", theFilter.get() )
+
 
     def CUST_LPF_FILTER1_CONTROL_CB(self):
         self.CUST_LPF_FILTER_CONTROL("FILTER1")
@@ -1277,28 +1280,19 @@ class SettingsNotebook(SettingsnotebookWidget):
         smeterAssistant = SmeterWizard(self)
 
     def runWSPRMsg1Gen_CB(self):
-        self.WSPR_MESSAGE1.set("whisper")
-        print("before:", self.WSPR_MESSAGE1.get())
         runWSPRMsgGen = WSPRmsggen(1, self.WSPR_MESSAGE1)
-        print("after:", self.WSPR_MESSAGE1.get())
+
 
     def runWSPRMsg2Gen_CB(self):
-        self.WSPR_MESSAGE2.set("whisper2")
-        print("before:", self.WSPR_MESSAGE2.get())
         runWSPRMsgGen = WSPRmsggen(2, self.WSPR_MESSAGE2)
-        print("after:", self.WSPR_MESSAGE2.get())
+
 
     def runWSPRMsg3Gen_CB(self):
-        self.WSPR_MESSAGE3.set("whisper3")
-        print("before:", self.WSPR_MESSAGE3.get())
         runWSPRMsgGen = WSPRmsggen(3,self.WSPR_MESSAGE3)
-        print("after:", self.WSPR_MESSAGE3.get())
+
 
     def runWSPRMsg4Gen_CB(self):
-        self.WSPR_MESSAGE4.set("whisper4")
-        print("before:", self.WSPR_MESSAGE4.get())
         runWSPRMsgGen = WSPRmsggen(4, self.WSPR_MESSAGE4)
-        print("after:", self.WSPR_MESSAGE4.get())
 
 
     def runWSPRMsgGen(self):
@@ -1307,16 +1301,13 @@ class SettingsNotebook(SettingsnotebookWidget):
 
 
     def runWSPR_Band1_Select_Button_CB(self):
-        print("WSPR Band 1")
-        runWSPRBandSelection = WSPRFreqSelect(1, self.WSPR_BAND1_TXFREQ.get())
+        runWSPRBandSelection = WSPRFreqSelect(1, self.WSPR_BAND1_TXFREQ)
 
     def runWSPR_Band2_Select_Button_CB(self):
-        print("WSPR Band 2")
-        runWSPRBandSelection = WSPRFreqSelect(2, self.WSPR_BAND2_TXFREQ.get())
+        runWSPRBandSelection = WSPRFreqSelect(2, self.WSPR_BAND2_TXFREQ)
 
     def runWSPR_Band3_Select_Button_CB(self):
-        print("WSPR Band 3")
-        runWSPRBandSelection = WSPRFreqSelect(3,  self.WSPR_BAND3_TXFREQ.get())
+        runWSPRBandSelection = WSPRFreqSelect(3, self.WSPR_BAND3_TXFREQ)
 
 
 

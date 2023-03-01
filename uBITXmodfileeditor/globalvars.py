@@ -40,7 +40,8 @@ WSPRBANDS ={ '600m':     (474200,    475600,    475700,     475800 ),
             '4m':       (70091000,  70092400,   70092500,   70092600),
             '2m':       (144489000, 144490400,  144490500,  144490600)
         }
-
+DEFAULTWSPRBAND = '20m'
+DEFAULTWSPRTONE = 100
 
 #end ENUMS#################################################
 
@@ -123,7 +124,7 @@ HOMEDIRECTORY="~"                      #Initial directory for file selector
 # userModFileValues = {}
 # userModFileDirty = {}
 # userModFileToolTips = {}
-DEBUGAPP=True
+DEBUGAPP=False
 
 
 
