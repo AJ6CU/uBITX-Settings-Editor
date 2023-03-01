@@ -8,11 +8,22 @@ class WSPRFreqSelect(WsprfreqselectWidget):
     def __init__(self, num, currentValue):
 
         super().__init__()
+        band='30m'
         if currentValue != '':
-            self.WSPR_BAND_SELECTION.set('40m')
+            self.WSPR_BAND_SELECTION.set(band)
         else:
-            self.WSPR_BAND_SELECTION.set('20m')
-        print("in init for band switch", num)
+            band='20m'
+            self.WSPR_BAND_SELECTION.set(band)
+
+        self.WSPR_BAND_DESCRIPTION.set(("DIAL: " + '{:,}'.format(WSPRBANDS[band][0]) + " Hz - TX: " +
+                                       '{:,}'.format(WSPRBANDS[band][1]) + " Hz thru "  +
+                                        '{:,}'.format(WSPRBANDS[band][3])+ " Hz").replace(",","."))
+    def WSPR_BAND_SELECTED_CB(self, event=None):
+        band = self.WSPR_BAND_SELECTION.get()
+        self.WSPR_BAND_DESCRIPTION.set(("DIAL: " + '{:,}'.format(WSPRBANDS[band][0]) + " Hz - TX: " +
+                                       '{:,}'.format(WSPRBANDS[band][1]) + " Hz thru "  +
+                                        '{:,}'.format(WSPRBANDS[band][3])+ " Hz").replace(",","."))
+
 
 
     def wsprBandSelected(self, option):

@@ -20,23 +20,19 @@ class WsprfreqselectWidget(tk.Toplevel):
         self.WSPR_BAND_SELECTION_WIDGET = ttk.Combobox(self.frame7)
         self.WSPR_BAND_SELECTION = tk.StringVar()
         self.WSPR_BAND_SELECTION_WIDGET.configure(
-            state="readonly",
-            style="ComboBox4White.TCombobox",
+            style="ComboBox3.TCombobox",
             takefocus=False,
             textvariable=self.WSPR_BAND_SELECTION,
-            validate="none",
             values='600m 160m 80m 60m 40m 30m 20m 17m 15m 12m 10m 6m 4m 2m',
             width=8)
         self.WSPR_BAND_SELECTION_WIDGET.pack(padx="0 10", side="top")
+        self.WSPR_BAND_SELECTION_WIDGET.bind(
+            "<<ComboboxSelected>>", self.WSPR_BAND_SELECTED_CB, add="+")
         self.frame7.grid(column=1, row=0)
         self.WSPR_BAND_DESCRIPTION_WIDGET = ttk.Label(self.frame1)
-        self.WSPR_BAND_DESCRIPTION = tk.StringVar(
-            value='RX: 14.095.600Hz - TX: 14.057.00Hz to 14.097.200Hz')
+        self.WSPR_BAND_DESCRIPTION = tk.StringVar()
         self.WSPR_BAND_DESCRIPTION_WIDGET.configure(
-            style="Heading3.TLabel",
-            text='RX: 14.095.600Hz - TX: 14.057.00Hz to 14.097.200Hz',
-            textvariable=self.WSPR_BAND_DESCRIPTION,
-            width=45)
+            style="Heading3.TLabel", textvariable=self.WSPR_BAND_DESCRIPTION, width=55)
         self.WSPR_BAND_DESCRIPTION_WIDGET.grid(column=2, row=0)
         self.frame1.pack(pady=10, side="top")
         self.frame4 = ttk.Frame(self.frame2)
@@ -193,6 +189,9 @@ class WsprfreqselectWidget(tk.Toplevel):
 
         style.configure('Fixed.TNotebook')
         style.configure('Fixed.TNotebook.Tab', padding=[5, 2])
+
+    def WSPR_BAND_SELECTED_CB(self, event=None):
+        pass
 
     def WSPR_SLIDER_MOVED_CB(self, scale_value):
         pass

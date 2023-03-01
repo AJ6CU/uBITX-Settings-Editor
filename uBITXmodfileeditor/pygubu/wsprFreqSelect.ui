@@ -52,13 +52,12 @@
                     </layout>
                     <child>
                       <object class="ttk.Combobox" id="WSPR_BAND_SELECTION_WIDGET" named="True">
-                        <property name="state">readonly</property>
-                        <property name="style">ComboBox4White.TCombobox</property>
+                        <property name="style">ComboBox3.TCombobox</property>
                         <property name="takefocus">false</property>
                         <property name="textvariable">string:WSPR_BAND_SELECTION</property>
-                        <property name="validate">none</property>
                         <property name="values">600m 160m 80m 60m 40m 30m 20m 17m 15m 12m 10m 6m 4m 2m</property>
                         <property name="width">8</property>
+                        <bind sequence="&lt;&lt;ComboboxSelected&gt;&gt;" handler="WSPR_BAND_SELECTED_CB" add="True" />
                         <layout manager="pack">
                           <property name="padx">0 10</property>
                           <property name="side">top</property>
@@ -70,9 +69,8 @@
                 <child>
                   <object class="ttk.Label" id="WSPR_BAND_DESCRIPTION_WIDGET" named="True">
                     <property name="style">Heading3.TLabel</property>
-                    <property name="text" translatable="yes">RX: 14.095.600Hz - TX: 14.057.00Hz to 14.097.200Hz</property>
                     <property name="textvariable">string:WSPR_BAND_DESCRIPTION</property>
-                    <property name="width">45</property>
+                    <property name="width">55</property>
                     <layout manager="grid">
                       <property name="column">2</property>
                       <property name="row">0</property>
