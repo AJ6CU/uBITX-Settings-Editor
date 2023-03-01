@@ -33,6 +33,7 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.CW_AUTO_BYTES_USED.set('0')
 
 
+
     #   temp to control what is processed
     readyToGo = ['VERSION_ADDRESS', 'FACTORY_VALUES_MASTER_CAL', 'FACTORY_VALUES_USB_CAL',
              'FACTORY_VALUES_CW_SPEED', 'FACTORY_VALUES_CW_SIDETONE',

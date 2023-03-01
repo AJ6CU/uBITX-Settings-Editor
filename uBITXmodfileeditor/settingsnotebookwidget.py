@@ -5590,6 +5590,10 @@ class SettingsnotebookWidget(ttk.Frame):
             font=fontList['Emphasis'])
         style.configure('ComboBox3.TCombobox', font=fontList['Heading3'])
         style.configure('ComboBox4.TCombobox', font=fontList['Heading4'])
+        style.configure(
+            'ComboBox4White.TCombobox',
+            font=fontList['Heading4'],
+            foreground='white')
         style.configure('Normal.TEntry', font=fontList['Normal'])
         style.configure(
             'NoBorder.TEntry',
