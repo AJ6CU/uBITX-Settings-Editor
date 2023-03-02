@@ -1156,7 +1156,7 @@ class eepromObj:
 
 
         def CUST_LPF_FILTER_CONTROL(self, SettingName, EEPROMBuffer, memLocation, value):
-            #print(SettingName)
+
             j = 0
             tmpStr = ""
             LPFControlByte = self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)
@@ -2357,8 +2357,6 @@ class eepromObj:
 
 
         def EXTENDED_KEY_END(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue):
-     #       print("*****")
-     #       print("ext key master called, userSettingValue =", userSettingValue, "memory addres =", memLocation)
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, round(int(userSettingValue)>>2))
 
         def EXTENDED_KEY1_END(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
@@ -2585,7 +2583,8 @@ class eepromObj:
             #get setting name and value
             userSettingName = userSetting.get("NAME")
             userSettingValue = userSetting.find("value").text
-            print(userSettingName)
+            if DEBUGAPP:
+                print(userSettingName)
 
             #now look in eeprom map for buffer memory location, size (in bytes) and data type
 

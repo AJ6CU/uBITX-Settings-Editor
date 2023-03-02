@@ -1279,6 +1279,8 @@ class SettingsNotebook(SettingsnotebookWidget):
     def runSmeterAssistant(self):
         smeterAssistant = SmeterWizard(self)
 
+    #   Note the MESSAGE* are updated within the WSPR generator
+
     def runWSPRMsg1Gen_CB(self):
         runWSPRMsgGen = WSPRmsggen(1, self.WSPR_MESSAGE1)
 
@@ -1298,16 +1300,19 @@ class SettingsNotebook(SettingsnotebookWidget):
     def runWSPRMsgGen(self):
         runWSPRMsgGen = WSPRmsggen(self)
 
-
+#   Note: TXFREQ, REG1, and REG2 are updated within the WSPRFreqSelect routine if the "OK" button is clicked
 
     def runWSPR_Band1_Select_Button_CB(self):
-        runWSPRBandSelection = WSPRFreqSelect(1, self.WSPR_BAND1_TXFREQ)
+        runWSPRBandSelection = WSPRFreqSelect(self.MASTER_CAL.get(), self.WSPR_BAND1_TXFREQ, self.WSPR_BAND1_REG1,
+                                              self.WSPR_BAND1_REG2, self.WSPR_BAND1_MULTICHAN)
 
     def runWSPR_Band2_Select_Button_CB(self):
-        runWSPRBandSelection = WSPRFreqSelect(2, self.WSPR_BAND2_TXFREQ)
+        runWSPRBandSelection = WSPRFreqSelect(self.MASTER_CAL.get(), self.WSPR_BAND2_TXFREQ, self.WSPR_BAND2_REG1,
+                                              self.WSPR_BAND2_REG2,  self.WSPR_BAND2_MULTICHAN)
 
     def runWSPR_Band3_Select_Button_CB(self):
-        runWSPRBandSelection = WSPRFreqSelect(3, self.WSPR_BAND3_TXFREQ)
+        runWSPRBandSelection = WSPRFreqSelect(self.MASTER_CAL.get(), self.WSPR_BAND3_TXFREQ,  self.WSPR_BAND3_REG1,
+                                              self.WSPR_BAND3_REG2,  self.WSPR_BAND3_MULTICHAN)
 
 
 

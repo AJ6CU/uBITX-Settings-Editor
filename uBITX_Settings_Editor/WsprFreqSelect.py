@@ -2,6 +2,7 @@ import pygubu.widgets.simpletooltip as tooltip
 import tkinter as tk
 
 from wsprfreqselectwidget import WsprfreqselectWidget
+from calcRegisters import buildWSPRRegs
 from globalvars import *
 
 class WSPRFreqSelect(WsprfreqselectWidget):
@@ -10,10 +11,14 @@ class WSPRFreqSelect(WsprfreqselectWidget):
             if (WSPRBANDS[bands][1] <= int(freq)) and (int(freq) <= WSPRBANDS[bands][3]):
                 return bands
 
-    def __init__(self, num, freq):
+    def __init__(self, cal, freq,  reg1, reg2, reg3):
 
         super().__init__()
+        self.cal = cal
         self.freq_ptr = freq
+        self.reg1_ptr = reg1            # controller for frequency
+        self.reg2_ptr = reg2            # for final divider for s5351
+        self.reg3_ptr = reg3            # Multichan/wsprsidetone
 
         currentFreq = self.freq_ptr.get().replace(".","")
 
@@ -55,11 +60,14 @@ class WSPRFreqSelect(WsprfreqselectWidget):
     def WSPR_BAND_OK_Button_CB(self):
         print("wspr OK button clicked")
         self.freq_ptr.set(self.WSPR_CURRENT_FREQUENCY.get())
+        newregs = buildWSPRRegs ( int(self.WSPR_CURRENT_FREQUENCY.get().replace(".","")), self.WSPR_BAND_SELECTION.get(), int(self.cal))
+        self.reg1_ptr.set(newregs[0])
+        print ('newregs=', newregs[0], self.reg1_ptr.get())
+        self.reg2_ptr.set(newregs[1])
+        self.reg3_ptr.set(newregs[2])
         self.destroy()
 
     def WSPR_BAND_CANCEL_Button_CB(self):
         print("wspr Cancel button clicked")
+        self.testme = 'no'
         self.destroy()
-
-    def WSPR_BAND_SELECTION_DEFAULT_CB(self):
-        pass
