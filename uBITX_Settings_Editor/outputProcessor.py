@@ -4,7 +4,7 @@ from eepromObj import *
 from processor import Processor
 
 class OutputProcessor(Processor):
-    def __init__(self, parent):
+    def __init__(self, parent, readerObj):
 
         super().__init__(parent)
 
@@ -17,6 +17,8 @@ class OutputProcessor(Processor):
             mustexist=False,
             title="Save Settings to:")
         self.goButton.set("WRITE")
+        self.readerObj = readerObj              # save ptr to the reader object that holds the state of whether data
+                                                # has been written or not
 
     def reset_ubitx(self):
         print("reset ubitx called")
@@ -63,6 +65,9 @@ class OutputProcessor(Processor):
             self.eepromFile.write()
             self.log.println("timestamp", "***Settings Saved to: " + self.savedFilePathChooser.get() + "***\n")
 
+        #   Saved Info, set state
+            self.readerObj.setIOstate('WRITE')                # We did save the data. set state
+
 
     def processComPort(self, *args):
 
@@ -88,5 +93,8 @@ class OutputProcessor(Processor):
         self.eepromCom.write()
 
         self.log.println("timestamp", "***Settings Successfully Written to uBITX***\n")
+        #   Saved Info, set state
+        self.readerObj.setIOstate('WRITE')                # We did save the data. set state
+
         self.resetButton_WIDGET.configure(state="normal")
         self.resetButton_WIDGET.pack()

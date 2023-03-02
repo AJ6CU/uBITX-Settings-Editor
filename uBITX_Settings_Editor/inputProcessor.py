@@ -21,6 +21,13 @@ class InputProcessor(Processor):
         self.userModFileDirty = {}
         self.userModFileToolTips = {}
 
+        self. IOState = "NONE"
+
+    def setIOstate(self, state):
+        self.IOstate = state
+
+    def getIOstate(self):
+        return (self.IOstate)
 
     def processFile(self, *args):
 
@@ -42,6 +49,7 @@ class InputProcessor(Processor):
                 sys.exit(-1)
 
             self.log.println("timestamp", "Completed preprocessing of settings file")
+
 
 
         elif fileParts[1] == ".btx":               # have a binary file here to load
@@ -68,6 +76,7 @@ class InputProcessor(Processor):
         #   Having built the tree, we can load it into the Notebook widget
         self.settingsNotebook.setNotebook(self.UserModroot)         #update notebook widget with settings
         self.log.println("timestamp", "***Settings Successfully loaded***\n")
+        self.setIOstate('READ')                # we have live data here that might need to be written
         return
 
 
@@ -85,6 +94,7 @@ class InputProcessor(Processor):
             self.eepromCom.read()
 
             self.log.println("timestamp",  "Finished reading EEPROM into memory")
+
             return True
         else:
             return False
@@ -100,6 +110,7 @@ class InputProcessor(Processor):
             #   Having built the tree, we can load it into the Notebook widget
             self.settingsNotebook.setNotebook(self.UserModroot)         #update notebook widget with settings
             self.log.println("timestamp", "***Settings Successfully loaded***\n")
+            self.setIOstate('READ')                # we have live data here that might need to be written
 
 
 

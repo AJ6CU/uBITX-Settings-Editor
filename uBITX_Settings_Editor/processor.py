@@ -23,6 +23,8 @@ class Processor(SourceselectorWidget):
         # create com port object
         self.comPortObj = com_portManager(self.com_portManager_frame, self)
 
+        self.IOstate = 'NONE'                       # used to track last operation and whether settings have  been written out or not
+
 
     def setLog(self, log ):                     # this method is called to tell object where to write the log
         self.log = log

@@ -2,7 +2,7 @@
 #   General System Imports
 
 import platform
-
+import tkinter.messagebox
 
 from helpsubsystem import *
 from SettingsNotebook import SettingsNotebook
@@ -13,6 +13,15 @@ from globalvars import *
 
 
 import pygubu.widgets.simpletooltip as tooltip
+
+def tryToQuit(root, inputProcessorPtr):
+
+    if inputProcessorPtr.getIOstate() == 'READ':
+        answer = tkinter.messagebox.askokcancel(title='Confirm Quit',
+                message='Settings have NOT been saved, are you sure you want to QUIT?', default="cancel", icon="warning")
+        if answer == False:
+            return
+    root.destroy()
 
 
 #####################################
@@ -31,6 +40,8 @@ else:
     appTheme = 'default'
     startDir = "~"
 
+IOstate = 'NONE'                        #used to track whether we have written the settings or not prior to quiting
+
 #   defines the root window
 root = Tk()
 root.title("uBITX Setting Customization")
@@ -45,7 +56,7 @@ ttk.Style().theme_use(appTheme)
 titleFrame=ttk.Frame(root, height=50, style='Title.TFrame')
 
 inputProcessorFrame=InputProcessor(root)
-outputProcessorFrame=OutputProcessor(root)
+outputProcessorFrame=OutputProcessor(root, inputProcessorFrame)
 
 
 valueFrame = ttk.Frame(root)
@@ -122,7 +133,7 @@ copyToClipboardButton.grid(row=0, column=0, pady=5, sticky='se')
 
 #   Now create and layout the final frame with the commands
 
-quitButton = ttk.Button(commandFrame, text="Quit", command=root.destroy,  style='Button4.TButton')
+quitButton = ttk.Button(commandFrame, text="Quit", command=lambda: tryToQuit(root, inputProcessorFrame), style='Button4.TButton')
 helpButton = ttk.Button(commandFrame, text="Help", command=lambda: helpDialog("Help", HELPFILE, status))
 aboutButton = ttk.Button(commandFrame, text="About", command=lambda: helpDialog("About", ABOUTFILE, status))
 tooltip.create(aboutButton,"A very long tool tip. \nhow does it work? \nhow does it work?")
