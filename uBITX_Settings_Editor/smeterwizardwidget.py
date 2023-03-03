@@ -11,13 +11,27 @@ class SmeterwizardWidget(tk.Toplevel):
         self.acquireADCValues_Frame = ttk.Frame(self.frame1)
         self.acquireADCValues_Frame.configure(
             height=200, relief="ridge", width=200)
-        self.label3 = ttk.Label(self.acquireADCValues_Frame)
+        self.frame2 = ttk.Frame(self.acquireADCValues_Frame)
+        self.frame2.configure(height=200, width=200)
+        self.label3 = ttk.Label(self.frame2)
         self.label3.configure(
             justify="left",
             relief="raised",
-            style="Heading3.TLabel",
-            text='Define High/Low ADC Values')
-        self.label3.pack(anchor="w", padx=10, pady=10, side="top")
+            style="Heading2.TLabel",
+            text='Define ADC# for S-Meter')
+        self.label3.pack(anchor="n", padx=10, pady="40 0", side="left")
+        self.message6 = tk.Message(self.frame2)
+        self.message6.configure(
+            borderwidth=2,
+            font="TkTextFont",
+            justify="left",
+            pady=5,
+            relief="ridge",
+            takefocus=False,
+            text='ADC stands for Analog to Digital Converter. The voltage read at an analog pin is converted to a digital value between 0-1023.\n\nThis wizard allows you to set the digital equivalent for the signal strength that is measured on the analog pin of the CPU',
+            width=375)
+        self.message6.pack(anchor="e", padx=15, pady=10)
+        self.frame2.pack(expand="false", pady=10, side="top")
         self.frame8 = ttk.Frame(self.acquireADCValues_Frame)
         self.frame8.configure(height=200, width=200)
         self.frame11 = ttk.Frame(self.frame8)
@@ -33,7 +47,10 @@ class SmeterwizardWidget(tk.Toplevel):
         self.smeterWizardManualMin_Entry_WIDGET = ttk.Entry(self.frame11)
         self.smeterWizardManualMin = tk.StringVar()
         self.smeterWizardManualMin_Entry_WIDGET.configure(
-            textvariable=self.smeterWizardManualMin, validate="focusout", width=5)
+            justify="left",
+            textvariable=self.smeterWizardManualMin,
+            validate="focusout",
+            width=5)
         self.smeterWizardManualMin_Entry_WIDGET.grid(column=2, row=1)
         _validatecmd = (
             self.smeterWizardManualMin_Entry_WIDGET.register(
@@ -84,9 +101,9 @@ class SmeterwizardWidget(tk.Toplevel):
         self.ADCubitxReadMax_Label_WIDGET.grid(column=7, row=4)
         self.sampleSizeADC = tk.IntVar(value=1)
         __values = ['1', '5', '10', '15', '20', '25']
-        self.sampleSizeADC_OptionMenu = ttk.OptionMenu(
+        self.sampleSizeADC_WIDGET = ttk.OptionMenu(
             self.frame12, self.sampleSizeADC, 1, *__values, command=None)
-        self.sampleSizeADC_OptionMenu.grid(column=1, padx="0 25", row=3)
+        self.sampleSizeADC_WIDGET.grid(column=1, padx="0 25", row=3)
         self.label10 = ttk.Label(self.frame12)
         self.label10.configure(
             compound="top",
@@ -95,10 +112,9 @@ class SmeterwizardWidget(tk.Toplevel):
         self.label10.grid(column=0, padx="0 15", row=3, sticky="e")
         self.sampleDelayADC = tk.IntVar(value=5)
         __values = ['5', '10', '50', '100', '500', '1000']
-        self.sampleDelayADC_OptionMenu_WIDGET = ttk.OptionMenu(
+        self.sampleDelayADC_WIDGET = ttk.OptionMenu(
             self.frame12, self.sampleDelayADC, 5, *__values, command=None)
-        self.sampleDelayADC_OptionMenu_WIDGET.grid(
-            column=1, padx="0 25", row=4)
+        self.sampleDelayADC_WIDGET.grid(column=1, padx="0 25", row=4)
         self.label11 = ttk.Label(self.frame12)
         self.label11.configure(
             compound="top",
@@ -243,7 +259,7 @@ class SmeterwizardWidget(tk.Toplevel):
             font="{Arial} 10 {bold}",
             from_=1023,
             label='S1',
-            length=300,
+            length=200,
             orient="vertical",
             relief="raised",
             repeatinterval=0,
@@ -258,7 +274,7 @@ class SmeterwizardWidget(tk.Toplevel):
             font="{Arial} 10 {bold}",
             from_=1023,
             label='S2',
-            length=300,
+            length=200,
             orient="vertical",
             relief="raised",
             repeatinterval=0,
@@ -273,7 +289,7 @@ class SmeterwizardWidget(tk.Toplevel):
             font="{Arial} 10 {bold}",
             from_=1023,
             label='S3',
-            length=300,
+            length=200,
             orient="vertical",
             relief="raised",
             repeatinterval=0,
@@ -288,7 +304,7 @@ class SmeterwizardWidget(tk.Toplevel):
             font="{Arial} 10 {bold}",
             from_=1023,
             label='S4',
-            length=300,
+            length=200,
             orient="vertical",
             relief="raised",
             repeatinterval=0,
@@ -303,7 +319,7 @@ class SmeterwizardWidget(tk.Toplevel):
             font="{Arial} 10 {bold}",
             from_=1023,
             label='S5',
-            length=300,
+            length=200,
             orient="vertical",
             relief="raised",
             repeatinterval=0,
@@ -318,7 +334,7 @@ class SmeterwizardWidget(tk.Toplevel):
             font="{Arial} 10 {bold}",
             from_=1023,
             label='S6',
-            length=300,
+            length=200,
             orient="vertical",
             relief="raised",
             repeatinterval=0,
@@ -333,7 +349,7 @@ class SmeterwizardWidget(tk.Toplevel):
             font="{Arial} 10 {bold}",
             from_=1023,
             label='S7',
-            length=300,
+            length=200,
             orient="vertical",
             relief="raised",
             repeatinterval=0,
@@ -348,7 +364,7 @@ class SmeterwizardWidget(tk.Toplevel):
             font="{Arial} 10 {bold}",
             from_=1023,
             label='S8',
-            length=300,
+            length=200,
             orient="vertical",
             relief="raised",
             repeatinterval=0,
@@ -390,10 +406,14 @@ class SmeterwizardWidget(tk.Toplevel):
         self.smeterWizard_Cancel_Button_WIDGET.grid(column=2, row=0)
         self.smeterWizard_Cancel_Button_WIDGET.configure(
             command=self.smeterWizard_Cancel_Button)
-        self.button4 = ttk.Button(self.confirmCancelButton_Frame)
-        self.button4.configure(style="Button4.TButton", text='Reset')
-        self.button4.grid(column=1, padx="0 25", pady=15, row=0)
-        self.button4.configure(command=self.resetADCAssistant)
+        self.smeterWizard_Reset_Button_WIDGET = ttk.Button(
+            self.confirmCancelButton_Frame)
+        self.smeterWizard_Reset_Button_WIDGET.configure(
+            style="Button4.TButton", text='Reset')
+        self.smeterWizard_Reset_Button_WIDGET.grid(
+            column=1, padx="0 25", pady=15, row=0)
+        self.smeterWizard_Reset_Button_WIDGET.configure(
+            command=self.resetADCAssistant)
         self.confirmCancelButton_Frame.pack(expand="false", side="top")
         self.frame1.pack(expand="true", fill="both", side="top")
         self.configure(height=200, width=800)
@@ -465,10 +485,20 @@ class SmeterwizardWidget(tk.Toplevel):
         style.configure('Checkbox4.TCheckbutton', font=fontList['Heading4'])
         style.configure('CheckboxNormal.TCheckbutton', font=fontList['Normal'])
         style.configure(
+            'CheckboxNormalNoBorder.TCheckbutton',
+            font=fontList['Normal'],
+            highlightthickness=0,
+            borderwidth=0,
+            bd=0)
+        style.configure(
             'CheckboxEmphasis.TCheckbutton',
             font=fontList['Emphasis'])
         style.configure('ComboBox3.TCombobox', font=fontList['Heading3'])
         style.configure('ComboBox4.TCombobox', font=fontList['Heading4'])
+        style.configure(
+            'ComboBox4White.TCombobox',
+            font=fontList['Heading4'],
+            foreground='white')
         style.configure('Normal.TEntry', font=fontList['Normal'])
         style.configure(
             'NoBorder.TEntry',
@@ -485,6 +515,9 @@ class SmeterwizardWidget(tk.Toplevel):
 
         style.configure('Highlight.TFrame', background='blue', bd=4)
         style.configure('Normal.TFrame', background='gray', bd=4)
+
+        style.configure('Fixed.TNotebook')
+        style.configure('Fixed.TNotebook.Tab', padding=[5, 2])
 
     def validate_smeterWizardManualMin(self, p_entry_value, v_condition):
         pass

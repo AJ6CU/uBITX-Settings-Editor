@@ -4,6 +4,7 @@ import tkinter as tk
 from smeterwizardwidget import SmeterwizardWidget
 from com_portManager import com_portManager
 from globalvars import *
+import pygubu.widgets.simpletooltip as tooltip
 
 
 class SmeterWizard(SmeterwizardWidget):
@@ -30,6 +31,7 @@ class SmeterWizard(SmeterwizardWidget):
         self.img_img_Custom125x80 = tk.PhotoImage(file=CUSTOMICON)
 
         super().__init__(parent)
+        self.grab_set()
 
         #   now configure the buttons to display the thumbnails of the graphs
 
@@ -53,6 +55,38 @@ class SmeterWizard(SmeterwizardWidget):
         self.comPortObj.pack()                          # make com it visible
 
         self.resetADCAssistant()
+
+        #   Add tooltips
+        tooltip.create(self.smeterWizardManualMin_Entry_WIDGET,"Manually enter a minimum value for the S-Meter scale. Must be less than 1020")
+        tooltip.create(self.smeterWizardManualMax_Entry_WIDGET,"Manually enter a maximum value for the S-Meter scale. Must be less than 1020")
+        tooltip.create(self.sampleSizeADC_WIDGET,"Select how many samples you want to collect to find minimum or maximum")
+        tooltip.create(self.sampleDelayADC_WIDGET,"Set how hong (in milliseconds) between sample collection")
+        tooltip.create(self.sampleADCReadMin_Button_WIDGET,"Start sampling for minimum value")
+        tooltip.create(self.sampleADCReadMax_Button_WIDGET,"Start sampling for maximum value")
+        tooltip.create(self.adcCurve1_Button,"Click if you want your S-Meter scale to look like this graph")
+        tooltip.create(self.adcCurve2_Button,"Click if you want your S-Meter scale to look like this graph")
+        tooltip.create(self.adcCurve3_Button,"Click if you want your S-Meter scale to look like this graph")
+        tooltip.create(self.adcCurve4_Button,"Click if you want your S-Meter scale to look like this graph")
+        tooltip.create(self.adcCurve5_Button,"Click if you want your S-Meter scale to look like this graph")
+        tooltip.create(self.adcCurve6_Button,"Click if you want your S-Meter scale to look like this graph")
+        tooltip.create(self.adcCurve7_Button,"Click if you want your S-Meter scale to look like this graph")
+        tooltip.create(self.adcCustom_Button,"This button is highlighted when you make modifications to the scales for one or more S ranges")
+        tooltip.create(self.adc_scale_S1,"Move slider to set value for S1")
+        tooltip.create(self.adc_scale_S2,"Move slider to set value for S2")
+        tooltip.create(self.adc_scale_S3,"Move slider to set value for S3")
+        tooltip.create(self.adc_scale_S4,"Move slider to set value for S4")
+        tooltip.create(self.adc_scale_S5,"Move slider to set value for S5")
+        tooltip.create(self.adc_scale_S6,"Move slider to set value for S6")
+        tooltip.create(self.adc_scale_S7,"Move slider to set value for S7")
+        tooltip.create(self.adc_scale_S8,"Move slider to set value for S8")
+        tooltip.create(self.smeterWizard_Apply_Button_WIDGET,"Apply your changes and exit the S-Meter Wizard")
+        tooltip.create(self.smeterWizard_Reset_Button_WIDGET,"Click to return to your original values so you can start again")
+        tooltip.create(self.smeterWizard_Cancel_Button_WIDGET,"Cancel your changes and exit the S-Meter Wizard")
+        tooltip.create(self.comPortObj.comPortsOptionMenu,"Select the com port used by your uBITX")
+        tooltip.create(self.comPortObj.comPortListRefresh,"Refresh list of available com ports. "+
+                                                        "(You can also plug in your uBITX and then refresh list")
+
+
 
 
     def resetADCAssistant(self):
@@ -83,9 +117,7 @@ class SmeterWizard(SmeterwizardWidget):
         adcValue =[]
         if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
             self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
-            print("\n***Starting ADC Scan***")
-            #print("sample size =", self.sampleSizeADC.get())
-            #print("delay =", self.sampleDelayADC.get())
+
 
             for x in range(self.sampleSizeADC.get()):
                 self.RS232.write(bytes([SMETERPIN, 0, 0, 0, READADC]))
@@ -106,12 +138,9 @@ class SmeterWizard(SmeterwizardWidget):
                 adcValue.append((ord(byte1)<<8) + ord(byte2))
                 sleep(self.sampleDelayADC.get()/1000)
 
-            print('values found =', adcValue)
             if highorlow == 'HIGH':
-                print(max(adcValue))
                 return max(adcValue)
             else:
-                print(min(adcValue))
                 return min(adcValue)
 
 
@@ -125,12 +154,10 @@ class SmeterWizard(SmeterwizardWidget):
         self.sampleADCReadMax_Button_WIDGET.configure(state='disabled')
 
     def sampleADCReadMin(self):
-        print("read ubitx min")
         self.minRead = 'AUTO'
         self.ADCubitxReadMin.set(self.readADCsmeter("LOW"))
 
     def sampleADCReadMax(self):
-        print("read ubitx max")
         self.maxRead = 'AUTO'
         self.ADCubitxReadMax.set(self.readADCsmeter("HIGH"))
 
@@ -158,7 +185,7 @@ class SmeterWizard(SmeterwizardWidget):
         elif self.minRead == "AUTO":
             self.minADC = int(self.ADCubitxReadMin.get())
         else:
-            print("need error log here")
+            # print("need error log here")
             return False
 
         if self.maxRead == "MANUAL":
@@ -166,7 +193,7 @@ class SmeterWizard(SmeterwizardWidget):
         elif self.minRead == "AUTO":
             self.maxADC = int(self.ADCubitxReadMax.get())
         else:
-            print("need error log here")
+            # print("need error log here")
             return False
 
         return True         # found valid values

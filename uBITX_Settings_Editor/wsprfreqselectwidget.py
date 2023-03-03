@@ -85,16 +85,18 @@ class WsprfreqselectWidget(tk.Toplevel):
             side="top")
         self.frame3 = ttk.Frame(self.frame2)
         self.frame3.configure(height=200, width=200)
-        self.WSPR_BAND_OK_CB_Button = ttk.Button(self.frame3)
-        self.WSPR_BAND_OK_CB_Button.configure(
+        self.WSPR_BAND_OK_Button_WIDGET = ttk.Button(self.frame3)
+        self.WSPR_BAND_OK_Button_WIDGET.configure(
             style="Normal.TButton", text='OK')
-        self.WSPR_BAND_OK_CB_Button.grid(column=0, padx="0 10", row=0)
-        self.WSPR_BAND_OK_CB_Button.configure(
+        self.WSPR_BAND_OK_Button_WIDGET.grid(column=0, padx="0 10", row=0)
+        self.WSPR_BAND_OK_Button_WIDGET.configure(
             command=self.WSPR_BAND_OK_Button_CB)
-        self.button2 = ttk.Button(self.frame3)
-        self.button2.configure(style="Normal.TButton", text='Cancel')
-        self.button2.grid(column=1, row=0)
-        self.button2.configure(command=self.WSPR_BAND_CANCEL_Button_CB)
+        self.WSPR_BAND_CANCEL_Button_WIDGET = ttk.Button(self.frame3)
+        self.WSPR_BAND_CANCEL_Button_WIDGET.configure(
+            style="Normal.TButton", text='Cancel')
+        self.WSPR_BAND_CANCEL_Button_WIDGET.grid(column=1, row=0)
+        self.WSPR_BAND_CANCEL_Button_WIDGET.configure(
+            command=self.WSPR_BAND_CANCEL_Button_CB)
         self.frame3.pack(pady="0 10", side="top")
         self.frame2.pack(padx=10, side="top")
         self.WSPR_MSG_GEN_Frame.pack(

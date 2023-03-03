@@ -2,6 +2,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from os import path
+import pygubu.widgets.simpletooltip as tooltip
 
 
 from processor import Processor
@@ -11,10 +12,19 @@ class InputProcessor(Processor):
     def __init__(self, parent):
         super().__init__(parent)
         self.goButton.set("READ")
-        self.resetButton_WIDGET.forget()
+        self.reset_uBITX_Button_WIDGET.forget()
         self.savedFilePathChooserWidget.config(
             mustexist=True,
             title="Select Previously Saved Settings File")
+
+       #   add tooltips
+        tooltip.create(self.uBITX_sourceSelector_WIDGET,"Click to read the settings from an attached uBITX")
+        tooltip.create(self.File_sourceSelector_WIDGET,"Click to read the settings from a previously saved backup file")
+        tooltip.create(self.goButtonWidget,"Click after selecting the source")
+        tooltip.create(self.comPortObj.comPortsOptionMenu,"Select the com port used by your uBITX")
+        tooltip.create(self.comPortObj.comPortListRefresh,"Refresh list of available com ports. "+
+                                                        "(You can also plug in your uBITX and then refresh list")
+
 
         #   Dictionary to hold current values of usermodfile and whether dirty or not
         self.userModFileValues = {}
@@ -44,7 +54,7 @@ class InputProcessor(Processor):
             try:
                 self.UserModroot = ET.parse(self.savedFilePathChooser.get())
             except:
-                self.log.println("timestamp", self.savedFilePathChooser.get() + "is corrupted")
+                self.log.printerror("timestamp", self.savedFilePathChooser.get() + "is corrupted")
                 tk.messagebox.showerror(title="FATAL ERROR", message=self.savedFilePathChooser.get() + " is corrupted. Please correct or recreate. \nEXITING")
                 sys.exit(-1)
 
@@ -55,7 +65,7 @@ class InputProcessor(Processor):
         elif fileParts[1] == ".btx":               # have a binary file here to load
             # confirm file exists
             if path.exists(self.savedFilePathChooser.get()) == False:
-                self.log.println("timestamp", self.savedFilePathChooser.get() + " does not exist. Please select an existing file.")
+                self.log.printerror("timestamp", self.savedFilePathChooser.get() + " does not exist. Please select an existing file.")
                 return
             else:
                 self.log.println("timestamp", "Loading Backup File")
@@ -66,7 +76,7 @@ class InputProcessor(Processor):
 
 
         else:
-                self.log.println("timestamp", self.savedFilePathChooser.get() + " is not a '.xml' or '.btx' file")
+                self.log.printerror("timestamp", self.savedFilePathChooser.get() + " is not a '.xml' or '.btx' file")
                 tk.messagebox.showerror(title="FATAL ERROR", message=self.savedFilePathChooser.get() + " is not a '.xml' or '.btx' file \nEXITING")
                 sys.exit(-1)
 

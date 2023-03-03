@@ -1,4 +1,5 @@
 from os import path
+import pygubu.widgets.simpletooltip as tooltip
 
 from eepromObj import *
 from processor import Processor
@@ -19,6 +20,14 @@ class OutputProcessor(Processor):
         self.goButton.set("WRITE")
         self.readerObj = readerObj              # save ptr to the reader object that holds the state of whether data
                                                 # has been written or not
+        #   add tooltips
+        tooltip.create(self.uBITX_sourceSelector_WIDGET,"Click to write the settings to an attached uBITX")
+        tooltip.create(self.File_sourceSelector_WIDGET,"Click to write the settings to a file")
+        tooltip.create(self.goButtonWidget,"Click after selecting the destination for the settings")
+        tooltip.create(self.comPortObj.comPortsOptionMenu,"Select the com port used by your uBITX")
+        tooltip.create(self.comPortObj.comPortListRefresh,"Refresh list of available com ports. "+
+                                                        "(You can also plug in your uBITX and then refresh list")
+        tooltip.create(self.reset_uBITX_Button_WIDGET, "Click to reboot your uBITX with the new settings")
 
     def reset_ubitx(self):
         print("reset ubitx called")
@@ -96,5 +105,5 @@ class OutputProcessor(Processor):
         #   Saved Info, set state
         self.readerObj.setIOstate('WRITE')                # We did save the data. set state
 
-        self.resetButton_WIDGET.configure(state="normal")
-        self.resetButton_WIDGET.pack()
+        self.reset_uBITX_Button_WIDGET.configure(state="normal")
+        self.reset_uBITX_Button_WIDGET.pack()

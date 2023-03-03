@@ -100,7 +100,7 @@ class SettingsNotebook(SettingsnotebookWidget):
 
     #   this needs to be moved somewhere else too
     hideOnStartup = ['Extended_Channel_Frame', "TUNING_STEP_INDEX_VALUE_WIDGET", "TUNING_STEP_INDEX_WIDGET",
-                    'CW_AUTO_MAGIC_KEY_WIDGET',  'USER_CALLSIGN_KEY_WIDGET',
+                    'CW_AUTO_MAGIC_KEY_WIDGET',  'USER_CALLSIGN_KEY_WIDGET', 'CW_AUTO_DATA_WIDGET',
                     'FIRMWARE_ID_ADDR1_WIDGET','FIRMWARE_ID_ADDR2_WIDGET', 'FIRMWARE_ID_ADDR3_WIDGET',
                     'FACTORY_VALUES_VFO_A_WIDGET', 'FACTORY_VALUES_VFO_B_WIDGET',
                     'CUST_LPF_FILTER1_CONTROL_WIDGET', 'CUST_LPF_FILTER2_CONTROL_WIDGET', 'CUST_LPF_FILTER3_CONTROL_WIDGET',
@@ -137,6 +137,7 @@ class SettingsNotebook(SettingsnotebookWidget):
     MASTER_CAL_BOUNDS = {'LOW':-500000, 'HIGH': 500000}
     USB_CAL_BOUNDS = {'LOW':0, 'HIGH': 20000000}
     CW_CAL_BOUNDS = {'LOW':0, 'HIGH': 20000000}
+    IF_SHIFTVALUE_BOUNDS = {'LOW':-9999, 'HIGH':10000}
     PREDEFINED_TUNING_STEPS = {'0': [1,5,10,50,100], '1': [10,20,50,100,1000], '2': [1,10,100,1000,10000],
                                '3': [10,50,500,5000,10000], '4': [10,50,100,2000,50000] }
     TUNING_STEPS_BOUNDS = {'LOW':1, 'HIGH': 60}
@@ -144,7 +145,7 @@ class SettingsNotebook(SettingsnotebookWidget):
     CW_SPEED_WPM_BOUNDS = {'LOW':1, 'HIGH': 250}
     CW_START_MS_BOUNDS = {'LOW':0, 'HIGH': 5000}
     CW_DELAY_MS_BOUNDS = {'LOW':0, 'HIGH': 10000}
-    CHANNEL_WSPR_NAME_MAX = 5
+    # CHANNEL_WSPR_NAME_MAX = 5
     USER_CALLSIGN_BOUNDS = {'HIGH':18 }
     HAM_BAND_COUNT_BOUNDS = {'LOW':0, 'HIGH':10}
 
@@ -588,7 +589,7 @@ class SettingsNotebook(SettingsnotebookWidget):
         if (v_condition == "focusin"):
             self.priorValues["CHANNEL_"+bandName+"_NAME"] = p_entry_value
             getattr(self, "CHANNEL_"+bandName+"_NAME").set(p_entry_value.strip())
-        if(self.checkLength(p_entry_value.strip(), SettingsNotebook.CHANNEL_WSPR_NAME_MAX) ):
+        if(self.checkLength(p_entry_value.strip(), CHANNELNAMELENGTH) ):
             getattr(self, "CHANNEL_"+bandName+"_NAME").set(p_entry_value.strip())
             return True
 
@@ -796,6 +797,36 @@ class SettingsNotebook(SettingsnotebookWidget):
     def validate_HAM_BAND_RANGE10_END(self, p_entry_value, v_condition):
         return self.validate_HAM_BAND_END(p_entry_value, v_condition, "RANGE10")
 
+
+    def validate_WSPR_MESSAGE_NAME(self, p_entry_value, v_condition, message):
+
+        if (v_condition == "focusin"):
+            self.priorValues["WSPR_"+message+"_NAME"] = p_entry_value
+            getattr(self, "WSPR_"+message+"_NAME").set(p_entry_value.strip())
+        if(self.checkLength(p_entry_value.strip(), WSPRNAMELENGTH) ):
+            getattr(self, "WSPR_"+message+"_NAME").set(p_entry_value.strip())
+            return True
+
+        # if we reach this point, there is an error...
+        self.log.printerror("timestamp", "WSPR Name " + SettingsNotebook.validationErrorMsg)
+        getattr(self, "WSPR_"+message+"_NAME").set(self.priorValues["WSPR_"+message+"_NAME"])
+        return False
+
+    def validate_CHANNEL_FREQ1_NAME(self, p_entry_value, v_condition):
+        return self.validate_CHANNEL_NAME(p_entry_value, v_condition, "FREQ1")
+
+    def validate_WSPR_MESSAGE1_NAME(self, p_entry_value, v_condition):
+        return self.validate_WSPR_MESSAGE_NAME(p_entry_value, v_condition, "MESSAGE1")
+
+    def validate_WSPR_MESSAGE2_NAME(self, p_entry_value, v_condition):
+        return self.validate_WSPR_MESSAGE_NAME(p_entry_value, v_condition, "MESSAGE2")
+
+    def validate_WSPR_MESSAGE3_NAME(self, p_entry_value, v_condition):
+        return self.validate_WSPR_MESSAGE_NAME(p_entry_value, v_condition, "MESSAGE3")
+
+    def validate_WSPR_MESSAGE4_NAME(self, p_entry_value, v_condition):
+        return self.validate_WSPR_MESSAGE_NAME(p_entry_value, v_condition, "MESSAGE4")
+
     def CUST_LPF_SELECTION_CB(self, *args):
         if (self.CUST_LPF_ENABLED.get() == 'OFF'):
             self.CUSTOM_BANDPASS_FILTER_Frame.forget()
@@ -892,6 +923,31 @@ class SettingsNotebook(SettingsnotebookWidget):
             self.Extended_Channel_Frame.pack(anchor="w", side="top")
         else:
             self.Extended_Channel_Frame.forget()
+
+    def SMeter_Input_CB(self):
+        if (self.S_METER_LEVELS.get() == 'YES'):         #   s-meter disabled, make rest of s-meter values
+            self.SMETER_CONFIG_FRAME.pack(side="top")
+        else:
+            self.SMETER_CONFIG_FRAME.forget()
+
+    def Factory_Settings_Enable_CB(self):
+
+
+        if self.FACTORY_SETTING_PROTECTION.get() == 'YES':
+            answer = tk.messagebox.askyesno(title='Confirm Overwrite',
+                message='You SHOULD NOT overwrite the Factory Calibration Settings unless you are positive you know ' +
+                        'what you are doing. Are you REALLY sure you want to do this?', default="no", icon="warning")
+            if answer == False:
+                self.FACTORY_SETTING_PROTECTION.set('NO')
+                return
+            else:
+                self.MASTER_CAL_COPY_FACTORY_BUTTON.configure(state="normal")
+                self.USB_CAL_COPY_FACTORY_BUTTON.configure(state="normal")
+        else:
+            self.MASTER_CAL_COPY_FACTORY_BUTTON.configure(state="disabled")
+            self.USB_CAL_COPY_FACTORY_BUTTON.configure(state="disabled")
+
+
 
     def CW_Auto_Msg_Cleanup_CB(self):
         # this function just deletes empty CW Autokey Messages and frees up space
@@ -1055,6 +1111,18 @@ class SettingsNotebook(SettingsnotebookWidget):
         else:
             self.IF1_Calibration_Frame.forget()
 
+    def validate_IF_SHIFTVALUE(self, p_entry_value, v_condition):
+        if (v_condition == "focusin"):
+            self.priorValues["IF_SHIFTVALUE"] = p_entry_value
+        if (self.validateNumber(p_entry_value, SettingsNotebook.IF_SHIFTVALUE_BOUNDS['LOW'], SettingsNotebook.IF_SHIFTVALUE_BOUNDS['HIGH'])):
+            return True
+
+        # if we reach this point, there is an error...
+        self.log.printerror("timestamp", "IF SHIFT VALUE " + SettingsNotebook.validationErrorMsg)
+        self.IF_SHIFTVALUE.set(self.priorValues["IF_SHIFTVALUE"])
+        return False
+
+
     def CUST_LPF_FILTER_CONTROL(self, filter):
 
         theFilter = getattr(self,"CUST_LPF_"+filter+"_CONTROL")
@@ -1177,11 +1245,61 @@ class SettingsNotebook(SettingsnotebookWidget):
 
 
     def load_Recommended_ADC_CW_Values(self):
-        pass
-    #st start 0, 50
-    #dot start 301, 600
-    #dash start 601, 700
-    #both start  51, 300
+        self.CW_ADC_ST_FROM.set(CW_KEY_PRESSED_START)
+        self.CW_ADC_ST_TO.set(CW_KEY_PRESSED_END)
+
+        self.CW_ADC_DOT_FROM.set(CW_DOT_KEY_PRESSSED_START)
+        self.CW_ADC_DOT_TO.set(CW_DOT_KEY_PRESSSED_END)
+
+        self.CW_ADC_DASH_FROM.set(CW_DASH_KEY_PRESSSED_START)
+        self.CW_ADC_DASH_TO.set(CW_DASH_KEY_PRESSSED_END)
+
+        self.CW_ADC_BOTH_FROM.set(CW_BOTH_KEY_PRESSSED_START)
+        self.CW_ADC_BOTH_TO.set(CW_BOTH_KEY_PRESSSED_END)
+
+    def setTooltips(self):
+#
+        #   CW Keyer Tab
+        tooltip.create(self.USER_CALLSIGN_WIDGET_2,"Enter your callsign. (Should be automatically inserted from the field in the General settings.)")
+        tooltip.create(self.CW_Auto_Msg_Cleanup_Button_WIDGET,"This button deletes empty messages and will increase available bytes slightly.")
+        tooltip.create(self.CW_AUTO_COUNT_WIDGET,"This field automatically tracks the count of the last message used. Empty messages are counted! " +
+                       "Use the Cleanup button to delete empty messages and free up space.")
+        tooltip.create(self.CW_AUTO_BYTES_USED_WIDGET,"This field automatically tracks the total bytes used by your messages. This will be slightly more than "+
+                       "the total number of characters because of a 2 byte overhead/message.")
+        tooltip.create(self.CW_AUTO_REMAINING_BYTES_WIDGET,"This is the total bytes remaining in the EEPROM to hold your messages.")
+        #
+        #   Bands Tab
+        tooltip.create(self.autoInputRegion1_WIDGET,"Click this button to automatially populate bands for Region 1.")
+        tooltip.create(self.autoInputRegion2_WIDGET,"Click this button to automatially populate bands for Region 2.")
+        tooltip.create(self.autoInputRegion3_WIDGET,"Click this button to automatially populate bands for Region 3.")
+        #
+        #   Channels tab
+        tooltip.create(self.toggleExtendedChannels_WIDGET,"In addition to Channels 1 -10 which you can assign a name, "+
+                       "there are another 10 channels that you can define that just do not have names. Click this "+
+                       "checkbox to display these additional channels so that you can set them.")
+        #
+        #   Displays tab
+        tooltip.create(self.runI2CScanner_WIDGET,"If you do not know  or you are not sure of the addresses of your LCD, click this button to start an I2C scanner")
+        #
+        #   SDR Tab
+        tooltip.create(self.SDR_OFFSET_MODE_WIDGET,"Select the Mode that the SDR operates. See description below.")
+        #
+        #   Extensions Tab
+        tooltip.create(self.runADCScanner_WIDGET,"Click to run an ADC (Analog to Digital Converter) scanner to help figure out start and end values for each key.")
+        #
+        #   Calibration Tab
+        tooltip.create(self.MASTER_CAL_COPY_BUTTON,"Click to copy the Factory Recovery value for the Master CAL to the current Master CAL setting")
+        tooltip.create(self.MASTER_CAL_COPY_FACTORY_BUTTON,"Click to copy the existing Master CAL value over the Factory Recovery value")
+        tooltip.create(self.USB_CAL_COPY_BUTTON,"Click to copy the Factory Recovery value for the BFO to the current BFO setting")
+        tooltip.create(self.USB_CAL_COPY_FACTORY_BUTTON,"Click to copy the existing BFO value over the Factory Recovery value.")
+        tooltip.create(self.FACTORY_VALUES_MASTER_CAL_LABEL,"Current Master Cal setting stored in the Factory Recovery section.")
+        tooltip.create(self.FACTORY_VALUES_USB_CAL_LABEL,"Current BFO setting stored in the Factory Recovery section.")
+        tooltip.create(self.CAL_runADCScanner_WIDGET,"Click to run an ADC (Analog to Digital Converter) scanner to help figure out start and end values for each CW key.")
+        tooltip.create(self.load_Recommended_ADC_CW_Values_WIDGET,"Clicking this loads some reasonable settings for the ADC values for the CW keys. Probably will work, if not you can tune using ADC Scanner results.")
+        tooltip.create(self.smeterAssistant_BUTTON_WIDGET,"Click to run a S-Meter assistant to help you tune the ADC values for your system.")
+        #
+        #   System Info Tab
+        tooltip.create(self.KD8CEC_VERSION_WIDGET,"Currently installed Firmware and Version.")
 
 
     def setNotebook(self, valueTree):
@@ -1231,6 +1349,12 @@ class SettingsNotebook(SettingsnotebookWidget):
         # LPF Control Lines
         self.Set_LPF_Control_Lines()
 
+#       Set visability of s-meter configuration visability
+        self.SMeter_Input_CB()
+
+        #   Disable update of factory settings
+        self.FACTORY_SETTING_PROTECTION.set('NO')
+        self.Factory_Settings_Enable_CB()
 
 
         # Set maximum available bytes
@@ -1238,7 +1362,9 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.CW_AUTO_REMAINING_BYTES.set(str(EEPROMSIZE - 1 - len(self.QSO_CALLSIGN.get())
                                              - CW_MEMORY_KEYER_BUFFER_START - int(self.CW_AUTO_BYTES_USED.get())))
 
-
+        #   Add extra tooltips
+        #
+        self.setTooltips()
 
         #   Clear hidden widgets
         for widget in SettingsNotebook.hideOnStartup:

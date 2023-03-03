@@ -1,49 +1,16 @@
 #!/usr/bin/python3
 import tkinter as tk
 import tkinter.ttk as ttk
-from pygubu.widgets.scrollbarhelper import ScrollbarHelper
 
 
-class ScannerWidget(tk.Toplevel):
+class ManualviewerWidget(tk.Toplevel):
     def __init__(self, master=None, **kw):
-        super(ScannerWidget, self).__init__(master, **kw)
-        self.scanner_frame = ttk.Frame(self)
-        self.scanner_frame.configure(height=200, width=800)
-        self.com_portManager_frame = ttk.Frame(self.scanner_frame)
-        self.com_portManager_frame.configure(height=50, width=550)
-        self.com_portManager_frame.grid(
-            column=0, columnspan=3, row=0, sticky="ew")
-        self.frame2 = ttk.Frame(self.scanner_frame)
-        self.frame2.configure(height=200, width=50)
-        self.scanner_Go_Button_Widget = ttk.Button(self.frame2)
-        self.scanner_Go_Button_Widget.configure(
-            state="normal", style="Button4.TButton", text='Scan')
-        self.scanner_Go_Button_Widget.pack(pady=30)
-        self.scanner_Go_Button_Widget.configure(command=self.scannerStart)
-        self.scanner_Done_Button_Widget = ttk.Button(self.frame2)
-        self.scanner_Done_Button_Widget.configure(text='Done')
-        self.scanner_Done_Button_Widget.pack()
-        self.scanner_Done_Button_Widget.configure(command=self.scannerDone)
-        self.frame2.grid(column=2, ipadx=15, row=1, sticky="new")
-        self.scrollbarhelper1 = ScrollbarHelper(
-            self.scanner_frame, scrolltype="vertical")
-        self.scrollbarhelper1.configure(usemousewheel=False)
-        self.scannerLog_Text = tk.Text(self.scrollbarhelper1.container)
-        self.scannerLog_Text.configure(
-            height=10, state="disabled", width=50, wrap="none")
-        self.scannerLog_Text.pack(side="top")
-        self.scrollbarhelper1.add_child(self.scannerLog_Text)
-        self.scrollbarhelper1.grid(padx=10, pady=15, row=1)
-        self.scanner_frame.pack(
-            anchor="center",
-            expand="true",
-            fill="both",
-            side="top")
-        self.scanner_frame.columnconfigure(0, weight=2)
-        self.scanner_frame.columnconfigure(1, weight=2)
-        self.configure(height=200, width=600)
-        self.resizable(True, True)
-        self.title("I2C Scanner")
+        super(ManualviewerWidget, self).__init__(master, **kw)
+        self.pdf_container = ttk.Frame(self)
+        self.pdf_container.configure(height=200, width=200)
+        self.pdf_container.pack(side="top")
+        self.configure(height=200, width=200)
+        self.geometry("1280x720")
 
         self.setup_ttk_styles()
 
@@ -145,15 +112,9 @@ class ScannerWidget(tk.Toplevel):
         style.configure('Fixed.TNotebook')
         style.configure('Fixed.TNotebook.Tab', padding=[5, 2])
 
-    def scannerStart(self):
-        pass
-
-    def scannerDone(self):
-        pass
-
 
 if __name__ == "__main__":
     root = tk.Tk()
-    widget = ScannerWidget(root)
+    widget = ManualviewerWidget(root)
     widget.pack(expand=True, fill="both")
     root.mainloop()

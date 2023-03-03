@@ -28,7 +28,7 @@ def helpDialog(winTitle, helpFile, logMe):
     try:
         helpRoot = ET.parse(helpFile)
     except:
-        logMe.println("timestamp"," Missing file: " + helpFile)
+        logMe.printerror("timestamp"," Missing file: " + helpFile)
         tkinter.messagebox.showerror(title="FATAL ERROR", message=helpFile+" is missing or corrupted. Please re-install application. \nEXITING")
         sys.exit(-1)
 #   create new top level window for the help

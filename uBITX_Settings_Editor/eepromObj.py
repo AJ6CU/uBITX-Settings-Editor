@@ -219,7 +219,7 @@ class eepromObj:
                 value.text = str(callSignStr)
             else:           # bad magic number, set value to null ('')
                 value.text = ''
-                self.log.println("timestamp",  "WARNING!: Bad Magic# for User Callsign, Callsign data ignored")
+                self.log.printerror("timestamp",  "WARNING!: Bad Magic# for User Callsign, Callsign data ignored")
 
         def CW_AUTO_MAGIC_KEY (self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             value.text = str(MAGIC_CW_AUTO_MAGIC_KEY)
@@ -252,7 +252,7 @@ class eepromObj:
             else:           # bad magic number, set value to 0
                 self.CW_Number_of_Msgs = 0
                 value.text = '0'
-                self.log.println("timestamp",  "WARNING!: Bad Magic# for CW Autokeyer Message storage, message data ignored")
+                self.log.printerror("timestamp",  "WARNING!: Bad Magic# for CW Autokeyer Message storage, message data ignored")
 
 
         def CW_AUTO_DATA(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1 ):
@@ -2513,7 +2513,7 @@ class eepromObj:
             try:
                 eepromObj.UserModroot = ET.parse(USERMODFILETEMPLACE)
             except:
-                self.log.println("timestamp",  USERMODFILETEMPLACE + " is missing or corrupted")
+                self.log.printerror("timestamp",  USERMODFILETEMPLACE + " is missing or corrupted")
                 tk.messagebox.showerror(title="FATAL ERROR", message=USERMODFILETEMPLACE + " is missing or corrupted. Please re-install application. \nEXITING")
                 sys.exit(-1)
 
@@ -2595,7 +2595,7 @@ class eepromObj:
             if (userSettingValue != None):
                 EEPROM_Memory.set(userSettingName, userSettingName, self.EEPROMBuffer, self.EEPROMBufferDirty, memLocation, userSettingValue, eepromObj.EEPROMroot, userSetting)
             else:
-                self.log.println("timestamp","Warning: skipping because value = NONE, Setting Name" + userSettingName)
+                self.log.printerror("timestamp","Warning: skipping because value = NONE, Setting Name" + userSettingName)
 
 #   ******************************************************************************************************
 #   Two subclasses of eepromObj that are refined for Com and File writing
@@ -2655,7 +2655,7 @@ class eepromUBITX (eepromObj):          # subclass
         trailingByte = int.from_bytes(self.comPort.read(1),"little",signed=False)
 
         if(sentCheckSum!=checkSum)|(trailingByte!=0):
-            self.log.println("timestamp","Bad Checksum on EEPROM Read")
+            self.log.printerror("timestamp","Bad Checksum on EEPROM Read")
             tkinter.messagebox.showerror(title="ERROR", message="Bad Checksum reading from Radio.\nTry restarting radio, ensuring the USB cable plugged in securely, and then restart application. \nEXITING")
             sys.exit(-1)
 
@@ -2694,12 +2694,12 @@ class eepromUBITX (eepromObj):          # subclass
                     if (resultCode == OK) & (trailingByte == ACK):
                         break
                     else:
-                        self.log.println("timestamp","retrying byte =" + str(i))
-                        self.log.println("timestamp","resultcode=" + str(resultCode))
-                        self.log.println("timestamp","trailingByte=" + str(trailingByte))
+                        self.log.printerror("timestamp","retrying byte =" + str(i))
+                        self.log.printerror("timestamp","resultcode=" + str(resultCode))
+                        self.log.printerror("timestamp","trailingByte=" + str(trailingByte))
                         retryCnt += 1
                         if retryCnt > RETRIES:
-                            self.log.println("timestamp","number of retries exceeded on memory location: " + str(i))
+                            self.log.printerror("timestamp","number of retries exceeded on memory location: " + str(i))
                             return (1)  # Failure
             i += 1
         return (0)                      # Success

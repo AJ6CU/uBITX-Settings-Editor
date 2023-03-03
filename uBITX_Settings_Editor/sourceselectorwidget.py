@@ -9,25 +9,25 @@ class SourceselectorWidget(ttk.Labelframe):
         super(SourceselectorWidget, self).__init__(master, **kw)
         self.SourceSelector = ttk.Frame(self)
         self.SourceSelector.configure(height=200, width=200)
-        self.radiobutton1 = ttk.Radiobutton(self.SourceSelector)
+        self.uBITX_sourceSelector_WIDGET = ttk.Radiobutton(self.SourceSelector)
         self.sourceSelectorRadioButton = tk.StringVar(value='uBITX')
-        self.radiobutton1.configure(
+        self.uBITX_sourceSelector_WIDGET.configure(
             state="normal",
             style="RadioButton4.TRadiobutton",
             text='uBITX',
             value="uBITX",
             variable=self.sourceSelectorRadioButton)
-        self.radiobutton1.pack(anchor="w", side="top")
-        self.radiobutton1.configure(command=self.sourceSelected)
-        self.radiobutton2 = ttk.Radiobutton(self.SourceSelector)
-        self.radiobutton2.configure(
+        self.uBITX_sourceSelector_WIDGET.pack(anchor="w", side="top")
+        self.uBITX_sourceSelector_WIDGET.configure(command=self.sourceSelected)
+        self.File_sourceSelector_WIDGET = ttk.Radiobutton(self.SourceSelector)
+        self.File_sourceSelector_WIDGET.configure(
             state="normal",
             style="RadioButton4.TRadiobutton",
             text='Saved File',
             value="SavedFIle",
             variable=self.sourceSelectorRadioButton)
-        self.radiobutton2.pack(anchor="w", side="left")
-        self.radiobutton2.configure(command=self.sourceSelected)
+        self.File_sourceSelector_WIDGET.pack(anchor="w", side="left")
+        self.File_sourceSelector_WIDGET.configure(command=self.sourceSelected)
         self.SourceSelector.grid(column=0, padx=20, row=0)
         self.separator1 = ttk.Separator(self)
         self.separator1.configure(orient="vertical")
@@ -79,16 +79,16 @@ class SourceselectorWidget(ttk.Labelframe):
         self.goButtonWidget.grid(column=0, row=0)
         self.resetButton_Frame = ttk.Frame(self.frame2)
         self.resetButton_Frame.configure(height=50)
-        self.resetButton_WIDGET = ttk.Button(self.resetButton_Frame)
+        self.reset_uBITX_Button_WIDGET = ttk.Button(self.resetButton_Frame)
         self.resetButton = tk.StringVar(value='Reset uBITX')
-        self.resetButton_WIDGET.configure(
+        self.reset_uBITX_Button_WIDGET.configure(
             state="disabled",
             style="Button4.TButton",
             takefocus=True,
             text='Reset uBITX',
             textvariable=self.resetButton)
-        self.resetButton_WIDGET.pack()
-        self.resetButton_WIDGET.configure(command=self.reset_ubitx)
+        self.reset_uBITX_Button_WIDGET.pack()
+        self.reset_uBITX_Button_WIDGET.configure(command=self.reset_ubitx)
         self.resetButton_Frame.grid(column=1, padx=15, row=0)
         self.frame2.grid(column=3, row=0)
         self.configure(
@@ -165,10 +165,20 @@ class SourceselectorWidget(ttk.Labelframe):
         style.configure('Checkbox4.TCheckbutton', font=fontList['Heading4'])
         style.configure('CheckboxNormal.TCheckbutton', font=fontList['Normal'])
         style.configure(
+            'CheckboxNormalNoBorder.TCheckbutton',
+            font=fontList['Normal'],
+            highlightthickness=0,
+            borderwidth=0,
+            bd=0)
+        style.configure(
             'CheckboxEmphasis.TCheckbutton',
             font=fontList['Emphasis'])
         style.configure('ComboBox3.TCombobox', font=fontList['Heading3'])
         style.configure('ComboBox4.TCombobox', font=fontList['Heading4'])
+        style.configure(
+            'ComboBox4White.TCombobox',
+            font=fontList['Heading4'],
+            foreground='white')
         style.configure('Normal.TEntry', font=fontList['Normal'])
         style.configure(
             'NoBorder.TEntry',
@@ -185,6 +195,9 @@ class SourceselectorWidget(ttk.Labelframe):
 
         style.configure('Highlight.TFrame', background='blue', bd=4)
         style.configure('Normal.TFrame', background='gray', bd=4)
+
+        style.configure('Fixed.TNotebook')
+        style.configure('Fixed.TNotebook.Tab', padding=[5, 2])
 
     def sourceSelected(self):
         pass

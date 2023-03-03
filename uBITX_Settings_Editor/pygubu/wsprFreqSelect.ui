@@ -191,7 +191,7 @@
                   <property name="side">top</property>
                 </layout>
                 <child>
-                  <object class="ttk.Button" id="WSPR_BAND_OK_CB_Button" named="True">
+                  <object class="ttk.Button" id="WSPR_BAND_OK_Button_WIDGET" named="True">
                     <property name="command" type="command" cbtype="simple">WSPR_BAND_OK_Button_CB</property>
                     <property name="style">Normal.TButton</property>
                     <property name="text" translatable="yes">OK</property>
@@ -203,7 +203,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="ttk.Button" id="button2">
+                  <object class="ttk.Button" id="WSPR_BAND_CANCEL_Button_WIDGET" named="True">
                     <property name="command" type="command" cbtype="simple">WSPR_BAND_CANCEL_Button_CB</property>
                     <property name="style">Normal.TButton</property>
                     <property name="text" translatable="yes">Cancel</property>

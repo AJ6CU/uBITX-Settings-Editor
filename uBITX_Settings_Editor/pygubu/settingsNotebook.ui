@@ -836,7 +836,8 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                                     <child>
                                       <object class="ttk.Entry" id="IF_SHIFTVALUE_WIDGET" named="True">
                                         <property name="textvariable">string:IF_SHIFTVALUE</property>
-                                        <property name="validate">none</property>
+                                        <property name="validate">focus</property>
+                                        <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_IF_SHIFTVALUE</property>
                                         <layout manager="grid">
                                           <property name="column">1</property>
                                           <property name="row">0</property>
@@ -1005,885 +1006,954 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.Frame" id="frame31" named="True">
+                      <object class="ttk.Frame" id="frame5">
                         <property name="height">200</property>
                         <property name="width">200</property>
                         <layout manager="pack">
-                          <property name="anchor">w</property>
-                          <property name="padx">20</property>
-                          <property name="pady">15</property>
+                          <property name="expand">true</property>
+                          <property name="fill">both</property>
                           <property name="side">top</property>
                         </layout>
                         <child>
-                          <object class="ttk.Frame" id="frame32" named="True">
+                          <object class="ttk.Frame" id="frame31" named="True">
                             <property name="height">200</property>
                             <property name="width">200</property>
-                            <layout manager="pack">
-                              <property name="anchor">w</property>
-                              <property name="side">top</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">0</property>
                             </layout>
                             <child>
-                              <object class="ttk.Label" id="label25" named="True">
-                                <property name="compound">top</property>
-                                <property name="justify">left</property>
+                              <object class="ttk.Frame" id="frame32" named="True">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="anchor">w</property>
+                                  <property name="side">top</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="label25" named="True">
+                                    <property name="compound">top</property>
+                                    <property name="justify">left</property>
+                                    <property name="style">Heading3.TLabel</property>
+                                    <property name="text" translatable="yes">CW Keyer Messages</property>
+                                    <layout manager="pack" />
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Frame" id="frame20">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="anchor">center</property>
+                                  <property name="padx">10 0</property>
+                                  <property name="pady">10 20</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="CW_AUTO_COUNT_LABEL" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Total Msgs (max 25)</property>
+                                    <layout manager="pack">
+                                      <property name="padx">10 10</property>
+                                      <property name="side">left</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_AUTO_COUNT_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">readonly</property>
+                                    <property name="textvariable">string:CW_AUTO_COUNT</property>
+                                    <property name="validate">none</property>
+                                    <property name="width">3</property>
+                                    <layout manager="pack">
+                                      <property name="anchor">w</property>
+                                      <property name="side">left</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label53" named="True">
+                                    <property name="relief">flat</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Total Bytes Used:</property>
+                                    <layout manager="pack">
+                                      <property name="padx">20 10</property>
+                                      <property name="side">left</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_AUTO_BYTES_USED_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">readonly</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="takefocus">false</property>
+                                    <property name="textvariable">string:CW_AUTO_BYTES_USED</property>
+                                    <property name="validate">none</property>
+                                    <property name="width">3</property>
+                                    <layout manager="pack">
+                                      <property name="anchor">w</property>
+                                      <property name="side">left</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label163" named="True">
+                                    <property name="relief">flat</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="takefocus">false</property>
+                                    <property name="text" translatable="yes">Remaining Bytes</property>
+                                    <layout manager="pack">
+                                      <property name="padx">20 10</property>
+                                      <property name="side">left</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_AUTO_REMAINING_BYTES_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">readonly</property>
+                                    <property name="takefocus">false</property>
+                                    <property name="textvariable">string:CW_AUTO_REMAINING_BYTES</property>
+                                    <property name="validate">none</property>
+                                    <property name="width">3</property>
+                                    <layout manager="pack">
+                                      <property name="anchor">w</property>
+                                      <property name="side">left</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Frame" id="frame33" named="True">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="anchor">n</property>
+                                  <property name="padx">50 0</property>
+                                  <property name="side">left</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="label54">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Msg#</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label57">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Message Content</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">0</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label26" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">0</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">1</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG0_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSG0</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">1</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG01_LABEL" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">1</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">2</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG1_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSG1</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">2</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG02_LABEL" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">2</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG2_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSG2</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG03_LABEL" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">3</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">4</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG3_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSG3</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">4</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG04_LABEL" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">4</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">5</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG4_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSG4</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">5</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG05_LABEL" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">5</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">6</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG5_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSG5</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">6</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG06_LABEL" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">6</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">7</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG6_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSG6</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">7</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG07_LABEL" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">7</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">8</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG7_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSG7</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">8</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG08_LABEL" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">8</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">9</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG8_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSG8</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">9</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG09_LABEL" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">9</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">10</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG9_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSG9</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">10</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG10_LABEL" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">A</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">11</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGA_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGA</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">11</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label56" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">B</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">12</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGB_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGB</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">12</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label59" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">C</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">13</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGC_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGC</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">13</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label60" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">D</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">14</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGD_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGD</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">14</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label63" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">E</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">15</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGE_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGE</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">15</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label67" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">F</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">16</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGF_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGF</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">16</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label154" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">G</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">17</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGG_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGG</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">17</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label155" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">H</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">18</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGH_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGH</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">18</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label156" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">I</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">19</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGI_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGI</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">19</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label157" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">J</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">20</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGJ_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGJ</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">20</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label158" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">K</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">21</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGK_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGK</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">21</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label159" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">L</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">22</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGL_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGL</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">22</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label160" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">M</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">23</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGM_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGM</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">23</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label161" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">N</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">24</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGN_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">disabled</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGN</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">24</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label162" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">O</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">25</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGO_WIDGET" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="state">readonly</property>
+                                    <property name="takefocus">true</property>
+                                    <property name="textvariable">string:CW_MEMORY_KEYER_MSGO</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
+                                    <property name="width">50</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">0 10</property>
+                                      <property name="row">25</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Button" id="CW_Auto_Msg_Cleanup_Button_WIDGET" named="True">
+                                    <property name="command" type="command" cbtype="simple">CW_Auto_Msg_Cleanup_CB</property>
+                                    <property name="style">Button4.TButton</property>
+                                    <property name="text" translatable="yes">Cleanup</property>
+                                    <layout manager="grid">
+                                      <property name="column">2</property>
+                                      <property name="padx">10</property>
+                                      <property name="row">0</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="frame23">
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="padx">20 0</property>
+                              <property name="pady">80</property>
+                              <property name="row">0</property>
+                              <property name="sticky">n</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Label" id="label86">
                                 <property name="style">Heading3.TLabel</property>
-                                <property name="text" translatable="yes">CW Keyer Messages</property>
-                                <layout manager="pack" />
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="ttk.Frame" id="frame20">
-                            <property name="height">200</property>
-                            <property name="width">200</property>
-                            <layout manager="pack">
-                              <property name="anchor">center</property>
-                              <property name="padx">10 0</property>
-                              <property name="pady">10 20</property>
-                            </layout>
-                            <child>
-                              <object class="ttk.Label" id="CW_AUTO_COUNT_LABEL" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">Total Msgs (max 25)</property>
-                                <layout manager="pack">
-                                  <property name="padx">10 10</property>
-                                  <property name="side">left</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_AUTO_COUNT_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">readonly</property>
-                                <property name="textvariable">string:CW_AUTO_COUNT</property>
-                                <property name="validate">none</property>
-                                <property name="width">3</property>
-                                <layout manager="pack">
-                                  <property name="anchor">w</property>
-                                  <property name="side">left</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label53" named="True">
-                                <property name="relief">flat</property>
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">Total Bytes Used:</property>
-                                <layout manager="pack">
-                                  <property name="padx">20 10</property>
-                                  <property name="side">left</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_AUTO_BYTES_USED_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">readonly</property>
-                                <property name="style">Normal.TEntry</property>
-                                <property name="takefocus">false</property>
-                                <property name="textvariable">string:CW_AUTO_BYTES_USED</property>
-                                <property name="validate">none</property>
-                                <property name="width">3</property>
-                                <layout manager="pack">
-                                  <property name="anchor">w</property>
-                                  <property name="side">left</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label163" named="True">
-                                <property name="relief">flat</property>
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="takefocus">false</property>
-                                <property name="text" translatable="yes">Remaining Bytes</property>
-                                <layout manager="pack">
-                                  <property name="padx">20 10</property>
-                                  <property name="side">left</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="entry1" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">readonly</property>
-                                <property name="takefocus">false</property>
-                                <property name="textvariable">string:CW_AUTO_REMAINING_BYTES</property>
-                                <property name="validate">none</property>
-                                <property name="width">3</property>
-                                <layout manager="pack">
-                                  <property name="anchor">w</property>
-                                  <property name="side">left</property>
-                                </layout>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="ttk.Frame" id="frame33" named="True">
-                            <property name="height">200</property>
-                            <property name="width">200</property>
-                            <layout manager="pack">
-                              <property name="anchor">w</property>
-                              <property name="padx">50 0</property>
-                              <property name="side">top</property>
-                            </layout>
-                            <child>
-                              <object class="ttk.Label" id="label54">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">Msg#</property>
+                                <property name="text" translatable="yes">CW Macros:</property>
                                 <layout manager="grid">
                                   <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">0</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label57">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">Message Content</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
+                                  <property name="pady">0 5</property>
                                   <property name="row">0</property>
                                 </layout>
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Label" id="label26" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">0</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">1</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG0_WIDGET" named="True">
+                              <object class="tk.Message" id="message2">
+                                <property name="borderwidth">2</property>
+                                <property name="font">TkTextFont</property>
                                 <property name="justify">left</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSG0</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">1</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG01_LABEL" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">1</property>
+                                <property name="pady">5</property>
+                                <property name="relief">ridge</property>
+                                <property name="takefocus">false</property>
+                                <property name="text" translatable="yes">&gt;	Callsign
+&lt;	QSO Callsign
+#	AR
+[	AS
+]	SK
+~	BT
+^	KN
+'	Start
+"	End</property>
+                                <property name="width">200</property>
                                 <layout manager="grid">
                                   <property name="column">0</property>
-                                  <property name="padx">0 10</property>
                                   <property name="row">2</property>
-                                  <property name="sticky">e</property>
+                                  <property name="sticky">ew</property>
                                 </layout>
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG1_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSG1</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">2</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG02_LABEL" named="True">
+                              <object class="ttk.Label" id="label88">
                                 <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">2</property>
+                                <property name="text" translatable="yes">Chr	Replacement</property>
                                 <layout manager="grid">
                                   <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG2_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSG2</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG03_LABEL" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">3</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">4</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG3_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSG3</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">4</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG04_LABEL" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">4</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">5</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG4_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSG4</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">5</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG05_LABEL" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">5</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">6</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG5_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSG5</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">6</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG06_LABEL" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">6</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">7</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG6_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSG6</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">7</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG07_LABEL" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">7</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">8</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG7_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSG7</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">8</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG08_LABEL" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">8</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">9</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG8_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSG8</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">9</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG09_LABEL" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">9</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">10</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSG9_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSG9</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">10</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="CW_MEMORY_KEYER_MSG10_LABEL" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">A</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">11</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGA_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGA</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">11</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label56" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">B</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">12</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGB_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGB</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">12</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label59" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">C</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">13</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGC_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGC</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">13</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label60" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">D</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">14</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGD_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGD</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">14</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label63" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">E</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">15</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGE_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGE</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">15</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label67" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">F</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">16</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGF_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGF</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">16</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label154" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">G</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">17</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGG_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGG</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">17</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label155" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">H</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">18</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGH_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGH</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">18</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label156" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">I</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">19</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGI_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGI</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">19</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label157" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">J</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">20</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGJ_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGJ</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">20</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label158" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">K</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">21</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGK_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGK</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">21</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label159" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">L</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">22</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGL_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGL</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">22</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label160" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">M</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">23</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGM_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGM</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">23</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label161" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">N</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">24</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGN_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">disabled</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGN</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">24</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label162" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">O</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">25</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="CW_MEMORY_KEYER_MSGO_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="state">readonly</property>
-                                <property name="takefocus">true</property>
-                                <property name="textvariable">string:CW_MEMORY_KEYER_MSGO</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V %W">validate_CW_Message_Change</property>
-                                <property name="width">50</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="row">25</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Button" id="button12">
-                                <property name="command" type="command" cbtype="simple">CW_Auto_Msg_Cleanup_CB</property>
-                                <property name="style">Button4.TButton</property>
-                                <property name="text" translatable="yes">Cleanup</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="padx">10</property>
-                                  <property name="row">0</property>
+                                  <property name="row">1</property>
+                                  <property name="sticky">ew</property>
                                 </layout>
                               </object>
                             </child>
@@ -1893,8 +1963,8 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                           <object class="ttk.Frame" id="CW_Autokeyer_Hidden_Frame" named="True">
                             <property name="height">200</property>
                             <property name="width">200</property>
-                            <layout manager="pack">
-                              <property name="side">top</property>
+                            <layout manager="grid">
+                              <property name="row">1</property>
                             </layout>
                             <child>
                               <object class="ttk.Label" id="CW_AUTO_MAGIC_KEY_WIDGET" named="True">
@@ -1920,6 +1990,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                                 <property name="takefocus">false</property>
                                 <property name="textvariable">string:CW_AUTO_DATA</property>
                                 <layout manager="pack">
+                                  <property name="padx">10 0</property>
                                   <property name="side">top</property>
                                 </layout>
                               </object>
@@ -2732,7 +2803,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                               <property name="anchor">w</property>
                             </containerlayout>
                             <child>
-                              <object class="ttk.Button" id="region1" named="True">
+                              <object class="ttk.Button" id="autoInputRegion1_WIDGET" named="True">
                                 <property name="command" type="command" cbtype="simple">autoInputRegion1</property>
                                 <property name="style">Button4.TButton</property>
                                 <property name="text" translatable="yes">Region 1</property>
@@ -2756,7 +2827,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Button" id="region2" named="True">
+                              <object class="ttk.Button" id="autoInputRegion2_WIDGET" named="True">
                                 <property name="command" type="command" cbtype="simple">autoInputRegion2</property>
                                 <property name="style">Button4.TButton</property>
                                 <property name="text" translatable="yes">Region 2</property>
@@ -2768,7 +2839,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Button" id="region3" named="True">
+                              <object class="ttk.Button" id="autoInputRegion3_WIDGET" named="True">
                                 <property name="command" type="command" cbtype="simple">autoInputRegion3</property>
                                 <property name="style">Button4.TButton</property>
                                 <property name="text" translatable="yes">Region 3</property>
@@ -2946,7 +3017,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
             <child>
               <object class="pygubu.builder.widgets.scrolledframe" id="Channels_SF" named="True">
                 <property name="scrolltype">both</property>
-                <property name="usemousewheel">false</property>
+                <property name="usemousewheel">true</property>
                 <layout manager="pack">
                   <property name="side">top</property>
                 </layout>
@@ -3136,7 +3207,9 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                                     <child>
                                       <object class="ttk.Entry" id="CHANNEL_FREQ1_NAME_WIDGET" named="True">
                                         <property name="justify">right</property>
+                                        <property name="state">normal</property>
                                         <property name="style">Normal.TEntry</property>
+                                        <property name="takefocus">true</property>
                                         <property name="textvariable">string:CHANNEL_FREQ1_NAME</property>
                                         <property name="validate">focus</property>
                                         <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_CHANNEL_FREQ1_NAME</property>
@@ -4004,7 +4077,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                                   <property name="side">top</property>
                                 </layout>
                                 <child>
-                                  <object class="ttk.Checkbutton" id="checkbutton2">
+                                  <object class="ttk.Checkbutton" id="toggleExtendedChannels_WIDGET" named="True">
                                     <property name="command" type="command" cbtype="simple">toggleExtendedChannels</property>
                                     <property name="offvalue">0</property>
                                     <property name="onvalue">1</property>
@@ -4799,22 +4872,6 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Entry" id="WSPR_COUNT_WIDGET" named="True">
-                                <property name="justify">left</property>
-                                <property name="style">Normal.TEntry</property>
-                                <property name="textvariable">string:WSPR_COUNT</property>
-                                <property name="validate">none</property>
-                                <property name="width">3</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="padx">0 10</property>
-                                  <property name="pady">10 15</property>
-                                  <property name="row">0</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
                               <object class="ttk.Label" id="label73" named="True">
                                 <property name="style">Heading4.TLabel</property>
                                 <property name="text" translatable="yes">Name</property>
@@ -4855,6 +4912,8 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                               <object class="ttk.Entry" id="WSPR_MESSAGE1_NAME_WIDGET" named="True">
                                 <property name="style">Normal.TEntry</property>
                                 <property name="textvariable">string:WSPR_MESSAGE1_NAME</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_WSPR_MESSAGE1_NAME</property>
                                 <property name="width">6</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -4879,6 +4938,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                             <child>
                               <object class="ttk.Entry" id="WSPR_MESSAGE1_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">readonly</property>
                                 <property name="style">Normal.TEntry</property>
                                 <property name="textvariable">string:WSPR_MESSAGE1</property>
                                 <property name="validate">none</property>
@@ -4907,6 +4967,8 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                               <object class="ttk.Entry" id="WSPR_MESSAGE2_NAME_WIDGET" named="True">
                                 <property name="style">Normal.TEntry</property>
                                 <property name="textvariable">string:WSPR_MESSAGE2_NAME</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_WSPR_MESSAGE2_NAME</property>
                                 <property name="width">6</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -4931,6 +4993,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                             <child>
                               <object class="ttk.Entry" id="WSPR_MESSAGE2_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">readonly</property>
                                 <property name="style">Normal.TEntry</property>
                                 <property name="textvariable">string:WSPR_MESSAGE2</property>
                                 <property name="validate">none</property>
@@ -4959,6 +5022,8 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                               <object class="ttk.Entry" id="WSPR_MESSAGE3_NAME_WIDGET" named="True">
                                 <property name="style">Normal.TEntry</property>
                                 <property name="textvariable">string:WSPR_MESSAGE3_NAME</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_WSPR_MESSAGE3_NAME</property>
                                 <property name="width">6</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -4983,6 +5048,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                             <child>
                               <object class="ttk.Entry" id="WSPR_MESSAGE3_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">readonly</property>
                                 <property name="style">Normal.TEntry</property>
                                 <property name="textvariable">string:WSPR_MESSAGE3</property>
                                 <property name="validate">none</property>
@@ -5011,6 +5077,8 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                               <object class="ttk.Entry" id="WSPR_MESSAGE4_NAME_WIDGET" named="True">
                                 <property name="style">Normal.TEntry</property>
                                 <property name="textvariable">string:WSPR_MESSAGE4_NAME</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_WSPR_MESSAGE4_NAME</property>
                                 <property name="width">6</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
@@ -5035,6 +5103,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                             <child>
                               <object class="ttk.Entry" id="WSPR_MESSAGE4_WIDGET" named="True">
                                 <property name="justify">left</property>
+                                <property name="state">readonly</property>
                                 <property name="style">Normal.TEntry</property>
                                 <property name="textvariable">string:WSPR_MESSAGE4</property>
                                 <property name="validate">none</property>
@@ -5044,6 +5113,17 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                                   <property name="padx">0 10</property>
                                   <property name="row">5</property>
                                   <property name="sticky">w</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="tk.OptionMenu" id="WSPR_COUNT_WIDGET" named="True">
+                                <property name="value">0</property>
+                                <property name="values">0,1,2,3,4</property>
+                                <property name="variable">string:WSPR_COUNT</property>
+                                <layout manager="grid">
+                                  <property name="column">2</property>
+                                  <property name="row">0</property>
                                 </layout>
                               </object>
                             </child>
@@ -5104,6 +5184,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                             <child>
                               <object class="ttk.Entry" id="WSPR_BAND1_TXFREQ_WIDGET" named="True">
                                 <property name="justify">right</property>
+                                <property name="state">readonly</property>
                                 <property name="style">Normal.TEntry</property>
                                 <property name="textvariable">string:WSPR_BAND1_TXFREQ</property>
                                 <property name="validate">none</property>
@@ -5155,6 +5236,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                             <child>
                               <object class="ttk.Entry" id="WSPR_BAND2_TXFREQ_WIDGET" named="True">
                                 <property name="justify">right</property>
+                                <property name="state">readonly</property>
                                 <property name="style">Normal.TEntry</property>
                                 <property name="textvariable">string:WSPR_BAND2_TXFREQ</property>
                                 <property name="validate">none</property>
@@ -5206,6 +5288,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                             <child>
                               <object class="ttk.Entry" id="WSPR_BAND3_TXFREQ_WIDGET" named="True">
                                 <property name="justify">right</property>
+                                <property name="state">readonly</property>
                                 <property name="style">Normal.TEntry</property>
                                 <property name="textvariable">string:WSPR_BAND3_TXFREQ</property>
                                 <property name="validate">none</property>
@@ -5374,11 +5457,30 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                             <property name="justify">center</property>
                             <property name="style">Heading2.TLabel</property>
                             <property name="text" translatable="yes">Settings for LCD Displays</property>
-                            <layout manager="pack">
-                              <property name="anchor">w</property>
-                              <property name="padx">5</property>
-                              <property name="pady">15 25</property>
-                              <property name="side">top</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="padx">0 20</property>
+                              <property name="pady">10</property>
+                              <property name="row">0</property>
+                              <property name="sticky">nw</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Message" id="message5">
+                            <property name="borderwidth">2</property>
+                            <property name="font">TkTextFont</property>
+                            <property name="justify">left</property>
+                            <property name="pady">5</property>
+                            <property name="relief">ridge</property>
+                            <property name="takefocus">false</property>
+                            <property name="text" translatable="yes">I2C attached only. Not required for parallel connected LCD's and not reelvant for Nextion based systems.</property>
+                            <property name="width">250</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="pady">15</property>
+                              <property name="row">0</property>
+                              <property name="sticky">s</property>
                             </layout>
                           </object>
                         </child>
@@ -5411,9 +5513,29 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                                   <property name="column">0</property>
                                   <property name="columnspan">2</property>
                                   <property name="padx">5</property>
-                                  <property name="pady">20 0</property>
                                   <property name="row">2</property>
                                   <property name="sticky">ew</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="runI2CScanner_WIDGET" named="True">
+                                <property name="command" type="command" cbtype="simple">runI2CScanner</property>
+                                <property name="style">Button4.TButton</property>
+                                <property name="text" translatable="yes">I2C Scanner</property>
+                                <layout manager="grid">
+                                  <property name="column">4</property>
+                                  <property name="padx">25</property>
+                                  <property name="row">5</property>
+                                  <property name="sticky">e</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="label90">
+                                <layout manager="grid">
+                                  <property name="column">4</property>
+                                  <property name="row">2</property>
                                 </layout>
                               </object>
                             </child>
@@ -5468,19 +5590,6 @@ Dual LCD Config</property>
                                   <property name="column">3</property>
                                   <property name="row">6</property>
                                   <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Button" id="button3">
-                                <property name="command" type="command" cbtype="simple">runI2CScanner</property>
-                                <property name="style">Button4.TButton</property>
-                                <property name="text" translatable="yes">I2C Scanner</property>
-                                <layout manager="grid">
-                                  <property name="column">4</property>
-                                  <property name="padx">25</property>
-                                  <property name="row">5</property>
-                                  <property name="sticky">e</property>
                                 </layout>
                               </object>
                             </child>
@@ -5712,12 +5821,12 @@ KHZ:	Similar to MHZ_OFFSET, but using the KHZ
 	number. So with a 30.000.000 offset and and 
 	a 14.032.000 radio setting, the SDR will see 
 	a 30.032.000 frequency.</property>
-                            <property name="width">300</property>
+                            <property name="width">500</property>
                             <layout manager="grid">
-                              <property name="column">3</property>
-                              <property name="columnspan">2</property>
+                              <property name="column">2</property>
+                              <property name="columnspan">3</property>
+                              <property name="padx">100 0</property>
                               <property name="row">5</property>
-                              <property name="sticky">ne</property>
                             </layout>
                           </object>
                         </child>
@@ -5860,7 +5969,11 @@ KHZ:	Similar to MHZ_OFFSET, but using the KHZ
                                 <property name="pady">5</property>
                                 <property name="relief">ridge</property>
                                 <property name="takefocus">false</property>
-                                <property name="text" translatable="yes">Supports attachment and control of an external button box. For details, see: 
+                                <property name="text" translatable="yes">Supports attachment and control of an external button box. 
+
+NOTE: Does NOT work with rotary encodes driven off digital pins. This is specific to the Pico, but depending on how KD8CEC is configured, my apply to other boards too.
+
+For details, on the original design see: 
 http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property>
                                 <property name="width">500</property>
                                 <layout manager="grid">
@@ -6160,7 +6273,7 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                               <property name="sticky">ew</property>
                             </layout>
                             <child>
-                              <object class="ttk.Button" id="button5">
+                              <object class="ttk.Button" id="runADCScanner_WIDGET" named="True">
                                 <property name="command" type="command" cbtype="simple">runADCScanner</property>
                                 <property name="style">Button4.TButton</property>
                                 <property name="text" translatable="yes">ADC Scanner</property>
@@ -6308,6 +6421,7 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                             <property name="width">200</property>
                             <layout manager="grid">
                               <property name="column">0</property>
+                              <property name="pady">5 0</property>
                               <property name="row">0</property>
                             </layout>
                             <child>
@@ -6330,7 +6444,11 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                                 <property name="pady">5</property>
                                 <property name="relief">ridge</property>
                                 <property name="takefocus">false</property>
-                                <property name="text" translatable="yes">Provides customization of uBITX's LPF as well as external LPF attached to PA. For details, see: 
+                                <property name="text" translatable="yes">Provides customization of uBITX's LPF as well as external LPF attached to PA.
+
+NOTE: The EXTENDED option Does NOT work on configurations with LCD's using parallel data connections. 
+
+For details, see: 
 http://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html</property>
                                 <property name="width">500</property>
                                 <layout manager="grid">
@@ -7943,7 +8061,8 @@ http://www.hamskey.com/2018/04/improves-ubitx-receive-performance-by.html</prope
                             <property name="text" translatable="yes">Factory
 Recovery</property>
                             <layout manager="grid">
-                              <property name="column">5</property>
+                              <property name="column">4</property>
+                              <property name="columnspan">2</property>
                               <property name="row">3</property>
                               <property name="sticky">n</property>
                             </layout>
@@ -8157,6 +8276,23 @@ Recovery</property>
                                 <layout manager="pack" />
                               </object>
                             </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Checkbutton" id="FACTORY_SETTING_PROTECTION_WIDGET" named="True">
+                            <property name="command" type="command" cbtype="simple">Factory_Settings_Enable_CB</property>
+                            <property name="offvalue">NO</property>
+                            <property name="onvalue">YES</property>
+                            <property name="style">Checkbox4.TCheckbutton</property>
+                            <property name="text" translatable="yes">Enable update of
+Factory settings?</property>
+                            <property name="variable">string:FACTORY_SETTING_PROTECTION</property>
+                            <layout manager="grid">
+                              <property name="column">5</property>
+                              <property name="columnspan">4</property>
+                              <property name="row">6</property>
+                              <property name="rowspan">2</property>
+                            </layout>
                           </object>
                         </child>
                       </object>
@@ -8430,7 +8566,7 @@ Recovery</property>
                               <property name="sticky">ew</property>
                             </layout>
                             <child>
-                              <object class="ttk.Button" id="button4">
+                              <object class="ttk.Button" id="load_Recommended_ADC_CW_Values_WIDGET" named="True">
                                 <property name="command" type="command" cbtype="simple">load_Recommended_ADC_CW_Values</property>
                                 <property name="style">Button4.TButton</property>
                                 <property name="text" translatable="yes">Load Recommend ADC Settings</property>
@@ -8443,7 +8579,7 @@ Recovery</property>
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Button" id="button1">
+                              <object class="ttk.Button" id="CAL_runADCScanner_WIDGET" named="True">
                                 <property name="command" type="command" cbtype="simple">runADCScanner</property>
                                 <property name="style">Button4.TButton</property>
                                 <property name="text" translatable="yes">ADC Scanner</property>
@@ -8480,7 +8616,28 @@ Recovery</property>
                           </object>
                         </child>
                         <child>
+                          <object class="tk.Message" id="message7">
+                            <property name="borderwidth">2</property>
+                            <property name="font">TkTextFont</property>
+                            <property name="justify">left</property>
+                            <property name="pady">5</property>
+                            <property name="relief">ridge</property>
+                            <property name="takefocus">false</property>
+                            <property name="text" translatable="yes">This setting is only for S-Meters where the sensor is directly attached to the main processor. If your uBITX is using a separate processor for the S-Meter (and perhaps SWR), then DO NOT enable this one.</property>
+                            <property name="width">300</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="columnspan">2</property>
+                              <property name="padx">30 0</property>
+                              <property name="pady">50 0</property>
+                              <property name="row">1</property>
+                              <property name="sticky">nw</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
                           <object class="ttk.Checkbutton" id="S_METER_LEVELS_WIDGET" named="True">
+                            <property name="command" type="command" cbtype="simple">SMeter_Input_CB</property>
                             <property name="offvalue">NO</property>
                             <property name="onvalue">YES</property>
                             <property name="style">Checkbox3.TCheckbutton</property>
@@ -8496,286 +8653,292 @@ Recovery</property>
                           </object>
                         </child>
                         <child>
-                          <object class="ttk.Frame" id="frame9">
+                          <object class="ttk.Frame" id="frame28">
                             <property name="height">200</property>
                             <property name="width">200</property>
                             <layout manager="grid">
                               <property name="column">0</property>
-                              <property name="columnspan">5</property>
-                              <property name="row">3</property>
-                              <property name="sticky">ew</property>
+                              <property name="columnspan">2</property>
+                              <property name="row">4</property>
                             </layout>
                             <child>
-                              <object class="ttk.Label" id="label29" named="True">
-                                <property name="justify">left</property>
-                                <property name="relief">flat</property>
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">1</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">8 0</property>
-                                  <property name="row">2</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="S_METER_LEVEL1_WIDGET" named="True">
-                                <property name="justify">right</property>
-                                <property name="style">Normal.TEntry</property>
-                                <property name="textvariable">string:S_METER_LEVEL1</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL1</property>
-                                <property name="width">5</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">10 0</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label15" named="True">
-                                <property name="justify">right</property>
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="takefocus">false</property>
-                                <property name="text" translatable="yes">ADC Value (0-1023)</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="padx">15 0</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="S_METER_LEVEL2_WIDGET" named="True">
-                                <property name="justify">right</property>
-                                <property name="style">Normal.TEntry</property>
-                                <property name="textvariable">string:S_METER_LEVEL2</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL2</property>
-                                <property name="width">5</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="padx">5 0</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="S_METER_LEVEL4_WIDGET" named="True">
-                                <property name="justify">right</property>
-                                <property name="style">Normal.TEntry</property>
-                                <property name="textvariable">string:S_METER_LEVEL4</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL4</property>
-                                <property name="width">5</property>
-                                <layout manager="grid">
-                                  <property name="column">4</property>
-                                  <property name="padx">5 0</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="S_METER_LEVEL3_WIDGET" named="True">
-                                <property name="justify">right</property>
-                                <property name="style">Normal.TEntry</property>
-                                <property name="textvariable">string:S_METER_LEVEL3</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL3</property>
-                                <property name="width">5</property>
-                                <layout manager="grid">
-                                  <property name="column">3</property>
-                                  <property name="padx">5 0</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="S_METER_LEVEL5_WIDGET" named="True">
-                                <property name="justify">right</property>
-                                <property name="style">Normal.TEntry</property>
-                                <property name="textvariable">string:S_METER_LEVEL5</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL5</property>
-                                <property name="width">5</property>
-                                <layout manager="grid">
-                                  <property name="column">5</property>
-                                  <property name="padx">5 0</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="S_METER_LEVEL6_WIDGET" named="True">
-                                <property name="justify">right</property>
-                                <property name="style">Normal.TEntry</property>
-                                <property name="textvariable">string:S_METER_LEVEL6</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL6</property>
-                                <property name="width">5</property>
-                                <layout manager="grid">
-                                  <property name="column">6</property>
-                                  <property name="padx">5 0</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="S_METER_LEVEL7_WIDGET" named="True">
-                                <property name="justify">right</property>
-                                <property name="style">Normal.TEntry</property>
-                                <property name="textvariable">string:S_METER_LEVEL7</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL7</property>
-                                <property name="width">5</property>
-                                <layout manager="grid">
-                                  <property name="column">7</property>
-                                  <property name="padx">5 0</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Entry" id="S_METER_LEVEL8_WIDGET" named="True">
-                                <property name="justify">right</property>
-                                <property name="style">Normal.TEntry</property>
-                                <property name="textvariable">string:S_METER_LEVEL8</property>
-                                <property name="validate">focus</property>
-                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL8</property>
-                                <property name="width">5</property>
-                                <layout manager="grid">
-                                  <property name="column">8</property>
-                                  <property name="padx">5 0</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label33" named="True">
-                                <property name="justify">left</property>
-                                <property name="relief">flat</property>
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">2</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="padx">7 0</property>
-                                  <property name="row">2</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label35" named="True">
-                                <property name="justify">left</property>
-                                <property name="relief">flat</property>
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">3</property>
-                                <layout manager="grid">
-                                  <property name="column">3</property>
-                                  <property name="padx">7 0</property>
-                                  <property name="row">2</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label36" named="True">
-                                <property name="justify">left</property>
-                                <property name="relief">flat</property>
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">4</property>
-                                <layout manager="grid">
-                                  <property name="column">4</property>
-                                  <property name="padx">7 0</property>
-                                  <property name="row">2</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label38" named="True">
-                                <property name="justify">left</property>
-                                <property name="relief">flat</property>
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">5</property>
-                                <layout manager="grid">
-                                  <property name="column">5</property>
-                                  <property name="padx">7 0</property>
-                                  <property name="row">2</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label39" named="True">
-                                <property name="justify">left</property>
-                                <property name="relief">flat</property>
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">6</property>
-                                <layout manager="grid">
-                                  <property name="column">6</property>
-                                  <property name="padx">7 0</property>
-                                  <property name="row">2</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label41" named="True">
-                                <property name="justify">left</property>
-                                <property name="relief">flat</property>
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">7</property>
-                                <layout manager="grid">
-                                  <property name="column">7</property>
-                                  <property name="padx">7 0</property>
-                                  <property name="row">2</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label42" named="True">
-                                <property name="justify">left</property>
-                                <property name="relief">flat</property>
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">8</property>
-                                <layout manager="grid">
-                                  <property name="column">8</property>
-                                  <property name="padx">7 0</property>
-                                  <property name="row">2</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label45" named="True">
-                                <property name="justify">center</property>
-                                <property name="relief">flat</property>
-                                <property name="style">Heading3.TLabel</property>
-                                <property name="text" translatable="yes">S-Level</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="columnspan">11</property>
-                                  <property name="padx">25 20</property>
-                                  <property name="row">1</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Button" id="smeterAssistant_BUTTON_WIDGET" named="True">
-                                <property name="command" type="command" cbtype="simple">runSmeterAssistant</property>
-                                <property name="style">Button4.TButton</property>
-                                <property name="text" translatable="yes">S-Meter Assistant</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="columnspan">11</property>
-                                  <property name="pady">25</property>
-                                  <property name="row">4</property>
-                                </layout>
+                              <object class="ttk.Frame" id="SMETER_CONFIG_FRAME" named="True">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack" />
+                                <child>
+                                  <object class="ttk.Label" id="label29" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="relief">flat</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">1</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">8 0</property>
+                                      <property name="row">2</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="S_METER_LEVEL1_WIDGET" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="textvariable">string:S_METER_LEVEL1</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL1</property>
+                                    <property name="width">5</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">10 0</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label15" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="takefocus">false</property>
+                                    <property name="text" translatable="yes">ADC Value (0-1023)</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="padx">15 0</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="S_METER_LEVEL2_WIDGET" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="textvariable">string:S_METER_LEVEL2</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL2</property>
+                                    <property name="width">5</property>
+                                    <layout manager="grid">
+                                      <property name="column">2</property>
+                                      <property name="padx">5 0</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="S_METER_LEVEL4_WIDGET" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="textvariable">string:S_METER_LEVEL4</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL4</property>
+                                    <property name="width">5</property>
+                                    <layout manager="grid">
+                                      <property name="column">4</property>
+                                      <property name="padx">5 0</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="S_METER_LEVEL3_WIDGET" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="textvariable">string:S_METER_LEVEL3</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL3</property>
+                                    <property name="width">5</property>
+                                    <layout manager="grid">
+                                      <property name="column">3</property>
+                                      <property name="padx">5 0</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="S_METER_LEVEL5_WIDGET" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="textvariable">string:S_METER_LEVEL5</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL5</property>
+                                    <property name="width">5</property>
+                                    <layout manager="grid">
+                                      <property name="column">5</property>
+                                      <property name="padx">5 0</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="S_METER_LEVEL6_WIDGET" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="textvariable">string:S_METER_LEVEL6</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL6</property>
+                                    <property name="width">5</property>
+                                    <layout manager="grid">
+                                      <property name="column">6</property>
+                                      <property name="padx">5 0</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="S_METER_LEVEL7_WIDGET" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="textvariable">string:S_METER_LEVEL7</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL7</property>
+                                    <property name="width">5</property>
+                                    <layout manager="grid">
+                                      <property name="column">7</property>
+                                      <property name="padx">5 0</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="S_METER_LEVEL8_WIDGET" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="textvariable">string:S_METER_LEVEL8</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL8</property>
+                                    <property name="width">5</property>
+                                    <layout manager="grid">
+                                      <property name="column">8</property>
+                                      <property name="padx">5 0</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label45" named="True">
+                                    <property name="justify">center</property>
+                                    <property name="relief">flat</property>
+                                    <property name="style">Heading3.TLabel</property>
+                                    <property name="text" translatable="yes">S-Level</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="columnspan">11</property>
+                                      <property name="padx">25 20</property>
+                                      <property name="row">1</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label33" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="relief">flat</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">2</property>
+                                    <layout manager="grid">
+                                      <property name="column">2</property>
+                                      <property name="padx">7 0</property>
+                                      <property name="row">2</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label35" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="relief">flat</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">3</property>
+                                    <layout manager="grid">
+                                      <property name="column">3</property>
+                                      <property name="padx">7 0</property>
+                                      <property name="row">2</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label36" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="relief">flat</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">4</property>
+                                    <layout manager="grid">
+                                      <property name="column">4</property>
+                                      <property name="padx">7 0</property>
+                                      <property name="row">2</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label38" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="relief">flat</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">5</property>
+                                    <layout manager="grid">
+                                      <property name="column">5</property>
+                                      <property name="padx">7 0</property>
+                                      <property name="row">2</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label39" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="relief">flat</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">6</property>
+                                    <layout manager="grid">
+                                      <property name="column">6</property>
+                                      <property name="padx">7 0</property>
+                                      <property name="row">2</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label41" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="relief">flat</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">7</property>
+                                    <layout manager="grid">
+                                      <property name="column">7</property>
+                                      <property name="padx">7 0</property>
+                                      <property name="row">2</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label42" named="True">
+                                    <property name="justify">left</property>
+                                    <property name="relief">flat</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">8</property>
+                                    <layout manager="grid">
+                                      <property name="column">8</property>
+                                      <property name="padx">7 0</property>
+                                      <property name="row">2</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Button" id="smeterAssistant_BUTTON_WIDGET" named="True">
+                                    <property name="command" type="command" cbtype="simple">runSmeterAssistant</property>
+                                    <property name="style">Button4.TButton</property>
+                                    <property name="text" translatable="yes">S-Meter Assistant</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="columnspan">11</property>
+                                      <property name="pady">25</property>
+                                      <property name="row">4</property>
+                                    </layout>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                           </object>
@@ -8860,7 +9023,7 @@ Recovery</property>
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Label" id="KD8CEC" named="True">
+                              <object class="ttk.Label" id="KD8CEC_VERSION_WIDGET" named="True">
                                 <property name="style">Normal.TLabel</property>
                                 <property name="text" translatable="yes">KD8CEC  </property>
                                 <layout manager="grid">

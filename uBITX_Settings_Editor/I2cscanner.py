@@ -1,7 +1,9 @@
 from Scanner import Scanner
 from com_portManager import com_portManager
+import pygubu.widgets.simpletooltip as tooltip
 from time import sleep
 from globalvars import *
+
 
 class I2Cscanner (Scanner):
     # Known I2C devices
@@ -10,6 +12,7 @@ class I2Cscanner (Scanner):
     def __init__(self, parent):
         super().__init__(parent)
 
+
         # create com port
         self.comPortObj = com_portManager(self.com_portManager_frame, self)
 
@@ -17,7 +20,13 @@ class I2Cscanner (Scanner):
         self.comPortObj.updateComPorts()                           # Fill in available Com Ports
 
         self.comPortObj.pack()                          # make com it visible
-
+        #   add tooltips
+        tooltip.create(self.scanner_Go_Button_Widget,"Click to run one scan of the I2C bus.")
+        tooltip.create(self.scanner_Done_Button_Widget,"Click when done scanning")
+        tooltip.create(self.comPortObj.comPortsOptionMenu,"Select the com port used by your uBITX")
+        tooltip.create(self.comPortObj.comPortListRefresh,"Refresh list of available com ports. "+
+                                                        "(You can also plug in your uBITX and then refresh list")
+        self.grab_set()
 
     def scannerDone(self):
         self.destroy()

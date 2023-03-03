@@ -43,7 +43,23 @@ WSPRBANDS ={ '600m':     (474200,    475600,    475700,     475800 ),
 DEFAULTWSPRBAND = '20m'
 DEFAULTWSPRTONE = 100
 
-#end ENUMS#################################################
+#   Default "reasonable" ADC Values
+#
+CW_KEY_PRESSED_START = '0'
+CW_KEY_PRESSED_END = '50'
+
+CW_DOT_KEY_PRESSSED_START = '301'
+CW_DOT_KEY_PRESSSED_END = '600'
+
+CW_DASH_KEY_PRESSSED_START = '601'
+CW_DASH_KEY_PRESSSED_END = '700'
+
+CW_BOTH_KEY_PRESSSED_START = '51'
+CW_BOTH_KEY_PRESSSED_END = '300'
+
+
+#
+#   end ENUMS#################################################
 
 READCOMMAND=0xDB
 WRITECOMMAND=0xDC

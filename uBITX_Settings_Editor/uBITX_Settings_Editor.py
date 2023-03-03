@@ -17,8 +17,8 @@ import pygubu.widgets.simpletooltip as tooltip
 def tryToQuit(root, inputProcessorPtr):
 
     if inputProcessorPtr.getIOstate() == 'READ':
-        answer = tkinter.messagebox.askokcancel(title='Confirm Quit',
-                message='Settings have NOT been saved, are you sure you want to QUIT?', default="cancel", icon="warning")
+        answer = tkinter.messagebox.askyesno(title='Confirm Quit',
+                message='Settings have NOT been saved, are you sure you want to QUIT?', default="no", icon="warning")
         if answer == False:
             return
     root.destroy()
@@ -45,7 +45,7 @@ IOstate = 'NONE'                        #used to track whether we have written t
 #   defines the root window
 root = Tk()
 root.title("uBITX Setting Customization")
-root.geometry('1280x800')            # width x height
+root.geometry('1280x900')            # width x height
 root.minsize(1024,650)
 
 ttk.Style().theme_use(appTheme)
@@ -79,7 +79,7 @@ root.grid_rowconfigure(3,weight=0)
 logFrame.grid(row=2, column=1, sticky='ns')
 
 root.grid_rowconfigure(4,weight=0)
-commandFrame.grid(row=6, column=0, columnspan=2, sticky='ew')
+commandFrame.grid(row=6, column=0, columnspan=2, sticky='ew',pady=10)
 
 outputProcessorFrame.grid(row=5, column=0, columnspan=2, pady=(10, 0))
 
@@ -112,6 +112,7 @@ inputProcessorFrame.setLog(status)              #tell input processor where the 
 outputProcessorFrame.setLog(status)              #tell input processor where the log is
 settingsNotebook.setLog(status)
 copyToClipboardButton = ttk.Button(logFrame, text="Copy Log To Clipboard", width=25, command=status.copyLogToClipboard, style='Button4.TButton')
+tooltip.create(copyToClipboardButton,"Copies the log output to the clipboard.\nYou can then paste it into a document for future reference.")
 
 #   Allocate any change in vertical space to row 1 which contains the text widget
 logFrame.grid_rowconfigure(1, weight=1)
@@ -134,9 +135,11 @@ copyToClipboardButton.grid(row=0, column=0, pady=5, sticky='se')
 #   Now create and layout the final frame with the commands
 
 quitButton = ttk.Button(commandFrame, text="Quit", command=lambda: tryToQuit(root, inputProcessorFrame), style='Button4.TButton')
+tooltip.create(quitButton,"Exit application. Are you sure you saved your changes?")
 helpButton = ttk.Button(commandFrame, text="Help", command=lambda: helpDialog("Help", HELPFILE, status))
+tooltip.create(helpButton,"Provides access to online help")
 aboutButton = ttk.Button(commandFrame, text="About", command=lambda: helpDialog("About", ABOUTFILE, status))
-tooltip.create(aboutButton,"A very long tool tip. \nhow does it work? \nhow does it work?")
+tooltip.create(aboutButton,"Access version info, author and software license")
 
 #   Adjust the weight of how free space is allocated to the only column in the frame
 commandFrame.grid_columnconfigure(0, weight=1)

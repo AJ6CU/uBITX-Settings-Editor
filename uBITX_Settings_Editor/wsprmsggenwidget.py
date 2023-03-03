@@ -15,49 +15,51 @@ class WsprmsggenWidget(tk.Toplevel):
         self.label1 = ttk.Label(self.frame1)
         self.label1.configure(style="Heading4.TLabel", text='Callsign')
         self.label1.grid(column=0, padx="0 5", row=0)
-        self.entry1 = ttk.Entry(self.frame1)
+        self.callsign_WIDGET = ttk.Entry(self.frame1)
         self.callsign = tk.StringVar()
-        self.entry1.configure(
+        self.callsign_WIDGET.configure(
             style="Normal.TEntry",
             textvariable=self.callsign,
             width=11)
-        self.entry1.grid(column=1, padx="0 10", row=0)
+        self.callsign_WIDGET.grid(column=1, padx="0 10", row=0)
         self.label2 = ttk.Label(self.frame1)
         self.label2.configure(style="Heading4.TLabel", text='Grid')
         self.label2.grid(column=2, padx="0 5", row=0)
-        self.entry2 = ttk.Entry(self.frame1)
+        self.gridSq_WIDGET = ttk.Entry(self.frame1)
         self.gridSq = tk.StringVar()
-        self.entry2.configure(
+        self.gridSq_WIDGET.configure(
             style="Normal.TEntry",
             textvariable=self.gridSq,
             width=4)
-        self.entry2.grid(column=3, padx="0 10", row=0)
+        self.gridSq_WIDGET.grid(column=3, padx="0 10", row=0)
         self.label3 = ttk.Label(self.frame1)
         self.label3.configure(style="Heading4.TLabel", text='dbm')
         self.label3.grid(column=4, padx="0 5", row=0)
-        self.entry3 = ttk.Entry(self.frame1)
+        self.dbm_WIDGET = ttk.Entry(self.frame1)
         self.dbm = tk.StringVar(value='10')
-        self.entry3.configure(
+        self.dbm_WIDGET.configure(
             style="Normal.TEntry",
             textvariable=self.dbm,
             width=3)
         _text_ = '10'
-        self.entry3.delete("0", "end")
-        self.entry3.insert("0", _text_)
-        self.entry3.grid(column=5, row=0)
+        self.dbm_WIDGET.delete("0", "end")
+        self.dbm_WIDGET.insert("0", _text_)
+        self.dbm_WIDGET.grid(column=5, row=0)
         self.frame1.grid(column=0, pady="5 10", row=0)
         self.frame3 = ttk.Frame(self.frame2)
         self.frame3.configure(height=200, width=200)
-        self.button1 = ttk.Button(self.frame3)
-        self.button1.configure(
-            style="Normal.TButton",
-            text='Generate WSPR Message')
-        self.button1.grid(column=0, padx="0 10", row=0)
-        self.button1.configure(command=self.WSPR_Msg_Gen_Button)
-        self.button2 = ttk.Button(self.frame3)
-        self.button2.configure(style="Normal.TButton", text='Cancel')
-        self.button2.grid(column=1, row=0)
-        self.button2.configure(command=self.WSPR_Msg_Gen_Cancel_Button)
+        self.WSPR_Msg_Gen_Button_WIDGET = ttk.Button(self.frame3)
+        self.WSPR_Msg_Gen_Button_WIDGET.configure(
+            style="Normal.TButton", text='Generate WSPR Message')
+        self.WSPR_Msg_Gen_Button_WIDGET.grid(column=0, padx="0 10", row=0)
+        self.WSPR_Msg_Gen_Button_WIDGET.configure(
+            command=self.WSPR_Msg_Gen_Button)
+        self.WSPR_Msg_Gen_Cancel_Button_WIDGET = ttk.Button(self.frame3)
+        self.WSPR_Msg_Gen_Cancel_Button_WIDGET.configure(
+            style="Normal.TButton", text='Cancel')
+        self.WSPR_Msg_Gen_Cancel_Button_WIDGET.grid(column=1, row=0)
+        self.WSPR_Msg_Gen_Cancel_Button_WIDGET.configure(
+            command=self.WSPR_Msg_Gen_Cancel_Button)
         self.frame3.grid(column=0, pady="0 5", row=1)
         self.frame2.pack(padx=10, side="top")
         self.WSPR_MSG_GEN_Frame.pack(
@@ -147,6 +149,10 @@ class WsprmsggenWidget(tk.Toplevel):
             font=fontList['Emphasis'])
         style.configure('ComboBox3.TCombobox', font=fontList['Heading3'])
         style.configure('ComboBox4.TCombobox', font=fontList['Heading4'])
+        style.configure(
+            'ComboBox4White.TCombobox',
+            font=fontList['Heading4'],
+            foreground='white')
         style.configure('Normal.TEntry', font=fontList['Normal'])
         style.configure(
             'NoBorder.TEntry',

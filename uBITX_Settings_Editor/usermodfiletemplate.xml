@@ -254,127 +254,127 @@
 	<SETTING NAME="CW_MEMORY_KEYER_MSG0">				<!--First saved message-->
 		<label>Msg:0</label>
 		<value></value>		
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSG1">				<!--second saved message-->
 		<label>Msg:1</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSG2">				<!--third saved message-->
 		<label>Msg:2</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSG3">				<!--fourth saved message-->
 		<label>Msg:3</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSG4">				<!--fifth saved message-->
 		<label>Msg:4</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSG5">				<!--sixth saved message-->
 		<label>MSG:5</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSG6">				<!--seventh saved message-->
 		<label>MSG:6</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSG7">				<!--eight saved message-->
 		<label>Msg:7</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSG8">				<!--ninth saved message-->
 		<label>Msg:8</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSG9">				<!--tenth saved message-->
 		<label>Msg:9</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGA">				<!--eleventh saved message-->
 		<label>Msg:A</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGB">				<!--twelfth saved message-->
 		<label>Msg:B</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGC">				<!--thirteenth saved message-->
 		<label>Msg:C</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGD">				<!--fourteenth saved message-->
 		<label>Msg:D</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGE">				<!--fifteenth saved message-->
 		<label>Msg:E</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGF">				<!--sixteenth saved message-->
 		<label>Msg:F</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGG">				<!--seventeenth saved message-->
 		<label>Msg:G</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGH">				<!--eighteenth saved message-->
 		<label>Msg:H</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGI">				<!--nineteenth saved message-->
 		<label>Msg:I</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGJ">				<!--twentieth saved message-->
 		<label>Msg:J</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGK">				<!--twenty first saved message-->
 		<label>Msg:K</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGL">				<!--twenty second saved message-->
 		<label>Msg:L</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGM">				<!--twenty third saved message-->
 		<label>Msg:M</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGN">				<!--twenthy fourth saved message-->
 		<label>Msg:N</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_MEMORY_KEYER_MSGO">				<!--twenty fifth saved message-->
 		<label>Msg:O</label>
 		<value></value>
-		<tooltip></tooltip>
+		<tooltip>Enter the CW to send when this message is selected.</tooltip>
 	</SETTING>
 
 
@@ -1048,107 +1048,107 @@
 	<SETTING NAME="WSPR_BAND1_TXFREQ">							
 		<label>TX frequency for Band 1</label>
 		<value></value>								<!--entered in HZ-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Click button to the right to select a TX frequency for this slot</tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_BAND1_MULTICHAN">							
 		<label>Frequency offset for mutlichannels</label>
 		<value></value>								<!--entered in HZ-->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_BAND1_REG1">							
 		<label>Contents of WSPR Reg 1</label>
 		<value></value>								<!--5 hex bytes separated by a comma-->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_BAND1_REG2">							
 		<label>Contents of WSPR Reg 1</label>
 		<value></value>								<!--3 hex bytes separated by a comma-->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_BAND2_TXFREQ">							
 		<label>TX frequency for Band 2</label>
 		<value></value>								<!--entered in HZ-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Click button to the right to select a TX frequency for this slot</tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_BAND2_MULTICHAN">							
 		<label>Frequency offset for mutlichannels</label>
 		<value></value>								<!--entered in HZ-->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_BAND2_REG1">							
 		<label>Contents of WSPR Reg 1</label>
 		<value></value>								<!--5 hex bytes separated by a comma-->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_BAND2_REG2">							
 		<label>Contents of WSPR Reg 2</label>
 		<value></value>								<!--3 hex bytes separated by a comma-->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_BAND3_TXFREQ">							
 		<label>TX frequency for Band 3</label>
 		<value></value>								<!--entered in HZ-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Click button to the right to select a TX frequency for this slot</tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_BAND3_MULTICHAN">							
 		<label>Frequency offset for mutlichannels</label>
 		<value></value>								<!--entered in HZ-->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_BAND3_REG1">							
 		<label>Contents of WSPR Reg 1</label>
 		<value></value>								<!--5 hex bytes separated by a comma-->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_BAND3_REG2">							
 		<label>Contents of WSPR Reg 2</label>
 		<value></value>								<!--3 hex bytes separated by a comma-->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_COUNT">							
 		<label>WSPR Messages to Use</label>
 		<value></value>								<!--value 0-4. e.g., 3 would mean to use first 3 messages and ignore the 4th-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Select the number of WSPR messages you want to be able to use</tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_MESSAGE1_NAME">							
 		<label>Name</label>
 		<value></value>								<!--5 Character name for this message-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Enter up to 5 characters to name this message</tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_MESSAGE1">							
 		<label>Encoded MSG1:</label>  
 		<value></value>								<!--Generate using uBITX Manager for now -->
-		<tooltip></tooltip>
+		<tooltip>Generate this message by clicking the Gen Msg button to the left</tooltip>
 	</SETTING>
 	<SETTING NAME="WSPR_MESSAGE2_NAME">							
 		<label>Name</label>
 		<value></value>								<!--5 Character name for this message-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Enter up to 5 characters to name this message</tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_MESSAGE2">							
 		<label>Encoded MSG2:</label>  
 		<value></value>								<!--Generate using uBITX Manager for now -->
-		<tooltip></tooltip>
+		<tooltip>Generate this message by clicking the Gen Msg button to the left</tooltip>
 	</SETTING>
 	<SETTING NAME="WSPR_MESSAGE3_NAME">							
 		<label>Name</label>
 		<value></value>								<!--5 Character name for this message-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Enter up to 5 characters to name this message</tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_MESSAGE3">							
 		<label>Encoded MSG3:</label>  
 		<value></value>								<!--Generate using uBITX Manager for now -->
-		<tooltip></tooltip>
+		<tooltip>Generate this message by clicking the Gen Msg button to the left</tooltip>
 	</SETTING>
 	<SETTING NAME="WSPR_MESSAGE4_NAME">							
 		<label>Name</label>
 		<value></value>								<!--5 Character name for this message-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Enter up to 5 characters to name this message</tooltip>
 	</SETTING> 
 	<SETTING NAME="WSPR_MESSAGE4">							
 		<label>Encoded MSG4:</label>  
 		<value></value>								<!--Generate using uBITX Manager for now -->
-		<tooltip></tooltip>
+		<tooltip>Generate this message by clicking the Gen Msg button to the left</tooltip>
 	</SETTING>
 <!-- 	
 	*****************************************************************************************************
@@ -1164,47 +1164,47 @@
 	<SETTING NAME="S_METER_LEVELS">							
 		<label>Enable S-Meter?</label>
 		<value></value>									<!--either YES or NO. YES enables this feature-->			
-		<tooltip>to be added</tooltip>
+		<tooltip>Enabling allows you to set ADC levels for each S-Meter level.</tooltip>
 	</SETTING>
 	<SETTING NAME="S_METER_LEVEL1">							
 		<label>Level 1</label>
-		<value></value>									<!--Between 0-255 -->
-		<tooltip>to be added</tooltip>
+		<value></value>									<!--Between 0-1020 -->
+		<tooltip>Use the S-Meter Assistant to help determine the best values. Probably max less than 1000, but will depend on your setup.</tooltip>
 	</SETTING>
 	<SETTING NAME="S_METER_LEVEL2">							
 		<label>Level 2</label>
-		<value></value>									<!--Between 0-255 -->
-		<tooltip>to be added</tooltip>
+		<value></value>									<!--Between 0-1020 -->
+		<tooltip>Use the S-Meter Assistant to help determine the best values. Probably max less than 1000, but will depend on your setup.</tooltip>
 	</SETTING>
 	<SETTING NAME="S_METER_LEVEL3">							
 		<label>Level 3</label>
-		<value></value>									<!--Between 0-255 -->
-		<tooltip>to be added</tooltip>
+		<value></value>									<!--Between 0-1020 -->
+		<tooltip>Use the S-Meter Assistant to help determine the best values. Probably max less than 1000, but will depend on your setup.</tooltip>
 	</SETTING>
 	<SETTING NAME="S_METER_LEVEL4">							
 		<label>Level 4</label>
-		<value></value>									<!--Between 0-255 -->
-		<tooltip>to be added</tooltip>
+		<value></value>									<!--Between 0-1020 -->
+		<tooltip>Use the S-Meter Assistant to help determine the best values. Probably max less than 1000, but will depend on your setup.</tooltip>
 	</SETTING>
 	<SETTING NAME="S_METER_LEVEL5">							
 		<label>Level 5</label>
-		<value></value>									<!--Between 0-255 -->
-		<tooltip>to be added</tooltip>
+		<value></value>									<!--Between 0-1020 -->
+		<tooltip>Use the S-Meter Assistant to help determine the best values. Probably max less than 1000, but will depend on your setup.</tooltip>
 	</SETTING>
 	<SETTING NAME="S_METER_LEVEL6">							
 		<label>Level 6</label>
-		<value></value>									<!--Between 0-255 -->
-		<tooltip>to be added</tooltip>
+		<value></value>									<!--Between 0-1020 -->
+		<tooltip>Use the S-Meter Assistant to help determine the best values. Probably max less than 1000, but will depend on your setup.</tooltip>
 	</SETTING>
 	<SETTING NAME="S_METER_LEVEL7">							
 		<label>Level 7</label>
-		<value></value>									<!--Between 0-255 -->
-		<tooltip>to be added</tooltip>
+		<value></value>									<!--Between 0-1020 -->
+		<tooltip>Use the S-Meter Assistant to help determine the best values. Probably max less than 1000, but will depend on your setup.</tooltip>
 	</SETTING>
 	<SETTING NAME="S_METER_LEVEL8">							
 		<label>Level 8</label>
-		<value></value>									<!--Between 0-255 -->
-		<tooltip>to be added</tooltip>
+		<value></value>									<!--Between 0-1020 -->
+		<tooltip>Use the S-Meter Assistant to help determine the best values. Probably max less than 1000, but will depend on your setup.</tooltip>
 	</SETTING>
 	<!--OEM display is parallel. To save chip pins some changed to I2C -->						
 	<SETTING NAME="I2C_LCD_MASTER">						
@@ -1220,7 +1220,7 @@
 	<SETTING NAME="I2C_ADDR_SI5351">					<!--Best to not mess with this one unless you really know what you are doing-->							
 		<label>Si5351 I2C adderss chip</label>
 		<value></value>									<!-- 0 or 0x60 unless hardware modified -->
-		<tooltip>to be added</tooltip>
+		<tooltip>This should always be 0 or 0x60 unless you know what you are doing</tooltip>
 	</SETTING>		
 <!--		
 	*****************************************************************************************************
@@ -1255,7 +1255,7 @@
 	<SETTING NAME="MAIN_SCREEN_FORMAT">							
 		<label>Main Screen DEFAULT or CW</label>								
 		<value></value>									<!--Either DEFAULT or CW; CW display decode code (req 2nd Nano) -->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>								<!--appears to be unused - deprecated-->
 	</SETTING>
 <!-- 	
 GENERAL UX
@@ -1263,7 +1263,7 @@ GENERAL UX
 	<SETTING NAME="NEXTION_DISPLAY_CALL_SIGN">
 		<label>Display Call Sign?</label>
 		<value>Display </value>										<!--either YES or NO-->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>											<!--appears to be unused - deprecated-->
 	</SETTING>
 
 	<SETTING NAME="STORED_IF_SHIFT">
@@ -1286,8 +1286,8 @@ GENERAL UX
 	</SETTING>
 	<SETTING NAME="CW_FREQUENCY_ADJUSTMENT">
 		<label>CW Freq Adjust Value</label>						<!--Extra adjustment to the displayed frequency. 0-600 -->
-		<value></value>
-		<tooltip>to be added</tooltip>
+		<value></value>											<!--deprecated -->
+		<tooltip></tooltip>
 	</SETTING>
 <!-- 	
 	*****************************************************************************************************
@@ -1306,92 +1306,92 @@ GENERAL UX
 	<SETTING NAME="EXTENDED_KEY1_START">							
 		<label>Key1 Start ADC</label>
 		<value></value>
-		<tooltip>to be added</tooltip>
+		<tooltip>Starting ADC value for this Key. Must be 1023 or less and lower than the End ADC</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY1_END">							
 		<label>Key1 End ADC</label>
 		<value></value>
-		<tooltip>to be added</tooltip>
+		<tooltip>Ending ADC value for this Key. Must be 1023 or less and greater than the Start ADC</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY1_FUNC">							
 		<label>Key1 Function</label>
 		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Select what happens when this key is pressed</tooltip>
 	</SETTING>	
 	<SETTING NAME="EXTENDED_KEY2_START">							
 		<label>Key2 Start ADC</label>
 		<value></value>
-		<tooltip>to be added</tooltip>
+		<tooltip>Starting ADC value for this Key. Must be 1023 or less and lower than the End ADC</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY2_END">							
 		<label>Key2 End ADC</label>
 		<value></value>
-		<tooltip>to be added</tooltip>
+		<tooltip>Ending ADC value for this Key. Must be 1023 or less and greater than the Start ADC</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY2_FUNC">							
 		<label>Key2 Function</label>
 		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Select what happens when this key is pressed</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY3_START">							
 		<label>Key3 Start ADC</label>
 		<value></value>
-		<tooltip>to be added</tooltip>
+		<tooltip>Starting ADC value for this Key. Must be 1023 or less and lower than the End ADC</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY3_END">							
 		<label>Key3 End ADC</label>
 		<value></value>
-		<tooltip>to be added</tooltip>
+		<tooltip>Ending ADC value for this Key. Must be 1023 or less and greater than the Start ADC</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY3_FUNC">							
 		<label>Key3 Function</label>
 		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Select what happens when this key is pressed</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY4_START">							
 		<label>Key4 Start ADC</label>
 		<value></value>
-		<tooltip>to be added</tooltip>
+		<tooltip>Starting ADC value for this Key. Must be 1023 or less and lower than the End ADC</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY4_END">							
 		<label>Key4 End ADC</label>
 		<value></value>
-		<tooltip>to be added</tooltip>
+		<tooltip>Ending ADC value for this Key. Must be 1023 or less and greater than the Start ADC</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY4_FUNC">							
 		<label>Key4 Function</label>
 		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Select what happens when this key is pressed</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY5_START">							
 		<label>Key5 Start ADC</label>
 		<value></value>
-		<tooltip>to be added</tooltip>
+		<tooltip>Starting ADC value for this Key. Must be 1023 or less and lower than the End ADC</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY5_END">							
 		<label>Key5 End ADC</label>
 		<value></value>
-		<tooltip>to be added</tooltip>
+		<tooltip>Ending ADC value for this Key. Must be 1023 or less and greater than the Start ADC</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY5_FUNC">							
 		<label>Key5 Function</label>
 		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Select what happens when this key is pressed</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY6_START">							
 		<label>Key6 Start ADC</label>
 		<value></value>
-		<tooltip>to be added</tooltip>
+		<tooltip>Starting ADC value for this Key. Must be 1023 or less and lower than the End ADC</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY6_END">							
 		<label>Key6 End ADC</label>
 		<value></value>
-		<tooltip>to be added</tooltip>
+		<tooltip>Ending ADC value for this Key. Must be 1023 or less and greater than the Start ADC</tooltip>
 	</SETTING>
 	<SETTING NAME="EXTENDED_KEY6_FUNC">							
 		<label>Key6 Function</label>
 		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
-		<tooltip>to be added</tooltip>
+		<tooltip>Select what happens when this key is pressed</tooltip>
 	</SETTING>
 	
 <!-- 	
@@ -1418,12 +1418,12 @@ GENERAL UX
 	<SETTING NAME="CUST_LPF_ENABLED">							
 		<label>Enable Custom LPF</label>
 		<value></value>														<!--One of OFF, STANDARD, EXTENDED -->	
-		<tooltip>to be added</tooltip>
+		<tooltip>Select OFF (no LPF functions), STANDARD (Just the basic lines that control the uBITX filter, or EXTENDED (more data lines)</tooltip>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER1_ENDFREQ">							
 		<label>Ending frequency of LPF1</label>
 		<value></value>														<!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Enter in MHz the lowest frequency that will trigger this set of control lines</tooltip>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER1_CONTROL">							
 		<label>Filter Ctrl1</label>
@@ -1431,13 +1431,13 @@ GENERAL UX
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING>
   
 	<SETTING NAME="CUST_LPF_FILTER2_ENDFREQ">							
 		<label>Ending frequency of LPF2</label>
 		<value></value>														<!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Enter in MHz the lowest frequency that will trigger this set of control lines</tooltip>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER2_CONTROL">							
 		<label>Filter Ctrl2</label>
@@ -1445,12 +1445,12 @@ GENERAL UX
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER3_ENDFREQ">							
 		<label>Ending frequency of LPF3</label>
 		<value></value>														<!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Enter in MHz the lowest frequency that will trigger this set of control lines</tooltip>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER3_CONTROL">							
 		<label>Filter Ctrl1</label>
@@ -1458,12 +1458,12 @@ GENERAL UX
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER4_ENDFREQ">							
 		<label>Ending frequency of LPF4</label>
 		<value></value>														<!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Enter in MHz the lowest frequency that will trigger this set of control lines</tooltip>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER4_CONTROL">							
 		<label>Filter Ctrl4</label>
@@ -1471,12 +1471,12 @@ GENERAL UX
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER5_ENDFREQ">							
 		<label>Ending frequency of LPF5</label>
 		<value></value>														<!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Enter in MHz the lowest frequency that will trigger this set of control lines</tooltip>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER5_CONTROL">							
 		<label>Filter Ctrl5</label>
@@ -1484,12 +1484,12 @@ GENERAL UX
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER6_ENDFREQ">							
 		<label>Ending frequency of LPF6</label>
 		<value></value>														<!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Enter in MHz the lowest frequency that will trigger this set of control lines</tooltip>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER6_CONTROL">							
 		<label>Filter Ctrl6</label>
@@ -1497,12 +1497,12 @@ GENERAL UX
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER7_ENDFREQ">							
 		<label>Ending frequency of LPF1</label>
 		<value></value>														<!--In MHZ, e.g. 1, 10 20 would be interpreted as 1MHZ, 10MHZ, 20MHZ -->
-		<tooltip>to be added</tooltip>
+		<tooltip>Enter in MHz the lowest frequency that will trigger this set of control lines</tooltip>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER7_CONTROL">							
 		<label>Filter Ctrl1</label>
@@ -1510,6 +1510,6 @@ GENERAL UX
 																			TX_LPF_A, TX_LPF_B, TX_LPF_C, D10, D11, D12, D13 
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
-		<tooltip>to be added</tooltip>
+		<tooltip></tooltip>
 	</SETTING>	
 </data>

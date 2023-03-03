@@ -26,17 +26,47 @@
               <property name="side">top</property>
             </layout>
             <child>
-              <object class="ttk.Label" id="label3">
-                <property name="justify">left</property>
-                <property name="relief">raised</property>
-                <property name="style">Heading3.TLabel</property>
-                <property name="text" translatable="yes">Define High/Low ADC Values</property>
+              <object class="ttk.Frame" id="frame2">
+                <property name="height">200</property>
+                <property name="width">200</property>
                 <layout manager="pack">
-                  <property name="anchor">w</property>
-                  <property name="padx">10</property>
+                  <property name="expand">false</property>
                   <property name="pady">10</property>
                   <property name="side">top</property>
                 </layout>
+                <child>
+                  <object class="ttk.Label" id="label3">
+                    <property name="justify">left</property>
+                    <property name="relief">raised</property>
+                    <property name="style">Heading2.TLabel</property>
+                    <property name="text" translatable="yes">Define ADC# for S-Meter</property>
+                    <layout manager="pack">
+                      <property name="anchor">n</property>
+                      <property name="padx">10</property>
+                      <property name="pady">40 0</property>
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="tk.Message" id="message6">
+                    <property name="borderwidth">2</property>
+                    <property name="font">TkTextFont</property>
+                    <property name="justify">left</property>
+                    <property name="pady">5</property>
+                    <property name="relief">ridge</property>
+                    <property name="takefocus">false</property>
+                    <property name="text" translatable="yes">ADC stands for Analog to Digital Converter. The voltage read at an analog pin is converted to a digital value between 0-1023.
+
+This wizard allows you to set the digital equivalent for the signal strength that is measured on the analog pin of the CPU</property>
+                    <property name="width">375</property>
+                    <layout manager="pack">
+                      <property name="anchor">e</property>
+                      <property name="padx">15</property>
+                      <property name="pady">10</property>
+                    </layout>
+                  </object>
+                </child>
               </object>
             </child>
             <child>
@@ -83,6 +113,7 @@
                     </child>
                     <child>
                       <object class="ttk.Entry" id="smeterWizardManualMin_Entry_WIDGET" named="True">
+                        <property name="justify">left</property>
                         <property name="textvariable">string:smeterWizardManualMin</property>
                         <property name="validate">focusout</property>
                         <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_smeterWizardManualMin</property>
@@ -197,7 +228,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.OptionMenu" id="sampleSizeADC_OptionMenu" named="True">
+                      <object class="ttk.OptionMenu" id="sampleSizeADC_WIDGET" named="True">
                         <property name="value">1</property>
                         <property name="values">1,5,10,15,20,25</property>
                         <property name="variable">int:sampleSizeADC</property>
@@ -222,7 +253,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="ttk.OptionMenu" id="sampleDelayADC_OptionMenu_WIDGET" named="True">
+                      <object class="ttk.OptionMenu" id="sampleDelayADC_WIDGET" named="True">
                         <property name="value">5</property>
                         <property name="values">5,10,50,100,500,1000</property>
                         <property name="variable">int:sampleDelayADC</property>
@@ -497,7 +528,7 @@
                 <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S1</property>
-                <property name="length">300</property>
+                <property name="length">200</property>
                 <property name="orient">vertical</property>
                 <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
@@ -518,7 +549,7 @@
                 <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S2</property>
-                <property name="length">300</property>
+                <property name="length">200</property>
                 <property name="orient">vertical</property>
                 <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
@@ -539,7 +570,7 @@
                 <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S3</property>
-                <property name="length">300</property>
+                <property name="length">200</property>
                 <property name="orient">vertical</property>
                 <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
@@ -560,7 +591,7 @@
                 <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S4</property>
-                <property name="length">300</property>
+                <property name="length">200</property>
                 <property name="orient">vertical</property>
                 <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
@@ -581,7 +612,7 @@
                 <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S5</property>
-                <property name="length">300</property>
+                <property name="length">200</property>
                 <property name="orient">vertical</property>
                 <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
@@ -602,7 +633,7 @@
                 <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S6</property>
-                <property name="length">300</property>
+                <property name="length">200</property>
                 <property name="orient">vertical</property>
                 <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
@@ -623,7 +654,7 @@
                 <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S7</property>
-                <property name="length">300</property>
+                <property name="length">200</property>
                 <property name="orient">vertical</property>
                 <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
@@ -644,7 +675,7 @@
                 <property name="font">{Arial} 10 {bold}</property>
                 <property name="from_">1023</property>
                 <property name="label" translatable="yes">S8</property>
-                <property name="length">300</property>
+                <property name="length">200</property>
                 <property name="orient">vertical</property>
                 <property name="relief">raised</property>
                 <property name="repeatinterval">0</property>
@@ -711,7 +742,7 @@
               </object>
             </child>
             <child>
-              <object class="ttk.Button" id="button4" named="True">
+              <object class="ttk.Button" id="smeterWizard_Reset_Button_WIDGET" named="True">
                 <property name="command" type="command" cbtype="simple">resetADCAssistant</property>
                 <property name="style">Button4.TButton</property>
                 <property name="text" translatable="yes">Reset</property>

@@ -46,7 +46,7 @@
                 <property name="command" type="command" cbtype="simple">scannerStart</property>
                 <property name="state">normal</property>
                 <property name="style">Button4.TButton</property>
-                <property name="text" translatable="yes">Start</property>
+                <property name="text" translatable="yes">Scan</property>
                 <layout manager="pack">
                   <property name="pady">30</property>
                 </layout>

@@ -48,7 +48,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="ttk.Entry" id="entry1">
+                  <object class="ttk.Entry" id="callsign_WIDGET" named="True">
                     <property name="style">Normal.TEntry</property>
                     <property name="textvariable">string:callsign</property>
                     <property name="width">11</property>
@@ -71,7 +71,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="ttk.Entry" id="entry2">
+                  <object class="ttk.Entry" id="gridSq_WIDGET" named="True">
                     <property name="style">Normal.TEntry</property>
                     <property name="textvariable">string:gridSq</property>
                     <property name="width">4</property>
@@ -94,7 +94,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="ttk.Entry" id="entry3">
+                  <object class="ttk.Entry" id="dbm_WIDGET" named="True">
                     <property name="style">Normal.TEntry</property>
                     <property name="text" translatable="yes">10</property>
                     <property name="textvariable">string:dbm</property>
@@ -117,7 +117,7 @@
                   <property name="row">1</property>
                 </layout>
                 <child>
-                  <object class="ttk.Button" id="button1">
+                  <object class="ttk.Button" id="WSPR_Msg_Gen_Button_WIDGET" named="True">
                     <property name="command" type="command" cbtype="simple">WSPR_Msg_Gen_Button</property>
                     <property name="style">Normal.TButton</property>
                     <property name="text" translatable="yes">Generate WSPR Message</property>
@@ -129,7 +129,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="ttk.Button" id="button2">
+                  <object class="ttk.Button" id="WSPR_Msg_Gen_Cancel_Button_WIDGET" named="True">
                     <property name="command" type="command" cbtype="simple">WSPR_Msg_Gen_Cancel_Button</property>
                     <property name="style">Normal.TButton</property>
                     <property name="text" translatable="yes">Cancel</property>

@@ -1,16 +1,18 @@
 #import serial.tools.list_ports              # Used to get a list of com ports
 # import tkinter
+import pygubu.widgets.simpletooltip as tooltip
 from Scanner import Scanner
 from com_portManager import com_portManager
 # from time import sleep
 from globalvars import *
 
 class ADCscanner (Scanner):
-    # Known I2C devices
-    # knownI2C={'0x50':'EEPROM', '0x60':'Si5351', '0x27': 'LCD'}
 
     def __init__(self, parent):
         super().__init__(parent)
+        self.grab_set()
+
+        self.title("Analog Pin (ADC) Scanner")
 
         # create com port
         self.comPortObj = com_portManager(self.com_portManager_frame, self)
@@ -19,6 +21,12 @@ class ADCscanner (Scanner):
         self.comPortObj.updateComPorts()                           # Fill in available Com Ports
 
         self.comPortObj.pack()                          # make com it visible
+                #   add tooltips
+        tooltip.create(self.scanner_Go_Button_Widget,"Click to run one scan of the Analog pins.")
+        tooltip.create(self.scanner_Done_Button_Widget,"Click when done scanning")
+        tooltip.create(self.comPortObj.comPortsOptionMenu,"Select the com port used by your uBITX")
+        tooltip.create(self.comPortObj.comPortListRefresh,"Refresh list of available com ports. "+
+                                                        "(You can also plug in your uBITX and then refresh list")
 
     def scannerDone(self):
         self.destroy()

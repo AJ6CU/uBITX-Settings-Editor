@@ -23,7 +23,7 @@
           <property name="row">0</property>
         </layout>
         <child>
-          <object class="ttk.Radiobutton" id="radiobutton1">
+          <object class="ttk.Radiobutton" id="uBITX_sourceSelector_WIDGET" named="True">
             <property name="command" type="command" cbtype="simple">sourceSelected</property>
             <property name="state">normal</property>
             <property name="style">RadioButton4.TRadiobutton</property>
@@ -37,7 +37,7 @@
           </object>
         </child>
         <child>
-          <object class="ttk.Radiobutton" id="radiobutton2">
+          <object class="ttk.Radiobutton" id="File_sourceSelector_WIDGET" named="True">
             <property name="command" type="command" cbtype="simple">sourceSelected</property>
             <property name="state">normal</property>
             <property name="style">RadioButton4.TRadiobutton</property>
@@ -159,7 +159,7 @@
               <property name="row">0</property>
             </layout>
             <child>
-              <object class="ttk.Button" id="resetButton_WIDGET" named="True">
+              <object class="ttk.Button" id="reset_uBITX_Button_WIDGET" named="True">
                 <property name="command" type="command" cbtype="simple">reset_ubitx</property>
                 <property name="state">disabled</property>
                 <property name="style">Button4.TButton</property>
