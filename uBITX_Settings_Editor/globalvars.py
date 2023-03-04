@@ -1,7 +1,7 @@
 import os
 import sys
 
-VERSION="Alpha V1"
+VERSION="Beta V1"
 
 # default window size
 DEFAULT_ROOT_WINDOW_WIDTH = 1280

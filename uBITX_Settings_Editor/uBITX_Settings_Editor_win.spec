@@ -6,7 +6,7 @@ block_cipher = None
 
 a = Analysis(
     ['uBITX_Settings_Editor.py'],
-    pathex=[],
+    pathex=['env\Lib\site-packages'],
     binaries=[],
     datas=[('img_red-arrow-pointing-left59x36.png','.'),('img_red-arrow-pointing-right59x36.png','.'),('eeprommemorymap.xml','.'), ('usermodfiletemplate.xml','.'),('help.xml','.'), ('about.xml','.'), ('img_Custom-125x80.png','.'),('img_sample1-125x80.png','.'),('img_sample2-125x80.png','.'),('img_sample3-125x80.png','.'),('img_sample4-125x80.png','.'),('img_sample5-125x80.png','.'),('img_sample6-125x80.png','.'),('img_sample7-125x80.png','.')],
     hiddenimports=[],
@@ -28,7 +28,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='uBITX_Settings_Editor_V2-01-26-23-win-intelx64',
+    name='uBITX_Settings_Editor_V2Beta-03-03-23-win-intelx64',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
