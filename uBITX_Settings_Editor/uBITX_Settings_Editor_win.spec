@@ -28,7 +28,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='uBITX_Settings_Editor_V2Beta-03-03-23-win-intelx64',
+    name='uBITX_Settings_Editor_V2Beta-03-04-23-win-intelx64',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
