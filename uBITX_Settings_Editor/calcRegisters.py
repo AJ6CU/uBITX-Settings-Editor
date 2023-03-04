@@ -98,7 +98,7 @@ def buildWSPRRegs (TARGET, BAND, CAL):
         reg2str = '{:02X}'.format(reg2[band][0]) + "," '{:02X}'.format(reg2[band][1]) + "," '{:02X}'.format(reg2[band][2]) + ","
         reg3str = str(reg3[band])
 
-        print(reg37, reg38, reg39, reg40, reg41)
+        #print(reg37, reg38, reg39, reg40, reg41)
 
         return([reg1str, reg2str, reg3str])
 
