@@ -2,6 +2,10 @@ import os
 import sys
 
 VERSION="Alpha V1"
+
+# default window size
+DEFAULT_ROOT_WINDOW_WIDTH = 1280
+DEFAULT_ROOT_WINDOW_HEIGHT = 900
 #ENUMS#####################################################
 INTERNAL_FIRMWARE_VERSION = ["NA", "V1.061", "V1.07", "V1.08", "V1.09", "V2.0"]
 MODE_SELECT = ["DEFAULT","xxx","LSB","USB","CWL","CWU"]

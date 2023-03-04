@@ -20,8 +20,12 @@ class WsprmsggenWidget(tk.Toplevel):
         self.callsign_WIDGET.configure(
             style="Normal.TEntry",
             textvariable=self.callsign,
-            width=11)
+            validate="focusout",
+            width=10)
         self.callsign_WIDGET.grid(column=1, padx="0 10", row=0)
+        _validatecmd = (self.callsign_WIDGET.register(
+            self.validate_WSPR_callsign), "%P", "%V")
+        self.callsign_WIDGET.configure(validatecommand=_validatecmd)
         self.label2 = ttk.Label(self.frame1)
         self.label2.configure(style="Heading4.TLabel", text='Grid')
         self.label2.grid(column=2, padx="0 5", row=0)
@@ -30,8 +34,13 @@ class WsprmsggenWidget(tk.Toplevel):
         self.gridSq_WIDGET.configure(
             style="Normal.TEntry",
             textvariable=self.gridSq,
-            width=4)
+            validate="focusout",
+            width=5)
         self.gridSq_WIDGET.grid(column=3, padx="0 10", row=0)
+        _validatecmd = (
+            self.gridSq_WIDGET.register(
+                self.validate_WSPR_gridSq), "%P", "%V")
+        self.gridSq_WIDGET.configure(validatecommand=_validatecmd)
         self.label3 = ttk.Label(self.frame1)
         self.label3.configure(style="Heading4.TLabel", text='dbm')
         self.label3.grid(column=4, padx="0 5", row=0)
@@ -40,11 +49,16 @@ class WsprmsggenWidget(tk.Toplevel):
         self.dbm_WIDGET.configure(
             style="Normal.TEntry",
             textvariable=self.dbm,
+            validate="focusout",
             width=3)
         _text_ = '10'
         self.dbm_WIDGET.delete("0", "end")
         self.dbm_WIDGET.insert("0", _text_)
         self.dbm_WIDGET.grid(column=5, row=0)
+        _validatecmd = (
+            self.dbm_WIDGET.register(
+                self.validate_WSPR_dbm), "%P", "%V")
+        self.dbm_WIDGET.configure(validatecommand=_validatecmd)
         self.frame1.grid(column=0, pady="5 10", row=0)
         self.frame3 = ttk.Frame(self.frame2)
         self.frame3.configure(height=200, width=200)
@@ -172,6 +186,15 @@ class WsprmsggenWidget(tk.Toplevel):
 
         style.configure('Fixed.TNotebook')
         style.configure('Fixed.TNotebook.Tab', padding=[5, 2])
+
+    def validate_WSPR_callsign(self, p_entry_value, v_condition):
+        pass
+
+    def validate_WSPR_gridSq(self, p_entry_value, v_condition):
+        pass
+
+    def validate_WSPR_dbm(self, p_entry_value, v_condition):
+        pass
 
     def WSPR_Msg_Gen_Button(self):
         pass

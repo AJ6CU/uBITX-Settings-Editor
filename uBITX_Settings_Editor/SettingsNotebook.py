@@ -1,5 +1,6 @@
 import pygubu.widgets.simpletooltip as tooltip
 import tkinter as tk
+import re
 
 from settingsnotebookwidget import SettingsnotebookWidget
 from I2cscanner import I2Cscanner
@@ -120,7 +121,9 @@ class SettingsNotebook(SettingsnotebookWidget):
     #   Error messages common to all validation
     error_Msgs = {
         "NOTINMIDDLE":"must be between {:,} and {:,}, prior value restored",
+        "NOTINMIDDLEHEX":"must be between 0x{:X} and 0x{:X}, prior value restored",
         "NOTANUMBER":"{} is not a valid number, prior value restored",
+        "NOTAHEXNUMBER":"{} is not a valid HEX (0x00) number, prior value restored",
         "NOTLOWER":"must be lower than {:,}, prior value restored",
         "NOTHIGHER":"must be higher than {:,}, prior value restored",
         "STRINGTOOLONG": "longer than {} characters, prior value restored",
@@ -138,6 +141,7 @@ class SettingsNotebook(SettingsnotebookWidget):
     USB_CAL_BOUNDS = {'LOW':0, 'HIGH': 20000000}
     CW_CAL_BOUNDS = {'LOW':0, 'HIGH': 20000000}
     IF_SHIFTVALUE_BOUNDS = {'LOW':-9999, 'HIGH':10000}
+    IF1_CAL_BOUNDS = {'LOW':0, 'HIGH':255}
     PREDEFINED_TUNING_STEPS = {'0': [1,5,10,50,100], '1': [10,20,50,100,1000], '2': [1,10,100,1000,10000],
                                '3': [10,50,500,5000,10000], '4': [10,50,100,2000,50000] }
     TUNING_STEPS_BOUNDS = {'LOW':1, 'HIGH': 60}
@@ -145,9 +149,12 @@ class SettingsNotebook(SettingsnotebookWidget):
     CW_SPEED_WPM_BOUNDS = {'LOW':1, 'HIGH': 250}
     CW_START_MS_BOUNDS = {'LOW':0, 'HIGH': 5000}
     CW_DELAY_MS_BOUNDS = {'LOW':0, 'HIGH': 10000}
-    # CHANNEL_WSPR_NAME_MAX = 5
+
     USER_CALLSIGN_BOUNDS = {'HIGH':18 }
     HAM_BAND_COUNT_BOUNDS = {'LOW':0, 'HIGH':10}
+
+    I2C_ADDRESS_BOUNDS = {'LOW':0x00, 'HIGH':0x7F}
+    MAX_SDR_OFFSET = 100000000
 
     errorMsgPersistFlag = 0         #This is a hack to keep error messages around thru the next entry/selection
                                     #When an error message is displayed, this flag is incremented.
@@ -163,6 +170,13 @@ class SettingsNotebook(SettingsnotebookWidget):
         if (x.lstrip()[0] == "-"):                                          #   check if first character is a minus in original string
             valueToTest = -valueToTest
         return valueToTest
+
+    def checkForNumber (self,x):
+        if  (re.match("^[0-9,.-]+$",x.strip())):                      #   True if only digits, "," and "." and -"
+            return True
+        else:
+            SettingsNotebook.validationErrorMsg = SettingsNotebook.error_Msgs["NOTANUMBER"].format(x)
+            return False
 
     def checkLength (self,x, maxChars):
         if (len(x) <= maxChars):                                          #   check if first character is a minus in original string
@@ -186,6 +200,15 @@ class SettingsNotebook(SettingsnotebookWidget):
         else:
             SettingsNotebook.validationErrorMsg = SettingsNotebook.error_Msgs["NOTINMIDDLE"].format(lowValue, highValue)
             return False
+
+    def validateHexRange (self, x, lowValue, highValue ):
+        valueToTest = int(x,16)
+        if (lowValue <= valueToTest) & (highValue >= valueToTest):        #   confirm that it meets upper/lower bounds
+            return True
+        else:
+            SettingsNotebook.validationErrorMsg = SettingsNotebook.error_Msgs["NOTINMIDDLEHEX"].format(lowValue, highValue)
+            return False
+
     def validateADC(self, x, highOrLow, target):
         return self.validateNumberRange(x,SettingsNotebook.ADC['LOW'], SettingsNotebook.ADC['HIGH'],highOrLow, target )
 
@@ -216,8 +239,7 @@ class SettingsNotebook(SettingsnotebookWidget):
                 return False
         else:
             return False            # Error message already set by validateNumber
-    def clearErrorMsgPersistFlag(self):
-        errorMsgPersistFlag = 0
+
 
     ##############################
     #  Validation functions
@@ -384,41 +406,51 @@ class SettingsNotebook(SettingsnotebookWidget):
 
         if (v_condition == "focusin"):
             self.priorValues["CW_ADC_ST_FROM"] = p_entry_value
-        elif (v_condition == "focusout"):
-            if (self.getNumber(p_entry_value) == '0') | \
+            return True
+        elif self.checkForNumber(p_entry_value) == False:                     # oops found a non-number
+            self.log.printerror("timestamp","ADC entered for CW Straight Key beginning value "+ SettingsNotebook.validationErrorMsg)
+            getattr(self, "CW_ADC_ST_FROM").set(self.priorValues["CW_ADC_ST_FROM"])
+            return False
+        elif (self.getNumber(p_entry_value) == '0') | \
                     (self.validateADC(p_entry_value, 'HIGH', str(self.ADC['HIGH']))):
-                return True
-
+            return True
+        else:
             # if we reach this point, there is an error...
             self.log.printerror("timestamp","CW Straight Key ADC beginning value "+SettingsNotebook.validationErrorMsg)
             getattr(self, "CW_ADC_ST_FROM").set(self.priorValues["CW_ADC_ST_FROM"])
             return False
-        return True
 
     def validate_CW_ADC_ST_TO(self, p_entry_value, v_condition):
 
         if (v_condition == "focusin"):
             self.priorValues["CW_ADC_ST_TO"] = p_entry_value
-        elif (v_condition == "focusout"):
-            if (self.getNumber(p_entry_value) == '0') | (self.validateADC(p_entry_value, 'LOW', getattr(self, "CW_ADC_ST_FROM").get())):
-                return True
-
+            return True
+        elif self.checkForNumber(p_entry_value) == False:                     # oops found a non-number
+            self.log.printerror("timestamp","Valued entered for CW Straight Key ADC "+ SettingsNotebook.validationErrorMsg)
+            getattr(self, "CW_ADC_ST_TO").set(self.priorValues["CW_ADC_ST_TO"])
+            return False
+        elif (self.getNumber(p_entry_value) == '0') | (self.validateADC(p_entry_value, 'LOW', getattr(self, "CW_ADC_ST_FROM").get())):
+            return True
+        else:
             # if we reach this point, there is an error...
 
             self.log.printerror("timestamp", "CW Straight Key ADC ending value "+SettingsNotebook.validationErrorMsg)
             getattr(self, "CW_ADC_ST_TO").set(self.priorValues["CW_ADC_ST_TO"])
             return False
-        return True
 
 
     def validate_CW_ADC_DOT_FROM(self, p_entry_value, v_condition):
 
         if (v_condition == "focusin"):
             self.priorValues["CW_ADC_DOT_FROM"] = p_entry_value
-        elif (v_condition == "focusout"):
-            if (self.getNumber(p_entry_value) == '0') | self.validateADC(p_entry_value, 'HIGH', str(self.ADC['HIGH'])):
+            return True
+        elif self.checkForNumber(p_entry_value) == False:                     # oops found a non-number
+            self.log.printerror("timestamp","ADC entered for CW DOT beginning value "+ SettingsNotebook.validationErrorMsg)
+            getattr(self, "CW_ADC_DOT_FROM").set(self.priorValues["CW_ADC_DOT_FROM"])
+            return False
+        elif (self.getNumber(p_entry_value) == '0') | self.validateADC(p_entry_value, 'HIGH', str(self.ADC['HIGH'])):
                 return True
-
+        else:
             # if we reach this point, there is an error...
             self.log.printerror("timestamp", "CW DOT ADC beginning value "+SettingsNotebook.validationErrorMsg)
             getattr(self,"CW_ADC_DOT_FROM").set(self.priorValues["CW_ADC_DOT_FROM"])
@@ -430,66 +462,83 @@ class SettingsNotebook(SettingsnotebookWidget):
 
         if (v_condition == "focusin"):
             self.priorValues["CW_ADC_DOT_TO"]  = p_entry_value
-        elif (v_condition == "focusout"):
-            if (self.getNumber(p_entry_value) == '0') | (self.validateADC(p_entry_value, 'LOW', self.CW_ADC_DOT_FROM.get())):
+            return True
+        elif self.checkForNumber(p_entry_value) == False:                     # oops found a non-number
+            self.log.printerror("timestamp","ADC entered for CW DOT Key ending value "+ SettingsNotebook.validationErrorMsg)
+            getattr(self, "CW_ADC_DOT_TO").set(self.priorValues["CW_ADC_DOT_TO"])
+            return False
+        elif (self.getNumber(p_entry_value) == '0') | (self.validateADC(p_entry_value, 'LOW', self.CW_ADC_DOT_FROM.get())):
                 return True
-
+        else:
             # if we reach this point, there is an error...
             self.log.printerror("timestamp", "CW DOT ADC ending value "+SettingsNotebook.validationErrorMsg)
             getattr(self,"CW_ADC_DOT_TO").set(self.priorValues["CW_ADC_DOT_TO"])
             return False
-        return True
 
     def validate_CW_ADC_DASH_FROM(self, p_entry_value, v_condition):
 
         if (v_condition == "focusin"):
             self.priorValues["CW_ADC_DASH_FROM"] = p_entry_value
-        elif (v_condition == "focusout"):
-            if (self.getNumber(p_entry_value) == '0') | (self.validateADC(p_entry_value, 'HIGH', str(self.ADC['HIGH']))):
+            return True
+        elif self.checkForNumber(p_entry_value) == False:                     # oops found a non-number
+            self.log.printerror("timestamp","ADC entered for CW Dash beginning value "+ SettingsNotebook.validationErrorMsg)
+            getattr(self, "CW_ADC_DASH_FROM").set(self.priorValues["CW_ADC_DASH_FROM"])
+            return False
+        elif (self.getNumber(p_entry_value) == '0') | (self.validateADC(p_entry_value, 'HIGH', str(self.ADC['HIGH']))):
                 return True
-
+        else:
             # if we reach this point, there is an error...
             self.log.printerror("timestamp", "CW DASH ADC beginning value "+SettingsNotebook.validationErrorMsg)
             getattr(self, "CW_ADC_DASH_FROM").set(self.priorValues["CW_ADC_DASH_FROM"])
             return False
-        return True
 
     def validate_CW_ADC_DASH_TO(self, p_entry_value, v_condition):
 
         if (v_condition == "focusin"):
             self.priorValues["CW_ADC_DASH_TO"] = p_entry_value
-        elif (v_condition == "focusout"):
-            if (self.getNumber(p_entry_value) == '0') | (self.validateADC(p_entry_value, 'LOW', self.CW_ADC_DASH_FROM.get())):
-                return True
-
+            return True
+        elif self.checkForNumber(p_entry_value) == False:                     # oops found a non-number
+            self.log.printerror("timestamp","ADC entered for CW DASH Key ending value "+ SettingsNotebook.validationErrorMsg)
+            getattr(self, "CW_ADC_DASH_TO").set(self.priorValues["CW_ADC_DASH_TO"])
+            return False
+        elif (self.getNumber(p_entry_value) == '0') | (self.validateADC(p_entry_value, 'LOW', self.CW_ADC_DASH_FROM.get())):
+            return True
+        else:
             # if we reach this point, there is an error...
             self.log.printerror("timestamp", "CW DASH Key ADC ending value " + SettingsNotebook.validationErrorMsg)
             getattr(self, "CW_ADC_DASH_TO").set(self.priorValues["CW_ADC_DASH_TO"])
             return False
-        return True
 
     def validate_CW_ADC_BOTH_FROM(self, p_entry_value, v_condition):
 
         if (v_condition == "focusin"):
             self.priorValues["CW_ADC_BOTH_FROM"] = p_entry_value
-        elif (v_condition == "focusout"):
-            if (self.getNumber(p_entry_value) == '0') | (self.validateADC(p_entry_value, 'HIGH', str(self.ADC['HIGH']))):
+            return True
+        elif self.checkForNumber(p_entry_value) == False:                     # oops found a non-number
+            self.log.printerror("timestamp","ADC entered for CW both keys pressed beginning value "+ SettingsNotebook.validationErrorMsg)
+            getattr(self, "CW_ADC_BOTH_FROM").set(self.priorValues["CW_ADC_BOTH_FROM"])
+            return False
+        elif (self.getNumber(p_entry_value) == '0') | (self.validateADC(p_entry_value, 'HIGH', str(self.ADC['HIGH']))):
                 return True
-
+        else:
             # if we reach this point, there is an error...
             self.log.printerror("timestamp", "CW BOTH keys pressed ADC beginning value "+SettingsNotebook.validationErrorMsg)
             getattr(self, "CW_ADC_BOTH_FROM").set(self.priorValues["CW_ADC_BOTH_FROM"])
             return False
-        return True
+
 
     def validate_CW_ADC_BOTH_TO(self, p_entry_value, v_condition):
 
         if (v_condition == "focusin"):
             self.priorValues["CW_ADC_BOTH_TO"] = p_entry_value
-        elif (v_condition == "focusout"):
-            if (self.getNumber(p_entry_value) == '0') | (self.validateADC(p_entry_value, 'LOW', self.CW_ADC_BOTH_FROM.get())):
-                return True
-
+            return True
+        elif self.checkForNumber(p_entry_value) == False:                     # oops found a non-number
+            self.log.printerror("timestamp","ADC entered for both CW keys pressed ending value "+ SettingsNotebook.validationErrorMsg)
+            getattr(self, "CW_ADC_BOTH_TO").set(self.priorValues["CW_ADC_BOTH_TO"])
+            return False
+        elif  (self.getNumber(p_entry_value) == '0') | (self.validateADC(p_entry_value, 'LOW', self.CW_ADC_BOTH_FROM.get())):
+            return True
+        else:
             # if we reach this point, there is an error...
             self.log.printerror("timestamp", "CW BOTH keys pressed ADC ending value "+SettingsNotebook.validationErrorMsg)()
             getattr(self, "CW_ADC_BOTH_TO").set(self.priorValues["CW_ADC_BOTH_TO"])
@@ -826,6 +875,168 @@ class SettingsNotebook(SettingsnotebookWidget):
 
     def validate_WSPR_MESSAGE4_NAME(self, p_entry_value, v_condition):
         return self.validate_WSPR_MESSAGE_NAME(p_entry_value, v_condition, "MESSAGE4")
+
+
+    def validate_I2C_LCD_MASTER(self, p_entry_value, v_condition):
+        if (v_condition == "focusin"):
+            self.priorValues["I2C_LCD_MASTER"] = p_entry_value
+        if  (re.match("^0[xX][0-9a-fA-F]{,2}$",p_entry_value.strip())):
+            if (self.validateHexRange (p_entry_value, SettingsNotebook.I2C_ADDRESS_BOUNDS['LOW'],
+                                 SettingsNotebook.I2C_ADDRESS_BOUNDS['HIGH'])):
+                return True
+            else:
+                self.log.printerror("timestamp", SettingsNotebook.validationErrorMsg)
+        else:
+            self.log.printerror("timestamp", p_entry_value + " is not a valid Hex number in format 0x00")
+        self.I2C_LCD_MASTER.set(self.priorValues["I2C_LCD_MASTER"])
+        return False
+
+
+    def validate_I2C_LCD_SECOND(self, p_entry_value, v_condition):
+        if (v_condition == "focusin"):
+            self.priorValues["I2C_LCD_SECOND"] = p_entry_value
+        if  (re.match("^0[xX][0-9a-fA-F]{,2}$",p_entry_value.strip())):
+            if (self.validateHexRange (p_entry_value, SettingsNotebook.I2C_ADDRESS_BOUNDS['LOW'],
+                                 SettingsNotebook.I2C_ADDRESS_BOUNDS['HIGH'])):
+                return True
+            else:
+                self.log.printerror("timestamp", SettingsNotebook.validationErrorMsg)
+        else:
+            self.log.printerror("timestamp", p_entry_value + " is not a valid Hex number in format 0x00")
+        self.I2C_LCD_SECOND.set(self.priorValues["I2C_LCD_SECOND"])
+        return False
+
+    def validate_SDR_FREQUENCY(self, p_entry_value, v_condition):
+        if (v_condition == "focusin"):
+            self.priorValues["SDR_FREQUENCY"] = p_entry_value
+        if (self.validateNumber(p_entry_value, 0, SettingsNotebook.MAX_SDR_OFFSET)):
+            return True
+
+        # if we reach this point, there is an error...
+        self.log.printerror("timestamp", "SDR Offset Frequency " + SettingsNotebook.validationErrorMsg)
+        self.SDR_FREQUENCY.set(self.priorValues["SDR_FREQUENCY"])
+        return False
+
+    def validate_IF1_CAL(self, p_entry_value, v_condition):
+        if (v_condition == "focusin"):
+            self.priorValues["IF1_CAL"] = p_entry_value
+        if (self.validateNumber(p_entry_value, SettingsNotebook.IF1_CAL_BOUNDS["LOW"], SettingsNotebook.IF1_CAL_BOUNDS["HIGH"])):
+            return True
+
+        # if we reach this point, there is an error...
+        self.log.printerror("timestamp", "IF1 Calibration Value " + SettingsNotebook.validationErrorMsg)
+        self.IF1_CAL.set(self.priorValues["IF1_CAL"])
+        return False
+
+    def validate_METER_LEVEL(self,p_entry_value, v_condition, slevel):
+        level = "LEVEL" + slevel
+        if (v_condition == "focusin"):
+            self.priorValues[level] = p_entry_value
+        if (self.validateNumber(p_entry_value, SettingsNotebook.ADC["LOW"], SettingsNotebook.ADC["HIGH"])):
+            return True             # note the stingvar has already been set by entry, don't have to do it here.
+
+        # if we reach this point, there is an error...
+        self.log.printerror("timestamp", "S-Level " + SettingsNotebook.validationErrorMsg +"\n")
+        getattr(self, "S_METER_" + level).set(self.priorValues[level])       #bad entry, reset stingvar
+        return False
+
+    def validate_METER_LEVEL1(self, p_entry_value, v_condition):
+        return (self.validate_METER_LEVEL(p_entry_value, v_condition,"1"))
+
+    def validate_METER_LEVEL2(self, p_entry_value, v_condition):
+        return (self.validate_METER_LEVEL(p_entry_value, v_condition,"2"))
+
+    def validate_METER_LEVEL3(self, p_entry_value, v_condition):
+        return (self.validate_METER_LEVEL(p_entry_value, v_condition,"3"))
+
+    def validate_METER_LEVEL4(self, p_entry_value, v_condition):
+        return (self.validate_METER_LEVEL(p_entry_value, v_condition,"4"))
+
+    def validate_METER_LEVEL5(self, p_entry_value, v_condition):
+        return (self.validate_METER_LEVEL(p_entry_value, v_condition,"5"))
+
+    def validate_METER_LEVEL6(self, p_entry_value, v_condition):
+        return (self.validate_METER_LEVEL(p_entry_value, v_condition,"6"))
+
+    def validate_METER_LEVEL7(self, p_entry_value, v_condition):
+        return (self.validate_METER_LEVEL(p_entry_value, v_condition,"7"))
+
+    def validate_METER_LEVEL8(self, p_entry_value, v_condition):
+        return (self.validate_METER_LEVEL(p_entry_value, v_condition,"8"))
+
+    def validate_EXTENDED_KEY_START(self, p_entry_value, v_condition, key):
+        if (v_condition == "focusin"):
+            self.priorValues["EXTENDED_"+key+"_START"] = p_entry_value
+            return True
+        elif self.checkForNumber(p_entry_value) == False:                     # oops found a non-number
+            self.log.printerror("timestamp","ADC entered for Extended Key beginning value "+ SettingsNotebook.validationErrorMsg)
+            getattr(self, "EXTENDED_"+key+"_START").set(self.priorValues["EXTENDED_"+key+"_START"])
+            return False
+        elif (self.getNumber(p_entry_value) == '0') | (self.validateADC(p_entry_value, 'HIGH', str(self.ADC['HIGH']))):
+                return True
+        else:
+            # if we reach this point, there is an error...
+            self.log.printerror("timestamp", "ADC Extended Key beginning value "+SettingsNotebook.validationErrorMsg)
+            getattr(self, "EXTENDED_"+key+"_START").set(self.priorValues["EXTENDED_"+key+"_START"])
+            return False
+
+    def validate_EXTENDED_KEY_END(self, p_entry_value, v_condition, key):
+
+        if (v_condition == "focusin"):
+            self.priorValues["EXTENDED_"+key+"_END"] = p_entry_value
+            return True
+        elif self.checkForNumber(p_entry_value) == False:                     # oops found a non-number
+            self.log.printerror("timestamp","ADC entered for Extended Key ending value "+ SettingsNotebook.validationErrorMsg)
+            getattr(self, "EXTENDED_"+key+"_END").set(self.priorValues["EXTENDED_"+key+"_END"])
+            return False
+        elif (self.getNumber(p_entry_value) == '0') | (self.validateADC(p_entry_value, 'LOW', getattr(self, "EXTENDED_"+key+"_START").get())):
+            return True
+        else:
+            # if we reach this point, there is an error...
+            self.log.printerror("timestamp", "Extended Key ADC ending value " + SettingsNotebook.validationErrorMsg)
+            getattr(self, "EXTENDED_"+key+"_END").set(self.priorValues["EXTENDED_"+key+"_END"])
+            return False
+
+
+
+
+    def validate_EXTENDED_KEY1_START(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_START ( p_entry_value, v_condition, 'KEY1')
+
+    def validate_EXTENDED_KEY1_END(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY1')
+
+    def validate_EXTENDED_KEY2_START(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_START ( p_entry_value, v_condition, 'KEY2')
+
+    def validate_EXTENDED_KEY2_END(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY2')
+
+    def validate_EXTENDED_KEY3_START(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_START ( p_entry_value, v_condition, 'KEY3')
+
+    def validate_EXTENDED_KEY3_END(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY3')
+
+    def validate_EXTENDED_KEY4_START(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_START ( p_entry_value, v_condition, 'KEY4')
+
+    def validate_EXTENDED_KEY4_END(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY4')
+
+    def validate_EXTENDED_KEY5_START(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_START ( p_entry_value, v_condition, 'KEY5')
+
+    def validate_EXTENDED_KEY5_END(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY5')
+
+    def validate_EXTENDED_KEY6_START(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_START ( p_entry_value, v_condition, 'KEY6')
+
+    def validate_EXTENDED_KEY6_END(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY6')
+
+
 
     def CUST_LPF_SELECTION_CB(self, *args):
         if (self.CUST_LPF_ENABLED.get() == 'OFF'):
@@ -1408,19 +1619,19 @@ class SettingsNotebook(SettingsnotebookWidget):
     #   Note the MESSAGE* are updated within the WSPR generator
 
     def runWSPRMsg1Gen_CB(self):
-        runWSPRMsgGen = WSPRmsggen(1, self.WSPR_MESSAGE1)
+        runWSPRMsgGen = WSPRmsggen(1, self.WSPR_MESSAGE1, self.log)
 
 
     def runWSPRMsg2Gen_CB(self):
-        runWSPRMsgGen = WSPRmsggen(2, self.WSPR_MESSAGE2)
+        runWSPRMsgGen = WSPRmsggen(2, self.WSPR_MESSAGE2, self.log)
 
 
     def runWSPRMsg3Gen_CB(self):
-        runWSPRMsgGen = WSPRmsggen(3,self.WSPR_MESSAGE3)
+        runWSPRMsgGen = WSPRmsggen(3,self.WSPR_MESSAGE3, self.log)
 
 
     def runWSPRMsg4Gen_CB(self):
-        runWSPRMsgGen = WSPRmsggen(4, self.WSPR_MESSAGE4)
+        runWSPRMsgGen = WSPRmsggen(4, self.WSPR_MESSAGE4, self.log)
 
 
     def runWSPRMsgGen(self):

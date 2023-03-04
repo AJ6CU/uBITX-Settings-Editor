@@ -3159,11 +3159,6 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading3.TLabel",
             text='LCD Addresses')
         self.label22.grid(column=0, columnspan=2, padx=5, row=2, sticky="ew")
-        self.runI2CScanner_WIDGET = ttk.Button(self.frame2)
-        self.runI2CScanner_WIDGET.configure(
-            style="Button4.TButton", text='I2C Scanner')
-        self.runI2CScanner_WIDGET.grid(column=4, padx=25, row=5, sticky="e")
-        self.runI2CScanner_WIDGET.configure(command=self.runI2CScanner)
         self.label90 = ttk.Label(self.frame2)
         self.label90.grid(column=4, row=2)
         self.label28 = ttk.Label(self.frame2)
@@ -3175,10 +3170,26 @@ class SettingsnotebookWidget(ttk.Frame):
             justify="right",
             style="Normal.TEntry",
             textvariable=self.I2C_LCD_MASTER,
-            validate="focusin",
+            validate="focus",
             width=10)
         self.I2C_LCD_MASTER_WIDGET.grid(
             column=3, padx="0 5", row=4, sticky="w")
+        _validatecmd = (
+            self.I2C_LCD_MASTER_WIDGET.register(
+                self.validate_I2C_LCD_MASTER), "%P", "%V")
+        self.I2C_LCD_MASTER_WIDGET.configure(validatecommand=_validatecmd)
+        self.label137 = ttk.Label(self.frame2)
+        self.label137.configure(
+            state="normal",
+            style="Normal.TLabel",
+            text='(Valid: 0x00 - 0x7f)')
+        self.label137.grid(column=4, pady="0 5", row=4)
+        self.runI2CScanner_WIDGET = ttk.Button(self.frame2)
+        self.runI2CScanner_WIDGET.configure(
+            style="Button4.TButton", text='I2C Scanner')
+        self.runI2CScanner_WIDGET.grid(
+            column=4, padx=25, pady=10, row=5, sticky="e")
+        self.runI2CScanner_WIDGET.configure(command=self.runI2CScanner)
         self.label32 = ttk.Label(self.frame2)
         self.label32.configure(
             style="Normal.TLabel",
@@ -3193,6 +3204,16 @@ class SettingsnotebookWidget(ttk.Frame):
             validate="focus",
             width=10)
         self.I2C_LCD_SECOND_WIDGET.grid(column=3, row=6, sticky="w")
+        _validatecmd = (
+            self.I2C_LCD_SECOND_WIDGET.register(
+                self.validate_I2C_LCD_SECOND), "%P", "%V")
+        self.I2C_LCD_SECOND_WIDGET.configure(validatecommand=_validatecmd)
+        self.label138 = ttk.Label(self.frame2)
+        self.label138.configure(
+            state="normal",
+            style="Normal.TLabel",
+            text='(Valid: 0x00 - 0x7f)')
+        self.label138.grid(column=4, pady="0 5", row=6)
         self.frame2.pack(anchor="w", side="top")
         self.frame2.grid_anchor("nw")
         self.frame11 = ttk.Frame(self.frame25)
@@ -3325,12 +3346,17 @@ class SettingsnotebookWidget(ttk.Frame):
         self.SDR_FREQUENCY = tk.StringVar()
         self.SDR_FREQUENCY_WIDGET.configure(
             justify="right",
+            state="normal",
             style="Normal.TEntry",
             textvariable=self.SDR_FREQUENCY,
             validate="focus",
             width=10)
         self.SDR_FREQUENCY_WIDGET.grid(
             column=3, pady="20 0", row=6, sticky="w")
+        _validatecmd = (
+            self.SDR_FREQUENCY_WIDGET.register(
+                self.validate_SDR_FREQUENCY), "%P", "%V")
+        self.SDR_FREQUENCY_WIDGET.configure(validatecommand=_validatecmd)
         self.BOOT_INTO_SDR_MODE_WIDGET = ttk.Checkbutton(self.frame14)
         self.BOOT_INTO_SDR_MODE = tk.StringVar()
         self.BOOT_INTO_SDR_MODE_WIDGET.configure(
@@ -3424,9 +3450,8 @@ class SettingsnotebookWidget(ttk.Frame):
             validate="focus",
             width=5)
         self.EXTENDED_KEY1_START_WIDGET.grid(column=4, pady="0 5", row=7)
-        _validatecmd = (
-            self.EXTENDED_KEY1_START_WIDGET.register(
-                self.validate_EXTENDED_KEY_START), "%P", "%V")
+        _validatecmd = (self.EXTENDED_KEY1_START_WIDGET.register(
+            self.validate_EXTENDED_KEY1_START), "%P", "%V")
         self.EXTENDED_KEY1_START_WIDGET.configure(validatecommand=_validatecmd)
         self.EXTENDED_KEY1_END_WIDGET = ttk.Entry(self.frame29)
         self.EXTENDED_KEY1_END = tk.StringVar()
@@ -3434,12 +3459,12 @@ class SettingsnotebookWidget(ttk.Frame):
             justify="right",
             style="Normal.TEntry",
             textvariable=self.EXTENDED_KEY1_END,
-            validate="none",
+            validate="focus",
             width=5)
         self.EXTENDED_KEY1_END_WIDGET.grid(column=5, pady="0 5", row=7)
         _validatecmd = (
             self.EXTENDED_KEY1_END_WIDGET.register(
-                self.validate_EXTENDED_KEY_END), "%P", "%V")
+                self.validate_EXTENDED_KEY1_END), "%P", "%V")
         self.EXTENDED_KEY1_END_WIDGET.configure(validatecommand=_validatecmd)
         self.EXTENDED_KEY2_FUNC_LABEL = ttk.Label(self.frame29)
         self.EXTENDED_KEY2_FUNC_LABEL.configure(
@@ -3462,9 +3487,8 @@ class SettingsnotebookWidget(ttk.Frame):
             validate="focus",
             width=5)
         self.EXTENDED_KEY2_START_WIDGET.grid(column=4, pady="0 5", row=8)
-        _validatecmd = (
-            self.EXTENDED_KEY2_START_WIDGET.register(
-                self.validate_EXTENDED_KEY_START), "%P", "%V")
+        _validatecmd = (self.EXTENDED_KEY2_START_WIDGET.register(
+            self.validate_EXTENDED_KEY2_START), "%P", "%V")
         self.EXTENDED_KEY2_START_WIDGET.configure(validatecommand=_validatecmd)
         self.EXTENDED_KEY2_END_WIDGET = ttk.Entry(self.frame29)
         self.EXTENDED_KEY2_END = tk.StringVar()
@@ -3472,12 +3496,12 @@ class SettingsnotebookWidget(ttk.Frame):
             justify="right",
             style="Normal.TEntry",
             textvariable=self.EXTENDED_KEY2_END,
-            validate="none",
+            validate="focus",
             width=5)
         self.EXTENDED_KEY2_END_WIDGET.grid(column=5, pady="0 5", row=8)
         _validatecmd = (
             self.EXTENDED_KEY2_END_WIDGET.register(
-                self.validate_EXTENDED_KEY_END), "%P", "%V")
+                self.validate_EXTENDED_KEY2_END), "%P", "%V")
         self.EXTENDED_KEY2_END_WIDGET.configure(validatecommand=_validatecmd)
         self.EXTENDED_KEY3_FUNC_LABEL = ttk.Label(self.frame29)
         self.EXTENDED_KEY3_FUNC_LABEL.configure(
@@ -3500,9 +3524,8 @@ class SettingsnotebookWidget(ttk.Frame):
             validate="focus",
             width=5)
         self.EXTENDED_KEY3_START_WIDGET.grid(column=4, pady="0 5", row=10)
-        _validatecmd = (
-            self.EXTENDED_KEY3_START_WIDGET.register(
-                self.validate_EXTENDED_KEY_START), "%P", "%V")
+        _validatecmd = (self.EXTENDED_KEY3_START_WIDGET.register(
+            self.validate_EXTENDED_KEY3_START), "%P", "%V")
         self.EXTENDED_KEY3_START_WIDGET.configure(validatecommand=_validatecmd)
         self.EXTENDED_KEY3_END_WIDGET = ttk.Entry(self.frame29)
         self.EXTENDED_KEY3_END = tk.StringVar()
@@ -3510,12 +3533,12 @@ class SettingsnotebookWidget(ttk.Frame):
             justify="right",
             style="Normal.TEntry",
             textvariable=self.EXTENDED_KEY3_END,
-            validate="none",
+            validate="focus",
             width=5)
         self.EXTENDED_KEY3_END_WIDGET.grid(column=5, pady="0 5", row=10)
         _validatecmd = (
             self.EXTENDED_KEY3_END_WIDGET.register(
-                self.validate_EXTENDED_KEY_END), "%P", "%V")
+                self.validate_EXTENDED_KEY3_END), "%P", "%V")
         self.EXTENDED_KEY3_END_WIDGET.configure(validatecommand=_validatecmd)
         self.EXTENDED_KEY4_FUNC_LABEL = ttk.Label(self.frame29)
         self.EXTENDED_KEY4_FUNC_LABEL.configure(
@@ -3538,9 +3561,8 @@ class SettingsnotebookWidget(ttk.Frame):
             validate="focus",
             width=5)
         self.EXTENDED_KEY4_START_WIDGET.grid(column=4, pady="0 5", row=11)
-        _validatecmd = (
-            self.EXTENDED_KEY4_START_WIDGET.register(
-                self.validate_EXTENDED_KEY_START), "%P", "%V")
+        _validatecmd = (self.EXTENDED_KEY4_START_WIDGET.register(
+            self.validate_EXTENDED_KEY4_START), "%P", "%V")
         self.EXTENDED_KEY4_START_WIDGET.configure(validatecommand=_validatecmd)
         self.EXTENDED_KEY4_END_WIDGET = ttk.Entry(self.frame29)
         self.EXTENDED_KEY4_END = tk.StringVar()
@@ -3548,12 +3570,12 @@ class SettingsnotebookWidget(ttk.Frame):
             justify="right",
             style="Normal.TEntry",
             textvariable=self.EXTENDED_KEY4_END,
-            validate="none",
+            validate="focus",
             width=5)
         self.EXTENDED_KEY4_END_WIDGET.grid(column=5, pady="0 5", row=11)
         _validatecmd = (
             self.EXTENDED_KEY4_END_WIDGET.register(
-                self.validate_EXTENDED_KEY_END), "%P", "%V")
+                self.validate_EXTENDED_KEY4_END), "%P", "%V")
         self.EXTENDED_KEY4_END_WIDGET.configure(validatecommand=_validatecmd)
         self.EXTENDED_KEY5_FUNC_LABEL = ttk.Label(self.frame29)
         self.EXTENDED_KEY5_FUNC_LABEL.configure(
@@ -3589,9 +3611,8 @@ class SettingsnotebookWidget(ttk.Frame):
             validate="focus",
             width=5)
         self.EXTENDED_KEY5_START_WIDGET.grid(column=4, pady="0 5", row=13)
-        _validatecmd = (
-            self.EXTENDED_KEY5_START_WIDGET.register(
-                self.validate_EXTENDED_KEY_START), "%P", "%V")
+        _validatecmd = (self.EXTENDED_KEY5_START_WIDGET.register(
+            self.validate_EXTENDED_KEY5_START), "%P", "%V")
         self.EXTENDED_KEY5_START_WIDGET.configure(validatecommand=_validatecmd)
         self.EXTENDED_KEY5_END_WIDGET = ttk.Entry(self.frame29)
         self.EXTENDED_KEY5_END = tk.StringVar()
@@ -3599,12 +3620,12 @@ class SettingsnotebookWidget(ttk.Frame):
             justify="right",
             style="Normal.TEntry",
             textvariable=self.EXTENDED_KEY5_END,
-            validate="none",
+            validate="focus",
             width=5)
         self.EXTENDED_KEY5_END_WIDGET.grid(column=5, pady="0 5", row=13)
         _validatecmd = (
             self.EXTENDED_KEY5_END_WIDGET.register(
-                self.validate_EXTENDED_KEY_END), "%P", "%V")
+                self.validate_EXTENDED_KEY5_END), "%P", "%V")
         self.EXTENDED_KEY5_END_WIDGET.configure(validatecommand=_validatecmd)
         self.EXTENDED_KEY6_FUNC_WIDGET = ttk.Combobox(self.frame29)
         self.EXTENDED_KEY6_FUNC = tk.StringVar()
@@ -3622,9 +3643,8 @@ class SettingsnotebookWidget(ttk.Frame):
             validate="focus",
             width=5)
         self.EXTENDED_KEY6_START_WIDGET.grid(column=4, pady="0 5", row=14)
-        _validatecmd = (
-            self.EXTENDED_KEY6_START_WIDGET.register(
-                self.validate_EXTENDED_KEY_START), "%P", "%V")
+        _validatecmd = (self.EXTENDED_KEY6_START_WIDGET.register(
+            self.validate_EXTENDED_KEY6_START), "%P", "%V")
         self.EXTENDED_KEY6_START_WIDGET.configure(validatecommand=_validatecmd)
         self.EXTENDED_KEY6_END_WIDGET = ttk.Entry(self.frame29)
         self.EXTENDED_KEY6_END = tk.StringVar()
@@ -3632,12 +3652,12 @@ class SettingsnotebookWidget(ttk.Frame):
             justify="right",
             style="NoBorder.TEntry",
             textvariable=self.EXTENDED_KEY6_END,
-            validate="none",
+            validate="focus",
             width=5)
         self.EXTENDED_KEY6_END_WIDGET.grid(column=5, pady="0 5", row=14)
         _validatecmd = (
             self.EXTENDED_KEY6_END_WIDGET.register(
-                self.validate_EXTENDED_KEY_END), "%P", "%V")
+                self.validate_EXTENDED_KEY6_END), "%P", "%V")
         self.EXTENDED_KEY6_END_WIDGET.configure(validatecommand=_validatecmd)
         self.frame29.pack(fill="x", padx="20 0", side="top")
         self.frame29.grid_anchor("nw")
@@ -4532,7 +4552,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.message3 = tk.Message(self.frame50)
         self.message3.configure(
             borderwidth=2,
-            font="TkDefaultFont",
+            font="TkTextFont",
             justify="left",
             pady=5,
             relief="ridge",
@@ -4577,8 +4597,13 @@ class SettingsnotebookWidget(ttk.Frame):
         self.IF1_CAL_ADD_SUB_WIDGET.grid(column=1, row=1)
         self.IF1_CAL_WIDGET = ttk.Entry(self.IF1_Calibration_Frame)
         self.IF1_CAL = tk.StringVar()
-        self.IF1_CAL_WIDGET.configure(textvariable=self.IF1_CAL)
+        self.IF1_CAL_WIDGET.configure(
+            textvariable=self.IF1_CAL, validate="focus")
         self.IF1_CAL_WIDGET.grid(column=1, row=0)
+        _validatecmd = (
+            self.IF1_CAL_WIDGET.register(
+                self.validate_IF1_CAL), "%P", "%V")
+        self.IF1_CAL_WIDGET.configure(validatecommand=_validatecmd)
         self.IF1_Calibration_Frame.pack(anchor="e", padx=70, side="top")
         self.frame51.pack(anchor="w", padx="50 0", side="top")
         self.frame49.pack(anchor="w", side="top")
@@ -5003,7 +5028,7 @@ class SettingsnotebookWidget(ttk.Frame):
             column=1, padx="10 0", row=3, sticky="w")
         _validatecmd = (
             self.S_METER_LEVEL1_WIDGET.register(
-                self.validate__METER_LEVEL1), "%P", "%V")
+                self.validate_METER_LEVEL1), "%P", "%V")
         self.S_METER_LEVEL1_WIDGET.configure(validatecommand=_validatecmd)
         self.label15 = ttk.Label(self.SMETER_CONFIG_FRAME)
         self.label15.configure(
@@ -5024,22 +5049,8 @@ class SettingsnotebookWidget(ttk.Frame):
             column=2, padx="5 0", row=3, sticky="w")
         _validatecmd = (
             self.S_METER_LEVEL2_WIDGET.register(
-                self.validate__METER_LEVEL2), "%P", "%V")
+                self.validate_METER_LEVEL2), "%P", "%V")
         self.S_METER_LEVEL2_WIDGET.configure(validatecommand=_validatecmd)
-        self.S_METER_LEVEL4_WIDGET = ttk.Entry(self.SMETER_CONFIG_FRAME)
-        self.S_METER_LEVEL4 = tk.StringVar()
-        self.S_METER_LEVEL4_WIDGET.configure(
-            justify="right",
-            style="Normal.TEntry",
-            textvariable=self.S_METER_LEVEL4,
-            validate="focus",
-            width=5)
-        self.S_METER_LEVEL4_WIDGET.grid(
-            column=4, padx="5 0", row=3, sticky="w")
-        _validatecmd = (
-            self.S_METER_LEVEL4_WIDGET.register(
-                self.validate__METER_LEVEL4), "%P", "%V")
-        self.S_METER_LEVEL4_WIDGET.configure(validatecommand=_validatecmd)
         self.S_METER_LEVEL3_WIDGET = ttk.Entry(self.SMETER_CONFIG_FRAME)
         self.S_METER_LEVEL3 = tk.StringVar()
         self.S_METER_LEVEL3_WIDGET.configure(
@@ -5052,8 +5063,22 @@ class SettingsnotebookWidget(ttk.Frame):
             column=3, padx="5 0", row=3, sticky="w")
         _validatecmd = (
             self.S_METER_LEVEL3_WIDGET.register(
-                self.validate__METER_LEVEL3), "%P", "%V")
+                self.validate_METER_LEVEL3), "%P", "%V")
         self.S_METER_LEVEL3_WIDGET.configure(validatecommand=_validatecmd)
+        self.S_METER_LEVEL4_WIDGET = ttk.Entry(self.SMETER_CONFIG_FRAME)
+        self.S_METER_LEVEL4 = tk.StringVar()
+        self.S_METER_LEVEL4_WIDGET.configure(
+            justify="right",
+            style="Normal.TEntry",
+            textvariable=self.S_METER_LEVEL4,
+            validate="focus",
+            width=5)
+        self.S_METER_LEVEL4_WIDGET.grid(
+            column=4, padx="5 0", row=3, sticky="w")
+        _validatecmd = (
+            self.S_METER_LEVEL4_WIDGET.register(
+                self.validate_METER_LEVEL4), "%P", "%V")
+        self.S_METER_LEVEL4_WIDGET.configure(validatecommand=_validatecmd)
         self.S_METER_LEVEL5_WIDGET = ttk.Entry(self.SMETER_CONFIG_FRAME)
         self.S_METER_LEVEL5 = tk.StringVar()
         self.S_METER_LEVEL5_WIDGET.configure(
@@ -5066,7 +5091,7 @@ class SettingsnotebookWidget(ttk.Frame):
             column=5, padx="5 0", row=3, sticky="w")
         _validatecmd = (
             self.S_METER_LEVEL5_WIDGET.register(
-                self.validate__METER_LEVEL5), "%P", "%V")
+                self.validate_METER_LEVEL5), "%P", "%V")
         self.S_METER_LEVEL5_WIDGET.configure(validatecommand=_validatecmd)
         self.S_METER_LEVEL6_WIDGET = ttk.Entry(self.SMETER_CONFIG_FRAME)
         self.S_METER_LEVEL6 = tk.StringVar()
@@ -5080,7 +5105,7 @@ class SettingsnotebookWidget(ttk.Frame):
             column=6, padx="5 0", row=3, sticky="w")
         _validatecmd = (
             self.S_METER_LEVEL6_WIDGET.register(
-                self.validate__METER_LEVEL6), "%P", "%V")
+                self.validate_METER_LEVEL6), "%P", "%V")
         self.S_METER_LEVEL6_WIDGET.configure(validatecommand=_validatecmd)
         self.S_METER_LEVEL7_WIDGET = ttk.Entry(self.SMETER_CONFIG_FRAME)
         self.S_METER_LEVEL7 = tk.StringVar()
@@ -5094,7 +5119,7 @@ class SettingsnotebookWidget(ttk.Frame):
             column=7, padx="5 0", row=3, sticky="w")
         _validatecmd = (
             self.S_METER_LEVEL7_WIDGET.register(
-                self.validate__METER_LEVEL7), "%P", "%V")
+                self.validate_METER_LEVEL7), "%P", "%V")
         self.S_METER_LEVEL7_WIDGET.configure(validatecommand=_validatecmd)
         self.S_METER_LEVEL8_WIDGET = ttk.Entry(self.SMETER_CONFIG_FRAME)
         self.S_METER_LEVEL8 = tk.StringVar()
@@ -5108,7 +5133,7 @@ class SettingsnotebookWidget(ttk.Frame):
             column=8, padx="5 0", row=3, sticky="w")
         _validatecmd = (
             self.S_METER_LEVEL8_WIDGET.register(
-                self.validate__METER_LEVEL8), "%P", "%V")
+                self.validate_METER_LEVEL8), "%P", "%V")
         self.S_METER_LEVEL8_WIDGET.configure(validatecommand=_validatecmd)
         self.label45 = ttk.Label(self.SMETER_CONFIG_FRAME)
         self.label45.configure(
@@ -5939,16 +5964,55 @@ class SettingsnotebookWidget(ttk.Frame):
     def runWSPR_Band3_Select_Button_CB(self):
         pass
 
+    def validate_I2C_LCD_MASTER(self, p_entry_value, v_condition):
+        pass
+
     def runI2CScanner(self):
         pass
 
-    def validate_EXTENDED_KEY_START(self, p_entry_value, v_condition):
+    def validate_I2C_LCD_SECOND(self, p_entry_value, v_condition):
         pass
 
-    def validate_EXTENDED_KEY_END(self, p_entry_value, v_condition):
+    def validate_SDR_FREQUENCY(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY1_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY1_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY2_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY2_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY3_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY3_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY4_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY4_END(self, p_entry_value, v_condition):
         pass
 
     def runADCScanner(self):
+        pass
+
+    def validate_EXTENDED_KEY5_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY5_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY6_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY6_END(self, p_entry_value, v_condition):
         pass
 
     def CUST_LPF_SELECTION_CB(self, option):
@@ -5994,6 +6058,9 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def CUST_LPF_FILTER7_CONTROL_CB(self):
+        pass
+
+    def validate_IF1_CAL(self, p_entry_value, v_condition):
         pass
 
     def validate_MASTER_CAL(self, p_entry_value, v_condition):
@@ -6050,28 +6117,28 @@ class SettingsnotebookWidget(ttk.Frame):
     def SMeter_Input_CB(self):
         pass
 
-    def validate__METER_LEVEL1(self, p_entry_value, v_condition):
+    def validate_METER_LEVEL1(self, p_entry_value, v_condition):
         pass
 
-    def validate__METER_LEVEL2(self, p_entry_value, v_condition):
+    def validate_METER_LEVEL2(self, p_entry_value, v_condition):
         pass
 
-    def validate__METER_LEVEL4(self, p_entry_value, v_condition):
+    def validate_METER_LEVEL3(self, p_entry_value, v_condition):
         pass
 
-    def validate__METER_LEVEL3(self, p_entry_value, v_condition):
+    def validate_METER_LEVEL4(self, p_entry_value, v_condition):
         pass
 
-    def validate__METER_LEVEL5(self, p_entry_value, v_condition):
+    def validate_METER_LEVEL5(self, p_entry_value, v_condition):
         pass
 
-    def validate__METER_LEVEL6(self, p_entry_value, v_condition):
+    def validate_METER_LEVEL6(self, p_entry_value, v_condition):
         pass
 
-    def validate__METER_LEVEL7(self, p_entry_value, v_condition):
+    def validate_METER_LEVEL7(self, p_entry_value, v_condition):
         pass
 
-    def validate__METER_LEVEL8(self, p_entry_value, v_condition):
+    def validate_METER_LEVEL8(self, p_entry_value, v_condition):
         pass
 
     def runSmeterAssistant(self):

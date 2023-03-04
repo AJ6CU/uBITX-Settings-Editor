@@ -5519,19 +5519,6 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Button" id="runI2CScanner_WIDGET" named="True">
-                                <property name="command" type="command" cbtype="simple">runI2CScanner</property>
-                                <property name="style">Button4.TButton</property>
-                                <property name="text" translatable="yes">I2C Scanner</property>
-                                <layout manager="grid">
-                                  <property name="column">4</property>
-                                  <property name="padx">25</property>
-                                  <property name="row">5</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
                               <object class="ttk.Label" id="label90">
                                 <layout manager="grid">
                                   <property name="column">4</property>
@@ -5556,13 +5543,40 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                                 <property name="justify">right</property>
                                 <property name="style">Normal.TEntry</property>
                                 <property name="textvariable">string:I2C_LCD_MASTER</property>
-                                <property name="validate">focusin</property>
+                                <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_I2C_LCD_MASTER</property>
                                 <property name="width">10</property>
                                 <layout manager="grid">
                                   <property name="column">3</property>
                                   <property name="padx">0 5</property>
                                   <property name="row">4</property>
                                   <property name="sticky">w</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="label137">
+                                <property name="state">normal</property>
+                                <property name="style">Normal.TLabel</property>
+                                <property name="text" translatable="yes">(Valid: 0x00 - 0x7f)</property>
+                                <layout manager="grid">
+                                  <property name="column">4</property>
+                                  <property name="pady">0 5</property>
+                                  <property name="row">4</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Button" id="runI2CScanner_WIDGET" named="True">
+                                <property name="command" type="command" cbtype="simple">runI2CScanner</property>
+                                <property name="style">Button4.TButton</property>
+                                <property name="text" translatable="yes">I2C Scanner</property>
+                                <layout manager="grid">
+                                  <property name="column">4</property>
+                                  <property name="padx">25</property>
+                                  <property name="pady">10</property>
+                                  <property name="row">5</property>
+                                  <property name="sticky">e</property>
                                 </layout>
                               </object>
                             </child>
@@ -5585,11 +5599,24 @@ Dual LCD Config</property>
                                 <property name="style">Normal.TEntry</property>
                                 <property name="textvariable">string:I2C_LCD_SECOND</property>
                                 <property name="validate">focus</property>
+                                <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_I2C_LCD_SECOND</property>
                                 <property name="width">10</property>
                                 <layout manager="grid">
                                   <property name="column">3</property>
                                   <property name="row">6</property>
                                   <property name="sticky">w</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="label138">
+                                <property name="state">normal</property>
+                                <property name="style">Normal.TLabel</property>
+                                <property name="text" translatable="yes">(Valid: 0x00 - 0x7f)</property>
+                                <layout manager="grid">
+                                  <property name="column">4</property>
+                                  <property name="pady">0 5</property>
+                                  <property name="row">6</property>
                                 </layout>
                               </object>
                             </child>
@@ -5848,9 +5875,11 @@ KHZ:	Similar to MHZ_OFFSET, but using the KHZ
                         <child>
                           <object class="ttk.Entry" id="SDR_FREQUENCY_WIDGET" named="True">
                             <property name="justify">right</property>
+                            <property name="state">normal</property>
                             <property name="style">Normal.TEntry</property>
                             <property name="textvariable">string:SDR_FREQUENCY</property>
                             <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_SDR_FREQUENCY</property>
                             <property name="width">10</property>
                             <layout manager="grid">
                               <property name="column">3</property>
@@ -6064,7 +6093,7 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                             <property name="style">NoBorder.TEntry</property>
                             <property name="textvariable">string:EXTENDED_KEY1_START</property>
                             <property name="validate">focus</property>
-                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY_START</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY1_START</property>
                             <property name="width">5</property>
                             <layout manager="grid">
                               <property name="column">4</property>
@@ -6078,8 +6107,8 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                             <property name="justify">right</property>
                             <property name="style">Normal.TEntry</property>
                             <property name="textvariable">string:EXTENDED_KEY1_END</property>
-                            <property name="validate">none</property>
-                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY_END</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY1_END</property>
                             <property name="width">5</property>
                             <layout manager="grid">
                               <property name="column">5</property>
@@ -6117,7 +6146,7 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                             <property name="style">NoBorder.TEntry</property>
                             <property name="textvariable">string:EXTENDED_KEY2_START</property>
                             <property name="validate">focus</property>
-                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY_START</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY2_START</property>
                             <property name="width">5</property>
                             <layout manager="grid">
                               <property name="column">4</property>
@@ -6131,8 +6160,8 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                             <property name="justify">right</property>
                             <property name="style">Normal.TEntry</property>
                             <property name="textvariable">string:EXTENDED_KEY2_END</property>
-                            <property name="validate">none</property>
-                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY_END</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY2_END</property>
                             <property name="width">5</property>
                             <layout manager="grid">
                               <property name="column">5</property>
@@ -6170,7 +6199,7 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                             <property name="style">NoBorder.TEntry</property>
                             <property name="textvariable">string:EXTENDED_KEY3_START</property>
                             <property name="validate">focus</property>
-                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY_START</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY3_START</property>
                             <property name="width">5</property>
                             <layout manager="grid">
                               <property name="column">4</property>
@@ -6184,8 +6213,8 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                             <property name="justify">right</property>
                             <property name="style">Normal.TEntry</property>
                             <property name="textvariable">string:EXTENDED_KEY3_END</property>
-                            <property name="validate">none</property>
-                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY_END</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY3_END</property>
                             <property name="width">5</property>
                             <layout manager="grid">
                               <property name="column">5</property>
@@ -6224,7 +6253,7 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                             <property name="style">NoBorder.TEntry</property>
                             <property name="textvariable">string:EXTENDED_KEY4_START</property>
                             <property name="validate">focus</property>
-                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY_START</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY4_START</property>
                             <property name="width">5</property>
                             <layout manager="grid">
                               <property name="column">4</property>
@@ -6238,8 +6267,8 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                             <property name="justify">right</property>
                             <property name="style">Normal.TEntry</property>
                             <property name="textvariable">string:EXTENDED_KEY4_END</property>
-                            <property name="validate">none</property>
-                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY_END</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY4_END</property>
                             <property name="width">5</property>
                             <layout manager="grid">
                               <property name="column">5</property>
@@ -6315,7 +6344,7 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                             <property name="style">NoBorder.TEntry</property>
                             <property name="textvariable">string:EXTENDED_KEY5_START</property>
                             <property name="validate">focus</property>
-                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY_START</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY5_START</property>
                             <property name="width">5</property>
                             <layout manager="grid">
                               <property name="column">4</property>
@@ -6329,8 +6358,8 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                             <property name="justify">right</property>
                             <property name="style">Normal.TEntry</property>
                             <property name="textvariable">string:EXTENDED_KEY5_END</property>
-                            <property name="validate">none</property>
-                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY_END</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY5_END</property>
                             <property name="width">5</property>
                             <layout manager="grid">
                               <property name="column">5</property>
@@ -6356,7 +6385,7 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                             <property name="style">NoBorder.TEntry</property>
                             <property name="textvariable">string:EXTENDED_KEY6_START</property>
                             <property name="validate">focus</property>
-                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY_START</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY6_START</property>
                             <property name="width">5</property>
                             <layout manager="grid">
                               <property name="column">4</property>
@@ -6370,8 +6399,8 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                             <property name="justify">right</property>
                             <property name="style">NoBorder.TEntry</property>
                             <property name="textvariable">string:EXTENDED_KEY6_END</property>
-                            <property name="validate">none</property>
-                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY_END</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY6_END</property>
                             <property name="width">5</property>
                             <layout manager="grid">
                               <property name="column">5</property>
@@ -7889,7 +7918,7 @@ http://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html</proper
                             <child>
                               <object class="tk.Message" id="message3">
                                 <property name="borderwidth">2</property>
-                                <property name="font">TkDefaultFont</property>
+                                <property name="font">TkTextFont</property>
                                 <property name="justify">left</property>
                                 <property name="pady">5</property>
                                 <property name="relief">ridge</property>
@@ -7964,6 +7993,8 @@ http://www.hamskey.com/2018/04/improves-ubitx-receive-performance-by.html</prope
                                 <child>
                                   <object class="ttk.Entry" id="IF1_CAL_WIDGET" named="True">
                                     <property name="textvariable">string:IF1_CAL</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_IF1_CAL</property>
                                     <layout manager="grid">
                                       <property name="column">1</property>
                                       <property name="row">0</property>
@@ -8685,7 +8716,7 @@ Factory settings?</property>
                                     <property name="style">Normal.TEntry</property>
                                     <property name="textvariable">string:S_METER_LEVEL1</property>
                                     <property name="validate">focus</property>
-                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL1</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_METER_LEVEL1</property>
                                     <property name="width">5</property>
                                     <layout manager="grid">
                                       <property name="column">1</property>
@@ -8715,26 +8746,10 @@ Factory settings?</property>
                                     <property name="style">Normal.TEntry</property>
                                     <property name="textvariable">string:S_METER_LEVEL2</property>
                                     <property name="validate">focus</property>
-                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL2</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_METER_LEVEL2</property>
                                     <property name="width">5</property>
                                     <layout manager="grid">
                                       <property name="column">2</property>
-                                      <property name="padx">5 0</property>
-                                      <property name="row">3</property>
-                                      <property name="sticky">w</property>
-                                    </layout>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="ttk.Entry" id="S_METER_LEVEL4_WIDGET" named="True">
-                                    <property name="justify">right</property>
-                                    <property name="style">Normal.TEntry</property>
-                                    <property name="textvariable">string:S_METER_LEVEL4</property>
-                                    <property name="validate">focus</property>
-                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL4</property>
-                                    <property name="width">5</property>
-                                    <layout manager="grid">
-                                      <property name="column">4</property>
                                       <property name="padx">5 0</property>
                                       <property name="row">3</property>
                                       <property name="sticky">w</property>
@@ -8747,10 +8762,26 @@ Factory settings?</property>
                                     <property name="style">Normal.TEntry</property>
                                     <property name="textvariable">string:S_METER_LEVEL3</property>
                                     <property name="validate">focus</property>
-                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL3</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_METER_LEVEL3</property>
                                     <property name="width">5</property>
                                     <layout manager="grid">
                                       <property name="column">3</property>
+                                      <property name="padx">5 0</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Entry" id="S_METER_LEVEL4_WIDGET" named="True">
+                                    <property name="justify">right</property>
+                                    <property name="style">Normal.TEntry</property>
+                                    <property name="textvariable">string:S_METER_LEVEL4</property>
+                                    <property name="validate">focus</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_METER_LEVEL4</property>
+                                    <property name="width">5</property>
+                                    <layout manager="grid">
+                                      <property name="column">4</property>
                                       <property name="padx">5 0</property>
                                       <property name="row">3</property>
                                       <property name="sticky">w</property>
@@ -8763,7 +8794,7 @@ Factory settings?</property>
                                     <property name="style">Normal.TEntry</property>
                                     <property name="textvariable">string:S_METER_LEVEL5</property>
                                     <property name="validate">focus</property>
-                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL5</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_METER_LEVEL5</property>
                                     <property name="width">5</property>
                                     <layout manager="grid">
                                       <property name="column">5</property>
@@ -8779,7 +8810,7 @@ Factory settings?</property>
                                     <property name="style">Normal.TEntry</property>
                                     <property name="textvariable">string:S_METER_LEVEL6</property>
                                     <property name="validate">focus</property>
-                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL6</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_METER_LEVEL6</property>
                                     <property name="width">5</property>
                                     <layout manager="grid">
                                       <property name="column">6</property>
@@ -8795,7 +8826,7 @@ Factory settings?</property>
                                     <property name="style">Normal.TEntry</property>
                                     <property name="textvariable">string:S_METER_LEVEL7</property>
                                     <property name="validate">focus</property>
-                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL7</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_METER_LEVEL7</property>
                                     <property name="width">5</property>
                                     <layout manager="grid">
                                       <property name="column">7</property>
@@ -8811,7 +8842,7 @@ Factory settings?</property>
                                     <property name="style">Normal.TEntry</property>
                                     <property name="textvariable">string:S_METER_LEVEL8</property>
                                     <property name="validate">focus</property>
-                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate__METER_LEVEL8</property>
+                                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_METER_LEVEL8</property>
                                     <property name="width">5</property>
                                     <layout manager="grid">
                                       <property name="column">8</property>

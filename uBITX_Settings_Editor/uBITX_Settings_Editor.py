@@ -23,6 +23,16 @@ def tryToQuit(root, inputProcessorPtr):
             return
     root.destroy()
 
+def center_window(theRoot, width, height):
+    # get screen width and height
+    screen_width = theRoot.winfo_screenwidth()
+    # screen_height = theRoot.winfo_screenheight()
+
+    # calculate position x and y coordinates
+    x = (screen_width/2) - (width/2)
+    # y = (screen_height/2) - (height/2)
+    theRoot.geometry('%dx%d+%d+%d' % (width, height, x, 0))
+
 
 #####################################
 #   Start of main program
@@ -45,7 +55,11 @@ IOstate = 'NONE'                        #used to track whether we have written t
 #   defines the root window
 root = Tk()
 root.title("uBITX Setting Customization")
-root.geometry('1280x900')            # width x height
+
+
+
+center_window(root,DEFAULT_ROOT_WINDOW_WIDTH,DEFAULT_ROOT_WINDOW_HEIGHT)
+#root.geometry('1280x900+0+0')            # width x height
 root.minsize(1024,650)
 
 ttk.Style().theme_use(appTheme)

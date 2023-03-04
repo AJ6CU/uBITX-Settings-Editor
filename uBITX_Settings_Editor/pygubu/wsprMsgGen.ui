@@ -51,7 +51,9 @@
                   <object class="ttk.Entry" id="callsign_WIDGET" named="True">
                     <property name="style">Normal.TEntry</property>
                     <property name="textvariable">string:callsign</property>
-                    <property name="width">11</property>
+                    <property name="validate">focusout</property>
+                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_WSPR_callsign</property>
+                    <property name="width">10</property>
                     <layout manager="grid">
                       <property name="column">1</property>
                       <property name="padx">0 10</property>
@@ -74,7 +76,9 @@
                   <object class="ttk.Entry" id="gridSq_WIDGET" named="True">
                     <property name="style">Normal.TEntry</property>
                     <property name="textvariable">string:gridSq</property>
-                    <property name="width">4</property>
+                    <property name="validate">focusout</property>
+                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_WSPR_gridSq</property>
+                    <property name="width">5</property>
                     <layout manager="grid">
                       <property name="column">3</property>
                       <property name="padx">0 10</property>
@@ -98,6 +102,8 @@
                     <property name="style">Normal.TEntry</property>
                     <property name="text" translatable="yes">10</property>
                     <property name="textvariable">string:dbm</property>
+                    <property name="validate">focusout</property>
+                    <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_WSPR_dbm</property>
                     <property name="width">3</property>
                     <layout manager="grid">
                       <property name="column">5</property>
