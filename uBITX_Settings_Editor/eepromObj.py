@@ -1633,15 +1633,14 @@ class eepromObj:
             MSB_Bits = (int(userSettingValue) >> 8) & 0x03              #masking off the upper two and lower two bits
             LSB_Bits = int(userSettingValue) & 0xff
 
-            match SettingName:                                          # bit number 01234567
-                case "CW_ADC_ST_FROM":
-                    tmpByte: bytes = upperBitsByte & (~0x03) | MSB_Bits         # MSB are in postions 67
-                case "CW_ADC_ST_TO":
-                    tmpByte: bytes = upperBitsByte & (~0x0C) | (MSB_Bits << 2)  # MSB are in postions 56
-                case "CW_ADC_DOT_FROM":
-                    tmpByte: bytes = upperBitsByte & (~0x30) | (MSB_Bits << 4)  # MSB are in postions 34
-                case "CW_ADC_DOT_TO":
-                    tmpByte: bytes = upperBitsByte & (~0xC0) | (MSB_Bits << 6)  # MSB are in postions 12
+            if SettingName == "CW_ADC_ST_FROM":
+                tmpByte: bytes = upperBitsByte & (~0x03) | MSB_Bits         # MSB are in postions 67
+            elif SettingName ==  "CW_ADC_ST_TO":
+                tmpByte: bytes = upperBitsByte & (~0x0C) | (MSB_Bits << 2)  # MSB are in postions 56
+            elif SettingName == "CW_ADC_DOT_FROM":
+                tmpByte: bytes = upperBitsByte & (~0x30) | (MSB_Bits << 4)  # MSB are in postions 34
+            elif SettingName ==  "CW_ADC_DOT_TO":
+                tmpByte: bytes = upperBitsByte & (~0xC0) | (MSB_Bits << 6)  # MSB are in postions 12
 
             upperBitsMemLocation = self.XML_MemLocation_FromEEPROM(EEPROMroot, "CW_ADC_MOST_BIT1")
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, upperBitsMemLocation, tmpByte)
@@ -1668,15 +1667,14 @@ class eepromObj:
             MSB_Bits = (int(userSettingValue) >> 8) & 0x03              #masking off the upper two and lower two bits
             LSB_Bits = int(userSettingValue) & 0xff
 
-            match SettingName:                                          # bit number 01234567
-                case "CW_ADC_DASH_FROM":
-                    tmpByte: bytes = upperBitsByte & (~0x03) | MSB_Bits         # MSB are in postions 67
-                case "CW_ADC_DASH_TO":
-                    tmpByte: bytes = upperBitsByte & (~0x0C) | (MSB_Bits << 2)  # MSB are in postions 56
-                case "CW_ADC_BOTH_FROM":
-                    tmpByte: bytes = upperBitsByte & (~0x30) | (MSB_Bits << 4)  # MSB are in postions 34
-                case "CW_ADC_BOTH_TO":
-                    tmpByte: bytes = upperBitsByte & (~0xC0) | (MSB_Bits << 6)  # MSB are in postions 12
+            if SettingName == "CW_ADC_DASH_FROM":
+                tmpByte: bytes = upperBitsByte & (~0x03) | MSB_Bits         # MSB are in postions 67
+            elif SettingName ==  "CW_ADC_DASH_TO":
+                tmpByte: bytes = upperBitsByte & (~0x0C) | (MSB_Bits << 2)  # MSB are in postions 56
+            elif SettingName ==  "CW_ADC_BOTH_FROM":
+                tmpByte: bytes = upperBitsByte & (~0x30) | (MSB_Bits << 4)  # MSB are in postions 34
+            elif SettingName ==  "CW_ADC_BOTH_TO":
+                tmpByte: bytes = upperBitsByte & (~0xC0) | (MSB_Bits << 6)  # MSB are in postions 12
 
             upperBitsMemLocation = self.XML_MemLocation_FromEEPROM(EEPROMroot, "CW_ADC_MOST_BIT2")
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, upperBitsMemLocation, tmpByte)
