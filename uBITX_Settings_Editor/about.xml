@@ -1,7 +1,7 @@
 <data>
 	<FORMAT NAME="Heading3">
 		<TEXT>
-			ABOUT uBITX Settings Editor - V2 2023
+			ABOUT uBITX Settings Editor - V2Beta 1 2023
 		</TEXT>
 	</FORMAT>
 	<FORMAT NAME="Heading3">
@@ -12,6 +12,23 @@
 		<FORMAT NAME="Normal">
 		<TEXT>
 Correspondance regarding this software can be addressed thru my callsign at QRZ.COM.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Heading3">
+		<TEXT>
+			Credits
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+		This software was written in Python 3. This amazing language environment is an order of magnitude (maybe two orders of magnitude)  more productive than the Pascal and C language I was first taught to program back in the late 70's at Berkeley. 
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+		In addition to Python, two other tools were critical to the completion of this effort:
+1.	PyCharm - great IDE that made it possible to make very quick turnaround on changes. (https://www.jetbrains.com/pycharm/)
+2.	Pygubu-designer	- a great Tkinker GUI Builder that made the complex GUI of the Setting Editor a reality.  The author Alejandro Autalan was very responsive whenever I had a question or problem. https://github.com/alejandroautalan/pygubu-designer
 		</TEXT>
 	</FORMAT>
 	<FORMAT NAME="Heading3">

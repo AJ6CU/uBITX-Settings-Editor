@@ -24,6 +24,46 @@
             This appllication is designed to allow you to edit the various settings stored in the uBITX EEPROM. This application only works with KD8CEC derived firmware. The original KD8CEC is available at: https://github.com/phdlee/ubitx That version only supports Arduino Nano based version of the uBITX. For uBITX's which have had their Raduinos replaced with designs derived from AJ6CU (which includes faster processors and an external larger EEPROM), that source code (as well as the source code to this application) resides at: https://github.com/aj6cu .
 		</TEXT>
 	</FORMAT>
+	<FORMAT NAME="Heading3">
+		<TEXT>
+			Using the Software
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+            A formal users manual is in the planning stages. However, in the meantime, the user interface makes heavy use of "tooltips" and various usage notes when a particular feature is unclear. There are also URL's provided to the original blog postings by Dr. Lee where he provided his thoughts and rational on some of the key features. 
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+           To get started, here is the process:
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+           1. At the top, you will see a box where you can select *where* you will be getting the settings that you will want to modify. Obviously, one of them is from a com port where the uBITX is attached. Just select the com port in the drop down box, and then click the "READ" button that becomes clickable on the right top.  Alternatively, you can select a previously saved settings file and read that in. (Side note, there are two types of setting files: ".btx" and ".xml". The ".btx" file is a binary file that is fully compatible with the original uBITX Manager. So you can read one created by the uBTIX Manager in this uBITX Settings Manager and conversely, you can write one (more about that later) and read it back in using the Dr. Lee's uBITX Manager. The ".xml" file contains the same information, just in a ascii format (xml) that is human readable  and editable. Again, after selecting a file, the READ button becomes active, just click it to read the settings.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+           2. After Reading in your settings, the center area, which allows you to edit your uBITX settings becomes active. The settings are organized by Tabs so that you can more easily find the setting you need to change. Remember the tooltops!
+		</TEXT>
+	</FORMAT>
+		<FORMAT NAME="Normal">
+		<TEXT>
+           3. You probably already noticed a "log" that is continously being updated on the right. This log documents the internal status of the Setting Editor as well as flagging errors when you enter an illegal value for a setting (look for the ones in red!) There is a button at the top which allows you to copy the log to your clipboard that you can then use your favorite word processor to paste and save. I find the locations of where files were read and saved particularly useful to document.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+           4. After you made all your changes, the box at the bottom allows you to specify where you want the settings saved. As in the input section, you can save it to a uBITX (although I never tried it, you should be able to even save it to a second uBITX that you have also attached!). Or you can write it to either a ".btx" or ".xml" file. The default is ".btx" and that is probably the right choice for most users.
+		</TEXT>
+	</FORMAT>
+	<FORMAT NAME="Normal">
+		<TEXT>
+           5. And you are done!
+		</TEXT>
+	</FORMAT>
 
 	<FORMAT NAME="Heading3">
 		<TEXT>
@@ -32,7 +72,7 @@
 	</FORMAT>
 	<FORMAT NAME="Normal">
 		<TEXT>
-            The save file created by this program is compatible with the original uBITX Memory Manager that was written by KD8CEC. 
+            The binary (".btx") save file created by this program is compatible with the original uBITX Memory Manager that was written by KD8CEC. You can if you want, open up the ".xml" file in your favorite editor to peek at its contents.
 		</TEXT>
 	</FORMAT>
 </data>
