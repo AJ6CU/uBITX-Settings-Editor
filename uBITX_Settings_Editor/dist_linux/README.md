@@ -1,2 +1,0 @@
-# location for Linux distributions
-

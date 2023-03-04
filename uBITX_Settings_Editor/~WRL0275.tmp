@@ -1,0 +1,12 @@
+1. pip3 install lxml
+2. pip3 install pyserial
+3. pip3 install bitarray
+4. pip3 install pygubu
+5. pip3 install pygubu-designer  (optional if you want to edit the gui)
+6. create a virtual environment where ever you want it. 
+a. Python3 -m venv mypython       this will create a directory “mypython” and make it into a virtual environment
+7. Source mypython/bin/activate    this activates your virtual environment
+8. cd mypython
+9. mkdir GitHub
+10. cd GitHub
+11. clone 

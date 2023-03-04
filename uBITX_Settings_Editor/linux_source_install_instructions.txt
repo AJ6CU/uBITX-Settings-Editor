@@ -1,0 +1,22 @@
+1. create a virtual environment where ever you want it. 
+a. Python3 -m venv mypython       this will create a directory “mypython” and make it into a virtual environment
+2. Source mypython/bin/activate    this activates your virtual environment
+3. pip3 install lxml
+4. pip3 install pyserial
+5. pip3 install bitarray
+6. pip3 install pygubu
+7. pip3 install pygubu-designer  (optional if you want to edit the gui)
+8. pip3 install pyinstaller
+9. cd mypython
+10. mkdir GitHub
+11. cd GitHub
+12. git clone https://github.com/AJ6CU/uBITX-EEPROM-Manager
+13. cd uBITX-EEPROM-Manager
+14. cd  uBITX_Settings_Editor
+15. python3 uBITX_Setting_Editor.py
+16. do build a distribution
+17. pyinstaller <spec-file-see examples> --distpath <directory where you want it>
+18. tar czvf mydirecotry.tgz mydirecotry
+19. rm -rf mydirecotry
+20. git status
+21. 
