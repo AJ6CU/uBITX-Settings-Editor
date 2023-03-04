@@ -47,7 +47,7 @@ elif (platform.system() == 'Darwin'):
     appTheme = 'aqua'
     startDir = "~"
 else:
-    appTheme = 'default'
+    appTheme = 'alt'                # used by Linux
     startDir = "~"
 
 IOstate = 'NONE'                        #used to track whether we have written the settings or not prior to quiting
