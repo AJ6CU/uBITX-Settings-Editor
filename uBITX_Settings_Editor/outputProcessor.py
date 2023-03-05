@@ -30,7 +30,7 @@ class OutputProcessor(Processor):
         tooltip.create(self.reset_uBITX_Button_WIDGET, "Click to reboot your uBITX with the new settings")
 
     def reset_ubitx(self):
-        print("reset ubitx called")
+        # print("reset ubitx called")
 
         if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
             self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
