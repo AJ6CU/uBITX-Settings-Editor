@@ -3138,17 +3138,6 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading2.TLabel",
             text='Settings for LCD Displays')
         self.label8.grid(column=0, padx="0 20", pady=10, row=0, sticky="nw")
-        self.message5 = tk.Message(self.LCD_Frame)
-        self.message5.configure(
-            borderwidth=2,
-            font="TkTextFont",
-            justify="left",
-            pady=5,
-            relief="ridge",
-            takefocus=False,
-            text="I2C attached only. Not required for parallel connected LCD's and not reelvant for Nextion based systems.",
-            width=250)
-        self.message5.grid(column=1, pady=15, row=0, sticky="s")
         self.LCD_Frame.pack(anchor="w", side="top")
         self.frame25 = ttk.Frame(self.frame24)
         self.frame25.configure(height=200, width=200)
@@ -3157,7 +3146,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label22.configure(
             relief="flat",
             style="Heading3.TLabel",
-            text='LCD Addresses')
+            text='LCD Addresses (I2C attached only)')
         self.label22.grid(column=0, columnspan=2, padx=5, row=2, sticky="ew")
         self.label90 = ttk.Label(self.frame2)
         self.label90.grid(column=4, row=2)
@@ -3221,7 +3210,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label9.configure(
             relief="flat",
             style="Heading3.TLabel",
-            text='LCD User Interface Customization')
+            text='LCD User Interface Customization (all LCDs)')
         self.label9.grid(
             column=0,
             columnspan=2,
@@ -3678,7 +3667,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label10.configure(
             justify="left",
             style="Heading3.TLabel",
-            text='Custom Bandpass Filters')
+            text='Low Pass Filters')
         self.label10.grid(column=0, row=0, sticky="w")
         self.message4 = tk.Message(self.frame56)
         self.message4.configure(

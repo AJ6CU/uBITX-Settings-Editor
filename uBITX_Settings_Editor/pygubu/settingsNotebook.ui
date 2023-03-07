@@ -5466,24 +5466,6 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                             </layout>
                           </object>
                         </child>
-                        <child>
-                          <object class="tk.Message" id="message5">
-                            <property name="borderwidth">2</property>
-                            <property name="font">TkTextFont</property>
-                            <property name="justify">left</property>
-                            <property name="pady">5</property>
-                            <property name="relief">ridge</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">I2C attached only. Not required for parallel connected LCD's and not reelvant for Nextion based systems.</property>
-                            <property name="width">250</property>
-                            <layout manager="grid">
-                              <property name="column">1</property>
-                              <property name="pady">15</property>
-                              <property name="row">0</property>
-                              <property name="sticky">s</property>
-                            </layout>
-                          </object>
-                        </child>
                       </object>
                     </child>
                     <child>
@@ -5508,7 +5490,7 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                               <object class="ttk.Label" id="label22" named="True">
                                 <property name="relief">flat</property>
                                 <property name="style">Heading3.TLabel</property>
-                                <property name="text" translatable="yes">LCD Addresses</property>
+                                <property name="text" translatable="yes">LCD Addresses (I2C attached only)</property>
                                 <layout manager="grid">
                                   <property name="column">0</property>
                                   <property name="columnspan">2</property>
@@ -5636,7 +5618,7 @@ Dual LCD Config</property>
                               <object class="ttk.Label" id="label9" named="True">
                                 <property name="relief">flat</property>
                                 <property name="style">Heading3.TLabel</property>
-                                <property name="text" translatable="yes">LCD User Interface Customization</property>
+                                <property name="text" translatable="yes">LCD User Interface Customization (all LCDs)</property>
                                 <layout manager="grid">
                                   <property name="column">0</property>
                                   <property name="columnspan">2</property>
@@ -6457,7 +6439,7 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                               <object class="ttk.Label" id="label10" named="True">
                                 <property name="justify">left</property>
                                 <property name="style">Heading3.TLabel</property>
-                                <property name="text" translatable="yes">Custom Bandpass Filters</property>
+                                <property name="text" translatable="yes">Low Pass Filters</property>
                                 <layout manager="grid">
                                   <property name="column">0</property>
                                   <property name="row">0</property>
