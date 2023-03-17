@@ -301,7 +301,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='Key Type')
         self.CW_KEY_TYPE_LABEL.grid(column=0, pady="0 10", row=0)
         self.CW_KEY_TYPE = tk.StringVar(value='STRAIGHT')
-        __values = ['STRAIGHT', 'IAMBICA', 'IAMICAB']
+        __values = ['STRAIGHT', 'IAMBICA', 'IAMBICB']
         self.CW_KEY_TYPE_WIDGET = tk.OptionMenu(
             self.General_CW_Settings_Frame,
             self.CW_KEY_TYPE,

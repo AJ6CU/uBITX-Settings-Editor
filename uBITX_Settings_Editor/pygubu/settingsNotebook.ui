@@ -583,7 +583,7 @@
                                 <child>
                                   <object class="tk.OptionMenu" id="CW_KEY_TYPE_WIDGET" named="True">
                                     <property name="value">STRAIGHT</property>
-                                    <property name="values">STRAIGHT,IAMBICA,IAMICAB</property>
+                                    <property name="values">STRAIGHT,IAMBICA,IAMBICB</property>
                                     <property name="variable">string:CW_KEY_TYPE</property>
                                     <layout manager="grid">
                                       <property name="column">1</property>

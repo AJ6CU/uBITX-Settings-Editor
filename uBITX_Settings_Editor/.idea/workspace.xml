@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="07ffa901-4db2-460d-94d0-031f158d06d7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist_win/uBITX_Settings_Editor_V2Beta-03-04-23-win-intelx64.exe" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pygubu/settingsNotebook.ui" beforeDir="false" afterPath="$PROJECT_DIR$/pygubu/settingsNotebook.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settingsnotebookwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/settingsnotebookwidget.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uBITX Settings Editor User Manual.docx" beforeDir="false" afterPath="$PROJECT_DIR$/uBITX Settings Editor User Manual.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uBITX Settings Editor User Manual.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/uBITX Settings Editor User Manual.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usermodfiletemplate.xml" beforeDir="false" afterPath="$PROJECT_DIR$/usermodfiletemplate.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uBITX_Settings_Editor.py" beforeDir="false" afterPath="$PROJECT_DIR$/uBITX_Settings_Editor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/~$nux_source_install_instructions.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/~WRL0275.tmp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
