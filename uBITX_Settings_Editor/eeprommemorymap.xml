@@ -1739,37 +1739,37 @@ GENERAL UX
 		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
 	</SETTING>
 	<SETTING NAME="EXT_UBITX_BOARD_VERSION">
-		<EEPROMStart>1027</EEPROMStart>
+		<EEPROMStart>1064</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>int</displayFormat>
 		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
 	</SETTING>
 	<SETTING NAME="EXT_DATE_TIME_STAMP">
-		<EEPROMStart>1028</EEPROMStart>
+		<EEPROMStart>1052</EEPROMStart>
 		<sizeInBytes>12</sizeInBytes>
 		<displayFormat>int</displayFormat>
 		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
 	</SETTING>
 	<SETTING NAME="EXT_PROCESSOR_TYPE">
-		<EEPROMStart>1040</EEPROMStart>
+		<EEPROMStart>1065</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>int</displayFormat>
 		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
 	</SETTING>
 	<SETTING NAME="EXT_DISPLAY_TYPE">
-		<EEPROMStart>1041</EEPROMStart>
+		<EEPROMStart>1066</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>int</displayFormat>
 		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
 	</SETTING>
 	<SETTING NAME="EXT_FUNCTIONALITY_SET">
-		<EEPROMStart>1042</EEPROMStart>
+		<EEPROMStart>1067</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>int</displayFormat>
 		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
 	</SETTING>
 	<SETTING NAME="EXT_SMETER_SELECTION">
-		<EEPROMStart>1043</EEPROMStart>
+		<EEPROMStart>1068</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>int</displayFormat>
 		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>

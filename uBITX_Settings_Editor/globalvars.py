@@ -34,8 +34,8 @@ EXT_PROCESSOR_TYPE_SELECT =         ["N/A","Arduino Nano V3","Arduino Nano Every
                                         "Arduino RP2040", "Teensy 4.0", "Raspberry Pi Pico"]
 EXT_DISPLAY_TYPE_SELECT =           ["N/A","LCD 16x2 (Parallel)","LCD 16x2 (I2C)","LCD 20x4 (Parallel)", "Dual LCD 16x2 (I2C)",
                                         "LCD 20x4 (I2C)", "Nextion"]
-EXT_FUNCTIONALITY_SET_SELECT =      ["N/A","All Functions","Test Functionality","Suggested for LCD", "Suggested for Nano V3.0/Nextion",
-                                    "Suggested for Processors/Newton"]
+EXT_FUNCTIONALITY_SET_SELECT =      ["N/A","All Functions","Test Functionality","Suggested for LCD", "For Expanded Nano V3.0/Nextion",
+                                    "None - Old Nanos/Nextion", "Suggested for Processors/Newton"]
 EXT_SMETER_SELECTION_SELECT =              ["N/A","I2C S-Meter/2nd Nano","On board Sensor","None"]
 
 MONTH3CHARS = ["N/A", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
