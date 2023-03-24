@@ -26,6 +26,21 @@ LPF_CTRL_SELECT = ["TX_LPF_A", "TX_LPF_B", "TX_LPF_C", "D10", "D11", "D12", "D13
 CW_MSG_TOTAL = 25
 CW_MSG_LABEL = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "G", "H",
                 "I", "J", "K", "L", "M", "N", "O"]
+
+# For extended EEPROM
+
+EXT_UBITX_BOARD_VERSION_SELECT =    ["N/A","V1","V2","V3","V4","V5","V6"]
+EXT_PROCESSOR_TYPE_SELECT =         ["N/A","Arduino Nano V3","Arduino Nano Every","Arduino Nano 33 IoT","Arduino Nano BLE",
+                                        "Arduino RP2040", "Teensy 4.0", "Raspberry Pi Pico"]
+EXT_DISPLAY_TYPE_SELECT =           ["N/A","LCD 16x2 (Parallel)","LCD 16x2 (I2C)","LCD 20x4 (Parallel)", "Dual LCD 16x2 (I2C)",
+                                        "LCD 20x4 (I2C)", "Nextion"]
+EXT_FUNCTIONALITY_SET_SELECT =      ["N/A","All Functions","Test Functionality","Suggested for LCD", "Suggested for Nano V3.0/Nextion",
+                                    "Suggested for Processors/Newton"]
+EXT_SMETER_SELECTION_SELECT =              ["N/A","I2C S-Meter/2nd Nano","On board Sensor","None"]
+
+MONTH3CHARS = ["N/A", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
+
+
 #
 #            Band       Dial Freq   Low         Mid         High
 #
@@ -68,6 +83,7 @@ CW_BOTH_KEY_PRESSSED_END = '300'
 READCOMMAND=0xDB
 WRITECOMMAND=0xDC
 READADC=0xDD
+GETSIZECOMMAND=0xDF
 
 OK=0x77
 ACK = 0x00
@@ -78,9 +94,13 @@ MAGIC_USER_CALLSIGN_KEY = 0x59
 MAGIC_CW_AUTO_MAGIC_KEY = 0x73
 
 
-EEPROMSIZE=1024
-CW_MEMORY_KEYER_BUFFER_START = 803              #  Magic - Location of the CW_AUTO_DATA pointer
+EEPROMSIZE=1024                                 #  default eepromsize to the Nano size of 1024
+MAXEEPROMSIZE=2048
 BACKUPFILESIZE=2048
+
+CW_MEMORY_KEYER_BUFFER_START = 803              #  Magic - Location of the CW_AUTO_DATA pointer
+CW_MEMORY_KEYER_BUFFER_END = 1023
+
 
 VREFMAXVALUE=1023
 SMETERPIN=7

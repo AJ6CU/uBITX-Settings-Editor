@@ -1638,7 +1638,7 @@ GENERAL UX
 	<SETTING NAME="CUST_LPF_FILTER2_CONTROL">							
 		<EEPROMStart>52</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
-		<displayFormat>selection</displayFormat>																	enable for the TX_LPF relay and set D10 high     -->
+		<displayFormat>selection</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER3_ENDFREQ">							
@@ -1700,5 +1700,81 @@ GENERAL UX
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>hex</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
-	</SETTING>	
+	</SETTING>
+
+
+<!--
+	*****************************************************************************************************
+	EXTENDED EEPROM DATA
+	The following definitions are for the additional data that is stored in larger EEPROMs. For
+	the traditional Nano, these settings are ignored and where they would normally appear in the GUI
+	there value will be replaced with "N/A"
+
+	Initially, this data is primarily information about the build so that a user can confirm that the
+	right options have been selected. However, over time this additional space can be used for other
+	information.
+
+	Even though the I2C based boards use a 64k byte eeprom, both the Settings Manager and KD8CEC
+	only use a max of 2k bytes. Besides no current need for data above 2k, there are many assumptions
+	in KD8CEC, especially in the CAT control are, where there is a maximum of a 16k byte start and a
+	fetch of max of 16k.
+	*****************************************************************************************************
+ -->
+	<SETTING NAME="EXT_FIRMWARE_ID_ADDR1">
+		<EEPROMStart>1024</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>hex</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_FIRMWARE_ID_ADDR2">
+		<EEPROMStart>1025</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>hex</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_FIRMWARE_ID_ADDR3">
+		<EEPROMStart>1026</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>hex</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_UBITX_BOARD_VERSION">
+		<EEPROMStart>1027</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_DATE_TIME_STAMP">
+		<EEPROMStart>1028</EEPROMStart>
+		<sizeInBytes>12</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_PROCESSOR_TYPE">
+		<EEPROMStart>1040</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_DISPLAY_TYPE">
+		<EEPROMStart>1041</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_FUNCTIONALITY_SET">
+		<EEPROMStart>1042</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_SMETER_SELECTION">
+		<EEPROMStart>1043</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+
+
+
 </data>

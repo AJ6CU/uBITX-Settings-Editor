@@ -1512,5 +1512,67 @@ GENERAL UX
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
 		<tooltip></tooltip>
-	</SETTING>	
+	</SETTING>
+<!--
+	*****************************************************************************************************
+	EXTENDED EEPROM DATA
+	The following definitions are for the additional data that is stored in larger EEPROMs. For
+	the traditional Nano, these settings are ignored and where they would normally appear in the GUI
+	there value will be replaced with "N/A"
+
+	Initially, this data is primarily information about the build so that a user can confirm that the
+	right options have been selected. However, over time this additional space can be used for other
+	information.
+
+	Even though the I2C based boards use a 64k byte eeprom, both the Settings Manager and KD8CEC
+	only use a max of 2k bytes. Besides no current need for data above 2k, there are many assumptions
+	in KD8CEC, especially in the CAT control are, where there is a maximum of a 16k byte start and a
+	fetch of max of 16k.
+	*****************************************************************************************************
+ -->
+	<SETTING NAME="EXT_FIRMWARE_ID_ADDR1">
+		<label>Magic Number 1 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_FIRMWARE_ID_ADDR2">
+		<label>Magic Number 2 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_FIRMWARE_ID_ADDR3">
+		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_UBITX_BOARD_VERSION">
+		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_DATE_TIME_STAMP">
+		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_PROCESSOR_TYPE">
+		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_DISPLAY_TYPE">
+		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_FUNCTIONALITY_SET">
+		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_SMETER_SELECTION">
+		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
 </data>

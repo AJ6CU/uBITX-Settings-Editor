@@ -96,7 +96,8 @@ class SettingsNotebook(SettingsnotebookWidget):
             'CUST_LPF_FILTER5_CONTROL', 'CUST_LPF_FILTER6_CONTROL', 'CUST_LPF_FILTER7_CONTROL',
             'FIRMWARE_ID_ADDR1', 'FIRMWARE_ID_ADDR2', 'FIRMWARE_ID_ADDR3', 'FACTORY_VALUES_VFO_A', 'FACTORY_VALUES_VFO_B',
             'IF1_CAL_ON_OFF_SWITCH',  'IF1_CAL', 'IF1_CAL_ADD_SUB', 'STORED_IF_SHIFT', 'IF_SHIFTVALUE', 'CW_DISPLAY_FREQ',
-            'CW_FREQUENCY_ADJUSTMENT'
+            'CW_FREQUENCY_ADJUSTMENT', 'EXT_UBITX_BOARD_VERSION', 'EXT_DATE_TIME_STAMP', 'EXT_PROCESSOR_TYPE',
+             'EXT_DISPLAY_TYPE', 'EXT_FUNCTIONALITY_SET', 'EXT_SMETER_SELECTION'
              ]
 
     #   this needs to be moved somewhere else too
@@ -394,7 +395,7 @@ class SettingsNotebook(SettingsnotebookWidget):
             self.priorValues["QSO_CALLSIGN"] = p_entry_value
         if(self.checkLength(p_entry_value, SettingsNotebook.USER_CALLSIGN_BOUNDS['HIGH']) ):
             # Update maximum available bytes
-            self.CW_AUTO_REMAINING_BYTES.set(str(EEPROMSIZE - 1 - len(p_entry_value) - CW_MEMORY_KEYER_BUFFER_START - int(self.CW_AUTO_BYTES_USED.get())))
+            self.CW_AUTO_REMAINING_BYTES.set(str(CW_MEMORY_KEYER_BUFFER_END - len(p_entry_value) - CW_MEMORY_KEYER_BUFFER_START - int(self.CW_AUTO_BYTES_USED.get())))
 
             return True
         else:
@@ -1570,7 +1571,7 @@ class SettingsNotebook(SettingsnotebookWidget):
 
         # Set maximum available bytes
         # Length of QSO call sign
-        self.CW_AUTO_REMAINING_BYTES.set(str(EEPROMSIZE - 1 - len(self.QSO_CALLSIGN.get())
+        self.CW_AUTO_REMAINING_BYTES.set(str(CW_MEMORY_KEYER_BUFFER_END - len(self.QSO_CALLSIGN.get())
                                              - CW_MEMORY_KEYER_BUFFER_START - int(self.CW_AUTO_BYTES_USED.get())))
 
         #   Add extra tooltips

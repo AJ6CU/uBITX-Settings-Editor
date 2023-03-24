@@ -11,6 +11,7 @@ import tkinter
 import tkinter.messagebox
 
 from tkinter import filedialog as fd
+import serial.tools.list_ports              # Used to get a list of com ports
 
 #   Application includes
 from globalvars import *

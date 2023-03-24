@@ -5214,87 +5214,188 @@ class SettingsnotebookWidget(ttk.Frame):
         self.frame27.configure(height=200, width=200)
         self.System_Info_Firmware_Version = ttk.Frame(self.frame27)
         self.System_Info_Firmware_Version.configure(width=200)
-        self.System_Info_Firmware_Version_Label = ttk.Label(
+        self.Firmware_Version_Title = ttk.Frame(
             self.System_Info_Firmware_Version)
+        self.Firmware_Version_Title.configure(height=200, width=200)
+        self.System_Info_Firmware_Version_Label = ttk.Label(
+            self.Firmware_Version_Title)
         self.System_Info_Firmware_Version_Label.configure(
             style="Heading3.TLabel", text='Firmware Version: ')
-        self.System_Info_Firmware_Version_Label.grid(column=0, row=0)
-        self.KD8CEC_VERSION_WIDGET = ttk.Label(
+        self.System_Info_Firmware_Version_Label.pack(expand="true", fill="x")
+        self.Firmware_Version_Title.pack(
+            anchor="w", expand="true", fill="x", side="top")
+        self.Firmware_Version_Content = ttk.Frame(
             self.System_Info_Firmware_Version)
+        self.Firmware_Version_Content.configure(height=200, width=200)
+        self.KD8CEC_VERSION_WIDGET = ttk.Label(self.Firmware_Version_Content)
         self.KD8CEC_VERSION_WIDGET.configure(
-            style="Normal.TLabel", text='KD8CEC  ')
-        self.KD8CEC_VERSION_WIDGET.grid(column=1, row=0, sticky="ew")
-        self.VERSION_ADDRESS_WIDGET = ttk.Label(
-            self.System_Info_Firmware_Version)
+            style="Heading4.TLabel", text='KD8CEC')
+        self.KD8CEC_VERSION_WIDGET.grid(column=0, row=0, sticky="e")
+        self.VERSION_ADDRESS_WIDGET = ttk.Label(self.Firmware_Version_Content)
         self.VERSION_ADDRESS = tk.StringVar()
         self.VERSION_ADDRESS_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.VERSION_ADDRESS)
-        self.VERSION_ADDRESS_WIDGET.grid(column=2, row=0, sticky="w")
+        self.VERSION_ADDRESS_WIDGET.grid(column=1, padx=5, row=0, sticky="w")
+        self.label165 = ttk.Label(self.Firmware_Version_Content)
+        self.label165.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='Build Date:')
+        self.label165.grid(column=0, row=1, sticky="e")
+        self.EXT_DATE_TIME_STAMP_WIDGET = ttk.Label(
+            self.Firmware_Version_Content)
+        self.EXT_DATE_TIME_STAMP = tk.StringVar()
+        self.EXT_DATE_TIME_STAMP_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_DATE_TIME_STAMP)
+        self.EXT_DATE_TIME_STAMP_WIDGET.grid(
+            column=1, padx=5, row=1, sticky="w")
+        self.label186 = ttk.Label(self.Firmware_Version_Content)
+        self.label186.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='Functionality Set:')
+        self.label186.grid(column=0, row=2, sticky="e")
+        self.EXT_FUNCTIONALITY_SET_WIDGET = ttk.Label(
+            self.Firmware_Version_Content)
+        self.EXT_FUNCTIONALITY_SET = tk.StringVar()
+        self.EXT_FUNCTIONALITY_SET_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_FUNCTIONALITY_SET)
+        self.EXT_FUNCTIONALITY_SET_WIDGET.grid(
+            column=1, padx=5, row=2, sticky="w")
+        self.Firmware_Version_Content.pack(
+            expand="true", fill="x", padx=75, side="top")
         self.System_Info_Firmware_Version.pack(
             anchor="w", pady="20 0", side="top")
         self.System_Info_Calibration_Settings = ttk.Frame(self.frame27)
         self.System_Info_Calibration_Settings.configure(width=200)
-        self.System_Info_Factory_Calibration_Label = ttk.Label(
+        self.Factory_Data_Title = ttk.Frame(
             self.System_Info_Calibration_Settings)
+        self.Factory_Data_Title.configure(height=200, width=200)
+        self.System_Info_Factory_Calibration_Label = ttk.Label(
+            self.Factory_Data_Title)
         self.System_Info_Factory_Calibration_Label.configure(
             style="Heading3.TLabel", text='Factory Data')
-        self.System_Info_Factory_Calibration_Label.grid(
-            column=0, columnspan=3, row=0, sticky="w")
-        self.System_Info_Factory_Calibration_Master_Label = ttk.Label(
+        self.System_Info_Factory_Calibration_Label.pack(anchor="w")
+        self.Factory_Data_Title.pack(
+            anchor="w", expand="true", fill="x", side="top")
+        self.Factory_Data_Content = ttk.Frame(
             self.System_Info_Calibration_Settings)
+        self.Factory_Data_Content.configure(height=200, width=200)
+        self.System_Info_Factory_Calibration_Master_Label = ttk.Label(
+            self.Factory_Data_Content)
         self.System_Info_Factory_Calibration_Master_Label.configure(
             style="Heading4.TLabel", text='Master Calibration:')
         self.System_Info_Factory_Calibration_Master_Label.grid(
-            column=1, padx="75 50", row=2, sticky="e")
+            column=0, row=0, sticky="e")
         self.System_Info_MASTER_CAL_WIDGET = ttk.Label(
-            self.System_Info_Calibration_Settings)
+            self.Factory_Data_Content)
         self.System_Info_MASTER_CAL_WIDGET.configure(
             compound="top",
             style="Normal.TLabel",
             textvariable=self.FACTORY_VALUES_MASTER_CAL)
-        self.System_Info_MASTER_CAL_WIDGET.grid(column=2, row=2, sticky="e")
+        self.System_Info_MASTER_CAL_WIDGET.grid(
+            column=1, padx=5, row=0, sticky="w")
         self.System_Info_Factory_Calibration_BFO_Label = ttk.Label(
-            self.System_Info_Calibration_Settings)
+            self.Factory_Data_Content)
         self.System_Info_Factory_Calibration_BFO_Label.configure(
             style="Heading4.TLabel", text='SSB BFO Calibration:')
         self.System_Info_Factory_Calibration_BFO_Label.grid(
-            column=1, padx="75 50", pady="0 3", row=3, sticky="e")
-        self.System_Info_USB_CAL_WIDGET = ttk.Label(
-            self.System_Info_Calibration_Settings)
+            column=0, row=1, sticky="e")
+        self.System_Info_USB_CAL_WIDGET = ttk.Label(self.Factory_Data_Content)
         self.System_Info_USB_CAL_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.FACTORY_VALUES_USB_CAL)
-        self.System_Info_USB_CAL_WIDGET.grid(column=2, row=3, sticky="e")
-        self.label171 = ttk.Label(self.System_Info_Calibration_Settings)
+        self.System_Info_USB_CAL_WIDGET.grid(
+            column=1, padx=5, row=1, sticky="w")
+        self.label171 = ttk.Label(self.Factory_Data_Content)
         self.label171.configure(style="Heading4.TLabel", text='CW Sidetone:')
-        self.label171.grid(
-            column=1,
-            padx="75 50",
-            pady="0 3",
-            row=4,
-            sticky="e")
+        self.label171.grid(column=0, row=2, sticky="e")
         self.FACTORY_VALUES_CW_SIDETONE_WIDGET = ttk.Label(
-            self.System_Info_Calibration_Settings)
+            self.Factory_Data_Content)
         self.FACTORY_VALUES_CW_SIDETONE = tk.StringVar()
         self.FACTORY_VALUES_CW_SIDETONE_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.FACTORY_VALUES_CW_SIDETONE)
         self.FACTORY_VALUES_CW_SIDETONE_WIDGET.grid(
-            column=2, row=4, sticky="e")
-        self.label184 = ttk.Label(self.System_Info_Calibration_Settings)
+            column=1, padx=5, row=2, sticky="w")
+        self.label184 = ttk.Label(self.Factory_Data_Content)
         self.label184.configure(style="Heading4.TLabel", text='CW Speed:')
-        self.label184.grid(
-            column=1,
-            padx="75 50",
-            pady="0 3",
-            row=5,
-            sticky="e")
+        self.label184.grid(column=0, row=3, sticky="e")
         self.FACTORY_VALUES_CW_SPEED_WIDGET = ttk.Label(
-            self.System_Info_Calibration_Settings)
+            self.Factory_Data_Content)
         self.FACTORY_VALUES_CW_SPEED = tk.StringVar()
         self.FACTORY_VALUES_CW_SPEED_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.FACTORY_VALUES_CW_SPEED)
-        self.FACTORY_VALUES_CW_SPEED_WIDGET.grid(column=2, row=5, sticky="e")
+        self.FACTORY_VALUES_CW_SPEED_WIDGET.grid(
+            column=1, padx=5, row=3, sticky="w")
+        self.Factory_Data_Content.pack(
+            expand="true", fill="x", padx=50, side="top")
         self.System_Info_Calibration_Settings.pack(
             anchor="w", pady="20 0", side="top")
+        self.System_Info_Hardware = ttk.Frame(self.frame27)
+        self.System_Info_Hardware.configure(width=200)
+        self.Hardware_Title = ttk.Frame(self.System_Info_Hardware)
+        self.Hardware_Title.configure(height=200, width=200)
+        self.label166 = ttk.Label(self.Hardware_Title)
+        self.label166.configure(style="Heading3.TLabel", text='Hardware: ')
+        self.label166.pack(anchor="w")
+        self.Hardware_Title.pack(
+            anchor="w",
+            expand="true",
+            fill="x",
+            side="top")
+        self.Hardware_Content = ttk.Frame(self.System_Info_Hardware)
+        self.Hardware_Content.configure(height=200, width=200)
+        self.label190 = ttk.Label(self.Hardware_Content)
+        self.label190.configure(style="Heading4.TLabel", text='uBITX Version:')
+        self.label190.grid(column=0, row=0, sticky="e")
+        self.EXT_UBITX_BOARD_VERSION_WIDGET = ttk.Label(self.Hardware_Content)
+        self.EXT_UBITX_BOARD_VERSION = tk.StringVar()
+        self.EXT_UBITX_BOARD_VERSION_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_UBITX_BOARD_VERSION)
+        self.EXT_UBITX_BOARD_VERSION_WIDGET.grid(
+            column=1, padx=5, row=0, sticky="w")
+        self.label192 = ttk.Label(self.Hardware_Content)
+        self.label192.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='Processor:')
+        self.label192.grid(column=0, row=1, sticky="e")
+        self.EXT_PROCESSOR_TYPE_WIDGET = ttk.Label(self.Hardware_Content)
+        self.EXT_PROCESSOR_TYPE = tk.StringVar()
+        self.EXT_PROCESSOR_TYPE_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_PROCESSOR_TYPE)
+        self.EXT_PROCESSOR_TYPE_WIDGET.grid(
+            column=1, padx=5, row=1, sticky="w")
+        self.label194 = ttk.Label(self.Hardware_Content)
+        self.label194.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='Display:')
+        self.label194.grid(column=0, row=2, sticky="e")
+        self.EXT_DISPLAY_TYPE_WIDGET = ttk.Label(self.Hardware_Content)
+        self.EXT_DISPLAY_TYPE = tk.StringVar()
+        self.EXT_DISPLAY_TYPE_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_DISPLAY_TYPE)
+        self.EXT_DISPLAY_TYPE_WIDGET.grid(column=1, padx=5, row=2, sticky="w")
+        self.label196 = ttk.Label(self.Hardware_Content)
+        self.label196.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='S-Meter')
+        self.label196.grid(column=0, row=3, sticky="e")
+        self.EXT_SMETER_SELECTION_WIDGET = ttk.Label(self.Hardware_Content)
+        self.EXT_SMETER_SELECTION = tk.StringVar()
+        self.EXT_SMETER_SELECTION_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_SMETER_SELECTION)
+        self.EXT_SMETER_SELECTION_WIDGET.grid(
+            column=1, padx=5, row=3, sticky="w")
+        self.Hardware_Content.pack(
+            expand="true", fill="x", padx=90, side="top")
+        self.System_Info_Hardware.pack(
+            anchor="w",
+            expand="true",
+            fill="x",
+            pady="20 0",
+            side="top")
         self.System_Info_VFO_Frame = ttk.Frame(self.frame27)
         self.sytem_Infor_Last_Saved_Freq_Label = ttk.Label(
             self.System_Info_VFO_Frame)

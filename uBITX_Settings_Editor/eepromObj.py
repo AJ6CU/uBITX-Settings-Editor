@@ -1191,7 +1191,69 @@ class eepromObj:
         def CUST_LPF_FILTER7_CONTROL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             self.CUST_LPF_FILTER_CONTROL(SettingName, EEPROMBuffer, memLocation, value)
 
+    #
+    #         # ***********************************
+    #         #   Extended EEPROM Settings (>= 1204)
+    #         # ***********************************
+    #
+    #
 
+        def EXT_FIRMWARE_ID_ADDR1(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+
+        def EXT_FIRMWARE_ID_ADDR2(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+
+        def EXT_FIRMWARE_ID_ADDR3(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+
+        def EXT_UBITX_BOARD_VERSION(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = EXT_UBITX_BOARD_VERSION_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+
+        def EXT_DATE_TIME_STAMP(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+
+            timeStamp :str = ''
+
+            # Get month# and translate to month text
+
+            timeStamp += MONTH3CHARS[int(chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+                                        + chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+1)))] + ' '
+
+            # get day
+            timeStamp += chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+2)) \
+                            + chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+3)) \
+                            + ', '
+
+            # Get year
+            timeStamp += chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+4)) \
+                            + chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+5)) \
+                            + chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+6)) \
+                            + chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+7)) \
+                            + " "
+
+            # Add the hour
+            timeStamp += chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+8)) \
+                            + chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+9)) \
+                            + ':'
+
+            # Add the min
+            timeStamp += chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+10)) \
+                            + chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+11))
+
+            value.text = timeStamp
+
+
+        def EXT_PROCESSOR_TYPE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = EXT_PROCESSOR_TYPE_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+
+        def EXT_DISPLAY_TYPE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = EXT_DISPLAY_TYPE_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+
+        def EXT_FUNCTIONALITY_SET(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = EXT_FUNCTIONALITY_SET_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+
+        def EXT_SMETER_SELECTION(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = EXT_SMETER_SELECTION_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
 
         def defaultFunc(self, *args):
                 print ("Command not recognised:", args[0])
@@ -2468,6 +2530,85 @@ class eepromObj:
             self.CUST_LPF_FILTER_CONTROL(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
 
 
+    #
+    #         # ***********************************
+    #         #   Extended EEPROM Settings (>= 1204)
+    #         # ***********************************
+    #
+    #
+
+        def EXT_FIRMWARE_ID_ADDR1(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            # value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+            pass
+
+        def EXT_FIRMWARE_ID_ADDR2(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            # value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+            pass
+
+        def EXT_FIRMWARE_ID_ADDR3(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            # value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+            pass
+
+        def EXT_UBITX_BOARD_VERSION(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            # value.text = EXT_UBITX_BOARD_VERSION_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+            pass
+
+        def EXT_DATE_TIME_STAMP(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+
+            # timeStamp :str = ''
+            #
+            # # Get month# and translate to month text
+            #
+            # timeStamp += = MONTH3CHARS[int((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)
+            #                             + self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+1)))] + ' '
+            #
+            # # get day
+            # timeStamp += = str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+2))
+            #                 + str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+3)) \
+            #                 + ', '
+            #
+            # # Get year
+            # timeStamp += = str((self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+4))
+            #                 + str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+5))
+            #                 + str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+6))
+            #                 + str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+7))
+            #
+            # # Add the hour
+            # timeStamp += str(get_uint8_FromEEPROM(EEPROMBuffer, memLocation+8))
+            #                 + str(get_uint8_FromEEPROM(EEPROMBuffer, memLocation+9))
+            #                 + ':'
+            # # Add the min
+            # timeStamp += str(get_uint8_FromEEPROM(EEPROMBuffer, memLocation+10))
+            #                 + str(get_uint8_FromEEPROM(EEPROMBuffer, memLocation+11))
+            #
+            # value.text = timeStamp
+            pass
+
+
+        def EXT_PROCESSOR_TYPE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            # value.text = EXT_PROCESSOR_TYPE_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+            pass
+
+        def EXT_DISPLAY_TYPE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            # value.text = EXT_DISPLAY_TYPE_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+            pass
+
+        def EXT_FUNCTIONALITY_SET(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            # value.text = EXT_FUNCTIONALITY_SET_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+            pass
+
+        def EXT_SMETER_SELECTION(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            # value.text = EXT_SMETER_SELECTION_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+            pass
+
+
+        def defaultFunc(self, *args):
+                print ("Command not recognised:", args[0])
+
+        def get(self, cmd, *args):
+                return getattr(self, cmd, self.defaultFunc)(*args)
+
+
 
 
         def defaultFunc(self, *args):
@@ -2483,9 +2624,9 @@ class eepromObj:
 
     def __init__(self, log, **kw):
         self.log = log
-        self.EEPROMBuffer = bytearray(EEPROMSIZE)     # Used to save the in memory copy
+        self.EEPROMBuffer = bytearray(MAXEEPROMSIZE)     # Used to save the in memory copy
 
-        self.EEPROMBufferDirty=bitarray(EEPROMSIZE)         # create a bit array of the same size that we can use to track dirty "bytes"
+        self.EEPROMBufferDirty=bitarray(MAXEEPROMSIZE)         # create a bit array of the same size that we can use to track dirty "bytes"
         self.EEPROMBufferDirty.setall(0)                    # clear all bits. When we write a byte into the EEPROMBuffer, we will set
                                                             # corresponding dirty bit to 1
 
@@ -2605,8 +2746,54 @@ class eepromUBITX (eepromObj):          # subclass
         super().__init__ (log, **kw)
         self.comPort = comPort
 
+    def getEEPROMSize(self):                # Read from Com Port
+
+        self.comPort.write(bytes([0, 0, 0, 0, GETSIZECOMMAND]))
+
+        # create buffer to save bytes being returned
+        # byte1 = 0x2 - always
+        # 4 bytes LSB first
+        # byte3 = checksum of bytes above
+        # byte4 = 0x0 (ACK)
+
+
+        checkSum: int = 0x02
+        theEEPROMsize: int =0
+
+        i = -1
+        while i < 4:
+             if self.comPort.in_waiting != 0:
+                if i< 0:
+                    throwaway = self.comPort.read(1)
+                else:
+                    readByte = int.from_bytes(self.comPort.read(),"little",signed=False)
+                    theEEPROMsize += readByte << (i*8)
+                    checkSum = (checkSum + readByte ) & 0xFF
+                i += 1
+
+    #   get checksum sent by radio CAT control
+        while self.comPort.in_waiting == 0:
+            sleep(0.01)
+        sentCheckSum = int.from_bytes(self.comPort.read(1),"little",signed=False)
+
+    #   get trailing byte. Must be an ACK (0x00)
+        while self.comPort.in_waiting == 0:
+            sleep(0.01)
+        trailingByte = int.from_bytes(self.comPort.read(1),"little",signed=False)
+
+        if(sentCheckSum!=checkSum)|(trailingByte!=0):
+            self.log.printerror("timestamp","Bad Checksum on EEPROM Read")
+            tkinter.messagebox.showerror(title="ERROR", message="Bad Checksum reading size of EEPROM from Radio.\nTry restarting radio, ensuring the USB cable plugged in securely, and then restart application. \nEXITING")
+            sys.exit(-1)
+        return theEEPROMsize
+
+
     def read(self):                # Read from Com Port
 
+        EEPROMSIZE = self.getEEPROMSize()
+        if EEPROMSIZE > MAXEEPROMSIZE:
+            EEPROMSIZE = MAXEEPROMSIZE
+        print("eepromsize = ", EEPROMSIZE)
 
         # LSB = memlocation & 0xff
         # MSB = (memlocation >> 8) & 0xff
@@ -2634,7 +2821,7 @@ class eepromUBITX (eepromObj):          # subclass
 
         i = -1
         while i < EEPROMSIZE:
-             if self.comPort.in_waiting != 0:
+            if self.comPort.in_waiting != 0:
                 if i< 0:
                     throwaway = self.comPort.read(1)
                 else:
@@ -2709,11 +2896,10 @@ class eepromFILE (eepromObj):
 
     def read(self):                 # Read from binary file
         fd = open(self.fname, "rb")
-        self.EEPROMBuffer=bytearray(fd.read(EEPROMSIZE))
+        self.EEPROMBuffer=bytearray(fd.read(BACKUPFILESIZE))
         fd.close()
 
     def write(self):                # Write to binary file
         fd = open(self.fname, "wb")
         fd.write(self.EEPROMBuffer)
-        fd.write(b"\0"* (BACKUPFILESIZE-EEPROMSIZE))
         fd.close()
