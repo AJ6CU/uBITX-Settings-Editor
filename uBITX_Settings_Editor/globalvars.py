@@ -29,16 +29,22 @@ CW_MSG_LABEL = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C",
 
 # For extended EEPROM
 
-EXT_UBITX_BOARD_VERSION_SELECT =    ["N/A","V1","V2","V3","V4","V5","V6"]
-EXT_PROCESSOR_TYPE_SELECT =         ["N/A","Arduino Nano V3","Arduino Nano Every","Arduino Nano 33 IoT","Arduino Nano BLE",
+EXT_UBITX_BOARD_VERSION_SELECT =    ["Data Not Available","V1","V2","V3","V4","V5","V6"]
+EXT_PROCESSOR_TYPE_SELECT =         ["Data Not Available","Arduino Nano V3","Arduino Nano Every","Arduino Nano 33 IoT","Arduino Nano BLE",
                                         "Arduino RP2040", "Teensy 4.0", "Raspberry Pi Pico"]
-EXT_DISPLAY_TYPE_SELECT =           ["N/A","LCD 16x2 (Parallel)","LCD 16x2 (I2C)","LCD 20x4 (Parallel)", "Dual LCD 16x2 (I2C)",
+EXT_DISPLAY_TYPE_SELECT =           ["Data Not Available","LCD 16x2 (Parallel)","LCD 16x2 (I2C)","LCD 20x4 (Parallel)", "Dual LCD 16x2 (I2C)",
                                         "LCD 20x4 (I2C)", "Nextion"]
-EXT_FUNCTIONALITY_SET_SELECT =      ["N/A","All Functions","Test Functionality","Suggested for LCD", "For Expanded Nano V3.0/Nextion",
+EXT_FUNCTIONALITY_SET_SELECT =      ["Data Not Available","All Functions","Test Functionality","Suggested for LCD", "For Expanded Nano V3.0/Nextion",
                                     "None - Old Nanos/Nextion", "Suggested for Processors/Newton"]
-EXT_SMETER_SELECTION_SELECT =              ["N/A","I2C S-Meter/2nd Nano","On board Sensor","None"]
+EXT_SMETER_SELECTION_SELECT =       ["Data Not Available","I2C S-Meter/2nd Nano","On board Sensor","None"]
 
-MONTH3CHARS = ["N/A", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
+EXT_SERIAL_TYPE_SELECT =            ["Data Not Available", "Software", "Hardware"]
+
+EXT_EEPROM_TYPE_SELECT =            ["Data Not Available", "On Processor", "External I2C"]
+
+EXT_ENCODER_TYPE_SELECT =            ["Data Not Available", "Analog", "Digital"]
+
+MONTH3CHARS = ["Data Not Available", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ]
 
 
 #

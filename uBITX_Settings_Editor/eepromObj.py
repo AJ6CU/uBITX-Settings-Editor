@@ -53,6 +53,15 @@ class eepromObj:
             return memBuffer[memlocation] + (memBuffer[memlocation + 1] << 8) + (memBuffer[memlocation + 2] << 16) + (
                         memBuffer[memlocation + 3] << 24)
 
+        def get_string_FromEEPROM (self, memBuffer: bytearray, memlocation: int, number: int):
+            returnString = ''
+            i=0
+            while i < number:
+                returnString += chr(self.get_uint8_FromEEPROM(memBuffer, memlocation+i))
+                i += 1
+            return returnString
+
+
         def XML_Get_uint8_FromEEPROM  (self, xmlSubTree, settingName, buffer) -> int:
             settingTag =  xmlSubTree.find(('.//SETTING[@NAME="{}"]'.format(settingName)))
             location = int(settingTag.find("EEPROMStart").text)
@@ -62,6 +71,7 @@ class eepromObj:
             settingTag = xmlSubTree.find(('.//SETTING[@NAME="{}"]'.format(settingName)))
             memAddress = int(settingTag.find("EEPROMStart").text)
             return memAddress
+
 
 
     #         #***********************************
@@ -1207,6 +1217,12 @@ class eepromObj:
         def EXT_FIRMWARE_ID_ADDR3(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
 
+        def EXT_FIRMWARE_VERSION_INFO(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,10)
+
+        def EXT_RELEASE_NAME(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,15)
+
         def EXT_UBITX_BOARD_VERSION(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             value.text = EXT_UBITX_BOARD_VERSION_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
 
@@ -1254,6 +1270,57 @@ class eepromObj:
 
         def EXT_SMETER_SELECTION(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             value.text = EXT_SMETER_SELECTION_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+
+        def EXT_SERIAL_TYPE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = EXT_SERIAL_TYPE_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+
+        def EXT_EEPROM_TYPE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = EXT_EEPROM_TYPE_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+
+        def EXT_ENCODER_TYPE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = EXT_ENCODER_TYPE_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+
+        def EXT_ENC_A(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+
+        def EXT_ENC_B(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+
+        def EXT_FBUTTON(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+
+        def EXT_PTT(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+
+        def EXT_ANALOG_KEYER(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+
+        def EXT_ANALOG_SMETER(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+
+        def EXT_LCD_PIN_RS(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+
+        def EXT_LCD_PIN_EN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+
+        def EXT_LCD_PIN_D4(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+
+        def EXT_LCD_PIN_D5(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+
+        def EXT_LCD_PIN_D6(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+
+        def EXT_LCD_PIN_D7(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+
+        def EXT_SOFTWARESERIAL_RX_PIN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+
+        def EXT_SOFTWARESERIAL_TX_PIN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
 
         def defaultFunc(self, *args):
                 print ("Command not recognised:", args[0])

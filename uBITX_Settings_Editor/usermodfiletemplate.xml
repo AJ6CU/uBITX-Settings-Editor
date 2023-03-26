@@ -1545,34 +1545,147 @@ GENERAL UX
 		<value></value>
 		<tooltip></tooltip>
 	</SETTING>
-	<SETTING NAME="EXT_UBITX_BOARD_VERSION">
+	<SETTING NAME="EXT_FIRMWARE_VERSION_INFO">
+		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+
+	<SETTING NAME="EXT_RELEASE_NAME">
 		<label>Magic Number 3 for Ext EEPROM Validation</label>
 		<value></value>
 		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="EXT_DATE_TIME_STAMP">
-		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<label>Date/Timestamp of Firmware Build</label>
 		<value></value>
 		<tooltip></tooltip>
 	</SETTING>
+
+	<SETTING NAME="EXT_UBITX_BOARD_VERSION">
+		<label>Version of uBITX Motherboard</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+
 	<SETTING NAME="EXT_PROCESSOR_TYPE">
-		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<label>Primary Processor</label>
 		<value></value>
 		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="EXT_DISPLAY_TYPE">
-		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<label>Type of Attached Display</label>
 		<value></value>
 		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="EXT_FUNCTIONALITY_SET">
-		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<label>Encoder functionality level</label>
 		<value></value>
 		<tooltip></tooltip>
 	</SETTING>
 	<SETTING NAME="EXT_SMETER_SELECTION">
-		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<label>Type of S-Meter</label>
 		<value></value>
 		<tooltip></tooltip>
 	</SETTING>
+
+	<SETTING NAME="EXT_SERIAL_TYPE">
+		<label>Type of Serial (SW or HW)</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_EEPROM_TYPE">
+		<label>Internal or I2C EEPROM</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_ENCODER_TYPE">
+		<label>Encoder Connected to Analog or Digital Pins</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_NEXTIONBAUD">
+		<label>Baud of Nextion</label>
+		<value></value>
+		<tooltip></tooltip>>
+	</SETTING>
+	<SETTING NAME="EXT_TWOSPAREBYTES">
+		<label>Just two lonely bytes looking for a use...</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_ENC_A">
+		<label>Pin of ENC_A</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_ENC_B">
+		<label>Pin of ENC_B</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_FBUTTON">
+		<label>Pin of Function Button (Encoder Press)</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+
+	<SETTING NAME="EXT_PTT">
+		<label>Pin where PTT Connected</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_ANALOG_KEYER">
+		<label>Pin for CW Key Input</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_ANALOG_SMETER">
+		<label>Pin of For Onboard S-Meter Connection</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_RS">
+		<label>LCD Reset Pin</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_EN">
+		<label>LCD Enable Pin</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_D4">
+		<label>LCD D4 Pin</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_D5">
+		<label>>LCD D5 Pin</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_D6">
+		<label>>LCD D6 Pin</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_D7">
+		<label>>LCD D7 Pin</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+
+	<SETTING NAME="EXT_SOFTWARESERIAL_RX_PIN">
+		<label>Pin Used with SoftwareSerial for RX</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+
+	<SETTING NAME="EXT_SOFTWARESERIAL_TX_PIN">
+		<label>Pin Used with SoftwareSerial for RX</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+
 </data>

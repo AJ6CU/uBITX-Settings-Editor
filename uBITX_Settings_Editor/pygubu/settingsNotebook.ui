@@ -9069,13 +9069,36 @@ Factory settings?</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="ttk.Label" id="VERSION_ADDRESS_WIDGET" named="True">
+                                  <object class="ttk.Label" id="EXT_FIRMWARE_VERSION_INFO_WIDGET" named="True">
                                     <property name="style">Normal.TLabel</property>
-                                    <property name="textvariable">string:VERSION_ADDRESS</property>
+                                    <property name="textvariable">string:EXT_FIRMWARE_VERSION_INFO</property>
                                     <layout manager="grid">
                                       <property name="column">1</property>
                                       <property name="padx">5</property>
                                       <property name="row">0</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_RELEASE_NAME_LABEL" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Release Name:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">1</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_RELEASE_NAME_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_RELEASE_NAME</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">1</property>
                                       <property name="sticky">w</property>
                                     </layout>
                                   </object>
@@ -9087,7 +9110,7 @@ Factory settings?</property>
                                     <property name="text" translatable="yes">Build Date:</property>
                                     <layout manager="grid">
                                       <property name="column">0</property>
-                                      <property name="row">1</property>
+                                      <property name="row">2</property>
                                       <property name="sticky">e</property>
                                     </layout>
                                   </object>
@@ -9099,7 +9122,7 @@ Factory settings?</property>
                                     <layout manager="grid">
                                       <property name="column">1</property>
                                       <property name="padx">5</property>
-                                      <property name="row">1</property>
+                                      <property name="row">2</property>
                                       <property name="sticky">w</property>
                                     </layout>
                                   </object>
@@ -9111,7 +9134,7 @@ Factory settings?</property>
                                     <property name="text" translatable="yes">Functionality Set:</property>
                                     <layout manager="grid">
                                       <property name="column">0</property>
-                                      <property name="row">2</property>
+                                      <property name="row">3</property>
                                       <property name="sticky">e</property>
                                     </layout>
                                   </object>
@@ -9123,7 +9146,7 @@ Factory settings?</property>
                                     <layout manager="grid">
                                       <property name="column">1</property>
                                       <property name="padx">5</property>
-                                      <property name="row">2</property>
+                                      <property name="row">3</property>
                                       <property name="sticky">w</property>
                                     </layout>
                                   </object>
@@ -9402,6 +9425,489 @@ Factory settings?</property>
                                       <property name="row">3</property>
                                       <property name="sticky">w</property>
                                     </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="Serial_Type_Label" named="True">
+                                    <property name="state">normal</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Serial:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">4</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_SERIAL_TYPE_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_SERIAL_TYPE</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">4</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EEPROM_Type_Label" named="True">
+                                    <property name="state">normal</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">EEPROM:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">5</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_EEPROM_TYPE_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_EEPROM_TYPE</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">5</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="Encoder_Type_Label" named="True">
+                                    <property name="state">normal</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Encoder:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">6</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_ENCODER_TYPE_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_ENCODER_TYPE</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">6</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="System_Info_Pins" named="True">
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="anchor">w</property>
+                              <property name="expand">true</property>
+                              <property name="fill">x</property>
+                              <property name="pady">20 0</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Frame" id="Pins_Title_Frame" named="True">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="anchor">w</property>
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="side">top</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="label185" named="True">
+                                    <property name="style">Heading3.TLabel</property>
+                                    <property name="text" translatable="yes">Pin Assignments:</property>
+                                    <layout manager="pack">
+                                      <property name="anchor">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Frame" id="Pins_Content_Frame" named="True">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="padx">140</property>
+                                  <property name="side">top</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Frame" id="frame42">
+                                    <property name="height">200</property>
+                                    <property name="width">200</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">n</property>
+                                    </layout>
+                                    <child>
+                                      <object class="ttk.Label" id="ENC_A_Label" named="True">
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">ENC A:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">0</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_ENC_A_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_ENC_A</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">0</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="PTT_Label" named="True">
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">PTT:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">1</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_PTT_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_PTT</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">1</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_RS_Label" named="True">
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">LCD RS:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">2</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_RS_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_LCD_PIN_RS</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">2</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D5_Label" named="True">
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">LCD D5:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">3</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D5_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_LCD_PIN_D5</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">3</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_SOFTWARESERIAL_RX_PIN_Label" named="True">
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">SW Serial RX:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">4</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_SOFTWARESERIAL_RX_PIN_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_SOFTWARESERIAL_RX_PIN</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">4</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Frame" id="frame44">
+                                    <property name="height">200</property>
+                                    <property name="width">200</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">100 0</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">n</property>
+                                    </layout>
+                                    <child>
+                                      <object class="ttk.Label" id="ENC_B_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">ENC B:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">0</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_ENC_B_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_ENC_B</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">0</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_ANALOG_KEYER_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">CW Keyer:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">1</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_ANALOG_KEYER_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_ANALOG_KEYER</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">1</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_EN_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">LCD EN:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">2</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_EN_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_LCD_PIN_EN</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">2</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D6_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">LCD D6:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">3</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D6_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_LCD_PIN_D6</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">3</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_SOFTWARESERIAL_TX_PIN_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">SW Serial TX:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">4</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_SOFTWARESERIAL_TX_PIN_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_SOFTWARESERIAL_TX_PIN</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">4</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Frame" id="frame52">
+                                    <property name="height">200</property>
+                                    <property name="width">200</property>
+                                    <layout manager="grid">
+                                      <property name="column">2</property>
+                                      <property name="padx">100 0</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">n</property>
+                                    </layout>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_FBUTTON_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">ENC SW:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">0</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_FBUTTON_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_FBUTTON</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">0</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_ANALOG_SMETER_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">S-Meter:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">1</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_ANALOG_SMETER_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_ANALOG_SMETER</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">1</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D4_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">LCD D4:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">2</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D4_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_LCD_PIN_D4</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">2</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D7_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">LCD D7:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">3</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D7_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_LCD_PIN_D7</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">3</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
                                   </object>
                                 </child>
                               </object>
