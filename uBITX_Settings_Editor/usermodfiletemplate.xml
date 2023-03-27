@@ -1609,11 +1609,6 @@ GENERAL UX
 		<value></value>
 		<tooltip></tooltip>>
 	</SETTING>
-	<SETTING NAME="EXT_TWOSPAREBYTES">
-		<label>Just two lonely bytes looking for a use...</label>
-		<value></value>
-		<tooltip></tooltip>
-	</SETTING>
 	<SETTING NAME="EXT_ENC_A">
 		<label>Pin of ENC_A</label>
 		<value></value>

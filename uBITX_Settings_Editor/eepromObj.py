@@ -1322,6 +1322,9 @@ class eepromObj:
         def EXT_SOFTWARESERIAL_TX_PIN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
 
+        def EXT_NEXTIONBAUD(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,6)
+
         def defaultFunc(self, *args):
                 print ("Command not recognised:", args[0])
 

@@ -5387,11 +5387,23 @@ class SettingsnotebookWidget(ttk.Frame):
         self.EXT_DISPLAY_TYPE_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.EXT_DISPLAY_TYPE)
         self.EXT_DISPLAY_TYPE_WIDGET.grid(column=1, padx=5, row=2, sticky="w")
+        self.NEXTION_BAUD_FRAME = ttk.Frame(self.Hardware_Content)
+        self.NEXTION_BAUD_FRAME.configure(height=200, width=200)
+        self.EXT_NEXTIONBAUD_Label = ttk.Label(self.NEXTION_BAUD_FRAME)
+        self.EXT_NEXTIONBAUD_Label.configure(
+            style="Heading4.TLabel", text='Baud:')
+        self.EXT_NEXTIONBAUD_Label.grid(column=0, padx="10 0", row=0)
+        self.EXT_NEXTIONBAUD_WIDGET = ttk.Label(self.NEXTION_BAUD_FRAME)
+        self.EXT_NEXTIONBAUD = tk.StringVar()
+        self.EXT_NEXTIONBAUD_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_NEXTIONBAUD)
+        self.EXT_NEXTIONBAUD_WIDGET.grid(column=1, padx=5, row=0, sticky="w")
+        self.NEXTION_BAUD_FRAME.grid(column=2, padx="5 0", row=2, sticky="e")
         self.label196 = ttk.Label(self.Hardware_Content)
         self.label196.configure(
             state="normal",
             style="Heading4.TLabel",
-            text='S-Meter')
+            text='S-Meter:')
         self.label196.grid(column=0, row=3, sticky="e")
         self.EXT_SMETER_SELECTION_WIDGET = ttk.Label(self.Hardware_Content)
         self.EXT_SMETER_SELECTION = tk.StringVar()
@@ -5427,7 +5439,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Normal.TLabel", textvariable=self.EXT_ENCODER_TYPE)
         self.EXT_ENCODER_TYPE_WIDGET.grid(column=1, padx=5, row=6, sticky="w")
         self.Hardware_Content.pack(
-            expand="true", fill="x", padx=90, side="top")
+            expand="true", fill="x", padx=18, side="top")
         self.System_Info_Hardware.pack(
             anchor="w",
             expand="true",
@@ -5470,13 +5482,14 @@ class SettingsnotebookWidget(ttk.Frame):
         self.EXT_LCD_PIN_RS_Label = ttk.Label(self.frame42)
         self.EXT_LCD_PIN_RS_Label.configure(
             style="Heading4.TLabel", text='LCD RS:')
-        self.EXT_LCD_PIN_RS_Label.grid(column=0, row=2, sticky="e")
+        self.EXT_LCD_PIN_RS_Label.grid(
+            column=0, pady="10 0", row=2, sticky="e")
         self.EXT_LCD_PIN_RS_WIDGET = ttk.Label(self.frame42)
         self.EXT_LCD_PIN_RS = tk.StringVar()
         self.EXT_LCD_PIN_RS_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.EXT_LCD_PIN_RS)
         self.EXT_LCD_PIN_RS_WIDGET.grid(
-            column=1, padx="5 0", row=2, sticky="w")
+            column=1, padx="5 0", pady="10 0", row=2, sticky="w")
         self.EXT_LCD_PIN_D5_Label = ttk.Label(self.frame42)
         self.EXT_LCD_PIN_D5_Label.configure(
             style="Heading4.TLabel", text='LCD D5:')
@@ -5489,14 +5502,15 @@ class SettingsnotebookWidget(ttk.Frame):
             column=1, padx="5 0", row=3, sticky="w")
         self.EXT_SOFTWARESERIAL_RX_PIN_Label = ttk.Label(self.frame42)
         self.EXT_SOFTWARESERIAL_RX_PIN_Label.configure(
-            style="Heading4.TLabel", text='SW Serial RX:')
-        self.EXT_SOFTWARESERIAL_RX_PIN_Label.grid(column=0, row=4, sticky="e")
+            justify="left", style="Heading4.TLabel", text='SW Serial RX:')
+        self.EXT_SOFTWARESERIAL_RX_PIN_Label.grid(
+            column=0, pady="10 0", row=4, sticky="e")
         self.EXT_SOFTWARESERIAL_RX_PIN_WIDGET = ttk.Label(self.frame42)
         self.EXT_SOFTWARESERIAL_RX_PIN = tk.StringVar()
         self.EXT_SOFTWARESERIAL_RX_PIN_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.EXT_SOFTWARESERIAL_RX_PIN)
         self.EXT_SOFTWARESERIAL_RX_PIN_WIDGET.grid(
-            column=1, padx="5 0", row=4, sticky="w")
+            column=1, padx="5 0", pady="10 0", row=4, sticky="w")
         self.frame42.grid(column=0, row=0, sticky="n")
         self.frame44 = ttk.Frame(self.Pins_Content_Frame)
         self.frame44.configure(height=200, width=200)
@@ -5525,13 +5539,14 @@ class SettingsnotebookWidget(ttk.Frame):
         self.EXT_LCD_PIN_EN_Label = ttk.Label(self.frame44)
         self.EXT_LCD_PIN_EN_Label.configure(
             justify="left", style="Heading4.TLabel", text='LCD EN:')
-        self.EXT_LCD_PIN_EN_Label.grid(column=0, row=2, sticky="e")
+        self.EXT_LCD_PIN_EN_Label.grid(
+            column=0, pady="10 0", row=2, sticky="e")
         self.EXT_LCD_PIN_EN_WIDGET = ttk.Label(self.frame44)
         self.EXT_LCD_PIN_EN = tk.StringVar()
         self.EXT_LCD_PIN_EN_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.EXT_LCD_PIN_EN)
         self.EXT_LCD_PIN_EN_WIDGET.grid(
-            column=1, padx="5 0", row=2, sticky="w")
+            column=1, padx="5 0", pady="10 0", row=2, sticky="w")
         self.EXT_LCD_PIN_D6_Label = ttk.Label(self.frame44)
         self.EXT_LCD_PIN_D6_Label.configure(
             justify="left", style="Heading4.TLabel", text='LCD D6:')
@@ -5545,13 +5560,14 @@ class SettingsnotebookWidget(ttk.Frame):
         self.EXT_SOFTWARESERIAL_TX_PIN_Label = ttk.Label(self.frame44)
         self.EXT_SOFTWARESERIAL_TX_PIN_Label.configure(
             justify="left", style="Heading4.TLabel", text='SW Serial TX:')
-        self.EXT_SOFTWARESERIAL_TX_PIN_Label.grid(column=0, row=4, sticky="e")
+        self.EXT_SOFTWARESERIAL_TX_PIN_Label.grid(
+            column=0, pady="10 0", row=4, sticky="e")
         self.EXT_SOFTWARESERIAL_TX_PIN_WIDGET = ttk.Label(self.frame44)
         self.EXT_SOFTWARESERIAL_TX_PIN = tk.StringVar()
         self.EXT_SOFTWARESERIAL_TX_PIN_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.EXT_SOFTWARESERIAL_TX_PIN)
         self.EXT_SOFTWARESERIAL_TX_PIN_WIDGET.grid(
-            column=1, padx="5 0", row=4, sticky="w")
+            column=1, padx="5 0", pady="10 0", row=4, sticky="w")
         self.frame44.grid(column=1, padx="100 0", row=0, sticky="n")
         self.frame52 = ttk.Frame(self.Pins_Content_Frame)
         self.frame52.configure(height=200, width=200)
@@ -5578,13 +5594,14 @@ class SettingsnotebookWidget(ttk.Frame):
         self.EXT_LCD_PIN_D4_Label = ttk.Label(self.frame52)
         self.EXT_LCD_PIN_D4_Label.configure(
             justify="left", style="Heading4.TLabel", text='LCD D4:')
-        self.EXT_LCD_PIN_D4_Label.grid(column=0, row=2, sticky="e")
+        self.EXT_LCD_PIN_D4_Label.grid(
+            column=0, pady="10 0", row=2, sticky="e")
         self.EXT_LCD_PIN_D4_WIDGET = ttk.Label(self.frame52)
         self.EXT_LCD_PIN_D4 = tk.StringVar()
         self.EXT_LCD_PIN_D4_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.EXT_LCD_PIN_D4)
         self.EXT_LCD_PIN_D4_WIDGET.grid(
-            column=1, padx="5 0", row=2, sticky="w")
+            column=1, padx="5 0", pady="10 0", row=2, sticky="w")
         self.EXT_LCD_PIN_D7_Label = ttk.Label(self.frame52)
         self.EXT_LCD_PIN_D7_Label.configure(
             justify="left", style="Heading4.TLabel", text='LCD D7:')
@@ -5597,7 +5614,7 @@ class SettingsnotebookWidget(ttk.Frame):
             column=1, padx="5 0", row=3, sticky="w")
         self.frame52.grid(column=2, padx="100 0", row=0, sticky="n")
         self.Pins_Content_Frame.pack(
-            expand="true", fill="x", padx=140, side="top")
+            expand="true", fill="x", padx=93, side="top")
         self.System_Info_Pins.pack(
             anchor="w",
             expand="true",

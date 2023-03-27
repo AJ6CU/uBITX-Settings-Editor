@@ -102,7 +102,7 @@ class SettingsNotebook(SettingsnotebookWidget):
             'EXT_ENCODER_TYPE',
             'EXT_ENC_A', 'EXT_ENC_B', 'EXT_FBUTTON', 'EXT_PTT', 'EXT_ANALOG_KEYER', 'EXT_ANALOG_SMETER',
             'EXT_LCD_PIN_RS', 'EXT_LCD_PIN_EN', 'EXT_LCD_PIN_D4', 'EXT_LCD_PIN_D5', 'EXT_LCD_PIN_D6', 'EXT_LCD_PIN_D7',
-            'EXT_SOFTWARESERIAL_RX_PIN', 'EXT_SOFTWARESERIAL_TX_PIN'
+            'EXT_SOFTWARESERIAL_RX_PIN', 'EXT_SOFTWARESERIAL_TX_PIN', 'EXT_NEXTIONBAUD'
              ]
 
     #   this needs to be moved somewhere else too
@@ -1518,6 +1518,36 @@ class SettingsNotebook(SettingsnotebookWidget):
         #   System Info Tab
         tooltip.create(self.KD8CEC_VERSION_WIDGET,"Currently installed Firmware and Version.")
 
+    def disableLCDPins(self):
+        self.EXT_LCD_PIN_RS_Label.configure(state='disabled')
+        self.EXT_LCD_PIN_RS_WIDGET.configure(state='disabled')
+
+        self.EXT_LCD_PIN_EN_Label.configure(state='disabled')
+        self.EXT_LCD_PIN_EN_WIDGET.configure(state='disabled')
+
+        self.EXT_LCD_PIN_D4_Label.configure(state='disabled')
+        self.EXT_LCD_PIN_D4_WIDGET.configure(state='disabled')
+
+        self.EXT_LCD_PIN_D5_Label.configure(state='disabled')
+        self.EXT_LCD_PIN_D5_WIDGET.configure(state='disabled')
+
+        self.EXT_LCD_PIN_D6_Label.configure(state='disabled')
+        self.EXT_LCD_PIN_D6_WIDGET.configure(state='disabled')
+
+        self.EXT_LCD_PIN_D7_Label.configure(state='disabled')
+        self.EXT_LCD_PIN_D7_WIDGET.configure(state='disabled')
+
+    def disableSoftwareSerialPins(self):
+        self.EXT_SOFTWARESERIAL_RX_PIN_Label.configure(state='disabled')
+        self.EXT_SOFTWARESERIAL_RX_PIN_WIDGET.configure(state='disabled')
+
+        self.EXT_SOFTWARESERIAL_TX_PIN_Label.configure(state='disabled')
+        self.EXT_SOFTWARESERIAL_TX_PIN_WIDGET.configure(state='disabled')
+
+
+
+    def disableNextionBaudFrame(self):
+        self.NEXTION_BAUD_FRAME.grid_forget()
 
     def setNotebook(self, valueTree):
 
@@ -1572,6 +1602,16 @@ class SettingsNotebook(SettingsnotebookWidget):
         #   Disable update of factory settings
         self.FACTORY_SETTING_PROTECTION.set('NO')
         self.Factory_Settings_Enable_CB()
+
+        #   toggle between LCD parameters and Nextion, disabling those that are not used
+
+        if self.EXT_DISPLAY_TYPE.get() == "Nextion":
+            self.disableLCDPins()
+        else:
+            self.disableNextionBaudFrame()
+
+        if self.EXT_SERIAL_TYPE.get() != "Software":
+            self.disableSoftwareSerialPins()
 
 
         # Set maximum available bytes

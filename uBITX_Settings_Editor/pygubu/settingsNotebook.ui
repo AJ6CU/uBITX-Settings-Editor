@@ -9329,7 +9329,7 @@ Factory settings?</property>
                                 <layout manager="pack">
                                   <property name="expand">true</property>
                                   <property name="fill">x</property>
-                                  <property name="padx">90</property>
+                                  <property name="padx">18</property>
                                   <property name="side">top</property>
                                 </layout>
                                 <child>
@@ -9397,17 +9397,50 @@ Factory settings?</property>
                                     <property name="textvariable">string:EXT_DISPLAY_TYPE</property>
                                     <layout manager="grid">
                                       <property name="column">1</property>
-                                      <property name="padx">5</property>
                                       <property name="row">2</property>
-                                      <property name="sticky">w</property>
                                     </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Frame" id="NEXTION_BAUD_FRAME" named="True">
+                                    <property name="height">200</property>
+                                    <property name="width">200</property>
+                                    <layout manager="grid">
+                                      <property name="column">2</property>
+                                      <property name="padx">5 0</property>
+                                      <property name="row">2</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_NEXTIONBAUD_Label" named="True">
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">Baud:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="padx">125 0</property>
+                                          <property name="row">0</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_NEXTIONBAUD_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_NEXTIONBAUD</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5</property>
+                                          <property name="row">0</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
                                   </object>
                                 </child>
                                 <child>
                                   <object class="ttk.Label" id="label196" named="True">
                                     <property name="state">normal</property>
                                     <property name="style">Heading4.TLabel</property>
-                                    <property name="text" translatable="yes">S-Meter</property>
+                                    <property name="text" translatable="yes">S-Meter:</property>
                                     <layout manager="grid">
                                       <property name="column">0</property>
                                       <property name="row">3</property>
@@ -9541,7 +9574,7 @@ Factory settings?</property>
                                 <layout manager="pack">
                                   <property name="expand">true</property>
                                   <property name="fill">x</property>
-                                  <property name="padx">140</property>
+                                  <property name="padx">93</property>
                                   <property name="side">top</property>
                                 </layout>
                                 <child>
@@ -9605,6 +9638,7 @@ Factory settings?</property>
                                         <property name="text" translatable="yes">LCD RS:</property>
                                         <layout manager="grid">
                                           <property name="column">0</property>
+                                          <property name="pady">10 0</property>
                                           <property name="row">2</property>
                                           <property name="sticky">e</property>
                                         </layout>
@@ -9617,6 +9651,7 @@ Factory settings?</property>
                                         <layout manager="grid">
                                           <property name="column">1</property>
                                           <property name="padx">5 0</property>
+                                          <property name="pady">10 0</property>
                                           <property name="row">2</property>
                                           <property name="sticky">w</property>
                                         </layout>
@@ -9647,10 +9682,12 @@ Factory settings?</property>
                                     </child>
                                     <child>
                                       <object class="ttk.Label" id="EXT_SOFTWARESERIAL_RX_PIN_Label" named="True">
+                                        <property name="justify">left</property>
                                         <property name="style">Heading4.TLabel</property>
                                         <property name="text" translatable="yes">SW Serial RX:</property>
                                         <layout manager="grid">
                                           <property name="column">0</property>
+                                          <property name="pady">10 0</property>
                                           <property name="row">4</property>
                                           <property name="sticky">e</property>
                                         </layout>
@@ -9663,6 +9700,7 @@ Factory settings?</property>
                                         <layout manager="grid">
                                           <property name="column">1</property>
                                           <property name="padx">5 0</property>
+                                          <property name="pady">10 0</property>
                                           <property name="row">4</property>
                                           <property name="sticky">w</property>
                                         </layout>
@@ -9735,6 +9773,7 @@ Factory settings?</property>
                                         <property name="text" translatable="yes">LCD EN:</property>
                                         <layout manager="grid">
                                           <property name="column">0</property>
+                                          <property name="pady">10 0</property>
                                           <property name="row">2</property>
                                           <property name="sticky">e</property>
                                         </layout>
@@ -9747,6 +9786,7 @@ Factory settings?</property>
                                         <layout manager="grid">
                                           <property name="column">1</property>
                                           <property name="padx">5 0</property>
+                                          <property name="pady">10 0</property>
                                           <property name="row">2</property>
                                           <property name="sticky">w</property>
                                         </layout>
@@ -9783,6 +9823,7 @@ Factory settings?</property>
                                         <property name="text" translatable="yes">SW Serial TX:</property>
                                         <layout manager="grid">
                                           <property name="column">0</property>
+                                          <property name="pady">10 0</property>
                                           <property name="row">4</property>
                                           <property name="sticky">e</property>
                                         </layout>
@@ -9795,6 +9836,7 @@ Factory settings?</property>
                                         <layout manager="grid">
                                           <property name="column">1</property>
                                           <property name="padx">5 0</property>
+                                          <property name="pady">10 0</property>
                                           <property name="row">4</property>
                                           <property name="sticky">w</property>
                                         </layout>
@@ -9867,6 +9909,7 @@ Factory settings?</property>
                                         <property name="text" translatable="yes">LCD D4:</property>
                                         <layout manager="grid">
                                           <property name="column">0</property>
+                                          <property name="pady">10 0</property>
                                           <property name="row">2</property>
                                           <property name="sticky">e</property>
                                         </layout>
@@ -9879,6 +9922,7 @@ Factory settings?</property>
                                         <layout manager="grid">
                                           <property name="column">1</property>
                                           <property name="padx">5 0</property>
+                                          <property name="pady">10 0</property>
                                           <property name="row">2</property>
                                           <property name="sticky">w</property>
                                         </layout>

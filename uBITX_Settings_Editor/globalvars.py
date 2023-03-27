@@ -36,6 +36,7 @@ EXT_DISPLAY_TYPE_SELECT =           ["Data Not Available","LCD 16x2 (Parallel)",
                                         "LCD 20x4 (I2C)", "Nextion"]
 EXT_FUNCTIONALITY_SET_SELECT =      ["Data Not Available","All Functions","Test Functionality","Suggested for LCD", "For Expanded Nano V3.0/Nextion",
                                     "None - Old Nanos/Nextion", "Suggested for Processors/Newton"]
+
 EXT_SMETER_SELECTION_SELECT =       ["Data Not Available","I2C S-Meter/2nd Nano","On board Sensor","None"]
 
 EXT_SERIAL_TYPE_SELECT =            ["Data Not Available", "Software", "Hardware"]
