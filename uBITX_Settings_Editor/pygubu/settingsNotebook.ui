@@ -9397,7 +9397,9 @@ Factory settings?</property>
                                     <property name="textvariable">string:EXT_DISPLAY_TYPE</property>
                                     <layout manager="grid">
                                       <property name="column">1</property>
+                                      <property name="padx">5</property>
                                       <property name="row">2</property>
+                                      <property name="sticky">w</property>
                                     </layout>
                                   </object>
                                 </child>
@@ -9417,7 +9419,7 @@ Factory settings?</property>
                                         <property name="text" translatable="yes">Baud:</property>
                                         <layout manager="grid">
                                           <property name="column">0</property>
-                                          <property name="padx">125 0</property>
+                                          <property name="padx">10 0</property>
                                           <property name="row">0</property>
                                         </layout>
                                       </object>

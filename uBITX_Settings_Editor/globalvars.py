@@ -3,6 +3,10 @@ import sys
 
 VERSION="Beta V1"
 
+VERSION_ADDRESS = 779   # this is the address in the EEPROM of the version. If < 5, then orginal KD8CEC
+                        # 5 or more means KD8CEC V2 with ability to get the eepromsize through CAT
+KD8CEC_V2_INTERNAL_VERSION_NUM = 5
+
 # default window size
 DEFAULT_ROOT_WINDOW_WIDTH = 1280
 DEFAULT_ROOT_WINDOW_HEIGHT = 900
@@ -101,7 +105,7 @@ MAGIC_USER_CALLSIGN_KEY = 0x59
 MAGIC_CW_AUTO_MAGIC_KEY = 0x73
 
 
-EEPROMSIZE=1024                                 #  default eepromsize to the Nano size of 1024
+EEPROMSIZE=2048                                 #  default to large EEPROM, but check later and reset to right number
 MAXEEPROMSIZE=2048
 BACKUPFILESIZE=2048
 

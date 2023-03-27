@@ -1610,7 +1610,7 @@ class SettingsNotebook(SettingsnotebookWidget):
         else:
             self.disableNextionBaudFrame()
 
-        if self.EXT_SERIAL_TYPE.get() != "Software":
+        if (self.EXT_SERIAL_TYPE.get() != "Software") and (self.EXT_SERIAL_TYPE.get() != "N/A"):
             self.disableSoftwareSerialPins()
 
 
