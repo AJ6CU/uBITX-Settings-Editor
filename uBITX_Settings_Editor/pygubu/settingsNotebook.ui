@@ -9404,41 +9404,6 @@ Factory settings?</property>
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="ttk.Frame" id="NEXTION_BAUD_FRAME" named="True">
-                                    <property name="height">200</property>
-                                    <property name="width">200</property>
-                                    <layout manager="grid">
-                                      <property name="column">2</property>
-                                      <property name="padx">5 0</property>
-                                      <property name="row">2</property>
-                                      <property name="sticky">e</property>
-                                    </layout>
-                                    <child>
-                                      <object class="ttk.Label" id="EXT_NEXTIONBAUD_Label" named="True">
-                                        <property name="style">Heading4.TLabel</property>
-                                        <property name="text" translatable="yes">Baud:</property>
-                                        <layout manager="grid">
-                                          <property name="column">0</property>
-                                          <property name="padx">10 0</property>
-                                          <property name="row">0</property>
-                                        </layout>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="ttk.Label" id="EXT_NEXTIONBAUD_WIDGET" named="True">
-                                        <property name="style">Normal.TLabel</property>
-                                        <property name="textvariable">string:EXT_NEXTIONBAUD</property>
-                                        <layout manager="grid">
-                                          <property name="column">1</property>
-                                          <property name="padx">5</property>
-                                          <property name="row">0</property>
-                                          <property name="sticky">w</property>
-                                        </layout>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                                <child>
                                   <object class="ttk.Label" id="label196" named="True">
                                     <property name="state">normal</property>
                                     <property name="style">Heading4.TLabel</property>
@@ -9532,6 +9497,46 @@ Factory settings?</property>
                                       <property name="row">6</property>
                                       <property name="sticky">w</property>
                                     </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Frame" id="Outer_Nextion_Frame" named="True">
+                                    <property name="height">200</property>
+                                    <property name="width">200</property>
+                                    <layout manager="grid">
+                                      <property name="column">2</property>
+                                      <property name="row">2</property>
+                                    </layout>
+                                    <child>
+                                      <object class="ttk.Frame" id="NEXTION_BAUD_FRAME" named="True">
+                                        <property name="height">200</property>
+                                        <property name="width">200</property>
+                                        <layout manager="pack" />
+                                        <child>
+                                          <object class="ttk.Label" id="EXT_NEXTIONBAUD_Label" named="True">
+                                            <property name="style">Heading4.TLabel</property>
+                                            <property name="text" translatable="yes">Baud:</property>
+                                            <layout manager="grid">
+                                              <property name="column">0</property>
+                                              <property name="padx">10 0</property>
+                                              <property name="row">0</property>
+                                            </layout>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="ttk.Label" id="EXT_NEXTIONBAUD_WIDGET" named="True">
+                                            <property name="style">Normal.TLabel</property>
+                                            <property name="textvariable">string:EXT_NEXTIONBAUD</property>
+                                            <layout manager="grid">
+                                              <property name="column">1</property>
+                                              <property name="padx">5</property>
+                                              <property name="row">0</property>
+                                              <property name="sticky">w</property>
+                                            </layout>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
                                   </object>
                                 </child>
                               </object>

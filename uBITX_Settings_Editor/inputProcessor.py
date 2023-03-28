@@ -100,8 +100,10 @@ class InputProcessor(Processor):
             self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
 
             self.log.println("timestamp",  "Refreshing In-memory Copy of EEPROM")
+
             self.eepromCom = eepromUBITX(self.RS232, self.log)
             self.eepromCom.read()
+
 
             self.log.println("timestamp",  "Finished reading EEPROM into memory")
 

@@ -61,6 +61,9 @@ class OutputProcessor(Processor):
             fileParts[1] == ".btx"
 
         if (fileParts[1] == ".xml"):
+            # for settings in userModroot.findall('SETTING'):  # unused as we always write whole tree. Makes multiple
+            #     if settings.get("NAME")[:4] == "EXT_":       # reads easier as data is overwritten
+            #         settings.getparent().remove(settings)
 
             ET.indent(userModroot,'    ')
             self.log.println("timestamp", "Writing settings to file")
@@ -75,7 +78,7 @@ class OutputProcessor(Processor):
             self.log.println("timestamp", "***Settings Saved to: " + self.savedFilePathChooser.get() + "***\n")
 
         #   Saved Info, set state
-            self.readerObj.setIOstate('WRITE')                # We did save the data. set state
+        self.readerObj.setIOstate('WRITE')                # We did save the data. set state
 
 
     def processComPort(self, *args):

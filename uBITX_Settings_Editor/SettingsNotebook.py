@@ -10,6 +10,7 @@ from wsprmsggen import WSPRmsggen
 from WsprFreqSelect import WSPRFreqSelect
 from globalvars import *
 
+
 class SettingsNotebook(SettingsnotebookWidget):
     def __init__(self, parent):
         #   Save root (parent)
@@ -102,7 +103,7 @@ class SettingsNotebook(SettingsnotebookWidget):
             'EXT_ENCODER_TYPE',
             'EXT_ENC_A', 'EXT_ENC_B', 'EXT_FBUTTON', 'EXT_PTT', 'EXT_ANALOG_KEYER', 'EXT_ANALOG_SMETER',
             'EXT_LCD_PIN_RS', 'EXT_LCD_PIN_EN', 'EXT_LCD_PIN_D4', 'EXT_LCD_PIN_D5', 'EXT_LCD_PIN_D6', 'EXT_LCD_PIN_D7',
-            'EXT_SOFTWARESERIAL_RX_PIN', 'EXT_SOFTWARESERIAL_TX_PIN', 'EXT_NEXTIONBAUD'
+            'EXT_SOFTWARESERIAL_RX_PIN', 'EXT_SOFTWARESERIAL_TX_PIN', 'EXT_NEXTIONBAUD', 'EEPROM_SIZE'
              ]
 
     #   this needs to be moved somewhere else too
@@ -1202,7 +1203,6 @@ class SettingsNotebook(SettingsnotebookWidget):
         i = 0
         while i < numEmptyMsgsFound:
             # j = int(self.CW_AUTO_COUNT.get()) - i
-#            print(CW_MSG_LABEL[j], j, i)
 
             #   Update count of bytes used (2 fewer since we recovered an empty slot and dont need beg end pointers)
             self.CW_AUTO_BYTES_USED.set(str(int(self.CW_AUTO_BYTES_USED.get()) - 2))
@@ -1518,38 +1518,42 @@ class SettingsNotebook(SettingsnotebookWidget):
         #   System Info Tab
         tooltip.create(self.KD8CEC_VERSION_WIDGET,"Currently installed Firmware and Version.")
 
-    def disableLCDPins(self):
-        self.EXT_LCD_PIN_RS_Label.configure(state='disabled')
-        self.EXT_LCD_PIN_RS_WIDGET.configure(state='disabled')
+    def setLCDPinsState(self, newState):
+        self.EXT_LCD_PIN_RS_Label.configure(state=newState)
+        self.EXT_LCD_PIN_RS_WIDGET.configure(state=newState)
 
-        self.EXT_LCD_PIN_EN_Label.configure(state='disabled')
-        self.EXT_LCD_PIN_EN_WIDGET.configure(state='disabled')
+        self.EXT_LCD_PIN_EN_Label.configure(state=newState)
+        self.EXT_LCD_PIN_EN_WIDGET.configure(state=newState)
 
-        self.EXT_LCD_PIN_D4_Label.configure(state='disabled')
-        self.EXT_LCD_PIN_D4_WIDGET.configure(state='disabled')
+        self.EXT_LCD_PIN_D4_Label.configure(state=newState)
+        self.EXT_LCD_PIN_D4_WIDGET.configure(state=newState)
 
-        self.EXT_LCD_PIN_D5_Label.configure(state='disabled')
-        self.EXT_LCD_PIN_D5_WIDGET.configure(state='disabled')
+        self.EXT_LCD_PIN_D5_Label.configure(state=newState)
+        self.EXT_LCD_PIN_D5_WIDGET.configure(state=newState)
 
-        self.EXT_LCD_PIN_D6_Label.configure(state='disabled')
-        self.EXT_LCD_PIN_D6_WIDGET.configure(state='disabled')
+        self.EXT_LCD_PIN_D6_Label.configure(state=newState)
+        self.EXT_LCD_PIN_D6_WIDGET.configure(state=newState)
 
-        self.EXT_LCD_PIN_D7_Label.configure(state='disabled')
-        self.EXT_LCD_PIN_D7_WIDGET.configure(state='disabled')
+        self.EXT_LCD_PIN_D7_Label.configure(state=newState)
+        self.EXT_LCD_PIN_D7_WIDGET.configure(state=newState)
 
-    def disableSoftwareSerialPins(self):
-        self.EXT_SOFTWARESERIAL_RX_PIN_Label.configure(state='disabled')
-        self.EXT_SOFTWARESERIAL_RX_PIN_WIDGET.configure(state='disabled')
+    def setSoftwareSerialPinsState(self, newState):
+        self.EXT_SOFTWARESERIAL_RX_PIN_Label.configure(state=newState)
+        self.EXT_SOFTWARESERIAL_RX_PIN_WIDGET.configure(state=newState)
 
-        self.EXT_SOFTWARESERIAL_TX_PIN_Label.configure(state='disabled')
-        self.EXT_SOFTWARESERIAL_TX_PIN_WIDGET.configure(state='disabled')
+        self.EXT_SOFTWARESERIAL_TX_PIN_Label.configure(state=newState)
+        self.EXT_SOFTWARESERIAL_TX_PIN_WIDGET.configure(state=newState)
 
 
 
     def disableNextionBaudFrame(self):
-        self.NEXTION_BAUD_FRAME.grid_forget()
+        self.NEXTION_BAUD_FRAME.pack_forget()
+
+    def enableNextionBaudFrame(self):
+        self.NEXTION_BAUD_FRAME.pack()
 
     def setNotebook(self, valueTree):
+
 
         self.userModroot = valueTree
 
@@ -1605,13 +1609,18 @@ class SettingsNotebook(SettingsnotebookWidget):
 
         #   toggle between LCD parameters and Nextion, disabling those that are not used
 
-        if self.EXT_DISPLAY_TYPE.get() == "Nextion":
-            self.disableLCDPins()
+        if (self.EXT_DISPLAY_TYPE.get() == "Nextion") and (getEEPROM_SIZE() != 1024):
+            self.setLCDPinsState('disabled')       #only want to disable LCP Pins if we have a 2k EEPROM with a Nextion
+            self.enableNextionBaudFrame()
         else:
             self.disableNextionBaudFrame()
+            self.setLCDPinsState('enabled')
 
-        if (self.EXT_SERIAL_TYPE.get() != "Software") and (self.EXT_SERIAL_TYPE.get() != "N/A"):
-            self.disableSoftwareSerialPins()
+        if (self.EXT_SERIAL_TYPE.get() != "Software") and (self.EXT_SERIAL_TYPE.get() != "N/A") and \
+                (getEEPROM_SIZE() != 1024):
+            self.setSoftwareSerialPinsState('disabled')
+        else:
+            self.setSoftwareSerialPinsState('enabled')
 
 
         # Set maximum available bytes

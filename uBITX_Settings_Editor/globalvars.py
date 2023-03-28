@@ -1,11 +1,7 @@
 import os
 import sys
 
-VERSION="Beta V1"
-
-VERSION_ADDRESS = 779   # this is the address in the EEPROM of the version. If < 5, then orginal KD8CEC
-                        # 5 or more means KD8CEC V2 with ability to get the eepromsize through CAT
-KD8CEC_V2_INTERNAL_VERSION_NUM = 5
+VERSION="Beta V2"
 
 # default window size
 DEFAULT_ROOT_WINDOW_WIDTH = 1280
@@ -100,13 +96,27 @@ OK=0x77
 ACK = 0x00
 RETRIES=3
 
+
+
+VERSION_ADDRESS = 779   # this is the address in the EEPROM of the version. If < 5, then orginal KD8CEC
+                        # 5 or more means KD8CEC V2 with ability to get the eepromsize through CAT
+KD8CEC_V2_INTERNAL_VERSION_NUM = 5
+EXT_FIRMWARE_ID_ADDR1 = 1024
+EXT_FIRMWARE_ID_ADDR2 = 1025
+EXT_FIRMWARE_ID_ADDR3 = 1026
+
 # Magic numbers used for validation of EEPROM
+MAGIC_VALID_EEPROM_1 = 0x59
+MAGIC_VALID_EEPROM_2 = 0x58
+MAGIC_VALID_EEPROM_3 = 0x68
+
 MAGIC_USER_CALLSIGN_KEY = 0x59
 MAGIC_CW_AUTO_MAGIC_KEY = 0x73
 
 
-EEPROMSIZE=2048                                 #  default to large EEPROM, but check later and reset to right number
+EEPROMSIZE=2048                              #  default to large EEPROM, but check later and reset to right number
 MAXEEPROMSIZE=2048
+MAXWRITETOEEPROM=1024
 BACKUPFILESIZE=2048
 
 CW_MEMORY_KEYER_BUFFER_START = 803              #  Magic - Location of the CW_AUTO_DATA pointer
@@ -144,6 +154,15 @@ def resource_path(relative_path):
 # to use pyinstaller we need to get the resource not the path
 # resource_path is in globalvars
 #
+
+def setEEPROM_SIZE (newSize):
+    global EEPROMSIZE
+    EEPROMSIZE = newSize
+
+def getEEPROM_SIZE ():
+    global EEPROMSIZE
+    return EEPROMSIZE
+
 
 
 EEPROMMEMORYMAP=resource_path("eeprommemorymap.xml")               #Maps EEPROM locations to settings

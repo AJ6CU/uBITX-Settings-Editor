@@ -17,21 +17,23 @@ class com_portManager(ComPortmanagerWidget):
         self.parentPtr = parentHook         # need pointer to parent to invoke callback to enable/disable buttons
         self.updateComPorts()               #preload the available com ports
 
-
     def openComPort (self, comPort):
-        if comPort in com_portManager.open_com_ports.keys():
-            return True
+        if comPort in com_portManager.open_com_ports.keys():  # Need to close first in case of unplug and plug in  of new ubitx
+            com_portManager.open_com_ports[comPort].close()
+            del com_portManager.open_com_ports[comPort]
+
+        # Now try to open the port
+
+        try:
+            RS232 = serial.Serial(comPort, BAUD, timeout=0, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
+        except:
+            print("failed to open port", comPort)
+            return False
         else:
-            try:
-                RS232 = serial.Serial(comPort, BAUD, timeout=0, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
-            except:
-                print("failed to open port", comPort)
-                return False
-            else:
-                com_portManager.open_com_ports[comPort] = RS232
-                sleep (com_portManager.waitTime)                # if the com port has not been previously opened, must wait for
-                                                                # processor to reset.
-                return True
+            com_portManager.open_com_ports[comPort] = RS232
+            sleep (com_portManager.waitTime)                # if the com port has not been previously opened, must wait for
+                                                            # processor to reset.
+            return True
 
     def getComPortPTR (self, comPort):
         return com_portManager.open_com_ports[comPort]

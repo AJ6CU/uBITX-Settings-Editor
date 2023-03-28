@@ -5387,18 +5387,6 @@ class SettingsnotebookWidget(ttk.Frame):
         self.EXT_DISPLAY_TYPE_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.EXT_DISPLAY_TYPE)
         self.EXT_DISPLAY_TYPE_WIDGET.grid(column=1, padx=5, row=2, sticky="w")
-        self.NEXTION_BAUD_FRAME = ttk.Frame(self.Hardware_Content)
-        self.NEXTION_BAUD_FRAME.configure(height=200, width=200)
-        self.EXT_NEXTIONBAUD_Label = ttk.Label(self.NEXTION_BAUD_FRAME)
-        self.EXT_NEXTIONBAUD_Label.configure(
-            style="Heading4.TLabel", text='Baud:')
-        self.EXT_NEXTIONBAUD_Label.grid(column=0, padx="10 0", row=0)
-        self.EXT_NEXTIONBAUD_WIDGET = ttk.Label(self.NEXTION_BAUD_FRAME)
-        self.EXT_NEXTIONBAUD = tk.StringVar()
-        self.EXT_NEXTIONBAUD_WIDGET.configure(
-            style="Normal.TLabel", textvariable=self.EXT_NEXTIONBAUD)
-        self.EXT_NEXTIONBAUD_WIDGET.grid(column=1, padx=5, row=0, sticky="w")
-        self.NEXTION_BAUD_FRAME.grid(column=2, padx="5 0", row=2, sticky="e")
         self.label196 = ttk.Label(self.Hardware_Content)
         self.label196.configure(
             state="normal",
@@ -5438,6 +5426,21 @@ class SettingsnotebookWidget(ttk.Frame):
         self.EXT_ENCODER_TYPE_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.EXT_ENCODER_TYPE)
         self.EXT_ENCODER_TYPE_WIDGET.grid(column=1, padx=5, row=6, sticky="w")
+        self.Outer_Nextion_Frame = ttk.Frame(self.Hardware_Content)
+        self.Outer_Nextion_Frame.configure(height=200, width=200)
+        self.NEXTION_BAUD_FRAME = ttk.Frame(self.Outer_Nextion_Frame)
+        self.NEXTION_BAUD_FRAME.configure(height=200, width=200)
+        self.EXT_NEXTIONBAUD_Label = ttk.Label(self.NEXTION_BAUD_FRAME)
+        self.EXT_NEXTIONBAUD_Label.configure(
+            style="Heading4.TLabel", text='Baud:')
+        self.EXT_NEXTIONBAUD_Label.grid(column=0, padx="10 0", row=0)
+        self.EXT_NEXTIONBAUD_WIDGET = ttk.Label(self.NEXTION_BAUD_FRAME)
+        self.EXT_NEXTIONBAUD = tk.StringVar()
+        self.EXT_NEXTIONBAUD_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_NEXTIONBAUD)
+        self.EXT_NEXTIONBAUD_WIDGET.grid(column=1, padx=5, row=0, sticky="w")
+        self.NEXTION_BAUD_FRAME.pack()
+        self.Outer_Nextion_Frame.grid(column=2, row=2)
         self.Hardware_Content.pack(
             expand="true", fill="x", padx=18, side="top")
         self.System_Info_Hardware.pack(
