@@ -13,7 +13,7 @@ I had originally not planned to tackle this task. However, in porting KD8CEC v1.
 ## IMPLEMENTATION
 The code is being written in Python. Eventually, using standard Python tools. I have released a beta 1 for Windows, MacOS(Intel),  and Linux (Arm and Intel). download it here:
 
-https://github.com/AJ6CU/uBITX-EEPROM-Manager/releases/tag/V2-beta-1
+https://github.com/AJ6CU/uBITX-Settings-Editor/releases/tag/V2-beta-1
 
 
 ![afterloading](https://user-images.githubusercontent.com/70183884/228396270-d2e30b42-a545-4171-846f-5ddc9a842f30.JPG)
