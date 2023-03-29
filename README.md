@@ -5,26 +5,26 @@ This project is to provide a platform independent, open-source replacement for t
 
 Unfortunately, and unlike all the rest of the KD8CEC family of software, the source code to the uBITX Memory manager was never released nor was it natively ported to platforms other than Windows. The last release of the tool (V1.110) happened about 3.5 years ago. 
 
-The latest release of uBITX Memeory Manager is hosted at:
+The last release of uBITX Memeory Manager is hosted at:
 https://github.com/phdlee/ubitx/releases/download/v1.11/uBITX_Manager_V1.11.zip
 
 I had originally not planned to tackle this task. However, in porting KD8CEC v1.2 to new hardware platforms, the uBITX Memory Manager started to show what looked like incompatibilities (e.g., works with the Arduino IoT, fails with the Arduino BLE and RP Connect). So I was left with no choice but to take this detour...
 
 ## IMPLEMENTATION
-The code is being written in Python. Eventually, using standard Python tools, I expect to be able to generate an executable for Windows, MacOS, and Linux. This family tools is envisioned to be 3 programs:
+The code is being written in Python. Eventually, using standard Python tools. I have released a beta 1 for Windows, MacOS(Intel),  and Linux (Arm and Intel). download it here:
 
-The screenshot below shows a snapshot of the work in progress. Unfortunately, it is taking longer to reverse engineer the uBTIX Memory Manager than I hoped.
+https://github.com/AJ6CU/uBITX-EEPROM-Manager/releases/tag/V2-beta-1
 
 
-![afterloading](https://user-images.githubusercontent.com/70183884/213938796-80d7aedb-5dc3-4eef-a46d-faeb88d0f750.JPG)
+![afterloading](https://user-images.githubusercontent.com/70183884/228396270-d2e30b42-a545-4171-846f-5ddc9a842f30.JPG)
+
 
 There are additional screenshots in the uBITXmodeeditor/screenshots directory.
 
 ## Obsolete Programs
-Only the software in the modfileeditor directory is under active development. All the python code in the other directories were interm programs that I used to get to the point where I have the GUI editor currently stored in uBITXmodeeditor (this will be renamed ot uBITX Customization Editor at somepoint in the future).
+Only the software in the uBITX_Settings_Editor directory is under active development. 
 
-## USING THE TOOLS
-To use either tool at this stage, you need to know how to use an editor, install python packages, and run python. I happen to be using PyCharm, but admit my ignorance might have led me not to choose the optimal tool. Specific values that need to be changes, are identified in the README files in the appropriate directory.
+## Contact Me
 
 I can be reached with thru my email on QRZ or thru topics on the groups.io BITX20 group. You should also be able to raise Issues on the GitHub. Let me know if you have an issue here.
 
