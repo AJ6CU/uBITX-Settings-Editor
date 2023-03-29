@@ -1,9 +1,9 @@
-# EEPROM BACKUP/RESTORER/UPDATER FOR SYSTEMS RUNNING KD8CEC
+# uBITX Settings Editor Project
 
 ## Purpose
-This project is to provide a platform independent, open-source replacement for the KD8CEC uBITX Memory Manager (see http://hamskey.com). The uBITX Memory Manager provides the means to manage the system parameters that the KD8CEC software maintains in EEPROM (on chip for the Arduino Nano, off chip for future other MCU's). The uBITX Memory Manager also provides the critical ability to backup and restore the contents of the EEPROM. 
+This project is to provide a platform independent, open-source replacement for the KD8CEC uBITX Memory Manager (see http://hamskey.com). The uBITX Memory Manager provides the means to manage the system parameters that the KD8CEC software maintains in EEPROM (on chip for the Arduino Nano, off chip for future other MCU's).  
 
-Unfortunately, and unlike all the rest of the KD8CEC family of software, the source code to the uBITX Memory manager was never released nor was it natively ported to platforms other than Windows. The last release of the tool (V1.110) happened about 3.5 years ago. 
+Unfortunately, and unlike all the rest of the KD8CEC family of software, the source code to the uBITX Memory manager was never released nor was it natively ported to platforms other than Windows. 
 
 The last release of uBITX Memeory Manager is hosted at:
 https://github.com/phdlee/ubitx/releases/download/v1.11/uBITX_Manager_V1.11.zip
