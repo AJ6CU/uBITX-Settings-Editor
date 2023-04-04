@@ -1089,6 +1089,18 @@ class eepromObj:
         def EXTENDED_KEY6_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
 
+        def EXTENDED_KEY7_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
+
+        def EXTENDED_KEY8_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
+
+        def EXTENDED_KEY9_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
+
+        def EXTENDED_KEY10_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
+
 
         def EXTENDED_KEY_END(self, SettingName, EEPROMBuffer, memLocation, value):
             value.text = str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)*4)
@@ -1111,6 +1123,17 @@ class eepromObj:
         def EXTENDED_KEY6_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
 
+        def EXTENDED_KEY7_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
+
+        def EXTENDED_KEY8_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
+
+        def EXTENDED_KEY9_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
+
+        def EXTENDED_KEY10_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
 
         def EXTENDED_KEY_FUNC(self, SettingName, EEPROMBuffer, memLocation, value):
             value.text = FTN_KEY_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
@@ -1133,6 +1156,17 @@ class eepromObj:
         def EXTENDED_KEY6_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
 
+        def EXTENDED_KEY7_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
+
+        def EXTENDED_KEY8_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
+
+        def EXTENDED_KEY9_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
+
+        def EXTENDED_KEY10_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
 
     #
     #         # ***********************************
@@ -2582,6 +2616,18 @@ class eepromObj:
         def EXTENDED_KEY6_START(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
             self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
 
+        def EXTENDED_KEY7_START(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY8_START(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY9_START(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY10_START(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
 
         def EXTENDED_KEY_END(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue):
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, round(int(userSettingValue)>>2))
@@ -2604,6 +2650,18 @@ class eepromObj:
         def EXTENDED_KEY6_END(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
             self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
 
+        def EXTENDED_KEY7_END(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY8_END(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY9_END(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY10_END(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
 
         def EXTENDED_KEY_FUNC(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue):
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, FTN_KEY_SELECT.index(userSettingValue))
@@ -2624,6 +2682,18 @@ class eepromObj:
             self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
 
         def EXTENDED_KEY6_FUNC(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY7_FUNC(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY8_FUNC(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY9_FUNC(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY10_FUNC(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
             self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
 
 

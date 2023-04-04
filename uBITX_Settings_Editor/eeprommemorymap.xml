@@ -1588,6 +1588,78 @@ GENERAL UX
 		<displayFormat>selection_ftn_key</displayFormat>
 		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
 	</SETTING>
+	<SETTING NAME="EXTENDED_KEY7_START">
+		<EEPROMStart>158</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY7_END">
+		<EEPROMStart>159</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY7_FUNC">
+		<EEPROMStart>160</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_ftn_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY8_START">
+		<EEPROMStart>161</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY8_END">
+		<EEPROMStart>162</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY8_FUNC">
+		<EEPROMStart>163</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_ftn_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+		<SETTING NAME="EXTENDED_KEY9_START">
+		<EEPROMStart>164</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY9_END">
+		<EEPROMStart>165</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY9_FUNC">
+		<EEPROMStart>166</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_ftn_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY10_START">
+		<EEPROMStart>167</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY10_END">
+		<EEPROMStart>168</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY10_FUNC">
+		<EEPROMStart>169</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_ftn_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
 	
 <!-- 	
 	*****************************************************************************************************

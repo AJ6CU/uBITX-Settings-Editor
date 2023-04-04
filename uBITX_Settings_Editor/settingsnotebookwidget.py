@@ -3571,19 +3571,6 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='Key 5')
         self.EXTENDED_KEY5_FUNC_LABEL.grid(
             column=1, padx="0 5", pady="0 5", row=13, sticky="w")
-        self.frame30 = ttk.Frame(self.frame29)
-        self.frame30.configure(height=200, width=200)
-        self.runADCScanner_WIDGET = ttk.Button(self.frame30)
-        self.runADCScanner_WIDGET.configure(
-            style="Button4.TButton", text='ADC Scanner')
-        self.runADCScanner_WIDGET.grid(column=0, row=0)
-        self.runADCScanner_WIDGET.configure(command=self.runADCScannerENCSW)
-        self.frame30.grid(column=1, columnspan=5, pady=15, row=16, sticky="ew")
-        self.EXTENDED_KEY6_FUNC_LABEL = ttk.Label(self.frame29)
-        self.EXTENDED_KEY6_FUNC_LABEL.configure(
-            style="Heading4.TLabel", text='Key 6')
-        self.EXTENDED_KEY6_FUNC_LABEL.grid(
-            column=1, padx="0 5", pady="0 5", row=14, sticky="w")
         self.EXTENDED_KEY5_FUNC_WIDGET = ttk.Combobox(self.frame29)
         self.EXTENDED_KEY5_FUNC = tk.StringVar()
         self.EXTENDED_KEY5_FUNC_WIDGET.configure(
@@ -3616,6 +3603,11 @@ class SettingsnotebookWidget(ttk.Frame):
             self.EXTENDED_KEY5_END_WIDGET.register(
                 self.validate_EXTENDED_KEY5_END), "%P", "%V")
         self.EXTENDED_KEY5_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY6_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY6_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 6')
+        self.EXTENDED_KEY6_FUNC_LABEL.grid(
+            column=1, padx="0 5", pady="0 5", row=14, sticky="w")
         self.EXTENDED_KEY6_FUNC_WIDGET = ttk.Combobox(self.frame29)
         self.EXTENDED_KEY6_FUNC = tk.StringVar()
         self.EXTENDED_KEY6_FUNC_WIDGET.configure(
@@ -3648,6 +3640,168 @@ class SettingsnotebookWidget(ttk.Frame):
             self.EXTENDED_KEY6_END_WIDGET.register(
                 self.validate_EXTENDED_KEY6_END), "%P", "%V")
         self.EXTENDED_KEY6_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY7_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY7_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 7')
+        self.EXTENDED_KEY7_FUNC_LABEL.grid(
+            column=1, padx="0 5", pady="0 5", row=15, sticky="w")
+        self.EXTENDED_KEY7_FUNC_WIDGET = ttk.Combobox(self.frame29)
+        self.EXTENDED_KEY7_FUNC = tk.StringVar()
+        self.EXTENDED_KEY7_FUNC_WIDGET.configure(
+            textvariable=self.EXTENDED_KEY7_FUNC,
+            values='NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT',
+            width=10)
+        self.EXTENDED_KEY7_FUNC_WIDGET.grid(column=2, row=15)
+        self.EXTENDED_KEY7_START_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY7_START = tk.StringVar()
+        self.EXTENDED_KEY7_START_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY7_START,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY7_START_WIDGET.grid(column=4, pady="0 5", row=15)
+        _validatecmd = (self.EXTENDED_KEY7_START_WIDGET.register(
+            self.validate_EXTENDED_KEY7_START), "%P", "%V")
+        self.EXTENDED_KEY7_START_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY7_END_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY7_END = tk.StringVar()
+        self.EXTENDED_KEY7_END_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY7_END,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY7_END_WIDGET.grid(column=5, pady="0 5", row=15)
+        _validatecmd = (
+            self.EXTENDED_KEY7_END_WIDGET.register(
+                self.validate_EXTENDED_KEY7_END), "%P", "%V")
+        self.EXTENDED_KEY7_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY8_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY8_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 8')
+        self.EXTENDED_KEY8_FUNC_LABEL.grid(
+            column=1, padx="0 5", pady="0 5", row=16, sticky="w")
+        self.EXTENDED_KEY8_FUNC_WIDGET = ttk.Combobox(self.frame29)
+        self.EXTENDED_KEY8_FUNC = tk.StringVar()
+        self.EXTENDED_KEY8_FUNC_WIDGET.configure(
+            textvariable=self.EXTENDED_KEY8_FUNC,
+            values='NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT',
+            width=10)
+        self.EXTENDED_KEY8_FUNC_WIDGET.grid(column=2, row=16)
+        self.EXTENDED_KEY8_START_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY8_START = tk.StringVar()
+        self.EXTENDED_KEY8_START_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY8_START,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY8_START_WIDGET.grid(column=4, pady="0 5", row=16)
+        _validatecmd = (self.EXTENDED_KEY8_START_WIDGET.register(
+            self.validate_EXTENDED_KEY8_START), "%P", "%V")
+        self.EXTENDED_KEY8_START_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY8_END_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY8_END = tk.StringVar()
+        self.EXTENDED_KEY8_END_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY8_END,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY8_END_WIDGET.grid(column=5, pady="0 5", row=16)
+        _validatecmd = (
+            self.EXTENDED_KEY8_END_WIDGET.register(
+                self.validate_EXTENDED_KEY8_END), "%P", "%V")
+        self.EXTENDED_KEY8_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY9_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY9_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 9')
+        self.EXTENDED_KEY9_FUNC_LABEL.grid(
+            column=1, padx="0 5", pady="0 5", row=17, sticky="w")
+        self.EXTENDED_KEY9_FUNC_WIDGET = ttk.Combobox(self.frame29)
+        self.EXTENDED_KEY9_FUNC = tk.StringVar()
+        self.EXTENDED_KEY9_FUNC_WIDGET.configure(
+            textvariable=self.EXTENDED_KEY9_FUNC,
+            values='NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT',
+            width=10)
+        self.EXTENDED_KEY9_FUNC_WIDGET.grid(column=2, row=17)
+        self.EXTENDED_KEY9_START_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY9_START = tk.StringVar()
+        self.EXTENDED_KEY9_START_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY9_START,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY9_START_WIDGET.grid(column=4, pady="0 5", row=17)
+        _validatecmd = (self.EXTENDED_KEY9_START_WIDGET.register(
+            self.validate_EXTENDED_KEY9_START), "%P", "%V")
+        self.EXTENDED_KEY9_START_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY9_END_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY9_END = tk.StringVar()
+        self.EXTENDED_KEY9_END_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY9_END,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY9_END_WIDGET.grid(column=5, pady="0 5", row=17)
+        _validatecmd = (
+            self.EXTENDED_KEY9_END_WIDGET.register(
+                self.validate_EXTENDED_KEY9_END), "%P", "%V")
+        self.EXTENDED_KEY9_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY10_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY10_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 10')
+        self.EXTENDED_KEY10_FUNC_LABEL.grid(
+            column=1, padx="0 5", pady="0 5", row=18, sticky="w")
+        self.EXTENDED_KEY10_FUNC_WIDGET = ttk.Combobox(self.frame29)
+        self.EXTENDED_KEY10_FUNC = tk.StringVar()
+        self.EXTENDED_KEY10_FUNC_WIDGET.configure(
+            textvariable=self.EXTENDED_KEY10_FUNC,
+            values='NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT',
+            width=10)
+        self.EXTENDED_KEY10_FUNC_WIDGET.grid(column=2, row=18)
+        self.EXTENDED_KEY10_START_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY10_START = tk.StringVar()
+        self.EXTENDED_KEY10_START_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY10_START,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY10_START_WIDGET.grid(column=4, pady="0 5", row=18)
+        _validatecmd = (self.EXTENDED_KEY10_START_WIDGET.register(
+            self.validate_EXTENDED_KEY10_START), "%P", "%V")
+        self.EXTENDED_KEY10_START_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.EXTENDED_KEY10_END_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY10_END = tk.StringVar()
+        self.EXTENDED_KEY10_END_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY10_END,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY10_END_WIDGET.grid(column=5, pady="0 5", row=18)
+        _validatecmd = (
+            self.EXTENDED_KEY10_END_WIDGET.register(
+                self.validate_EXTENDED_KEY10_END), "%P", "%V")
+        self.EXTENDED_KEY10_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.frame30 = ttk.Frame(self.frame29)
+        self.frame30.configure(height=200, width=200)
+        self.runADCScanner_WIDGET = ttk.Button(self.frame30)
+        self.runADCScanner_WIDGET.configure(
+            style="Button4.TButton", text='ADC Scanner')
+        self.runADCScanner_WIDGET.grid(column=0, row=0)
+        self.runADCScanner_WIDGET.configure(command=self.runADCScannerENCSW)
+        self.frame30.grid(column=1, columnspan=5, pady=15, row=19, sticky="ew")
+        self.message5 = tk.Message(self.frame29)
+        self.message5.configure(
+            text='All specified ADC values should be dividable by 4 (e.g. 16, 32, 40, etc.) - This is because of how the values are stored internally to save EEPROM space. If not, the values entered will be rounded down to the next number that is dividable by 4.',
+            width=320)
+        self.message5.grid(column=6, row=7, rowspan=8, sticky="w")
         self.frame29.pack(fill="x", padx="20 0", side="top")
         self.frame29.grid_anchor("nw")
         self.frame57 = ttk.Frame(self.Extensions_Frame)
@@ -6319,9 +6473,6 @@ class SettingsnotebookWidget(ttk.Frame):
     def validate_EXTENDED_KEY4_END(self, p_entry_value, v_condition):
         pass
 
-    def runADCScannerENCSW(self):
-        pass
-
     def validate_EXTENDED_KEY5_START(self, p_entry_value, v_condition):
         pass
 
@@ -6332,6 +6483,33 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def validate_EXTENDED_KEY6_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY7_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY7_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY8_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY8_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY9_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY9_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY10_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY10_END(self, p_entry_value, v_condition):
+        pass
+
+    def runADCScannerENCSW(self):
         pass
 
     def CUST_LPF_SELECTION_CB(self, option):

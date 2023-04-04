@@ -6273,43 +6273,6 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                           </object>
                         </child>
                         <child>
-                          <object class="ttk.Frame" id="frame30">
-                            <property name="height">200</property>
-                            <property name="width">200</property>
-                            <layout manager="grid">
-                              <property name="column">1</property>
-                              <property name="columnspan">5</property>
-                              <property name="pady">15</property>
-                              <property name="row">16</property>
-                              <property name="sticky">ew</property>
-                            </layout>
-                            <child>
-                              <object class="ttk.Button" id="runADCScanner_WIDGET" named="True">
-                                <property name="command" type="command" cbtype="simple">runADCScannerENCSW</property>
-                                <property name="style">Button4.TButton</property>
-                                <property name="text" translatable="yes">ADC Scanner</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="row">0</property>
-                                </layout>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="ttk.Label" id="EXTENDED_KEY6_FUNC_LABEL" named="True">
-                            <property name="style">Heading4.TLabel</property>
-                            <property name="text" translatable="yes">Key 6</property>
-                            <layout manager="grid">
-                              <property name="column">1</property>
-                              <property name="padx">0 5</property>
-                              <property name="pady">0 5</property>
-                              <property name="row">14</property>
-                              <property name="sticky">w</property>
-                            </layout>
-                          </object>
-                        </child>
-                        <child>
                           <object class="ttk.Combobox" id="EXTENDED_KEY5_FUNC_WIDGET" named="True">
                             <property name="textvariable">string:EXTENDED_KEY5_FUNC</property>
                             <property name="values">NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT</property>
@@ -6351,6 +6314,19 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                           </object>
                         </child>
                         <child>
+                          <object class="ttk.Label" id="EXTENDED_KEY6_FUNC_LABEL" named="True">
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">Key 6</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="padx">0 5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">14</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
                           <object class="ttk.Combobox" id="EXTENDED_KEY6_FUNC_WIDGET" named="True">
                             <property name="textvariable">string:EXTENDED_KEY6_FUNC</property>
                             <property name="values">NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT</property>
@@ -6388,6 +6364,258 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                               <property name="column">5</property>
                               <property name="pady">0 5</property>
                               <property name="row">14</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="EXTENDED_KEY7_FUNC_LABEL" named="True">
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">Key 7</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="padx">0 5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">15</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Combobox" id="EXTENDED_KEY7_FUNC_WIDGET" named="True">
+                            <property name="textvariable">string:EXTENDED_KEY7_FUNC</property>
+                            <property name="values">NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT</property>
+                            <property name="width">10</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">15</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY7_START_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY7_START</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY7_START</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">4</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">15</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY7_END_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY7_END</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY7_END</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">15</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="EXTENDED_KEY8_FUNC_LABEL" named="True">
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">Key 8</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="padx">0 5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">16</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Combobox" id="EXTENDED_KEY8_FUNC_WIDGET" named="True">
+                            <property name="textvariable">string:EXTENDED_KEY8_FUNC</property>
+                            <property name="values">NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT</property>
+                            <property name="width">10</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">16</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY8_START_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY8_START</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY8_START</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">4</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">16</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY8_END_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY8_END</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY8_END</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">16</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="EXTENDED_KEY9_FUNC_LABEL" named="True">
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">Key 9</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="padx">0 5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">17</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Combobox" id="EXTENDED_KEY9_FUNC_WIDGET" named="True">
+                            <property name="textvariable">string:EXTENDED_KEY9_FUNC</property>
+                            <property name="values">NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT</property>
+                            <property name="width">10</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">17</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY9_START_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY9_START</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY9_START</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">4</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">17</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY9_END_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY9_END</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY9_END</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">17</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="EXTENDED_KEY10_FUNC_LABEL" named="True">
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">Key 10</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="padx">0 5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">18</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Combobox" id="EXTENDED_KEY10_FUNC_WIDGET" named="True">
+                            <property name="textvariable">string:EXTENDED_KEY10_FUNC</property>
+                            <property name="values">NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT</property>
+                            <property name="width">10</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">18</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY10_START_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY10_START</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY10_START</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">4</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">18</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY10_END_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY10_END</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY10_END</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">18</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="frame30">
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="columnspan">5</property>
+                              <property name="pady">15</property>
+                              <property name="row">19</property>
+                              <property name="sticky">ew</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Button" id="runADCScanner_WIDGET" named="True">
+                                <property name="command" type="command" cbtype="simple">runADCScannerENCSW</property>
+                                <property name="style">Button4.TButton</property>
+                                <property name="text" translatable="yes">ADC Scanner</property>
+                                <layout manager="grid">
+                                  <property name="column">0</property>
+                                  <property name="row">0</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Message" id="message5">
+                            <property name="text" translatable="yes">All specified ADC values should be dividable by 4 (e.g. 16, 32, 40, etc.) - This is because of how the values are stored internally to save EEPROM space. If not, the values entered will be rounded down to the next number that is dividable by 4.</property>
+                            <property name="width">320</property>
+                            <layout manager="grid">
+                              <property name="column">6</property>
+                              <property name="row">7</property>
+                              <property name="rowspan">8</property>
+                              <property name="sticky">w</property>
                             </layout>
                           </object>
                         </child>

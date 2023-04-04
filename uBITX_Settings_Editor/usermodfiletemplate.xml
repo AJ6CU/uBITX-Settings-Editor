@@ -1394,7 +1394,66 @@ GENERAL UX
 		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
 		<tooltip>Select what happens when this key is pressed</tooltip>
 	</SETTING>
-	
+	<SETTING NAME="EXTENDED_KEY7_START">
+		<label>Key6 Start ADC</label>
+		<value></value>
+		<tooltip>Starting ADC value for this Key. Must be 1023 or less and lower than the End ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY7_END">
+		<label>Key6 End ADC</label>
+		<value></value>
+		<tooltip>Ending ADC value for this Key. Must be 1023 or less and greater than the Start ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY7_FUNC">
+		<label>Key6 Function</label>
+		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+		<tooltip>Select what happens when this key is pressed</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY8_START">
+		<label>Key6 Start ADC</label>
+		<value></value>
+		<tooltip>Starting ADC value for this Key. Must be 1023 or less and lower than the End ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY8_END">
+		<label>Key6 End ADC</label>
+		<value></value>
+		<tooltip>Ending ADC value for this Key. Must be 1023 or less and greater than the Start ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY8_FUNC">
+		<label>Key6 Function</label>
+		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+		<tooltip>Select what happens when this key is pressed</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY9_START">
+		<label>Key6 Start ADC</label>
+		<value></value>
+		<tooltip>Starting ADC value for this Key. Must be 1023 or less and lower than the End ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY9_END">
+		<label>Key6 End ADC</label>
+		<value></value>
+		<tooltip>Ending ADC value for this Key. Must be 1023 or less and greater than the Start ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY9_FUNC">
+		<label>Key6 Function</label>
+		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+		<tooltip>Select what happens when this key is pressed</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY10_START">
+		<label>Key6 Start ADC</label>
+		<value></value>
+		<tooltip>Starting ADC value for this Key. Must be 1023 or less and lower than the End ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY10_END">
+		<label>Key6 End ADC</label>
+		<value></value>
+		<tooltip>Ending ADC value for this Key. Must be 1023 or less and greater than the Start ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY10_FUNC">
+		<label>Key6 Function</label>
+		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+		<tooltip>Select what happens when this key is pressed</tooltip>
+	</SETTING>
 <!-- 	
 	*****************************************************************************************************
 	CUSTOM_LPF_FILTERS

@@ -86,6 +86,8 @@ class SettingsNotebook(SettingsnotebookWidget):
             'EXTENDED_KEY1_FUNC', 'EXTENDED_KEY1_START', 'EXTENDED_KEY1_END', 'EXTENDED_KEY2_FUNC', 'EXTENDED_KEY2_START', 'EXTENDED_KEY2_END',
             'EXTENDED_KEY3_FUNC', 'EXTENDED_KEY3_START', 'EXTENDED_KEY3_END', 'EXTENDED_KEY4_FUNC', 'EXTENDED_KEY4_START', 'EXTENDED_KEY4_END',
             'EXTENDED_KEY5_FUNC', 'EXTENDED_KEY5_START', 'EXTENDED_KEY5_END', 'EXTENDED_KEY6_FUNC', 'EXTENDED_KEY6_START', 'EXTENDED_KEY6_END',
+            'EXTENDED_KEY7_FUNC', 'EXTENDED_KEY7_START', 'EXTENDED_KEY7_END', 'EXTENDED_KEY8_FUNC', 'EXTENDED_KEY8_START', 'EXTENDED_KEY8_END',
+            'EXTENDED_KEY9_FUNC', 'EXTENDED_KEY9_START', 'EXTENDED_KEY9_END', 'EXTENDED_KEY10_FUNC', 'EXTENDED_KEY10_START', 'EXTENDED_KEY10_END',
             'CW_MEMORY_KEYER_MSG01', 'CW_MEMORY_KEYER_MSG02', 'CW_MEMORY_KEYER_MSG03', 'CW_MEMORY_KEYER_MSG04',
             'CW_MEMORY_KEYER_MSG05', 'CW_MEMORY_KEYER_MSG06', 'CW_MEMORY_KEYER_MSG07', 'CW_MEMORY_KEYER_MSG08',
             'CW_MEMORY_KEYER_MSG09', 'CW_MEMORY_KEYER_MSG10', 'CW_AUTO_COUNT', 'WSPR_COUNT',
@@ -1045,7 +1047,29 @@ class SettingsNotebook(SettingsnotebookWidget):
     def validate_EXTENDED_KEY6_END(self, p_entry_value, v_condition):
         return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY6')
 
+    def validate_EXTENDED_KEY7_START(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_START ( p_entry_value, v_condition, 'KEY7')
 
+    def validate_EXTENDED_KEY7_END(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY7')
+
+    def validate_EXTENDED_KEY8_START(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_START ( p_entry_value, v_condition, 'KEY8')
+
+    def validate_EXTENDED_KEY8_END(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY8')
+
+    def validate_EXTENDED_KEY9_START(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_START ( p_entry_value, v_condition, 'KEY9')
+
+    def validate_EXTENDED_KEY9_END(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY9')
+
+    def validate_EXTENDED_KEY10_START(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_START ( p_entry_value, v_condition, 'KEY10')
+
+    def validate_EXTENDED_KEY10_END(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY10')
 
     def CUST_LPF_SELECTION_CB(self, *args):
         if (self.CUST_LPF_ENABLED.get() == 'OFF'):
