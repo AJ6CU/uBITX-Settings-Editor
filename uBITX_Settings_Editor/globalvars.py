@@ -1,11 +1,13 @@
 import os
 import sys
+import time
 
 VERSION="Beta V2"
 
 # default window size
 DEFAULT_ROOT_WINDOW_WIDTH = 1280
 DEFAULT_ROOT_WINDOW_HEIGHT = 900
+
 #ENUMS#####################################################
 INTERNAL_FIRMWARE_VERSION = ["NA", "V1.061", "V1.07", "V1.08", "V1.09", "V2.0"]
 MODE_SELECT = ["DEFAULT","xxx","LSB","USB","CWL","CWU"]
@@ -115,6 +117,7 @@ MAGIC_CW_AUTO_MAGIC_KEY = 0x73
 
 
 EEPROMSIZE=2048                              #  default to large EEPROM, but check later and reset to right number
+DEFAULT_EEPROM_SIZE=1024                     # used as the default value when EEPROM size is unknown
 MAXEEPROMSIZE=2048
 MAXWRITETOEEPROM=1024
 BACKUPFILESIZE=2048
@@ -124,7 +127,9 @@ CW_MEMORY_KEYER_BUFFER_END = 1023
 
 
 VREFMAXVALUE=1023
-SMETERPIN=7
+# Index's of PIN Function to ADC Value in KD8CEC
+ANALOGPINS = {"ENC A":0, "ENC B": 1, "ENC SW":2, "PTT":3, "CW Keyer":6, "S Meter":7  } # A4 and A5 are used for I2C on Some platforms
+#SMETERPIN=7
 
 
 CHANNELNAMELENGTH = 5                               #Number of characters in the Channel Name
@@ -162,6 +167,22 @@ def setEEPROM_SIZE (newSize):
 def getEEPROM_SIZE ():
     global EEPROMSIZE
     return EEPROMSIZE
+
+def millis():
+    return (time.time_ns()// 1000000)
+
+
+
+SERIALTIMEOUT = 5000
+
+# def waitForData(comPort):
+#     lastReadTime = millis()
+#     while (comPort.in_waiting != 0):
+#         if ((millis() - lastReadTime) > SERIALTIMEOUT):            # we timed out
+#             return -1
+#         else:
+#             sleep (0.01)
+#     return 1
 
 
 

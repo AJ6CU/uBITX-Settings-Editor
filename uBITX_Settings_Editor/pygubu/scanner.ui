@@ -8,7 +8,7 @@
     <child>
       <object class="ttk.Frame" id="scanner_frame" named="True">
         <property name="height">200</property>
-        <property name="width">800</property>
+        <property name="width">600</property>
         <layout manager="pack">
           <property name="anchor">center</property>
           <property name="expand">true</property>
@@ -34,49 +34,74 @@
         <child>
           <object class="ttk.Frame" id="frame2">
             <property name="height">200</property>
-            <property name="width">50</property>
             <layout manager="grid">
-              <property name="column">2</property>
-              <property name="ipadx">15</property>
+              <property name="column">1</property>
+              <property name="padx">25</property>
+              <property name="pady">20 0</property>
               <property name="row">1</property>
               <property name="sticky">new</property>
             </layout>
             <child>
-              <object class="ttk.Button" id="scanner_Go_Button_Widget" named="True">
+              <object class="ttk.Button" id="scanner_Start_Button_Widget" named="True">
                 <property name="command" type="command" cbtype="simple">scannerStart</property>
                 <property name="state">normal</property>
                 <property name="style">Button4.TButton</property>
-                <property name="text" translatable="yes">Scan</property>
+                <property name="text" translatable="yes">Start</property>
                 <layout manager="pack">
-                  <property name="pady">30</property>
+                  <property name="pady">15 25</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="ttk.Button" id="scanner_Done_Button_Widget" named="True">
-                <property name="command" type="command" cbtype="simple">scannerDone</property>
-                <property name="text" translatable="yes">Done</property>
+              <object class="ttk.Button" id="scanner_Stop_Button_Widget" named="True">
+                <property name="command" type="command" cbtype="simple">scannerStop</property>
+                <property name="state">disabled</property>
+                <property name="style">Button4.TButton</property>
+                <property name="text" translatable="yes">Stop</property>
+                <layout manager="pack">
+                  <property name="pady">0 25</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="scanner_Quit_Button_Widget" named="True">
+                <property name="command" type="command" cbtype="simple">scannerQuit</property>
+                <property name="style">Button4.TButton</property>
+                <property name="text" translatable="yes">Quit</property>
                 <layout manager="pack" />
               </object>
             </child>
           </object>
         </child>
         <child>
-          <object class="pygubu.builder.widgets.scrollbarhelper" id="scrollbarhelper1">
-            <property name="scrolltype">vertical</property>
-            <property name="usemousewheel">false</property>
+          <object class="ttk.Frame" id="frame3">
+            <property name="width">55</property>
             <layout manager="grid">
-              <property name="padx">10</property>
-              <property name="pady">15</property>
+              <property name="column">0</property>
+              <property name="pady">20 20</property>
               <property name="row">1</property>
             </layout>
             <child>
               <object class="tk.Text" id="scannerLog_Text" named="True">
+                <property name="borderwidth">0</property>
                 <property name="height">10</property>
                 <property name="state">disabled</property>
-                <property name="width">50</property>
+                <property name="width">45</property>
                 <property name="wrap">none</property>
                 <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="padx">20 0</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Scrollbar" id="scrollbar1" named="True">
+                <property name="orient">vertical</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">y</property>
                   <property name="side">top</property>
                 </layout>
               </object>

@@ -1,5 +1,7 @@
 import pygubu.widgets.simpletooltip as tooltip
 import tkinter as tk
+import tkinter.messagebox
+
 import re
 
 from settingsnotebookwidget import SettingsnotebookWidget
@@ -1152,7 +1154,7 @@ class SettingsNotebook(SettingsnotebookWidget):
 
 
         if self.FACTORY_SETTING_PROTECTION.get() == 'YES':
-            answer = tk.messagebox.askyesno(title='Confirm Overwrite',
+            answer = tkinter.messagebox.askyesno(title='Confirm Overwrite',
                 message='You SHOULD NOT overwrite the Factory Calibration Settings unless you are positive you know ' +
                         'what you are doing. Are you REALLY sure you want to do this?', default="no", icon="warning")
             if answer == False:
@@ -1665,8 +1667,13 @@ class SettingsNotebook(SettingsnotebookWidget):
     def runI2CScanner(self):
         i2cScanner = I2Cscanner(self)
 
-    def runADCScanner(self):
-        adcScanner = ADCscanner (self)
+    def runADCScannerENCSW(self):
+        pinList = ["ENC SW" ]
+        adcScanner = ADCscanner (pinList, self)
+
+    def runADCScannerCWKEYER(self):
+        pinList = ["CW Keyer"]
+        adcScanner = ADCscanner (pinList, self)
 
     def runSmeterAssistant(self):
         smeterAssistant = SmeterWizard(self)

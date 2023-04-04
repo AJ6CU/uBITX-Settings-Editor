@@ -30,18 +30,14 @@ class OutputProcessor(Processor):
         tooltip.create(self.reset_uBITX_Button_WIDGET, "Click to reboot your uBITX with the new settings")
 
     def reset_ubitx(self):
-        # print("reset ubitx called")
 
-        if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
-            self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
+        magic1 = 0x4B   # 75 decimal
+        magic2 = 0x33   # 51 decimal
+        magic3 = 0x51   # 81 decimal
+        magic4 = (magic1 + magic2 + magic3) % 256       #checksum calculation
 
-            magic1 = 0x4B   # 75 decimal
-            magic2 = 0x33   # 51 decimal
-            magic3 = 0x51   # 81 decimal
-            magic4 = (magic1 + magic2 + magic3) % 256       #checksum calculation
-
-            self.RS232.write(bytes([magic1, magic2, magic3, magic4, WRITECOMMAND]))
-            self.RS232.flush()
+        RS232=self.comPortObj.sendCommand(bytes([magic1, magic2, 0, 0, READCOMMAND]))
+        RS232.flush()
 
 
     def processFile(self, *args):
@@ -92,19 +88,24 @@ class OutputProcessor(Processor):
 
         self.log.println("timestamp", "Finished Internal Settings Data Structure")
 
-        if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
-            self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
-
         self.log.println("timestamp",  "Refreshing In-memory Copy of EEPROM")
 
-        self.eepromCom = eepromUBITX(self.RS232, self.log)
+        self.eepromCom = eepromUBITX(self.comPortObj, self.log)
 
-        self.eepromCom.read()
-        self.eepromCom.encode(userModroot)
+        if (self.eepromCom.readFromCom() == False):             # Error reading from EEPROM. Abort write
+            self.log.printerror("timestamp",  "Error communicating with EEPROM. Please check your Serial Port selection and try reading again")
+            return
 
-        self.eepromCom.write()
+        self.eepromCom.encode(userModroot)                      # Talking to EEPROM, now can proceed to updating it
 
-        self.log.println("timestamp", "***Settings Successfully Written to uBITX***\n")
+        cntWritten = self.eepromCom.write()
+
+        if (cntWritten > 0):
+            self.log.println("timestamp", "***Settings Successfully Written to uBITX***\n")
+        else:
+            self.log.println("timestamp", "***No Changes to Settings. Nothing written to uBTIX***\n")
+
+
         #   Saved Info, set state
         self.readerObj.setIOstate('WRITE')                # We did save the data. set state
 

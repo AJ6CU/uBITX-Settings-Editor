@@ -1,6 +1,7 @@
 from time import sleep
 import tkinter as tk
 
+
 from smeterwizardwidget import SmeterwizardWidget
 from com_portManager import com_portManager
 from globalvars import *
@@ -115,33 +116,40 @@ class SmeterWizard(SmeterwizardWidget):
     def readADCsmeter(self, highorlow):
 
         adcValue =[]
-        if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
-            self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
+        # if(self.comPortObj.openSelectedComPort()):        # was able to open com port
+        #     self.RS232 = self.comPortObj.getComPortDesc()
 
 
-            for x in range(self.sampleSizeADC.get()):
-                self.RS232.write(bytes([SMETERPIN, 0, 0, 0, READADC]))
-                self.RS232.flush()
+        for x in range(self.sampleSizeADC.get()):
+            RS232=self.comPortObj.sendCommand(bytes([ANALOGPINS["S Meter"], 0, 0, 0, READADC]))
+            #self.RS232.write(bytes([ANALOGPINS["S Meter"], 0, 0, 0, READADC]))
+            RS232.flush()
 
-                i = 0
+            i = 0
+            lastReadTime = millis()
 
-                while i < 3:
-                    if self.RS232.in_waiting != 0:          # have a byte to read
-                        if i == 0:          #got first byte
-                            byte1 = self.RS232.read(1)
-                        elif i == 1:        #got second byte
-                            byte2 = self.RS232.read(1)
-                        else:
-                            throwaway = self.RS232.read(1)   # last byte is zero
-                        i += 1
+            while i < 3:
+                if RS232.in_waiting != 0:          # have a byte to read
+                    lastReadTime = millis()
+                    if i == 0:          #got first byte
+                        byte1 = RS232.read(1)
+                    elif i == 1:        #got second byte
+                        byte2 = RS232.read(1)
+                    else:
+                        throwaway = RS232.read(1)   # last byte is zero
+                    i += 1
+                else:
+                    if (millis() -lastReadTime > SERIALTIMEOUT):
+                        tk.messagebox.showerror(title="ERROR", message="Timeout reading from Serial Port. Check your port selection and try again",parent=self)
+                        return
 
-                adcValue.append((ord(byte1)<<8) + ord(byte2))
-                sleep(self.sampleDelayADC.get()/1000)
+            adcValue.append((ord(byte1)<<8) + ord(byte2))
+            sleep(self.sampleDelayADC.get()/1000)
 
-            if highorlow == 'HIGH':
-                return max(adcValue)
-            else:
-                return min(adcValue)
+        if highorlow == 'HIGH':
+            return max(adcValue)
+        else:
+            return min(adcValue)
 
 
 

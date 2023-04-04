@@ -67,3 +67,6 @@ style.configure('Fixed.TNotebook.Tab',padding=[5,2])
 
 
 
+
+
+

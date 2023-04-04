@@ -3577,7 +3577,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.runADCScanner_WIDGET.configure(
             style="Button4.TButton", text='ADC Scanner')
         self.runADCScanner_WIDGET.grid(column=0, row=0)
-        self.runADCScanner_WIDGET.configure(command=self.runADCScanner)
+        self.runADCScanner_WIDGET.configure(command=self.runADCScannerENCSW)
         self.frame30.grid(column=1, columnspan=5, pady=15, row=16, sticky="ew")
         self.EXTENDED_KEY6_FUNC_LABEL = ttk.Label(self.frame29)
         self.EXTENDED_KEY6_FUNC_LABEL.configure(
@@ -4958,7 +4958,8 @@ class SettingsnotebookWidget(ttk.Frame):
         self.CAL_runADCScanner_WIDGET.configure(
             style="Button4.TButton", text='ADC Scanner')
         self.CAL_runADCScanner_WIDGET.grid(column=0, row=0)
-        self.CAL_runADCScanner_WIDGET.configure(command=self.runADCScanner)
+        self.CAL_runADCScanner_WIDGET.configure(
+            command=self.runADCScannerCWKEYER)
         self.frame3.grid(column=1, columnspan=5, pady=15, row=12, sticky="ew")
         self.CW_Calibration_Frame.pack(fill="x", side="top")
         self.CW_Calibration_Frame.grid_anchor("nw")
@@ -6318,7 +6319,7 @@ class SettingsnotebookWidget(ttk.Frame):
     def validate_EXTENDED_KEY4_END(self, p_entry_value, v_condition):
         pass
 
-    def runADCScanner(self):
+    def runADCScannerENCSW(self):
         pass
 
     def validate_EXTENDED_KEY5_START(self, p_entry_value, v_condition):
@@ -6430,6 +6431,9 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def load_Recommended_ADC_CW_Values(self):
+        pass
+
+    def runADCScannerCWKEYER(self):
         pass
 
     def SMeter_Input_CB(self):

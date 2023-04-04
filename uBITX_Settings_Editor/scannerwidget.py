@@ -1,39 +1,53 @@
 #!/usr/bin/python3
 import tkinter as tk
 import tkinter.ttk as ttk
-from pygubu.widgets.scrollbarhelper import ScrollbarHelper
 
 
 class ScannerWidget(tk.Toplevel):
     def __init__(self, master=None, **kw):
         super(ScannerWidget, self).__init__(master, **kw)
         self.scanner_frame = ttk.Frame(self)
-        self.scanner_frame.configure(height=200, width=800)
+        self.scanner_frame.configure(height=200, width=600)
         self.com_portManager_frame = ttk.Frame(self.scanner_frame)
         self.com_portManager_frame.configure(height=50, width=550)
         self.com_portManager_frame.grid(
             column=0, columnspan=3, row=0, sticky="ew")
         self.frame2 = ttk.Frame(self.scanner_frame)
-        self.frame2.configure(height=200, width=50)
-        self.scanner_Go_Button_Widget = ttk.Button(self.frame2)
-        self.scanner_Go_Button_Widget.configure(
-            state="normal", style="Button4.TButton", text='Scan')
-        self.scanner_Go_Button_Widget.pack(pady=30)
-        self.scanner_Go_Button_Widget.configure(command=self.scannerStart)
-        self.scanner_Done_Button_Widget = ttk.Button(self.frame2)
-        self.scanner_Done_Button_Widget.configure(text='Done')
-        self.scanner_Done_Button_Widget.pack()
-        self.scanner_Done_Button_Widget.configure(command=self.scannerDone)
-        self.frame2.grid(column=2, ipadx=15, row=1, sticky="new")
-        self.scrollbarhelper1 = ScrollbarHelper(
-            self.scanner_frame, scrolltype="vertical")
-        self.scrollbarhelper1.configure(usemousewheel=False)
-        self.scannerLog_Text = tk.Text(self.scrollbarhelper1.container)
+        self.frame2.configure(height=200)
+        self.scanner_Start_Button_Widget = ttk.Button(self.frame2)
+        self.scanner_Start_Button_Widget.configure(
+            state="normal", style="Button4.TButton", text='Start')
+        self.scanner_Start_Button_Widget.pack(pady="15 25")
+        self.scanner_Start_Button_Widget.configure(command=self.scannerStart)
+        self.scanner_Stop_Button_Widget = ttk.Button(self.frame2)
+        self.scanner_Stop_Button_Widget.configure(
+            state="disabled", style="Button4.TButton", text='Stop')
+        self.scanner_Stop_Button_Widget.pack(pady="0 25")
+        self.scanner_Stop_Button_Widget.configure(command=self.scannerStop)
+        self.scanner_Quit_Button_Widget = ttk.Button(self.frame2)
+        self.scanner_Quit_Button_Widget.configure(
+            style="Button4.TButton", text='Quit')
+        self.scanner_Quit_Button_Widget.pack()
+        self.scanner_Quit_Button_Widget.configure(command=self.scannerQuit)
+        self.frame2.grid(column=1, padx=25, pady="20 0", row=1, sticky="new")
+        self.frame3 = ttk.Frame(self.scanner_frame)
+        self.frame3.configure(width=55)
+        self.scannerLog_Text = tk.Text(self.frame3)
         self.scannerLog_Text.configure(
-            height=10, state="disabled", width=50, wrap="none")
-        self.scannerLog_Text.pack(side="top")
-        self.scrollbarhelper1.add_child(self.scannerLog_Text)
-        self.scrollbarhelper1.grid(padx=10, pady=15, row=1)
+            borderwidth=0,
+            height=10,
+            state="disabled",
+            width=45,
+            wrap="none")
+        self.scannerLog_Text.pack(
+            expand="true",
+            fill="both",
+            padx="20 0",
+            side="left")
+        self.scrollbar1 = ttk.Scrollbar(self.frame3)
+        self.scrollbar1.configure(orient="vertical")
+        self.scrollbar1.pack(expand="true", fill="y", side="top")
+        self.frame3.grid(column=0, pady="20 20", row=1)
         self.scanner_frame.pack(
             anchor="center",
             expand="true",
@@ -43,7 +57,6 @@ class ScannerWidget(tk.Toplevel):
         self.scanner_frame.columnconfigure(1, weight=2)
         self.configure(height=200, width=600)
         self.resizable(True, True)
-        self.title("I2C Scanner")
 
         self.setup_ttk_styles()
 
@@ -148,7 +161,10 @@ class ScannerWidget(tk.Toplevel):
     def scannerStart(self):
         pass
 
-    def scannerDone(self):
+    def scannerStop(self):
+        pass
+
+    def scannerQuit(self):
         pass
 
 

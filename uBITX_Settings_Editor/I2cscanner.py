@@ -1,5 +1,5 @@
 from Scanner import Scanner
-from com_portManager import com_portManager
+#from com_portManager import com_portManager
 import pygubu.widgets.simpletooltip as tooltip
 from time import sleep
 from globalvars import *
@@ -11,45 +11,58 @@ class I2Cscanner (Scanner):
 
     def __init__(self, parent):
         super().__init__(parent)
+        self.title("I2C Bus Scanner")
 
-
-        # create com port
-        self.comPortObj = com_portManager(self.com_portManager_frame, self)
-
-        # pre-load com ports
-        self.comPortObj.updateComPorts()                           # Fill in available Com Ports
-
-        self.comPortObj.pack()                          # make com it visible
-        #   add tooltips
-        tooltip.create(self.scanner_Go_Button_Widget,"Click to run one scan of the I2C bus.")
-        tooltip.create(self.scanner_Done_Button_Widget,"Click when done scanning")
-        tooltip.create(self.comPortObj.comPortsOptionMenu,"Select the com port used by your uBITX")
-        tooltip.create(self.comPortObj.comPortListRefresh,"Refresh list of available com ports. "+
-                                                        "(You can also plug in your uBITX and then refresh list")
-        self.grab_set()
-
-    def scannerDone(self):
-        self.destroy()
 
     def scannerStart(self):
-        if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
-            self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
+        #
+        #   Some definitions might be helpful here...
+        #
+        #   self.comPortObj  is a handle to the comport that was openned when the eeprom was first read in
+        #                    in most cases, this should be still openned and can be directly read.
+        #   self.comPortObj.getSelectedComPort()  returns the name of the com port. e.g. COM8
+        #
+        #   so self.comPOrtObj.openSelectedComPort(self.comPortObj.getSelected()) is equivalent to asking whether COM8
+        #                   (or whatever) was opened previously, and if not open it.
 
-            magic1 = 0x16
-            magic2 = 0xe8
+        #print("comport real name =", self.comPortObj.getSelectedComPort())
 
-            self.RS232.write(bytes([magic1, magic2, 0, 0, READCOMMAND]))
-            self.RS232.flush()
+        #if(self.comPortObj.openSelectedComPort()):        # was able to open com port
+
+        self.log_msg(self.scannerLog_Text, "\n***Starting Scan of I2C for Devices***")
+        self.update()                                   #allows the updating of the text window
+
+        #self.RS232 = self.comPortObj.getComPortDesc()
+
+        # Enable Stop Button
+        self.scanner_Stop_Button_Widget.configure(state='normal')
+
+        magic1 = 0x16
+        magic2 = 0xe8
+        self.stop = False
+
+        while self.stop == False:
+                                #
+            #   This sends the command to the serial port. Notice that it is possible that the port
+            #   had been previously opened, was unplugged, and then re-plugged in.
+            #   In this case, the prior handle would be invalid. The only way to tell is to try
+            #   to write to it and see if it fails. This happens within sendCommand, and if the
+            #   write fails, it closes the old port, opens it up again to get a valid handle
+            #   and then sends the command.
+            #   So it has to update the original port handle by returning it. That is what is happening
+            #   below.
+
+            RS232=self.comPortObj.sendCommand(bytes([magic1, magic2, 0, 0, READCOMMAND]))
 
             i = 0
 
-            self.log_msg(self.scannerLog_Text, "\n***Starting Scan of I2C for Devices***")
+
             while i < 127:
-                if self.RS232.in_waiting != 0:
+                if RS232.in_waiting != 0:
                     if i== 0:
-                        throwaway = self.RS232.read(1)
+                        throwaway = RS232.read(1)
                     else:
-                        response = bytes(self.RS232.read(1))
+                        response = bytes(RS232.read(1))
                         if response != b'\x00':
                             strResponse = str(hex(ord(response)))
                             if (strResponse in I2Cscanner.knownI2C.keys()):
@@ -59,18 +72,24 @@ class I2Cscanner (Scanner):
                     i += 1
 
         #   get checksum sent by radio CAT control
-            while self.RS232.in_waiting == 0:
+            while RS232.in_waiting == 0:
                 sleep(0.01)
-            sentCheckSum = int.from_bytes(self.RS232.read(1),"little",signed=False)
+            sentCheckSum = int.from_bytes(RS232.read(1),"little",signed=False)
 
         #   get trailing byte. Must be an ACK (0x00)
-            while self.RS232.in_waiting == 0:
+            while RS232.in_waiting == 0:
                 sleep(0.01)
-            trailingByte = int.from_bytes(self.RS232.read(1),"little",signed=False)
+            trailingByte = int.from_bytes(RS232.read(1),"little",signed=False)
 
-            return
+            self.log_msg(self.scannerLog_Text,' ')          #forces a newline between scans
+            self.update()                                   #allows the updating of the text window
+
+            sleep(1)
+
+        return
+
     def enableGoButtonComPort(self):
-        self.scanner_Go_Button_Widget.configure(state='normal')
+        self.scanner_Start_Button_Widget.configure(state='normal')
 
     def disableGoButtonComPort(self):
-        self.scanner_Go_Button_Widget.configure(state='disabled')
+        self.scanner_Start_Button_Widget.configure(state='disabled')

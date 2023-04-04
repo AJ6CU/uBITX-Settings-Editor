@@ -55,7 +55,7 @@ class InputProcessor(Processor):
                 self.UserModroot = ET.parse(self.savedFilePathChooser.get())
             except:
                 self.log.printerror("timestamp", self.savedFilePathChooser.get() + "is corrupted")
-                tk.messagebox.showerror(title="FATAL ERROR", message=self.savedFilePathChooser.get() + " is corrupted. Please correct or recreate. \nEXITING")
+                tkinter.messagebox.showerror(title="FATAL ERROR", message=self.savedFilePathChooser.get() + " is corrupted. Please correct or recreate. \nEXITING")
                 sys.exit(-1)
 
             self.log.println("timestamp", "Completed preprocessing of settings file")
@@ -77,7 +77,7 @@ class InputProcessor(Processor):
 
         else:
                 self.log.printerror("timestamp", self.savedFilePathChooser.get() + " is not a '.xml' or '.btx' file")
-                tk.messagebox.showerror(title="FATAL ERROR", message=self.savedFilePathChooser.get() + " is not a '.xml' or '.btx' file \nEXITING")
+                tkinter.messagebox.showerror(title="FATAL ERROR", message=self.savedFilePathChooser.get() + " is not a '.xml' or '.btx' file \nEXITING")
                 sys.exit(-1)
 
 
@@ -96,19 +96,13 @@ class InputProcessor(Processor):
         self.log.println("timestamp", "From Com Port: " + self.comPortObj.getSelectedComPort())
         self.log.println("timestamp",  "Awaiting Radio Processor Ready this will take 3-5 seconds")
 
-        if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
-            self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
-
-            self.log.println("timestamp",  "Refreshing In-memory Copy of EEPROM")
-
-            self.eepromCom = eepromUBITX(self.RS232, self.log)
-            self.eepromCom.read()
-
-
+        self.eepromCom = eepromUBITX(self.comPortObj, self.log)
+        if (self.eepromCom.readFromCom() == True):         #returns True if read successful
             self.log.println("timestamp",  "Finished reading EEPROM into memory")
-
             return True
         else:
+            self.log.printerror("timestamp",  "Failed reading uBITX on selected Serial Port.")
+            self.log.printerror("timestamp",  "Please check your Serial Port selection and try again")
             return False
 
 

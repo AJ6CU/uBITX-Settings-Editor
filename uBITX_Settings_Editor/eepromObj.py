@@ -2827,7 +2827,7 @@ class eepromObj:
                 eepromObj.EEPROMroot = ET.parse(EEPROMMEMORYMAP)
             except:
                 self.log.println("timestamp",  EEPROMMEMORYMAP + " is missing or corrupted")
-                tk.messagebox.showerror(title="FATAL ERROR", message=EEPROMMEMORYMAP + " is missing or corrupted. Please re-install application. \nEXITING")
+                tkinter.messagebox.showerror(title="FATAL ERROR", message=EEPROMMEMORYMAP + " is missing or corrupted. Please re-install application. \nEXITING")
                 sys.exit(-1)
 
             self.log.println("timestamp",  "Completed preprocessing of EEPROM Memory Mapping")
@@ -2839,16 +2839,10 @@ class eepromObj:
                 eepromObj.UserModroot = ET.parse(USERMODFILETEMPLACE)
             except:
                 self.log.printerror("timestamp",  USERMODFILETEMPLACE + " is missing or corrupted")
-                tk.messagebox.showerror(title="FATAL ERROR", message=USERMODFILETEMPLACE + " is missing or corrupted. Please re-install application. \nEXITING")
+                tkinter.messagebox.showerror(title="FATAL ERROR", message=USERMODFILETEMPLACE + " is missing or corrupted. Please re-install application. \nEXITING")
                 sys.exit(-1)
 
             self.log.println("timestamp",  "Completed preprocessing of User Modification Template")
-
-    def read(self):
-        pass
-
-    def write(self):
-        pass
 
     def decode(self)->object:
         #
@@ -2928,49 +2922,53 @@ class eepromObj:
 
 class eepromUBITX (eepromObj):          # subclass
 
-    def __init__(self, comPort, log, **kw):
+    def __init__(self, comPortObj, log, **kw):
         super().__init__ (log, **kw)
-        self.comPort = comPort
+        self.comPortObj = comPortObj
+
 
     def getEEPROMSize(self):                # Read from Com Port
 
-        self.comPort.write(bytes([0, 0, 0, 0, GETSIZECOMMAND]))
-
-        # create buffer to save bytes being returned
-        # byte1 = 0x2 - always
-        # 4 bytes LSB first
-        # byte3 = checksum of bytes above
-        # byte4 = 0x0 (ACK)
-
+        RS232=self.comPortObj.sendCommand(bytes([0, 0, 0, 0, GETSIZECOMMAND]))
 
         checkSum: int = 0x02
         theEEPROMsize: int =0
 
+        lastReadTime = millis()             #get time to check for timeout
         i = -1
         while i < 4:
-             if self.comPort.in_waiting != 0:
+            if RS232.in_waiting != 0:
+                lastReadTime = millis()
                 if i< 0:
-                    throwaway = self.comPort.read(1)
+                    throwaway = RS232.read(1)
                 else:
-                    readByte = int.from_bytes(self.comPort.read(),"little",signed=False)
+                    readByte = int.from_bytes(RS232.read(),"little",signed=False)
                     theEEPROMsize += readByte << (i*8)
                     checkSum = (checkSum + readByte ) & 0xFF
                 i += 1
+            else:
+                if (millis() - lastReadTime > SERIALTIMEOUT):
+                    self.log.printerror("timestamp","Timeout when trying to reading size of EEPROM. Assuming default of 1024 bytes.")
+                    RS232.flush()
+                    return DEFAULT_EEPROM_SIZE
 
     #   get checksum sent by radio CAT control
-        while self.comPort.in_waiting == 0:
+        while RS232.in_waiting == 0:
             sleep(0.01)
-        sentCheckSum = int.from_bytes(self.comPort.read(1),"little",signed=False)
+        sentCheckSum = int.from_bytes(RS232.read(1),"little",signed=False)
+
 
     #   get trailing byte. Must be an ACK (0x00)
-        while self.comPort.in_waiting == 0:
+        while RS232.in_waiting == 0:
             sleep(0.01)
-        trailingByte = int.from_bytes(self.comPort.read(1),"little",signed=False)
+        trailingByte = int.from_bytes(RS232.read(1),"little",signed=False)
+
 
         if(sentCheckSum!=checkSum)|(trailingByte!=0):
             self.log.printerror("timestamp","Bad Checksum on EEPROM Read")
             tkinter.messagebox.showerror(title="ERROR", message="Bad Checksum reading size of EEPROM from Radio.\nTry restarting radio, ensuring the USB cable plugged in securely, and then restart application. \nEXITING")
             sys.exit(-1)
+
         return theEEPROMsize
 
     def read1024Bytes(self, blockNum):
@@ -2986,6 +2984,7 @@ class eepromUBITX (eepromObj):          # subclass
         NumLSB = blockSize & 0xff
         NumMSB = (blockSize  >> 8) & 0xff
 
+
         # send command buffer to radio
         # byte1 = LSB of the start location in EEPROM
         # byte2 = MSB of the start location in EEPROM
@@ -2993,68 +2992,77 @@ class eepromUBITX (eepromObj):          # subclass
         # byte4 - MSB of the total bytes to read from EEPROM
         # byte5 - Command telling the radio what to do
 
-        self.comPort.write(bytes([StartLSB, StartMSB, NumLSB, NumMSB, READCOMMAND]))
-
-        # create buffer to save bytes being returned
-        # byte1 = 0x2 - always
-        # lots of bytes = number of bytes requested
-        # byte3 = checksum of bytes above
-        # byte4 = 0x0 (ACK)
-
+        RS232=self.comPortObj.sendCommand(bytes([StartLSB, StartMSB, NumLSB, NumMSB, READCOMMAND]))
 
         checkSum: int = 0x02
 
         i = -1
         offset = blockNum*blockSize
+        lastReadTime = millis()
         while i < blockSize:
-            if self.comPort.in_waiting != 0:
+            if RS232.in_waiting != 0:
+                lastReadTime = millis()
+            # if self.comPort.in_waiting != 0:
                 if i< 0:
-                    throwaway = self.comPort.read(1)
+                    throwaway = RS232.read(1)
                 else:
-                    eepromObj.EEPROMBuffer[i+offset] = int.from_bytes(self.comPort.read(1),"little")
+                    eepromObj.EEPROMBuffer[i+offset] = int.from_bytes(RS232.read(1),"little")
                     checkSum = (checkSum+eepromObj.EEPROMBuffer[i+offset] ) & 0xFF
                 i += 1
+            if (millis() -lastReadTime > SERIALTIMEOUT):
+                self.log.printerror("timestamp","Timeout reading from Serial Port.")
+                RS232.flush()
+                return False
+
 
     #   get checksum sent by radio CAT control
-        while self.comPort.in_waiting == 0:
+
+        while RS232.in_waiting == 0:
             sleep(0.01)
-        sentCheckSum = int.from_bytes(self.comPort.read(1),"little",signed=False)
+
+        sentCheckSum = int.from_bytes(RS232.read(1),"little",signed=False)
 
     #   get trailing byte. Must be an ACK (0x00)
-        while self.comPort.in_waiting == 0:
+        while RS232.in_waiting == 0:
             sleep(0.01)
-        trailingByte = int.from_bytes(self.comPort.read(1),"little",signed=False)
+
+        trailingByte = int.from_bytes(RS232.read(1),"little",signed=False)
 
         if(sentCheckSum!=checkSum)|(trailingByte!=0):
             self.log.printerror("timestamp","Bad Checksum on EEPROM Read")
             tkinter.messagebox.showerror(title="ERROR", message="Bad Checksum reading from Radio.\nTry restarting radio, ensuring the USB cable plugged in securely, and then restart application. \nEXITING")
             sys.exit(-1)
 
+        #   If we made it here, have passed all the tests and so return True
+        return True
 
-    def read(self):                # Read from Com Port
+    def readFromCom(self):                # Read from Com Port
 
-        #clear out buffers before  re-reading
-        #only need to do this on uppoer part of eeprom because lower will be overwritten by next read
+            #   clear out buffers before  re-reading
 
-        for i in range(1024, 2047):
-            eepromObj.EEPROMBuffer[i]=0
-        eepromObj.EEPROMBufferDirty.setall(0)
+        for i in range(0, MAXEEPROMSIZE-1):
+            eepromObj.EEPROMBuffer[i] = 0
+            eepromObj.EEPROMBufferDirty[i] = 0
 
-        self.read1024Bytes(0)           #read the first 1024 bytes
+        self.log.println("timestamp",  "Reading from EEPROM")
 
-        # Check whether large or small EEPROM. Set it properly so we don't try to read bad data
-        if (eepromObj.EEPROMBuffer[VERSION_ADDRESS]  >= KD8CEC_V2_INTERNAL_VERSION_NUM):     #we have V2 or better, can get
+        if(self.read1024Bytes(0) != True):          #   A return value of True indicates we were successful reading 1024 bytes
+            return False
 
+        # Reaching this point means we were able to read 1024 bytes from the EEPROM. We can now check whether
+        # large (>2048 or larger EEPROM) or small EEPROM (< 1024). Set it properly so we don't try to read bad data
+
+        if (eepromObj.EEPROMBuffer[VERSION_ADDRESS]  >= KD8CEC_V2_INTERNAL_VERSION_NUM):     #we have V2 or better, can ask what is the EEPROM size
             setEEPROM_SIZE(self.getEEPROMSize())
-
         else:
-            setEEPROM_SIZE(1024)
+            setEEPROM_SIZE(DEFAULT_EEPROM_SIZE)          # We have KD8CEC V1.2 or earlier, so that means only 1024 EEPROM and we can't ask...
+            return True                                 # Have read first block and this is defaulting to 1024, so we are done
 
-        if getEEPROM_SIZE () == MAXEEPROMSIZE:                 # We have a 2k eeprom and so ok to read the second block
-            self.read1024Bytes(1)                       #read the second 1024 bytes
-
-
-
+        if getEEPROM_SIZE () == MAXEEPROMSIZE:          # We have a 2k eeprom and so ok to read the second block
+            if (self.read1024Bytes(1)   != True):        # read the second 1024 bytes.If we don't get True, flag failure
+                self.log.printerror("timestamp",  "Error reading EEPROM. Please check your Serial Port selection and try reading again")
+                return False
+        return True
 
     def writeByteToEEPROM(self, memAddress: int, outbyte: int):
         self.log.println("timestamp","EEPROM Memory Address = " + str(memAddress))
@@ -3062,28 +3070,31 @@ class eepromUBITX (eepromObj):          # subclass
         MSB: bytes = (memAddress >> 8) & 0xff
 
         checkByte: int = ((LSB + MSB + outbyte) % 256) & 0xff
-        bytesToWrite = bytes([LSB, MSB, outbyte, checkByte, WRITECOMMAND])
-        self.comPort.write(bytesToWrite)
+
+        return self.comPortObj.sendCommand(bytes([LSB, MSB, outbyte, checkByte, WRITECOMMAND]))
 
 
     def write(self):                # Write to Com Port
+        #NEED TO PROTECT FACTORY SETTINGS HERE
+        #NEED TO CHECK THAT BASIC CALLIRBATION SETTINGS ARE NOT OVERRIDDED WITHOUT POSIVIE CONFIRMATION
+
 
         self.log.println("timestamp","The Following EEPROM Locations Were Updated")
         i: int = 0
+        cntWritten = 0          # keeps track of bytes written
         while i < MAXWRITETOEEPROM:
             if eepromObj.EEPROMBufferDirty[i]:  # Got a dirty byte
-                self.writeByteToEEPROM(i, eepromObj.EEPROMBuffer[i])
+                RS232=self.writeByteToEEPROM(i, eepromObj.EEPROMBuffer[i])
 
-                doneWithByte: bool = False
                 retryCnt: int = 0
                 while True:  # keep tring to write until successful or exceed # retries
 
-                    while self.comPort.in_waiting == 0:
+                    while RS232.in_waiting == 0:
                         sleep(0.005)
-                    resultCode = int.from_bytes(self.comPort.read(1), "little", signed=False)
-                    while self.comPort.in_waiting == 0:
+                    resultCode = int.from_bytes(RS232.read(1), "little", signed=False)
+                    while RS232.in_waiting == 0:
                         sleep(0.005)
-                    trailingByte = int.from_bytes(self.comPort.read(1), "little", signed=False)
+                    trailingByte = int.from_bytes(RS232.read(1), "little", signed=False)
                     if (resultCode == OK) & (trailingByte == ACK):
                         break
                     else:
@@ -3094,10 +3105,12 @@ class eepromUBITX (eepromObj):          # subclass
                         if retryCnt > RETRIES:
                             self.log.printerror("timestamp","number of retries exceeded on memory location: " + str(i))
                             return (1)  # Failure
+                cntWritten += 1
             i += 1
+
         #   cleardirty bit
         eepromObj.EEPROMBufferDirty.setall(0)               
-        return (0)                      # Success
+        return (cntWritten)                      # return count of bytes written
 
 class eepromFILE (eepromObj):
     def __init__(self, fname, log, **kw):
@@ -3109,6 +3122,7 @@ class eepromFILE (eepromObj):
         fd = open(self.fname, "rb")
         eepromObj.EEPROMBuffer=bytearray(fd.read(BACKUPFILESIZE))
         fd.close()
+
         # Check whether large or small EEPROM. Set it properly so we don't try to read bad data
         if (eepromObj.EEPROMBuffer[VERSION_ADDRESS]  >= KD8CEC_V2_INTERNAL_VERSION_NUM) and \
             (eepromObj.EEPROMBuffer[EXT_FIRMWARE_ID_ADDR1]  == MAGIC_VALID_EEPROM_1) and \

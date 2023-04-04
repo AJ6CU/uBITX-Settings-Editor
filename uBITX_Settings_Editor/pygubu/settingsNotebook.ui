@@ -6285,7 +6285,7 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                             </layout>
                             <child>
                               <object class="ttk.Button" id="runADCScanner_WIDGET" named="True">
-                                <property name="command" type="command" cbtype="simple">runADCScanner</property>
+                                <property name="command" type="command" cbtype="simple">runADCScannerENCSW</property>
                                 <property name="style">Button4.TButton</property>
                                 <property name="text" translatable="yes">ADC Scanner</property>
                                 <layout manager="grid">
@@ -8593,7 +8593,7 @@ Factory settings?</property>
                             </child>
                             <child>
                               <object class="ttk.Button" id="CAL_runADCScanner_WIDGET" named="True">
-                                <property name="command" type="command" cbtype="simple">runADCScanner</property>
+                                <property name="command" type="command" cbtype="simple">runADCScannerCWKEYER</property>
                                 <property name="style">Button4.TButton</property>
                                 <property name="text" translatable="yes">ADC Scanner</property>
                                 <layout manager="grid">

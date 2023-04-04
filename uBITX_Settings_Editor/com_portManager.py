@@ -1,4 +1,5 @@
 import serial.tools.list_ports              # Used to get a list of com ports
+import tkinter.messagebox
 from comportmanagerwidget import ComPortmanagerWidget
 from time import sleep
 from globalvars import *
@@ -17,17 +18,16 @@ class com_portManager(ComPortmanagerWidget):
         self.parentPtr = parentHook         # need pointer to parent to invoke callback to enable/disable buttons
         self.updateComPorts()               #preload the available com ports
 
-    def openComPort (self, comPort):
-        if comPort in com_portManager.open_com_ports.keys():  # Need to close first in case of unplug and plug in  of new ubitx
-            com_portManager.open_com_ports[comPort].close()
-            del com_portManager.open_com_ports[comPort]
+    def openSelectedComPort (self):
+        comPort = self.getSelectedComPort()                    # get the selected com port
+        if comPort in com_portManager.open_com_ports.keys():  #so we have seen this port before.
+            return True
 
-        # Now try to open the port
+        # if we made it to this point, port is either new, or was interrupted and we closed it.
 
         try:
-            RS232 = serial.Serial(comPort, BAUD, timeout=0, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
+            RS232 = serial.Serial(comPort, BAUD, timeout=5, stopbits=1, parity=serial.PARITY_NONE, xonxoff=0, rtscts=0)
         except:
-            print("failed to open port", comPort)
             return False
         else:
             com_portManager.open_com_ports[comPort] = RS232
@@ -35,8 +35,17 @@ class com_portManager(ComPortmanagerWidget):
                                                             # processor to reset.
             return True
 
-    def getComPortPTR (self, comPort):
-        return com_portManager.open_com_ports[comPort]
+    def resetComPort (self):
+        comPort = self.getSelectedComPort()
+        try:
+            com_portManager.open_com_ports[comPort].close()
+        except:
+            pass
+        del com_portManager.open_com_ports[comPort]
+        return self.openSelectedComPort ()
+
+    def getComPortDesc (self):
+        return com_portManager.open_com_ports[self.getSelectedComPort()]
 
 
     def updateComPorts(self, *args):
@@ -63,4 +72,29 @@ class com_portManager(ComPortmanagerWidget):
 
     def getSelectedComPort(self):
         return self.availableComPorts.get()
+
+    def sendCommand (self, theCommand): # DO WE NEED THE PORT AS AN INPUT?ISn't it always the selected port???'
+                                          # DEPENDING ON WRITE OR READ ARE DIFFERENT OBJECTS. SO SELECTED PORT SHOULD BE THE PORT FOR
+                                           # INPUT OR OUR OUTPUT OR SCANNER
+        if(self.openSelectedComPort()):       # Was able to open the com port or it was already openned
+            port = self.getComPortDesc()
+            try:
+                port.write(theCommand)
+            except:
+                if(self.resetComPort()):     # Successful was able to reset serial port, try again
+                    port = self.getComPortDesc()
+
+                    try:                    # Try one more time...
+                        port.write(theCommand)
+                    except:
+                        tkinter.messagebox.showerror(title="ERROR", message="Communication failed to uBITX. Unplug the USB cable, power cycle your radio, reconnect and try again. \nEXITING")
+                        sys.exit(-1)
+                else:
+                        tkinter.messagebox.showerror(title="ERROR", message="Communication failed to uBITX. Unplug the USB cable, power cycle your radio, reconnect and try again. \nEXITING")
+                        sys.exit(-1)
+            #port.flush()
+            return port
+        else:
+            tkinter.messagebox.showerror(title="ERROR", message="Unexpected error trying to open serial communications to uBITX. Unplug the USB cable, power cycle your radio, reconnect and try again. \nEXITING")
+            sys.exit(-1)
 
