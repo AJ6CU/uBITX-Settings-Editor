@@ -1261,10 +1261,10 @@
 <!-- 	
 GENERAL UX
  -->
-	<SETTING NAME="NEXTION_DISPLAY_CALL_SIGN">
+	<SETTING NAME="DISPLAY_CALL_SIGN">
 		<label>Display Call Sign?</label>
-		<value>Display </value>										<!--either YES or NO-->
-		<tooltip></tooltip>											<!--appears to be unused - deprecated-->
+		<value></value>										<!--either YES or NO-->
+		<tooltip>Check to display callsign on LCD screen on 20x4 and dual 16x2 LCD's (always displayed on Nextions)</tooltip>
 	</SETTING>
 
 	<SETTING NAME="STORED_IF_SHIFT">

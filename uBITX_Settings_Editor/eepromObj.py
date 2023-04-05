@@ -1030,8 +1030,8 @@ class eepromObj:
         def ONE_TWO_LINE_TOGGLE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             value.text = BOOL_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)  & 0x01]
 
-        def NEXTION_DISPLAY_CALL_SIGN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-            value.text = BOOL_SELECT[(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >> 1) & 0x01]
+        def DISPLAY_CALL_SIGN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = BOOL_SELECT[(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >> 7) & 0x01]
 
         def MAIN_SCREEN_FORMAT(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             value.text = MAIN_MENU_SELECT[(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))]
@@ -2550,8 +2550,8 @@ class eepromObj:
             tmpByte: bytes = (EEPROMBuffer[memLocation] & (~0x01)) | BOOL_SELECT.index(userSettingValue)
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, tmpByte)
 
-        def NEXTION_DISPLAY_CALL_SIGN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-            tmpByte: bytes = (EEPROMBuffer[memLocation] & (~0x02)) | (BOOL_SELECT.index(userSettingValue) << 1)
+        def DISPLAY_CALL_SIGN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            tmpByte: bytes = (EEPROMBuffer[memLocation] & (~0x08)) | (BOOL_SELECT.index(userSettingValue) << 7)
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, tmpByte)
 
         def MAIN_SCREEN_FORMAT(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
@@ -3038,7 +3038,7 @@ class eepromUBITX (eepromObj):          # subclass
             self.log.printerror("timestamp","Bad Checksum on EEPROM Read")
             tkinter.messagebox.showerror(title="ERROR", message="Bad Checksum reading size of EEPROM from Radio.\nTry restarting radio, ensuring the USB cable plugged in securely, and then restart application. \nEXITING")
             sys.exit(-1)
-
+        print (theEEPROMsize)
         return theEEPROMsize
 
     def read1024Bytes(self, blockNum):

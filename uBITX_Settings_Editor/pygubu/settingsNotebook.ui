@@ -5630,6 +5630,22 @@ Dual LCD Config</property>
                               </object>
                             </child>
                             <child>
+                              <object class="ttk.Label" id="label11">
+                                <property name="relief">flat</property>
+                                <property name="state">normal</property>
+                                <property name="style">Normal.TLabel</property>
+                                <property name="text" translatable="yes">The default display is for VFO-A and its Mode to be on second line and the top line is used for VFO-B and other info. These checkboxes allow you to customize this display.</property>
+                                <property name="wraplength">550</property>
+                                <layout manager="grid">
+                                  <property name="column">0</property>
+                                  <property name="padx">50</property>
+                                  <property name="pady">5 10</property>
+                                  <property name="row">3</property>
+                                  <property name="sticky">w</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
                               <object class="ttk.Checkbutton" id="SCROLLING_DISPLAY_WIDGET" named="True">
                                 <property name="offvalue">NO</property>
                                 <property name="onvalue">YES</property>
@@ -5675,17 +5691,16 @@ Dual LCD Config</property>
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Label" id="label11">
-                                <property name="relief">flat</property>
-                                <property name="state">normal</property>
-                                <property name="style">Normal.TLabel</property>
-                                <property name="text" translatable="yes">The default display is for VFO-A and its Mode to be on second line and the top line is used for VFO-B and other info. These checkboxes allow you to customize this display.</property>
-                                <property name="wraplength">550</property>
+                              <object class="ttk.Checkbutton" id="DISPLAY_CALL_SIGN_WIDGET" named="True">
+                                <property name="offvalue">NO</property>
+                                <property name="onvalue">YES</property>
+                                <property name="style">CheckboxNormal.TCheckbutton</property>
+                                <property name="text" translatable="yes">Display Callsign on 20x4 and dual 16x2 LCD configurations</property>
+                                <property name="variable">string:DISPLAY_CALL_SIGN</property>
                                 <layout manager="grid">
                                   <property name="column">0</property>
-                                  <property name="padx">50</property>
-                                  <property name="pady">5 10</property>
-                                  <property name="row">3</property>
+                                  <property name="padx">75</property>
+                                  <property name="row">7</property>
                                   <property name="sticky">w</property>
                                 </layout>
                               </object>
@@ -5706,14 +5721,6 @@ Dual LCD Config</property>
                     <child>
                       <object class="ttk.Label" id="MAIN_SCREEN_FORMAT_WIDGET" named="True">
                         <property name="textvariable">string:MAIN_SCREEN_FORMAT</property>
-                        <layout manager="pack">
-                          <property name="side">top</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Label" id="NEXTION_DISPLAY_CALL_SIGN_WIDGET" named="True">
-                        <property name="textvariable">string:NEXTION_DISPLAY_CALL_SIGN</property>
                         <layout manager="pack">
                           <property name="side">top</property>
                         </layout>

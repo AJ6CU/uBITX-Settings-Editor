@@ -21,7 +21,7 @@ class WsprmsggenWidget(tk.Toplevel):
             style="Normal.TEntry",
             textvariable=self.callsign,
             validate="focusout",
-            width=10)
+            width=8)
         self.callsign_WIDGET.grid(column=1, padx="0 10", row=0)
         _validatecmd = (self.callsign_WIDGET.register(
             self.validate_WSPR_callsign), "%P", "%V")
@@ -35,7 +35,7 @@ class WsprmsggenWidget(tk.Toplevel):
             style="Normal.TEntry",
             textvariable=self.gridSq,
             validate="focusout",
-            width=5)
+            width=6)
         self.gridSq_WIDGET.grid(column=3, padx="0 10", row=0)
         _validatecmd = (
             self.gridSq_WIDGET.register(

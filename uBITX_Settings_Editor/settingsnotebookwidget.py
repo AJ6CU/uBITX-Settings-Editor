@@ -3218,6 +3218,14 @@ class SettingsnotebookWidget(ttk.Frame):
             pady="20 0",
             row=2,
             sticky="ew")
+        self.label11 = ttk.Label(self.frame11)
+        self.label11.configure(
+            relief="flat",
+            state="normal",
+            style="Normal.TLabel",
+            text='The default display is for VFO-A and its Mode to be on second line and the top line is used for VFO-B and other info. These checkboxes allow you to customize this display.',
+            wraplength=550)
+        self.label11.grid(column=0, padx=50, pady="5 10", row=3, sticky="w")
         self.SCROLLING_DISPLAY_WIDGET = ttk.Checkbutton(self.frame11)
         self.SCROLLING_DISPLAY = tk.StringVar()
         self.SCROLLING_DISPLAY_WIDGET.configure(
@@ -3247,14 +3255,16 @@ class SettingsnotebookWidget(ttk.Frame):
             variable=self.ONE_TWO_LINE_TOGGLE)
         self.ONE_TWO_LINE_TOGGLE_WIDGET.grid(
             column=0, padx=75, row=4, sticky="w")
-        self.label11 = ttk.Label(self.frame11)
-        self.label11.configure(
-            relief="flat",
-            state="normal",
-            style="Normal.TLabel",
-            text='The default display is for VFO-A and its Mode to be on second line and the top line is used for VFO-B and other info. These checkboxes allow you to customize this display.',
-            wraplength=550)
-        self.label11.grid(column=0, padx=50, pady="5 10", row=3, sticky="w")
+        self.DISPLAY_CALL_SIGN_WIDGET = ttk.Checkbutton(self.frame11)
+        self.DISPLAY_CALL_SIGN = tk.StringVar()
+        self.DISPLAY_CALL_SIGN_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            style="CheckboxNormal.TCheckbutton",
+            text='Display Callsign on 20x4 and dual 16x2 LCD configurations',
+            variable=self.DISPLAY_CALL_SIGN)
+        self.DISPLAY_CALL_SIGN_WIDGET.grid(
+            column=0, padx=75, row=7, sticky="w")
         self.frame11.pack(anchor="w", pady=5, side="top")
         self.frame11.grid_anchor("nw")
         self.frame25.pack(anchor="w", padx=20, side="top")
@@ -3272,11 +3282,6 @@ class SettingsnotebookWidget(ttk.Frame):
         self.MAIN_SCREEN_FORMAT_WIDGET.configure(
             textvariable=self.MAIN_SCREEN_FORMAT)
         self.MAIN_SCREEN_FORMAT_WIDGET.pack(side="top")
-        self.NEXTION_DISPLAY_CALL_SIGN_WIDGET = ttk.Label(self.LCD_HIDDEN)
-        self.NEXTION_DISPLAY_CALL_SIGN = tk.StringVar()
-        self.NEXTION_DISPLAY_CALL_SIGN_WIDGET.configure(
-            textvariable=self.NEXTION_DISPLAY_CALL_SIGN)
-        self.NEXTION_DISPLAY_CALL_SIGN_WIDGET.pack(side="top")
         self.LCD_HIDDEN.pack(side="top")
         self.LCD_SF.pack(side="top")
         self.settingsNotebook.add(self.LCD_SF, text='Displays')

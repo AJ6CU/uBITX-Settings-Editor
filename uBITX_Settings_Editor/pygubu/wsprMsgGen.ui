@@ -53,7 +53,7 @@
                     <property name="textvariable">string:callsign</property>
                     <property name="validate">focusout</property>
                     <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_WSPR_callsign</property>
-                    <property name="width">10</property>
+                    <property name="width">8</property>
                     <layout manager="grid">
                       <property name="column">1</property>
                       <property name="padx">0 10</property>
@@ -78,7 +78,7 @@
                     <property name="textvariable">string:gridSq</property>
                     <property name="validate">focusout</property>
                     <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_WSPR_gridSq</property>
-                    <property name="width">5</property>
+                    <property name="width">6</property>
                     <layout manager="grid">
                       <property name="column">3</property>
                       <property name="padx">0 10</property>
