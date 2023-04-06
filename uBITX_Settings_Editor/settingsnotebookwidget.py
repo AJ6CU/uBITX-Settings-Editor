@@ -388,17 +388,25 @@ class SettingsnotebookWidget(ttk.Frame):
         self.CW_DISPLAY_FREQ_WIDGET = tk.OptionMenu(
             self.General_CW_Settings_Frame, self.CW_DISPLAY_FREQ, *__values, command=None)
         self.CW_DISPLAY_FREQ_WIDGET.grid(column=1, pady=10, row=15)
-        self.message8 = tk.Message(self.General_CW_Settings_Frame)
-        self.message8.configure(
+        self.text4 = tk.Text(self.General_CW_Settings_Frame)
+        self.text4.configure(
+            background="#eeeeee",
             borderwidth=2,
-            font="TkTextFont",
-            justify="left",
+            font="TkMenuFont",
+            foreground="black",
+            height=4,
+            padx=5,
             pady=5,
-            relief="ridge",
+            relief="groove",
+            state="disabled",
             takefocus=False,
-            text='When in CW mode, your VFO can display either your TX or RX frequency. TX seems to be generally the preferred choice. For more details, see:\nhttp://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html',
-            width=350)
-        self.message8.grid(column=2, padx=10, row=15)
+            width=57,
+            wrap="word")
+        _text_ = 'When in CW mode, your VFO can display either your TX or RX frequency. TX seems to be generally the preferred choice. For more details, see:\nhttp://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html\n'
+        self.text4.configure(state="normal")
+        self.text4.insert("0.0", _text_)
+        self.text4.configure(state="disabled")
+        self.text4.grid(column=2, padx="10 0", row=15)
         self.General_CW_Settings_Frame.pack(padx="50 0", side="top")
         self.General_CW_Frame.pack(anchor="w", side="top")
         self.frame48 = ttk.Frame(self.General_Frame)
@@ -3313,17 +3321,14 @@ class SettingsnotebookWidget(ttk.Frame):
             columnspan=2,
             padx=10,
             pady="0 5",
-            row=4,
+            row=3,
             sticky="e")
         self.SDR_OFFSET_MODE = tk.StringVar(value='NONE')
         __values = ['NONE', 'FIXED', 'MHZ', 'KHZ']
         self.SDR_OFFSET_MODE_WIDGET = ttk.OptionMenu(
             self.frame14, self.SDR_OFFSET_MODE, "NONE", *__values, command=None)
         self.SDR_OFFSET_MODE_WIDGET.grid(
-            column=3, padx="0 20", pady="0 5", row=4)
-        self.message1 = tk.Message(self.frame14)
-        self.message1.configure(justify="left", relief="raised", text="NONE:\tNo offset is provided to the data send to the \n\tSDR\n\nFIXED:\tThe SDR offset frequency is added to the\n\tfrequency on the display and sent to the SDR\n\nMHZ:\tThe single MHZ digit of the radio's frequency is\n\tadded. For example, if the radio was at\n\t14.032.000, and the offset was at 30.000.000,\n\tthe resulting frequency would be 43.032.000.\n\nKHZ:\tSimilar to MHZ_OFFSET, but using the KHZ\n\tnumber. So with a 30.000.000 offset and and \n\ta 14.032.000 radio setting, the SDR will see \n\ta 30.032.000 frequency.", width=500)
-        self.message1.grid(column=2, columnspan=3, padx="100 0", row=5)
+            column=3, padx="0 20", pady="0 5", row=3)
         self.label24 = ttk.Label(self.frame14)
         self.label24.configure(
             justify="left",
@@ -3361,6 +3366,25 @@ class SettingsnotebookWidget(ttk.Frame):
             variable=self.BOOT_INTO_SDR_MODE)
         self.BOOT_INTO_SDR_MODE_WIDGET.grid(
             column=1, columnspan=4, padx=8, pady=20, row=7, sticky="w")
+        self.text5 = tk.Text(self.frame14)
+        self.text5.configure(
+            background="#eeeeee",
+            borderwidth=2,
+            font="TkMenuFont",
+            foreground="black",
+            height=15,
+            padx=5,
+            pady=5,
+            relief="groove",
+            state="disabled",
+            takefocus=False,
+            width=50,
+            wrap="word")
+        _text_ = "NONE:\tNo offset is provided to the data send to the \n\tSDR\n\nFIXED:\tThe SDR offset frequency is added to the\n\tfrequency on the display and sent to the SDR\n\nMHZ:\tThe single MHZ digit of the radio's frequency is\n\tadded. For example, if the radio was at\n\t14.032.000, and the offset was at 30.000.000,\n\tthe resulting frequency would be 43.032.000.\n\nKHZ:\tSimilar to MHZ_OFFSET, but using the KHZ\n\tnumber. So with a 30.000.000 offset and and \n\ta 14.032.000 radio setting, the SDR will see \n\ta 30.032.000 frequency.\n"
+        self.text5.configure(state="normal")
+        self.text5.insert("0.0", _text_)
+        self.text5.configure(state="disabled")
+        self.text5.grid(column=2, columnspan=3, padx="100 0", row=4)
         self.frame14.pack(
             anchor="center",
             expand="false",
@@ -3399,17 +3423,25 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading3.TLabel",
             text='Extended Keys')
         self.label4.grid(column=0, row=0)
-        self.message6 = tk.Message(self.frame55)
-        self.message6.configure(
+        self.Extended_Keys_Info_Box = tk.Text(self.frame55)
+        self.Extended_Keys_Info_Box.configure(
+            background="#eeeeee",
             borderwidth=2,
-            font="TkTextFont",
-            justify="left",
+            font="TkMenuFont",
+            foreground="black",
+            height=7,
+            padx=5,
             pady=5,
-            relief="ridge",
+            relief="groove",
+            state="disabled",
             takefocus=False,
-            text='Supports attachment and control of an external button box. \n\nNOTE: Does NOT work with rotary encodes driven off digital pins. This is specific to the Pico, but depending on how KD8CEC is configured, my apply to other boards too.\n\nFor details, on the original design see: \nhttp://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html',
-            width=500)
-        self.message6.grid(column=2, padx=10, row=0)
+            width=80,
+            wrap="word")
+        _text_ = 'Supports attachment and control of an external button box. \n\nNOTE: Does NOT work with rotary encodes driven off digital pins. This is specific to the Pico, but depending on how KD8CEC is configured, my apply to other boards too.\n\nFor details, on the original design see: \nhttp://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html\n \n'
+        self.Extended_Keys_Info_Box.configure(state="normal")
+        self.Extended_Keys_Info_Box.insert("0.0", _text_)
+        self.Extended_Keys_Info_Box.configure(state="disabled")
+        self.Extended_Keys_Info_Box.grid(column=2, padx="15 0", row=0)
         self.frame55.grid(column=0, columnspan=10, pady="10 5", row=0)
         self.label14 = ttk.Label(self.frame29)
         self.label14.configure(style="Heading4.TLabel", text='ADC Range')
@@ -3802,11 +3834,25 @@ class SettingsnotebookWidget(ttk.Frame):
         self.runADCScanner_WIDGET.grid(column=0, row=0)
         self.runADCScanner_WIDGET.configure(command=self.runADCScannerENCSW)
         self.frame30.grid(column=1, columnspan=5, pady=15, row=19, sticky="ew")
-        self.message5 = tk.Message(self.frame29)
-        self.message5.configure(
-            text='All specified ADC values should be dividable by 4 (e.g. 16, 32, 40, etc.) - This is because of how the values are stored internally to save EEPROM space. If not, the values entered will be rounded down to the next number that is dividable by 4.',
-            width=320)
-        self.message5.grid(column=6, row=7, rowspan=8, sticky="w")
+        self.text1 = tk.Text(self.frame29)
+        self.text1.configure(
+            background="#eeeeee",
+            borderwidth=2,
+            font="TkMenuFont",
+            foreground="black",
+            height=4,
+            padx=5,
+            pady=5,
+            relief="groove",
+            state="disabled",
+            takefocus=False,
+            width=55,
+            wrap="word")
+        _text_ = 'All specified ADC values should be dividable by 4 (e.g. 16, 32, 40, etc.) - This is because of how the values are stored internally to save EEPROM space. If not, the values entered will be rounded down to the next number that is dividable by 4.\n'
+        self.text1.configure(state="normal")
+        self.text1.insert("0.0", _text_)
+        self.text1.configure(state="disabled")
+        self.text1.grid(column=6, padx="15 0", row=7, rowspan=10)
         self.frame29.pack(fill="x", padx="20 0", side="top")
         self.frame29.grid_anchor("nw")
         self.frame57 = ttk.Frame(self.Extensions_Frame)
@@ -3828,17 +3874,25 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading3.TLabel",
             text='Low Pass Filters')
         self.label10.grid(column=0, row=0, sticky="w")
-        self.message4 = tk.Message(self.frame56)
-        self.message4.configure(
+        self.text2 = tk.Text(self.frame56)
+        self.text2.configure(
+            background="#eeeeee",
             borderwidth=2,
-            font="TkTextFont",
-            justify="left",
+            font="TkMenuFont",
+            foreground="black",
+            height=7,
+            padx=5,
             pady=5,
-            relief="ridge",
+            relief="groove",
+            state="disabled",
             takefocus=False,
-            text="Provides customization of uBITX's LPF as well as external LPF attached to PA.\n\nNOTE: The EXTENDED option Does NOT work on configurations with LCD's using parallel data connections. \n\nFor details, see: \nhttp://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html",
-            width=500)
-        self.message4.grid(column=1, padx=10, row=0, sticky="w")
+            width=79,
+            wrap="word")
+        _text_ = "Provides customization of uBITX's LPF as well as external LPF attached to PA.\n\nNOTE: The EXTENDED option Does NOT work on configurations with LCD's using parallel data connections. \n\nFor details, see: \nhttp://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html\n"
+        self.text2.configure(state="normal")
+        self.text2.insert("0.0", _text_)
+        self.text2.configure(state="disabled")
+        self.text2.grid(column=1, padx="10 0", row=0)
         self.frame56.grid(column=0, pady="5 0", row=0)
         self.frame18 = ttk.Frame(self.frame8)
         self.frame18.configure(height=200, width=200)
@@ -4697,16 +4751,25 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label200 = ttk.Label(self.frame50)
         self.label200.configure(style="Heading3.TLabel", text='IF Adjustments')
         self.label200.grid(column=0, row=0)
-        self.message3 = tk.Message(self.frame50)
-        self.message3.configure(
+        self.text3 = tk.Text(self.frame50)
+        self.text3.configure(
+            background="#eeeeee",
             borderwidth=2,
-            font="TkTextFont",
-            justify="left",
+            font="TkMenuFont",
+            foreground="black",
+            height=2,
+            padx=5,
             pady=5,
-            relief="ridge",
-            text='Can improve receiver performance. For details, see:\nhttp://www.hamskey.com/2018/04/improves-ubitx-receive-performance-by.html',
-            width=500)
-        self.message3.grid(column=1, padx=10, row=0, sticky="w")
+            relief="groove",
+            state="disabled",
+            takefocus=False,
+            width=80,
+            wrap="word")
+        _text_ = 'Can improve receiver performance. For details, see:\nhttp://www.hamskey.com/2018/04/improves-ubitx-receive-performance-by.html\n'
+        self.text3.configure(state="normal")
+        self.text3.insert("0.0", _text_)
+        self.text3.configure(state="disabled")
+        self.text3.grid(column=1, padx="10 0", pady=5, row=0, sticky="w")
         self.frame50.pack(
             anchor="w",
             expand="true",
@@ -5126,23 +5189,6 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label1 = ttk.Label(self.S_Meter_Frame)
         self.label1.configure(style="Heading3.TLabel", text='S-Meter')
         self.label1.grid(column=0, padx=0, pady="20 0", row=1, sticky="ew")
-        self.message7 = tk.Message(self.S_Meter_Frame)
-        self.message7.configure(
-            borderwidth=2,
-            font="TkTextFont",
-            justify="left",
-            pady=5,
-            relief="ridge",
-            takefocus=False,
-            text='This setting is only for S-Meters where the sensor is directly attached to the main processor. If your uBITX is using a separate processor for the S-Meter (and perhaps SWR), then DO NOT enable this one.',
-            width=300)
-        self.message7.grid(
-            column=1,
-            columnspan=2,
-            padx="30 0",
-            pady="50 0",
-            row=1,
-            sticky="nw")
         self.S_METER_LEVELS_WIDGET = ttk.Checkbutton(self.S_Meter_Frame)
         self.S_METER_LEVELS = tk.StringVar()
         self.S_METER_LEVELS_WIDGET.configure(
@@ -5350,6 +5396,34 @@ class SettingsnotebookWidget(ttk.Frame):
             command=self.runSmeterAssistant)
         self.SMETER_CONFIG_FRAME.pack()
         self.frame28.grid(column=0, columnspan=2, row=4)
+        self.text6 = tk.Text(self.S_Meter_Frame)
+        self.text6.configure(
+            background="#eeeeee",
+            borderwidth=2,
+            font="TkMenuFont",
+            foreground="black",
+            height=4,
+            padx=5,
+            pady=5,
+            relief="groove",
+            state="disabled",
+            takefocus=False,
+            width=50,
+            wrap="word")
+        _text_ = 'This setting is only for S-Meters where the sensor is directly attached to the main processor. If your uBITX is using a separate processor for the S-Meter (and perhaps SWR), then DO NOT enable this one.\n'
+        self.text6.configure(state="normal")
+        self.text6.insert("0.0", _text_)
+        self.text6.configure(state="disabled")
+        self.text6.grid(
+            column=1,
+            columnspan=2,
+            padx="30 0",
+            pady="50 0",
+            row=1,
+            sticky="nw")
+        self.frame9 = ttk.Frame(self.S_Meter_Frame)
+        self.frame9.configure(height=200, width=200)
+        self.frame9.grid(column=0, row=5)
         self.S_Meter_Frame.pack(fill="x", side="top")
         self.S_Meter_Frame.grid_anchor("nw")
         self.frame21.pack(anchor="w", padx=20, side="top")

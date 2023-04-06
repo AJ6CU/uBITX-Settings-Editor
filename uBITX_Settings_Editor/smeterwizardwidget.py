@@ -20,17 +20,25 @@ class SmeterwizardWidget(tk.Toplevel):
             style="Heading2.TLabel",
             text='Define ADC# for S-Meter')
         self.label3.pack(anchor="n", padx=10, pady="40 0", side="left")
-        self.message6 = tk.Message(self.frame2)
-        self.message6.configure(
+        self.text7 = tk.Text(self.frame2)
+        self.text7.configure(
+            background="#eeeeee",
             borderwidth=2,
-            font="TkTextFont",
-            justify="left",
+            font="TkMenuFont",
+            foreground="black",
+            height=5,
+            padx=5,
             pady=5,
-            relief="ridge",
+            relief="groove",
+            state="disabled",
             takefocus=False,
-            text='ADC stands for Analog to Digital Converter. The voltage read at an analog pin is converted to a digital value between 0-1023.\n\nThis wizard allows you to set the digital equivalent for the signal strength that is measured on the analog pin of the CPU',
-            width=375)
-        self.message6.pack(anchor="e", padx=15, pady=10)
+            width=58,
+            wrap="word")
+        _text_ = 'ADC stands for Analog to Digital Converter. The voltage read at an analog pin is converted to a digital value between 0-1023.\n\nThis wizard allows you to set the digital equivalent for the signal strength that is measured on the analog pin of the CPU\n'
+        self.text7.configure(state="normal")
+        self.text7.insert("0.0", _text_)
+        self.text7.configure(state="disabled")
+        self.text7.pack(anchor="e", padx=15, pady=10)
         self.frame2.pack(expand="false", pady=10, side="top")
         self.frame8 = ttk.Frame(self.acquireADCValues_Frame)
         self.frame8.configure(height=200, width=200)

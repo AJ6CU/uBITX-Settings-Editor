@@ -2,6 +2,8 @@ import pygubu.widgets.simpletooltip as tooltip
 import tkinter as tk
 import tkinter.messagebox
 
+import webbrowser
+
 import re
 
 from settingsnotebookwidget import SettingsnotebookWidget

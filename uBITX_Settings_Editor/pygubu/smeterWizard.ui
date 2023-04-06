@@ -49,17 +49,23 @@
                   </object>
                 </child>
                 <child>
-                  <object class="tk.Message" id="message6">
+                  <object class="tk.Text" id="text7" named="True">
+                    <property name="background">#eeeeee</property>
                     <property name="borderwidth">2</property>
-                    <property name="font">TkTextFont</property>
-                    <property name="justify">left</property>
+                    <property name="font">TkMenuFont</property>
+                    <property name="foreground">black</property>
+                    <property name="height">5</property>
+                    <property name="padx">5</property>
                     <property name="pady">5</property>
-                    <property name="relief">ridge</property>
+                    <property name="relief">groove</property>
+                    <property name="state">disabled</property>
                     <property name="takefocus">false</property>
                     <property name="text" translatable="yes">ADC stands for Analog to Digital Converter. The voltage read at an analog pin is converted to a digital value between 0-1023.
 
-This wizard allows you to set the digital equivalent for the signal strength that is measured on the analog pin of the CPU</property>
-                    <property name="width">375</property>
+This wizard allows you to set the digital equivalent for the signal strength that is measured on the analog pin of the CPU
+</property>
+                    <property name="width">58</property>
+                    <property name="wrap">word</property>
                     <layout manager="pack">
                       <property name="anchor">e</property>
                       <property name="padx">15</property>

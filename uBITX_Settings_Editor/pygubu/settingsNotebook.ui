@@ -716,19 +716,25 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="tk.Message" id="message8">
+                                  <object class="tk.Text" id="text4" named="True">
+                                    <property name="background">#eeeeee</property>
                                     <property name="borderwidth">2</property>
-                                    <property name="font">TkTextFont</property>
-                                    <property name="justify">left</property>
+                                    <property name="font">TkMenuFont</property>
+                                    <property name="foreground">black</property>
+                                    <property name="height">4</property>
+                                    <property name="padx">5</property>
                                     <property name="pady">5</property>
-                                    <property name="relief">ridge</property>
+                                    <property name="relief">groove</property>
+                                    <property name="state">disabled</property>
                                     <property name="takefocus">false</property>
                                     <property name="text" translatable="yes">When in CW mode, your VFO can display either your TX or RX frequency. TX seems to be generally the preferred choice. For more details, see:
-http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
-                                    <property name="width">350</property>
+http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html
+</property>
+                                    <property name="width">57</property>
+                                    <property name="wrap">word</property>
                                     <layout manager="grid">
                                       <property name="column">2</property>
-                                      <property name="padx">10</property>
+                                      <property name="padx">10 0</property>
                                       <property name="row">15</property>
                                     </layout>
                                   </object>
@@ -5800,7 +5806,7 @@ Dual LCD Config</property>
                               <property name="columnspan">2</property>
                               <property name="padx">10</property>
                               <property name="pady">0 5</property>
-                              <property name="row">4</property>
+                              <property name="row">3</property>
                               <property name="sticky">e</property>
                             </layout>
                           </object>
@@ -5814,35 +5820,7 @@ Dual LCD Config</property>
                               <property name="column">3</property>
                               <property name="padx">0 20</property>
                               <property name="pady">0 5</property>
-                              <property name="row">4</property>
-                            </layout>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="tk.Message" id="message1">
-                            <property name="justify">left</property>
-                            <property name="relief">raised</property>
-                            <property name="text" translatable="yes">NONE:	No offset is provided to the data send to the 
-	SDR
-
-FIXED:	The SDR offset frequency is added to the
-	frequency on the display and sent to the SDR
-
-MHZ:	The single MHZ digit of the radio's frequency is
-	added. For example, if the radio was at
-	14.032.000, and the offset was at 30.000.000,
-	the resulting frequency would be 43.032.000.
-
-KHZ:	Similar to MHZ_OFFSET, but using the KHZ
-	number. So with a 30.000.000 offset and and 
-	a 14.032.000 radio setting, the SDR will see 
-	a 30.032.000 frequency.</property>
-                            <property name="width">500</property>
-                            <layout manager="grid">
-                              <property name="column">2</property>
-                              <property name="columnspan">3</property>
-                              <property name="padx">100 0</property>
-                              <property name="row">5</property>
+                              <property name="row">3</property>
                             </layout>
                           </object>
                         </child>
@@ -5892,6 +5870,44 @@ KHZ:	Similar to MHZ_OFFSET, but using the KHZ
                               <property name="pady">20</property>
                               <property name="row">7</property>
                               <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Text" id="text5" named="True">
+                            <property name="background">#eeeeee</property>
+                            <property name="borderwidth">2</property>
+                            <property name="font">TkMenuFont</property>
+                            <property name="foreground">black</property>
+                            <property name="height">15</property>
+                            <property name="padx">5</property>
+                            <property name="pady">5</property>
+                            <property name="relief">groove</property>
+                            <property name="state">disabled</property>
+                            <property name="takefocus">false</property>
+                            <property name="text" translatable="yes">NONE:	No offset is provided to the data send to the 
+	SDR
+
+FIXED:	The SDR offset frequency is added to the
+	frequency on the display and sent to the SDR
+
+MHZ:	The single MHZ digit of the radio's frequency is
+	added. For example, if the radio was at
+	14.032.000, and the offset was at 30.000.000,
+	the resulting frequency would be 43.032.000.
+
+KHZ:	Similar to MHZ_OFFSET, but using the KHZ
+	number. So with a 30.000.000 offset and and 
+	a 14.032.000 radio setting, the SDR will see 
+	a 30.032.000 frequency.
+</property>
+                            <property name="width">50</property>
+                            <property name="wrap">word</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="columnspan">3</property>
+                              <property name="padx">100 0</property>
+                              <property name="row">4</property>
                             </layout>
                           </object>
                         </child>
@@ -5980,23 +5996,30 @@ KHZ:	Similar to MHZ_OFFSET, but using the KHZ
                               </object>
                             </child>
                             <child>
-                              <object class="tk.Message" id="message6">
+                              <object class="tk.Text" id="Extended_Keys_Info_Box" named="True">
+                                <property name="background">#eeeeee</property>
                                 <property name="borderwidth">2</property>
-                                <property name="font">TkTextFont</property>
-                                <property name="justify">left</property>
+                                <property name="font">TkMenuFont</property>
+                                <property name="foreground">black</property>
+                                <property name="height">7</property>
+                                <property name="padx">5</property>
                                 <property name="pady">5</property>
-                                <property name="relief">ridge</property>
+                                <property name="relief">groove</property>
+                                <property name="state">disabled</property>
                                 <property name="takefocus">false</property>
                                 <property name="text" translatable="yes">Supports attachment and control of an external button box. 
 
 NOTE: Does NOT work with rotary encodes driven off digital pins. This is specific to the Pico, but depending on how KD8CEC is configured, my apply to other boards too.
 
 For details, on the original design see: 
-http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property>
-                                <property name="width">500</property>
+http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html
+ 
+</property>
+                                <property name="width">80</property>
+                                <property name="wrap">word</property>
                                 <layout manager="grid">
                                   <property name="column">2</property>
-                                  <property name="padx">10</property>
+                                  <property name="padx">15 0</property>
                                   <property name="row">0</property>
                                 </layout>
                               </object>
@@ -6615,14 +6638,26 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                           </object>
                         </child>
                         <child>
-                          <object class="tk.Message" id="message5">
-                            <property name="text" translatable="yes">All specified ADC values should be dividable by 4 (e.g. 16, 32, 40, etc.) - This is because of how the values are stored internally to save EEPROM space. If not, the values entered will be rounded down to the next number that is dividable by 4.</property>
-                            <property name="width">320</property>
+                          <object class="tk.Text" id="text1" named="True">
+                            <property name="background">#eeeeee</property>
+                            <property name="borderwidth">2</property>
+                            <property name="font">TkMenuFont</property>
+                            <property name="foreground">black</property>
+                            <property name="height">4</property>
+                            <property name="padx">5</property>
+                            <property name="pady">5</property>
+                            <property name="relief">groove</property>
+                            <property name="state">disabled</property>
+                            <property name="takefocus">false</property>
+                            <property name="text" translatable="yes">All specified ADC values should be dividable by 4 (e.g. 16, 32, 40, etc.) - This is because of how the values are stored internally to save EEPROM space. If not, the values entered will be rounded down to the next number that is dividable by 4.
+</property>
+                            <property name="width">55</property>
+                            <property name="wrap">word</property>
                             <layout manager="grid">
                               <property name="column">6</property>
+                              <property name="padx">15 0</property>
                               <property name="row">7</property>
-                              <property name="rowspan">8</property>
-                              <property name="sticky">w</property>
+                              <property name="rowspan">10</property>
                             </layout>
                           </object>
                         </child>
@@ -6683,25 +6718,30 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                               </object>
                             </child>
                             <child>
-                              <object class="tk.Message" id="message4">
+                              <object class="tk.Text" id="text2" named="True">
+                                <property name="background">#eeeeee</property>
                                 <property name="borderwidth">2</property>
-                                <property name="font">TkTextFont</property>
-                                <property name="justify">left</property>
+                                <property name="font">TkMenuFont</property>
+                                <property name="foreground">black</property>
+                                <property name="height">7</property>
+                                <property name="padx">5</property>
                                 <property name="pady">5</property>
-                                <property name="relief">ridge</property>
+                                <property name="relief">groove</property>
+                                <property name="state">disabled</property>
                                 <property name="takefocus">false</property>
                                 <property name="text" translatable="yes">Provides customization of uBITX's LPF as well as external LPF attached to PA.
 
 NOTE: The EXTENDED option Does NOT work on configurations with LCD's using parallel data connections. 
 
 For details, see: 
-http://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html</property>
-                                <property name="width">500</property>
+http://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html
+</property>
+                                <property name="width">79</property>
+                                <property name="wrap">word</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
-                                  <property name="padx">10</property>
+                                  <property name="padx">10 0</property>
                                   <property name="row">0</property>
-                                  <property name="sticky">w</property>
                                 </layout>
                               </object>
                             </child>
@@ -8133,18 +8173,26 @@ http://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html</proper
                               </object>
                             </child>
                             <child>
-                              <object class="tk.Message" id="message3">
+                              <object class="tk.Text" id="text3" named="True">
+                                <property name="background">#eeeeee</property>
                                 <property name="borderwidth">2</property>
-                                <property name="font">TkTextFont</property>
-                                <property name="justify">left</property>
+                                <property name="font">TkMenuFont</property>
+                                <property name="foreground">black</property>
+                                <property name="height">2</property>
+                                <property name="padx">5</property>
                                 <property name="pady">5</property>
-                                <property name="relief">ridge</property>
+                                <property name="relief">groove</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">false</property>
                                 <property name="text" translatable="yes">Can improve receiver performance. For details, see:
-http://www.hamskey.com/2018/04/improves-ubitx-receive-performance-by.html</property>
-                                <property name="width">500</property>
+http://www.hamskey.com/2018/04/improves-ubitx-receive-performance-by.html
+</property>
+                                <property name="width">80</property>
+                                <property name="wrap">word</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
-                                  <property name="padx">10</property>
+                                  <property name="padx">10 0</property>
+                                  <property name="pady">5</property>
                                   <property name="row">0</property>
                                   <property name="sticky">w</property>
                                 </layout>
@@ -8864,26 +8912,6 @@ Factory settings?</property>
                           </object>
                         </child>
                         <child>
-                          <object class="tk.Message" id="message7">
-                            <property name="borderwidth">2</property>
-                            <property name="font">TkTextFont</property>
-                            <property name="justify">left</property>
-                            <property name="pady">5</property>
-                            <property name="relief">ridge</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">This setting is only for S-Meters where the sensor is directly attached to the main processor. If your uBITX is using a separate processor for the S-Meter (and perhaps SWR), then DO NOT enable this one.</property>
-                            <property name="width">300</property>
-                            <layout manager="grid">
-                              <property name="column">1</property>
-                              <property name="columnspan">2</property>
-                              <property name="padx">30 0</property>
-                              <property name="pady">50 0</property>
-                              <property name="row">1</property>
-                              <property name="sticky">nw</property>
-                            </layout>
-                          </object>
-                        </child>
-                        <child>
                           <object class="ttk.Checkbutton" id="S_METER_LEVELS_WIDGET" named="True">
                             <property name="command" type="command" cbtype="simple">SMeter_Input_CB</property>
                             <property name="offvalue">NO</property>
@@ -9189,6 +9217,42 @@ Factory settings?</property>
                                 </child>
                               </object>
                             </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Text" id="text6" named="True">
+                            <property name="background">#eeeeee</property>
+                            <property name="borderwidth">2</property>
+                            <property name="font">TkMenuFont</property>
+                            <property name="foreground">black</property>
+                            <property name="height">4</property>
+                            <property name="padx">5</property>
+                            <property name="pady">5</property>
+                            <property name="relief">groove</property>
+                            <property name="state">disabled</property>
+                            <property name="takefocus">false</property>
+                            <property name="text" translatable="yes">This setting is only for S-Meters where the sensor is directly attached to the main processor. If your uBITX is using a separate processor for the S-Meter (and perhaps SWR), then DO NOT enable this one.
+</property>
+                            <property name="width">50</property>
+                            <property name="wrap">word</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="columnspan">2</property>
+                              <property name="padx">30 0</property>
+                              <property name="pady">50 0</property>
+                              <property name="row">1</property>
+                              <property name="sticky">nw</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="frame9">
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">5</property>
+                            </layout>
                           </object>
                         </child>
                       </object>
