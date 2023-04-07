@@ -36,7 +36,7 @@ class OutputProcessor(Processor):
         magic3 = 0x51   # 81 decimal
         magic4 = (magic1 + magic2 + magic3) % 256       #checksum calculation
 
-        RS232=self.comPortObj.sendCommand(bytes([magic1, magic2, 0, 0, READCOMMAND]))
+        RS232=self.comPortObj.sendCommand(bytes([magic1, magic2, magic3, magic4, WRITECOMMAND]))
         RS232.flush()
 
 

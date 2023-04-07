@@ -301,7 +301,7 @@ class SettingsNotebook(SettingsnotebookWidget):
         try:
             valueToTest = int(p_entry_value)
         except:                                   #   if it fails the conversion to number, must not be a number
-            self.log.printerror("timestamp",  SettingsNotebook.error_Msgs["NOTANUMBER"].format(p_entry_value))
+            SettingsNotebook.validationErrorMsg =   SettingsNotebook.error_Msgs["NOTANUMBER"].format(p_entry_value)
 
         else:
             # We have a real number, now need to look at first (left most) digits to make sure they are 1-60
@@ -324,7 +324,6 @@ class SettingsNotebook(SettingsnotebookWidget):
                                                                              SettingsNotebook.TUNING_STEPS_BOUNDS['HIGH'])
 
         # if we reach this point, there is an error...
-        SettingsNotebook.validationErrorMsg = SettingsNotebook.error_Msgs["STRINGTOOLONG"].format(maxChars)
         self.log.printerror("timestamp",  SettingsNotebook.validationErrorMsg)
         getattr(self, "TUNING_"+currentStep).set(self.priorValues["TUNING_"+currentStep])
         return False
@@ -405,10 +404,17 @@ class SettingsNotebook(SettingsnotebookWidget):
     def validate_QSO_CALLSIGN(self, p_entry_value, v_condition):
         if (v_condition == "focusin"):
             self.priorValues["QSO_CALLSIGN"] = p_entry_value
-        if(self.checkLength(p_entry_value, SettingsNotebook.USER_CALLSIGN_BOUNDS['HIGH']) ):
+            return True
+        elif (self.checkLength(p_entry_value, SettingsNotebook.USER_CALLSIGN_BOUNDS['HIGH']) ):
+            # Check to make sure that there is available space if the callsign is getting larger
+            if (len(p_entry_value) - len (self.priorValues["QSO_CALLSIGN"]) > int(self.CW_AUTO_REMAINING_BYTES.get())):
+                # not enough room to expand the QSO call sign
+                self.log.printerror("timestamp",  "New QSO Callsign exceeds available space. Reseting to prior value.")
+                self.QSO_CALLSIGN.set(self.priorValues["QSO_CALLSIGN"])
+                return False
+
             # Update maximum available bytes
             self.CW_AUTO_REMAINING_BYTES.set(str(CW_MEMORY_KEYER_BUFFER_END - len(p_entry_value) - CW_MEMORY_KEYER_BUFFER_START - int(self.CW_AUTO_BYTES_USED.get())))
-
             return True
         else:
             self.log.printerror("timestamp",  "QSO Callsign is " + SettingsNotebook.validationErrorMsg)

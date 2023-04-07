@@ -3038,7 +3038,6 @@ class eepromUBITX (eepromObj):          # subclass
             self.log.printerror("timestamp","Bad Checksum on EEPROM Read")
             tkinter.messagebox.showerror(title="ERROR", message="Bad Checksum reading size of EEPROM from Radio.\nTry restarting radio, ensuring the USB cable plugged in securely, and then restart application. \nEXITING")
             sys.exit(-1)
-        print (theEEPROMsize)
         return theEEPROMsize
 
     def read1024Bytes(self, blockNum):
