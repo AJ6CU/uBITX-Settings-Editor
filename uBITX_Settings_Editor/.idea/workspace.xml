@@ -6,12 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="07ffa901-4db2-460d-94d0-031f158d06d7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SettingsNotebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/SettingsNotebook.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eepromObj.py" beforeDir="false" afterPath="$PROJECT_DIR$/eepromObj.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/globalvars.py" beforeDir="false" afterPath="$PROJECT_DIR$/globalvars.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inputProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/inputProcessor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/outputProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/outputProcessor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tkPDFViewer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tkPDFViewer2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../uBITXgeneratebackup/globalvars.py" beforeDir="false" afterPath="$PROJECT_DIR$/../uBITXgeneratebackup/globalvars.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/processor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygubu/sourceSelector.ui" beforeDir="false" afterPath="$PROJECT_DIR$/pygubu/sourceSelector.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourceselectorwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/sourceselectorwidget.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,14 +30,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/markj/Documents/GitHub/uBITX-EEPROM-Manager/uBITXrestorefrombackup",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/markj/Documents/GitHub/uBITX-EEPROM-Manager/uBITXrestorefrombackup&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="uBITX_Settings_Editor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="uBITX_Settings_Editor" />

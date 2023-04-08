@@ -18,12 +18,14 @@ class OutputProcessor(Processor):
             mustexist=False,
             title="Save Settings to:")
         self.goButton.set("WRITE")
+        self.PROTECT_FACTORY.set("YES")             # Check it as default
         self.readerObj = readerObj              # save ptr to the reader object that holds the state of whether data
                                                 # has been written or not
         #   add tooltips
         tooltip.create(self.uBITX_sourceSelector_WIDGET,"Click to write the settings to an attached uBITX")
         tooltip.create(self.File_sourceSelector_WIDGET,"Click to write the settings to a file")
         tooltip.create(self.goButtonWidget,"Click after selecting the destination for the settings")
+        tooltip.create(self.PROTECT_FACTORY_WIDGET,"Preserves Factory Calibration values unless unchecked")
         tooltip.create(self.comPortObj.comPortsOptionMenu,"Select the com port used by your uBITX")
         tooltip.create(self.comPortObj.comPortListRefresh,"Refresh list of available com ports. "+
                                                         "(You can also plug in your uBITX and then refresh list")
@@ -98,7 +100,7 @@ class OutputProcessor(Processor):
 
         self.eepromCom.encode(userModroot)                      # Talking to EEPROM, now can proceed to updating it
 
-        cntWritten = self.eepromCom.write()
+        cntWritten = self.eepromCom.write(self.PROTECT_FACTORY.get())
 
         if (cntWritten > 0):
             self.log.println("timestamp", "***Settings Successfully Written to uBITX***\n")

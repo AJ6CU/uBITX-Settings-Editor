@@ -90,6 +90,22 @@ class SourceselectorWidget(ttk.Labelframe):
         self.reset_uBITX_Button_WIDGET.pack()
         self.reset_uBITX_Button_WIDGET.configure(command=self.reset_ubitx)
         self.resetButton_Frame.grid(column=1, padx=15, row=0)
+        self.PORTECT_FACTORY_Frame = ttk.Frame(self.frame2)
+        self.PROTECT_FACTORY_WIDGET = ttk.Checkbutton(
+            self.PORTECT_FACTORY_Frame)
+        self.PROTECT_FACTORY = tk.StringVar()
+        self.PROTECT_FACTORY_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            state="normal",
+            style="CheckboxNormal.TCheckbutton",
+            text='Protect Factory Calibration',
+            variable=self.PROTECT_FACTORY)
+        self.PROTECT_FACTORY_WIDGET.pack(anchor="w", side="top")
+        self.PROTECT_FACTORY_WIDGET.configure(
+            command=self.protect_factory_cal_cb)
+        self.PORTECT_FACTORY_Frame.grid(
+            column=0, columnspan=2, pady="10 0", row=1, sticky="w")
         self.frame2.grid(column=3, row=0)
         self.configure(
             height=300,
@@ -206,6 +222,9 @@ class SourceselectorWidget(ttk.Labelframe):
         pass
 
     def reset_ubitx(self):
+        pass
+
+    def protect_factory_cal_cb(self):
         pass
 
 

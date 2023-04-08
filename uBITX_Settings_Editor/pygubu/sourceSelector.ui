@@ -171,6 +171,32 @@
             </child>
           </object>
         </child>
+        <child>
+          <object class="ttk.Frame" id="PORTECT_FACTORY_Frame" named="True">
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="columnspan">2</property>
+              <property name="pady">10 0</property>
+              <property name="row">1</property>
+              <property name="sticky">w</property>
+            </layout>
+            <child>
+              <object class="ttk.Checkbutton" id="PROTECT_FACTORY_WIDGET" named="True">
+                <property name="command" type="command" cbtype="simple">protect_factory_cal_cb</property>
+                <property name="offvalue">NO</property>
+                <property name="onvalue">YES</property>
+                <property name="state">normal</property>
+                <property name="style">CheckboxNormal.TCheckbutton</property>
+                <property name="text" translatable="yes">Protect Factory Calibration</property>
+                <property name="variable">string:PROTECT_FACTORY</property>
+                <layout manager="pack">
+                  <property name="anchor">w</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
   </object>

@@ -3143,38 +3143,40 @@ class eepromUBITX (eepromObj):          # subclass
         return self.comPortObj.sendCommand(bytes([LSB, MSB, outbyte, checkByte, WRITECOMMAND]))
 
 
-    def write(self):                # Write to Com Port
-        #NEED TO PROTECT FACTORY SETTINGS HERE
-        #NEED TO CHECK THAT BASIC CALLIRBATION SETTINGS ARE NOT OVERRIDDED WITHOUT POSIVIE CONFIRMATION
-
+    def write(self, protectFactory):                # Write to Com Port
 
         self.log.println("timestamp","The Following EEPROM Locations Were Updated")
         i: int = 0
         cntWritten = 0          # keeps track of bytes written
         while i < MAXWRITETOEEPROM:
             if eepromObj.EEPROMBufferDirty[i]:  # Got a dirty byte
-                RS232=self.writeByteToEEPROM(i, eepromObj.EEPROMBuffer[i])
+                if ((protectFactory == "YES") & ( i>=STARTFACTOREYRESTORE) & (i <= ENDFACTORYRESTORE)):
+                    self.log.printerror("timestamp", "Factory Data Protection is ON")
+                    self.log.printerror("timestamp","EEPROM Memory Address = " + str(i) + " not written")
+                else:
 
-                retryCnt: int = 0
-                while True:  # keep tring to write until successful or exceed # retries
+                    RS232=self.writeByteToEEPROM(i, eepromObj.EEPROMBuffer[i])
 
-                    while RS232.in_waiting == 0:
-                        sleep(0.005)
-                    resultCode = int.from_bytes(RS232.read(1), "little", signed=False)
-                    while RS232.in_waiting == 0:
-                        sleep(0.005)
-                    trailingByte = int.from_bytes(RS232.read(1), "little", signed=False)
-                    if (resultCode == OK) & (trailingByte == ACK):
-                        break
-                    else:
-                        self.log.printerror("timestamp","retrying byte =" + str(i))
-                        self.log.printerror("timestamp","resultcode=" + str(resultCode))
-                        self.log.printerror("timestamp","trailingByte=" + str(trailingByte))
-                        retryCnt += 1
-                        if retryCnt > RETRIES:
-                            self.log.printerror("timestamp","number of retries exceeded on memory location: " + str(i))
-                            return (1)  # Failure
-                cntWritten += 1
+                    retryCnt: int = 0
+                    while True:  # keep tring to write until successful or exceed # retries
+
+                        while RS232.in_waiting == 0:
+                            sleep(0.005)
+                        resultCode = int.from_bytes(RS232.read(1), "little", signed=False)
+                        while RS232.in_waiting == 0:
+                            sleep(0.005)
+                        trailingByte = int.from_bytes(RS232.read(1), "little", signed=False)
+                        if (resultCode == OK) & (trailingByte == ACK):
+                            break
+                        else:
+                            self.log.printerror("timestamp","retrying byte =" + str(i))
+                            self.log.printerror("timestamp","resultcode=" + str(resultCode))
+                            self.log.printerror("timestamp","trailingByte=" + str(trailingByte))
+                            retryCnt += 1
+                            if retryCnt > RETRIES:
+                                self.log.printerror("timestamp","number of retries exceeded on memory location: " + str(i))
+                                return (1)  # Failure
+                    cntWritten += 1
             i += 1
 
         #   cleardirty bit

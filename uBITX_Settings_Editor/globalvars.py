@@ -41,7 +41,7 @@ EXT_FUNCTIONALITY_SET_SELECT =      ["Data Not Available","All Functions","Test 
 
 EXT_SMETER_SELECTION_SELECT =       ["Data Not Available","I2C S-Meter/2nd Nano","On board Sensor","None"]
 
-EXT_SERIAL_TYPE_SELECT =            ["Data Not Available", "Software", "Hardware"]
+EXT_SERIAL_TYPE_SELECT =            ["Data Not Available", "Tiny SoftwareSerial", "Hardware", "Std SoftwareSerial"]
 
 EXT_EEPROM_TYPE_SELECT =            ["Data Not Available", "On Processor", "External I2C"]
 
@@ -121,6 +121,9 @@ DEFAULT_EEPROM_SIZE=1024                     # used as the default value when EE
 MAXEEPROMSIZE=2048
 MAXWRITETOEEPROM=1024
 BACKUPFILESIZE=2048
+
+STARTFACTOREYRESTORE=64
+ENDFACTORYRESTORE=100
 
 CW_MEMORY_KEYER_BUFFER_START = 803              #  Magic - Location of the CW_AUTO_DATA pointer
 CW_MEMORY_KEYER_BUFFER_END = 1023

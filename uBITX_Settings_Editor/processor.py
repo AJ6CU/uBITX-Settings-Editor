@@ -1,4 +1,5 @@
 from tkinter import *
+import tkinter.messagebox
 import pathlib
 
 from globalvars import *
@@ -43,6 +44,9 @@ class Processor(SourceselectorWidget):
         if self.sourceSelectorRadioButton.get() == "uBITX":
             self.goButtonWidget.bind("<Button-1>", self.processComPort)
             self.goButtonWidget.configure(state=NORMAL)
+            self.PROTECT_FACTORY_WIDGET.pack()
+            self.PROTECT_FACTORY.set("YES")
+
 
             # since a user can switch  back and forth, or have to correct errors. update initial directories to make their life easier
             # also reset default file name to a message to select one
@@ -61,6 +65,7 @@ class Processor(SourceselectorWidget):
 
         else:
             self.com_portManager_frame.forget()                # In the on_path_changed event
+            self.PROTECT_FACTORY_WIDGET.forget()
             self.selectSaveFileFrame.pack(anchor="w", expand="true", fill="both", pady=23, side="top")
 
     def on_path_changed(self, event=None):
@@ -73,6 +78,17 @@ class Processor(SourceselectorWidget):
 
     def processFile(self, *args):
         pass
+
+    def protect_factory_cal_cb (self):
+        print("portect callback called")
+        if self.PROTECT_FACTORY.get() == 'NO':
+            answer = tkinter.messagebox.askyesno(title='Confirm Cancel',
+                message='You are enabling the overwriting of the Factory Calibration values. This is not recommended. Do you want to proceed?',\
+                default="no", icon="warning")
+            if answer == False:
+                self.PROTECT_FACTORY.set('YES')
+                return
+        return
 
 
     def enableGoButtonComPort(self):

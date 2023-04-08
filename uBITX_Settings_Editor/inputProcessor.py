@@ -13,6 +13,7 @@ class InputProcessor(Processor):
         super().__init__(parent)
         self.goButton.set("READ")
         self.reset_uBITX_Button_WIDGET.forget()
+        self.PROTECT_FACTORY_WIDGET.forget()
         self.savedFilePathChooserWidget.config(
             mustexist=True,
             title="Select Previously Saved Settings File")
