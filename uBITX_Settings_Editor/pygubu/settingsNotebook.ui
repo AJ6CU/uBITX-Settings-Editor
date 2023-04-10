@@ -2931,84 +2931,6 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html
                             </child>
                           </object>
                         </child>
-                        <child>
-                          <object class="ttk.Frame" id="frame12" named="True">
-                            <layout manager="pack">
-                              <property name="anchor">w</property>
-                              <property name="expand">false</property>
-                              <property name="fill">x</property>
-                              <property name="pady">20 0</property>
-                              <property name="side">top</property>
-                            </layout>
-                            <containerlayout manager="grid">
-                              <property name="anchor">w</property>
-                            </containerlayout>
-                            <child>
-                              <object class="ttk.Label" id="label144" named="True">
-                                <property name="justify">left</property>
-                                <property name="relief">flat</property>
-                                <property name="style">Heading3.TLabel</property>
-                                <property name="text" translatable="yes">TX/RX Restrictions</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="columnspan">2</property>
-                                  <property name="padx">0 15</property>
-                                  <property name="pady">10 0</property>
-                                  <property name="row">1</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label145">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">Tuning Restriction</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">80 15</property>
-                                  <property name="pady">5 10</property>
-                                  <property name="row">2</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.OptionMenu" id="TUNING_RESTICTIONS_WIDGET" named="True">
-                                <property name="value">NONE</property>
-                                <property name="values">NONE,BAND</property>
-                                <property name="variable">string:TUNING_RESTICTIONS</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="pady">5 10</property>
-                                  <property name="row">2</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label146">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">Transmit Restriction</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">30 15</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.OptionMenu" id="TX_RESTRICTIONS_WIDGET" named="True">
-                                <property name="value">NONE</property>
-                                <property name="values">NONE,HAM</property>
-                                <property name="variable">string:TX_RESTRICTIONS</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="row">3</property>
-                                </layout>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
                       </object>
                     </child>
                   </object>
@@ -5707,6 +5629,86 @@ Dual LCD Config</property>
                                   <property name="column">0</property>
                                   <property name="padx">75</property>
                                   <property name="row">7</property>
+                                  <property name="sticky">w</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="frame12" named="True">
+                            <layout manager="pack">
+                              <property name="anchor">w</property>
+                              <property name="expand">false</property>
+                              <property name="fill">x</property>
+                              <property name="pady">20 0</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <containerlayout manager="grid">
+                              <property name="anchor">w</property>
+                            </containerlayout>
+                            <child>
+                              <object class="ttk.Label" id="label144" named="True">
+                                <property name="justify">left</property>
+                                <property name="relief">flat</property>
+                                <property name="style">Heading3.TLabel</property>
+                                <property name="text" translatable="yes">TX/RX Restrictions</property>
+                                <layout manager="grid">
+                                  <property name="column">0</property>
+                                  <property name="columnspan">2</property>
+                                  <property name="padx">0 15</property>
+                                  <property name="pady">10 0</property>
+                                  <property name="row">1</property>
+                                  <property name="sticky">w</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="label145">
+                                <property name="style">Heading4.TLabel</property>
+                                <property name="text" translatable="yes">Tuning Restriction</property>
+                                <layout manager="grid">
+                                  <property name="column">1</property>
+                                  <property name="padx">80 15</property>
+                                  <property name="pady">5 10</property>
+                                  <property name="row">2</property>
+                                  <property name="sticky">e</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.OptionMenu" id="TUNING_RESTICTIONS_WIDGET" named="True">
+                                <property name="value">200Khz</property>
+                                <property name="values">200Khz,BAND</property>
+                                <property name="variable">string:TUNING_RESTICTIONS</property>
+                                <layout manager="grid">
+                                  <property name="column">2</property>
+                                  <property name="pady">5 10</property>
+                                  <property name="row">2</property>
+                                  <property name="sticky">w</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="label146">
+                                <property name="style">Heading4.TLabel</property>
+                                <property name="text" translatable="yes">Transmit Restriction</property>
+                                <layout manager="grid">
+                                  <property name="column">1</property>
+                                  <property name="padx">30 15</property>
+                                  <property name="row">3</property>
+                                  <property name="sticky">e</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.OptionMenu" id="TX_RESTRICTIONS_WIDGET" named="True">
+                                <property name="value">NONE</property>
+                                <property name="values">NONE,HAM</property>
+                                <property name="variable">string:TX_RESTRICTIONS</property>
+                                <layout manager="grid">
+                                  <property name="column">2</property>
+                                  <property name="row">3</property>
                                   <property name="sticky">w</property>
                                 </layout>
                               </object>

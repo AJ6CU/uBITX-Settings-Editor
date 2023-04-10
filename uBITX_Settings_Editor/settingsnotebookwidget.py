@@ -1648,52 +1648,6 @@ class SettingsnotebookWidget(ttk.Frame):
             sticky="ew")
         self.frame58.pack(anchor="w", pady="20 0", side="top")
         self.frame58.grid_anchor("w")
-        self.frame12 = ttk.Frame(self.frame19)
-        self.label144 = ttk.Label(self.frame12)
-        self.label144.configure(
-            justify="left",
-            relief="flat",
-            style="Heading3.TLabel",
-            text='TX/RX Restrictions')
-        self.label144.grid(
-            column=0,
-            columnspan=2,
-            padx="0 15",
-            pady="10 0",
-            row=1,
-            sticky="w")
-        self.label145 = ttk.Label(self.frame12)
-        self.label145.configure(
-            style="Heading4.TLabel",
-            text='Tuning Restriction')
-        self.label145.grid(
-            column=1,
-            padx="80 15",
-            pady="5 10",
-            row=2,
-            sticky="e")
-        self.TUNING_RESTICTIONS = tk.StringVar(value='NONE')
-        __values = ['NONE', 'BAND']
-        self.TUNING_RESTICTIONS_WIDGET = ttk.OptionMenu(
-            self.frame12, self.TUNING_RESTICTIONS, "NONE", *__values, command=None)
-        self.TUNING_RESTICTIONS_WIDGET.grid(column=2, pady="5 10", row=2)
-        self.label146 = ttk.Label(self.frame12)
-        self.label146.configure(
-            style="Heading4.TLabel",
-            text='Transmit Restriction')
-        self.label146.grid(column=1, padx="30 15", row=3, sticky="e")
-        self.TX_RESTRICTIONS = tk.StringVar(value='NONE')
-        __values = ['NONE', 'HAM']
-        self.TX_RESTRICTIONS_WIDGET = ttk.OptionMenu(
-            self.frame12, self.TX_RESTRICTIONS, "NONE", *__values, command=None)
-        self.TX_RESTRICTIONS_WIDGET.grid(column=2, row=3)
-        self.frame12.pack(
-            anchor="w",
-            expand="false",
-            fill="x",
-            pady="20 0",
-            side="top")
-        self.frame12.grid_anchor("w")
         self.frame19.pack(anchor="w", padx=20, side="top")
         self.frame16.pack(
             anchor="center",
@@ -3275,6 +3229,53 @@ class SettingsnotebookWidget(ttk.Frame):
             column=0, padx=75, row=7, sticky="w")
         self.frame11.pack(anchor="w", pady=5, side="top")
         self.frame11.grid_anchor("nw")
+        self.frame12 = ttk.Frame(self.frame25)
+        self.label144 = ttk.Label(self.frame12)
+        self.label144.configure(
+            justify="left",
+            relief="flat",
+            style="Heading3.TLabel",
+            text='TX/RX Restrictions')
+        self.label144.grid(
+            column=0,
+            columnspan=2,
+            padx="0 15",
+            pady="10 0",
+            row=1,
+            sticky="w")
+        self.label145 = ttk.Label(self.frame12)
+        self.label145.configure(
+            style="Heading4.TLabel",
+            text='Tuning Restriction')
+        self.label145.grid(
+            column=1,
+            padx="80 15",
+            pady="5 10",
+            row=2,
+            sticky="e")
+        self.TUNING_RESTICTIONS = tk.StringVar(value='200Khz')
+        __values = ['200Khz', 'BAND']
+        self.TUNING_RESTICTIONS_WIDGET = ttk.OptionMenu(
+            self.frame12, self.TUNING_RESTICTIONS, "200Khz", *__values, command=None)
+        self.TUNING_RESTICTIONS_WIDGET.grid(
+            column=2, pady="5 10", row=2, sticky="w")
+        self.label146 = ttk.Label(self.frame12)
+        self.label146.configure(
+            style="Heading4.TLabel",
+            text='Transmit Restriction')
+        self.label146.grid(column=1, padx="30 15", row=3, sticky="e")
+        self.TX_RESTRICTIONS = tk.StringVar(value='NONE')
+        __values = ['NONE', 'HAM']
+        self.TX_RESTRICTIONS_WIDGET = ttk.OptionMenu(
+            self.frame12, self.TX_RESTRICTIONS, "NONE", *__values, command=None)
+        self.TX_RESTRICTIONS_WIDGET.grid(column=2, row=3, sticky="w")
+        self.frame12.pack(
+            anchor="w",
+            expand="false",
+            fill="x",
+            pady="20 0",
+            side="top")
+        self.frame12.grid_anchor("w")
         self.frame25.pack(anchor="w", padx=20, side="top")
         self.frame24.pack(
             anchor="n",

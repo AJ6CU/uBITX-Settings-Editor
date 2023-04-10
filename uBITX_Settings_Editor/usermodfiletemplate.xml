@@ -781,10 +781,10 @@
 -->
 	<SETTING NAME="TUNING_RESTICTIONS">						<!--Not clear this works at the moment....	-->						
 		<label>Tune Control</label>							
-		<value></value>										<!--Choice of NONE or BAND. BAND means only when in encoder tuning mode,
-																you will hop between bands. If you selected NONE, you will actually
-																move up or down on the VFO by 100KHz. -->
-		<tooltip>Selecting BAND restricts "Band Select Mode" menu to tuning betweem Ham Bands. Selecting NONE means that when you are in "Band Select Mode, you will actually tune up or down by 100KHz.</tooltip>
+		<value></value>										<!--Choice of 200Khz or BAND. BAND means only when in encoder tuning mode,
+																you will hop between bands. If you selected 200Khz, you will actually
+																move up or down on the VFO by 200KHz. -->
+		<tooltip>Selecting BAND restricts "Band Select Mode" menu to tuning betweem Ham Bands. Selecting 200Khz means that when you are in "Band Select Mode, you will actually tune up or down by 200KHz.</tooltip>
 	</SETTING>
 	<SETTING NAME="TX_RESTRICTIONS">
 		<label>Restrictions on TX</label>
