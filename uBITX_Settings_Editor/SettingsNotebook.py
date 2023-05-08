@@ -1314,7 +1314,7 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.HAM_BAND_RANGE7_END.set("18.168")
 
         self.HAM_BAND_RANGE8_START.set("21.000")
-        self.HAM_BAND_RANGE8_END.set(21450)
+        self.HAM_BAND_RANGE8_END.set(21.450)
 
         self.HAM_BAND_RANGE9_START.set("24.850")
         self.HAM_BAND_RANGE9_END.set("24.990")
