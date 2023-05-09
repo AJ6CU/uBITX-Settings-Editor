@@ -48,7 +48,7 @@ class SmeterWizard(SmeterwizardWidget):
         self.myparent = parent
 
         # create com port
-        self.comPortObj = com_portManager(self.com_portManager_frame, self)
+        self.comPortObj = com_portManager(self.com_portManager_frame, self.on_ComPort_state_change)
 
         # pre-load com ports
         self.comPortObj.updateComPorts()                # Fill in available Com Ports
@@ -276,4 +276,8 @@ class SmeterWizard(SmeterwizardWidget):
 
     def smeterWizard_Cancel_Button(self):
         self.destroy()
+
+    def on_ComPort_state_change (self, newState):
+        self.sampleADCReadMin_Button_WIDGET.configure (state=newState)
+        self.sampleADCReadMax_Button_WIDGET.configure (state=newState)
 

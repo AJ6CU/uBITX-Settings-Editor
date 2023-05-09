@@ -6,11 +6,6 @@ import tkinter.ttk as ttk
 class ComPortmanagerWidget(ttk.Frame):
     def __init__(self, master=None, **kw):
         super(ComPortmanagerWidget, self).__init__(master, **kw)
-        self.comPortListRefresh = ttk.Button(self)
-        self.comPortListRefresh.configure(
-            style="Normal.TButton", text='Refresh Port List')
-        self.comPortListRefresh.grid(column=0, padx="0 15", row=0, sticky="w")
-        self.comPortListRefresh.configure(command=self.updateComPorts)
         self.availableComPorts = tk.StringVar(value='Select Serial Port')
         __values = ['Select Serial Port']
         self.comPortsOptionMenu = ttk.OptionMenu(
@@ -19,7 +14,17 @@ class ComPortmanagerWidget(ttk.Frame):
             "Select Serial Port",
             *__values,
             command=self.comPortSelected)
-        self.comPortsOptionMenu.grid(column=1, row=0, sticky="w")
+        self.comPortsOptionMenu.grid(column=1, padx="0 5", row=0, sticky="w")
+        self.comPortListRefresh = tk.Button(self)
+        self.img_Reload24x24 = tk.PhotoImage(file="Reload-24x24.png")
+        self.comPortListRefresh.configure(
+            borderwidth=0,
+            cursor="arrow",
+            font="TkDefaultFont",
+            image=self.img_Reload24x24,
+            text='button1')
+        self.comPortListRefresh.grid(column=0, row=0)
+        self.comPortListRefresh.configure(command=self.updateComPorts)
         self.configure(height=200, width=200)
         self.pack(anchor="w", side="top")
 
@@ -69,6 +74,10 @@ class ComPortmanagerWidget(ttk.Frame):
         style.configure('Symbol1.TLabel', font=fontList['Symbol1'])
         style.configure('Button3.TButton', font=fontList['Heading3'])
         style.configure('Button4.TButton', font=fontList['Heading4'])
+        style.configure(
+            'Button3Blue.TButton',
+            font=fontList['Heading3'],
+            foreground='blue')
         style.configure('Normal.TButton', font=fontList['Normal'])
         style.configure('Symbol1.TButton', font=fontList['Symbol1'])
         style.configure('Symbol3.TButton', font=fontList['Symbol3'])
@@ -85,10 +94,20 @@ class ComPortmanagerWidget(ttk.Frame):
         style.configure('Checkbox4.TCheckbutton', font=fontList['Heading4'])
         style.configure('CheckboxNormal.TCheckbutton', font=fontList['Normal'])
         style.configure(
+            'CheckboxNormalNoBorder.TCheckbutton',
+            font=fontList['Normal'],
+            highlightthickness=0,
+            borderwidth=0,
+            bd=0)
+        style.configure(
             'CheckboxEmphasis.TCheckbutton',
             font=fontList['Emphasis'])
         style.configure('ComboBox3.TCombobox', font=fontList['Heading3'])
         style.configure('ComboBox4.TCombobox', font=fontList['Heading4'])
+        style.configure(
+            'ComboBox4White.TCombobox',
+            font=fontList['Heading4'],
+            foreground='white')
         style.configure('Normal.TEntry', font=fontList['Normal'])
         style.configure(
             'NoBorder.TEntry',
@@ -102,14 +121,19 @@ class ComPortmanagerWidget(ttk.Frame):
             font=fontList['Heading3'])
         style.configure('Heading2.TLabelframe')
         style.configure('Normal.TText', font=fontList['Heading3'])
+        style.configure('Normal.TOptionMenu', font=fontList['Heading4'])
+        style.configure('Normal.TOptionMenu.Label', anchor='e')
 
         style.configure('Highlight.TFrame', background='blue', bd=4)
         style.configure('Normal.TFrame', background='gray', bd=4)
 
-    def updateComPorts(self):
-        pass
+        style.configure('Fixed.TNotebook')
+        style.configure('Fixed.TNotebook.Tab', padding=[5, 2])
 
     def comPortSelected(self, option):
+        pass
+
+    def updateComPorts(self):
         pass
 
 

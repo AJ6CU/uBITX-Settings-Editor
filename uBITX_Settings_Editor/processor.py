@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter.messagebox
 import pathlib
+import pygubu.widgets.simpletooltip as tooltip
 
 from globalvars import *
 from com_portManager import com_portManager
@@ -10,21 +11,28 @@ from com_portManager import com_portManager
 from sourceselectorwidget import SourceselectorWidget
 
 class Processor(SourceselectorWidget):
-    def __init__(self, parent):
+    def __init__(self, goButtonLabel, parent):
         super().__init__(parent)
 
 
         # put file selector in default state
-        self.selectSaveFileFrame.forget()               #  Want to show the com port option  as default, hide safed file option
+        self.selectSaveFileFrame.forget()               #  Want to show the com port option  as default, hide saved file option
         self.savedFilePathChooserWidget.config(filetypes=[('uBITX Saved Files','.xml .btx')])         # Manually add restriction to only XML and btx files
         self.savedFilePathChooserWidget.config(initialdir=HOMEDIRECTORY)         # default to start off in users' home directory
         self.savedFilePathChooser.set(USERMODFILE)
         self.lastDir = HOMEDIRECTORY
+        self.actionButton_Text.set(goButtonLabel)
+
 
         # create com port object
-        self.comPortObj = com_portManager(self.com_portManager_frame, self)
+        self.comPortObj = com_portManager(self.com_portManager_frame, self.on_ComPort_state_change)
 
         self.IOstate = 'NONE'                       # used to track last operation and whether settings have  been written out or not
+
+        #   add tooltips
+        tooltip.create(self.comPortObj.comPortsOptionMenu,"Select the com port used by your uBITX")
+        tooltip.create(self.comPortObj.comPortListRefresh,"Refresh list of available com ports. "+
+                                                        "(You can plug in your uBITX and then refresh list)")
 
 
     def setLog(self, log ):                     # this method is called to tell object where to write the log
@@ -42,11 +50,8 @@ class Processor(SourceselectorWidget):
                                                 # a valid com port or file is selected.
 
         if self.sourceSelectorRadioButton.get() == "uBITX":
-            self.goButtonWidget.bind("<Button-1>", self.processComPort)
-            self.goButtonWidget.configure(state=NORMAL)
-            self.PROTECT_FACTORY_WIDGET.pack()
-            self.PROTECT_FACTORY.set("YES")
-
+            #self.goButtonWidget.bind("<Button-1>", self.processComPort)
+            #self.goButtonWidget.configure(state=NORMAL)
 
             # since a user can switch  back and forth, or have to correct errors. update initial directories to make their life easier
             # also reset default file name to a message to select one
@@ -57,45 +62,29 @@ class Processor(SourceselectorWidget):
             self.savedFilePathChooserWidget.config(path=USERMODFILE, initialdir=self.lastDir)
 
             self.selectSaveFileFrame.forget()
-            self.com_portManager_frame.pack(anchor="w", expand="true", fill="both", pady=23, side="top")
+            self.selectComPort_Frame.pack(side="left")
 
             # pre-load com ports
             self.comPortObj.updateComPorts()                           # Fill in available Com Ports
             self.comPortObj.pack()                                      # make com it visible
 
         else:
-            self.com_portManager_frame.forget()                # In the on_path_changed event
-            self.PROTECT_FACTORY_WIDGET.forget()
+            self.selectComPort_Frame.forget()                # In the on_path_changed event
             self.selectSaveFileFrame.pack(anchor="w", expand="true", fill="both", pady=23, side="top")
 
     def on_path_changed(self, event=None):
-        self.path=self.savedFilePathChooser.get()
+        #MJH here
+        if self.sourceSelectorRadioButton.get() != "uBITX":     #Need to ask as event generated when switching from file to ubitx
+            self.path=self.savedFilePathChooser.get()
+            self.processFile()
 
-        self.goButtonWidget.bind("<Button-1>", self.processFile)
-        self.goButtonWidget.configure(state=NORMAL)
-        self.lastDir = pathlib.Path(self.savedFilePathChooser.get()).parent
+            #self.goButtonWidget.bind("<Button-1>", self.processFile)
+            #self.goButtonWidget.configure(state=NORMAL)
+            self.lastDir = pathlib.Path(self.savedFilePathChooser.get()).parent
+
+    def on_ComPort_state_change (self, newState):
+        self.actionButton.configure (state=newState)
 
 
     def processFile(self, *args):
         pass
-
-    def protect_factory_cal_cb (self):
-        print("portect callback called")
-        if self.PROTECT_FACTORY.get() == 'NO':
-            answer = tkinter.messagebox.askyesno(title='Confirm Cancel',
-                message='You are enabling the overwriting of the Factory Calibration values. This is not recommended. Do you want to proceed?',\
-                default="no", icon="warning")
-            if answer == False:
-                self.PROTECT_FACTORY.set('YES')
-                return
-        return
-
-
-    def enableGoButtonComPort(self):
-        self.goButtonWidget.bind("<Button-1>", self.processComPort)
-        self.goButtonWidget.configure(state='normal')
-
-    def disableGoButtonComPort(self):
-        self.goButtonWidget.unbind("<Button-1>")            # In this case we have switched into file selection mode. Unbind and disable read button
-        self.goButtonWidget.configure(state='disabled')       # If user selects a valid file, the button is re-enabled and callback connected
-

@@ -9,22 +9,22 @@ from processor import Processor
 from eepromObj import *
 
 class InputProcessor(Processor):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self.goButton.set("READ")
-        self.reset_uBITX_Button_WIDGET.forget()
-        self.PROTECT_FACTORY_WIDGET.forget()
+    def __init__(self,  parent):
+        super().__init__("Read", parent)
+
+        #self.goButton.set("READ")
+        self.optionalInfo_Frame.forget()                # not needing the optional frame while reading
+
         self.savedFilePathChooserWidget.config(
             mustexist=True,
             title="Select Previously Saved Settings File")
 
+        self.optionalInfo_Frame.grid_forget()                # don't need any optional info (reset ubitx and protect factory) on input
+
        #   add tooltips
         tooltip.create(self.uBITX_sourceSelector_WIDGET,"Click to read the settings from an attached uBITX")
         tooltip.create(self.File_sourceSelector_WIDGET,"Click to read the settings from a previously saved backup file")
-        tooltip.create(self.goButtonWidget,"Click after selecting the source")
-        tooltip.create(self.comPortObj.comPortsOptionMenu,"Select the com port used by your uBITX")
-        tooltip.create(self.comPortObj.comPortListRefresh,"Refresh list of available com ports. "+
-                                                        "(You can also plug in your uBITX and then refresh list")
+
 
 
         #   Dictionary to hold current values of usermodfile and whether dirty or not
@@ -32,7 +32,7 @@ class InputProcessor(Processor):
         self.userModFileDirty = {}
         self.userModFileToolTips = {}
 
-        self. IOState = "NONE"
+        self.IOState = "NONE"
 
     def setIOstate(self, state):
         self.IOstate = state
