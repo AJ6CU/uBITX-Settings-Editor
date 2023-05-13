@@ -14,7 +14,7 @@ class ComPortmanagerWidget(ttk.Frame):
             "Select Serial Port",
             *__values,
             command=self.comPortSelected)
-        self.comPortsOptionMenu.grid(column=1, padx="0 5", row=0, sticky="w")
+        self.comPortsOptionMenu.grid(column=0, padx="0 5", row=0, sticky="w")
         self.comPortListRefresh = tk.Button(self)
         self.img_Reload24x24 = tk.PhotoImage(file="Reload-24x24.png")
         self.comPortListRefresh.configure(
@@ -23,7 +23,7 @@ class ComPortmanagerWidget(ttk.Frame):
             font="TkDefaultFont",
             image=self.img_Reload24x24,
             text='button1')
-        self.comPortListRefresh.grid(column=0, row=0)
+        self.comPortListRefresh.grid(column=1, row=0)
         self.comPortListRefresh.configure(command=self.updateComPorts)
         self.configure(height=200, width=200)
         self.pack(anchor="w", side="top")
@@ -121,8 +121,6 @@ class ComPortmanagerWidget(ttk.Frame):
             font=fontList['Heading3'])
         style.configure('Heading2.TLabelframe')
         style.configure('Normal.TText', font=fontList['Heading3'])
-        style.configure('Normal.TOptionMenu', font=fontList['Heading4'])
-        style.configure('Normal.TOptionMenu.Label', anchor='e')
 
         style.configure('Highlight.TFrame', background='blue', bd=4)
         style.configure('Normal.TFrame', background='gray', bd=4)

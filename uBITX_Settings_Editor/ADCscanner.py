@@ -51,7 +51,7 @@ class ADCscanner (Scanner):
                 #   and then sends the command.
                 #   So it has to update the original port handle by returning it. That is what is happening
                 #   below.
-                RS232=self.comPortObj.sendCommand(bytes([ANALOGPINS[aPin], 0, 0, 0, READADC]))
+                RS232=self.comPortObj.sendCommand(bytes([ANALOGPINS[aPin], 0, 0, 0, READADCDATA]))
 
                 i = 0
                 lastReadTime = millis()

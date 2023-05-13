@@ -87,7 +87,7 @@
                 <property name="height">50</property>
                 <property name="width">400</property>
                 <layout manager="grid">
-                  <property name="column">1</property>
+                  <property name="column">0</property>
                   <property name="row">0</property>
                 </layout>
               </object>
@@ -100,8 +100,8 @@
                 <property name="text" translatable="yes">button1</property>
                 <property name="textvariable">string:actionButton_Text</property>
                 <layout manager="grid">
-                  <property name="column">0</property>
-                  <property name="padx">0 35</property>
+                  <property name="column">1</property>
+                  <property name="padx">10 25</property>
                   <property name="row">0</property>
                 </layout>
               </object>

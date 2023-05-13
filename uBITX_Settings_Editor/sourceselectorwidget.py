@@ -38,7 +38,7 @@ class SourceselectorWidget(ttk.Labelframe):
         self.selectComPort_Frame.configure(height=200, width=200)
         self.com_portManager_frame = ttk.Frame(self.selectComPort_Frame)
         self.com_portManager_frame.configure(height=50, width=400)
-        self.com_portManager_frame.grid(column=1, row=0)
+        self.com_portManager_frame.grid(column=0, row=0)
         self.actionButton = ttk.Button(self.selectComPort_Frame)
         self.actionButton_Text = tk.StringVar(value='button1')
         self.actionButton.configure(
@@ -46,7 +46,7 @@ class SourceselectorWidget(ttk.Labelframe):
             style="ButtonEmphasis.TButton",
             text='button1',
             textvariable=self.actionButton_Text)
-        self.actionButton.grid(column=0, padx="0 35", row=0)
+        self.actionButton.grid(column=1, padx="10 25", row=0)
         self.actionButton.configure(command=self.processComPort)
         self.selectComPort_Frame.pack(side="left")
         self.selectSaveFileFrame = ttk.Frame(self.sourceBlock)

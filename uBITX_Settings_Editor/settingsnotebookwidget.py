@@ -4955,6 +4955,19 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CW_CAL_WIDGET.register(
                 self.validate_CW_CAL), "%P", "%V")
         self.CW_CAL_WIDGET.configure(validatecommand=_validatecmd)
+        self.FACTORY_SETTING_PROTECTION_WIDGET = ttk.Checkbutton(
+            self.Radio_Calibration_Frame)
+        self.FACTORY_SETTING_PROTECTION = tk.StringVar()
+        self.FACTORY_SETTING_PROTECTION_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            style="Checkbox4.TCheckbutton",
+            text='Enable update of\nFactory settings?',
+            variable=self.FACTORY_SETTING_PROTECTION)
+        self.FACTORY_SETTING_PROTECTION_WIDGET.grid(
+            column=5, columnspan=4, row=6, rowspan=2)
+        self.FACTORY_SETTING_PROTECTION_WIDGET.configure(
+            command=self.Factory_Settings_Enable_CB)
         self.I2C_ADDR_SI5351_LABEL = ttk.Label(self.Radio_Calibration_Frame)
         self.I2C_ADDR_SI5351_LABEL.configure(
             justify="center",
@@ -4984,19 +4997,10 @@ class SettingsnotebookWidget(ttk.Frame):
             state="disabled", textvariable=self.CW_FREQUENCY_ADJUSTMENT)
         self.CW_FREQUENCY_ADJUSTMENT_WIDGET.pack()
         self.Calibration_Screen_Hidden.grid(column=5, row=7)
-        self.FACTORY_SETTING_PROTECTION_WIDGET = ttk.Checkbutton(
-            self.Radio_Calibration_Frame)
-        self.FACTORY_SETTING_PROTECTION = tk.StringVar()
-        self.FACTORY_SETTING_PROTECTION_WIDGET.configure(
-            offvalue="NO",
-            onvalue="YES",
-            style="Checkbox4.TCheckbutton",
-            text='Enable update of\nFactory settings?',
-            variable=self.FACTORY_SETTING_PROTECTION)
-        self.FACTORY_SETTING_PROTECTION_WIDGET.grid(
-            column=5, columnspan=4, row=6, rowspan=2)
-        self.FACTORY_SETTING_PROTECTION_WIDGET.configure(
-            command=self.Factory_Settings_Enable_CB)
+        self.button1 = ttk.Button(self.Radio_Calibration_Frame)
+        self.button1.configure(text='Calibration\nWizard')
+        self.button1.grid(column=4, row=7)
+        self.button1.configure(command=self.runCalibrationWizard)
         self.Radio_Calibration_Frame.pack(fill="x", side="top")
         self.Radio_Calibration_Frame.grid_anchor("nw")
         self.CW_Calibration_Frame = ttk.Frame(self.frame21)
@@ -6662,6 +6666,9 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def Factory_Settings_Enable_CB(self):
+        pass
+
+    def runCalibrationWizard(self):
         pass
 
     def validate_CW_ADC_ST_FROM(self, p_entry_value, v_condition):

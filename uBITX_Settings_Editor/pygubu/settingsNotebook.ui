@@ -8529,6 +8529,23 @@ Recovery</property>
                           </object>
                         </child>
                         <child>
+                          <object class="ttk.Checkbutton" id="FACTORY_SETTING_PROTECTION_WIDGET" named="True">
+                            <property name="command" type="command" cbtype="simple">Factory_Settings_Enable_CB</property>
+                            <property name="offvalue">NO</property>
+                            <property name="onvalue">YES</property>
+                            <property name="style">Checkbox4.TCheckbutton</property>
+                            <property name="text" translatable="yes">Enable update of
+Factory settings?</property>
+                            <property name="variable">string:FACTORY_SETTING_PROTECTION</property>
+                            <layout manager="grid">
+                              <property name="column">5</property>
+                              <property name="columnspan">4</property>
+                              <property name="row">6</property>
+                              <property name="rowspan">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
                           <object class="ttk.Label" id="I2C_ADDR_SI5351_LABEL" named="True">
                             <property name="justify">center</property>
                             <property name="relief">flat</property>
@@ -8577,19 +8594,13 @@ Recovery</property>
                           </object>
                         </child>
                         <child>
-                          <object class="ttk.Checkbutton" id="FACTORY_SETTING_PROTECTION_WIDGET" named="True">
-                            <property name="command" type="command" cbtype="simple">Factory_Settings_Enable_CB</property>
-                            <property name="offvalue">NO</property>
-                            <property name="onvalue">YES</property>
-                            <property name="style">Checkbox4.TCheckbutton</property>
-                            <property name="text" translatable="yes">Enable update of
-Factory settings?</property>
-                            <property name="variable">string:FACTORY_SETTING_PROTECTION</property>
+                          <object class="ttk.Button" id="button1">
+                            <property name="command" type="command" cbtype="simple">runCalibrationWizard</property>
+                            <property name="text" translatable="yes">Calibration
+Wizard</property>
                             <layout manager="grid">
-                              <property name="column">5</property>
-                              <property name="columnspan">4</property>
-                              <property name="row">6</property>
-                              <property name="rowspan">2</property>
+                              <property name="column">4</property>
+                              <property name="row">7</property>
                             </layout>
                           </object>
                         </child>

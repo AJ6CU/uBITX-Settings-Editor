@@ -12,6 +12,7 @@ from ADCscanner import ADCscanner
 from SmeterWizard import SmeterWizard
 from wsprmsggen import WSPRmsggen
 from WsprFreqSelect import WSPRFreqSelect
+from calibrationwizard import calibrationWizard
 from globalvars import *
 
 
@@ -1709,6 +1710,10 @@ class SettingsNotebook(SettingsnotebookWidget):
 
     def runSmeterAssistant(self):
         smeterAssistant = SmeterWizard(self)
+
+    def runCalibrationWizard(self):
+        wizard=calibrationWizard(self.log, self)
+        pass
 
     #   Note the MESSAGE* are updated within the WSPR generator
 

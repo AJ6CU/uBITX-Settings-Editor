@@ -121,8 +121,8 @@ class SmeterWizard(SmeterwizardWidget):
 
 
         for x in range(self.sampleSizeADC.get()):
-            RS232=self.comPortObj.sendCommand(bytes([ANALOGPINS["S Meter"], 0, 0, 0, READADC]))
-            #self.RS232.write(bytes([ANALOGPINS["S Meter"], 0, 0, 0, READADC]))
+            RS232=self.comPortObj.sendCommand(bytes([ANALOGPINS["S Meter"], 0, 0, 0, READADCDATA]))
+
             RS232.flush()
 
             i = 0
