@@ -3,7 +3,7 @@
 ![image](https://user-images.githubusercontent.com/70183884/200955633-4e262957-832f-4ed5-b3e4-5de793bb755b.png)
 
 
-This program was written using Python 3.10.4 on Windows. It requires the tkinker, pySerial,lxml, bitarray, and pygubu libraries. Let me know if you find any other unusual dependencies.
+This program was written using Python 3 and has been tested on Windows 10, MacOS, and Linux. It requires the tkinker, pySerial,lxml, bitarray, and pygubu libraries. Let me know if you find any other unusual dependencies.
 
 This program will work by reading from your EEPROM and merging the resulting values into an XML template file that will provide you with a "MOD File. You can then use your favorite ediotr (preferably one with support for XML) and modify/change values (see the <value></value> tage) 
 
