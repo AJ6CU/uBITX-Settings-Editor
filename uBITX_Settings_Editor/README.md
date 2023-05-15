@@ -1,4 +1,4 @@
-# uBITXgeneratemodfile
+# uBITX Settings Editor
 
 ![image](https://user-images.githubusercontent.com/70183884/200955633-4e262957-832f-4ed5-b3e4-5de793bb755b.png)
 
