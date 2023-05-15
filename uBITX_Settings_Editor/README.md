@@ -5,7 +5,7 @@
 
 This program was written using Python 3 and has been tested on Windows 10, MacOS, and Linux. It requires the tkinker, pySerial,lxml, bitarray, and pygubu libraries. Let me know if you find any other unusual dependencies.
 
-This program will work by reading from your EEPROM and merging the resulting values into an XML template file that will provide you with a "MOD File. You can then use your favorite ediotr (preferably one with support for XML) and modify/change values (see the <value></value> tage) 
+This program allows you to either read the EEPROM on your uBITX radio connected thru USB or from a previously saved file. With a visual, tabbed user interface, you can adjust the settings to meet your needs. You can then save the settings back to the uBITX and/or to a save file.  
 
 I can be reached with thru my email on QRZ or thru topics on the groups.io BITX20 group. You should also be able to raise Issues on the GitHub. Let me know if you have an issue here.
 
