@@ -88,6 +88,15 @@ class CalibrationWizardWidget(tk.Toplevel):
             style="Normal.TLabel",
             textvariable=self.currentSSBBFO)
         self.label6.grid(column=1, padx="10 0", row=1, sticky="w")
+        self.copyExistingCalibrationToClipboard_Button = ttk.Button(
+            self.calibrationWizardExistingValue_Frame)
+        self.img_copy_icon25x25 = tk.PhotoImage(file="copy_icon25x25.png")
+        self.copyExistingCalibrationToClipboard_Button.configure(
+            image=self.img_copy_icon25x25)
+        self.copyExistingCalibrationToClipboard_Button.grid(
+            column=2, row=1, sticky="e")
+        self.copyExistingCalibrationToClipboard_Button.configure(
+            command=self.copyExistingCalibrationToClipboard)
         self.label7 = ttk.Label(self.calibrationWizardExistingValue_Frame)
         self.label7.configure(
             anchor="n",
@@ -105,13 +114,14 @@ class CalibrationWizardWidget(tk.Toplevel):
             borderwidth=2,
             justify="left",
             relief="ridge",
-            text='IMPORANT: Record the calibration numbers above or take a photo before the next step. This allows you to manually reset them if necessary.',
+            takefocus=False,
+            text='IMPORANT: Click the Copy icon to copy the existing calibration values to the clipboard or take a photo before the next step. This allows you to manually reset them if necessary.',
             width=300)
         self.message3.grid(
             column=0,
-            columnspan=2,
+            columnspan=3,
             pady="15 0",
-            row=3,
+            row=4,
             sticky="ew")
         self.calibrationWizardExistingValue_Frame.pack(
             expand="true", fill="both", pady=25, side="top")
@@ -140,44 +150,404 @@ class CalibrationWizardWidget(tk.Toplevel):
             borderwidth=0,
             justify="left",
             takefocus=False,
-            text='The frequency calibration of the uBITX depends on your ability to "zero-beat" against a known signal. To do that you must be able to hear that signal. This step will help you initially calibrate your BFO.\n\nDo not worry if you do not get it optimal at this point, we will fine tune it after we calibrate the frequency.\n\nIf you have not watched it, you should watch the youtube video below by the designer of uBITX, Ashhar Farhan, where he walks thru calibrating a V6 uBITX.  (You can copy and paste this link.)\n',
+            text='The frequency calibration of the uBITX depends on your ability to "zero-beat" against a known signal. To do that you must be able to hear that signal. This step will help you initially calibrate your BFO.\n\nDo not worry if you do not get it optimal at this point, we will fine tune it after we calibrate the frequency.\n\nIf you have not watched it, you should watch the youtube video below by the designer of uBITX, Ashhar Farhan, where he walks thru calibrating a V6 uBITX.\n',
             width=300)
         self.message13.pack(expand="true", fill="both", pady=10, side="top")
-        self.frame21 = ttk.Frame(self.frame20)
-        self.frame21.configure(height=200, width=200)
-        self.entry3 = ttk.Entry(self.frame21)
-        self.entry3.configure(
-            state="readonly",
-            style="NoBorder.TEntry",
-            width=30)
-        _text_ = 'https://youtu.be/t6LGXhS4_O8'
-        self.entry3["state"] = "normal"
-        self.entry3.delete("0", "end")
-        self.entry3.insert("0", _text_)
-        self.entry3["state"] = "readonly"
-        self.entry3.pack(pady="0 10", side="top")
-        self.frame21.pack(side="top")
+        self.frame23 = ttk.Frame(self.frame20)
+        self.frame23.configure(height=200, width=200)
+        self.hfsignalsCalVideoLink_Widget = ttk.Label(self.frame23)
+        self.hfsignalsCalVideoLink = tk.StringVar(
+            value='https://youtu.be/t6LGXhS4_O8')
+        self.hfsignalsCalVideoLink_Widget.configure(
+            text='https://youtu.be/t6LGXhS4_O8',
+            textvariable=self.hfsignalsCalVideoLink)
+        self.hfsignalsCalVideoLink_Widget.pack(side="left")
+        self.CalVideoCopy_Button = ttk.Button(self.frame23)
+        self.CalVideoCopy_Button.configure(image=self.img_copy_icon25x25)
+        self.CalVideoCopy_Button.pack(padx=10, side="right")
+        self.CalVideoCopy_Button.configure(
+            command=self.copyCalVideoToClipboard)
+        self.frame23.pack(pady=10, side="top")
         self.message14 = tk.Message(self.frame20)
         self.message14.configure(
-            text='After viewing the video, go to the link below to access the HF Signals BFO Tuning Aid. Follow the setup directions. (You can also copy and paste this link too.)\n',
+            text='After viewing the video, go to the link below to access the HF Signals BFO Tuning Aid. Follow the setup directions.\n',
             width=300)
         self.message14.pack(pady="0 10", side="top")
         self.frame22 = ttk.Frame(self.frame20)
         self.frame22.configure(height=200, width=200)
-        self.entry4 = ttk.Entry(self.frame22)
-        self.entry4.configure(
-            state="readonly",
-            style="NoBorder.TEntry",
-            width=50)
-        _text_ = 'https://www.hfsignals.com/index.php/bfo-tuning-aid/'
-        self.entry4["state"] = "normal"
-        self.entry4.delete("0", "end")
-        self.entry4.insert("0", _text_)
-        self.entry4["state"] = "readonly"
-        self.entry4.pack(expand="true", fill="x", side="top")
-        self.frame22.pack(side="top")
+        self.hfsignalsBFOTuningAid_Label = ttk.Label(self.frame22)
+        self.hfsignalsBFOTuningAid = tk.StringVar(
+            value='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n')
+        self.hfsignalsBFOTuningAid_Label.configure(
+            compound="top",
+            cursor="arrow",
+            text='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n',
+            textvariable=self.hfsignalsBFOTuningAid)
+        self.hfsignalsBFOTuningAid_Label.pack(side="left")
+        self.hfsiganlsBFOTuningAidCopy_Button = ttk.Button(self.frame22)
+        self.hfsiganlsBFOTuningAidCopy_Button.configure(
+            image=self.img_copy_icon25x25, style="Symbol1.TButton")
+        self.hfsiganlsBFOTuningAidCopy_Button.pack(
+            padx=10, pady="0 10", side="right")
+        self.hfsiganlsBFOTuningAidCopy_Button.configure(
+            command=self.copyTuningAidLinkToClipboard)
+        self.frame22.pack(padx=10, side="top")
         self.frame20.pack(padx=5, pady="0 10", side="top")
         self.calibrationWizardStep2_Frame.grid()
+        self.calibrationWizardStep3_Frame = ttk.Frame(self)
+        self.calibrationWizardStep3_Frame.configure(height=200, width=200)
+        self.separator13 = ttk.Separator(self.calibrationWizardStep3_Frame)
+        self.separator13.configure(orient="horizontal")
+        self.separator13.pack(expand="true", fill="x", side="top")
+        self.frame25 = ttk.Frame(self.calibrationWizardStep3_Frame)
+        self.frame25.configure(height=25)
+        self.label29 = ttk.Label(self.frame25)
+        self.label29.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='Setting BFO')
+        self.label29.pack(padx=5, side="top")
+        self.frame25.pack(expand="true", fill="x", pady=10, side="top")
+        self.frame26 = ttk.Frame(self.calibrationWizardStep3_Frame)
+        self.frame26.configure(height=200, width=350)
+        self.message15 = tk.Message(self.frame26)
+        self.message15.configure(
+            borderwidth=0,
+            justify="left",
+            takefocus=False,
+            text='The frequency calibration of the uBITX depends on your ability to "zero-beat" against a known signal. To do that you must be able to hear that signal. This step will help you initially calibrate your BFO.\n\nDo not worry if you do not get it optimal at this point, we will fine tune it after we calibrate the frequency.\n\nIf you have not watched it, you should watch the youtube video below by the designer of uBITX, Ashhar Farhan, where he walks thru calibrating a V6 uBITX.\n',
+            width=300)
+        self.message15.pack(expand="true", fill="both", pady=10, side="top")
+        self.frame27 = ttk.Frame(self.frame26)
+        self.frame27.configure(height=200, width=200)
+        self.label30 = ttk.Label(self.frame27)
+        self.label30.configure(
+            text='https://youtu.be/t6LGXhS4_O8',
+            textvariable=self.hfsignalsCalVideoLink)
+        self.label30.pack(side="left")
+        self.button6 = ttk.Button(self.frame27)
+        self.button6.configure(image=self.img_copy_icon25x25)
+        self.button6.pack(padx=10, side="right")
+        self.button6.configure(command=self.copyCalVideoToClipboard)
+        self.frame27.pack(pady=10, side="top")
+        self.message16 = tk.Message(self.frame26)
+        self.message16.configure(
+            text='After viewing the video, go to the link below to access the HF Signals BFO Tuning Aid. Follow the setup directions.\n',
+            width=300)
+        self.message16.pack(pady="0 10", side="top")
+        self.frame28 = ttk.Frame(self.frame26)
+        self.frame28.configure(height=200, width=200)
+        self.label31 = ttk.Label(self.frame28)
+        self.label31.configure(
+            compound="top",
+            cursor="arrow",
+            text='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n',
+            textvariable=self.hfsignalsBFOTuningAid)
+        self.label31.pack(side="left")
+        self.button7 = ttk.Button(self.frame28)
+        self.button7.configure(
+            image=self.img_copy_icon25x25,
+            style="Symbol1.TButton")
+        self.button7.pack(padx=10, pady="0 10", side="right")
+        self.button7.configure(command=self.copyTuningAidLinkToClipboard)
+        self.frame28.pack(padx=10, side="top")
+        self.frame26.pack(padx=5, pady="0 10", side="top")
+        self.calibrationWizardStep3_Frame.grid()
+        self.calibrationWizardStep4_Frame = ttk.Frame(self)
+        self.calibrationWizardStep4_Frame.configure(height=200, width=200)
+        self.separator14 = ttk.Separator(self.calibrationWizardStep4_Frame)
+        self.separator14.configure(orient="horizontal")
+        self.separator14.pack(expand="true", fill="x", side="top")
+        self.frame30 = ttk.Frame(self.calibrationWizardStep4_Frame)
+        self.frame30.configure(height=25)
+        self.label32 = ttk.Label(self.frame30)
+        self.label32.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='Calibrate Frequency - "Master Calibration"')
+        self.label32.pack(padx=5, side="top")
+        self.frame30.pack(expand="true", fill="x", pady=10, side="top")
+        self.frame31 = ttk.Frame(self.calibrationWizardStep4_Frame)
+        self.frame31.configure(height=200, width=350)
+        self.message17 = tk.Message(self.frame31)
+        self.message17.configure(
+            borderwidth=0,
+            justify="left",
+            takefocus=False,
+            text='The frequency calibration of the uBITX depends on your ability to "zero-beat" against a known signal. To do that you must be able to hear that signal. This step will help you initially calibrate your BFO.\n\nDo not worry if you do not get it optimal at this point, we will fine tune it after we calibrate the frequency.\n\nIf you have not watched it, you should watch the youtube video below by the designer of uBITX, Ashhar Farhan, where he walks thru calibrating a V6 uBITX.\n',
+            width=300)
+        self.message17.pack(expand="true", fill="both", pady=10, side="top")
+        self.frame32 = ttk.Frame(self.frame31)
+        self.frame32.configure(height=200, width=200)
+        self.label33 = ttk.Label(self.frame32)
+        self.label33.configure(
+            text='https://youtu.be/t6LGXhS4_O8',
+            textvariable=self.hfsignalsCalVideoLink)
+        self.label33.pack(side="left")
+        self.button8 = ttk.Button(self.frame32)
+        self.button8.configure(image=self.img_copy_icon25x25)
+        self.button8.pack(padx=10, side="right")
+        self.button8.configure(command=self.copyCalVideoToClipboard)
+        self.frame32.pack(pady=10, side="top")
+        self.message18 = tk.Message(self.frame31)
+        self.message18.configure(
+            text='After viewing the video, go to the link below to access the HF Signals BFO Tuning Aid. Follow the setup directions.\n',
+            width=300)
+        self.message18.pack(pady="0 10", side="top")
+        self.frame33 = ttk.Frame(self.frame31)
+        self.frame33.configure(height=200, width=200)
+        self.label34 = ttk.Label(self.frame33)
+        self.label34.configure(
+            compound="top",
+            cursor="arrow",
+            text='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n',
+            textvariable=self.hfsignalsBFOTuningAid)
+        self.label34.pack(side="left")
+        self.button9 = ttk.Button(self.frame33)
+        self.button9.configure(
+            image=self.img_copy_icon25x25,
+            style="Symbol1.TButton")
+        self.button9.pack(padx=10, pady="0 10", side="right")
+        self.button9.configure(command=self.copyTuningAidLinkToClipboard)
+        self.frame33.pack(padx=10, side="top")
+        self.frame31.pack(padx=5, pady="0 10", side="top")
+        self.calibrationWizardStep4_Frame.grid()
+        self.calibrationWizardStep5_Frame = ttk.Frame(self)
+        self.calibrationWizardStep5_Frame.configure(height=200, width=200)
+        self.separator15 = ttk.Separator(self.calibrationWizardStep5_Frame)
+        self.separator15.configure(orient="horizontal")
+        self.separator15.pack(expand="true", fill="x", side="top")
+        self.frame35 = ttk.Frame(self.calibrationWizardStep5_Frame)
+        self.frame35.configure(height=25)
+        self.label41 = ttk.Label(self.frame35)
+        self.label41.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='Final Adjustment of the SSB BFO')
+        self.label41.pack(padx=5, side="top")
+        self.frame35.pack(expand="true", fill="x", pady=10, side="top")
+        self.frame36 = ttk.Frame(self.calibrationWizardStep5_Frame)
+        self.frame36.configure(height=200, width=350)
+        self.message19 = tk.Message(self.frame36)
+        self.message19.configure(
+            borderwidth=0,
+            justify="left",
+            takefocus=False,
+            text='The frequency calibration of the uBITX depends on your ability to "zero-beat" against a known signal. To do that you must be able to hear that signal. This step will help you initially calibrate your BFO.\n\nDo not worry if you do not get it optimal at this point, we will fine tune it after we calibrate the frequency.\n\nIf you have not watched it, you should watch the youtube video below by the designer of uBITX, Ashhar Farhan, where he walks thru calibrating a V6 uBITX.\n',
+            width=300)
+        self.message19.pack(expand="true", fill="both", pady=10, side="top")
+        self.frame37 = ttk.Frame(self.frame36)
+        self.frame37.configure(height=200, width=200)
+        self.label36 = ttk.Label(self.frame37)
+        self.label36.configure(
+            text='https://youtu.be/t6LGXhS4_O8',
+            textvariable=self.hfsignalsCalVideoLink)
+        self.label36.pack(side="left")
+        self.button10 = ttk.Button(self.frame37)
+        self.button10.configure(image=self.img_copy_icon25x25)
+        self.button10.pack(padx=10, side="right")
+        self.button10.configure(command=self.copyCalVideoToClipboard)
+        self.frame37.pack(pady=10, side="top")
+        self.message20 = tk.Message(self.frame36)
+        self.message20.configure(
+            text='After viewing the video, go to the link below to access the HF Signals BFO Tuning Aid. Follow the setup directions.\n',
+            width=300)
+        self.message20.pack(pady="0 10", side="top")
+        self.frame38 = ttk.Frame(self.frame36)
+        self.frame38.configure(height=200, width=200)
+        self.label37 = ttk.Label(self.frame38)
+        self.label37.configure(
+            compound="top",
+            cursor="arrow",
+            text='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n',
+            textvariable=self.hfsignalsBFOTuningAid)
+        self.label37.pack(side="left")
+        self.button11 = ttk.Button(self.frame38)
+        self.button11.configure(
+            image=self.img_copy_icon25x25,
+            style="Symbol1.TButton")
+        self.button11.pack(padx=10, pady="0 10", side="right")
+        self.button11.configure(command=self.copyTuningAidLinkToClipboard)
+        self.frame38.pack(padx=10, side="top")
+        self.frame36.pack(padx=5, pady="0 10", side="top")
+        self.calibrationWizardStep5_Frame.grid()
+        self.calibrationWizardStep6_Frame = ttk.Frame(self)
+        self.calibrationWizardStep6_Frame.configure(height=200, width=200)
+        self.separator16 = ttk.Separator(self.calibrationWizardStep6_Frame)
+        self.separator16.configure(orient="horizontal")
+        self.separator16.pack(expand="true", fill="x", side="top")
+        self.frame40 = ttk.Frame(self.calibrationWizardStep6_Frame)
+        self.frame40.configure(height=25)
+        self.label38 = ttk.Label(self.frame40)
+        self.label38.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='Preparing for CW BFO Calibration')
+        self.label38.pack(padx=5, side="top")
+        self.frame40.pack(expand="true", fill="x", pady=10, side="top")
+        self.frame41 = ttk.Frame(self.calibrationWizardStep6_Frame)
+        self.frame41.configure(height=200, width=350)
+        self.message21 = tk.Message(self.frame41)
+        self.message21.configure(
+            borderwidth=0,
+            justify="left",
+            takefocus=False,
+            text='The frequency calibration of the uBITX depends on your ability to "zero-beat" against a known signal. To do that you must be able to hear that signal. This step will help you initially calibrate your BFO.\n\nDo not worry if you do not get it optimal at this point, we will fine tune it after we calibrate the frequency.\n\nIf you have not watched it, you should watch the youtube video below by the designer of uBITX, Ashhar Farhan, where he walks thru calibrating a V6 uBITX.\n',
+            width=300)
+        self.message21.pack(expand="true", fill="both", pady=10, side="top")
+        self.frame42 = ttk.Frame(self.frame41)
+        self.frame42.configure(height=200, width=200)
+        self.label39 = ttk.Label(self.frame42)
+        self.label39.configure(
+            text='https://youtu.be/t6LGXhS4_O8',
+            textvariable=self.hfsignalsCalVideoLink)
+        self.label39.pack(side="left")
+        self.button12 = ttk.Button(self.frame42)
+        self.button12.configure(image=self.img_copy_icon25x25)
+        self.button12.pack(padx=10, side="right")
+        self.button12.configure(command=self.copyCalVideoToClipboard)
+        self.frame42.pack(pady=10, side="top")
+        self.message22 = tk.Message(self.frame41)
+        self.message22.configure(
+            text='After viewing the video, go to the link below to access the HF Signals BFO Tuning Aid. Follow the setup directions.\n',
+            width=300)
+        self.message22.pack(pady="0 10", side="top")
+        self.frame43 = ttk.Frame(self.frame41)
+        self.frame43.configure(height=200, width=200)
+        self.label40 = ttk.Label(self.frame43)
+        self.label40.configure(
+            compound="top",
+            cursor="arrow",
+            text='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n',
+            textvariable=self.hfsignalsBFOTuningAid)
+        self.label40.pack(side="left")
+        self.button13 = ttk.Button(self.frame43)
+        self.button13.configure(
+            image=self.img_copy_icon25x25,
+            style="Symbol1.TButton")
+        self.button13.pack(padx=10, pady="0 10", side="right")
+        self.button13.configure(command=self.copyTuningAidLinkToClipboard)
+        self.frame43.pack(padx=10, side="top")
+        self.frame41.pack(padx=5, pady="0 10", side="top")
+        self.calibrationWizardStep6_Frame.grid()
+        self.calibrationWizardStep7_Frame = ttk.Frame(self)
+        self.calibrationWizardStep7_Frame.configure(height=200, width=200)
+        self.separator17 = ttk.Separator(self.calibrationWizardStep7_Frame)
+        self.separator17.configure(orient="horizontal")
+        self.separator17.pack(expand="true", fill="x", side="top")
+        self.frame45 = ttk.Frame(self.calibrationWizardStep7_Frame)
+        self.frame45.configure(height=25)
+        self.label42 = ttk.Label(self.frame45)
+        self.label42.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='Calibrating the CW BFO')
+        self.label42.pack(padx=5, side="top")
+        self.frame45.pack(expand="true", fill="x", pady=10, side="top")
+        self.frame46 = ttk.Frame(self.calibrationWizardStep7_Frame)
+        self.frame46.configure(height=200, width=350)
+        self.message23 = tk.Message(self.frame46)
+        self.message23.configure(
+            borderwidth=0,
+            justify="left",
+            takefocus=False,
+            text='The frequency calibration of the uBITX depends on your ability to "zero-beat" against a known signal. To do that you must be able to hear that signal. This step will help you initially calibrate your BFO.\n\nDo not worry if you do not get it optimal at this point, we will fine tune it after we calibrate the frequency.\n\nIf you have not watched it, you should watch the youtube video below by the designer of uBITX, Ashhar Farhan, where he walks thru calibrating a V6 uBITX.\n',
+            width=300)
+        self.message23.pack(expand="true", fill="both", pady=10, side="top")
+        self.frame47 = ttk.Frame(self.frame46)
+        self.frame47.configure(height=200, width=200)
+        self.label43 = ttk.Label(self.frame47)
+        self.label43.configure(
+            text='https://youtu.be/t6LGXhS4_O8',
+            textvariable=self.hfsignalsCalVideoLink)
+        self.label43.pack(side="left")
+        self.button14 = ttk.Button(self.frame47)
+        self.button14.configure(image=self.img_copy_icon25x25)
+        self.button14.pack(padx=10, side="right")
+        self.button14.configure(command=self.copyCalVideoToClipboard)
+        self.frame47.pack(pady=10, side="top")
+        self.message24 = tk.Message(self.frame46)
+        self.message24.configure(
+            text='After viewing the video, go to the link below to access the HF Signals BFO Tuning Aid. Follow the setup directions.\n',
+            width=300)
+        self.message24.pack(pady="0 10", side="top")
+        self.frame48 = ttk.Frame(self.frame46)
+        self.frame48.configure(height=200, width=200)
+        self.label44 = ttk.Label(self.frame48)
+        self.label44.configure(
+            compound="top",
+            cursor="arrow",
+            text='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n',
+            textvariable=self.hfsignalsBFOTuningAid)
+        self.label44.pack(side="left")
+        self.button15 = ttk.Button(self.frame48)
+        self.button15.configure(
+            image=self.img_copy_icon25x25,
+            style="Symbol1.TButton")
+        self.button15.pack(padx=10, pady="0 10", side="right")
+        self.button15.configure(command=self.copyTuningAidLinkToClipboard)
+        self.frame48.pack(padx=10, side="top")
+        self.frame46.pack(padx=5, pady="0 10", side="top")
+        self.calibrationWizardStep7_Frame.grid()
+        self.calibrationWizardStep8_Frame = ttk.Frame(self)
+        self.calibrationWizardStep8_Frame.configure(height=200, width=200)
+        self.separator18 = ttk.Separator(self.calibrationWizardStep8_Frame)
+        self.separator18.configure(orient="horizontal")
+        self.separator18.pack(expand="true", fill="x", side="top")
+        self.frame50 = ttk.Frame(self.calibrationWizardStep8_Frame)
+        self.frame50.configure(height=25)
+        self.label45 = ttk.Label(self.frame50)
+        self.label45.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='Final Review of Calibration Values')
+        self.label45.pack(padx=5, side="top")
+        self.frame50.pack(expand="true", fill="x", pady=10, side="top")
+        self.frame51 = ttk.Frame(self.calibrationWizardStep8_Frame)
+        self.frame51.configure(height=200, width=350)
+        self.message25 = tk.Message(self.frame51)
+        self.message25.configure(
+            borderwidth=0,
+            justify="left",
+            takefocus=False,
+            text='The frequency calibration of the uBITX depends on your ability to "zero-beat" against a known signal. To do that you must be able to hear that signal. This step will help you initially calibrate your BFO.\n\nDo not worry if you do not get it optimal at this point, we will fine tune it after we calibrate the frequency.\n\nIf you have not watched it, you should watch the youtube video below by the designer of uBITX, Ashhar Farhan, where he walks thru calibrating a V6 uBITX.\n',
+            width=300)
+        self.message25.pack(expand="true", fill="both", pady=10, side="top")
+        self.frame52 = ttk.Frame(self.frame51)
+        self.frame52.configure(height=200, width=200)
+        self.label46 = ttk.Label(self.frame52)
+        self.label46.configure(
+            text='https://youtu.be/t6LGXhS4_O8',
+            textvariable=self.hfsignalsCalVideoLink)
+        self.label46.pack(side="left")
+        self.button16 = ttk.Button(self.frame52)
+        self.button16.configure(image=self.img_copy_icon25x25)
+        self.button16.pack(padx=10, side="right")
+        self.button16.configure(command=self.copyCalVideoToClipboard)
+        self.frame52.pack(pady=10, side="top")
+        self.message26 = tk.Message(self.frame51)
+        self.message26.configure(
+            text='After viewing the video, go to the link below to access the HF Signals BFO Tuning Aid. Follow the setup directions.\n',
+            width=300)
+        self.message26.pack(pady="0 10", side="top")
+        self.frame53 = ttk.Frame(self.frame51)
+        self.frame53.configure(height=200, width=200)
+        self.label47 = ttk.Label(self.frame53)
+        self.label47.configure(
+            compound="top",
+            cursor="arrow",
+            text='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n',
+            textvariable=self.hfsignalsBFOTuningAid)
+        self.label47.pack(side="left")
+        self.button17 = ttk.Button(self.frame53)
+        self.button17.configure(
+            image=self.img_copy_icon25x25,
+            style="Symbol1.TButton")
+        self.button17.pack(padx=10, pady="0 10", side="right")
+        self.button17.configure(command=self.copyTuningAidLinkToClipboard)
+        self.frame53.pack(padx=10, side="top")
+        self.frame51.pack(padx=5, pady="0 10", side="top")
+        self.calibrationWizardStep8_Frame.grid()
         self.calibrationWizardButton_Frame = ttk.Frame(self)
         self.calibrationWizardButton_Frame.configure(height=50, width=200)
         self.calibration_wizard_button_frame = ttk.Frame(
@@ -303,6 +673,15 @@ class CalibrationWizardWidget(tk.Toplevel):
 
         style.configure('Fixed.TNotebook')
         style.configure('Fixed.TNotebook.Tab', padding=[5, 2])
+
+    def copyExistingCalibrationToClipboard(self):
+        pass
+
+    def copyCalVideoToClipboard(self):
+        pass
+
+    def copyTuningAidLinkToClipboard(self):
+        pass
 
     def wizardBack(self):
         pass

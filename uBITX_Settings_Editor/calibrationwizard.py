@@ -17,7 +17,9 @@ class calibrationWizard(CalibrationWizardWidget):
         self.log = log
         super().__init__()
         self.current_step = -1           # init to first step
-        self.steps = [self.calibrationWizardStep0_Frame , self.calibrationWizardStep1_Frame , self.calibrationWizardStep2_Frame ]
+        self.steps = [self.calibrationWizardStep0_Frame , self.calibrationWizardStep1_Frame , self.calibrationWizardStep2_Frame,
+                      self.calibrationWizardStep3_Frame , self.calibrationWizardStep4_Frame , self.calibrationWizardStep5_Frame,
+                      self.calibrationWizardStep6_Frame , self.calibrationWizardStep7_Frame, self.calibrationWizardStep8_Frame ]
         for s in self.steps:            # hide all the wizard steps initially
             s.grid_forget()
         self.show_step(0)               # this one will show the first (0) step
@@ -153,5 +155,20 @@ class calibrationWizard(CalibrationWizardWidget):
                 print("throway =", throwaway)
 
         return
+
+    def copyExistingCalibrationToClipboard(self):
+        calValues = "Master Calibration: " + self.currentMasterCal.get() +"\n"\
+                    "SSB BFO: "+ self.currentSSBBFO.get() + "\n" +\
+                    "CW BFO: "+ self.currentCWBFO.get() + "\n"
+
+        copyLogToClipboard(calValues)
+
+
+    def copyCalVideoToClipboard(self):
+        copyLogToClipboard(self.hfsignalsCalVideoLink.get())
+
+    def copyTuningAidLinkToClipboard(self):
+        copyLogToClipboard(self.hfsignalsBFOTuningAid.get())
+
 
 

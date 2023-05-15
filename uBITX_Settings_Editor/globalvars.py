@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+import tkinter as tk
 
 VERSION="Beta V2"
 
@@ -172,9 +173,16 @@ def resource_path(relative_path):
 # resource_path is in globalvars
 #
 
+def copyLogToClipboard(textToClip):
+        tmpTK = tk.Text()
+        tmpTK.clipboard_clear()
+        tmpTK.clipboard_append(textToClip)
+        tmpTK.update()
+
 def setEEPROM_SIZE (newSize):
     global EEPROMSIZE
     EEPROMSIZE = newSize
+
 
 def getEEPROM_SIZE ():
     global EEPROMSIZE

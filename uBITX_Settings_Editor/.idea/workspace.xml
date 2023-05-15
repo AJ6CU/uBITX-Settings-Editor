@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07ffa901-4db2-460d-94d0-031f158d06d7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/calibrationwizard.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ADCscanner.py" beforeDir="false" afterPath="$PROJECT_DIR$/ADCscanner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SettingsNotebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/SettingsNotebook.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmeterWizard.py" beforeDir="false" afterPath="$PROJECT_DIR$/SmeterWizard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comportmanagerwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/comportmanagerwidget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calibrationwizard.py" beforeDir="false" afterPath="$PROJECT_DIR$/calibrationwizard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calibrationwizardwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/calibrationwizardwidget.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/globalvars.py" beforeDir="false" afterPath="$PROJECT_DIR$/globalvars.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pygubu/com_portManager.ui" beforeDir="false" afterPath="$PROJECT_DIR$/pygubu/com_portManager.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pygubu/settingsNotebook.ui" beforeDir="false" afterPath="$PROJECT_DIR$/pygubu/settingsNotebook.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pygubu/sourceSelector.ui" beforeDir="false" afterPath="$PROJECT_DIR$/pygubu/sourceSelector.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settingsnotebookwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/settingsnotebookwidget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourceselectorwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/sourceselectorwidget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygubu/calibration_wizard.ui" beforeDir="false" afterPath="$PROJECT_DIR$/pygubu/calibration_wizard.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +42,28 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.uBITX_Settings_Editor">
+    <configuration name="globalvars" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="uBITX_Settings_Editor" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/globalvars.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="uBITX_Settings_Editor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="uBITX_Settings_Editor" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -74,6 +88,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.uBITX_Settings_Editor" />
+        <item itemvalue="Python.globalvars" />
       </list>
     </recent_temporary>
   </component>
