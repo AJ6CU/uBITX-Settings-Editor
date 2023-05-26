@@ -81,7 +81,7 @@
 	<SETTING NAME="USB_CAL">					
 		<label>BFO (USB) Calibration</label>	<!--previously called USB Calibration. Often around 11996450-->
 		<value></value>
-		<tooltip>Adjusts BFO for best SSB reception. See HF Signals V6 Calibration video</tooltip>
+		<tooltip>Value for V5 and V6 uBITX motherboards must be between 11048000 to 11060000. Value for V3 and V4 uBITX Motherboards must be between 11990000 to 12010000. Adjusts BFO for best SSB reception. See HF Signals V6 Calibration video</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_CAL">						
 		<label>CW BFO Calibration</label>

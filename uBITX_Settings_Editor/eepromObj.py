@@ -228,10 +228,8 @@ class eepromObj:
         def USER_CALLSIGN(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, _unused1):
     #       First need to confirm that a valid call sign has been entered by looking for 0x59 in
     #       "USER_CALLSIGN_KEY"
-
             if ((self.XML_Get_uint8_FromEEPROM(EEPROMroot, "USER_CALLSIGN_KEY", EEPROMBuffer) & 0xff) == MAGIC_USER_CALLSIGN_KEY):     # good a good one, can continue
                 callSignLength = self.XML_Get_uint8_FromEEPROM (EEPROMroot, "USER_CALLSIGN_LEN", EEPROMBuffer) & 0x7f   #Important to mask it here as
-
                 j: int = 0                                                                                        #Upper bit used to for LCD display callsign on startup
                 callSignStr: str = ''
                 while j < callSignLength:
@@ -1684,7 +1682,7 @@ class eepromObj:
 
 
         def USER_CALLSIGN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, _unused1):
-            # Get memory location assigned to Call Sign Key and CW Key Lenght
+            # Get memory location assigned to Call Sign Key and CW Key Length
             callSignKeyLocation: int = self.XML_MemLocation_FromEEPROM(EEPROMroot, "USER_CALLSIGN_KEY")
             callSignLenLocation: int = self.XML_MemLocation_FromEEPROM(EEPROMroot, "USER_CALLSIGN_LEN")
 
@@ -2551,7 +2549,7 @@ class eepromObj:
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, tmpByte)
 
         def DISPLAY_CALL_SIGN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-            tmpByte: bytes = (EEPROMBuffer[memLocation] & (~0x08)) | (BOOL_SELECT.index(userSettingValue) << 7)
+            tmpByte: bytes = (EEPROMBuffer[memLocation] & (~0x80)) | (BOOL_SELECT.index(userSettingValue) << 7)
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, tmpByte)
 
         def MAIN_SCREEN_FORMAT(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):

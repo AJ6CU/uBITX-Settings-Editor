@@ -152,8 +152,8 @@ class SettingsNotebook(SettingsnotebookWidget):
     FREQ ={'LOW':0, 'HIGH':60000000}            # Min/Max for valid frequencies.
     FREQKHZ = {'LOW':0, 'HIGH':60000}
     MASTER_CAL_BOUNDS = {'LOW':-500000, 'HIGH': 500000}
-    USB_CAL_BOUNDS = {'LOW':0, 'HIGH': 20000000}
-    CW_CAL_BOUNDS = {'LOW':0, 'HIGH': 20000000}
+    USB_CAL_BOUNDS = {'LOW':11048000, 'HIGH': 12010000}
+    CW_CAL_BOUNDS = {'LOW':11048000, 'HIGH': 12010000}
     IF_SHIFTVALUE_BOUNDS = {'LOW':-9999, 'HIGH':10000}
     IF1_CAL_BOUNDS = {'LOW':0, 'HIGH':255}
     PREDEFINED_TUNING_STEPS = {'0': [1,5,10,50,100], '1': [10,20,50,100,1000], '2': [1,10,100,1000,10000],
@@ -1549,9 +1549,34 @@ class SettingsNotebook(SettingsnotebookWidget):
         tooltip.create(self.CAL_runADCScanner_WIDGET,"Click to run an ADC (Analog to Digital Converter) scanner to help figure out start and end values for each CW key.")
         tooltip.create(self.load_Recommended_ADC_CW_Values_WIDGET,"Clicking this loads some reasonable settings for the ADC values for the CW keys. Probably will work, if not you can tune using ADC Scanner results.")
         tooltip.create(self.smeterAssistant_BUTTON_WIDGET,"Click to run a S-Meter assistant to help you tune the ADC values for your system.")
+        tooltip.create(self.CalibrationWizard_Button,"Click to run a Wizard that can help you calibrate your uBITX. Only works on V2.0 or higher")
         #
         #   System Info Tab
         tooltip.create(self.KD8CEC_VERSION_WIDGET,"Currently installed Firmware and Version.")
+
+    def validateCalibrationValues(self):        #   Based on uBITX motherboard version, only certain values are valid for BFO
+                                                #   this routine validates these values and if invalid logs an error to the log
+        self.log.println("","")
+        if  (VALID_BFO_VALUES['V56'][LOW_BFO_VALUE] <= int(self.USB_CAL.get())) and (int(self.USB_CAL.get()) <= VALID_BFO_VALUES['V56'][HIGH_BFO_VALUE]):
+            self.log.println('timestamp', "Valid SSB BFO calibration value found for a V5/V6 \n\tuBITX motherboard.")
+        elif (VALID_BFO_VALUES['V34'][LOW_BFO_VALUE] <= int(self.USB_CAL.get())) and (int(self.USB_CAL.get()) <= VALID_BFO_VALUES['V34'][HIGH_BFO_VALUE]):
+            self.log.println('timestamp', "Valid SSB BFO calibration value found for V3/V4 \n\tuBITX motherboards.")
+        else:
+            self.log.println('timestamp', "SSB BFO calibration value out of range.")
+
+        if  (VALID_BFO_VALUES['V56'][LOW_BFO_VALUE] <= int(self.CW_CAL.get())) and (int(self.CW_CAL.get()) <= VALID_BFO_VALUES['V56'][HIGH_BFO_VALUE]):
+            self.log.println('timestamp', "Valid CW BFO calibration value found for a V5/V6 \n\tuBITX motherboard.")
+        elif (VALID_BFO_VALUES['V34'][LOW_BFO_VALUE] <= int(self.CW_CAL.get())) and (int(self.CW_CAL.get()) <= VALID_BFO_VALUES['V34'][HIGH_BFO_VALUE]):
+            self.log.println('timestamp', "Valid CW BFO calibration value found for V3/V4 \n\tuBITX motherboards.")
+        else:
+            self.log.println('timestamp', "CW BFO calibration value out of range or not specified.")
+
+        self.log.println('timestamp', 'Valid BFO values for uBITX V5/V6 motherboards are between:\n\t' + str(VALID_BFO_VALUES['V56'][LOW_BFO_VALUE]) +\
+            " and " + str(VALID_BFO_VALUES['V56'][HIGH_BFO_VALUE]) )
+        self.log.println('timestamp', 'Valid BFO Values for uBITX V3/V4/V5 motherboards are between:\n\t' + str(VALID_BFO_VALUES['V34'][LOW_BFO_VALUE]) +\
+            " and " + str(VALID_BFO_VALUES['V34'][HIGH_BFO_VALUE]) )
+        self.log.println('timestamp', 'Confirm uBITX motherboard version and check that you have \n\tvalid calibration values' )
+        self.log.println("","")
 
     def setLCDPinsState(self, newState):
         self.EXT_LCD_PIN_RS_Label.configure(state=newState)
@@ -1666,6 +1691,9 @@ class SettingsNotebook(SettingsnotebookWidget):
         #   Add extra tooltips
         #
         self.setTooltips()
+
+        self.validateCalibrationValues()        # valid BFO calibration values vary by board. Make sure the current
+                                                # SSB and CW calibration values are valid. If not flag a warning in the log.
 
         #   Clear hidden widgets
         for widget in SettingsNotebook.hideOnStartup:

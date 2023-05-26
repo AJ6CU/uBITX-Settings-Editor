@@ -3,7 +3,7 @@ import sys
 import time
 import tkinter as tk
 
-VERSION="Beta V2"
+VERSION="Release Candidate 1"
 
 # default window size
 DEFAULT_ROOT_WINDOW_WIDTH = 1280
@@ -94,11 +94,13 @@ READCOMMAND=0xDB
 WRITECOMMAND=0xDC
 READADCDATA=0xDD
 
+READVFO=0xC5
+
 READCALINMEMORY= 0xC0
 
 WRITEMASTERCALINMEMORY = 0xC1
-WRITESSBBFOINMEMORY = 0xC2
-WRITECWBFOINMEMORY = 0xC3
+WRITEUSBCALINMEMORY = 0xC2
+WRITECWCALINMEMORY = 0xC3
 
 WRITECALVALUESTOEEPROM =0xC4
 
@@ -125,8 +127,15 @@ MAGIC_VALID_EEPROM_3 = 0x68
 MAGIC_USER_CALLSIGN_KEY = 0x59
 MAGIC_CW_AUTO_MAGIC_KEY = 0x73
 
+VALID_BFO_VALUES = { 'V56':     (11048000, 11060000, 11052000 ),
+                     'V34':   (11990000, 12010000, 11997000 )
+                     }
+LOW_BFO_VALUE = 0          # enum for low value
+HIGH_BFO_VALUE = 1          # enum for high value
+DEFAULT_BFO_VALUE = 2       # enum for default value if out of range
 
-EEPROMSIZE=2048                              #  default to large EEPROM, but check later and reset to right number
+
+EEPROMSIZE=2048                              # default to large EEPROM, but check later and reset to right number
 DEFAULT_EEPROM_SIZE=1024                     # used as the default value when EEPROM size is unknown
 MAXEEPROMSIZE=2048
 MAXWRITETOEEPROM=1024
@@ -195,16 +204,6 @@ def millis():
 
 SERIALTIMEOUT = 5000
 
-# def waitForData(comPort):
-#     lastReadTime = millis()
-#     while (comPort.in_waiting != 0):
-#         if ((millis() - lastReadTime) > SERIALTIMEOUT):            # we timed out
-#             return -1
-#         else:
-#             sleep (0.01)
-#     return 1
-
-
 
 EEPROMMEMORYMAP=resource_path("eeprommemorymap.xml")               #Maps EEPROM locations to settings
 USERMODFILETEMPLACE=resource_path("usermodfiletemplate.xml")       #Template file used to fill in with data from EEPROM
@@ -231,10 +230,7 @@ USERMODFILE="Select Saved File"                       #Output of process - file 
 #HOMEDIRECTORY="c:/Users/markj/Documents/backups/usermodfiles"                      #Initial directory for file selector
 HOMEDIRECTORY="~"                      #Initial directory for file selector
 
-# #   Dictionary to hold current values of usermodfile and whether dirty or not
-# userModFileValues = {}
-# userModFileDirty = {}
-# userModFileToolTips = {}
+
 DEBUGAPP=False
 
 

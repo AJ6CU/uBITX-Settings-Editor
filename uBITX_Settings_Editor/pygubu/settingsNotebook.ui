@@ -8538,9 +8538,10 @@ Recovery</property>
 Factory settings?</property>
                             <property name="variable">string:FACTORY_SETTING_PROTECTION</property>
                             <layout manager="grid">
-                              <property name="column">5</property>
+                              <property name="column">7</property>
                               <property name="columnspan">4</property>
-                              <property name="row">6</property>
+                              <property name="padx">20 0</property>
+                              <property name="row">4</property>
                               <property name="rowspan">2</property>
                             </layout>
                           </object>
@@ -8594,13 +8595,16 @@ Factory settings?</property>
                           </object>
                         </child>
                         <child>
-                          <object class="ttk.Button" id="button1">
+                          <object class="ttk.Button" id="CalibrationWizard_Button" named="True">
                             <property name="command" type="command" cbtype="simple">runCalibrationWizard</property>
-                            <property name="text" translatable="yes">Calibration
-Wizard</property>
+                            <property name="style">Button3Blue.TButton</property>
+                            <property name="text" translatable="yes">Calibration Wizard</property>
                             <layout manager="grid">
                               <property name="column">4</property>
-                              <property name="row">7</property>
+                              <property name="columnspan">2</property>
+                              <property name="pady">15 0</property>
+                              <property name="row">6</property>
+                              <property name="rowspan">2</property>
                             </layout>
                           </object>
                         </child>

@@ -4965,7 +4965,7 @@ class SettingsnotebookWidget(ttk.Frame):
             text='Enable update of\nFactory settings?',
             variable=self.FACTORY_SETTING_PROTECTION)
         self.FACTORY_SETTING_PROTECTION_WIDGET.grid(
-            column=5, columnspan=4, row=6, rowspan=2)
+            column=7, columnspan=4, padx="20 0", row=4, rowspan=2)
         self.FACTORY_SETTING_PROTECTION_WIDGET.configure(
             command=self.Factory_Settings_Enable_CB)
         self.I2C_ADDR_SI5351_LABEL = ttk.Label(self.Radio_Calibration_Frame)
@@ -4997,10 +4997,14 @@ class SettingsnotebookWidget(ttk.Frame):
             state="disabled", textvariable=self.CW_FREQUENCY_ADJUSTMENT)
         self.CW_FREQUENCY_ADJUSTMENT_WIDGET.pack()
         self.Calibration_Screen_Hidden.grid(column=5, row=7)
-        self.button1 = ttk.Button(self.Radio_Calibration_Frame)
-        self.button1.configure(text='Calibration\nWizard')
-        self.button1.grid(column=4, row=7)
-        self.button1.configure(command=self.runCalibrationWizard)
+        self.CalibrationWizard_Button = ttk.Button(
+            self.Radio_Calibration_Frame)
+        self.CalibrationWizard_Button.configure(
+            style="Button3Blue.TButton", text='Calibration Wizard')
+        self.CalibrationWizard_Button.grid(
+            column=4, columnspan=2, pady="15 0", row=6, rowspan=2)
+        self.CalibrationWizard_Button.configure(
+            command=self.runCalibrationWizard)
         self.Radio_Calibration_Frame.pack(fill="x", side="top")
         self.Radio_Calibration_Frame.grid_anchor("nw")
         self.CW_Calibration_Frame = ttk.Frame(self.frame21)
