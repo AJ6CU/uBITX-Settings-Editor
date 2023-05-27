@@ -6162,6 +6162,11 @@ class SettingsnotebookWidget(ttk.Frame):
         self.FACTORY_VALUES_VFO_B_WIDGET.configure(
             textvariable=self.FACTORY_VALUES_VFO_B)
         self.FACTORY_VALUES_VFO_B_WIDGET.pack(side="top")
+        self.VERSION_ADDRESS_WIDGET = ttk.Label(self.SYSTEM_INFO_HIDDEN_Frame)
+        self.VERSION_ADDRESS = tk.StringVar(value='label167')
+        self.VERSION_ADDRESS_WIDGET.configure(
+            text='label167', textvariable=self.VERSION_ADDRESS)
+        self.VERSION_ADDRESS_WIDGET.pack()
         self.SYSTEM_INFO_HIDDEN_Frame.pack(side="top")
         self.System_Info_SF.pack(expand="true", fill="both", side="top")
         self.settingsNotebook.add(self.System_Info_SF, text='System Info')

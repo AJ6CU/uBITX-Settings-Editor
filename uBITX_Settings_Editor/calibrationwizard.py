@@ -11,7 +11,7 @@ from globalvars import *
 class calibrationWizard(CalibrationWizardWidget):
 
     def __init__(self, log, master=None, **kw):
-        if master.EXT_FIRMWARE_VERSION_INFO.get() == "N/A":                    # 5 is the start of the 2.0 series
+        if int(master.VERSION_ADDRESS.get()[1]) < 2:                    # 5 is the start of the 2.0 series
             tkinter.messagebox.showerror("Error", "Calibration Wizard only works with KD8CEC Version 2.0 or later")
             return                  # don't even create the object, just go home
 
@@ -176,11 +176,14 @@ class calibrationWizard(CalibrationWizardWidget):
 
 
     def wizardSave(self):                       # Save and Exit button
+        self.specialgetInMemoryCalibration()
         self.log.println("timestamp", "Saving new values to EEPROM")
         RS232=self.comPortObj.sendCommand(bytes([0, 0, 0, 0, WRITECALVALUESTOEEPROM]))
-
+        self.specialgetInMemoryCalibration()
+        print("updating1 USBcal=", self.myparent.USB_CAL.get())
         self.myparent.MASTER_CAL.set(self.newMASTER_CAL.get())                  #update the Setting Editors internal variable
         self.myparent.USB_CAL.set(self.newUSB_CAL.get())                        #update the Setting Editors internal variable
+        print("updating2 USBcal=", self.myparent.USB_CAL.get())
         self.myparent.CW_CAL.set(self.newCW_CAL.get())                          #update the Setting Editors internal variable
 
         self.log.printerror("timestamp", "Rebooting uBITX")
@@ -210,6 +213,8 @@ class calibrationWizard(CalibrationWizardWidget):
                 self.myparent.MASTER_CAL.set(self.currentMASTER_CAL.get())                    #update the Setting Editors internal variable
                 self.myparent.USB_CAL.set(self.currentUSB_CAL.get())                         #update the Setting Editors internal variable
                 self.myparent.CW_CAL.set(self.currentCW_CAL.get())
+
+                print("updating USBcal=", self.myparent.USB_CAL.get())
 
                 self.updateCalSetting(self.currentMASTER_CAL, 0, WRITEMASTERCALINMEMORY)      #restore in memory Master_CAL
                 self.updateCalSetting(self.currentUSB_CAL, 0, WRITEUSBCALINMEMORY)            #restore in memory USB_CAL
@@ -299,6 +304,62 @@ class calibrationWizard(CalibrationWizardWidget):
             else:
                 self.currentCW_CAL.set(str(newValue))
                 self.newCW_CAL.set(str(newValue))
+
+            if i == totalBytes:
+                throwaway = RS232.read(1)   # last byte is zero
+
+        return
+    def specialgetInMemoryCalibration(self):
+        #
+        #   After the EEPROM values are read in, the software makes local copies to use. These values can be different
+        #   than the EEPROM values if the EEPROM values are not valid for the particular uBITX board
+        #   or some tuning of the values have been done. e.g. This is what this wizard does until you Save them or Cancel
+        #
+
+        i = 0
+        totalBytes = 12         # long: master cal, usbbfo, and cwbfo + one ack byte
+        tempBytes = [0,0,0,0]   #temp storage for the 32 bits values we read in.
+
+        RS232=self.comPortObj.sendCommand(bytes([0, 0, 0, 0, READCALINMEMORY]))
+        while i < totalBytes:
+
+
+            bcount = 0
+            lastReadTime = millis()
+
+            while bcount < 4:
+                if RS232.in_waiting != 0:          # have a byte to read
+                    lastReadTime = millis()                 #reset time out clock
+
+                    tempBytes[bcount] = RS232.read(1)
+
+                    bcount += 1
+                    i += 1
+                else:
+                    if (millis() - lastReadTime > SERIALTIMEOUT):
+                        self.log.printerror("timestamp",  "**ERROR**: Timeout communicating with uBTIX.")
+                        self.log.printerror("timestamp",  "Check your port selection and try again.")
+
+                        return
+            bcount = 0
+
+            newValue = ord(tempBytes[0])+ (ord(tempBytes[1])<<8)  + (ord(tempBytes[2])<<16) + (ord(tempBytes[3])<<24)
+
+            #newValue = str(int.from_bytes(bytes(tempBytes), "little", signed=False))
+            if i < 5:
+                if newValue & 0x80000000:   #   Master Cal can be negative,so decode it from 2's complement
+                    newValue = -((~newValue+1)& 0xffffffff)
+                print("master cal in memory =", newValue)
+                # self.currentMASTER_CAL.set(str(newValue))
+                # self.newMASTER_CAL.set(str(newValue))
+            elif i< 9:
+                print("new usb cal in memory =", newValue)
+                # self.currentUSB_CAL.set(str(newValue))
+                # self.newUSB_CAL.set(str(newValue))
+            else:
+                print("new cwcal in memory =", newValue)
+                # self.currentCW_CAL.set(str(newValue))
+                # self.newCW_CAL.set(str(newValue))
 
             if i == totalBytes:
                 throwaway = RS232.read(1)   # last byte is zero

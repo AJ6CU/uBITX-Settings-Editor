@@ -10843,6 +10843,13 @@ Factory settings?</property>
                         </layout>
                       </object>
                     </child>
+                    <child>
+                      <object class="ttk.Label" id="VERSION_ADDRESS_WIDGET" named="True">
+                        <property name="text" translatable="yes">label167</property>
+                        <property name="textvariable">string:VERSION_ADDRESS</property>
+                        <layout manager="pack" />
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
