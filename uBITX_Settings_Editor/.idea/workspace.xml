@@ -6,15 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="07ffa901-4db2-460d-94d0-031f158d06d7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SettingsNotebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/SettingsNotebook.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calibrationwizard.py" beforeDir="false" afterPath="$PROJECT_DIR$/calibrationwizard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calibrationwizardwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/calibrationwizardwidget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eepromObj.py" beforeDir="false" afterPath="$PROJECT_DIR$/eepromObj.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/globalvars.py" beforeDir="false" afterPath="$PROJECT_DIR$/globalvars.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pygubu/calibration_wizard.ui" beforeDir="false" afterPath="$PROJECT_DIR$/pygubu/calibration_wizard.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pygubu/settingsNotebook.ui" beforeDir="false" afterPath="$PROJECT_DIR$/pygubu/settingsNotebook.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settingsnotebookwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/settingsnotebookwidget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usermodfiletemplate.xml" beforeDir="false" afterPath="$PROJECT_DIR$/usermodfiletemplate.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/about.xml" beforeDir="false" afterPath="$PROJECT_DIR$/about.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
