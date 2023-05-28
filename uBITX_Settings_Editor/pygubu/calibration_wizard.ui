@@ -198,7 +198,7 @@ You can quit at any time and the original calibration numbers will be restored.<
             <child>
               <object class="ttk.Button" id="copyExistingCalibrationToClipboard_Button" named="True">
                 <property name="command" type="command" cbtype="simple">copyExistingCalibrationToClipboard</property>
-                <property name="image">copy_icon25x25.png</property>
+                <property name="image">img_copy_icon25x25.png</property>
                 <layout manager="grid">
                   <property name="column">2</property>
                   <property name="row">1</property>
@@ -352,7 +352,7 @@ If you have not watched it, you should watch the youtube video below by the desi
                 <child>
                   <object class="ttk.Button" id="CalVideoCopy_Button" named="True">
                     <property name="command" type="command" cbtype="simple">copyCalVideoToClipboard</property>
-                    <property name="image">copy_icon25x25.png</property>
+                    <property name="image">img_copy_icon25x25.png</property>
                     <layout manager="pack">
                       <property name="padx">10</property>
                       <property name="side">right</property>
@@ -395,7 +395,7 @@ If you have not watched it, you should watch the youtube video below by the desi
                 <child>
                   <object class="ttk.Button" id="hfsiganlsBFOTuningAidCopy_Button" named="True">
                     <property name="command" type="command" cbtype="simple">copyTuningAidLinkToClipboard</property>
-                    <property name="image">copy_icon25x25.png</property>
+                    <property name="image">img_copy_icon25x25.png</property>
                     <property name="style">Symbol1.TButton</property>
                     <layout manager="pack">
                       <property name="padx">10</property>
@@ -523,7 +523,7 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                 <child>
                   <object class="ttk.Button" id="moveFreqLower_Button" named="True">
                     <property name="command" type="command" cbtype="simple">moveFreqLower_CB</property>
-                    <property name="image">red-arrow-pointing-left59x36.png</property>
+                    <property name="image">img_plain_red-arrow-pointing-left59x36.png</property>
                     <layout manager="grid">
                       <property name="column">0</property>
                       <property name="padx">0 20</property>
@@ -547,7 +547,7 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                 <child>
                   <object class="ttk.Button" id="moveFreqHigher_Button" named="True">
                     <property name="command" type="command" cbtype="simple">moveFreqLHigher_CB</property>
-                    <property name="image">red-arrow-pointing-right59x36.png</property>
+                    <property name="image">img_plain_red-arrow-pointing-right59x36.png</property>
                     <layout manager="grid">
                       <property name="column">2</property>
                       <property name="row">1</property>
@@ -1075,7 +1075,7 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                 <child>
                   <object class="ttk.Button" id="fineTunehfsiganlsBFOTuningAidCopy_Button" named="True">
                     <property name="command" type="command" cbtype="simple">copyTuningAidLinkToClipboard</property>
-                    <property name="image">copy_icon25x25.png</property>
+                    <property name="image">img_copy_icon25x25.png</property>
                     <property name="style">Symbol1.TButton</property>
                     <layout manager="pack">
                       <property name="padx">10</property>
@@ -1131,7 +1131,7 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                 <child>
                   <object class="ttk.Button" id="fineTuneMoveFreqLower_Button" named="True">
                     <property name="command" type="command" cbtype="simple">moveFreqLower_CB</property>
-                    <property name="image">red-arrow-pointing-left59x36.png</property>
+                    <property name="image">img_plain_red-arrow-pointing-left59x36.png</property>
                     <layout manager="grid">
                       <property name="column">0</property>
                       <property name="padx">0 20</property>
@@ -1155,7 +1155,7 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                 <child>
                   <object class="ttk.Button" id="fineTuneMoveFreqHigher_Button" named="True">
                     <property name="command" type="command" cbtype="simple">moveFreqLHigher_CB</property>
-                    <property name="image">red-arrow-pointing-right59x36.png</property>
+                    <property name="image">img_plain_red-arrow-pointing-right59x36.png</property>
                     <layout manager="grid">
                       <property name="column">2</property>
                       <property name="row">1</property>
@@ -1287,7 +1287,7 @@ A link to the HF Signals BFO Tuning Aid is also provided below.</property>
                 <child>
                   <object class="ttk.Button" id="CWTunehfsiganlsBFOTuningAidCopy_Button" named="True">
                     <property name="command" type="command" cbtype="simple">copyTuningAidLinkToClipboard</property>
-                    <property name="image">copy_icon25x25.png</property>
+                    <property name="image">img_copy_icon25x25.png</property>
                     <property name="style">Symbol1.TButton</property>
                     <layout manager="pack">
                       <property name="padx">10</property>
@@ -1343,7 +1343,7 @@ A link to the HF Signals BFO Tuning Aid is also provided below.</property>
                 <child>
                   <object class="ttk.Button" id="moveCWBFOFreqLower_Button" named="True">
                     <property name="command" type="command" cbtype="simple">moveCWBFOFreqLower_CB</property>
-                    <property name="image">red-arrow-pointing-left59x36.png</property>
+                    <property name="image">img_plain_red-arrow-pointing-left59x36.png</property>
                     <layout manager="grid">
                       <property name="column">0</property>
                       <property name="padx">0 20</property>
@@ -1367,7 +1367,7 @@ A link to the HF Signals BFO Tuning Aid is also provided below.</property>
                 <child>
                   <object class="ttk.Button" id="moveCWBFOFreqHigher_Button" named="True">
                     <property name="command" type="command" cbtype="simple">moveCWBFOFreqLHigher_CB</property>
-                    <property name="image">red-arrow-pointing-right59x36.png</property>
+                    <property name="image">img_plain_red-arrow-pointing-right59x36.png</property>
                     <layout manager="grid">
                       <property name="column">2</property>
                       <property name="row">1</property>

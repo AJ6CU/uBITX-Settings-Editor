@@ -28,7 +28,7 @@
         <property name="command" type="command" cbtype="simple">updateComPorts</property>
         <property name="cursor">arrow</property>
         <property name="font">TkDefaultFont</property>
-        <property name="image">Reload-24x24.png</property>
+        <property name="image">img_Reload-24x24.png</property>
         <property name="text" translatable="yes">button1</property>
         <layout manager="grid">
           <property name="column">1</property>

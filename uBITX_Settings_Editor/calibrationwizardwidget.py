@@ -83,9 +83,10 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.label6.grid(column=1, padx="10 0", row=1, sticky="w")
         self.copyExistingCalibrationToClipboard_Button = ttk.Button(
             self.calibrationWizardExistingValue_Frame)
-        self.img_copy_icon25x25 = tk.PhotoImage(file="copy_icon25x25.png")
+        self.img_img_copy_icon25x25 = tk.PhotoImage(
+            file="img_copy_icon25x25.png")
         self.copyExistingCalibrationToClipboard_Button.configure(
-            image=self.img_copy_icon25x25)
+            image=self.img_img_copy_icon25x25)
         self.copyExistingCalibrationToClipboard_Button.grid(
             column=2, row=1, sticky="e")
         self.copyExistingCalibrationToClipboard_Button.configure(
@@ -157,7 +158,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             textvariable=self.hfsignalsCalVideoLink)
         self.hfsignalsCalVideoLink_Widget.pack(side="left")
         self.CalVideoCopy_Button = ttk.Button(self.frame23)
-        self.CalVideoCopy_Button.configure(image=self.img_copy_icon25x25)
+        self.CalVideoCopy_Button.configure(image=self.img_img_copy_icon25x25)
         self.CalVideoCopy_Button.pack(padx=10, side="right")
         self.CalVideoCopy_Button.configure(
             command=self.copyCalVideoToClipboard)
@@ -180,7 +181,7 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.hfsignalsBFOTuningAid_Label.pack(side="left")
         self.hfsiganlsBFOTuningAidCopy_Button = ttk.Button(self.frame22)
         self.hfsiganlsBFOTuningAidCopy_Button.configure(
-            image=self.img_copy_icon25x25, style="Symbol1.TButton")
+            image=self.img_img_copy_icon25x25, style="Symbol1.TButton")
         self.hfsiganlsBFOTuningAidCopy_Button.pack(
             padx=10, pady="0 10", side="right")
         self.hfsiganlsBFOTuningAidCopy_Button.configure(
@@ -228,10 +229,10 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.label51.configure(style="Heading4.TLabel", text='Move Higher')
         self.label51.grid(column=2, row=0, sticky="e")
         self.moveFreqLower_Button = ttk.Button(self.frame54)
-        self.img_redarrowpointingleft59x36 = tk.PhotoImage(
-            file="red-arrow-pointing-left59x36.png")
+        self.img_img_plain_redarrowpointingleft59x36 = tk.PhotoImage(
+            file="img_plain_red-arrow-pointing-left59x36.png")
         self.moveFreqLower_Button.configure(
-            image=self.img_redarrowpointingleft59x36)
+            image=self.img_img_plain_redarrowpointingleft59x36)
         self.moveFreqLower_Button.grid(
             column=0, padx="0 20", row=1, sticky="w")
         self.moveFreqLower_Button.configure(command=self.moveFreqLower_CB)
@@ -248,10 +249,10 @@ class CalibrationWizardWidget(tk.Toplevel):
             self.frame54, self.bfo_speed_multiplier, "X    5", *__values, command=None)
         self.bfo_speed_multiplier_OptionMenu.grid(column=1, padx="0 20", row=1)
         self.moveFreqHigher_Button = ttk.Button(self.frame54)
-        self.img_redarrowpointingright59x36 = tk.PhotoImage(
-            file="red-arrow-pointing-right59x36.png")
+        self.img_img_plain_redarrowpointingright59x36 = tk.PhotoImage(
+            file="img_plain_red-arrow-pointing-right59x36.png")
         self.moveFreqHigher_Button.configure(
-            image=self.img_redarrowpointingright59x36)
+            image=self.img_img_plain_redarrowpointingright59x36)
         self.moveFreqHigher_Button.grid(column=2, row=1, sticky="e")
         self.moveFreqHigher_Button.configure(command=self.moveFreqLHigher_CB)
         self.frame54.pack(side="top")
@@ -489,7 +490,7 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.fineTunehfsiganlsBFOTuningAidCopy_Button = ttk.Button(
             self.frame12)
         self.fineTunehfsiganlsBFOTuningAidCopy_Button.configure(
-            image=self.img_copy_icon25x25, style="Symbol1.TButton")
+            image=self.img_img_copy_icon25x25, style="Symbol1.TButton")
         self.fineTunehfsiganlsBFOTuningAidCopy_Button.pack(
             padx=10, pady="0 10", side="right")
         self.fineTunehfsiganlsBFOTuningAidCopy_Button.configure(
@@ -511,7 +512,7 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.label11.grid(column=2, row=0, sticky="e")
         self.fineTuneMoveFreqLower_Button = ttk.Button(self.frame4)
         self.fineTuneMoveFreqLower_Button.configure(
-            image=self.img_redarrowpointingleft59x36)
+            image=self.img_img_plain_redarrowpointingleft59x36)
         self.fineTuneMoveFreqLower_Button.grid(
             column=0, padx="0 20", row=1, sticky="w")
         self.fineTuneMoveFreqLower_Button.configure(
@@ -531,7 +532,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             column=1, padx="0 20", row=1)
         self.fineTuneMoveFreqHigher_Button = ttk.Button(self.frame4)
         self.fineTuneMoveFreqHigher_Button.configure(
-            image=self.img_redarrowpointingright59x36)
+            image=self.img_img_plain_redarrowpointingright59x36)
         self.fineTuneMoveFreqHigher_Button.grid(column=2, row=1, sticky="e")
         self.fineTuneMoveFreqHigher_Button.configure(
             command=self.moveFreqLHigher_CB)
@@ -589,7 +590,7 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.label24.pack(side="left")
         self.CWTunehfsiganlsBFOTuningAidCopy_Button = ttk.Button(self.frame18)
         self.CWTunehfsiganlsBFOTuningAidCopy_Button.configure(
-            image=self.img_copy_icon25x25, style="Symbol1.TButton")
+            image=self.img_img_copy_icon25x25, style="Symbol1.TButton")
         self.CWTunehfsiganlsBFOTuningAidCopy_Button.pack(
             padx=10, pady="0 10", side="right")
         self.CWTunehfsiganlsBFOTuningAidCopy_Button.configure(
@@ -611,7 +612,7 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.label16.grid(column=2, row=0, sticky="e")
         self.moveCWBFOFreqLower_Button = ttk.Button(self.frame9)
         self.moveCWBFOFreqLower_Button.configure(
-            image=self.img_redarrowpointingleft59x36)
+            image=self.img_img_plain_redarrowpointingleft59x36)
         self.moveCWBFOFreqLower_Button.grid(
             column=0, padx="0 20", row=1, sticky="w")
         self.moveCWBFOFreqLower_Button.configure(
@@ -630,7 +631,7 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.CWspeedMultiplier_OptionMenu.grid(column=1, padx="0 20", row=1)
         self.moveCWBFOFreqHigher_Button = ttk.Button(self.frame9)
         self.moveCWBFOFreqHigher_Button.configure(
-            image=self.img_redarrowpointingright59x36)
+            image=self.img_img_plain_redarrowpointingright59x36)
         self.moveCWBFOFreqHigher_Button.grid(column=2, row=1, sticky="e")
         self.moveCWBFOFreqHigher_Button.configure(
             command=self.moveCWBFOFreqLHigher_CB)
