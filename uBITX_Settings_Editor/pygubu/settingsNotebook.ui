@@ -5985,6 +5985,7 @@ KHZ:	Similar to MHZ_OFFSET, but using the KHZ
                               <property name="columnspan">10</property>
                               <property name="pady">10 5</property>
                               <property name="row">0</property>
+                              <property name="sticky">ns</property>
                             </layout>
                             <child>
                               <object class="ttk.Label" id="label4" named="True">
@@ -6660,6 +6661,7 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html
                               <property name="padx">15 0</property>
                               <property name="row">7</property>
                               <property name="rowspan">10</property>
+                              <property name="sticky">n</property>
                             </layout>
                           </object>
                         </child>
@@ -6706,6 +6708,7 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html
                               <property name="column">0</property>
                               <property name="pady">5 0</property>
                               <property name="row">0</property>
+                              <property name="sticky">w</property>
                             </layout>
                             <child>
                               <object class="ttk.Label" id="label10" named="True">
@@ -6792,6 +6795,7 @@ http://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html
                               <property name="column">0</property>
                               <property name="pady">5 0</property>
                               <property name="row">5</property>
+                              <property name="sticky">w</property>
                             </layout>
                             <child>
                               <object class="ttk.Frame" id="CUSTOM_BANDPASS_FILTER_Frame" named="True">
