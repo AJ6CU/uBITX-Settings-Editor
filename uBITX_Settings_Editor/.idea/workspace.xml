@@ -6,21 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="07ffa901-4db2-460d-94d0-031f158d06d7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reload-24x24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ADCscanner.py" beforeDir="false" afterPath="$PROJECT_DIR$/ADCscanner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scanner.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scanner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SmeterWizard.py" beforeDir="false" afterPath="$PROJECT_DIR$/SmeterWizard.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calibrationwizard.py" beforeDir="false" afterPath="$PROJECT_DIR$/calibrationwizard.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calibrationwizardwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/calibrationwizardwidget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clipboard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clipboard25x25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com_portManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/com_portManager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/comportmanagerwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/comportmanagerwidget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/copy_icon25x25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/globalvars.py" beforeDir="false" afterPath="$PROJECT_DIR$/globalvars.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pygubu/calibration_wizard.ui" beforeDir="false" afterPath="$PROJECT_DIR$/pygubu/calibration_wizard.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pygubu/com_portManager.ui" beforeDir="false" afterPath="$PROJECT_DIR$/pygubu/com_portManager.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/red-arrow-pointing-left59x36.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/red-arrow-pointing-right59x36.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uBITX_Settings_Editor_linux._x86_32.spec" beforeDir="false" afterPath="$PROJECT_DIR$/uBITX_Settings_Editor_linux._x86_32.spec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uBITX_Settings_Editor_linux_arm32.spec" beforeDir="false" afterPath="$PROJECT_DIR$/uBITX_Settings_Editor_linux_arm32.spec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uBITX_Settings_Editor_linux_arm64.spec" beforeDir="false" afterPath="$PROJECT_DIR$/uBITX_Settings_Editor_linux_arm64.spec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uBITX_Settings_Editor_macos.spec" beforeDir="false" afterPath="$PROJECT_DIR$/uBITX_Settings_Editor_macos.spec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scannerwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/scannerwidget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settingsnotebookwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/settingsnotebookwidget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uBITX_Settings_Editor.py" beforeDir="false" afterPath="$PROJECT_DIR$/uBITX_Settings_Editor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uBITX_Settings_Editor_win.spec" beforeDir="false" afterPath="$PROJECT_DIR$/uBITX_Settings_Editor_win.spec" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

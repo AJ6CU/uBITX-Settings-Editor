@@ -13,6 +13,7 @@ class ADCscanner (Scanner):
         self.listOfPins = listOfPins    #the class handles a list of pins (i.e., ["CW KEYer", "ENC SW"], etc.)
 
         self.title("Scan Analog Pin(s)")
+        self.iconbitmap(WINDOWMANAGERICON)
 
 
     def scannerStart(self):

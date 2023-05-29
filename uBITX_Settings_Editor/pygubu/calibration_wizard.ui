@@ -59,15 +59,15 @@
                 <property name="borderwidth">0</property>
                 <property name="justify">left</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">This wizard will help you to Calibrate your uBITX.
+                <property name="text" translatable="yes">This wizard will help you Calibrate your uBITX.
 
 DO NOT use this Wizard unless your radio is not receiving or is off frequency!!! 
 
 Always record your Master Calibration#, SSB BFO# (also  known as (USB Calibration) and CW BFO# before using this wizard. 
 
-Fill in requested information and then click save when done. You can click Save at any time and it will save to you Raduino the calibration numbers you have created so far.
+Fill in requested information and then click Save when done. You can click Save at any time and it will save to you Raduino the calibration numbers you have created so far.
 
-You can quit at any time and the original calibration numbers will be restored.</property>
+You can Cancel at any time and the original calibration numbers will be restored.</property>
                 <layout manager="pack">
                   <property name="expand">true</property>
                   <property name="fill">both</property>
@@ -198,7 +198,6 @@ You can quit at any time and the original calibration numbers will be restored.<
             <child>
               <object class="ttk.Button" id="copyExistingCalibrationToClipboard_Button" named="True">
                 <property name="command" type="command" cbtype="simple">copyExistingCalibrationToClipboard</property>
-                <property name="image">img_copy_icon25x25.png</property>
                 <layout manager="grid">
                   <property name="column">2</property>
                   <property name="row">1</property>
@@ -352,7 +351,6 @@ If you have not watched it, you should watch the youtube video below by the desi
                 <child>
                   <object class="ttk.Button" id="CalVideoCopy_Button" named="True">
                     <property name="command" type="command" cbtype="simple">copyCalVideoToClipboard</property>
-                    <property name="image">img_copy_icon25x25.png</property>
                     <layout manager="pack">
                       <property name="padx">10</property>
                       <property name="side">right</property>
@@ -393,9 +391,8 @@ If you have not watched it, you should watch the youtube video below by the desi
                   </object>
                 </child>
                 <child>
-                  <object class="ttk.Button" id="hfsiganlsBFOTuningAidCopy_Button" named="True">
+                  <object class="ttk.Button" id="hfsignalsBFOTuningAidCopy_Button" named="True">
                     <property name="command" type="command" cbtype="simple">copyTuningAidLinkToClipboard</property>
-                    <property name="image">img_copy_icon25x25.png</property>
                     <property name="style">Symbol1.TButton</property>
                     <layout manager="pack">
                       <property name="padx">10</property>
@@ -464,6 +461,8 @@ If you have not watched it, you should watch the youtube video below by the desi
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">Go to the webpage for the HF Signals BFO Tuning Aid. Follow the directions there for the hardware setup. Make sure you remember to connect your radio to your antenna!
 
+This step automatically sets your radio Mode to USB.
+
 If you want to move the spectrum left (down frequency) click the left arrow. Click the right arrow to move the spectrum to the right.
 
 You can also select the speed mulitple using the menu in the center.
@@ -523,7 +522,6 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                 <child>
                   <object class="ttk.Button" id="moveFreqLower_Button" named="True">
                     <property name="command" type="command" cbtype="simple">moveFreqLower_CB</property>
-                    <property name="image">img_plain_red-arrow-pointing-left59x36.png</property>
                     <layout manager="grid">
                       <property name="column">0</property>
                       <property name="padx">0 20</property>
@@ -547,7 +545,6 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                 <child>
                   <object class="ttk.Button" id="moveFreqHigher_Button" named="True">
                     <property name="command" type="command" cbtype="simple">moveFreqLHigher_CB</property>
-                    <property name="image">img_plain_red-arrow-pointing-right59x36.png</property>
                     <layout manager="grid">
                       <property name="column">2</property>
                       <property name="row">1</property>
@@ -647,7 +644,7 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                 <property name="text" translatable="yes">The easiest process to calibrate the frequency of the uBITX is to "zero-beat" against a known signal. This is a 3 step process:
 
 1. Select source with known frequency.
-2. Zero-beat this source. Make sure you are in USB or LSB mode!
+2. Zero-beat this source. This step automatically puts your radio in USB mode.
 3. Click "Calculate" to generate the new calibration value.</property>
                 <property name="width">300</property>
                 <layout manager="pack">
@@ -1042,7 +1039,7 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                 <property name="justify">left</property>
                 <property name="relief">flat</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">Your BFO should be pretty close. But it is worth checking again here and fine tuning it if necessary. Again, startup the HF Signals BFO Tuning Aid and then adjust the BFO. A link to this tuning aid is provided below.</property>
+                <property name="text" translatable="yes">Your BFO should be pretty close. But it is worth checking again here and fine tuning it if necessary. Again, start the HF Signals BFO Tuning Aid and then adjust the BFO. A link to this tuning aid is provided below.</property>
                 <property name="width">300</property>
                 <layout manager="pack">
                   <property name="expand">true</property>
@@ -1073,9 +1070,8 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                   </object>
                 </child>
                 <child>
-                  <object class="ttk.Button" id="fineTunehfsiganlsBFOTuningAidCopy_Button" named="True">
+                  <object class="ttk.Button" id="fineTunehfsignalsBFOTuningAidCopy_Button" named="True">
                     <property name="command" type="command" cbtype="simple">copyTuningAidLinkToClipboard</property>
-                    <property name="image">img_copy_icon25x25.png</property>
                     <property name="style">Symbol1.TButton</property>
                     <layout manager="pack">
                       <property name="padx">10</property>
@@ -1131,7 +1127,6 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                 <child>
                   <object class="ttk.Button" id="fineTuneMoveFreqLower_Button" named="True">
                     <property name="command" type="command" cbtype="simple">moveFreqLower_CB</property>
-                    <property name="image">img_plain_red-arrow-pointing-left59x36.png</property>
                     <layout manager="grid">
                       <property name="column">0</property>
                       <property name="padx">0 20</property>
@@ -1155,7 +1150,6 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                 <child>
                   <object class="ttk.Button" id="fineTuneMoveFreqHigher_Button" named="True">
                     <property name="command" type="command" cbtype="simple">moveFreqLHigher_CB</property>
-                    <property name="image">img_plain_red-arrow-pointing-right59x36.png</property>
                     <layout manager="grid">
                       <property name="column">2</property>
                       <property name="row">1</property>
@@ -1252,7 +1246,9 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                 <property name="justify">left</property>
                 <property name="relief">flat</property>
                 <property name="takefocus">true</property>
-                <property name="text" translatable="yes">The process for setting the CW BFO is similar to that of the SSB BFO. Set your radio mode to CWL or CWU, start the HF Signals BFO Tuning Aid, and then adjust the spectrum so that it is inbetween the two red borders. 
+                <property name="text" translatable="yes">The process for setting the CW BFO is similar to that of the SSB BFO. As previously, this step sets your radio mode to the proper value (CWL).
+
+Now start the HF Signals BFO Tuning Aid, and then adjust the spectrum so that it is inbetween the two red borders. 
 
 A link to the HF Signals BFO Tuning Aid is also provided below.</property>
                 <property name="width">300</property>
@@ -1285,9 +1281,8 @@ A link to the HF Signals BFO Tuning Aid is also provided below.</property>
                   </object>
                 </child>
                 <child>
-                  <object class="ttk.Button" id="CWTunehfsiganlsBFOTuningAidCopy_Button" named="True">
+                  <object class="ttk.Button" id="CWTunehfsignalsBFOTuningAidCopy_Button" named="True">
                     <property name="command" type="command" cbtype="simple">copyTuningAidLinkToClipboard</property>
-                    <property name="image">img_copy_icon25x25.png</property>
                     <property name="style">Symbol1.TButton</property>
                     <layout manager="pack">
                       <property name="padx">10</property>
@@ -1343,7 +1338,6 @@ A link to the HF Signals BFO Tuning Aid is also provided below.</property>
                 <child>
                   <object class="ttk.Button" id="moveCWBFOFreqLower_Button" named="True">
                     <property name="command" type="command" cbtype="simple">moveCWBFOFreqLower_CB</property>
-                    <property name="image">img_plain_red-arrow-pointing-left59x36.png</property>
                     <layout manager="grid">
                       <property name="column">0</property>
                       <property name="padx">0 20</property>
@@ -1367,7 +1361,6 @@ A link to the HF Signals BFO Tuning Aid is also provided below.</property>
                 <child>
                   <object class="ttk.Button" id="moveCWBFOFreqHigher_Button" named="True">
                     <property name="command" type="command" cbtype="simple">moveCWBFOFreqLHigher_CB</property>
-                    <property name="image">img_plain_red-arrow-pointing-right59x36.png</property>
                     <layout manager="grid">
                       <property name="column">2</property>
                       <property name="row">1</property>
@@ -1468,7 +1461,9 @@ A link to the HF Signals BFO Tuning Aid is also provided below.</property>
 
 If you are OK with the new values, click the "Save and Exit" button. Your uBITX will also be automatically rebooted to ensure that you are using the new values stored in EEPROM.
 
-Note: Items in Bold indicate a change in value.</property>
+Notes: 
+1. Items in Bold indicate a change in value. 
+2. This step "guesses" that you want to be in USB mode after completing this wizard. You may want to change that to another mode.</property>
                 <property name="width">300</property>
                 <layout manager="pack">
                   <property name="expand">true</property>

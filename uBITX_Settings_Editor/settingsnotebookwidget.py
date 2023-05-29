@@ -3443,7 +3443,12 @@ class SettingsnotebookWidget(ttk.Frame):
         self.Extended_Keys_Info_Box.insert("0.0", _text_)
         self.Extended_Keys_Info_Box.configure(state="disabled")
         self.Extended_Keys_Info_Box.grid(column=2, padx="15 0", row=0)
-        self.frame55.grid(column=0, columnspan=10, pady="10 5", row=0)
+        self.frame55.grid(
+            column=0,
+            columnspan=10,
+            pady="10 5",
+            row=0,
+            sticky="ns")
         self.label14 = ttk.Label(self.frame29)
         self.label14.configure(style="Heading4.TLabel", text='ADC Range')
         self.label14.grid(column=4, columnspan=2, row=5)
@@ -3853,7 +3858,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.text1.configure(state="normal")
         self.text1.insert("0.0", _text_)
         self.text1.configure(state="disabled")
-        self.text1.grid(column=6, padx="15 0", row=7, rowspan=10)
+        self.text1.grid(column=6, padx="15 0", row=7, rowspan=10, sticky="n")
         self.frame29.pack(fill="x", padx="20 0", side="top")
         self.frame29.grid_anchor("nw")
         self.frame57 = ttk.Frame(self.Extensions_Frame)
@@ -3894,7 +3899,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.text2.insert("0.0", _text_)
         self.text2.configure(state="disabled")
         self.text2.grid(column=1, padx="10 0", row=0)
-        self.frame56.grid(column=0, pady="5 0", row=0)
+        self.frame56.grid(column=0, pady="5 0", row=0, sticky="w")
         self.frame18 = ttk.Frame(self.frame8)
         self.frame18.configure(height=200, width=200)
         self.CUST_LPF_ENABLED_Label = ttk.Label(self.frame18)
@@ -4687,7 +4692,8 @@ class SettingsnotebookWidget(ttk.Frame):
         self.CUSTOM_BANDPASS_EXTENDED_Frame.pack(anchor="w", side="left")
         self.CUSTOM_BANDPASS_FILTER_Frame.pack(
             anchor="w", pady="10 0", side="top")
-        self.CUST_LPF_ENABLED_Frame.grid(column=0, pady="5 0", row=5)
+        self.CUST_LPF_ENABLED_Frame.grid(
+            column=0, pady="5 0", row=5, sticky="w")
         self.hidden_data_items = ttk.Frame(self.frame8)
         self.hidden_data_items.configure(height=0, width=0)
         self.CUST_LPF_FILTER1_CONTROL_WIDGET = ttk.Label(

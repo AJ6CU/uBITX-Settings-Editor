@@ -22,6 +22,31 @@ class calibrationWizard(CalibrationWizardWidget):
         self.log = log
         super().__init__()
 
+        self.iconbitmap(WINDOWMANAGERICON)
+
+        self.img_img_copy_icon25x25 = tk.PhotoImage(file=COPYICON)
+
+        self.img_img_plain_redarrowpointingleft59x36 = tk.PhotoImage(file=MOVELEFTARROWICON)
+        self.img_img_plain_redarrowpointingright59x36 = tk.PhotoImage(file=MOVERIGHTARROWICON)
+
+
+        self.copyExistingCalibrationToClipboard_Button.configure(image=self.img_img_copy_icon25x25)
+        self.CalVideoCopy_Button.configure(image=self.img_img_copy_icon25x25)
+        self.hfsignalsBFOTuningAidCopy_Button.configure(image=self.img_img_copy_icon25x25)
+        self.fineTunehfsignalsBFOTuningAidCopy_Button.configure(image=self.img_img_copy_icon25x25)
+        self.CWTunehfsignalsBFOTuningAidCopy_Button.configure(image=self.img_img_copy_icon25x25)
+
+
+        self.moveFreqLower_Button.configure(image=self.img_img_plain_redarrowpointingleft59x36)
+        self.moveFreqHigher_Button.configure(image=self.img_img_plain_redarrowpointingright59x36)
+
+        self.fineTuneMoveFreqLower_Button.configure(image=self.img_img_plain_redarrowpointingleft59x36)
+        self.fineTuneMoveFreqHigher_Button.configure(image=self.img_img_plain_redarrowpointingright59x36)
+
+        self.moveCWBFOFreqLower_Button.configure(image=self.img_img_plain_redarrowpointingleft59x36)
+        self.moveCWBFOFreqHigher_Button.configure(image=self.img_img_plain_redarrowpointingright59x36)
+
+
         # Install protocol handler for closing the window
         # self.protocol("WM_DELETE_WINDOW", self.on_window_close)
         self.protocol("WM_DELETE_WINDOW", self.wizardCancel)
@@ -62,7 +87,7 @@ class calibrationWizard(CalibrationWizardWidget):
                        + "clipboard where you should then paste it in a document and save it")
         # Step 2 - Provides links to HF Signals Video and Calibration Aid
         tooltip.create(self.CalVideoCopy_Button, "Click to copy the URL for the HF Signals Calibration Video to your clipboard" )
-        tooltip.create(self.hfsiganlsBFOTuningAidCopy_Button, "Click to copy the URL for the HF Signals BFO Tuning Aid to your clipboard" )
+        tooltip.create(self.hfsignalsBFOTuningAidCopy_Button, "Click to copy the URL for the HF Signals BFO Tuning Aid to your clipboard" )
 
         # Step 3 - First effort of tuning BFO
         tooltip.create(self.moveFreqLower_Button, "Click to move the audio spectrum to the LEFT" )
@@ -85,14 +110,14 @@ class calibrationWizard(CalibrationWizardWidget):
         tooltip.create(self.newMASTER_CAL_Label, "This is the new calculated value for the MASTER_CAL. (read only)" )
 
         #step 5 - Fine tuning BFO
-        tooltip.create(self.fineTunehfsiganlsBFOTuningAidCopy_Button, "Click to copy the URL for the HF Signals BFO Tuning Aid to your clipboard" )
+        tooltip.create(self.fineTunehfsignalsBFOTuningAidCopy_Button, "Click to copy the URL for the HF Signals BFO Tuning Aid to your clipboard" )
         tooltip.create(self.fineTuneMoveFreqLower_Button, "Click to move the audio spectrum to the LEFT" )
         tooltip.create(self.fineTuneBFOMultiplier_OptionMenu, "Allows you to set the speed of movement of the audio spectrum" )
         tooltip.create(self.fineTuneMoveFreqHigher_Button, "Click to move the audio spectrum to the RIGHT" )
         tooltip.create(self.newBFOSetting_Entry, "New BFO Setting (read only)" )
 
         #step 6 - Setting the CW BFO
-        tooltip.create(self.CWTunehfsiganlsBFOTuningAidCopy_Button, "Click to copy the URL for the HF Signals BFO Tuning Aid to your clipboard" )
+        tooltip.create(self.CWTunehfsignalsBFOTuningAidCopy_Button, "Click to copy the URL for the HF Signals BFO Tuning Aid to your clipboard" )
         tooltip.create(self.moveCWBFOFreqLower_Button, "Click to move the audio spectrum to the LEFT" )
         tooltip.create(self.CWspeedMultiplier_OptionMenu, "Allows you to set the speed of movement of the audio spectrum" )
         tooltip.create(self.moveCWBFOFreqHigher_Button, "Click to move the audio spectrum to the RIGHT" )
@@ -112,6 +137,25 @@ class calibrationWizard(CalibrationWizardWidget):
 
     def setSaveButtonState(self, newstate):
         self.saveButton.configure(state=newstate)
+
+    def setMode(self, newMode):
+        # pass
+
+        RS232=self.comPortObj.sendCommand(bytes([newMode, 0, 0, 0, SETMODE]))
+
+        lastReadTime = millis()
+
+        while True:
+            if RS232.in_waiting != 0:
+                throwaway = RS232.read(1)        # throwaway the ack
+                return                  # job done!
+            else:
+                if (millis() - lastReadTime > SERIALTIMEOUT):
+                    self.log.printerror("timestamp",  "**ERROR**: Timeout communicating with uBTIX.")
+                    self.log.printerror("timestamp",  "Check your port selection and try again.")
+                return
+
+
 
     def show_step(self, step):                          # Display the screen for the current "step"
 
@@ -143,12 +187,18 @@ class calibrationWizard(CalibrationWizardWidget):
             self.nextButton.configure(state='normal')
 
 
-
     def run_step(self, step):                                       #allows automatic actions to occur on entry to step
         if step == 1:
             self.getInMemoryCalibration()
 
+        elif (step == 3) or (step == 4) or (step == 5):                #Force USB mode for BFO and Freq tuning
+            self.setMode(CAT_MODE_USB)
+
+        elif (step == 6):                                              #Force CW mode
+            self.setMode(CAT_MODE_CW)
+
         elif step == 7:                 # this is the final review step. Highlight any changes
+            self.setMode(CAT_MODE_USB)  # who knows what mode the radio was in. USB more likely than other options.
             # configure Save to EEPROM button to allow Save and Exit
 
             self.setSaveButtonState('normal')
@@ -185,10 +235,10 @@ class calibrationWizard(CalibrationWizardWidget):
     def wizardSave(self):                       # Save and Exit button
         self.log.println("timestamp", "Saving new values to EEPROM")
         RS232=self.comPortObj.sendCommand(bytes([0, 0, 0, 0, WRITECALVALUESTOEEPROM]))
-        print("updating1 USBcal=", self.myparent.USB_CAL.get())
+
         self.myparent.MASTER_CAL.set(self.newMASTER_CAL.get())                  #update the Setting Editors internal variable
         self.myparent.USB_CAL.set(self.newUSB_CAL.get())                        #update the Setting Editors internal variable
-        print("updating2 USBcal=", self.myparent.USB_CAL.get())
+
         self.myparent.CW_CAL.set(self.newCW_CAL.get())                          #update the Setting Editors internal variable
 
         self.log.printerror("timestamp", "Rebooting uBITX")

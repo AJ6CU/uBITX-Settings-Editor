@@ -3,6 +3,7 @@ import tkinter as tk
 import tkinter.ttk as ttk
 
 
+
 class ScannerWidget(tk.Toplevel):
     def __init__(self, master=None, **kw):
         super(ScannerWidget, self).__init__(master, **kw)

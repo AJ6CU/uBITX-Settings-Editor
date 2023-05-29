@@ -16,13 +16,8 @@ class ComPortmanagerWidget(ttk.Frame):
             command=self.comPortSelected)
         self.comPortsOptionMenu.grid(column=0, padx="0 5", row=0, sticky="w")
         self.comPortListRefresh = tk.Button(self)
-        self.img_img_Reload24x24 = tk.PhotoImage(file="img_Reload-24x24.png")
         self.comPortListRefresh.configure(
-            borderwidth=0,
-            cursor="arrow",
-            font="TkDefaultFont",
-            image=self.img_img_Reload24x24,
-            text='button1')
+            borderwidth=0, cursor="arrow", font="TkDefaultFont")
         self.comPortListRefresh.grid(column=1, row=0)
         self.comPortListRefresh.configure(command=self.updateComPorts)
         self.configure(height=200, width=200)

@@ -54,13 +54,15 @@ IOstate = 'NONE'                        #used to track whether we have written t
 
 #   defines the root window
 root = Tk()
-root.title("uBITX Setting Customization")
+root.title("uBITX Setting Editor")
+
 
 
 
 center_window(root,DEFAULT_ROOT_WINDOW_WIDTH,DEFAULT_ROOT_WINDOW_HEIGHT)
 #root.geometry('1280x900+0+0')            # width x height
 root.minsize(1024,650)
+root.iconbitmap(WINDOWMANAGERICON)
 
 ttk.Style().theme_use(appTheme)
 

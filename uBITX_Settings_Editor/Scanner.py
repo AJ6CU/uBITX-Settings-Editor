@@ -2,6 +2,7 @@
 from scannerwidget import ScannerWidget
 from com_portManager import com_portManager
 import pygubu.widgets.simpletooltip as tooltip
+from globalvars import *
 
 class Scanner (ScannerWidget):
     def __init__(self, parent):
@@ -9,6 +10,8 @@ class Scanner (ScannerWidget):
         self.scrollbar1.config(command=self.scannerLog_Text.yview)
         self.scannerLog_Text['yscrollcommand'] = self.scrollbar1.set
         self.protocol("WM_DELETE_WINDOW", self.scannerQuit)             # This is used to catch a window closed event
+        self.iconbitmap(WINDOWMANAGERICON)
+        self.title("I2C Bus Scanner")
 
         # create com port
         self.comPortObj = com_portManager(self.com_portManager_frame, self.on_ComPort_state_change )

@@ -29,7 +29,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             borderwidth=0,
             justify="left",
             takefocus=False,
-            text='This wizard will help you to Calibrate your uBITX.\n\nDO NOT use this Wizard unless your radio is not receiving or is off frequency!!! \n\nAlways record your Master Calibration#, SSB BFO# (also  known as (USB Calibration) and CW BFO# before using this wizard. \n\nFill in requested information and then click save when done. You can click Save at any time and it will save to you Raduino the calibration numbers you have created so far.\n\nYou can quit at any time and the original calibration numbers will be restored.')
+            text='This wizard will help you Calibrate your uBITX.\n\nDO NOT use this Wizard unless your radio is not receiving or is off frequency!!! \n\nAlways record your Master Calibration#, SSB BFO# (also  known as (USB Calibration) and CW BFO# before using this wizard. \n\nFill in requested information and then click Save when done. You can click Save at any time and it will save to you Raduino the calibration numbers you have created so far.\n\nYou can Cancel at any time and the original calibration numbers will be restored.')
         self.message1.pack(expand="true", fill="both", pady=10, side="left")
         self.calibrationWizardFirstStep_Frame.pack(
             padx=5, pady="0 10", side="top")
@@ -83,10 +83,6 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.label6.grid(column=1, padx="10 0", row=1, sticky="w")
         self.copyExistingCalibrationToClipboard_Button = ttk.Button(
             self.calibrationWizardExistingValue_Frame)
-        self.img_img_copy_icon25x25 = tk.PhotoImage(
-            file="img_copy_icon25x25.png")
-        self.copyExistingCalibrationToClipboard_Button.configure(
-            image=self.img_img_copy_icon25x25)
         self.copyExistingCalibrationToClipboard_Button.grid(
             column=2, row=1, sticky="e")
         self.copyExistingCalibrationToClipboard_Button.configure(
@@ -158,7 +154,6 @@ class CalibrationWizardWidget(tk.Toplevel):
             textvariable=self.hfsignalsCalVideoLink)
         self.hfsignalsCalVideoLink_Widget.pack(side="left")
         self.CalVideoCopy_Button = ttk.Button(self.frame23)
-        self.CalVideoCopy_Button.configure(image=self.img_img_copy_icon25x25)
         self.CalVideoCopy_Button.pack(padx=10, side="right")
         self.CalVideoCopy_Button.configure(
             command=self.copyCalVideoToClipboard)
@@ -179,12 +174,12 @@ class CalibrationWizardWidget(tk.Toplevel):
             text='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n',
             textvariable=self.hfsignalsBFOTuningAid)
         self.hfsignalsBFOTuningAid_Label.pack(side="left")
-        self.hfsiganlsBFOTuningAidCopy_Button = ttk.Button(self.frame22)
-        self.hfsiganlsBFOTuningAidCopy_Button.configure(
-            image=self.img_img_copy_icon25x25, style="Symbol1.TButton")
-        self.hfsiganlsBFOTuningAidCopy_Button.pack(
+        self.hfsignalsBFOTuningAidCopy_Button = ttk.Button(self.frame22)
+        self.hfsignalsBFOTuningAidCopy_Button.configure(
+            style="Symbol1.TButton")
+        self.hfsignalsBFOTuningAidCopy_Button.pack(
             padx=10, pady="0 10", side="right")
-        self.hfsiganlsBFOTuningAidCopy_Button.configure(
+        self.hfsignalsBFOTuningAidCopy_Button.configure(
             command=self.copyTuningAidLinkToClipboard)
         self.frame22.pack(padx=10, side="top")
         self.frame20.pack(padx=5, pady="0 10", side="top")
@@ -211,7 +206,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             justify="left",
             relief="flat",
             takefocus=False,
-            text='Go to the webpage for the HF Signals BFO Tuning Aid. Follow the directions there for the hardware setup. Make sure you remember to connect your radio to your antenna!\n\nIf you want to move the spectrum left (down frequency) click the left arrow. Click the right arrow to move the spectrum to the right.\n\nYou can also select the speed mulitple using the menu in the center.\n\nAfter you have the waveform aligned with the left, you can click Next>>.',
+            text='Go to the webpage for the HF Signals BFO Tuning Aid. Follow the directions there for the hardware setup. Make sure you remember to connect your radio to your antenna!\n\nThis step automatically sets your radio Mode to USB.\n\nIf you want to move the spectrum left (down frequency) click the left arrow. Click the right arrow to move the spectrum to the right.\n\nYou can also select the speed mulitple using the menu in the center.\n\nAfter you have the waveform aligned with the left, you can click Next>>.',
             width=300)
         self.message15.pack(expand="true", fill="both", pady=10, side="top")
         self.frame54 = ttk.Frame(self.frame26)
@@ -229,10 +224,6 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.label51.configure(style="Heading4.TLabel", text='Move Higher')
         self.label51.grid(column=2, row=0, sticky="e")
         self.moveFreqLower_Button = ttk.Button(self.frame54)
-        self.img_img_plain_redarrowpointingleft59x36 = tk.PhotoImage(
-            file="img_plain_red-arrow-pointing-left59x36.png")
-        self.moveFreqLower_Button.configure(
-            image=self.img_img_plain_redarrowpointingleft59x36)
         self.moveFreqLower_Button.grid(
             column=0, padx="0 20", row=1, sticky="w")
         self.moveFreqLower_Button.configure(command=self.moveFreqLower_CB)
@@ -249,10 +240,6 @@ class CalibrationWizardWidget(tk.Toplevel):
             self.frame54, self.bfo_speed_multiplier, "X    5", *__values, command=None)
         self.bfo_speed_multiplier_OptionMenu.grid(column=1, padx="0 20", row=1)
         self.moveFreqHigher_Button = ttk.Button(self.frame54)
-        self.img_img_plain_redarrowpointingright59x36 = tk.PhotoImage(
-            file="img_plain_red-arrow-pointing-right59x36.png")
-        self.moveFreqHigher_Button.configure(
-            image=self.img_img_plain_redarrowpointingright59x36)
         self.moveFreqHigher_Button.grid(column=2, row=1, sticky="e")
         self.moveFreqHigher_Button.configure(command=self.moveFreqLHigher_CB)
         self.frame54.pack(side="top")
@@ -296,7 +283,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             justify="left",
             relief="raised",
             takefocus=False,
-            text='The easiest process to calibrate the frequency of the uBITX is to "zero-beat" against a known signal. This is a 3 step process:\n\n1. Select source with known frequency.\n2. Zero-beat this source. Make sure you are in USB or LSB mode!\n3. Click "Calculate" to generate the new calibration value.',
+            text='The easiest process to calibrate the frequency of the uBITX is to "zero-beat" against a known signal. This is a 3 step process:\n\n1. Select source with known frequency.\n2. Zero-beat this source. This step automatically puts your radio in USB mode.\n3. Click "Calculate" to generate the new calibration value.',
             width=300)
         self.message17.pack(expand="true", fill="both", pady=10, side="top")
         self.frame1 = ttk.Frame(self.frame31)
@@ -475,7 +462,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             justify="left",
             relief="flat",
             takefocus=False,
-            text='Your BFO should be pretty close. But it is worth checking again here and fine tuning it if necessary. Again, startup the HF Signals BFO Tuning Aid and then adjust the BFO. A link to this tuning aid is provided below.',
+            text='Your BFO should be pretty close. But it is worth checking again here and fine tuning it if necessary. Again, start the HF Signals BFO Tuning Aid and then adjust the BFO. A link to this tuning aid is provided below.',
             width=300)
         self.message2.pack(expand="true", fill="both", pady=10, side="top")
         self.frame12 = ttk.Frame(self.frame3)
@@ -487,13 +474,13 @@ class CalibrationWizardWidget(tk.Toplevel):
             text='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n',
             textvariable=self.hfsignalsBFOTuningAid)
         self.label18.pack(side="left")
-        self.fineTunehfsiganlsBFOTuningAidCopy_Button = ttk.Button(
+        self.fineTunehfsignalsBFOTuningAidCopy_Button = ttk.Button(
             self.frame12)
-        self.fineTunehfsiganlsBFOTuningAidCopy_Button.configure(
-            image=self.img_img_copy_icon25x25, style="Symbol1.TButton")
-        self.fineTunehfsiganlsBFOTuningAidCopy_Button.pack(
+        self.fineTunehfsignalsBFOTuningAidCopy_Button.configure(
+            style="Symbol1.TButton")
+        self.fineTunehfsignalsBFOTuningAidCopy_Button.pack(
             padx=10, pady="0 10", side="right")
-        self.fineTunehfsiganlsBFOTuningAidCopy_Button.configure(
+        self.fineTunehfsignalsBFOTuningAidCopy_Button.configure(
             command=self.copyTuningAidLinkToClipboard)
         self.frame12.pack(padx=10, side="top")
         self.frame4 = ttk.Frame(self.frame3)
@@ -511,8 +498,6 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.label11.configure(style="Heading4.TLabel", text='Move Higher')
         self.label11.grid(column=2, row=0, sticky="e")
         self.fineTuneMoveFreqLower_Button = ttk.Button(self.frame4)
-        self.fineTuneMoveFreqLower_Button.configure(
-            image=self.img_img_plain_redarrowpointingleft59x36)
         self.fineTuneMoveFreqLower_Button.grid(
             column=0, padx="0 20", row=1, sticky="w")
         self.fineTuneMoveFreqLower_Button.configure(
@@ -531,8 +516,6 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.fineTuneBFOMultiplier_OptionMenu.grid(
             column=1, padx="0 20", row=1)
         self.fineTuneMoveFreqHigher_Button = ttk.Button(self.frame4)
-        self.fineTuneMoveFreqHigher_Button.configure(
-            image=self.img_img_plain_redarrowpointingright59x36)
         self.fineTuneMoveFreqHigher_Button.grid(column=2, row=1, sticky="e")
         self.fineTuneMoveFreqHigher_Button.configure(
             command=self.moveFreqLHigher_CB)
@@ -576,7 +559,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             justify="left",
             relief="flat",
             takefocus=True,
-            text='The process for setting the CW BFO is similar to that of the SSB BFO. Set your radio mode to CWL or CWU, start the HF Signals BFO Tuning Aid, and then adjust the spectrum so that it is inbetween the two red borders. \n\nA link to the HF Signals BFO Tuning Aid is also provided below.',
+            text='The process for setting the CW BFO is similar to that of the SSB BFO. As previously, this step sets your radio mode to the proper value (CWL).\n\nNow start the HF Signals BFO Tuning Aid, and then adjust the spectrum so that it is inbetween the two red borders. \n\nA link to the HF Signals BFO Tuning Aid is also provided below.',
             width=300)
         self.message4.pack(expand="true", fill="both", pady=10, side="top")
         self.frame18 = ttk.Frame(self.frame8)
@@ -588,12 +571,12 @@ class CalibrationWizardWidget(tk.Toplevel):
             text='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n',
             textvariable=self.hfsignalsBFOTuningAid)
         self.label24.pack(side="left")
-        self.CWTunehfsiganlsBFOTuningAidCopy_Button = ttk.Button(self.frame18)
-        self.CWTunehfsiganlsBFOTuningAidCopy_Button.configure(
-            image=self.img_img_copy_icon25x25, style="Symbol1.TButton")
-        self.CWTunehfsiganlsBFOTuningAidCopy_Button.pack(
+        self.CWTunehfsignalsBFOTuningAidCopy_Button = ttk.Button(self.frame18)
+        self.CWTunehfsignalsBFOTuningAidCopy_Button.configure(
+            style="Symbol1.TButton")
+        self.CWTunehfsignalsBFOTuningAidCopy_Button.pack(
             padx=10, pady="0 10", side="right")
-        self.CWTunehfsiganlsBFOTuningAidCopy_Button.configure(
+        self.CWTunehfsignalsBFOTuningAidCopy_Button.configure(
             command=self.copyTuningAidLinkToClipboard)
         self.frame18.pack(padx=10, side="top")
         self.frame9 = ttk.Frame(self.frame8)
@@ -611,8 +594,6 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.label16.configure(style="Heading4.TLabel", text='Move Higher')
         self.label16.grid(column=2, row=0, sticky="e")
         self.moveCWBFOFreqLower_Button = ttk.Button(self.frame9)
-        self.moveCWBFOFreqLower_Button.configure(
-            image=self.img_img_plain_redarrowpointingleft59x36)
         self.moveCWBFOFreqLower_Button.grid(
             column=0, padx="0 20", row=1, sticky="w")
         self.moveCWBFOFreqLower_Button.configure(
@@ -630,8 +611,6 @@ class CalibrationWizardWidget(tk.Toplevel):
             self.frame9, self.CWbfo_speed_mulitpier, "X    5", *__values, command=None)
         self.CWspeedMultiplier_OptionMenu.grid(column=1, padx="0 20", row=1)
         self.moveCWBFOFreqHigher_Button = ttk.Button(self.frame9)
-        self.moveCWBFOFreqHigher_Button.configure(
-            image=self.img_img_plain_redarrowpointingright59x36)
         self.moveCWBFOFreqHigher_Button.grid(column=2, row=1, sticky="e")
         self.moveCWBFOFreqHigher_Button.configure(
             command=self.moveCWBFOFreqLHigher_CB)
@@ -676,7 +655,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             justify="left",
             relief="flat",
             takefocus=False,
-            text='You are just about done! The initial and final numbers are provided below.\n\nIf you are OK with the new values, click the "Save and Exit" button. Your uBITX will also be automatically rebooted to ensure that you are using the new values stored in EEPROM.\n\nNote: Items in Bold indicate a change in value.',
+            text='You are just about done! The initial and final numbers are provided below.\n\nIf you are OK with the new values, click the "Save and Exit" button. Your uBITX will also be automatically rebooted to ensure that you are using the new values stored in EEPROM.\n\nNotes: \n1. Items in Bold indicate a change in value. \n2. This step "guesses" that you want to be in USB mode after completing this wizard. You may want to change that to another mode.',
             width=300)
         self.message5.pack(expand="true", fill="both", pady=10, side="top")
         self.frame16 = ttk.Frame(self.frame15)

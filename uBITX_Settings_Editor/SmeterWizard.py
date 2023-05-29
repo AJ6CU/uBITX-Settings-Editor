@@ -33,6 +33,8 @@ class SmeterWizard(SmeterwizardWidget):
 
         super().__init__(parent)
         self.grab_set()
+        self.iconbitmap(WINDOWMANAGERICON)
+        self.title("S-Meter Assistant")
 
         #   now configure the buttons to display the thumbnails of the graphs
 

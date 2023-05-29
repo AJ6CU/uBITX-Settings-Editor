@@ -16,6 +16,10 @@ class com_portManager(ComPortmanagerWidget):
 
     def __init__(self, parentContainer, actionButtonStateChange):
         super().__init__(parentContainer)
+
+        self.img_img_Reload24x24 = tk.PhotoImage(file=RELOADICON)
+        self.comPortListRefresh.configure(image=self.img_img_Reload24x24)
+
         self.actionButton_CB = actionButtonStateChange         # Callback function invoked when state change
 
         self.updateComPorts()               #preload the available com ports
