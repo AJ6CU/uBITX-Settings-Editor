@@ -153,7 +153,7 @@ class calibrationWizard(CalibrationWizardWidget):
                 if (millis() - lastReadTime > SERIALTIMEOUT):
                     self.log.printerror("timestamp",  "**ERROR**: Timeout communicating with uBTIX.")
                     self.log.printerror("timestamp",  "Check your port selection and try again.")
-                return
+                    return
 
 
 

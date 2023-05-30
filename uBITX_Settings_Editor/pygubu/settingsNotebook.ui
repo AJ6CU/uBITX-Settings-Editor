@@ -5652,7 +5652,7 @@ Dual LCD Config</property>
                                 <property name="justify">left</property>
                                 <property name="relief">flat</property>
                                 <property name="style">Heading3.TLabel</property>
-                                <property name="text" translatable="yes">TX/RX Restrictions</property>
+                                <property name="text" translatable="yes">TX/RX Tuning Options</property>
                                 <layout manager="grid">
                                   <property name="column">0</property>
                                   <property name="columnspan">2</property>
@@ -5666,7 +5666,7 @@ Dual LCD Config</property>
                             <child>
                               <object class="ttk.Label" id="label145">
                                 <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">Tuning Restriction</property>
+                                <property name="text" translatable="yes">Tuning Method</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
                                   <property name="padx">80 15</property>
@@ -5678,7 +5678,7 @@ Dual LCD Config</property>
                             </child>
                             <child>
                               <object class="ttk.OptionMenu" id="TUNING_RESTICTIONS_WIDGET" named="True">
-                                <property name="value">200Khz</property>
+                                <property name="value">BAND</property>
                                 <property name="values">200Khz,BAND</property>
                                 <property name="variable">string:TUNING_RESTICTIONS</property>
                                 <layout manager="grid">
@@ -5692,7 +5692,7 @@ Dual LCD Config</property>
                             <child>
                               <object class="ttk.Label" id="label146">
                                 <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">Transmit Restriction</property>
+                                <property name="text" translatable="yes">Transmit Restrictions</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
                                   <property name="padx">30 15</property>

@@ -1638,6 +1638,12 @@ class SettingsNotebook(SettingsnotebookWidget):
 
         # Post process some special cases
 
+        # Detect a Nano running V2.0
+        if self.EXT_FIRMWARE_VERSION_INFO.get() == 'N/A':
+            if int(self.VERSION_ADDRESS.get()[1]) >= 2:     # Have a V2.0 Nano, patch some info
+                self.EXT_FIRMWARE_VERSION_INFO.set(self.VERSION_ADDRESS.get())
+                self.EXT_EEPROM_TYPE.set('Internal 1024 bytes (Nano)')
+
         # Tuning steps prep
         self.TUNING_STEP_INDEX_VALUE.trace_add('write',self.new_Default_Tuning_Step)
         self.Refresh_Tuning_Steps()

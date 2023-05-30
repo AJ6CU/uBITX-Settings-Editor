@@ -3235,7 +3235,7 @@ class SettingsnotebookWidget(ttk.Frame):
             justify="left",
             relief="flat",
             style="Heading3.TLabel",
-            text='TX/RX Restrictions')
+            text='TX/RX Tuning Options')
         self.label144.grid(
             column=0,
             columnspan=2,
@@ -3244,25 +3244,23 @@ class SettingsnotebookWidget(ttk.Frame):
             row=1,
             sticky="w")
         self.label145 = ttk.Label(self.frame12)
-        self.label145.configure(
-            style="Heading4.TLabel",
-            text='Tuning Restriction')
+        self.label145.configure(style="Heading4.TLabel", text='Tuning Method')
         self.label145.grid(
             column=1,
             padx="80 15",
             pady="5 10",
             row=2,
             sticky="e")
-        self.TUNING_RESTICTIONS = tk.StringVar(value='200Khz')
+        self.TUNING_RESTICTIONS = tk.StringVar(value='BAND')
         __values = ['200Khz', 'BAND']
         self.TUNING_RESTICTIONS_WIDGET = ttk.OptionMenu(
-            self.frame12, self.TUNING_RESTICTIONS, "200Khz", *__values, command=None)
+            self.frame12, self.TUNING_RESTICTIONS, "BAND", *__values, command=None)
         self.TUNING_RESTICTIONS_WIDGET.grid(
             column=2, pady="5 10", row=2, sticky="w")
         self.label146 = ttk.Label(self.frame12)
         self.label146.configure(
             style="Heading4.TLabel",
-            text='Transmit Restriction')
+            text='Transmit Restrictions')
         self.label146.grid(column=1, padx="30 15", row=3, sticky="e")
         self.TX_RESTRICTIONS = tk.StringVar(value='NONE')
         __values = ['NONE', 'HAM']
