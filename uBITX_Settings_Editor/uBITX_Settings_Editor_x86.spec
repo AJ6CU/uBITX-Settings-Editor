@@ -28,7 +28,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='uBITX_Settings_Editor_macos.spec',
+    name='uBITX_Settings_Editor',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -45,7 +45,7 @@ exe = EXE(
 )
 app = BUNDLE(
     exe,
-    name='uBITX_Settings_Editor_macos.spec.app',
+    name='uBITX_Settings_Editor.app',
     icon='settingeditor.icns',
     bundle_identifier='Settings Editor',
 )
