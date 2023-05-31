@@ -46,7 +46,7 @@ exe = EXE(
 app = BUNDLE(
     exe,
     name='uBITX_Settings_Editor.app',
-    icon='settingeditor.icns',
+    icon='settingseditor.icns',
     bundle_identifier='Settings Editor',
 	        info_plist={
             'NSPrincipalClass': 'NSApplication',
