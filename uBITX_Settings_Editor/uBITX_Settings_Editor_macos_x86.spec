@@ -59,6 +59,6 @@ app = BUNDLE(
 #                    'LSItemContentTypes': ['com.example.myformat'],
 #                    'LSHandlerRank': 'Owner'
 #                    }
-                ]
+#                ]
             },
 )
