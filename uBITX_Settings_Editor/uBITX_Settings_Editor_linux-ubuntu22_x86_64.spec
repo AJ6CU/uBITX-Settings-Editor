@@ -24,11 +24,8 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(
     pyz,
     a.scripts,
-    a.binaries,
-    a.zipfiles,
-    a.datas,
     [],
-#	icon='settingseditor.ico',
+	icon='settingseditor.ico',
     exclude_binaries=True,
     name='uBITX_Settings_Editor',
     debug=False,
