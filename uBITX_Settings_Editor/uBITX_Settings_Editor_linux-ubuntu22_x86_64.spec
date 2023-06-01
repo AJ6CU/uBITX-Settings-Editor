@@ -42,20 +42,15 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
 )
-#coll = COLLECT(
-#    exe,
-#    a.binaries,
-#    a.zipfiles,
-#    a.datas,
-#    strip=False,
-#    upx=True,
-#    upx_exclude=[],
-#    name='uBITX_Settings_Editor_V2RC1-05-29-23-linux-Ubuntu22-intel64',
-#)
 
-app = BUNDLE(
+
+coll = COLLECT(
     exe,
-    name='uBITX Settings Editor.app',
-    icon='settingeditor.icns',
-    bundle_identifier='Settings Editor',
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name='uBITX_Settings_Editor_V2RC1-05-29-23-linux-Ubuntu22-intel64',
 )
