@@ -40,7 +40,7 @@ exe = EXE(
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
-    entitlements_file=None,
+    entitlements_file='entitlements.plist',
     icon=['settingeditor.icns'],
 )
 app = BUNDLE(

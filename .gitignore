@@ -209,3 +209,11 @@ uBITXmodfileeditor/dist_win/images/sample7-125x80.png
 uBITXmodfileeditor/dist_win/uBITX_Manager_V2-01-25-23.exe
 uBITXmodfileeditor/dist_win/usermodfiletemplate.xml
 uBITXmodfileeditor/pyinstaller.exe.bad
+uBITX_Settings_Editor/dist_macos/uBITX_Settings_Editor.app/Contents/_CodeSignature/CodeResources
+uBITX_Settings_Editor/dist_macos/uBITX_Settings_Editor.app/Contents/CodeResources
+uBITX_Settings_Editor/dist_macos/.DS_Store
+uBITX_Settings_Editor/dist_macos/uBITX_Settings_Editor.app/Contents/Info.plist
+uBITX_Settings_Editor/dist_macos/uBITX_Settings_Editor.app/Contents/MacOS/uBITX_Settings_Editor
+uBITX_Settings_Editor/dist_macos/uBITX_Settings_Editor.app/Contents/Resources/settingseditor.icns
+uBITX_Settings_Editor/uBITX_Settings_Editor_macos_x86.signed.spec
+uBITX_Settings_Editor/dist_macos/.DS_Store
