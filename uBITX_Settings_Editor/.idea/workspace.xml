@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07ffa901-4db2-460d-94d0-031f158d06d7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/settingseditorfs.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settingseditorvs.bmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/globalvars.py" beforeDir="false" afterPath="$PROJECT_DIR$/globalvars.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uBITX_Settings_Editor.py" beforeDir="false" afterPath="$PROJECT_DIR$/uBITX_Settings_Editor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

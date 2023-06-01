@@ -22,7 +22,7 @@ class calibrationWizard(CalibrationWizardWidget):
         self.log = log
         super().__init__()
 
-        self.iconbitmap(WINDOWMANAGERICON)
+        #self.iconbitmap(WINDOWMANAGERICON)
 
         self.img_img_copy_icon25x25 = tk.PhotoImage(file=COPYICON)
 

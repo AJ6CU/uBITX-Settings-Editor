@@ -46,11 +46,11 @@ if(platform.system()=='Windows'):
 elif (platform.system() == 'Darwin'):
     appTheme = 'aqua'
     startDir = "~"
-    WINDOWMANAGERICON = resource_path("settingseditor.icns")
+    #WINDOWMANAGERICON = resource_path("settingseditor.icns")
 else:
     appTheme = 'alt'                # used by Linux
     startDir = "~"
-    WINDOWMANAGERICON = resource_path("settingseditor.png")
+    #WINDOWMANAGERICON = resource_path("settingseditor.png")
 
 IOstate = 'NONE'                        #used to track whether we have written the settings or not prior to quiting
 
@@ -64,7 +64,9 @@ root.title("uBITX Setting Editor")
 center_window(root,DEFAULT_ROOT_WINDOW_WIDTH,DEFAULT_ROOT_WINDOW_HEIGHT)
 #root.geometry('1280x900+0+0')            # width x height
 root.minsize(1024,650)
-root.iconbitmap(WINDOWMANAGERICON)
+#root.iconbitmap(WINDOWMANAGERICON)
+img=PhotoImage(file=WINDOWMANAGERICON)
+root.iconphoto(True,img)
 
 ttk.Style().theme_use(appTheme)
 
