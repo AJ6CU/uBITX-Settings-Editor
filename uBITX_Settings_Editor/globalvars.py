@@ -216,7 +216,7 @@ USERMODFILETEMPLACE=resource_path("usermodfiletemplate.xml")       #Template fil
 HELPFILE = resource_path("help.xml")
 ABOUTFILE = resource_path("about.xml")
 
-WINDOWMANAGERICON = resource_path("settingeditor.ico")
+WINDOWMANAGERICON = resource_path("settingseditor.ico")
 
 LEFTCOPYARROW = resource_path("img_red-arrow-pointing-left59x36.png")
 RIGHTCOPYARROW = resource_path("img_red-arrow-pointing-right59x36.png")
