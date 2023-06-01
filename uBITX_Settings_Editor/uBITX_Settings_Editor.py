@@ -50,7 +50,7 @@ elif (platform.system() == 'Darwin'):
 else:
     appTheme = 'alt'                # used by Linux
     startDir = "~"
-    WINDOWMANAGERICON = resource_path("settingseditorvs.bmp")
+    WINDOWMANAGERICON = resource_path("settingseditor.png")
 
 IOstate = 'NONE'                        #used to track whether we have written the settings or not prior to quiting
 
