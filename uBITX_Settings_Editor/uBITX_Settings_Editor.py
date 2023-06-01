@@ -46,9 +46,11 @@ if(platform.system()=='Windows'):
 elif (platform.system() == 'Darwin'):
     appTheme = 'aqua'
     startDir = "~"
+    WINDOWMANAGERICON = resource_path("settingseditor.icns")
 else:
     appTheme = 'alt'                # used by Linux
     startDir = "~"
+    WINDOWMANAGERICON = resource_path("settingseditorvs.bmp")
 
 IOstate = 'NONE'                        #used to track whether we have written the settings or not prior to quiting
 
