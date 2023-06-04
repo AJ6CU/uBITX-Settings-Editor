@@ -5,7 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07ffa901-4db2-460d-94d0-031f158d06d7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/globalvars.py" beforeDir="false" afterPath="$PROJECT_DIR$/globalvars.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/AtStartUp.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/AtStartUp.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/adcscannercal.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/adcscannercal.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/afterloading.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/afterloading.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/calibrationtab1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/calibrationtab1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/comportselect.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/comportselect.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/defenderrunanyway.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/defenderrunanyway.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/distributionassets.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/distributionassets.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/enables-meter.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/enables-meter.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/i2cscannernumbered.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/i2cscannernumbered.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/input-selector..jpg" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/input-selector..jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/logsnipit.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/logsnipit.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/selectingfile.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/selectingfile.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/smeter-enabled.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/smeter-enabled.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/smeterwizard.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/smeterwizard.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/targetselection.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/screenshots/targetselection.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
