@@ -151,6 +151,7 @@ class SettingsNotebook(SettingsnotebookWidget):
     ADC = {'LOW':0, 'HIGH':1023}            # Min/Max for Analog to Digital read - used for cw keys, etc.
     FREQ ={'LOW':0, 'HIGH':60000000}            # Min/Max for valid frequencies.
     FREQKHZ = {'LOW':0, 'HIGH':60000}
+    SI5351BX_ADDR_BOUNDS = {'LOW':0x10, 'HIGH':0xF0}        #If Address is outside these numbers, CEC ignores it and use 0X60
     MASTER_CAL_BOUNDS = {'LOW':-500000, 'HIGH': 500000}
     USB_CAL_BOUNDS = {'LOW':11048000, 'HIGH': 12010000}
     CW_CAL_BOUNDS = {'LOW':11048000, 'HIGH': 12010000}
@@ -289,6 +290,16 @@ class SettingsNotebook(SettingsnotebookWidget):
         else:
             self.log.printerror("timestamp", "CW BFO Calibration " + SettingsNotebook.validationErrorMsg)
             self.CW_CAL.set(self.priorValues["CW_CAL"])
+            return False
+
+    def validate_I2C_ADDR_SI5351(self, p_entry_value, v_condition):
+        if (v_condition == "focusin"):
+            self.priorValues["I2C_ADDR_SI5351"] = p_entry_value
+        if(self.validateHexRange(p_entry_value, SettingsNotebook.SI5351BX_ADDR_BOUNDS['LOW'], SettingsNotebook.SI5351BX_ADDR_BOUNDS['HIGH'])):
+            return True
+        else:
+            self.log.printerror("timestamp", "SI5351 I2C Address " + SettingsNotebook.validationErrorMsg)
+            self.I2C_ADDR_SI5351.set(self.priorValues["I2C_ADDR_SI5351"])
             return False
 
 
@@ -1578,6 +1589,17 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.log.println('timestamp', 'Confirm uBITX motherboard version and check that you have \n\tvalid calibration values' )
         self.log.println("","")
 
+    def validateSI5351_ADDR(self):            #   the address of the Si5351 must be >= 0x10 and <= 0xF0
+
+        if(self.validateHexRange(self.I2C_ADDR_SI5351.get(), SettingsNotebook.SI5351BX_ADDR_BOUNDS['LOW'], SettingsNotebook.SI5351BX_ADDR_BOUNDS['HIGH'])):                                        #   if outside these bounds, CEC automatically defaults to 0x60
+            return
+        else:
+            self.log.println("","")
+            self.log.printerror('timestamp', "Invalid address found for Si5351!")
+            self.log.printerror('timestamp', "Must be between " + hex(SettingsNotebook.SI5351BX_ADDR_BOUNDS['LOW']) + " and " + hex(SettingsNotebook.SI5351BX_ADDR_BOUNDS['HIGH']))
+            self.log.printerror('timestamp', "At runtime, CEC will default to 0x60 for the Si5351 Address")
+            self.log.println("","")
+
     def setLCDPinsState(self, newState):
         self.EXT_LCD_PIN_RS_Label.configure(state=newState)
         self.EXT_LCD_PIN_RS_WIDGET.configure(state=newState)
@@ -1700,6 +1722,8 @@ class SettingsNotebook(SettingsnotebookWidget):
 
         self.validateCalibrationValues()        # valid BFO calibration values vary by board. Make sure the current
                                                 # SSB and CW calibration values are valid. If not flag a warning in the log.
+
+        self.validateSI5351_ADDR()             # validate a real address for the Si5351. Flag it if out of bounds
 
         #   Clear hidden widgets
         for widget in SettingsNotebook.hideOnStartup:

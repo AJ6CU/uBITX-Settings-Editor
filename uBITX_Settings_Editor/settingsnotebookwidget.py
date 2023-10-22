@@ -66,11 +66,11 @@ class SettingsnotebookWidget(ttk.Frame):
         self.separator2.configure(orient="horizontal")
         self.separator2.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="x",
             pady=10,
             side="top")
-        self.frame4.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame4.pack(anchor="w", expand=True, fill="x", side="top")
         self.General_Tuning_Steps_Frame = ttk.Frame(self.General_Frame)
         self.General_Tuning_Steps_Frame.configure(height=200, width=200)
         self.Tuning_Steps_Title_Frame = ttk.Frame(
@@ -80,10 +80,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.Tuning_Steps_Title_Frame)
         self.General_Tuning_Steps_Label.configure(
             style="Heading3.TLabel", text='Tuning Steps')
-        self.General_Tuning_Steps_Label.pack(
-            anchor="w", expand="true", fill="x")
+        self.General_Tuning_Steps_Label.pack(anchor="w", expand=True, fill="x")
         self.Tuning_Steps_Title_Frame.pack(
-            anchor="w", expand="true", fill="x", pady="10 0", side="top")
+            anchor="w", expand=True, fill="x", pady="10 0", side="top")
         self.General_Tuning_Steps_Settings_Frame = ttk.Frame(
             self.General_Tuning_Steps_Frame)
         self.General_Tuning_Steps_Settings_Frame.configure(
@@ -278,10 +277,10 @@ class SettingsnotebookWidget(ttk.Frame):
         self.separator4.configure(orient="horizontal")
         self.separator4.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="x",
             side="top")
-        self.frame7.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame7.pack(anchor="w", expand=True, fill="x", side="top")
         self.General_CW_Frame = ttk.Frame(self.General_Frame)
         self.General_CW_Frame.configure(height=200, width=200)
         self.Operator_CW_Title_Frame = ttk.Frame(self.General_CW_Frame)
@@ -291,9 +290,9 @@ class SettingsnotebookWidget(ttk.Frame):
         self.General_Settings_CW_Label.configure(
             style="Heading3.TLabel", text='CW')
         self.General_Settings_CW_Label.pack(
-            anchor="w", expand="true", fill="x", pady="20 0")
+            anchor="w", expand=True, fill="x", pady="20 0")
         self.Operator_CW_Title_Frame.pack(
-            anchor="w", expand="true", fill="x", side="top")
+            anchor="w", expand=True, fill="x", side="top")
         self.General_CW_Settings_Frame = ttk.Frame(self.General_CW_Frame)
         self.General_CW_Settings_Frame.configure(height=200, width=200)
         self.CW_KEY_TYPE_LABEL = ttk.Label(self.General_CW_Settings_Frame)
@@ -415,11 +414,11 @@ class SettingsnotebookWidget(ttk.Frame):
         self.separator5.configure(orient="horizontal")
         self.separator5.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="x",
             pady=10,
             side="top")
-        self.frame48.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame48.pack(anchor="w", expand=True, fill="x", side="top")
         self.IF_CUSTOMIZATION_Frame = ttk.Frame(self.General_Frame)
         self.IF_CUSTOMIZATION_Frame.configure(height=200, width=200)
         self.frame61 = ttk.Frame(self.IF_CUSTOMIZATION_Frame)
@@ -429,7 +428,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading3.TLabel",
             text='Personalized IF Shift')
         self.label207.grid(column=0, row=0)
-        self.frame61.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame61.pack(anchor="w", expand=True, fill="x", side="top")
         self.frame62 = ttk.Frame(self.IF_CUSTOMIZATION_Frame)
         self.frame62.configure(height=200, width=200)
         self.STORED_IF_SHIFT_WIDGET = ttk.Checkbutton(self.frame62)
@@ -463,21 +462,21 @@ class SettingsnotebookWidget(ttk.Frame):
         self.frame62.pack(anchor="w", padx="50 0", side="top")
         self.IF_CUSTOMIZATION_Frame.pack(anchor="w", side="top")
         self.General_Frame.pack(
-            expand="true",
+            expand=True,
             fill="both",
             padx=20,
             pady=5,
             side="top")
         self.frame15.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="both",
             padx=5,
             pady=5,
             side="top")
         self.General_SF.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="both",
             side="top")
         self.settingsNotebook.add(self.General_SF, text='General')
@@ -1149,10 +1148,10 @@ class SettingsnotebookWidget(ttk.Frame):
             textvariable=self.CW_AUTO_DATA)
         self.CW_AUTO_DATA_WIDGET.pack(padx="10 0", side="top")
         self.CW_Autokeyer_Hidden_Frame.grid(row=1)
-        self.frame5.pack(expand="true", fill="both", side="top")
+        self.frame5.pack(expand=True, fill="both", side="top")
         self.Autokeyer_Frame.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="both",
             padx=5,
             pady=5,
@@ -1579,7 +1578,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label135.grid(column=6, padx="0 5", row=19)
         self.frame46.pack(
             anchor="w",
-            expand="false",
+            expand=False,
             fill="x",
             pady="20 0",
             side="top")
@@ -1651,7 +1650,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.frame19.pack(anchor="w", padx=20, side="top")
         self.frame16.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="both",
             padx=5,
             pady=5,
@@ -1685,9 +1684,9 @@ class SettingsnotebookWidget(ttk.Frame):
         self.General_Settings_Channels_Label.configure(
             style="Heading3.TLabel", text='Channel Memory')
         self.General_Settings_Channels_Label.pack(
-            anchor="w", expand="true", fill="x", pady="20 0")
+            anchor="w", expand=True, fill="x", pady="20 0")
         self.General_Channel_Title_Frame.pack(
-            anchor="w", expand="true", fill="x", side="top")
+            anchor="w", expand=True, fill="x", side="top")
         self.General_Channels_Settings_Frame = ttk.Frame(
             self.Standard_Channel_Frame)
         self.label70 = ttk.Label(self.General_Channels_Settings_Frame)
@@ -2329,7 +2328,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label61.configure(text='Hz')
         self.label61.grid(column=5, padx="0 10", pady="5 0", row=13)
         self.General_Channels_Settings_Frame.pack(
-            anchor="w", expand="false", fill="x", padx="50 0", pady="20 0", side="top")
+            anchor="w", expand=False, fill="x", padx="50 0", pady="20 0", side="top")
         self.General_Channels_Settings_Frame.grid_anchor("w")
         self.Standard_Channel_Frame.pack(anchor="w", side="top")
         self.show_extended_channels_frame = ttk.Frame(self.All_Channel_Frame)
@@ -2350,12 +2349,12 @@ class SettingsnotebookWidget(ttk.Frame):
         self.separator1.configure(orient="horizontal")
         self.separator1.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="x",
             pady="10 0",
             side="top")
         self.show_extended_channels_frame.pack(
-            anchor="w", expand="true", fill="x", side="top")
+            anchor="w", expand=True, fill="x", side="top")
         self.Extended_Channel_Frame = ttk.Frame(self.All_Channel_Frame)
         self.Extended_Channel_Frame.configure(height=200, width=200)
         self.Extended_Channel_Title_Frame = ttk.Frame(
@@ -2365,13 +2364,9 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label103.configure(
             style="Heading3.TLabel",
             text='Extended Channel Memory')
-        self.label103.pack(
-            anchor="w",
-            expand="false",
-            pady="20 0",
-            side="left")
+        self.label103.pack(anchor="w", expand=False, pady="20 0", side="left")
         self.Extended_Channel_Title_Frame.pack(
-            anchor="w", expand="false", side="top")
+            anchor="w", expand=False, side="top")
         self.General_Extended_Channel_Frame = ttk.Frame(
             self.Extended_Channel_Frame)
         self.label72 = ttk.Label(self.General_Extended_Channel_Frame)
@@ -2772,12 +2767,12 @@ class SettingsnotebookWidget(ttk.Frame):
         self.CHANNEL_FREQ20_MODE_WIDGET.configure(
             validatecommand=self.clearErrorMsgPersistFlag)
         self.General_Extended_Channel_Frame.pack(
-            anchor="w", expand="false", fill="x", padx="50 0", side="left")
+            anchor="w", expand=False, fill="x", padx="50 0", side="left")
         self.General_Extended_Channel_Frame.grid_anchor("w")
         self.Extended_Channel_Frame.pack(anchor="w")
         self.All_Channel_Frame.pack(side="top")
         self.Operator_Channel_Frame.pack(anchor="w", side="top")
-        self.frame45.pack(anchor="w", expand="true", fill="both", side="top")
+        self.frame45.pack(anchor="w", expand=True, fill="both", side="top")
         self.Channels_SF.pack(side="top")
         self.settingsNotebook.add(self.Channels_SF, text='Channels')
         self.WSPR_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
@@ -2797,7 +2792,7 @@ class SettingsnotebookWidget(ttk.Frame):
             pady="15 25",
             row=0,
             sticky="n")
-        self.WSPR_Frame.pack(expand="true", fill="both", side="top")
+        self.WSPR_Frame.pack(expand=True, fill="both", side="top")
         self.frame34 = ttk.Frame(self.frame22)
         self.frame34.configure(height=200, width=200)
         self.frame35 = ttk.Frame(self.frame34)
@@ -3269,7 +3264,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.TX_RESTRICTIONS_WIDGET.grid(column=2, row=3, sticky="w")
         self.frame12.pack(
             anchor="w",
-            expand="false",
+            expand=False,
             fill="x",
             pady="20 0",
             side="top")
@@ -3277,7 +3272,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.frame25.pack(anchor="w", padx=20, side="top")
         self.frame24.pack(
             anchor="n",
-            expand="true",
+            expand=True,
             fill="both",
             padx=5,
             pady=5,
@@ -3305,7 +3300,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label7.pack(anchor="w", padx=5, pady="15 25", side="top")
         self.SDR_Label_Frame.pack(
             anchor="n",
-            expand="true",
+            expand=True,
             fill="x",
             padx=5,
             pady=5,
@@ -3386,14 +3381,14 @@ class SettingsnotebookWidget(ttk.Frame):
         self.text5.grid(column=2, columnspan=3, padx="100 0", row=4)
         self.frame14.pack(
             anchor="center",
-            expand="false",
+            expand=False,
             fill="x",
             padx=20,
             side="top")
         self.frame14.grid_anchor("nw")
         self.frame13.pack(
             anchor="n",
-            expand="true",
+            expand=True,
             fill="x",
             padx=5,
             pady=5,
@@ -3412,7 +3407,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading2.TLabel",
             text='KD8CEC Extentions')
         self.label5.pack(anchor="w", padx=5)
-        self.frame17.pack(anchor="w", expand="false", padx=5, side="top")
+        self.frame17.pack(anchor="w", expand=False, padx=5, side="top")
         self.frame29 = ttk.Frame(self.Extensions_Frame)
         self.frame55 = ttk.Frame(self.frame29)
         self.frame55.configure(height=200, width=200)
@@ -3865,10 +3860,10 @@ class SettingsnotebookWidget(ttk.Frame):
         self.separator7.configure(orient="horizontal")
         self.separator7.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="x",
             side="top")
-        self.frame57.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame57.pack(anchor="w", expand=True, fill="x", side="top")
         self.frame8 = ttk.Frame(self.Extensions_Frame)
         self.frame56 = ttk.Frame(self.frame8)
         self.frame56.configure(height=200, width=200)
@@ -4745,10 +4740,10 @@ class SettingsnotebookWidget(ttk.Frame):
         self.separator8.configure(orient="horizontal")
         self.separator8.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="x",
             side="top")
-        self.frame59.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame59.pack(anchor="w", expand=True, fill="x", side="top")
         self.frame49 = ttk.Frame(self.Extensions_Frame)
         self.frame49.configure(height=200, width=200)
         self.frame50 = ttk.Frame(self.frame49)
@@ -4777,7 +4772,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.text3.grid(column=1, padx="10 0", pady=5, row=0, sticky="w")
         self.frame50.pack(
             anchor="w",
-            expand="true",
+            expand=True,
             fill="x",
             padx="20 0",
             side="top")
@@ -4825,12 +4820,12 @@ class SettingsnotebookWidget(ttk.Frame):
         self.frame49.pack(anchor="w", side="top")
         self.Extensions_Frame.pack(
             anchor="w",
-            expand="true",
+            expand=True,
             fill="both",
             padx=5,
             pady="15 10",
             side="top")
-        self.Extensions_SF.pack(expand="true", fill="both", side="top")
+        self.Extensions_SF.pack(expand=True, fill="both", side="top")
         self.settingsNotebook.add(self.Extensions_SF, text='Extensions')
         self.Calibration_SF = ScrolledFrame(
             self.settingsNotebook, scrolltype="both")
@@ -4985,12 +4980,15 @@ class SettingsnotebookWidget(ttk.Frame):
         self.I2C_ADDR_SI5351_WIDGET.configure(
             justify="center",
             style="Normal.TEntry",
-            takefocus=False,
             textvariable=self.I2C_ADDR_SI5351,
-            validate="none",
+            validate="focus",
             width=10)
         self.I2C_ADDR_SI5351_WIDGET.grid(
             column=3, pady="15 0", row=7, sticky="w")
+        _validatecmd = (
+            self.I2C_ADDR_SI5351_WIDGET.register(
+                self.validate_I2C_ADDR_SI5351), "%P", "%V")
+        self.I2C_ADDR_SI5351_WIDGET.configure(validatecommand=_validatecmd)
         self.Calibration_Screen_Hidden = ttk.Frame(
             self.Radio_Calibration_Frame)
         self.Calibration_Screen_Hidden.configure(height=200, width=200)
@@ -5468,9 +5466,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.Firmware_Version_Title)
         self.System_Info_Firmware_Version_Label.configure(
             style="Heading3.TLabel", text='Firmware Version: ')
-        self.System_Info_Firmware_Version_Label.pack(expand="true", fill="x")
+        self.System_Info_Firmware_Version_Label.pack(expand=True, fill="x")
         self.Firmware_Version_Title.pack(
-            anchor="w", expand="true", fill="x", side="top")
+            anchor="w", expand=True, fill="x", side="top")
         self.Firmware_Version_Content = ttk.Frame(
             self.System_Info_Firmware_Version)
         self.Firmware_Version_Content.configure(height=200, width=200)
@@ -5521,7 +5519,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.EXT_FUNCTIONALITY_SET_WIDGET.grid(
             column=1, padx=5, row=3, sticky="w")
         self.Firmware_Version_Content.pack(
-            expand="true", fill="x", padx=75, side="top")
+            expand=True, fill="x", padx=75, side="top")
         self.System_Info_Firmware_Version.pack(
             anchor="w", pady="20 0", side="top")
         self.System_Info_Calibration_Settings = ttk.Frame(self.frame27)
@@ -5535,7 +5533,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading3.TLabel", text='Factory Data')
         self.System_Info_Factory_Calibration_Label.pack(anchor="w")
         self.Factory_Data_Title.pack(
-            anchor="w", expand="true", fill="x", side="top")
+            anchor="w", expand=True, fill="x", side="top")
         self.Factory_Data_Content = ttk.Frame(
             self.System_Info_Calibration_Settings)
         self.Factory_Data_Content.configure(height=200, width=200)
@@ -5585,7 +5583,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.FACTORY_VALUES_CW_SPEED_WIDGET.grid(
             column=1, padx=5, row=3, sticky="w")
         self.Factory_Data_Content.pack(
-            expand="true", fill="x", padx=50, side="top")
+            expand=True, fill="x", padx=50, side="top")
         self.System_Info_Calibration_Settings.pack(
             anchor="w", pady="20 0", side="top")
         self.System_Info_Hardware = ttk.Frame(self.frame27)
@@ -5595,11 +5593,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label166 = ttk.Label(self.Hardware_Title)
         self.label166.configure(style="Heading3.TLabel", text='Hardware: ')
         self.label166.pack(anchor="w")
-        self.Hardware_Title.pack(
-            anchor="w",
-            expand="true",
-            fill="x",
-            side="top")
+        self.Hardware_Title.pack(anchor="w", expand=True, fill="x", side="top")
         self.Hardware_Content = ttk.Frame(self.System_Info_Hardware)
         self.Hardware_Content.configure(height=200, width=200)
         self.label190 = ttk.Label(self.Hardware_Content)
@@ -5688,11 +5682,10 @@ class SettingsnotebookWidget(ttk.Frame):
         self.EXT_NEXTIONBAUD_WIDGET.grid(column=1, padx=5, row=0, sticky="w")
         self.NEXTION_BAUD_FRAME.pack()
         self.Outer_Nextion_Frame.grid(column=2, row=2)
-        self.Hardware_Content.pack(
-            expand="true", fill="x", padx=18, side="top")
+        self.Hardware_Content.pack(expand=True, fill="x", padx=18, side="top")
         self.System_Info_Hardware.pack(
             anchor="w",
-            expand="true",
+            expand=True,
             fill="x",
             pady="20 0",
             side="top")
@@ -5706,7 +5699,7 @@ class SettingsnotebookWidget(ttk.Frame):
             text='Pin Assignments:')
         self.label185.pack(anchor="w")
         self.Pins_Title_Frame.pack(
-            anchor="w", expand="true", fill="x", side="top")
+            anchor="w", expand=True, fill="x", side="top")
         self.Pins_Content_Frame = ttk.Frame(self.System_Info_Pins)
         self.Pins_Content_Frame.configure(height=200, width=200)
         self.frame42 = ttk.Frame(self.Pins_Content_Frame)
@@ -5864,10 +5857,10 @@ class SettingsnotebookWidget(ttk.Frame):
             column=1, padx="5 0", row=3, sticky="w")
         self.frame52.grid(column=2, padx="100 0", row=0, sticky="n")
         self.Pins_Content_Frame.pack(
-            expand="true", fill="x", padx=93, side="top")
+            expand=True, fill="x", padx=93, side="top")
         self.System_Info_Pins.pack(
             anchor="w",
-            expand="true",
+            expand=True,
             fill="x",
             pady="20 0",
             side="top")
@@ -6172,17 +6165,17 @@ class SettingsnotebookWidget(ttk.Frame):
             text='label167', textvariable=self.VERSION_ADDRESS)
         self.VERSION_ADDRESS_WIDGET.pack()
         self.SYSTEM_INFO_HIDDEN_Frame.pack(side="top")
-        self.System_Info_SF.pack(expand="true", fill="both", side="top")
+        self.System_Info_SF.pack(expand=True, fill="both", side="top")
         self.settingsNotebook.add(self.System_Info_SF, text='System Info')
         self.settingsNotebook.pack(
             anchor="w",
-            expand="true",
+            expand=True,
             fill="both",
             padx=5,
             pady="15 25",
             side="top")
         self.configure(height=600, padding=5, relief="groove", width=600)
-        self.pack(expand="true", fill="both", side="top")
+        self.pack(expand=True, fill="both", side="top")
 
         self.setup_ttk_styles()
 
@@ -6679,6 +6672,9 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def Factory_Settings_Enable_CB(self):
+        pass
+
+    def validate_I2C_ADDR_SI5351(self, p_entry_value, v_condition):
         pass
 
     def runCalibrationWizard(self):

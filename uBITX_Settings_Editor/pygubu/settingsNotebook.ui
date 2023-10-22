@@ -8569,9 +8569,9 @@ Factory settings?</property>
                           <object class="ttk.Entry" id="I2C_ADDR_SI5351_WIDGET" named="True">
                             <property name="justify">center</property>
                             <property name="style">Normal.TEntry</property>
-                            <property name="takefocus">false</property>
                             <property name="textvariable">string:I2C_ADDR_SI5351</property>
-                            <property name="validate">none</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_I2C_ADDR_SI5351</property>
                             <property name="width">10</property>
                             <layout manager="grid">
                               <property name="column">3</property>
