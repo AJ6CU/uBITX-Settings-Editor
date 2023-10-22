@@ -1,14 +1,15 @@
 #!/usr/bin/python3
 import tkinter as tk
 import tkinter.ttk as ttk
+from pygubu.widgets.scrolledframe import ScrolledFrame
 
 
 class SmeterwizardWidget(tk.Toplevel):
     def __init__(self, master=None, **kw):
         super(SmeterwizardWidget, self).__init__(master, **kw)
-        self.frame1 = ttk.Frame(self)
-        self.frame1.configure(height=200, width=800)
-        self.acquireADCValues_Frame = ttk.Frame(self.frame1)
+        self.scrolledframe1 = ScrolledFrame(self, scrolltype="both")
+        self.scrolledframe1.configure(usemousewheel=False)
+        self.acquireADCValues_Frame = ttk.Frame(self.scrolledframe1.innerframe)
         self.acquireADCValues_Frame.configure(
             height=200, relief="ridge", width=200)
         self.frame2 = ttk.Frame(self.acquireADCValues_Frame)
@@ -39,7 +40,7 @@ class SmeterwizardWidget(tk.Toplevel):
         self.text7.insert("0.0", _text_)
         self.text7.configure(state="disabled")
         self.text7.pack(anchor="e", padx=15, pady=10)
-        self.frame2.pack(expand="false", pady=10, side="top")
+        self.frame2.pack(expand=False, pady=10, side="top")
         self.frame8 = ttk.Frame(self.acquireADCValues_Frame)
         self.frame8.configure(height=200, width=200)
         self.frame11 = ttk.Frame(self.frame8)
@@ -145,15 +146,10 @@ class SmeterwizardWidget(tk.Toplevel):
         self.sampleADCReadMax_Button_WIDGET.configure(
             command=self.sampleADCReadMax)
         self.frame12.grid(column=4, row=0)
-        self.frame8.pack(
-            expand="true",
-            fill="both",
-            padx=5,
-            pady=5,
-            side="top")
+        self.frame8.pack(expand=True, fill="both", padx=5, pady=5, side="top")
         self.acquireADCValues_Frame.pack(
-            expand="true", fill="both", padx=5, pady=5, side="top")
-        self.selectCurve_Frame = ttk.Frame(self.frame1)
+            expand=True, fill="both", padx=5, pady=5, side="top")
+        self.selectCurve_Frame = ttk.Frame(self.scrolledframe1.innerframe)
         self.selectCurve_Frame.configure(height=200, relief="ridge", width=200)
         self.label1 = ttk.Label(self.selectCurve_Frame)
         self.label1.configure(
@@ -253,12 +249,13 @@ class SmeterwizardWidget(tk.Toplevel):
         self.adcCustom_Button.configure(command=self.apply_Custom)
         self.adcManual_Button_frame.grid(column=3, padx="20 0", pady=15, row=2)
         self.selectCurve_Frame.pack(
-            expand="true",
+            expand=True,
             fill="both",
             padx=5,
             pady=5,
             side="top")
-        self.smeterAdjustCurve_Frame = ttk.Frame(self.frame1)
+        self.smeterAdjustCurve_Frame = ttk.Frame(
+            self.scrolledframe1.innerframe)
         self.smeterAdjustCurve_Frame.configure(
             height=200, relief="ridge", width=200)
         self.adc_scale_S1 = tk.Scale(self.smeterAdjustCurve_Frame)
@@ -396,8 +393,9 @@ class SmeterwizardWidget(tk.Toplevel):
             row=0,
             sticky="w")
         self.smeterAdjustCurve_Frame.pack(
-            expand="true", fill="x", padx=5, pady=5, side="top")
-        self.confirmCancelButton_Frame = ttk.Frame(self.frame1)
+            expand=True, fill="x", padx=5, pady=5, side="top")
+        self.confirmCancelButton_Frame = ttk.Frame(
+            self.scrolledframe1.innerframe)
         self.confirmCancelButton_Frame.configure(height=200, width=200)
         self.smeterWizard_Apply_Button_WIDGET = ttk.Button(
             self.confirmCancelButton_Frame)
@@ -422,8 +420,8 @@ class SmeterwizardWidget(tk.Toplevel):
             column=1, padx="0 25", pady=15, row=0)
         self.smeterWizard_Reset_Button_WIDGET.configure(
             command=self.resetADCAssistant)
-        self.confirmCancelButton_Frame.pack(expand="false", side="top")
-        self.frame1.pack(expand="true", fill="both", side="top")
+        self.confirmCancelButton_Frame.pack(expand=False, side="top")
+        self.scrolledframe1.pack(expand=True, fill="both", side="top")
         self.configure(height=200, width=800)
         self.title("S-Meter Helper")
 

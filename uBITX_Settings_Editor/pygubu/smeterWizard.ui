@@ -5,9 +5,9 @@
     <property name="title" translatable="yes">S-Meter Helper</property>
     <property name="width">800</property>
     <child>
-      <object class="ttk.Frame" id="frame1">
-        <property name="height">200</property>
-        <property name="width">800</property>
+      <object class="pygubu.builder.widgets.scrolledframe" id="scrolledframe1">
+        <property name="scrolltype">both</property>
+        <property name="usemousewheel">false</property>
         <layout manager="pack">
           <property name="expand">true</property>
           <property name="fill">both</property>

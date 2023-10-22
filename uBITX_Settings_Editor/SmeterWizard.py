@@ -32,6 +32,7 @@ class SmeterWizard(SmeterwizardWidget):
         self.img_img_Custom125x80 = tk.PhotoImage(file=CUSTOMICON)
 
         super().__init__(parent)
+        self.geometry('850x950+0+0')            # width x height
         self.grab_set()
         #self.iconbitmap(WINDOWMANAGERICON)
         self.title("S-Meter Assistant")

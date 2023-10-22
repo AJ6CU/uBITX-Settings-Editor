@@ -1573,7 +1573,7 @@ class SettingsNotebook(SettingsnotebookWidget):
 
         self.log.println('timestamp', 'Valid BFO values for uBITX V5/V6 motherboards are between:\n\t' + str(VALID_BFO_VALUES['V56'][LOW_BFO_VALUE]) +\
             " and " + str(VALID_BFO_VALUES['V56'][HIGH_BFO_VALUE]) )
-        self.log.println('timestamp', 'Valid BFO Values for uBITX V3/V4/V5 motherboards are between:\n\t' + str(VALID_BFO_VALUES['V34'][LOW_BFO_VALUE]) +\
+        self.log.println('timestamp', 'Valid BFO Values for uBITX V3/V4 motherboards are between:\n\t' + str(VALID_BFO_VALUES['V34'][LOW_BFO_VALUE]) +\
             " and " + str(VALID_BFO_VALUES['V34'][HIGH_BFO_VALUE]) )
         self.log.println('timestamp', 'Confirm uBITX motherboard version and check that you have \n\tvalid calibration values' )
         self.log.println("","")
