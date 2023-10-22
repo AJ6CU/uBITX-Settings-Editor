@@ -17,10 +17,10 @@ class CalibrationWizardWidget(tk.Toplevel):
             state="normal", style="Heading4.TLabel", text='uBITX Calibration Wizard')
         self.calibrationWizardTitle_Label.pack(padx=5, side="top")
         self.calibrationWizardTitle_Frame.pack(
-            expand="true", fill="x", pady=10, side="top")
+            expand=True, fill="x", pady=10, side="top")
         self.separator2 = ttk.Separator(self.calibrationWizardStep0_Frame)
         self.separator2.configure(orient="horizontal")
-        self.separator2.pack(expand="true", fill="x", side="top")
+        self.separator2.pack(expand=True, fill="x", side="top")
         self.calibrationWizardFirstStep_Frame = ttk.Frame(
             self.calibrationWizardStep0_Frame)
         self.calibrationWizardFirstStep_Frame.configure(height=200, width=350)
@@ -30,12 +30,12 @@ class CalibrationWizardWidget(tk.Toplevel):
             justify="left",
             takefocus=False,
             text='This wizard will help you Calibrate your uBITX.\n\nDO NOT use this Wizard unless your radio is not receiving or is off frequency!!! \n\nAlways record your Master Calibration#, SSB BFO# (also  known as (USB Calibration) and CW BFO# before using this wizard. \n\nFill in requested information and then click Save when done. You can click Save at any time and it will save to you Raduino the calibration numbers you have created so far.\n\nYou can Cancel at any time and the original calibration numbers will be restored.')
-        self.message1.pack(expand="true", fill="both", pady=10, side="left")
+        self.message1.pack(expand=True, fill="both", pady=10, side="left")
         self.calibrationWizardFirstStep_Frame.pack(
             padx=5, pady="0 10", side="top")
         self.separator1 = ttk.Separator(self.calibrationWizardStep0_Frame)
         self.separator1.configure(orient="horizontal")
-        self.separator1.pack(expand="true", fill="x", side="top")
+        self.separator1.pack(expand=True, fill="x", side="top")
         self.calibrationWizardStep0_Frame.grid(column=0, row=0, sticky="ew")
         self.calibrationWizardStep1_Frame = ttk.Frame(self)
         self.calibrationWizardStep1_Frame.configure(height=200, width=200)
@@ -47,10 +47,10 @@ class CalibrationWizardWidget(tk.Toplevel):
             style="Heading4.TLabel",
             text='Acquire Existing Calibration Data')
         self.label5.pack(padx=5, side="top")
-        self.frame10.pack(expand="true", fill="x", pady=10, side="top")
+        self.frame10.pack(expand=True, fill="x", pady=10, side="top")
         self.separator9 = ttk.Separator(self.calibrationWizardStep1_Frame)
         self.separator9.configure(orient="horizontal")
-        self.separator9.pack(expand="true", fill="x", side="top")
+        self.separator9.pack(expand=True, fill="x", side="top")
         self.com_portManager_Enclosing_frame = ttk.Frame(
             self.calibrationWizardStep1_Frame)
         self.com_portManager_Enclosing_frame.pack(side="top")
@@ -115,16 +115,16 @@ class CalibrationWizardWidget(tk.Toplevel):
             row=4,
             sticky="ew")
         self.calibrationWizardExistingValue_Frame.pack(
-            expand="true", fill="both", pady=25, side="top")
+            expand=True, fill="both", pady=25, side="top")
         self.separator5 = ttk.Separator(self.calibrationWizardStep1_Frame)
         self.separator5.configure(orient="horizontal")
-        self.separator5.pack(expand="true", fill="x", side="top")
+        self.separator5.pack(expand=True, fill="x", side="top")
         self.calibrationWizardStep1_Frame.grid(column=0, row=0, sticky="ew")
         self.calibrationWizardStep2_Frame = ttk.Frame(self)
         self.calibrationWizardStep2_Frame.configure(height=200, width=200)
         self.separator12 = ttk.Separator(self.calibrationWizardStep2_Frame)
         self.separator12.configure(orient="horizontal")
-        self.separator12.pack(expand="true", fill="x", side="top")
+        self.separator12.pack(expand=True, fill="x", side="top")
         self.frame19 = ttk.Frame(self.calibrationWizardStep2_Frame)
         self.frame19.configure(height=25)
         self.label26 = ttk.Label(self.frame19)
@@ -133,7 +133,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             style="Heading4.TLabel",
             text='Preparing for Initial BFO Setting')
         self.label26.pack(padx=5, side="top")
-        self.frame19.pack(expand="true", fill="x", pady=10, side="top")
+        self.frame19.pack(expand=True, fill="x", pady=10, side="top")
         self.frame20 = ttk.Frame(self.calibrationWizardStep2_Frame)
         self.frame20.configure(height=200, width=350)
         self.message13 = tk.Message(self.frame20)
@@ -143,7 +143,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             takefocus=False,
             text='The frequency calibration of the uBITX depends on your ability to "zero-beat" against a known signal. To do that you must be able to hear that signal. This step will help you initially calibrate your BFO.\n\nDo not worry if you do not get it optimal at this point, we will fine tune it after we calibrate the frequency.\n\nIf you have not watched it, you should watch the youtube video below by the designer of uBITX, Ashhar Farhan, where he walks thru calibrating a V6 uBITX.\n',
             width=300)
-        self.message13.pack(expand="true", fill="both", pady=10, side="top")
+        self.message13.pack(expand=True, fill="both", pady=10, side="top")
         self.frame23 = ttk.Frame(self.frame20)
         self.frame23.configure(height=200, width=200)
         self.hfsignalsCalVideoLink_Widget = ttk.Label(self.frame23)
@@ -188,7 +188,7 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.calibrationWizardStep3_Frame.configure(height=200, width=200)
         self.separator13 = ttk.Separator(self.calibrationWizardStep3_Frame)
         self.separator13.configure(orient="horizontal")
-        self.separator13.pack(expand="true", fill="x", side="top")
+        self.separator13.pack(expand=True, fill="x", side="top")
         self.frame25 = ttk.Frame(self.calibrationWizardStep3_Frame)
         self.frame25.configure(height=25)
         self.label29 = ttk.Label(self.frame25)
@@ -197,7 +197,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             style="Heading4.TLabel",
             text='Setting BFO')
         self.label29.pack(padx=5, side="top")
-        self.frame25.pack(expand="true", fill="x", pady=10, side="top")
+        self.frame25.pack(expand=True, fill="x", pady=10, side="top")
         self.frame26 = ttk.Frame(self.calibrationWizardStep3_Frame)
         self.frame26.configure(height=200, width=350)
         self.message15 = tk.Message(self.frame26)
@@ -206,9 +206,9 @@ class CalibrationWizardWidget(tk.Toplevel):
             justify="left",
             relief="flat",
             takefocus=False,
-            text='Go to the webpage for the HF Signals BFO Tuning Aid. Follow the directions there for the hardware setup. Make sure you remember to connect your radio to your antenna!\n\nThis step automatically sets your radio Mode to USB.\n\nIf you want to move the spectrum left (down frequency) click the left arrow. Click the right arrow to move the spectrum to the right.\n\nYou can also select the speed mulitple using the menu in the center.\n\nAfter you have the waveform aligned with the left, you can click Next>>.',
+            text='Go to the webpage for the HF Signals BFO Tuning Aid. Follow the directions there for the hardware setup. Make sure you remember to connect your radio to your antenna and tune to an unoccupied frequency!\n\nThis step automatically sets your radio Mode to USB.\n\nIf you want to move the spectrum left (down frequency) click the left arrow. Click the right arrow to move the spectrum to the right.\n\nYou can also select the speed mulitple using the menu in the center.\n\nAfter you have the waveform aligned with the left, you can click Next>>.',
             width=300)
-        self.message15.pack(expand="true", fill="both", pady=10, side="top")
+        self.message15.pack(expand=True, fill="both", pady=10, side="top")
         self.frame54 = ttk.Frame(self.frame26)
         self.frame54.configure(height=200, width=200)
         self.label49 = ttk.Label(self.frame54)
@@ -265,7 +265,7 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.calibrationWizardStep4_Frame.configure(height=200, width=200)
         self.separator14 = ttk.Separator(self.calibrationWizardStep4_Frame)
         self.separator14.configure(orient="horizontal")
-        self.separator14.pack(expand="true", fill="x", side="top")
+        self.separator14.pack(expand=True, fill="x", side="top")
         self.frame30 = ttk.Frame(self.calibrationWizardStep4_Frame)
         self.frame30.configure(height=25)
         self.label32 = ttk.Label(self.frame30)
@@ -274,7 +274,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             style="Heading4.TLabel",
             text='Calibrate Frequency - "Master Calibration"')
         self.label32.pack(padx=5, side="top")
-        self.frame30.pack(expand="true", fill="x", pady=10, side="top")
+        self.frame30.pack(expand=True, fill="x", pady=10, side="top")
         self.frame31 = ttk.Frame(self.calibrationWizardStep4_Frame)
         self.frame31.configure(height=200, width=350)
         self.message17 = tk.Message(self.frame31)
@@ -285,7 +285,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             takefocus=False,
             text='The easiest process to calibrate the frequency of the uBITX is to "zero-beat" against a known signal. This is a 3 step process:\n\n1. Select source with known frequency.\n2. Zero-beat this source. This step automatically puts your radio in USB mode.\n3. Click "Calculate" to generate the new calibration value.',
             width=300)
-        self.message17.pack(expand="true", fill="both", pady=10, side="top")
+        self.message17.pack(expand=True, fill="both", pady=10, side="top")
         self.frame1 = ttk.Frame(self.frame31)
         self.frame1.configure(height=200, width=200)
         self.label33 = ttk.Label(self.frame1)
@@ -360,7 +360,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             width=400)
         self.badFreqEnteredError_Message.pack()
         self.frame24.grid(column=0, columnspan=4, row=4, sticky="ew")
-        self.frame32.pack(expand="true", fill="x", pady=10, side="top")
+        self.frame32.pack(expand=True, fill="x", pady=10, side="top")
         self.frame6 = ttk.Frame(self.frame31)
         self.frame6.configure(height=200, width=200)
         self.label28 = ttk.Label(self.frame6)
@@ -400,7 +400,7 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.label34.pack(side="left")
         self.frame13.pack(
             anchor="w",
-            expand="true",
+            expand=True,
             fill="x",
             pady="25 0",
             side="top")
@@ -433,7 +433,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             text='label45', textvariable=self.newMASTER_CAL)
         self.newMASTER_CAL_Label.grid(column=1, row=3)
         self.frame21.pack(
-            expand="true",
+            expand=True,
             fill="x",
             padx=25,
             pady="10 0",
@@ -444,7 +444,7 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.calibrationWizardStep5_Frame.configure(height=200, width=200)
         self.separator3 = ttk.Separator(self.calibrationWizardStep5_Frame)
         self.separator3.configure(orient="horizontal")
-        self.separator3.pack(expand="true", fill="x", side="top")
+        self.separator3.pack(expand=True, fill="x", side="top")
         self.frame2 = ttk.Frame(self.calibrationWizardStep5_Frame)
         self.frame2.configure(height=25)
         self.label1 = ttk.Label(self.frame2)
@@ -453,7 +453,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             style="Heading4.TLabel",
             text='Final BFO Tuning')
         self.label1.pack(padx=5, side="top")
-        self.frame2.pack(expand="true", fill="x", pady=10, side="top")
+        self.frame2.pack(expand=True, fill="x", pady=10, side="top")
         self.frame3 = ttk.Frame(self.calibrationWizardStep5_Frame)
         self.frame3.configure(height=200, width=350)
         self.message2 = tk.Message(self.frame3)
@@ -462,9 +462,9 @@ class CalibrationWizardWidget(tk.Toplevel):
             justify="left",
             relief="flat",
             takefocus=False,
-            text='Your BFO should be pretty close. But it is worth checking again here and fine tuning it if necessary. Again, start the HF Signals BFO Tuning Aid and then adjust the BFO. A link to this tuning aid is provided below.',
+            text='Your BFO should be pretty close. But it is worth checking again here and fine tuning it if necessary. Again, start the HF Signals BFO Tuning Aid and then adjust the BFO. A link to this tuning aid is provided below.\n\nMake sure to reconnect your antenna (if you had disconnected it) and tune to an unoccupied frequency!',
             width=300)
-        self.message2.pack(expand="true", fill="both", pady=10, side="top")
+        self.message2.pack(expand=True, fill="both", pady=10, side="top")
         self.frame12 = ttk.Frame(self.frame3)
         self.frame12.configure(height=200, width=200)
         self.label18 = ttk.Label(self.frame12)
@@ -541,7 +541,7 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.calibrationWizardStep6_Frame.configure(height=200, width=200)
         self.separator4 = ttk.Separator(self.calibrationWizardStep6_Frame)
         self.separator4.configure(orient="horizontal")
-        self.separator4.pack(expand="true", fill="x", side="top")
+        self.separator4.pack(expand=True, fill="x", side="top")
         self.frame7 = ttk.Frame(self.calibrationWizardStep6_Frame)
         self.frame7.configure(height=25)
         self.label13 = ttk.Label(self.frame7)
@@ -550,7 +550,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             style="Heading4.TLabel",
             text='Setting CW BFO')
         self.label13.pack(padx=5, side="top")
-        self.frame7.pack(expand="true", fill="x", pady=10, side="top")
+        self.frame7.pack(expand=True, fill="x", pady=10, side="top")
         self.frame8 = ttk.Frame(self.calibrationWizardStep6_Frame)
         self.frame8.configure(height=200, width=350)
         self.message4 = tk.Message(self.frame8)
@@ -559,9 +559,9 @@ class CalibrationWizardWidget(tk.Toplevel):
             justify="left",
             relief="flat",
             takefocus=True,
-            text='The process for setting the CW BFO is similar to that of the SSB BFO. As previously, this step sets your radio mode to the proper value (CWL).\n\nNow start the HF Signals BFO Tuning Aid, and then adjust the spectrum so that it is inbetween the two red borders. \n\nA link to the HF Signals BFO Tuning Aid is also provided below.',
+            text='The process for setting the CW BFO is similar to that of the SSB BFO. As previously, this step sets your radio mode to the proper value (CWL).\n\nMake sure you tune to an unoccupied frequency!\n\nNow start the HF Signals BFO Tuning Aid, and then adjust the spectrum so that it is inbetween the two red borders. \n\nA link to the HF Signals BFO Tuning Aid is also provided below.',
             width=300)
-        self.message4.pack(expand="true", fill="both", pady=10, side="top")
+        self.message4.pack(expand=True, fill="both", pady=10, side="top")
         self.frame18 = ttk.Frame(self.frame8)
         self.frame18.configure(height=200, width=200)
         self.label24 = ttk.Label(self.frame18)
@@ -637,7 +637,7 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.calibrationWizardStep7_Frame.configure(height=200, width=200)
         self.separator6 = ttk.Separator(self.calibrationWizardStep7_Frame)
         self.separator6.configure(orient="horizontal")
-        self.separator6.pack(expand="true", fill="x", side="top")
+        self.separator6.pack(expand=True, fill="x", side="top")
         self.frame14 = ttk.Frame(self.calibrationWizardStep7_Frame)
         self.frame14.configure(height=25)
         self.label19 = ttk.Label(self.frame14)
@@ -646,7 +646,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             style="Heading4.TLabel",
             text='Final Review!')
         self.label19.pack(padx=5, side="top")
-        self.frame14.pack(expand="true", fill="x", pady=10, side="top")
+        self.frame14.pack(expand=True, fill="x", pady=10, side="top")
         self.frame15 = ttk.Frame(self.calibrationWizardStep7_Frame)
         self.frame15.configure(height=200, width=350)
         self.message5 = tk.Message(self.frame15)
@@ -657,7 +657,7 @@ class CalibrationWizardWidget(tk.Toplevel):
             takefocus=False,
             text='You are just about done! The initial and final numbers are provided below.\n\nIf you are OK with the new values, click the "Save and Exit" button. Your uBITX will also be automatically rebooted to ensure that you are using the new values stored in EEPROM.\n\nNotes: \n1. Items in Bold indicate a change in value. \n2. This step "guesses" that you want to be in USB mode after completing this wizard. You may want to change that to another mode.',
             width=300)
-        self.message5.pack(expand="true", fill="both", pady=10, side="top")
+        self.message5.pack(expand=True, fill="both", pady=10, side="top")
         self.frame16 = ttk.Frame(self.frame15)
         self.frame16.configure(height=200, width=200)
         self.label20 = ttk.Label(self.frame16)

@@ -459,7 +459,7 @@ If you have not watched it, you should watch the youtube video below by the desi
                 <property name="justify">left</property>
                 <property name="relief">flat</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">Go to the webpage for the HF Signals BFO Tuning Aid. Follow the directions there for the hardware setup. Make sure you remember to connect your radio to your antenna!
+                <property name="text" translatable="yes">Go to the webpage for the HF Signals BFO Tuning Aid. Follow the directions there for the hardware setup. Make sure you remember to connect your radio to your antenna and tune to an unoccupied frequency!
 
 This step automatically sets your radio Mode to USB.
 
@@ -1039,7 +1039,9 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                 <property name="justify">left</property>
                 <property name="relief">flat</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">Your BFO should be pretty close. But it is worth checking again here and fine tuning it if necessary. Again, start the HF Signals BFO Tuning Aid and then adjust the BFO. A link to this tuning aid is provided below.</property>
+                <property name="text" translatable="yes">Your BFO should be pretty close. But it is worth checking again here and fine tuning it if necessary. Again, start the HF Signals BFO Tuning Aid and then adjust the BFO. A link to this tuning aid is provided below.
+
+Make sure to reconnect your antenna (if you had disconnected it) and tune to an unoccupied frequency!</property>
                 <property name="width">300</property>
                 <layout manager="pack">
                   <property name="expand">true</property>
@@ -1247,6 +1249,8 @@ After you have the waveform aligned with the left, you can click Next&gt;&gt;.</
                 <property name="relief">flat</property>
                 <property name="takefocus">true</property>
                 <property name="text" translatable="yes">The process for setting the CW BFO is similar to that of the SSB BFO. As previously, this step sets your radio mode to the proper value (CWL).
+
+Make sure you tune to an unoccupied frequency!
 
 Now start the HF Signals BFO Tuning Aid, and then adjust the spectrum so that it is inbetween the two red borders. 
 

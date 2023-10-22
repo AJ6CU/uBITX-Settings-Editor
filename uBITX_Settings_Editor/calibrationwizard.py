@@ -205,9 +205,9 @@ class calibrationWizard(CalibrationWizardWidget):
 
             #   Check each calibration value and highlight any differences from original values
             if self.currentMASTER_CAL.get() != self.newMASTER_CAL.get():
-                self.finalReviewMasterCalInitial_Label.configure(style="Heading4.TLabel")
+                self.finalReviewMasterCalNew_Label.configure(style="Heading4.TLabel")
             else:
-                self.finalReviewMasterCalInitial_Label.configure(style="Normal.TLabel")     #else necessary because could backup and restore old value
+                self.finalReviewMasterCalNew_Label.configure(style="Normal.TLabel")     #else necessary because could backup and restore old value
                                                                                             # and then come back to here. Only wanted bolded if value different
 
             if self.currentUSB_CAL.get() != self.newUSB_CAL.get():
