@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07ffa901-4db2-460d-94d0-031f158d06d7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SettingsNotebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/SettingsNotebook.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pygubu/settingsNotebook.ui" beforeDir="false" afterPath="$PROJECT_DIR$/pygubu/settingsNotebook.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settingsnotebookwidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/settingsnotebookwidget.py" afterDir="false" />
-    </list>
+    <list default="true" id="07ffa901-4db2-460d-94d0-031f158d06d7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

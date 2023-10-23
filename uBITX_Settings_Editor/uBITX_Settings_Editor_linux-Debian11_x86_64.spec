@@ -47,5 +47,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='uBITX_Settings_Editor_RC1-Debian11_x86_64'
+    name='uBITX_Settings_Editor_RC2-Debian11_x86_64'
 )
