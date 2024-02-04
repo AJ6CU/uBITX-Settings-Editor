@@ -36,7 +36,7 @@ EXT_UBITX_BOARD_VERSION_SELECT =    ["Data Not Available","V1","V2","V3","V4","V
 EXT_PROCESSOR_TYPE_SELECT =         ["Data Not Available","Arduino Nano V3","Arduino Nano Every","Arduino Nano 33 IoT","Arduino Nano BLE",
                                         "Arduino RP2040", "Teensy 4.0", "Raspberry Pi Pico"]
 EXT_DISPLAY_TYPE_SELECT =           ["Data Not Available","LCD 16x2 (Parallel)","LCD 16x2 (I2C)","LCD 20x4 (Parallel)", "Dual LCD 16x2 (I2C)",
-                                        "LCD 20x4 (I2C)", "Nextion"]
+                                        "LCD 20x4 (I2C)", "Nextion", "2.8 TFT SPI"]
 EXT_FUNCTIONALITY_SET_SELECT =      ["Data Not Available","All Functions","Test Functionality","Suggested for LCD", "For Expanded Nano V3.0/Nextion",
                                     "None - Old Nanos/Nextion", "Suggested for Processors/Newton"]
 
