@@ -1,6 +1,8 @@
 import pygubu.widgets.simpletooltip as tooltip
 import tkinter as tk
 import tkinter.messagebox
+from PIL import Image
+from PIL import ImageTk
 
 import webbrowser
 
@@ -22,19 +24,22 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.root = parent
 
         #   Set up image files first
-        self.img_img_redarrowpointingleft59x36 = tk.PhotoImage(file=LEFTCOPYARROW)
-        self.img_img_redarrowpointingright59x36 = tk.PhotoImage(file=RIGHTCOPYARROW)
+        self.img_img_redarrowpointingleft59x36 = Image.open(LEFTCOPYARROW).convert('RGBA')
+        self.img_img_redarrowpointingright59x36 = Image.open(RIGHTCOPYARROW).convert('RGBA')
 
 
 
         super().__init__(parent)
 
         #   now configure the buttons to display the arrows.
-        self.MASTER_CAL_COPY_BUTTON.configure(image=self.img_img_redarrowpointingleft59x36)
-        self.MASTER_CAL_COPY_FACTORY_BUTTON.configure(image=self.img_img_redarrowpointingright59x36)
+        self.my_image_left_arrow = ImageTk.PhotoImage(self.img_img_redarrowpointingleft59x36)
+        self.my_image_right_arrow = ImageTk.PhotoImage(self.img_img_redarrowpointingright59x36)
 
-        self.USB_CAL_COPY_BUTTON.configure(image=self.img_img_redarrowpointingleft59x36)
-        self.USB_CAL_COPY_FACTORY_BUTTON.configure(image=self.img_img_redarrowpointingright59x36)
+        self.MASTER_CAL_COPY_BUTTON.configure(image=self.my_image_left_arrow)
+        self.MASTER_CAL_COPY_FACTORY_BUTTON.configure(image=self.my_image_right_arrow)
+
+        self.USB_CAL_COPY_BUTTON.configure(image=self.my_image_left_arrow)
+        self.USB_CAL_COPY_FACTORY_BUTTON.configure(image=self.my_image_right_arrow)
 
         #   Initialize maximum available bytes to 0
         self.CW_AUTO_BYTES_USED.set('0')

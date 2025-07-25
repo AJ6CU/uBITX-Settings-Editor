@@ -4,6 +4,9 @@
 import platform
 import tkinter.messagebox
 
+from PIL import Image
+from PIL import ImageTk
+
 from helpsubsystem import *
 from SettingsNotebook import SettingsNotebook
 from inputProcessor import InputProcessor
@@ -42,7 +45,8 @@ def center_window(theRoot, width, height):
 # Set any platform specific variables
 if(platform.system()=='Windows'):
     appTheme = 'vista'
-    startDir = "~\Documents"
+    startDir = "%USERPROFILE%\\Documents"
+    # MJH this flags error "~\Documents"  not sure if double backslash will work on windows
 elif (platform.system() == 'Darwin'):
     appTheme = 'aqua'
     startDir = "~"

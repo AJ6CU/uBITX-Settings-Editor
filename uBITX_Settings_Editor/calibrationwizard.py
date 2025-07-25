@@ -2,6 +2,8 @@
 import tkinter as tk
 import tkinter.messagebox
 import tkinter.ttk as ttk
+from PIL import Image
+from PIL import ImageTk
 from com_portManager import com_portManager
 import pygubu.widgets.simpletooltip as tooltip
 from calibrationwizardwidget import CalibrationWizardWidget
@@ -24,10 +26,15 @@ class calibrationWizard(CalibrationWizardWidget):
 
         #self.iconbitmap(WINDOWMANAGERICON)
 
+
         self.img_img_copy_icon25x25 = tk.PhotoImage(file=COPYICON)
 
-        self.img_img_plain_redarrowpointingleft59x36 = tk.PhotoImage(file=MOVELEFTARROWICON)
-        self.img_img_plain_redarrowpointingright59x36 = tk.PhotoImage(file=MOVERIGHTARROWICON)
+        self.img_img_redarrowpointingleft59x36 = Image.open(MOVELEFTARROWICON).convert('RGBA')
+        self.img_img_redarrowpointingright59x36 = Image.open(MOVERIGHTARROWICON).convert('RGBA')
+
+        #   now configure the buttons to display the arrows.
+        self.img_img_plain_redarrowpointingleft59x36 = ImageTk.PhotoImage(self.img_img_redarrowpointingleft59x36)
+        self.img_img_plain_redarrowpointingright59x36 = ImageTk.PhotoImage(self.img_img_redarrowpointingright59x36)
 
 
         self.copyExistingCalibrationToClipboard_Button.configure(image=self.img_img_copy_icon25x25)
