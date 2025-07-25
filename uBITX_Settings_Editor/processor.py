@@ -4,6 +4,7 @@ import pathlib
 import pygubu.widgets.simpletooltip as tooltip
 
 from globalvars import *
+from globalvars import HOMEDIRECTORY
 from com_portManager import com_portManager
 
 
@@ -18,9 +19,9 @@ class Processor(SourceselectorWidget):
         # put file selector in default state
         self.selectSaveFileFrame.forget()               #  Want to show the com port option  as default, hide saved file option
         self.savedFilePathChooserWidget.config(filetypes=[('uBITX Saved Files','.xml .btx')])         # Manually add restriction to only XML and btx files
-        self.savedFilePathChooserWidget.config(initialdir=HOMEDIRECTORY)         # default to start off in users' home directory
+        self.savedFilePathChooserWidget.config(initialdir=getHomeDirectory())         # default to start off in users' home directory
         self.savedFilePathChooser.set(USERMODFILE)
-        self.lastDir = HOMEDIRECTORY
+        self.lastDir = getHomeDirectory()
         self.actionButton_Text.set(goButtonLabel)
 
 

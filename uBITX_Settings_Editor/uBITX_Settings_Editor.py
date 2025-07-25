@@ -4,15 +4,14 @@
 import platform
 import tkinter.messagebox
 
-from PIL import Image
-from PIL import ImageTk
-
 from helpsubsystem import *
 from SettingsNotebook import SettingsNotebook
 from inputProcessor import InputProcessor
 from outputProcessor import  OutputProcessor
 
 from globalvars import *
+
+
 
 
 import pygubu.widgets.simpletooltip as tooltip
@@ -22,7 +21,7 @@ def tryToQuit(root, inputProcessorPtr):
     if inputProcessorPtr.getIOstate() == 'READ':
         answer = tkinter.messagebox.askyesno(title='Confirm Quit',
                 message='Settings have NOT been saved, are you sure you want to QUIT?', default="no", icon="warning")
-        if answer == False:
+        if not answer:
             return
     root.destroy()
 
@@ -43,17 +42,18 @@ def center_window(theRoot, width, height):
 
 
 # Set any platform specific variables
-if(platform.system()=='Windows'):
+
+if platform.system()== 'Windows':
     appTheme = 'vista'
-    startDir = "%USERPROFILE%\\Documents"
-    # MJH this flags error "~\Documents"  not sure if double backslash will work on windows
-elif (platform.system() == 'Darwin'):
+    setHomeDirectory(WINSTARTDIR)
+
+elif platform.system() == 'Darwin':
     appTheme = 'aqua'
-    startDir = "~"
+    setHomeDirectory(MACSTARTDIR)
     #WINDOWMANAGERICON = resource_path("settingseditor.icns")
 else:
     appTheme = 'alt'                # used by Linux
-    startDir = "~"
+    setHomeDirectory(LINUXSTARTDIR)
     #WINDOWMANAGERICON = resource_path("settingseditor.png")
 
 IOstate = 'NONE'                        #used to track whether we have written the settings or not prior to quiting
@@ -109,7 +109,7 @@ outputProcessorFrame.grid(row=5, column=0, columnspan=2, pady=(10, 0))
 
 # Define and layout the contents of titleFrame
 titleBar = ttk.Label(titleFrame, text="uBITX Settings Editor ", style='Heading1.TLabel')
-titleBar.config(anchor=CENTER)
+titleBar.config(anchor="center")
 titleBar.pack()
 
 

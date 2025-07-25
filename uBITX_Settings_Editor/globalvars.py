@@ -242,7 +242,18 @@ MOVERIGHTARROWICON = resource_path("img_plain_red-arrow-pointing-right59x36.png"
 USERMODFILE="Select Saved File"                       #Output of process - file that User can customize
 
 #HOMEDIRECTORY="c:/Users/markj/Documents/backups/usermodfiles"                      #Initial directory for file selector
-HOMEDIRECTORY="~"                      #Initial directory for file selector
+HOMEDIRECTORY="~"                    #Define it in globals so it can be set at runtime
+WINSTARTDIR= "~/Documents"
+MACSTARTDIR = "~"
+LINUXSTARTDIR = "~"
+
+def setHomeDirectory(newvalue):
+    global HOMEDIRECTORY
+    HOMEDIRECTORY= newvalue
+
+def getHomeDirectory():
+    global HOMEDIRECTORY
+    return HOMEDIRECTORY
 
 
 DEBUGAPP=False
