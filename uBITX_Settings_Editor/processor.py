@@ -15,7 +15,6 @@ class Processor(SourceselectorWidget):
     def __init__(self, goButtonLabel, parent):
         super().__init__(parent)
 
-
         # put file selector in default state
         self.selectSaveFileFrame.forget()               #  Want to show the com port option  as default, hide saved file option
         self.savedFilePathChooserWidget.config(filetypes=[('uBITX Saved Files','.xml .btx')])         # Manually add restriction to only XML and btx files

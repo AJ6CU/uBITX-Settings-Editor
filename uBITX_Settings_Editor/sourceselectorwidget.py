@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import tkinter as tk
 import tkinter.ttk as ttk
+from globalvars  import *
 from pygubu.widgets.pathchooserinput import PathChooserInput
 
 
@@ -58,7 +59,7 @@ class SourceselectorWidget(ttk.Labelframe):
             self.selectSaveFileFrame)
         self.savedFilePathChooser = tk.StringVar()
         self.savedFilePathChooserWidget.configure(
-            initialdir="~",
+            initialdir=getHomeDirectory(),
             mustexist=True,
             textvariable=self.savedFilePathChooser,
             type="file")

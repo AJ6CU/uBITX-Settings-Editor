@@ -50,11 +50,11 @@ if platform.system()== 'Windows':
 elif platform.system() == 'Darwin':
     appTheme = 'aqua'
     setHomeDirectory(MACSTARTDIR)
-    #WINDOWMANAGERICON = resource_path("settingseditor.icns")
+    #WINDOWMANAGERICON = resource_path("settingseditor.icns")   #Not possible on MacOS and Tkinter
 else:
     appTheme = 'alt'                # used by Linux
     setHomeDirectory(LINUXSTARTDIR)
-    #WINDOWMANAGERICON = resource_path("settingseditor.png")
+    #WINDOWMANAGERICON = resource_path("settingseditor.png")   #Not used on Linux
 
 IOstate = 'NONE'                        #used to track whether we have written the settings or not prior to quiting
 
@@ -69,6 +69,8 @@ center_window(root,DEFAULT_ROOT_WINDOW_WIDTH,DEFAULT_ROOT_WINDOW_HEIGHT)
 #root.geometry('1280x900+0+0')            # width x height
 root.minsize(1024,650)
 #root.iconbitmap(WINDOWMANAGERICON)
+
+print("WINDOWMANAGERICON=", WINDOWMANAGERICON, "\n")
 img=PhotoImage(file=WINDOWMANAGERICON)
 root.iconphoto(True,img)
 
