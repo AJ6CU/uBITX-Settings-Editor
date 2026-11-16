@@ -22,8 +22,7 @@ folder on sys.path so that keeps working. Its data files (help, about, the
 EEPROM map, the template, the images) are found beside the code through
 globalvars.resource_path.
 
-Needs `pip` and `build`'s backend, setuptools -- both come with a normal
-Python's venv: python3 -m pip install --upgrade pip setuptools wheel
+Needs `pip` and `build`'s backend, setuptools 77 or newer: python3 -m pip install --upgrade pip setuptools wheel
 """
 import glob
 import os
@@ -50,7 +49,7 @@ REQUIRES = ["pyserial", "lxml", "bitarray", "pygubu", "Pillow"]
 
 PYPROJECT = """\
 [build-system]
-requires = ["setuptools>=61"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -59,7 +58,7 @@ version = "{version}"
 description = "Back up, edit and restore the settings a uBITX running KD8CEC firmware keeps in EEPROM"
 readme = "README.md"
 requires-python = ">=3.10"
-license = {{text = "GPL-3.0-or-later"}}
+license = "GPL-3.0-or-later"  # FIX: an SPDX string; the old table form is deprecated
 authors = [{{name = "Mark Hatch, AJ6CU"}}]
 dependencies = {requires}
 
@@ -73,7 +72,7 @@ ubitx-settings-editor = "{pkg}.__main__:main"
 ubitx-settings-editor-gui = "{pkg}.__main__:main"
 
 [tool.setuptools]
-packages = ["{pkg}"]
+packages = ["{pkg}", "{pkg}.images"]  # FIX: images/ is a folder of the package too
 
 [tool.setuptools.package-data]
 {pkg} = {data}
