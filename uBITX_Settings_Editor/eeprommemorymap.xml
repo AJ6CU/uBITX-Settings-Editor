@@ -1421,8 +1421,8 @@
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
 
-	<SETTING NAME="NEXTION_DISPLAY_CALL_SIGN">
-		<EEPROMStart>361</EEPROMStart>
+	<SETTING NAME="DISPLAY_CALL_SIGN">
+		<EEPROMStart>781</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>bool</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
@@ -1588,6 +1588,78 @@ GENERAL UX
 		<displayFormat>selection_ftn_key</displayFormat>
 		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
 	</SETTING>
+	<SETTING NAME="EXTENDED_KEY7_START">
+		<EEPROMStart>158</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY7_END">
+		<EEPROMStart>159</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY7_FUNC">
+		<EEPROMStart>160</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_ftn_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY8_START">
+		<EEPROMStart>161</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY8_END">
+		<EEPROMStart>162</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY8_FUNC">
+		<EEPROMStart>163</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_ftn_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+		<SETTING NAME="EXTENDED_KEY9_START">
+		<EEPROMStart>164</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY9_END">
+		<EEPROMStart>165</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY9_FUNC">
+		<EEPROMStart>166</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_ftn_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY10_START">
+		<EEPROMStart>167</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY10_END">
+		<EEPROMStart>168</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY10_FUNC">
+		<EEPROMStart>169</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>selection_ftn_key</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
 	
 <!-- 	
 	*****************************************************************************************************
@@ -1638,7 +1710,7 @@ GENERAL UX
 	<SETTING NAME="CUST_LPF_FILTER2_CONTROL">							
 		<EEPROMStart>52</EEPROMStart>
 		<sizeInBytes>1</sizeInBytes>
-		<displayFormat>selection</displayFormat>																	enable for the TX_LPF relay and set D10 high     -->
+		<displayFormat>selection</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
 	</SETTING>
 	<SETTING NAME="CUST_LPF_FILTER3_ENDFREQ">							
@@ -1700,5 +1772,209 @@ GENERAL UX
 		<sizeInBytes>1</sizeInBytes>
 		<displayFormat>hex</displayFormat>
 		<SPECIAL_PROCESSING>yes</SPECIAL_PROCESSING>
-	</SETTING>	
+	</SETTING>
+
+
+<!--
+	*****************************************************************************************************
+	EXTENDED EEPROM DATA
+	The following definitions are for the additional data that is stored in larger EEPROMs. For
+	the traditional Nano, these settings are ignored and where they would normally appear in the GUI
+	there value will be replaced with "N/A"
+
+	Initially, this data is primarily information about the build so that a user can confirm that the
+	right options have been selected. However, over time this additional space can be used for other
+	information.
+
+	Even though the I2C based boards use a 64k byte eeprom, both the Settings Manager and KD8CEC
+	only use a max of 2k bytes. Besides no current need for data above 2k, there are many assumptions
+	in KD8CEC, especially in the CAT control are, where there is a maximum of a 16k byte start and a
+	fetch of max of 16k.
+	*****************************************************************************************************
+ -->
+	<SETTING NAME="EXT_FIRMWARE_ID_ADDR1">
+		<EEPROMStart>1024</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>hex</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_FIRMWARE_ID_ADDR2">
+		<EEPROMStart>1025</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>hex</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_FIRMWARE_ID_ADDR3">
+		<EEPROMStart>1026</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>hex</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+
+	<SETTING NAME="EXT_FIRMWARE_VERSION_INFO">
+		<EEPROMStart>1027</EEPROMStart>
+		<sizeInBytes>10</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+
+	<SETTING NAME="EXT_RELEASE_NAME">
+		<EEPROMStart>1037</EEPROMStart>
+		<sizeInBytes>15</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_DATE_TIME_STAMP">
+		<EEPROMStart>1052</EEPROMStart>
+		<sizeInBytes>12</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_UBITX_BOARD_VERSION">
+		<EEPROMStart>1064</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_PROCESSOR_TYPE">
+		<EEPROMStart>1065</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_DISPLAY_TYPE">
+		<EEPROMStart>1066</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_FUNCTIONALITY_SET">
+		<EEPROMStart>1067</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_SMETER_SELECTION">
+		<EEPROMStart>1068</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_SERIAL_TYPE">
+		<EEPROMStart>1069</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_EEPROM_TYPE">
+		<EEPROMStart>1070</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_ENCODER_TYPE">
+		<EEPROMStart>1071</EEPROMStart>
+		<sizeInBytes>1</sizeInBytes>
+		<displayFormat>int</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_NEXTIONBAUD">
+		<EEPROMStart>1072</EEPROMStart>
+		<sizeInBytes>6</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_TWOSPAREBYTES">
+		<EEPROMStart>1078</EEPROMStart>
+		<sizeInBytes>2</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_ENC_A">
+		<EEPROMStart>1080</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_ENC_B">
+		<EEPROMStart>1085</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_FBUTTON">
+		<EEPROMStart>1090</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+
+	<SETTING NAME="EXT_PTT">
+		<EEPROMStart>1095</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_ANALOG_KEYER">
+		<EEPROMStart>1100</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_ANALOG_SMETER">
+		<EEPROMStart>1105</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_RS">
+		<EEPROMStart>1110</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_EN">
+		<EEPROMStart>1115</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_D4">
+		<EEPROMStart>1120</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_D5">
+		<EEPROMStart>1125</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_D6">
+		<EEPROMStart>1130</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_D7">
+		<EEPROMStart>1135</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+
+	<SETTING NAME="EXT_SOFTWARESERIAL_RX_PIN">
+		<EEPROMStart>1140</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
+
+	<SETTING NAME="EXT_SOFTWARESERIAL_TX_PIN">
+		<EEPROMStart>1145</EEPROMStart>
+		<sizeInBytes>5</sizeInBytes>
+		<displayFormat>chr</displayFormat>
+		<SPECIAL_PROCESSING>no</SPECIAL_PROCESSING>
+	</SETTING>
 </data>

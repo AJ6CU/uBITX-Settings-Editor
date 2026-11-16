@@ -5,25 +5,27 @@ from os import path
 import pygubu.widgets.simpletooltip as tooltip
 
 
+
 from processor import Processor
 from eepromObj import *
 
 class InputProcessor(Processor):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self.goButton.set("READ")
-        self.reset_uBITX_Button_WIDGET.forget()
+    def __init__(self,  parent):
+        super().__init__("Read", parent)
+
+        #self.goButton.set("READ")
+        self.optionalInfo_Frame.forget()                # not needing the optional frame while reading
+
         self.savedFilePathChooserWidget.config(
             mustexist=True,
             title="Select Previously Saved Settings File")
 
+        self.optionalInfo_Frame.grid_forget()                # don't need any optional info (reset ubitx and protect factory) on input
+
        #   add tooltips
         tooltip.create(self.uBITX_sourceSelector_WIDGET,"Click to read the settings from an attached uBITX")
         tooltip.create(self.File_sourceSelector_WIDGET,"Click to read the settings from a previously saved backup file")
-        tooltip.create(self.goButtonWidget,"Click after selecting the source")
-        tooltip.create(self.comPortObj.comPortsOptionMenu,"Select the com port used by your uBITX")
-        tooltip.create(self.comPortObj.comPortListRefresh,"Refresh list of available com ports. "+
-                                                        "(You can also plug in your uBITX and then refresh list")
+
 
 
         #   Dictionary to hold current values of usermodfile and whether dirty or not
@@ -31,7 +33,7 @@ class InputProcessor(Processor):
         self.userModFileDirty = {}
         self.userModFileToolTips = {}
 
-        self. IOState = "NONE"
+        self.IOState = "NONE"
 
     def setIOstate(self, state):
         self.IOstate = state
@@ -55,7 +57,7 @@ class InputProcessor(Processor):
                 self.UserModroot = ET.parse(self.savedFilePathChooser.get())
             except:
                 self.log.printerror("timestamp", self.savedFilePathChooser.get() + "is corrupted")
-                tk.messagebox.showerror(title="FATAL ERROR", message=self.savedFilePathChooser.get() + " is corrupted. Please correct or recreate. \nEXITING")
+                tkinter.messagebox.showerror(title="FATAL ERROR", message=self.savedFilePathChooser.get() + " is corrupted. Please correct or recreate. \nEXITING")
                 sys.exit(-1)
 
             self.log.println("timestamp", "Completed preprocessing of settings file")
@@ -77,7 +79,7 @@ class InputProcessor(Processor):
 
         else:
                 self.log.printerror("timestamp", self.savedFilePathChooser.get() + " is not a '.xml' or '.btx' file")
-                tk.messagebox.showerror(title="FATAL ERROR", message=self.savedFilePathChooser.get() + " is not a '.xml' or '.btx' file \nEXITING")
+                tkinter.messagebox.showerror(title="FATAL ERROR", message=self.savedFilePathChooser.get() + " is not a '.xml' or '.btx' file \nEXITING")
                 sys.exit(-1)
 
 
@@ -96,17 +98,13 @@ class InputProcessor(Processor):
         self.log.println("timestamp", "From Com Port: " + self.comPortObj.getSelectedComPort())
         self.log.println("timestamp",  "Awaiting Radio Processor Ready this will take 3-5 seconds")
 
-        if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
-            self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
-
-            self.log.println("timestamp",  "Refreshing In-memory Copy of EEPROM")
-            self.eepromCom = eepromUBITX(self.RS232, self.log)
-            self.eepromCom.read()
-
+        self.eepromCom = eepromUBITX(self.comPortObj, self.log)
+        if (self.eepromCom.readFromCom() == True):         #returns True if read successful
             self.log.println("timestamp",  "Finished reading EEPROM into memory")
-
             return True
         else:
+            self.log.printerror("timestamp",  "Failed reading uBITX on selected Serial Port.")
+            self.log.printerror("timestamp",  "Please check your Serial Port selection and try again")
             return False
 
 

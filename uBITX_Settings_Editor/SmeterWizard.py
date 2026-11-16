@@ -1,6 +1,7 @@
 from time import sleep
 import tkinter as tk
 
+
 from smeterwizardwidget import SmeterwizardWidget
 from com_portManager import com_portManager
 from globalvars import *
@@ -31,7 +32,10 @@ class SmeterWizard(SmeterwizardWidget):
         self.img_img_Custom125x80 = tk.PhotoImage(file=CUSTOMICON)
 
         super().__init__(parent)
+        self.geometry('850x950+0+0')            # width x height
         self.grab_set()
+        #self.iconbitmap(WINDOWMANAGERICON)
+        self.title("S-Meter Assistant")
 
         #   now configure the buttons to display the thumbnails of the graphs
 
@@ -47,7 +51,7 @@ class SmeterWizard(SmeterwizardWidget):
         self.myparent = parent
 
         # create com port
-        self.comPortObj = com_portManager(self.com_portManager_frame, self)
+        self.comPortObj = com_portManager(self.com_portManager_frame, self.on_ComPort_state_change)
 
         # pre-load com ports
         self.comPortObj.updateComPorts()                # Fill in available Com Ports
@@ -115,33 +119,40 @@ class SmeterWizard(SmeterwizardWidget):
     def readADCsmeter(self, highorlow):
 
         adcValue =[]
-        if(self.comPortObj.openComPort(self.comPortObj.getSelectedComPort())):        # was able to open com port
-            self.RS232 = self.comPortObj.getComPortPTR(self.comPortObj.getSelectedComPort())
+        # if(self.comPortObj.openSelectedComPort()):        # was able to open com port
+        #     self.RS232 = self.comPortObj.getComPortDesc()
 
 
-            for x in range(self.sampleSizeADC.get()):
-                self.RS232.write(bytes([SMETERPIN, 0, 0, 0, READADC]))
-                self.RS232.flush()
+        for x in range(self.sampleSizeADC.get()):
+            RS232=self.comPortObj.sendCommand(bytes([ANALOGPINS["S Meter"], 0, 0, 0, READADCDATA]))
 
-                i = 0
+            RS232.flush()
 
-                while i < 3:
-                    if self.RS232.in_waiting != 0:          # have a byte to read
-                        if i == 0:          #got first byte
-                            byte1 = self.RS232.read(1)
-                        elif i == 1:        #got second byte
-                            byte2 = self.RS232.read(1)
-                        else:
-                            throwaway = self.RS232.read(1)   # last byte is zero
-                        i += 1
+            i = 0
+            lastReadTime = millis()
 
-                adcValue.append((ord(byte1)<<8) + ord(byte2))
-                sleep(self.sampleDelayADC.get()/1000)
+            while i < 3:
+                if RS232.in_waiting != 0:          # have a byte to read
+                    lastReadTime = millis()
+                    if i == 0:          #got first byte
+                        byte1 = RS232.read(1)
+                    elif i == 1:        #got second byte
+                        byte2 = RS232.read(1)
+                    else:
+                        throwaway = RS232.read(1)   # last byte is zero
+                    i += 1
+                else:
+                    if (millis() -lastReadTime > SERIALTIMEOUT):
+                        tk.messagebox.showerror(title="ERROR", message="Timeout reading from Serial Port. Check your port selection and try again",parent=self)
+                        return
 
-            if highorlow == 'HIGH':
-                return max(adcValue)
-            else:
-                return min(adcValue)
+            adcValue.append((ord(byte1)<<8) + ord(byte2))
+            sleep(self.sampleDelayADC.get()/1000)
+
+        if highorlow == 'HIGH':
+            return max(adcValue)
+        else:
+            return min(adcValue)
 
 
 
@@ -268,4 +279,8 @@ class SmeterWizard(SmeterwizardWidget):
 
     def smeterWizard_Cancel_Button(self):
         self.destroy()
+
+    def on_ComPort_state_change (self, newState):
+        self.sampleADCReadMin_Button_WIDGET.configure (state=newState)
+        self.sampleADCReadMax_Button_WIDGET.configure (state=newState)
 

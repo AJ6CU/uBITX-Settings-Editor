@@ -1,5 +1,11 @@
 import pygubu.widgets.simpletooltip as tooltip
 import tkinter as tk
+import tkinter.messagebox
+from PIL import Image
+from PIL import ImageTk
+
+import webbrowser
+
 import re
 
 from settingsnotebookwidget import SettingsnotebookWidget
@@ -8,7 +14,9 @@ from ADCscanner import ADCscanner
 from SmeterWizard import SmeterWizard
 from wsprmsggen import WSPRmsggen
 from WsprFreqSelect import WSPRFreqSelect
+from calibrationwizard import calibrationWizard
 from globalvars import *
+
 
 class SettingsNotebook(SettingsnotebookWidget):
     def __init__(self, parent):
@@ -16,19 +24,22 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.root = parent
 
         #   Set up image files first
-        self.img_img_redarrowpointingleft59x36 = tk.PhotoImage(file=LEFTCOPYARROW)
-        self.img_img_redarrowpointingright59x36 = tk.PhotoImage(file=RIGHTCOPYARROW)
+        self.img_img_redarrowpointingleft59x36 = Image.open(LEFTCOPYARROW).convert('RGBA')
+        self.img_img_redarrowpointingright59x36 = Image.open(RIGHTCOPYARROW).convert('RGBA')
 
 
 
         super().__init__(parent)
 
         #   now configure the buttons to display the arrows.
-        self.MASTER_CAL_COPY_BUTTON.configure(image=self.img_img_redarrowpointingleft59x36)
-        self.MASTER_CAL_COPY_FACTORY_BUTTON.configure(image=self.img_img_redarrowpointingright59x36)
+        self.my_image_left_arrow = ImageTk.PhotoImage(self.img_img_redarrowpointingleft59x36)
+        self.my_image_right_arrow = ImageTk.PhotoImage(self.img_img_redarrowpointingright59x36)
 
-        self.USB_CAL_COPY_BUTTON.configure(image=self.img_img_redarrowpointingleft59x36)
-        self.USB_CAL_COPY_FACTORY_BUTTON.configure(image=self.img_img_redarrowpointingright59x36)
+        self.MASTER_CAL_COPY_BUTTON.configure(image=self.my_image_left_arrow)
+        self.MASTER_CAL_COPY_FACTORY_BUTTON.configure(image=self.my_image_right_arrow)
+
+        self.USB_CAL_COPY_BUTTON.configure(image=self.my_image_left_arrow)
+        self.USB_CAL_COPY_FACTORY_BUTTON.configure(image=self.my_image_right_arrow)
 
         #   Initialize maximum available bytes to 0
         self.CW_AUTO_BYTES_USED.set('0')
@@ -39,7 +50,7 @@ class SettingsNotebook(SettingsnotebookWidget):
 
 
     #   temp to control what is processed
-    readyToGo = ['VERSION_ADDRESS', 'FACTORY_VALUES_MASTER_CAL', 'FACTORY_VALUES_USB_CAL',
+    readyToGo = [ 'FACTORY_VALUES_MASTER_CAL', 'FACTORY_VALUES_USB_CAL',
              'FACTORY_VALUES_CW_SPEED', 'FACTORY_VALUES_CW_SIDETONE',
              'MASTER_CAL', 'USB_CAL', 'CW_CAL', 'VFO_A', 'VFO_A_MODE', 'VFO_B', 'VFO_B_MODE',
              'TUNING_STEP_INDEX', 'TUNING_STEP1', 'TUNING_STEP2', 'TUNING_STEP3', 'TUNING_STEP4', 'TUNING_STEP5',
@@ -76,13 +87,15 @@ class SettingsNotebook(SettingsnotebookWidget):
             'HAM_BAND_FREQS6','HAM_BAND_FREQS7','HAM_BAND_FREQS8','HAM_BAND_FREQS9','HAM_BAND_FREQS10', 'HAM_BAND_FREQS1_MODE',
             'HAM_BAND_FREQS2_MODE', 'HAM_BAND_FREQS3_MODE', 'HAM_BAND_FREQS4_MODE', 'HAM_BAND_FREQS5_MODE', 'HAM_BAND_FREQS6_MODE',
             'HAM_BAND_FREQS7_MODE', 'HAM_BAND_FREQS8_MODE', 'HAM_BAND_FREQS9_MODE', 'HAM_BAND_FREQS10_MODE',
-            'BOOT_INTO_SDR_MODE', 'SDR_OFFSET_MODE', 'SDR_FREQUENCY', 'NEXTION_DISPLAY_CALL_SIGN', 'MAIN_SCREEN_FORMAT',
+            'BOOT_INTO_SDR_MODE', 'SDR_OFFSET_MODE', 'SDR_FREQUENCY', 'DISPLAY_CALL_SIGN', 'MAIN_SCREEN_FORMAT',
             'I2C_LCD_MASTER', 'TUNING_RESTICTIONS', 'TX_RESTRICTIONS',
             'I2C_LCD_SECOND', 'I2C_ADDR_SI5351','ONE_TWO_LINE_TOGGLE', 'SCROLLING_DISPLAY', 'MESSAGE_LINE', 'S_METER_LEVELS', 'S_METER_LEVEL1',
             'S_METER_LEVEL2', 'S_METER_LEVEL3', 'S_METER_LEVEL4', 'S_METER_LEVEL5', 'S_METER_LEVEL6', 'S_METER_LEVEL7', 'S_METER_LEVEL8',
             'EXTENDED_KEY1_FUNC', 'EXTENDED_KEY1_START', 'EXTENDED_KEY1_END', 'EXTENDED_KEY2_FUNC', 'EXTENDED_KEY2_START', 'EXTENDED_KEY2_END',
             'EXTENDED_KEY3_FUNC', 'EXTENDED_KEY3_START', 'EXTENDED_KEY3_END', 'EXTENDED_KEY4_FUNC', 'EXTENDED_KEY4_START', 'EXTENDED_KEY4_END',
             'EXTENDED_KEY5_FUNC', 'EXTENDED_KEY5_START', 'EXTENDED_KEY5_END', 'EXTENDED_KEY6_FUNC', 'EXTENDED_KEY6_START', 'EXTENDED_KEY6_END',
+            'EXTENDED_KEY7_FUNC', 'EXTENDED_KEY7_START', 'EXTENDED_KEY7_END', 'EXTENDED_KEY8_FUNC', 'EXTENDED_KEY8_START', 'EXTENDED_KEY8_END',
+            'EXTENDED_KEY9_FUNC', 'EXTENDED_KEY9_START', 'EXTENDED_KEY9_END', 'EXTENDED_KEY10_FUNC', 'EXTENDED_KEY10_START', 'EXTENDED_KEY10_END',
             'CW_MEMORY_KEYER_MSG01', 'CW_MEMORY_KEYER_MSG02', 'CW_MEMORY_KEYER_MSG03', 'CW_MEMORY_KEYER_MSG04',
             'CW_MEMORY_KEYER_MSG05', 'CW_MEMORY_KEYER_MSG06', 'CW_MEMORY_KEYER_MSG07', 'CW_MEMORY_KEYER_MSG08',
             'CW_MEMORY_KEYER_MSG09', 'CW_MEMORY_KEYER_MSG10', 'CW_AUTO_COUNT', 'WSPR_COUNT',
@@ -96,7 +109,13 @@ class SettingsNotebook(SettingsnotebookWidget):
             'CUST_LPF_FILTER5_CONTROL', 'CUST_LPF_FILTER6_CONTROL', 'CUST_LPF_FILTER7_CONTROL',
             'FIRMWARE_ID_ADDR1', 'FIRMWARE_ID_ADDR2', 'FIRMWARE_ID_ADDR3', 'FACTORY_VALUES_VFO_A', 'FACTORY_VALUES_VFO_B',
             'IF1_CAL_ON_OFF_SWITCH',  'IF1_CAL', 'IF1_CAL_ADD_SUB', 'STORED_IF_SHIFT', 'IF_SHIFTVALUE', 'CW_DISPLAY_FREQ',
-            'CW_FREQUENCY_ADJUSTMENT'
+            'CW_FREQUENCY_ADJUSTMENT', 'EXT_FIRMWARE_VERSION_INFO', 'EXT_RELEASE_NAME', 'EXT_UBITX_BOARD_VERSION',
+            'EXT_DATE_TIME_STAMP', 'EXT_PROCESSOR_TYPE',
+            'EXT_DISPLAY_TYPE', 'EXT_FUNCTIONALITY_SET', 'EXT_SMETER_SELECTION', 'EXT_SERIAL_TYPE', 'EXT_EEPROM_TYPE',
+            'EXT_ENCODER_TYPE',
+            'EXT_ENC_A', 'EXT_ENC_B', 'EXT_FBUTTON', 'EXT_PTT', 'EXT_ANALOG_KEYER', 'EXT_ANALOG_SMETER',
+            'EXT_LCD_PIN_RS', 'EXT_LCD_PIN_EN', 'EXT_LCD_PIN_D4', 'EXT_LCD_PIN_D5', 'EXT_LCD_PIN_D6', 'EXT_LCD_PIN_D7',
+            'EXT_SOFTWARESERIAL_RX_PIN', 'EXT_SOFTWARESERIAL_TX_PIN', 'EXT_NEXTIONBAUD', 'EEPROM_SIZE', 'VERSION_ADDRESS'
              ]
 
     #   this needs to be moved somewhere else too
@@ -110,7 +129,7 @@ class SettingsNotebook(SettingsnotebookWidget):
                     'WSPR_BAND1_MULTICHAN_WIDGET',  'WSPR_BAND2_MULTICHAN_WIDGET', 'WSPR_BAND3_MULTICHAN_WIDGET',
                     'WSPR_BAND1_REG1_WIDGET', 'WSPR_BAND2_REG1_WIDGET', 'WSPR_BAND3_REG1_WIDGET',
                     'WSPR_BAND1_REG2_WIDGET', 'WSPR_BAND2_REG2_WIDGET', 'WSPR_BAND3_REG2_WIDGET',
-                    'NEXTION_DISPLAY_CALL_SIGN_WIDGET', 'MAIN_SCREEN_FORMAT_WIDGET', 'CW_FREQUENCY_ADJUSTMENT_WIDGET']
+                    'MAIN_SCREEN_FORMAT_WIDGET', 'CW_FREQUENCY_ADJUSTMENT_WIDGET', 'VERSION_ADDRESS_WIDGET']
 
     #   Class variables
     #
@@ -137,9 +156,10 @@ class SettingsNotebook(SettingsnotebookWidget):
     ADC = {'LOW':0, 'HIGH':1023}            # Min/Max for Analog to Digital read - used for cw keys, etc.
     FREQ ={'LOW':0, 'HIGH':60000000}            # Min/Max for valid frequencies.
     FREQKHZ = {'LOW':0, 'HIGH':60000}
+    SI5351BX_ADDR_BOUNDS = {'LOW':0x10, 'HIGH':0xF0}        #If Address is outside these numbers, CEC ignores it and use 0X60
     MASTER_CAL_BOUNDS = {'LOW':-500000, 'HIGH': 500000}
-    USB_CAL_BOUNDS = {'LOW':0, 'HIGH': 20000000}
-    CW_CAL_BOUNDS = {'LOW':0, 'HIGH': 20000000}
+    USB_CAL_BOUNDS = {'LOW':11048000, 'HIGH': 12010000}
+    CW_CAL_BOUNDS = {'LOW':11048000, 'HIGH': 12010000}
     IF_SHIFTVALUE_BOUNDS = {'LOW':-9999, 'HIGH':10000}
     IF1_CAL_BOUNDS = {'LOW':0, 'HIGH':255}
     PREDEFINED_TUNING_STEPS = {'0': [1,5,10,50,100], '1': [10,20,50,100,1000], '2': [1,10,100,1000,10000],
@@ -277,6 +297,16 @@ class SettingsNotebook(SettingsnotebookWidget):
             self.CW_CAL.set(self.priorValues["CW_CAL"])
             return False
 
+    def validate_I2C_ADDR_SI5351(self, p_entry_value, v_condition):
+        if (v_condition == "focusin"):
+            self.priorValues["I2C_ADDR_SI5351"] = p_entry_value
+        if(self.validateHexRange(p_entry_value, SettingsNotebook.SI5351BX_ADDR_BOUNDS['LOW'], SettingsNotebook.SI5351BX_ADDR_BOUNDS['HIGH'])):
+            return True
+        else:
+            self.log.printerror("timestamp", "SI5351 I2C Address " + SettingsNotebook.validationErrorMsg)
+            self.I2C_ADDR_SI5351.set(self.priorValues["I2C_ADDR_SI5351"])
+            return False
+
 
 
     def validate_TUNING_STEP(self, p_entry_value, v_condition, currentStep):
@@ -288,7 +318,7 @@ class SettingsNotebook(SettingsnotebookWidget):
         try:
             valueToTest = int(p_entry_value)
         except:                                   #   if it fails the conversion to number, must not be a number
-            self.log.printerror("timestamp",  SettingsNotebook.error_Msgs["NOTANUMBER"].format(p_entry_value))
+            SettingsNotebook.validationErrorMsg =   SettingsNotebook.error_Msgs["NOTANUMBER"].format(p_entry_value)
 
         else:
             # We have a real number, now need to look at first (left most) digits to make sure they are 1-60
@@ -311,7 +341,6 @@ class SettingsNotebook(SettingsnotebookWidget):
                                                                              SettingsNotebook.TUNING_STEPS_BOUNDS['HIGH'])
 
         # if we reach this point, there is an error...
-        SettingsNotebook.validationErrorMsg = SettingsNotebook.error_Msgs["STRINGTOOLONG"].format(maxChars)
         self.log.printerror("timestamp",  SettingsNotebook.validationErrorMsg)
         getattr(self, "TUNING_"+currentStep).set(self.priorValues["TUNING_"+currentStep])
         return False
@@ -392,10 +421,17 @@ class SettingsNotebook(SettingsnotebookWidget):
     def validate_QSO_CALLSIGN(self, p_entry_value, v_condition):
         if (v_condition == "focusin"):
             self.priorValues["QSO_CALLSIGN"] = p_entry_value
-        if(self.checkLength(p_entry_value, SettingsNotebook.USER_CALLSIGN_BOUNDS['HIGH']) ):
-            # Update maximum available bytes
-            self.CW_AUTO_REMAINING_BYTES.set(str(EEPROMSIZE - 1 - len(p_entry_value) - CW_MEMORY_KEYER_BUFFER_START - int(self.CW_AUTO_BYTES_USED.get())))
+            return True
+        elif (self.checkLength(p_entry_value, SettingsNotebook.USER_CALLSIGN_BOUNDS['HIGH']) ):
+            # Check to make sure that there is available space if the callsign is getting larger
+            if (len(p_entry_value) - len (self.priorValues["QSO_CALLSIGN"]) > int(self.CW_AUTO_REMAINING_BYTES.get())):
+                # not enough room to expand the QSO call sign
+                self.log.printerror("timestamp",  "New QSO Callsign exceeds available space. Reseting to prior value.")
+                self.QSO_CALLSIGN.set(self.priorValues["QSO_CALLSIGN"])
+                return False
 
+            # Update maximum available bytes
+            self.CW_AUTO_REMAINING_BYTES.set(str(CW_MEMORY_KEYER_BUFFER_END - len(p_entry_value) - CW_MEMORY_KEYER_BUFFER_START - int(self.CW_AUTO_BYTES_USED.get())))
             return True
         else:
             self.log.printerror("timestamp",  "QSO Callsign is " + SettingsNotebook.validationErrorMsg)
@@ -1036,7 +1072,29 @@ class SettingsNotebook(SettingsnotebookWidget):
     def validate_EXTENDED_KEY6_END(self, p_entry_value, v_condition):
         return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY6')
 
+    def validate_EXTENDED_KEY7_START(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_START ( p_entry_value, v_condition, 'KEY7')
 
+    def validate_EXTENDED_KEY7_END(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY7')
+
+    def validate_EXTENDED_KEY8_START(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_START ( p_entry_value, v_condition, 'KEY8')
+
+    def validate_EXTENDED_KEY8_END(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY8')
+
+    def validate_EXTENDED_KEY9_START(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_START ( p_entry_value, v_condition, 'KEY9')
+
+    def validate_EXTENDED_KEY9_END(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY9')
+
+    def validate_EXTENDED_KEY10_START(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_START ( p_entry_value, v_condition, 'KEY10')
+
+    def validate_EXTENDED_KEY10_END(self, p_entry_value, v_condition):
+        return self.validate_EXTENDED_KEY_END(p_entry_value, v_condition, 'KEY10')
 
     def CUST_LPF_SELECTION_CB(self, *args):
         if (self.CUST_LPF_ENABLED.get() == 'OFF'):
@@ -1145,7 +1203,7 @@ class SettingsNotebook(SettingsnotebookWidget):
 
 
         if self.FACTORY_SETTING_PROTECTION.get() == 'YES':
-            answer = tk.messagebox.askyesno(title='Confirm Overwrite',
+            answer = tkinter.messagebox.askyesno(title='Confirm Overwrite',
                 message='You SHOULD NOT overwrite the Factory Calibration Settings unless you are positive you know ' +
                         'what you are doing. Are you REALLY sure you want to do this?', default="no", icon="warning")
             if answer == False:
@@ -1196,7 +1254,6 @@ class SettingsNotebook(SettingsnotebookWidget):
         i = 0
         while i < numEmptyMsgsFound:
             # j = int(self.CW_AUTO_COUNT.get()) - i
-#            print(CW_MSG_LABEL[j], j, i)
 
             #   Update count of bytes used (2 fewer since we recovered an empty slot and dont need beg end pointers)
             self.CW_AUTO_BYTES_USED.set(str(int(self.CW_AUTO_BYTES_USED.get()) - 2))
@@ -1274,7 +1331,7 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.HAM_BAND_RANGE7_END.set("18.168")
 
         self.HAM_BAND_RANGE8_START.set("21.000")
-        self.HAM_BAND_RANGE8_END.set(21450)
+        self.HAM_BAND_RANGE8_END.set(21.450)
 
         self.HAM_BAND_RANGE9_START.set("24.850")
         self.HAM_BAND_RANGE9_END.set("24.990")
@@ -1508,12 +1565,82 @@ class SettingsNotebook(SettingsnotebookWidget):
         tooltip.create(self.CAL_runADCScanner_WIDGET,"Click to run an ADC (Analog to Digital Converter) scanner to help figure out start and end values for each CW key.")
         tooltip.create(self.load_Recommended_ADC_CW_Values_WIDGET,"Clicking this loads some reasonable settings for the ADC values for the CW keys. Probably will work, if not you can tune using ADC Scanner results.")
         tooltip.create(self.smeterAssistant_BUTTON_WIDGET,"Click to run a S-Meter assistant to help you tune the ADC values for your system.")
+        tooltip.create(self.CalibrationWizard_Button,"Click to run a Wizard that can help you calibrate your uBITX. Only works on V2.0 or higher")
         #
         #   System Info Tab
         tooltip.create(self.KD8CEC_VERSION_WIDGET,"Currently installed Firmware and Version.")
 
+    def validateCalibrationValues(self):        #   Based on uBITX motherboard version, only certain values are valid for BFO
+                                                #   this routine validates these values and if invalid logs an error to the log
+        self.log.println("","")
+        if  (VALID_BFO_VALUES['V56'][LOW_BFO_VALUE] <= int(self.USB_CAL.get())) and (int(self.USB_CAL.get()) <= VALID_BFO_VALUES['V56'][HIGH_BFO_VALUE]):
+            self.log.println('timestamp', "Valid SSB BFO calibration value found for a V5/V6 \n\tuBITX motherboard.")
+        elif (VALID_BFO_VALUES['V34'][LOW_BFO_VALUE] <= int(self.USB_CAL.get())) and (int(self.USB_CAL.get()) <= VALID_BFO_VALUES['V34'][HIGH_BFO_VALUE]):
+            self.log.println('timestamp', "Valid SSB BFO calibration value found for V3/V4 \n\tuBITX motherboards.")
+        else:
+            self.log.println('timestamp', "SSB BFO calibration value out of range.")
+
+        if  (VALID_BFO_VALUES['V56'][LOW_BFO_VALUE] <= int(self.CW_CAL.get())) and (int(self.CW_CAL.get()) <= VALID_BFO_VALUES['V56'][HIGH_BFO_VALUE]):
+            self.log.println('timestamp', "Valid CW BFO calibration value found for a V5/V6 \n\tuBITX motherboard.")
+        elif (VALID_BFO_VALUES['V34'][LOW_BFO_VALUE] <= int(self.CW_CAL.get())) and (int(self.CW_CAL.get()) <= VALID_BFO_VALUES['V34'][HIGH_BFO_VALUE]):
+            self.log.println('timestamp', "Valid CW BFO calibration value found for V3/V4 \n\tuBITX motherboards.")
+        else:
+            self.log.println('timestamp', "CW BFO calibration value out of range or not specified.")
+
+        self.log.println('timestamp', 'Valid BFO values for uBITX V5/V6 motherboards are between:\n\t' + str(VALID_BFO_VALUES['V56'][LOW_BFO_VALUE]) +\
+            " and " + str(VALID_BFO_VALUES['V56'][HIGH_BFO_VALUE]) )
+        self.log.println('timestamp', 'Valid BFO Values for uBITX V3/V4 motherboards are between:\n\t' + str(VALID_BFO_VALUES['V34'][LOW_BFO_VALUE]) +\
+            " and " + str(VALID_BFO_VALUES['V34'][HIGH_BFO_VALUE]) )
+        self.log.println('timestamp', 'Confirm uBITX motherboard version and check that you have \n\tvalid calibration values' )
+        self.log.println("","")
+
+    def validateSI5351_ADDR(self):            #   the address of the Si5351 must be >= 0x10 and <= 0xF0
+
+        if(self.validateHexRange(self.I2C_ADDR_SI5351.get(), SettingsNotebook.SI5351BX_ADDR_BOUNDS['LOW'], SettingsNotebook.SI5351BX_ADDR_BOUNDS['HIGH'])):                                        #   if outside these bounds, CEC automatically defaults to 0x60
+            return
+        else:
+            self.log.println("","")
+            self.log.printerror('timestamp', "Invalid address found for Si5351!")
+            self.log.printerror('timestamp', "Must be between " + hex(SettingsNotebook.SI5351BX_ADDR_BOUNDS['LOW']) + " and " + hex(SettingsNotebook.SI5351BX_ADDR_BOUNDS['HIGH']))
+            self.log.printerror('timestamp', "At runtime, CEC will default to 0x60 for the Si5351 Address")
+            self.log.println("","")
+
+    def setLCDPinsState(self, newState):
+        self.EXT_LCD_PIN_RS_Label.configure(state=newState)
+        self.EXT_LCD_PIN_RS_WIDGET.configure(state=newState)
+
+        self.EXT_LCD_PIN_EN_Label.configure(state=newState)
+        self.EXT_LCD_PIN_EN_WIDGET.configure(state=newState)
+
+        self.EXT_LCD_PIN_D4_Label.configure(state=newState)
+        self.EXT_LCD_PIN_D4_WIDGET.configure(state=newState)
+
+        self.EXT_LCD_PIN_D5_Label.configure(state=newState)
+        self.EXT_LCD_PIN_D5_WIDGET.configure(state=newState)
+
+        self.EXT_LCD_PIN_D6_Label.configure(state=newState)
+        self.EXT_LCD_PIN_D6_WIDGET.configure(state=newState)
+
+        self.EXT_LCD_PIN_D7_Label.configure(state=newState)
+        self.EXT_LCD_PIN_D7_WIDGET.configure(state=newState)
+
+    def setSoftwareSerialPinsState(self, newState):
+        self.EXT_SOFTWARESERIAL_RX_PIN_Label.configure(state=newState)
+        self.EXT_SOFTWARESERIAL_RX_PIN_WIDGET.configure(state=newState)
+
+        self.EXT_SOFTWARESERIAL_TX_PIN_Label.configure(state=newState)
+        self.EXT_SOFTWARESERIAL_TX_PIN_WIDGET.configure(state=newState)
+
+
+
+    def disableNextionBaudFrame(self):
+        self.NEXTION_BAUD_FRAME.pack_forget()
+
+    def enableNextionBaudFrame(self):
+        self.NEXTION_BAUD_FRAME.pack()
 
     def setNotebook(self, valueTree):
+
 
         self.userModroot = valueTree
 
@@ -1537,6 +1664,12 @@ class SettingsNotebook(SettingsnotebookWidget):
 
 
         # Post process some special cases
+
+        # Detect a Nano running V2.0
+        if self.EXT_FIRMWARE_VERSION_INFO.get() == 'N/A':
+            if int(self.VERSION_ADDRESS.get()[1]) >= 2:     # Have a V2.0 Nano, patch some info
+                self.EXT_FIRMWARE_VERSION_INFO.set(self.VERSION_ADDRESS.get())
+                self.EXT_EEPROM_TYPE.set('Internal 1024 bytes (Nano)')
 
         # Tuning steps prep
         self.TUNING_STEP_INDEX_VALUE.trace_add('write',self.new_Default_Tuning_Step)
@@ -1567,15 +1700,35 @@ class SettingsNotebook(SettingsnotebookWidget):
         self.FACTORY_SETTING_PROTECTION.set('NO')
         self.Factory_Settings_Enable_CB()
 
+        #   toggle between LCD parameters and Nextion, disabling those that are not used
+
+        if (self.EXT_DISPLAY_TYPE.get() == "Nextion") and (getEEPROM_SIZE() != 1024):
+            self.setLCDPinsState('disabled')       #only want to disable LCP Pins if we have a 2k EEPROM with a Nextion
+            self.enableNextionBaudFrame()
+        else:
+            self.disableNextionBaudFrame()
+            self.setLCDPinsState('enabled')
+
+        if (self.EXT_SERIAL_TYPE.get() != "Software") and (self.EXT_SERIAL_TYPE.get() != "N/A") and \
+                (getEEPROM_SIZE() != 1024):
+            self.setSoftwareSerialPinsState('disabled')
+        else:
+            self.setSoftwareSerialPinsState('enabled')
+
 
         # Set maximum available bytes
         # Length of QSO call sign
-        self.CW_AUTO_REMAINING_BYTES.set(str(EEPROMSIZE - 1 - len(self.QSO_CALLSIGN.get())
+        self.CW_AUTO_REMAINING_BYTES.set(str(CW_MEMORY_KEYER_BUFFER_END - len(self.QSO_CALLSIGN.get())
                                              - CW_MEMORY_KEYER_BUFFER_START - int(self.CW_AUTO_BYTES_USED.get())))
 
         #   Add extra tooltips
         #
         self.setTooltips()
+
+        self.validateCalibrationValues()        # valid BFO calibration values vary by board. Make sure the current
+                                                # SSB and CW calibration values are valid. If not flag a warning in the log.
+
+        self.validateSI5351_ADDR()             # validate a real address for the Si5351. Flag it if out of bounds
 
         #   Clear hidden widgets
         for widget in SettingsNotebook.hideOnStartup:
@@ -1610,11 +1763,20 @@ class SettingsNotebook(SettingsnotebookWidget):
     def runI2CScanner(self):
         i2cScanner = I2Cscanner(self)
 
-    def runADCScanner(self):
-        adcScanner = ADCscanner (self)
+    def runADCScannerENCSW(self):
+        pinList = ["ENC SW" ]
+        adcScanner = ADCscanner (pinList, self)
+
+    def runADCScannerCWKEYER(self):
+        pinList = ["CW Keyer"]
+        adcScanner = ADCscanner (pinList, self)
 
     def runSmeterAssistant(self):
         smeterAssistant = SmeterWizard(self)
+
+    def runCalibrationWizard(self):
+        wizard=calibrationWizard(self.log, self)
+        pass
 
     #   Note the MESSAGE* are updated within the WSPR generator
 

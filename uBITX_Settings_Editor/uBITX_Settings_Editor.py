@@ -12,6 +12,8 @@ from outputProcessor import  OutputProcessor
 from globalvars import *
 
 
+
+
 import pygubu.widgets.simpletooltip as tooltip
 
 def tryToQuit(root, inputProcessorPtr):
@@ -19,7 +21,7 @@ def tryToQuit(root, inputProcessorPtr):
     if inputProcessorPtr.getIOstate() == 'READ':
         answer = tkinter.messagebox.askyesno(title='Confirm Quit',
                 message='Settings have NOT been saved, are you sure you want to QUIT?', default="no", icon="warning")
-        if answer == False:
+        if not answer:
             return
     root.destroy()
 
@@ -40,27 +42,37 @@ def center_window(theRoot, width, height):
 
 
 # Set any platform specific variables
-if(platform.system()=='Windows'):
+
+if platform.system()== 'Windows':
     appTheme = 'vista'
-    startDir = "~\Documents"
-elif (platform.system() == 'Darwin'):
+    setHomeDirectory(WINSTARTDIR)
+
+elif platform.system() == 'Darwin':
     appTheme = 'aqua'
-    startDir = "~"
+    setHomeDirectory(MACSTARTDIR)
+    #WINDOWMANAGERICON = resource_path("settingseditor.icns")   #Not possible on MacOS and Tkinter
 else:
     appTheme = 'alt'                # used by Linux
-    startDir = "~"
+    setHomeDirectory(LINUXSTARTDIR)
+    #WINDOWMANAGERICON = resource_path("settingseditor.png")   #Not used on Linux
 
 IOstate = 'NONE'                        #used to track whether we have written the settings or not prior to quiting
 
 #   defines the root window
 root = Tk()
-root.title("uBITX Setting Customization")
+root.title("uBITX Setting Editor")
+
 
 
 
 center_window(root,DEFAULT_ROOT_WINDOW_WIDTH,DEFAULT_ROOT_WINDOW_HEIGHT)
 #root.geometry('1280x900+0+0')            # width x height
 root.minsize(1024,650)
+#root.iconbitmap(WINDOWMANAGERICON)
+
+print("WINDOWMANAGERICON=", WINDOWMANAGERICON, "\n")
+img=PhotoImage(file=WINDOWMANAGERICON)
+root.iconphoto(True,img)
 
 ttk.Style().theme_use(appTheme)
 
@@ -98,8 +110,8 @@ commandFrame.grid(row=6, column=0, columnspan=2, sticky='ew',pady=10)
 outputProcessorFrame.grid(row=5, column=0, columnspan=2, pady=(10, 0))
 
 # Define and layout the contents of titleFrame
-titleBar = ttk.Label(titleFrame, text="uBITX Settings Editor - "+ VERSION, style='Heading1.TLabel')
-titleBar.config(anchor=CENTER)
+titleBar = ttk.Label(titleFrame, text="uBITX Settings Editor ", style='Heading1.TLabel')
+titleBar.config(anchor="center")
 titleBar.pack()
 
 

@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import tkinter as tk
 import tkinter.ttk as ttk
+from globalvars  import *
 from pygubu.widgets.pathchooserinput import PathChooserInput
 
 
@@ -34,14 +35,21 @@ class SourceselectorWidget(ttk.Labelframe):
         self.separator1.grid(column=1, padx=5, row=0, sticky="ns")
         self.sourceBlock = ttk.Frame(self)
         self.sourceBlock.configure(height=75, padding="10 0", width=550)
-        self.com_portManager_frame = ttk.Frame(self.sourceBlock)
+        self.selectComPort_Frame = ttk.Frame(self.sourceBlock)
+        self.selectComPort_Frame.configure(height=200, width=200)
+        self.com_portManager_frame = ttk.Frame(self.selectComPort_Frame)
         self.com_portManager_frame.configure(height=50, width=400)
-        self.com_portManager_frame.pack(
-            anchor="w",
-            expand="true",
-            fill="both",
-            pady=23,
-            side="top")
+        self.com_portManager_frame.grid(column=0, row=0)
+        self.actionButton = ttk.Button(self.selectComPort_Frame)
+        self.actionButton_Text = tk.StringVar(value='button1')
+        self.actionButton.configure(
+            state="normal",
+            style="ButtonEmphasis.TButton",
+            text='button1',
+            textvariable=self.actionButton_Text)
+        self.actionButton.grid(column=1, padx="10 25", row=0)
+        self.actionButton.configure(command=self.processComPort)
+        self.selectComPort_Frame.pack(side="left")
         self.selectSaveFileFrame = ttk.Frame(self.sourceBlock)
         self.selectSaveFileFrame.configure(height=50, width=400)
         self.label2 = ttk.Label(self.selectSaveFileFrame)
@@ -51,7 +59,7 @@ class SourceselectorWidget(ttk.Labelframe):
             self.selectSaveFileFrame)
         self.savedFilePathChooser = tk.StringVar()
         self.savedFilePathChooserWidget.configure(
-            initialdir="~",
+            initialdir=getHomeDirectory(),
             mustexist=True,
             textvariable=self.savedFilePathChooser,
             type="file")
@@ -59,38 +67,41 @@ class SourceselectorWidget(ttk.Labelframe):
             column=1, ipadx=70, padx="0 5", row=0)
         self.savedFilePathChooserWidget.bind(
             "<<PathChooserPathChanged>>", self.on_path_changed, add="")
-        self.selectSaveFileFrame.pack(
-            anchor="w",
-            expand="true",
-            fill="both",
-            pady=23,
-            side="top")
+        self.selectSaveFileFrame.pack(side="left")
         self.sourceBlock.grid(column=2, row=0)
         self.sourceBlock.pack_propagate(0)
-        self.frame2 = ttk.Frame(self)
-        self.frame2.configure(height=200, width=200)
-        self.goButtonWidget = ttk.Button(self.frame2)
-        self.goButton = tk.StringVar(value='READ')
-        self.goButtonWidget.configure(
-            state="disabled",
-            style="Button3Blue.TButton",
-            text='READ',
-            textvariable=self.goButton)
-        self.goButtonWidget.grid(column=0, row=0)
-        self.resetButton_Frame = ttk.Frame(self.frame2)
+        self.optionalInfo_Frame = ttk.Frame(self)
+        self.optionalInfo_Frame.configure(height=200, width=200)
+        self.resetButton_Frame = ttk.Frame(self.optionalInfo_Frame)
         self.resetButton_Frame.configure(height=50)
         self.reset_uBITX_Button_WIDGET = ttk.Button(self.resetButton_Frame)
-        self.resetButton = tk.StringVar(value='Reset uBITX')
+        self.resetButton = tk.StringVar(value='Reboot uBITX')
         self.reset_uBITX_Button_WIDGET.configure(
             state="disabled",
             style="Button4.TButton",
             takefocus=True,
-            text='Reset uBITX',
+            text='Reboot uBITX',
             textvariable=self.resetButton)
         self.reset_uBITX_Button_WIDGET.pack()
         self.reset_uBITX_Button_WIDGET.configure(command=self.reset_ubitx)
-        self.resetButton_Frame.grid(column=1, padx=15, row=0)
-        self.frame2.grid(column=3, row=0)
+        self.resetButton_Frame.grid(column=0, row=0, sticky="w")
+        self.PORTECT_FACTORY_Frame = ttk.Frame(self.optionalInfo_Frame)
+        self.PROTECT_FACTORY_WIDGET = ttk.Checkbutton(
+            self.PORTECT_FACTORY_Frame)
+        self.PROTECT_FACTORY = tk.StringVar()
+        self.PROTECT_FACTORY_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            state="normal",
+            style="CheckboxNormal.TCheckbutton",
+            text='Protect Factory Calibration',
+            variable=self.PROTECT_FACTORY)
+        self.PROTECT_FACTORY_WIDGET.pack(anchor="w", side="top")
+        self.PROTECT_FACTORY_WIDGET.configure(
+            command=self.protect_factory_cal_cb)
+        self.PORTECT_FACTORY_Frame.grid(
+            column=1, columnspan=2, padx="15 0", row=0, sticky="w")
+        self.optionalInfo_Frame.grid(column=3, row=0)
         self.configure(
             height=300,
             style="Heading2.TLabelframe",
@@ -202,10 +213,16 @@ class SourceselectorWidget(ttk.Labelframe):
     def sourceSelected(self):
         pass
 
+    def processComPort(self):
+        pass
+
     def on_path_changed(self, event=None):
         pass
 
     def reset_ubitx(self):
+        pass
+
+    def protect_factory_cal_cb(self):
         pass
 
 

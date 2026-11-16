@@ -1,0 +1,1701 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.3">
+  <object class="tk.Toplevel" id="toplevel1">
+    <property name="height">350</property>
+    <property name="title" translatable="yes">uBITX Calibration Wizard</property>
+    <property name="width">500</property>
+    <child>
+      <object class="ttk.Frame" id="calibrationWizardStep0_Frame" named="True">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="row">0</property>
+          <property name="sticky">ew</property>
+        </layout>
+        <child>
+          <object class="ttk.Frame" id="calibrationWizardTitle_Frame" named="True">
+            <property name="height">25</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="pady">10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="calibrationWizardTitle_Label" named="True">
+                <property name="state">normal</property>
+                <property name="style">Heading4.TLabel</property>
+                <property name="text" translatable="yes">uBITX Calibration Wizard</property>
+                <layout manager="pack">
+                  <property name="padx">5</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Separator" id="separator2">
+            <property name="orient">horizontal</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="calibrationWizardFirstStep_Frame" named="True">
+            <property name="height">200</property>
+            <property name="width">350</property>
+            <layout manager="pack">
+              <property name="padx">5</property>
+              <property name="pady">0 10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="tk.Message" id="message1">
+                <property name="borderwidth">0</property>
+                <property name="justify">left</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">This wizard will help you Calibrate your uBITX.
+
+DO NOT use this Wizard unless your radio is not receiving or is off frequency!!! 
+
+Always record your Master Calibration#, SSB BFO# (also  known as (USB Calibration) and CW BFO# before using this wizard. 
+
+Fill in requested information and then click Save when done. You can click Save at any time and it will save to you Raduino the calibration numbers you have created so far.
+
+You can Cancel at any time and the original calibration numbers will be restored.</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="pady">10</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Separator" id="separator1">
+            <property name="orient">horizontal</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Frame" id="calibrationWizardStep1_Frame" named="True">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="row">0</property>
+          <property name="sticky">ew</property>
+        </layout>
+        <child>
+          <object class="ttk.Frame" id="frame10" named="True">
+            <property name="height">25</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="pady">10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="label5" named="True">
+                <property name="state">normal</property>
+                <property name="style">Heading4.TLabel</property>
+                <property name="text" translatable="yes">Acquire Existing Calibration Data</property>
+                <layout manager="pack">
+                  <property name="padx">5</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Separator" id="separator9">
+            <property name="orient">horizontal</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="com_portManager_Enclosing_frame" named="True">
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="calibrationWizardExistingValue_Frame" named="True">
+            <property name="height">200</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">both</property>
+              <property name="pady">25</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="label2">
+                <property name="anchor">n</property>
+                <property name="style">Normal.TLabel</property>
+                <property name="text" translatable="yes">Master Calibration:</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="row">0</property>
+                  <property name="sticky">e</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Label" id="label3">
+                <property name="style">Normal.TLabel</property>
+                <property name="textvariable">string:currentMASTER_CAL</property>
+                <layout manager="grid">
+                  <property name="column">1</property>
+                  <property name="padx">10 0</property>
+                  <property name="row">0</property>
+                  <property name="sticky">w</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Label" id="label4">
+                <property name="anchor">n</property>
+                <property name="style">Normal.TLabel</property>
+                <property name="text" translatable="yes">SSB BFO:</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="row">1</property>
+                  <property name="sticky">e</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Label" id="label6">
+                <property name="style">Normal.TLabel</property>
+                <property name="textvariable">string:currentUSB_CAL</property>
+                <layout manager="grid">
+                  <property name="column">1</property>
+                  <property name="padx">10 0</property>
+                  <property name="row">1</property>
+                  <property name="sticky">w</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="copyExistingCalibrationToClipboard_Button" named="True">
+                <property name="command" type="command" cbtype="simple">copyExistingCalibrationToClipboard</property>
+                <layout manager="grid">
+                  <property name="column">2</property>
+                  <property name="row">1</property>
+                  <property name="sticky">e</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Label" id="label7">
+                <property name="anchor">n</property>
+                <property name="style">Normal.TLabel</property>
+                <property name="text" translatable="yes">CW BFO:</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="row">2</property>
+                  <property name="sticky">e</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Label" id="label8">
+                <property name="state">normal</property>
+                <property name="style">Normal.TLabel</property>
+                <property name="textvariable">string:currentCW_CAL</property>
+                <layout manager="grid">
+                  <property name="column">1</property>
+                  <property name="padx">10 0</property>
+                  <property name="row">2</property>
+                  <property name="sticky">w</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Message" id="message3">
+                <property name="borderwidth">2</property>
+                <property name="justify">left</property>
+                <property name="relief">ridge</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">IMPORANT: Click the Copy icon to copy the existing calibration values to the clipboard or take a photo before the next step. This allows you to manually reset them if necessary.
+
+Also note that these values may differ from the Calibration values reported on the Calibration Tab. The Calibration Tab shows what is stored in EEPROM. The values reported  above are what the radio is using *right now* and would reflect any prior calibration work since the *last power cycle* of your radio. 
+
+If you want to restart this wizard with the EEPROM values, exit the Settings Editor, unplug the USB connection to your radio, and power cycle it. You can then restore the connections and start the Settings Editor again and navigate back to this wizard.</property>
+                <property name="width">300</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="columnspan">3</property>
+                  <property name="pady">15 0</property>
+                  <property name="row">4</property>
+                  <property name="sticky">ew</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Separator" id="separator5">
+            <property name="orient">horizontal</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Frame" id="calibrationWizardStep2_Frame" named="True">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="grid" />
+        <child>
+          <object class="ttk.Separator" id="separator12">
+            <property name="orient">horizontal</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame19" named="True">
+            <property name="height">25</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="pady">10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="label26" named="True">
+                <property name="state">normal</property>
+                <property name="style">Heading4.TLabel</property>
+                <property name="text" translatable="yes">Preparing for Initial BFO Setting</property>
+                <layout manager="pack">
+                  <property name="padx">5</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame20" named="True">
+            <property name="height">200</property>
+            <property name="width">350</property>
+            <layout manager="pack">
+              <property name="padx">5</property>
+              <property name="pady">0 10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="tk.Message" id="message13">
+                <property name="borderwidth">0</property>
+                <property name="justify">left</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">The frequency calibration of the uBITX depends on your ability to "zero-beat" against a known signal. To do that you must be able to hear that signal. This step will help you initially calibrate your BFO.
+
+Do not worry if you do not get it optimal at this point, we will fine tune it after we calibrate the frequency.
+
+If you have not watched it, you should watch the youtube video below by the designer of uBITX, Ashhar Farhan, where he walks thru calibrating a V6 uBITX.
+</property>
+                <property name="width">300</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="pady">10</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame23">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="pady">10</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="hfsignalsCalVideoLink_Widget" named="True">
+                    <property name="text" translatable="yes">https://youtu.be/t6LGXhS4_O8</property>
+                    <property name="textvariable">string:hfsignalsCalVideoLink</property>
+                    <layout manager="pack">
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="CalVideoCopy_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">copyCalVideoToClipboard</property>
+                    <layout manager="pack">
+                      <property name="padx">10</property>
+                      <property name="side">right</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Message" id="message14">
+                <property name="text" translatable="yes">After viewing the video, go to the link below to access the HF Signals BFO Tuning Aid. Follow the setup directions.
+</property>
+                <property name="width">300</property>
+                <layout manager="pack">
+                  <property name="pady">0 10</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame22">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="padx">10</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="hfsignalsBFOTuningAid_Label" named="True">
+                    <property name="compound">top</property>
+                    <property name="cursor">arrow</property>
+                    <property name="text" translatable="yes">https://www.hfsignals.com/index.php/bfo-tuning-aid/
+</property>
+                    <property name="textvariable">string:hfsignalsBFOTuningAid</property>
+                    <layout manager="pack">
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="hfsignalsBFOTuningAidCopy_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">copyTuningAidLinkToClipboard</property>
+                    <property name="style">Symbol1.TButton</property>
+                    <layout manager="pack">
+                      <property name="padx">10</property>
+                      <property name="pady">0 10</property>
+                      <property name="side">right</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Frame" id="calibrationWizardStep3_Frame" named="True">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="grid" />
+        <child>
+          <object class="ttk.Separator" id="separator13">
+            <property name="orient">horizontal</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame25" named="True">
+            <property name="height">25</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="pady">10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="label29" named="True">
+                <property name="state">normal</property>
+                <property name="style">Heading4.TLabel</property>
+                <property name="text" translatable="yes">Setting BFO</property>
+                <layout manager="pack">
+                  <property name="padx">5</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame26" named="True">
+            <property name="height">200</property>
+            <property name="width">350</property>
+            <layout manager="pack">
+              <property name="padx">5</property>
+              <property name="pady">0 10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="tk.Message" id="message15">
+                <property name="borderwidth">0</property>
+                <property name="justify">left</property>
+                <property name="relief">flat</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">Go to the webpage for the HF Signals BFO Tuning Aid. Follow the directions there for the hardware setup. Make sure you remember to connect your radio to your antenna and tune to an unoccupied frequency!
+
+This step automatically sets your radio Mode to USB.
+
+If you want to move the spectrum left (down frequency) click the left arrow. Click the right arrow to move the spectrum to the right.
+
+You can also select the speed mulitple using the menu in the center.
+
+After you have the waveform aligned with the left, you can click Next&gt;&gt;.</property>
+                <property name="width">300</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="pady">10</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame54">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label49">
+                    <property name="justify">left</property>
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">Move Lower</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">0 20</property>
+                      <property name="row">0</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label50">
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">Speed</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">0 20</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label51">
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">Move Higher</property>
+                    <layout manager="grid">
+                      <property name="column">2</property>
+                      <property name="row">0</property>
+                      <property name="sticky">e</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="moveFreqLower_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">moveFreqLower_CB</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">0 20</property>
+                      <property name="row">1</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.OptionMenu" id="bfo_speed_multiplier_OptionMenu" named="True">
+                    <property name="value">X    5</property>
+                    <property name="values">X    1,X    2,X    5,X  10,X  25,X  50,X100</property>
+                    <property name="variable">string:bfo_speed_multiplier</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">0 20</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="moveFreqHigher_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">moveFreqLHigher_CB</property>
+                    <layout manager="grid">
+                      <property name="column">2</property>
+                      <property name="row">1</property>
+                      <property name="sticky">e</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame28">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="pady">15</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label48">
+                    <property name="justify">left</property>
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">BFO Setting:</property>
+                    <layout manager="pack">
+                      <property name="padx">0 10</property>
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="currentBFOSetting_Entry" named="True">
+                    <property name="state">readonly</property>
+                    <property name="style">NoBorder.TEntry</property>
+                    <property name="textvariable">string:newUSB_CAL</property>
+                    <layout manager="pack">
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Frame" id="calibrationWizardStep4_Frame" named="True">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="grid" />
+        <child>
+          <object class="ttk.Separator" id="separator14">
+            <property name="orient">horizontal</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame30" named="True">
+            <property name="height">25</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="pady">10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="label32" named="True">
+                <property name="state">normal</property>
+                <property name="style">Heading4.TLabel</property>
+                <property name="text" translatable="yes">Calibrate Frequency - "Master Calibration"</property>
+                <layout manager="pack">
+                  <property name="padx">5</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame31" named="True">
+            <property name="height">200</property>
+            <property name="width">350</property>
+            <layout manager="pack">
+              <property name="padx">5</property>
+              <property name="pady">0 10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="tk.Message" id="message17">
+                <property name="borderwidth">0</property>
+                <property name="justify">left</property>
+                <property name="relief">raised</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">The easiest process to calibrate the frequency of the uBITX is to "zero-beat" against a known signal. This is a 3 step process:
+
+1. Select source with known frequency.
+2. Zero-beat this source. This step automatically puts your radio in USB mode.
+3. Click "Calculate" to generate the new calibration value.</property>
+                <property name="width">300</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="pady">10</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame1">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="anchor">w</property>
+                  <property name="pady">10 0</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label33" named="True">
+                    <property name="state">normal</property>
+                    <property name="style">Heading3.TLabel</property>
+                    <property name="text" translatable="yes">Step1: Select signal source:</property>
+                    <layout manager="pack" />
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame32">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">x</property>
+                  <property name="pady">10</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label23">
+                    <property name="style">Normal.TLabel</property>
+                    <property name="text" translatable="yes">WWV</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="columnspan">4</property>
+                      <property name="row">0</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Radiobutton" id="calibrationFreqWWV5MHz_RadioButton" named="True">
+                    <property name="style">RadioButton4.TRadiobutton</property>
+                    <property name="text" translatable="yes">5MHz</property>
+                    <property name="value">WWV5</property>
+                    <property name="variable">string:freqSelectButton</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">25 15</property>
+                      <property name="row">1</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Radiobutton" id="calibrationFreqWWV10MHz_RadioButton" named="True">
+                    <property name="text" translatable="yes">10MHz</property>
+                    <property name="value">WWV10</property>
+                    <property name="variable">string:freqSelectButton</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">0 15</property>
+                      <property name="row">1</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Radiobutton" id="calibrationFreqWWV15MHz_RadioButton" named="True">
+                    <property name="text" translatable="yes">15 MHz</property>
+                    <property name="value">WWV15</property>
+                    <property name="variable">string:freqSelectButton</property>
+                    <layout manager="grid">
+                      <property name="column">2</property>
+                      <property name="padx">0 15</property>
+                      <property name="row">1</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Radiobutton" id="calibrationFreqWWV20MHz_RadioButton" named="True">
+                    <property name="text" translatable="yes">20 MHz</property>
+                    <property name="value">WWV20</property>
+                    <property name="variable">string:freqSelectButton</property>
+                    <layout manager="grid">
+                      <property name="column">3</property>
+                      <property name="row">1</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label25">
+                    <property name="relief">flat</property>
+                    <property name="style">Normal.TLabel</property>
+                    <property name="text" translatable="yes">Custom</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="columnspan">4</property>
+                      <property name="row">2</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Radiobutton" id="calibrationFreqCustom_RadioButton" named="True">
+                    <property name="text" translatable="yes">Freq</property>
+                    <property name="value">CUSTOM</property>
+                    <property name="variable">string:freqSelectButton</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">25 10</property>
+                      <property name="row">3</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="calibrationFreqCustomSource_Entry" named="True">
+                    <property name="style">NoBorder.TEntry</property>
+                    <property name="text" translatable="yes">0</property>
+                    <property name="textvariable">string:customSourceFreq</property>
+                    <property name="width">12</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="columnspan">2</property>
+                      <property name="row">3</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label27">
+                    <property name="text" translatable="yes">Hz</property>
+                    <layout manager="grid">
+                      <property name="column">2</property>
+                      <property name="padx">5</property>
+                      <property name="row">3</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Frame" id="frame24">
+                    <property name="height">200</property>
+                    <property name="width">200</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="columnspan">4</property>
+                      <property name="row">4</property>
+                      <property name="sticky">ew</property>
+                    </layout>
+                    <child>
+                      <object class="tk.Message" id="badFreqEnteredError_Message" named="True">
+                        <property name="font">TkTextFont</property>
+                        <property name="foreground">#ff0000</property>
+                        <property name="text" translatable="yes">Invalid frequency!</property>
+                        <property name="width">400</property>
+                        <layout manager="pack" />
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame6">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="anchor">w</property>
+                  <property name="pady">25 0</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label28" named="True">
+                    <property name="relief">flat</property>
+                    <property name="state">normal</property>
+                    <property name="style">Heading3.TLabel</property>
+                    <property name="text" translatable="yes">Step2: Zero-Beat frequency on VFO</property>
+                    <layout manager="pack" />
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame13">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="anchor">w</property>
+                  <property name="expand">true</property>
+                  <property name="fill">x</property>
+                  <property name="pady">25 0</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label30" named="True">
+                    <property name="justify">left</property>
+                    <property name="relief">flat</property>
+                    <property name="state">normal</property>
+                    <property name="style">Heading3.TLabel</property>
+                    <property name="text" translatable="yes">Step3: </property>
+                    <layout manager="pack">
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="calculateMASTER_CAL_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">calculateMASTER_CAL</property>
+                    <property name="style">Button4.TButton</property>
+                    <property name="text" translatable="yes">Calculate</property>
+                    <layout manager="pack">
+                      <property name="padx">10 20</property>
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label35">
+                    <property name="text" translatable="yes">VFO:</property>
+                    <layout manager="pack">
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="currentRadioVFO_Label" named="True">
+                    <property name="text" translatable="yes">55.555.555</property>
+                    <property name="textvariable">string:currentVFOFreq</property>
+                    <property name="width">10</property>
+                    <layout manager="pack">
+                      <property name="padx">0 2</property>
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label34">
+                    <property name="text" translatable="yes">Hz</property>
+                    <layout manager="pack">
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame17">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="anchor">w</property>
+                  <property name="pady">25 0</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label31" named="True">
+                    <property name="justify">left</property>
+                    <property name="relief">flat</property>
+                    <property name="state">normal</property>
+                    <property name="style">Heading3.TLabel</property>
+                    <property name="text" translatable="yes">Master Calibration Values</property>
+                    <layout manager="pack">
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame21">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">x</property>
+                  <property name="padx">25</property>
+                  <property name="pady">10 0</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label42">
+                    <property name="style">Normal.TLabel</property>
+                    <property name="text" translatable="yes">Current:</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="row">2</property>
+                      <property name="sticky">e</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="currentMASTER_CAL_Label" named="True">
+                    <property name="text" translatable="yes">label43</property>
+                    <property name="textvariable">string:currentMASTER_CAL</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label44">
+                    <property name="style">Normal.TLabel</property>
+                    <property name="text" translatable="yes">New:</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="row">3</property>
+                      <property name="sticky">e</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="newMASTER_CAL_Label" named="True">
+                    <property name="text" translatable="yes">label45</property>
+                    <property name="textvariable">string:newMASTER_CAL</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Frame" id="calibrationWizardStep5_Frame" named="True">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="grid" />
+        <child>
+          <object class="ttk.Separator" id="separator3">
+            <property name="orient">horizontal</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame2" named="True">
+            <property name="height">25</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="pady">10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="label1" named="True">
+                <property name="state">normal</property>
+                <property name="style">Heading4.TLabel</property>
+                <property name="text" translatable="yes">Final BFO Tuning</property>
+                <layout manager="pack">
+                  <property name="padx">5</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame3" named="True">
+            <property name="height">200</property>
+            <property name="width">350</property>
+            <layout manager="pack">
+              <property name="padx">5</property>
+              <property name="pady">0 10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="tk.Message" id="message2">
+                <property name="borderwidth">0</property>
+                <property name="justify">left</property>
+                <property name="relief">flat</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">Your BFO should be pretty close. But it is worth checking again here and fine tuning it if necessary. Again, start the HF Signals BFO Tuning Aid and then adjust the BFO. A link to this tuning aid is provided below.
+
+Make sure to reconnect your antenna (if you had disconnected it) and tune to an unoccupied frequency!</property>
+                <property name="width">300</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="pady">10</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame12">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="padx">10</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label18" named="True">
+                    <property name="compound">top</property>
+                    <property name="cursor">arrow</property>
+                    <property name="text" translatable="yes">https://www.hfsignals.com/index.php/bfo-tuning-aid/
+</property>
+                    <property name="textvariable">string:hfsignalsBFOTuningAid</property>
+                    <layout manager="pack">
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="fineTunehfsignalsBFOTuningAidCopy_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">copyTuningAidLinkToClipboard</property>
+                    <property name="style">Symbol1.TButton</property>
+                    <layout manager="pack">
+                      <property name="padx">10</property>
+                      <property name="pady">0 10</property>
+                      <property name="side">right</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame4">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label9">
+                    <property name="justify">left</property>
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">Move Lower</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">0 20</property>
+                      <property name="row">0</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label10">
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">Speed</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">0 20</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label11">
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">Move Higher</property>
+                    <layout manager="grid">
+                      <property name="column">2</property>
+                      <property name="row">0</property>
+                      <property name="sticky">e</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="fineTuneMoveFreqLower_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">moveFreqLower_CB</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">0 20</property>
+                      <property name="row">1</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.OptionMenu" id="fineTuneBFOMultiplier_OptionMenu" named="True">
+                    <property name="value">X    5</property>
+                    <property name="values">X    1,X    2,X    5,X  10,X  25,X  50,X100</property>
+                    <property name="variable">string:bfo_speed_mulitpier</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">0 20</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="fineTuneMoveFreqHigher_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">moveFreqLHigher_CB</property>
+                    <layout manager="grid">
+                      <property name="column">2</property>
+                      <property name="row">1</property>
+                      <property name="sticky">e</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame5">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="pady">15</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label12">
+                    <property name="justify">left</property>
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">BFO Setting:</property>
+                    <layout manager="pack">
+                      <property name="padx">0 10</property>
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="newBFOSetting_Entry" named="True">
+                    <property name="state">readonly</property>
+                    <property name="style">NoBorder.TEntry</property>
+                    <property name="textvariable">string:newUSB_CAL</property>
+                    <layout manager="pack">
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Frame" id="calibrationWizardStep6_Frame" named="True">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="grid" />
+        <child>
+          <object class="ttk.Separator" id="separator4">
+            <property name="orient">horizontal</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame7" named="True">
+            <property name="height">25</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="pady">10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="label13" named="True">
+                <property name="state">normal</property>
+                <property name="style">Heading4.TLabel</property>
+                <property name="text" translatable="yes">Setting CW BFO</property>
+                <layout manager="pack">
+                  <property name="padx">5</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame8" named="True">
+            <property name="height">200</property>
+            <property name="width">350</property>
+            <layout manager="pack">
+              <property name="padx">5</property>
+              <property name="pady">0 10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="tk.Message" id="message4">
+                <property name="borderwidth">0</property>
+                <property name="justify">left</property>
+                <property name="relief">flat</property>
+                <property name="takefocus">true</property>
+                <property name="text" translatable="yes">The process for setting the CW BFO is similar to that of the SSB BFO. As previously, this step sets your radio mode to the proper value (CWL).
+
+Make sure you tune to an unoccupied frequency!
+
+Now start the HF Signals BFO Tuning Aid, and then adjust the spectrum so that it is inbetween the two red borders. 
+
+A link to the HF Signals BFO Tuning Aid is also provided below.</property>
+                <property name="width">300</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="pady">10</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame18">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="padx">10</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label24" named="True">
+                    <property name="compound">top</property>
+                    <property name="cursor">arrow</property>
+                    <property name="text" translatable="yes">https://www.hfsignals.com/index.php/bfo-tuning-aid/
+</property>
+                    <property name="textvariable">string:hfsignalsBFOTuningAid</property>
+                    <layout manager="pack">
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="CWTunehfsignalsBFOTuningAidCopy_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">copyTuningAidLinkToClipboard</property>
+                    <property name="style">Symbol1.TButton</property>
+                    <layout manager="pack">
+                      <property name="padx">10</property>
+                      <property name="pady">0 10</property>
+                      <property name="side">right</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame9">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label14">
+                    <property name="justify">left</property>
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">Move Lower</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">0 20</property>
+                      <property name="row">0</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label15">
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">Speed</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">0 20</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label16">
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">Move Higher</property>
+                    <layout manager="grid">
+                      <property name="column">2</property>
+                      <property name="row">0</property>
+                      <property name="sticky">e</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="moveCWBFOFreqLower_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">moveCWBFOFreqLower_CB</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">0 20</property>
+                      <property name="row">1</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.OptionMenu" id="CWspeedMultiplier_OptionMenu" named="True">
+                    <property name="value">X    5</property>
+                    <property name="values">X    1,X    2,X    5,X  10,X  25,X  50,X100</property>
+                    <property name="variable">string:CWbfo_speed_mulitpier</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">0 20</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="moveCWBFOFreqHigher_Button" named="True">
+                    <property name="command" type="command" cbtype="simple">moveCWBFOFreqLHigher_CB</property>
+                    <layout manager="grid">
+                      <property name="column">2</property>
+                      <property name="row">1</property>
+                      <property name="sticky">e</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame11">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="pady">15</property>
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label17">
+                    <property name="justify">left</property>
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">CW BFO Setting:</property>
+                    <layout manager="pack">
+                      <property name="padx">0 10</property>
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="newCWBFOSetting_Entry" named="True">
+                    <property name="state">readonly</property>
+                    <property name="style">NoBorder.TEntry</property>
+                    <property name="textvariable">string:newCW_CAL</property>
+                    <layout manager="pack">
+                      <property name="side">left</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Frame" id="calibrationWizardStep7_Frame" named="True">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="grid" />
+        <child>
+          <object class="ttk.Separator" id="separator6">
+            <property name="orient">horizontal</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame14" named="True">
+            <property name="height">25</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">x</property>
+              <property name="pady">10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Label" id="label19" named="True">
+                <property name="state">normal</property>
+                <property name="style">Heading4.TLabel</property>
+                <property name="text" translatable="yes">Final Review!</property>
+                <layout manager="pack">
+                  <property name="padx">5</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frame15" named="True">
+            <property name="height">200</property>
+            <property name="width">350</property>
+            <layout manager="pack">
+              <property name="padx">5</property>
+              <property name="pady">0 10</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="tk.Message" id="message5">
+                <property name="borderwidth">0</property>
+                <property name="justify">left</property>
+                <property name="relief">flat</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">You are just about done! The initial and final numbers are provided below.
+
+If you are OK with the new values, click the "Save and Exit" button. Your uBITX will also be automatically rebooted to ensure that you are using the new values stored in EEPROM.
+
+Notes: 
+1. Items in Bold indicate a change in value. 
+2. This step "guesses" that you want to be in USB mode after completing this wizard. You may want to change that to another mode.</property>
+                <property name="width">300</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="pady">10</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Frame" id="frame16">
+                <property name="height">200</property>
+                <property name="width">200</property>
+                <layout manager="pack">
+                  <property name="side">top</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="label20">
+                    <property name="justify">left</property>
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">Parameter</property>
+                    <layout manager="grid">
+                      <property name="column">0</property>
+                      <property name="padx">0 20</property>
+                      <property name="row">0</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label21">
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">Initial Value</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="padx">0 20</property>
+                      <property name="row">0</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="label22">
+                    <property name="style">Heading4.TLabel</property>
+                    <property name="text" translatable="yes">New Value</property>
+                    <layout manager="grid">
+                      <property name="column">2</property>
+                      <property name="row">0</property>
+                      <property name="sticky">e</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="Master_Cal_Label" named="True">
+                    <property name="justify">left</property>
+                    <property name="style">Normal.TLabel</property>
+                    <property name="text" translatable="yes">Master Cal</property>
+                    <layout manager="grid">
+                      <property name="row">1</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="finalReviewMasterCalInitial_Label" named="True">
+                    <property name="justify">left</property>
+                    <property name="style">Normal.TLabel</property>
+                    <property name="textvariable">string:currentMASTER_CAL</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="row">1</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="finalReviewMasterCalNew_Label" named="True">
+                    <property name="justify">left</property>
+                    <property name="style">Normal.TLabel</property>
+                    <property name="textvariable">string:newMASTER_CAL</property>
+                    <layout manager="grid">
+                      <property name="column">2</property>
+                      <property name="row">1</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="SSB_BFO_Label" named="True">
+                    <property name="justify">left</property>
+                    <property name="style">Normal.TLabel</property>
+                    <property name="text" translatable="yes">SSB BFO</property>
+                    <layout manager="grid">
+                      <property name="row">2</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="finalReviewBFOCalInitial_Label" named="True">
+                    <property name="justify">left</property>
+                    <property name="relief">flat</property>
+                    <property name="style">Normal.TLabel</property>
+                    <property name="textvariable">string:currentUSB_CAL</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="row">2</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="finalReviewBFOCalNew_Label" named="True">
+                    <property name="justify">left</property>
+                    <property name="style">Normal.TLabel</property>
+                    <property name="textvariable">string:newUSB_CAL</property>
+                    <layout manager="grid">
+                      <property name="column">2</property>
+                      <property name="row">2</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="CW_BFO_Label" named="True">
+                    <property name="justify">left</property>
+                    <property name="style">Normal.TLabel</property>
+                    <property name="text" translatable="yes">CW BFO</property>
+                    <layout manager="grid">
+                      <property name="row">3</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="finalReviewCWCalInitial_Label" named="True">
+                    <property name="justify">left</property>
+                    <property name="style">Normal.TLabel</property>
+                    <property name="textvariable">string:currentCW_CAL</property>
+                    <layout manager="grid">
+                      <property name="column">1</property>
+                      <property name="row">3</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="finalReviewCWCalNew_Label" named="True">
+                    <property name="justify">left</property>
+                    <property name="style">Normal.TLabel</property>
+                    <property name="textvariable">string:newCW_CAL</property>
+                    <layout manager="grid">
+                      <property name="column">2</property>
+                      <property name="row">3</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Frame" id="calibrationWizardButton_Frame" named="True">
+        <property name="height">50</property>
+        <property name="width">200</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="row">3</property>
+          <property name="sticky">ew</property>
+        </layout>
+        <child>
+          <object class="ttk.Frame" id="calibration_wizard_button_frame" named="True">
+            <property name="height">200</property>
+            <property name="width">200</property>
+            <layout manager="pack">
+              <property name="anchor">center</property>
+              <property name="side">top</property>
+            </layout>
+            <child>
+              <object class="ttk.Button" id="backButton" named="True">
+                <property name="command" type="command" cbtype="simple">wizardBack</property>
+                <property name="text" translatable="yes">&lt;&lt;Back</property>
+                <layout manager="pack">
+                  <property name="padx">10</property>
+                  <property name="pady">10</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="nextButton" named="True">
+                <property name="command" type="command" cbtype="simple">wizardNext</property>
+                <property name="text" translatable="yes">Next&gt;&gt;</property>
+                <layout manager="pack">
+                  <property name="padx">0 10</property>
+                  <property name="pady">10</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="saveButton" named="True">
+                <property name="command" type="command" cbtype="simple">wizardSave</property>
+                <property name="text" translatable="yes">Save and Exit</property>
+                <layout manager="pack">
+                  <property name="padx">0 10</property>
+                  <property name="pady">10</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Button" id="cancelButton" named="True">
+                <property name="command" type="command" cbtype="simple">wizardCancel</property>
+                <property name="text" translatable="yes">Cancel</property>
+                <layout manager="pack">
+                  <property name="padx">0 10</property>
+                  <property name="pady">10</property>
+                  <property name="side">left</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

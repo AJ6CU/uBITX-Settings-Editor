@@ -583,7 +583,7 @@
                                 <child>
                                   <object class="tk.OptionMenu" id="CW_KEY_TYPE_WIDGET" named="True">
                                     <property name="value">STRAIGHT</property>
-                                    <property name="values">STRAIGHT,IAMBICA,IAMICAB</property>
+                                    <property name="values">STRAIGHT,IAMBICA,IAMBICB</property>
                                     <property name="variable">string:CW_KEY_TYPE</property>
                                     <layout manager="grid">
                                       <property name="column">1</property>
@@ -716,19 +716,25 @@
                                   </object>
                                 </child>
                                 <child>
-                                  <object class="tk.Message" id="message8">
+                                  <object class="tk.Text" id="text4" named="True">
+                                    <property name="background">#eeeeee</property>
                                     <property name="borderwidth">2</property>
-                                    <property name="font">TkTextFont</property>
-                                    <property name="justify">left</property>
+                                    <property name="font">TkMenuFont</property>
+                                    <property name="foreground">black</property>
+                                    <property name="height">4</property>
+                                    <property name="padx">5</property>
                                     <property name="pady">5</property>
-                                    <property name="relief">ridge</property>
+                                    <property name="relief">groove</property>
+                                    <property name="state">disabled</property>
                                     <property name="takefocus">false</property>
                                     <property name="text" translatable="yes">When in CW mode, your VFO can display either your TX or RX frequency. TX seems to be generally the preferred choice. For more details, see:
-http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
-                                    <property name="width">350</property>
+http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html
+</property>
+                                    <property name="width">57</property>
+                                    <property name="wrap">word</property>
                                     <layout manager="grid">
                                       <property name="column">2</property>
-                                      <property name="padx">10</property>
+                                      <property name="padx">10 0</property>
                                       <property name="row">15</property>
                                     </layout>
                                   </object>
@@ -2920,84 +2926,6 @@ http://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html</property>
                                   <property name="padx">5 0</property>
                                   <property name="row">4</property>
                                   <property name="sticky">ew</property>
-                                </layout>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="ttk.Frame" id="frame12" named="True">
-                            <layout manager="pack">
-                              <property name="anchor">w</property>
-                              <property name="expand">false</property>
-                              <property name="fill">x</property>
-                              <property name="pady">20 0</property>
-                              <property name="side">top</property>
-                            </layout>
-                            <containerlayout manager="grid">
-                              <property name="anchor">w</property>
-                            </containerlayout>
-                            <child>
-                              <object class="ttk.Label" id="label144" named="True">
-                                <property name="justify">left</property>
-                                <property name="relief">flat</property>
-                                <property name="style">Heading3.TLabel</property>
-                                <property name="text" translatable="yes">TX/RX Restrictions</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="columnspan">2</property>
-                                  <property name="padx">0 15</property>
-                                  <property name="pady">10 0</property>
-                                  <property name="row">1</property>
-                                  <property name="sticky">w</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label145">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">Tuning Restriction</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">80 15</property>
-                                  <property name="pady">5 10</property>
-                                  <property name="row">2</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.OptionMenu" id="TUNING_RESTICTIONS_WIDGET" named="True">
-                                <property name="value">NONE</property>
-                                <property name="values">NONE,BAND</property>
-                                <property name="variable">string:TUNING_RESTICTIONS</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="pady">5 10</property>
-                                  <property name="row">2</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label146">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">Transmit Restriction</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">30 15</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.OptionMenu" id="TX_RESTRICTIONS_WIDGET" named="True">
-                                <property name="value">NONE</property>
-                                <property name="values">NONE,HAM</property>
-                                <property name="variable">string:TX_RESTRICTIONS</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="row">3</property>
                                 </layout>
                               </object>
                             </child>
@@ -5630,6 +5558,22 @@ Dual LCD Config</property>
                               </object>
                             </child>
                             <child>
+                              <object class="ttk.Label" id="label11">
+                                <property name="relief">flat</property>
+                                <property name="state">normal</property>
+                                <property name="style">Normal.TLabel</property>
+                                <property name="text" translatable="yes">The default display is for VFO-A and its Mode to be on second line and the top line is used for VFO-B and other info. These checkboxes allow you to customize this display.</property>
+                                <property name="wraplength">550</property>
+                                <layout manager="grid">
+                                  <property name="column">0</property>
+                                  <property name="padx">50</property>
+                                  <property name="pady">5 10</property>
+                                  <property name="row">3</property>
+                                  <property name="sticky">w</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
                               <object class="ttk.Checkbutton" id="SCROLLING_DISPLAY_WIDGET" named="True">
                                 <property name="offvalue">NO</property>
                                 <property name="onvalue">YES</property>
@@ -5675,16 +5619,95 @@ Dual LCD Config</property>
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Label" id="label11">
-                                <property name="relief">flat</property>
-                                <property name="state">normal</property>
-                                <property name="style">Normal.TLabel</property>
-                                <property name="text" translatable="yes">The default display is for VFO-A and its Mode to be on second line and the top line is used for VFO-B and other info. These checkboxes allow you to customize this display.</property>
-                                <property name="wraplength">550</property>
+                              <object class="ttk.Checkbutton" id="DISPLAY_CALL_SIGN_WIDGET" named="True">
+                                <property name="offvalue">NO</property>
+                                <property name="onvalue">YES</property>
+                                <property name="style">CheckboxNormal.TCheckbutton</property>
+                                <property name="text" translatable="yes">Display Callsign on 20x4 and dual 16x2 LCD configurations</property>
+                                <property name="variable">string:DISPLAY_CALL_SIGN</property>
                                 <layout manager="grid">
                                   <property name="column">0</property>
-                                  <property name="padx">50</property>
+                                  <property name="padx">75</property>
+                                  <property name="row">7</property>
+                                  <property name="sticky">w</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="frame12" named="True">
+                            <layout manager="pack">
+                              <property name="anchor">w</property>
+                              <property name="expand">false</property>
+                              <property name="fill">x</property>
+                              <property name="pady">20 0</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <containerlayout manager="grid">
+                              <property name="anchor">w</property>
+                            </containerlayout>
+                            <child>
+                              <object class="ttk.Label" id="label144" named="True">
+                                <property name="justify">left</property>
+                                <property name="relief">flat</property>
+                                <property name="style">Heading3.TLabel</property>
+                                <property name="text" translatable="yes">TX/RX Tuning Options</property>
+                                <layout manager="grid">
+                                  <property name="column">0</property>
+                                  <property name="columnspan">2</property>
+                                  <property name="padx">0 15</property>
+                                  <property name="pady">10 0</property>
+                                  <property name="row">1</property>
+                                  <property name="sticky">w</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="label145">
+                                <property name="style">Heading4.TLabel</property>
+                                <property name="text" translatable="yes">Tuning Method</property>
+                                <layout manager="grid">
+                                  <property name="column">1</property>
+                                  <property name="padx">80 15</property>
                                   <property name="pady">5 10</property>
+                                  <property name="row">2</property>
+                                  <property name="sticky">e</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.OptionMenu" id="TUNING_RESTICTIONS_WIDGET" named="True">
+                                <property name="value">BAND</property>
+                                <property name="values">200Khz,BAND</property>
+                                <property name="variable">string:TUNING_RESTICTIONS</property>
+                                <layout manager="grid">
+                                  <property name="column">2</property>
+                                  <property name="pady">5 10</property>
+                                  <property name="row">2</property>
+                                  <property name="sticky">w</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.Label" id="label146">
+                                <property name="style">Heading4.TLabel</property>
+                                <property name="text" translatable="yes">Transmit Restrictions</property>
+                                <layout manager="grid">
+                                  <property name="column">1</property>
+                                  <property name="padx">30 15</property>
+                                  <property name="row">3</property>
+                                  <property name="sticky">e</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="ttk.OptionMenu" id="TX_RESTRICTIONS_WIDGET" named="True">
+                                <property name="value">NONE</property>
+                                <property name="values">NONE,HAM</property>
+                                <property name="variable">string:TX_RESTRICTIONS</property>
+                                <layout manager="grid">
+                                  <property name="column">2</property>
                                   <property name="row">3</property>
                                   <property name="sticky">w</property>
                                 </layout>
@@ -5706,14 +5729,6 @@ Dual LCD Config</property>
                     <child>
                       <object class="ttk.Label" id="MAIN_SCREEN_FORMAT_WIDGET" named="True">
                         <property name="textvariable">string:MAIN_SCREEN_FORMAT</property>
-                        <layout manager="pack">
-                          <property name="side">top</property>
-                        </layout>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="ttk.Label" id="NEXTION_DISPLAY_CALL_SIGN_WIDGET" named="True">
-                        <property name="textvariable">string:NEXTION_DISPLAY_CALL_SIGN</property>
                         <layout manager="pack">
                           <property name="side">top</property>
                         </layout>
@@ -5793,7 +5808,7 @@ Dual LCD Config</property>
                               <property name="columnspan">2</property>
                               <property name="padx">10</property>
                               <property name="pady">0 5</property>
-                              <property name="row">4</property>
+                              <property name="row">3</property>
                               <property name="sticky">e</property>
                             </layout>
                           </object>
@@ -5807,35 +5822,7 @@ Dual LCD Config</property>
                               <property name="column">3</property>
                               <property name="padx">0 20</property>
                               <property name="pady">0 5</property>
-                              <property name="row">4</property>
-                            </layout>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="tk.Message" id="message1">
-                            <property name="justify">left</property>
-                            <property name="relief">raised</property>
-                            <property name="text" translatable="yes">NONE:	No offset is provided to the data send to the 
-	SDR
-
-FIXED:	The SDR offset frequency is added to the
-	frequency on the display and sent to the SDR
-
-MHZ:	The single MHZ digit of the radio's frequency is
-	added. For example, if the radio was at
-	14.032.000, and the offset was at 30.000.000,
-	the resulting frequency would be 43.032.000.
-
-KHZ:	Similar to MHZ_OFFSET, but using the KHZ
-	number. So with a 30.000.000 offset and and 
-	a 14.032.000 radio setting, the SDR will see 
-	a 30.032.000 frequency.</property>
-                            <property name="width">500</property>
-                            <layout manager="grid">
-                              <property name="column">2</property>
-                              <property name="columnspan">3</property>
-                              <property name="padx">100 0</property>
-                              <property name="row">5</property>
+                              <property name="row">3</property>
                             </layout>
                           </object>
                         </child>
@@ -5885,6 +5872,44 @@ KHZ:	Similar to MHZ_OFFSET, but using the KHZ
                               <property name="pady">20</property>
                               <property name="row">7</property>
                               <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Text" id="text5" named="True">
+                            <property name="background">#eeeeee</property>
+                            <property name="borderwidth">2</property>
+                            <property name="font">TkMenuFont</property>
+                            <property name="foreground">black</property>
+                            <property name="height">15</property>
+                            <property name="padx">5</property>
+                            <property name="pady">5</property>
+                            <property name="relief">groove</property>
+                            <property name="state">disabled</property>
+                            <property name="takefocus">false</property>
+                            <property name="text" translatable="yes">NONE:	No offset is provided to the data send to the 
+	SDR
+
+FIXED:	The SDR offset frequency is added to the
+	frequency on the display and sent to the SDR
+
+MHZ:	The single MHZ digit of the radio's frequency is
+	added. For example, if the radio was at
+	14.032.000, and the offset was at 30.000.000,
+	the resulting frequency would be 43.032.000.
+
+KHZ:	Similar to MHZ_OFFSET, but using the KHZ
+	number. So with a 30.000.000 offset and and 
+	a 14.032.000 radio setting, the SDR will see 
+	a 30.032.000 frequency.
+</property>
+                            <property name="width">50</property>
+                            <property name="wrap">word</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="columnspan">3</property>
+                              <property name="padx">100 0</property>
+                              <property name="row">4</property>
                             </layout>
                           </object>
                         </child>
@@ -5960,6 +5985,7 @@ KHZ:	Similar to MHZ_OFFSET, but using the KHZ
                               <property name="columnspan">10</property>
                               <property name="pady">10 5</property>
                               <property name="row">0</property>
+                              <property name="sticky">ns</property>
                             </layout>
                             <child>
                               <object class="ttk.Label" id="label4" named="True">
@@ -5973,23 +5999,30 @@ KHZ:	Similar to MHZ_OFFSET, but using the KHZ
                               </object>
                             </child>
                             <child>
-                              <object class="tk.Message" id="message6">
+                              <object class="tk.Text" id="Extended_Keys_Info_Box" named="True">
+                                <property name="background">#eeeeee</property>
                                 <property name="borderwidth">2</property>
-                                <property name="font">TkTextFont</property>
-                                <property name="justify">left</property>
+                                <property name="font">TkMenuFont</property>
+                                <property name="foreground">black</property>
+                                <property name="height">7</property>
+                                <property name="padx">5</property>
                                 <property name="pady">5</property>
-                                <property name="relief">ridge</property>
+                                <property name="relief">groove</property>
+                                <property name="state">disabled</property>
                                 <property name="takefocus">false</property>
                                 <property name="text" translatable="yes">Supports attachment and control of an external button box. 
 
 NOTE: Does NOT work with rotary encodes driven off digital pins. This is specific to the Pico, but depending on how KD8CEC is configured, my apply to other boards too.
 
 For details, on the original design see: 
-http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property>
-                                <property name="width">500</property>
+http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html
+ 
+</property>
+                                <property name="width">80</property>
+                                <property name="wrap">word</property>
                                 <layout manager="grid">
                                   <property name="column">2</property>
-                                  <property name="padx">10</property>
+                                  <property name="padx">15 0</property>
                                   <property name="row">0</property>
                                 </layout>
                               </object>
@@ -6273,43 +6306,6 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                           </object>
                         </child>
                         <child>
-                          <object class="ttk.Frame" id="frame30">
-                            <property name="height">200</property>
-                            <property name="width">200</property>
-                            <layout manager="grid">
-                              <property name="column">1</property>
-                              <property name="columnspan">5</property>
-                              <property name="pady">15</property>
-                              <property name="row">16</property>
-                              <property name="sticky">ew</property>
-                            </layout>
-                            <child>
-                              <object class="ttk.Button" id="runADCScanner_WIDGET" named="True">
-                                <property name="command" type="command" cbtype="simple">runADCScanner</property>
-                                <property name="style">Button4.TButton</property>
-                                <property name="text" translatable="yes">ADC Scanner</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="row">0</property>
-                                </layout>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="ttk.Label" id="EXTENDED_KEY6_FUNC_LABEL" named="True">
-                            <property name="style">Heading4.TLabel</property>
-                            <property name="text" translatable="yes">Key 6</property>
-                            <layout manager="grid">
-                              <property name="column">1</property>
-                              <property name="padx">0 5</property>
-                              <property name="pady">0 5</property>
-                              <property name="row">14</property>
-                              <property name="sticky">w</property>
-                            </layout>
-                          </object>
-                        </child>
-                        <child>
                           <object class="ttk.Combobox" id="EXTENDED_KEY5_FUNC_WIDGET" named="True">
                             <property name="textvariable">string:EXTENDED_KEY5_FUNC</property>
                             <property name="values">NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT</property>
@@ -6351,6 +6347,19 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                           </object>
                         </child>
                         <child>
+                          <object class="ttk.Label" id="EXTENDED_KEY6_FUNC_LABEL" named="True">
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">Key 6</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="padx">0 5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">14</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
                           <object class="ttk.Combobox" id="EXTENDED_KEY6_FUNC_WIDGET" named="True">
                             <property name="textvariable">string:EXTENDED_KEY6_FUNC</property>
                             <property name="values">NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT</property>
@@ -6388,6 +6397,271 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                               <property name="column">5</property>
                               <property name="pady">0 5</property>
                               <property name="row">14</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="EXTENDED_KEY7_FUNC_LABEL" named="True">
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">Key 7</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="padx">0 5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">15</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Combobox" id="EXTENDED_KEY7_FUNC_WIDGET" named="True">
+                            <property name="textvariable">string:EXTENDED_KEY7_FUNC</property>
+                            <property name="values">NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT</property>
+                            <property name="width">10</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">15</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY7_START_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY7_START</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY7_START</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">4</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">15</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY7_END_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY7_END</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY7_END</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">15</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="EXTENDED_KEY8_FUNC_LABEL" named="True">
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">Key 8</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="padx">0 5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">16</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Combobox" id="EXTENDED_KEY8_FUNC_WIDGET" named="True">
+                            <property name="textvariable">string:EXTENDED_KEY8_FUNC</property>
+                            <property name="values">NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT</property>
+                            <property name="width">10</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">16</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY8_START_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY8_START</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY8_START</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">4</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">16</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY8_END_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY8_END</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY8_END</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">16</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="EXTENDED_KEY9_FUNC_LABEL" named="True">
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">Key 9</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="padx">0 5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">17</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Combobox" id="EXTENDED_KEY9_FUNC_WIDGET" named="True">
+                            <property name="textvariable">string:EXTENDED_KEY9_FUNC</property>
+                            <property name="values">NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT</property>
+                            <property name="width">10</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">17</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY9_START_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY9_START</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY9_START</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">4</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">17</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY9_END_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY9_END</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY9_END</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">17</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="EXTENDED_KEY10_FUNC_LABEL" named="True">
+                            <property name="style">Heading4.TLabel</property>
+                            <property name="text" translatable="yes">Key 10</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="padx">0 5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">18</property>
+                              <property name="sticky">w</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Combobox" id="EXTENDED_KEY10_FUNC_WIDGET" named="True">
+                            <property name="textvariable">string:EXTENDED_KEY10_FUNC</property>
+                            <property name="values">NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT</property>
+                            <property name="width">10</property>
+                            <layout manager="grid">
+                              <property name="column">2</property>
+                              <property name="row">18</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY10_START_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY10_START</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY10_START</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">4</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">18</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Entry" id="EXTENDED_KEY10_END_WIDGET" named="True">
+                            <property name="justify">right</property>
+                            <property name="style">NoBorder.TEntry</property>
+                            <property name="textvariable">string:EXTENDED_KEY10_END</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_EXTENDED_KEY10_END</property>
+                            <property name="width">5</property>
+                            <layout manager="grid">
+                              <property name="column">5</property>
+                              <property name="pady">0 5</property>
+                              <property name="row">18</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="frame30">
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="columnspan">5</property>
+                              <property name="pady">15</property>
+                              <property name="row">19</property>
+                              <property name="sticky">ew</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Button" id="runADCScanner_WIDGET" named="True">
+                                <property name="command" type="command" cbtype="simple">runADCScannerENCSW</property>
+                                <property name="style">Button4.TButton</property>
+                                <property name="text" translatable="yes">ADC Scanner</property>
+                                <layout manager="grid">
+                                  <property name="column">0</property>
+                                  <property name="row">0</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="tk.Text" id="text1" named="True">
+                            <property name="background">#eeeeee</property>
+                            <property name="borderwidth">2</property>
+                            <property name="font">TkMenuFont</property>
+                            <property name="foreground">black</property>
+                            <property name="height">4</property>
+                            <property name="padx">5</property>
+                            <property name="pady">5</property>
+                            <property name="relief">groove</property>
+                            <property name="state">disabled</property>
+                            <property name="takefocus">false</property>
+                            <property name="text" translatable="yes">All specified ADC values should be dividable by 4 (e.g. 16, 32, 40, etc.) - This is because of how the values are stored internally to save EEPROM space. If not, the values entered will be rounded down to the next number that is dividable by 4.
+</property>
+                            <property name="width">55</property>
+                            <property name="wrap">word</property>
+                            <layout manager="grid">
+                              <property name="column">6</property>
+                              <property name="padx">15 0</property>
+                              <property name="row">7</property>
+                              <property name="rowspan">10</property>
+                              <property name="sticky">n</property>
                             </layout>
                           </object>
                         </child>
@@ -6434,6 +6708,7 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                               <property name="column">0</property>
                               <property name="pady">5 0</property>
                               <property name="row">0</property>
+                              <property name="sticky">w</property>
                             </layout>
                             <child>
                               <object class="ttk.Label" id="label10" named="True">
@@ -6448,25 +6723,30 @@ http://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html</property
                               </object>
                             </child>
                             <child>
-                              <object class="tk.Message" id="message4">
+                              <object class="tk.Text" id="text2" named="True">
+                                <property name="background">#eeeeee</property>
                                 <property name="borderwidth">2</property>
-                                <property name="font">TkTextFont</property>
-                                <property name="justify">left</property>
+                                <property name="font">TkMenuFont</property>
+                                <property name="foreground">black</property>
+                                <property name="height">7</property>
+                                <property name="padx">5</property>
                                 <property name="pady">5</property>
-                                <property name="relief">ridge</property>
+                                <property name="relief">groove</property>
+                                <property name="state">disabled</property>
                                 <property name="takefocus">false</property>
                                 <property name="text" translatable="yes">Provides customization of uBITX's LPF as well as external LPF attached to PA.
 
 NOTE: The EXTENDED option Does NOT work on configurations with LCD's using parallel data connections. 
 
 For details, see: 
-http://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html</property>
-                                <property name="width">500</property>
+http://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html
+</property>
+                                <property name="width">79</property>
+                                <property name="wrap">word</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
-                                  <property name="padx">10</property>
+                                  <property name="padx">10 0</property>
                                   <property name="row">0</property>
-                                  <property name="sticky">w</property>
                                 </layout>
                               </object>
                             </child>
@@ -6515,6 +6795,7 @@ http://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html</proper
                               <property name="column">0</property>
                               <property name="pady">5 0</property>
                               <property name="row">5</property>
+                              <property name="sticky">w</property>
                             </layout>
                             <child>
                               <object class="ttk.Frame" id="CUSTOM_BANDPASS_FILTER_Frame" named="True">
@@ -7898,18 +8179,26 @@ http://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html</proper
                               </object>
                             </child>
                             <child>
-                              <object class="tk.Message" id="message3">
+                              <object class="tk.Text" id="text3" named="True">
+                                <property name="background">#eeeeee</property>
                                 <property name="borderwidth">2</property>
-                                <property name="font">TkTextFont</property>
-                                <property name="justify">left</property>
+                                <property name="font">TkMenuFont</property>
+                                <property name="foreground">black</property>
+                                <property name="height">2</property>
+                                <property name="padx">5</property>
                                 <property name="pady">5</property>
-                                <property name="relief">ridge</property>
+                                <property name="relief">groove</property>
+                                <property name="state">disabled</property>
+                                <property name="takefocus">false</property>
                                 <property name="text" translatable="yes">Can improve receiver performance. For details, see:
-http://www.hamskey.com/2018/04/improves-ubitx-receive-performance-by.html</property>
-                                <property name="width">500</property>
+http://www.hamskey.com/2018/04/improves-ubitx-receive-performance-by.html
+</property>
+                                <property name="width">80</property>
+                                <property name="wrap">word</property>
                                 <layout manager="grid">
                                   <property name="column">1</property>
-                                  <property name="padx">10</property>
+                                  <property name="padx">10 0</property>
+                                  <property name="pady">5</property>
                                   <property name="row">0</property>
                                   <property name="sticky">w</property>
                                 </layout>
@@ -8244,6 +8533,24 @@ Recovery</property>
                           </object>
                         </child>
                         <child>
+                          <object class="ttk.Checkbutton" id="FACTORY_SETTING_PROTECTION_WIDGET" named="True">
+                            <property name="command" type="command" cbtype="simple">Factory_Settings_Enable_CB</property>
+                            <property name="offvalue">NO</property>
+                            <property name="onvalue">YES</property>
+                            <property name="style">Checkbox4.TCheckbutton</property>
+                            <property name="text" translatable="yes">Enable update of
+Factory settings?</property>
+                            <property name="variable">string:FACTORY_SETTING_PROTECTION</property>
+                            <layout manager="grid">
+                              <property name="column">7</property>
+                              <property name="columnspan">4</property>
+                              <property name="padx">20 0</property>
+                              <property name="row">4</property>
+                              <property name="rowspan">2</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
                           <object class="ttk.Label" id="I2C_ADDR_SI5351_LABEL" named="True">
                             <property name="justify">center</property>
                             <property name="relief">flat</property>
@@ -8262,9 +8569,9 @@ Recovery</property>
                           <object class="ttk.Entry" id="I2C_ADDR_SI5351_WIDGET" named="True">
                             <property name="justify">center</property>
                             <property name="style">Normal.TEntry</property>
-                            <property name="takefocus">false</property>
                             <property name="textvariable">string:I2C_ADDR_SI5351</property>
-                            <property name="validate">none</property>
+                            <property name="validate">focus</property>
+                            <property name="validatecommand" type="command" cbtype="entry_validate" args="%P %V">validate_I2C_ADDR_SI5351</property>
                             <property name="width">10</property>
                             <layout manager="grid">
                               <property name="column">3</property>
@@ -8292,17 +8599,14 @@ Recovery</property>
                           </object>
                         </child>
                         <child>
-                          <object class="ttk.Checkbutton" id="FACTORY_SETTING_PROTECTION_WIDGET" named="True">
-                            <property name="command" type="command" cbtype="simple">Factory_Settings_Enable_CB</property>
-                            <property name="offvalue">NO</property>
-                            <property name="onvalue">YES</property>
-                            <property name="style">Checkbox4.TCheckbutton</property>
-                            <property name="text" translatable="yes">Enable update of
-Factory settings?</property>
-                            <property name="variable">string:FACTORY_SETTING_PROTECTION</property>
+                          <object class="ttk.Button" id="CalibrationWizard_Button" named="True">
+                            <property name="command" type="command" cbtype="simple">runCalibrationWizard</property>
+                            <property name="style">Button3Blue.TButton</property>
+                            <property name="text" translatable="yes">Calibration Wizard</property>
                             <layout manager="grid">
-                              <property name="column">5</property>
-                              <property name="columnspan">4</property>
+                              <property name="column">4</property>
+                              <property name="columnspan">2</property>
+                              <property name="pady">15 0</property>
                               <property name="row">6</property>
                               <property name="rowspan">2</property>
                             </layout>
@@ -8593,7 +8897,7 @@ Factory settings?</property>
                             </child>
                             <child>
                               <object class="ttk.Button" id="CAL_runADCScanner_WIDGET" named="True">
-                                <property name="command" type="command" cbtype="simple">runADCScanner</property>
+                                <property name="command" type="command" cbtype="simple">runADCScannerCWKEYER</property>
                                 <property name="style">Button4.TButton</property>
                                 <property name="text" translatable="yes">ADC Scanner</property>
                                 <layout manager="grid">
@@ -8625,26 +8929,6 @@ Factory settings?</property>
                               <property name="pady">20 0</property>
                               <property name="row">1</property>
                               <property name="sticky">ew</property>
-                            </layout>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="tk.Message" id="message7">
-                            <property name="borderwidth">2</property>
-                            <property name="font">TkTextFont</property>
-                            <property name="justify">left</property>
-                            <property name="pady">5</property>
-                            <property name="relief">ridge</property>
-                            <property name="takefocus">false</property>
-                            <property name="text" translatable="yes">This setting is only for S-Meters where the sensor is directly attached to the main processor. If your uBITX is using a separate processor for the S-Meter (and perhaps SWR), then DO NOT enable this one.</property>
-                            <property name="width">300</property>
-                            <layout manager="grid">
-                              <property name="column">1</property>
-                              <property name="columnspan">2</property>
-                              <property name="padx">30 0</property>
-                              <property name="pady">50 0</property>
-                              <property name="row">1</property>
-                              <property name="sticky">nw</property>
                             </layout>
                           </object>
                         </child>
@@ -8956,6 +9240,42 @@ Factory settings?</property>
                             </child>
                           </object>
                         </child>
+                        <child>
+                          <object class="tk.Text" id="text6" named="True">
+                            <property name="background">#eeeeee</property>
+                            <property name="borderwidth">2</property>
+                            <property name="font">TkMenuFont</property>
+                            <property name="foreground">black</property>
+                            <property name="height">4</property>
+                            <property name="padx">5</property>
+                            <property name="pady">5</property>
+                            <property name="relief">groove</property>
+                            <property name="state">disabled</property>
+                            <property name="takefocus">false</property>
+                            <property name="text" translatable="yes">This setting is only for S-Meters where the sensor is directly attached to the main processor. If your uBITX is using a separate processor for the S-Meter (and perhaps SWR), then DO NOT enable this one.
+</property>
+                            <property name="width">50</property>
+                            <property name="wrap">word</property>
+                            <layout manager="grid">
+                              <property name="column">1</property>
+                              <property name="columnspan">2</property>
+                              <property name="padx">30 0</property>
+                              <property name="pady">50 0</property>
+                              <property name="row">1</property>
+                              <property name="sticky">nw</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="frame9">
+                            <property name="height">200</property>
+                            <property name="width">200</property>
+                            <layout manager="grid">
+                              <property name="column">0</property>
+                              <property name="row">5</property>
+                            </layout>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
@@ -9026,35 +9346,131 @@ Factory settings?</property>
                               <property name="side">top</property>
                             </layout>
                             <child>
-                              <object class="ttk.Label" id="System_Info_Firmware_Version_Label" named="True">
-                                <property name="style">Heading3.TLabel</property>
-                                <property name="text" translatable="yes">Firmware Version: </property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="row">0</property>
+                              <object class="ttk.Frame" id="Firmware_Version_Title" named="True">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="anchor">w</property>
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="side">top</property>
                                 </layout>
+                                <child>
+                                  <object class="ttk.Label" id="System_Info_Firmware_Version_Label" named="True">
+                                    <property name="style">Heading3.TLabel</property>
+                                    <property name="text" translatable="yes">Firmware Version: </property>
+                                    <layout manager="pack">
+                                      <property name="expand">true</property>
+                                      <property name="fill">x</property>
+                                    </layout>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Label" id="KD8CEC_VERSION_WIDGET" named="True">
-                                <property name="style">Normal.TLabel</property>
-                                <property name="text" translatable="yes">KD8CEC  </property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="row">0</property>
-                                  <property name="sticky">ew</property>
+                              <object class="ttk.Frame" id="Firmware_Version_Content" named="True">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="padx">75</property>
+                                  <property name="side">top</property>
                                 </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="VERSION_ADDRESS_WIDGET" named="True">
-                                <property name="style">Normal.TLabel</property>
-                                <property name="textvariable">string:VERSION_ADDRESS</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="row">0</property>
-                                  <property name="sticky">w</property>
-                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="KD8CEC_VERSION_WIDGET" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">KD8CEC</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_FIRMWARE_VERSION_INFO_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_FIRMWARE_VERSION_INFO</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_RELEASE_NAME_LABEL" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Release Name:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">1</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_RELEASE_NAME_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_RELEASE_NAME</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">1</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label165" named="True">
+                                    <property name="state">normal</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Build Date:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">2</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_DATE_TIME_STAMP_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_DATE_TIME_STAMP</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">2</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label186" named="True">
+                                    <property name="state">normal</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Functionality Set:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_FUNCTIONALITY_SET_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_FUNCTIONALITY_SET</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                           </object>
@@ -9068,111 +9484,803 @@ Factory settings?</property>
                               <property name="side">top</property>
                             </layout>
                             <child>
-                              <object class="ttk.Label" id="System_Info_Factory_Calibration_Label" named="True">
-                                <property name="style">Heading3.TLabel</property>
-                                <property name="text" translatable="yes">Factory Data</property>
-                                <layout manager="grid">
-                                  <property name="column">0</property>
-                                  <property name="columnspan">3</property>
-                                  <property name="row">0</property>
-                                  <property name="sticky">w</property>
+                              <object class="ttk.Frame" id="Factory_Data_Title" named="True">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="anchor">w</property>
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="side">top</property>
                                 </layout>
+                                <child>
+                                  <object class="ttk.Label" id="System_Info_Factory_Calibration_Label" named="True">
+                                    <property name="style">Heading3.TLabel</property>
+                                    <property name="text" translatable="yes">Factory Data</property>
+                                    <layout manager="pack">
+                                      <property name="anchor">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Label" id="System_Info_Factory_Calibration_Master_Label" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">Master Calibration:</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">75 50</property>
-                                  <property name="row">2</property>
-                                  <property name="sticky">e</property>
+                              <object class="ttk.Frame" id="Factory_Data_Content" named="True">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="padx">50</property>
+                                  <property name="side">top</property>
                                 </layout>
+                                <child>
+                                  <object class="ttk.Label" id="System_Info_Factory_Calibration_Master_Label" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Master Calibration:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="System_Info_MASTER_CAL_WIDGET" named="True">
+                                    <property name="compound">top</property>
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:FACTORY_VALUES_MASTER_CAL</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="System_Info_Factory_Calibration_BFO_Label" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">SSB BFO Calibration:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">1</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="System_Info_USB_CAL_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:FACTORY_VALUES_USB_CAL</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">1</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label171" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">CW Sidetone:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">2</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="FACTORY_VALUES_CW_SIDETONE_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:FACTORY_VALUES_CW_SIDETONE</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">2</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label184" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">CW Speed:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="FACTORY_VALUES_CW_SPEED_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:FACTORY_VALUES_CW_SPEED</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="System_Info_Hardware" named="True">
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="anchor">w</property>
+                              <property name="expand">true</property>
+                              <property name="fill">x</property>
+                              <property name="pady">20 0</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Frame" id="Hardware_Title" named="True">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="anchor">w</property>
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="side">top</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="label166" named="True">
+                                    <property name="style">Heading3.TLabel</property>
+                                    <property name="text" translatable="yes">Hardware: </property>
+                                    <layout manager="pack">
+                                      <property name="anchor">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Label" id="System_Info_MASTER_CAL_WIDGET" named="True">
-                                <property name="compound">top</property>
-                                <property name="style">Normal.TLabel</property>
-                                <property name="textvariable">string:FACTORY_VALUES_MASTER_CAL</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="row">2</property>
-                                  <property name="sticky">e</property>
+                              <object class="ttk.Frame" id="Hardware_Content" named="True">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="padx">18</property>
+                                  <property name="side">top</property>
                                 </layout>
+                                <child>
+                                  <object class="ttk.Label" id="label190" named="True">
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">uBITX Version:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_UBITX_BOARD_VERSION_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_UBITX_BOARD_VERSION</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label192" named="True">
+                                    <property name="state">normal</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Processor:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">1</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_PROCESSOR_TYPE_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_PROCESSOR_TYPE</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">1</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label194" named="True">
+                                    <property name="state">normal</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Display:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">2</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_DISPLAY_TYPE_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_DISPLAY_TYPE</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">2</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="label196" named="True">
+                                    <property name="state">normal</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">S-Meter:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_SMETER_SELECTION_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_SMETER_SELECTION</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">3</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="Serial_Type_Label" named="True">
+                                    <property name="state">normal</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Serial:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">4</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_SERIAL_TYPE_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_SERIAL_TYPE</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">4</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EEPROM_Type_Label" named="True">
+                                    <property name="state">normal</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">EEPROM:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">5</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_EEPROM_TYPE_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_EEPROM_TYPE</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">5</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="Encoder_Type_Label" named="True">
+                                    <property name="state">normal</property>
+                                    <property name="style">Heading4.TLabel</property>
+                                    <property name="text" translatable="yes">Encoder:</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">6</property>
+                                      <property name="sticky">e</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Label" id="EXT_ENCODER_TYPE_WIDGET" named="True">
+                                    <property name="style">Normal.TLabel</property>
+                                    <property name="textvariable">string:EXT_ENCODER_TYPE</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">5</property>
+                                      <property name="row">6</property>
+                                      <property name="sticky">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Frame" id="Outer_Nextion_Frame" named="True">
+                                    <property name="height">200</property>
+                                    <property name="width">200</property>
+                                    <layout manager="grid">
+                                      <property name="column">2</property>
+                                      <property name="row">2</property>
+                                    </layout>
+                                    <child>
+                                      <object class="ttk.Frame" id="NEXTION_BAUD_FRAME" named="True">
+                                        <property name="height">200</property>
+                                        <property name="width">200</property>
+                                        <layout manager="pack" />
+                                        <child>
+                                          <object class="ttk.Label" id="EXT_NEXTIONBAUD_Label" named="True">
+                                            <property name="style">Heading4.TLabel</property>
+                                            <property name="text" translatable="yes">Baud:</property>
+                                            <layout manager="grid">
+                                              <property name="column">0</property>
+                                              <property name="padx">10 0</property>
+                                              <property name="row">0</property>
+                                            </layout>
+                                          </object>
+                                        </child>
+                                        <child>
+                                          <object class="ttk.Label" id="EXT_NEXTIONBAUD_WIDGET" named="True">
+                                            <property name="style">Normal.TLabel</property>
+                                            <property name="textvariable">string:EXT_NEXTIONBAUD</property>
+                                            <layout manager="grid">
+                                              <property name="column">1</property>
+                                              <property name="padx">5</property>
+                                              <property name="row">0</property>
+                                              <property name="sticky">w</property>
+                                            </layout>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Frame" id="System_Info_Pins" named="True">
+                            <property name="width">200</property>
+                            <layout manager="pack">
+                              <property name="anchor">w</property>
+                              <property name="expand">true</property>
+                              <property name="fill">x</property>
+                              <property name="pady">20 0</property>
+                              <property name="side">top</property>
+                            </layout>
+                            <child>
+                              <object class="ttk.Frame" id="Pins_Title_Frame" named="True">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="anchor">w</property>
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="side">top</property>
+                                </layout>
+                                <child>
+                                  <object class="ttk.Label" id="label185" named="True">
+                                    <property name="style">Heading3.TLabel</property>
+                                    <property name="text" translatable="yes">Pin Assignments:</property>
+                                    <layout manager="pack">
+                                      <property name="anchor">w</property>
+                                    </layout>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                             <child>
-                              <object class="ttk.Label" id="System_Info_Factory_Calibration_BFO_Label" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">SSB BFO Calibration:</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">75 50</property>
-                                  <property name="pady">0 3</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">e</property>
+                              <object class="ttk.Frame" id="Pins_Content_Frame" named="True">
+                                <property name="height">200</property>
+                                <property name="width">200</property>
+                                <layout manager="pack">
+                                  <property name="expand">true</property>
+                                  <property name="fill">x</property>
+                                  <property name="padx">93</property>
+                                  <property name="side">top</property>
                                 </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="System_Info_USB_CAL_WIDGET" named="True">
-                                <property name="style">Normal.TLabel</property>
-                                <property name="textvariable">string:FACTORY_VALUES_USB_CAL</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="row">3</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label171" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">CW Sidetone:</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">75 50</property>
-                                  <property name="pady">0 3</property>
-                                  <property name="row">4</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="FACTORY_VALUES_CW_SIDETONE_WIDGET" named="True">
-                                <property name="style">Normal.TLabel</property>
-                                <property name="textvariable">string:FACTORY_VALUES_CW_SIDETONE</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="row">4</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="label184" named="True">
-                                <property name="style">Heading4.TLabel</property>
-                                <property name="text" translatable="yes">CW Speed:</property>
-                                <layout manager="grid">
-                                  <property name="column">1</property>
-                                  <property name="padx">75 50</property>
-                                  <property name="pady">0 3</property>
-                                  <property name="row">5</property>
-                                  <property name="sticky">e</property>
-                                </layout>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="ttk.Label" id="FACTORY_VALUES_CW_SPEED_WIDGET" named="True">
-                                <property name="style">Normal.TLabel</property>
-                                <property name="textvariable">string:FACTORY_VALUES_CW_SPEED</property>
-                                <layout manager="grid">
-                                  <property name="column">2</property>
-                                  <property name="row">5</property>
-                                  <property name="sticky">e</property>
-                                </layout>
+                                <child>
+                                  <object class="ttk.Frame" id="frame42">
+                                    <property name="height">200</property>
+                                    <property name="width">200</property>
+                                    <layout manager="grid">
+                                      <property name="column">0</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">n</property>
+                                    </layout>
+                                    <child>
+                                      <object class="ttk.Label" id="ENC_A_Label" named="True">
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">ENC A:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">0</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_ENC_A_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_ENC_A</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">0</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="PTT_Label" named="True">
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">PTT:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">1</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_PTT_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_PTT</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">1</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_RS_Label" named="True">
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">LCD RS:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="pady">10 0</property>
+                                          <property name="row">2</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_RS_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_LCD_PIN_RS</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="pady">10 0</property>
+                                          <property name="row">2</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D5_Label" named="True">
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">LCD D5:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">3</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D5_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_LCD_PIN_D5</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">3</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_SOFTWARESERIAL_RX_PIN_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">SW Serial RX:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="pady">10 0</property>
+                                          <property name="row">4</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_SOFTWARESERIAL_RX_PIN_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_SOFTWARESERIAL_RX_PIN</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="pady">10 0</property>
+                                          <property name="row">4</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Frame" id="frame44">
+                                    <property name="height">200</property>
+                                    <property name="width">200</property>
+                                    <layout manager="grid">
+                                      <property name="column">1</property>
+                                      <property name="padx">100 0</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">n</property>
+                                    </layout>
+                                    <child>
+                                      <object class="ttk.Label" id="ENC_B_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">ENC B:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">0</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_ENC_B_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_ENC_B</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">0</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_ANALOG_KEYER_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">CW Keyer:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">1</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_ANALOG_KEYER_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_ANALOG_KEYER</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">1</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_EN_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">LCD EN:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="pady">10 0</property>
+                                          <property name="row">2</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_EN_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_LCD_PIN_EN</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="pady">10 0</property>
+                                          <property name="row">2</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D6_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">LCD D6:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">3</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D6_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_LCD_PIN_D6</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">3</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_SOFTWARESERIAL_TX_PIN_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">SW Serial TX:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="pady">10 0</property>
+                                          <property name="row">4</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_SOFTWARESERIAL_TX_PIN_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_SOFTWARESERIAL_TX_PIN</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="pady">10 0</property>
+                                          <property name="row">4</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="ttk.Frame" id="frame52">
+                                    <property name="height">200</property>
+                                    <property name="width">200</property>
+                                    <layout manager="grid">
+                                      <property name="column">2</property>
+                                      <property name="padx">100 0</property>
+                                      <property name="row">0</property>
+                                      <property name="sticky">n</property>
+                                    </layout>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_FBUTTON_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">ENC SW:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">0</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_FBUTTON_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_FBUTTON</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">0</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_ANALOG_SMETER_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">S-Meter:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">1</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_ANALOG_SMETER_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_ANALOG_SMETER</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">1</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D4_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">LCD D4:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="pady">10 0</property>
+                                          <property name="row">2</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D4_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_LCD_PIN_D4</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="pady">10 0</property>
+                                          <property name="row">2</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D7_Label" named="True">
+                                        <property name="justify">left</property>
+                                        <property name="style">Heading4.TLabel</property>
+                                        <property name="text" translatable="yes">LCD D7:</property>
+                                        <layout manager="grid">
+                                          <property name="column">0</property>
+                                          <property name="row">3</property>
+                                          <property name="sticky">e</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="ttk.Label" id="EXT_LCD_PIN_D7_WIDGET" named="True">
+                                        <property name="style">Normal.TLabel</property>
+                                        <property name="textvariable">string:EXT_LCD_PIN_D7</property>
+                                        <layout manager="grid">
+                                          <property name="column">1</property>
+                                          <property name="padx">5 0</property>
+                                          <property name="row">3</property>
+                                          <property name="sticky">w</property>
+                                        </layout>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
                               </object>
                             </child>
                           </object>
@@ -9737,6 +10845,13 @@ Factory settings?</property>
                         <layout manager="pack">
                           <property name="side">top</property>
                         </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ttk.Label" id="VERSION_ADDRESS_WIDGET" named="True">
+                        <property name="text" translatable="yes">label167</property>
+                        <property name="textvariable">string:VERSION_ADDRESS</property>
+                        <layout manager="pack" />
                       </object>
                     </child>
                   </object>

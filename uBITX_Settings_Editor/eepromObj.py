@@ -1,3 +1,5 @@
+
+
 from lxml import etree as ET
 from bitarray import bitarray
 from time import sleep
@@ -8,6 +10,9 @@ from globalvars import *
 from printtolog import *
 
 
+
+
+
 class eepromObj:
 #
 #   Class variables
@@ -15,11 +20,17 @@ class eepromObj:
 #   we only need to parse EEPROM memory maping and usermodtemplate file once. Following variables will
 #   hold the pointer to root of the XML trees
 #
+
     EEPROMroot = None           # This template maps memory locations to contents
     UserModroot  = None         # This template is used to create an internal XML tree that is easier to work with
 
     xmlTemplatesProcessed = False       # only need to parse the templates once...
 
+    EEPROMBuffer = bytearray(MAXEEPROMSIZE)     # Used to save the in memory copy
+
+    EEPROMBufferDirty=bitarray(MAXEEPROMSIZE)         # create a bit array of the same size that we can use to track dirty "bytes"
+    EEPROMBufferDirty.setall(0)                    # clear all bits. When we write a byte into the EEPROMBuffer, we will set
+                                                    # corresponding dirty bit to 1
 
 
     #******************************************************************************************
@@ -53,6 +64,15 @@ class eepromObj:
             return memBuffer[memlocation] + (memBuffer[memlocation + 1] << 8) + (memBuffer[memlocation + 2] << 16) + (
                         memBuffer[memlocation + 3] << 24)
 
+        def get_string_FromEEPROM (self, memBuffer: bytearray, memlocation: int, number: int):
+            returnString = ''
+            i=0
+            while i < number:
+                returnString += chr(self.get_uint8_FromEEPROM(memBuffer, memlocation+i))
+                i += 1
+            return returnString
+
+
         def XML_Get_uint8_FromEEPROM  (self, xmlSubTree, settingName, buffer) -> int:
             settingTag =  xmlSubTree.find(('.//SETTING[@NAME="{}"]'.format(settingName)))
             location = int(settingTag.find("EEPROMStart").text)
@@ -62,6 +82,7 @@ class eepromObj:
             settingTag = xmlSubTree.find(('.//SETTING[@NAME="{}"]'.format(settingName)))
             memAddress = int(settingTag.find("EEPROMStart").text)
             return memAddress
+
 
 
     #         #***********************************
@@ -207,10 +228,8 @@ class eepromObj:
         def USER_CALLSIGN(self, SettingName, EEPROMBuffer, memLocation, value, EEPROMroot, _unused1):
     #       First need to confirm that a valid call sign has been entered by looking for 0x59 in
     #       "USER_CALLSIGN_KEY"
-
             if ((self.XML_Get_uint8_FromEEPROM(EEPROMroot, "USER_CALLSIGN_KEY", EEPROMBuffer) & 0xff) == MAGIC_USER_CALLSIGN_KEY):     # good a good one, can continue
                 callSignLength = self.XML_Get_uint8_FromEEPROM (EEPROMroot, "USER_CALLSIGN_LEN", EEPROMBuffer) & 0x7f   #Important to mask it here as
-
                 j: int = 0                                                                                        #Upper bit used to for LCD display callsign on startup
                 callSignStr: str = ''
                 while j < callSignLength:
@@ -1009,8 +1028,8 @@ class eepromObj:
         def ONE_TWO_LINE_TOGGLE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             value.text = BOOL_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)  & 0x01]
 
-        def NEXTION_DISPLAY_CALL_SIGN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
-            value.text = BOOL_SELECT[(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >> 1) & 0x01]
+        def DISPLAY_CALL_SIGN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            value.text = BOOL_SELECT[(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation) >> 7) & 0x01]
 
         def MAIN_SCREEN_FORMAT(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             value.text = MAIN_MENU_SELECT[(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))]
@@ -1068,6 +1087,18 @@ class eepromObj:
         def EXTENDED_KEY6_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
 
+        def EXTENDED_KEY7_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
+
+        def EXTENDED_KEY8_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
+
+        def EXTENDED_KEY9_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
+
+        def EXTENDED_KEY10_START(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, memLocation,value)
+
 
         def EXTENDED_KEY_END(self, SettingName, EEPROMBuffer, memLocation, value):
             value.text = str(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)*4)
@@ -1090,6 +1121,17 @@ class eepromObj:
         def EXTENDED_KEY6_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
 
+        def EXTENDED_KEY7_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
+
+        def EXTENDED_KEY8_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
+
+        def EXTENDED_KEY9_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
+
+        def EXTENDED_KEY10_END(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, memLocation,value)
 
         def EXTENDED_KEY_FUNC(self, SettingName, EEPROMBuffer, memLocation, value):
             value.text = FTN_KEY_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
@@ -1112,6 +1154,17 @@ class eepromObj:
         def EXTENDED_KEY6_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
 
+        def EXTENDED_KEY7_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
+
+        def EXTENDED_KEY8_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
+
+        def EXTENDED_KEY9_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
+
+        def EXTENDED_KEY10_FUNC(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, memLocation, value)
 
     #
     #         # ***********************************
@@ -1191,7 +1244,215 @@ class eepromObj:
         def CUST_LPF_FILTER7_CONTROL(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
             self.CUST_LPF_FILTER_CONTROL(SettingName, EEPROMBuffer, memLocation, value)
 
+    #
+    #         # ***********************************
+    #         #   Extended EEPROM Settings (>= 1204)
+    #         # ***********************************
+    #
+    #
 
+        def EXT_FIRMWARE_ID_ADDR1(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+            else:
+                value.text = "0x0"
+
+        def EXT_FIRMWARE_ID_ADDR2(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+            else:
+                value.text = "0x0"
+
+        def EXT_FIRMWARE_ID_ADDR3(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = hex(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+            else:
+                value.text = "0x0"
+
+        def EXT_FIRMWARE_VERSION_INFO(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,10)
+            else:
+                value.text = "N/A"
+
+        def EXT_RELEASE_NAME(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,15)
+            else:
+                value.text = "N/A"
+
+        def EXT_UBITX_BOARD_VERSION(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = EXT_UBITX_BOARD_VERSION_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+            else:
+                value.text = "N/A"
+
+        def EXT_DATE_TIME_STAMP(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+
+                timeStamp :str = ''
+
+                # Get month# and translate to month text
+
+                timeStamp += MONTH3CHARS[int(chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation))
+                                            + chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+1)))] + ' '
+
+                # get day
+                timeStamp += chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+2)) \
+                                + chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+3)) \
+                                + ', '
+
+                # Get year
+                timeStamp += chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+4)) \
+                                + chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+5)) \
+                                + chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+6)) \
+                                + chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+7)) \
+                                + " "
+
+                # Add the hour
+                timeStamp += chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+8)) \
+                                + chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+9)) \
+                                + ':'
+
+                # Add the min
+                timeStamp += chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+10)) \
+                                + chr(self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation+11))
+
+                value.text = timeStamp
+            else:
+                value.text = "N/A"
+
+        def EXT_PROCESSOR_TYPE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = EXT_PROCESSOR_TYPE_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+            else:
+                value.text = "N/A"
+
+        def EXT_DISPLAY_TYPE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = EXT_DISPLAY_TYPE_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+            else:
+                value.text = "N/A"
+
+        def EXT_FUNCTIONALITY_SET(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = EXT_FUNCTIONALITY_SET_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+            else:
+                value.text = "N/A"
+
+        def EXT_SMETER_SELECTION(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = EXT_SMETER_SELECTION_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+            else:
+                value.text = "N/A"
+
+        def EXT_SERIAL_TYPE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = EXT_SERIAL_TYPE_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+            else:
+                value.text = "N/A"
+
+        def EXT_EEPROM_TYPE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = EXT_EEPROM_TYPE_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+            else:
+                value.text = "N/A"
+
+        def EXT_ENCODER_TYPE(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = EXT_ENCODER_TYPE_SELECT[self.get_uint8_FromEEPROM(EEPROMBuffer, memLocation)]
+            else:
+                value.text = "N/A"
+
+        def EXT_ENC_A(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+            else:
+                value.text = "N/A"
+
+        def EXT_ENC_B(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+            else:
+                value.text = "N/A"
+
+        def EXT_FBUTTON(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+            else:
+                value.text = "N/A"
+
+        def EXT_PTT(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+            else:
+                value.text = "N/A"
+
+        def EXT_ANALOG_KEYER(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+            else:
+                value.text = "N/A"
+
+        def EXT_ANALOG_SMETER(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+            else:
+                value.text = "N/A"
+
+        def EXT_LCD_PIN_RS(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+            else:
+                value.text = "N/A"
+
+        def EXT_LCD_PIN_EN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+            else:
+                value.text = "N/A"
+
+        def EXT_LCD_PIN_D4(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+            else:
+                value.text = "N/A"
+
+        def EXT_LCD_PIN_D5(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+            else:
+                value.text = "N/A"
+
+        def EXT_LCD_PIN_D6(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+            else:
+                value.text = "N/A"
+
+        def EXT_LCD_PIN_D7(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+            else:
+                value.text = "N/A"
+
+        def EXT_SOFTWARESERIAL_RX_PIN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+            else:
+                value.text = "N/A"
+
+        def EXT_SOFTWARESERIAL_TX_PIN(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,5)
+            else:
+                value.text = "N/A"
+
+        def EXT_NEXTIONBAUD(self, SettingName, EEPROMBuffer, memLocation, value, _unused, _unused1):
+            if getEEPROM_SIZE () == MAXEEPROMSIZE:
+                value.text = self.get_string_FromEEPROM (EEPROMBuffer, memLocation,6)
+            else:
+                value.text = "N/A"
 
         def defaultFunc(self, *args):
                 print ("Command not recognised:", args[0])
@@ -1421,7 +1682,7 @@ class eepromObj:
 
 
         def USER_CALLSIGN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, EEPROMroot, _unused1):
-            # Get memory location assigned to Call Sign Key and CW Key Lenght
+            # Get memory location assigned to Call Sign Key and CW Key Length
             callSignKeyLocation: int = self.XML_MemLocation_FromEEPROM(EEPROMroot, "USER_CALLSIGN_KEY")
             callSignLenLocation: int = self.XML_MemLocation_FromEEPROM(EEPROMroot, "USER_CALLSIGN_LEN")
 
@@ -2287,8 +2548,8 @@ class eepromObj:
             tmpByte: bytes = (EEPROMBuffer[memLocation] & (~0x01)) | BOOL_SELECT.index(userSettingValue)
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, tmpByte)
 
-        def NEXTION_DISPLAY_CALL_SIGN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
-            tmpByte: bytes = (EEPROMBuffer[memLocation] & (~0x02)) | (BOOL_SELECT.index(userSettingValue) << 1)
+        def DISPLAY_CALL_SIGN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            tmpByte: bytes = (EEPROMBuffer[memLocation] & (~0x80)) | (BOOL_SELECT.index(userSettingValue) << 7)
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, tmpByte)
 
         def MAIN_SCREEN_FORMAT(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
@@ -2353,6 +2614,18 @@ class eepromObj:
         def EXTENDED_KEY6_START(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
             self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
 
+        def EXTENDED_KEY7_START(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY8_START(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY9_START(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY10_START(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_START(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
 
         def EXTENDED_KEY_END(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue):
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, round(int(userSettingValue)>>2))
@@ -2375,6 +2648,18 @@ class eepromObj:
         def EXTENDED_KEY6_END(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
             self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
 
+        def EXTENDED_KEY7_END(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY8_END(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY9_END(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY10_END(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_END(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
 
         def EXTENDED_KEY_FUNC(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue):
             self.set_unit8_InEEPROMBuffer(EEPROMBuffer, EEPROMBufferDirty, memLocation, FTN_KEY_SELECT.index(userSettingValue))
@@ -2395,6 +2680,18 @@ class eepromObj:
             self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
 
         def EXTENDED_KEY6_FUNC(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY7_FUNC(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY8_FUNC(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY9_FUNC(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
+
+        def EXTENDED_KEY10_FUNC(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
             self.EXTENDED_KEY_FUNC(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
 
 
@@ -2468,6 +2765,109 @@ class eepromObj:
             self.CUST_LPF_FILTER_CONTROL(SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue)
 
 
+    #
+    #         # ***********************************
+    #         #   Extended EEPROM Settings (>= 1204)
+    #         # ***********************************
+    #
+    #
+
+        def EXT_FIRMWARE_ID_ADDR1(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_FIRMWARE_ID_ADDR2(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_FIRMWARE_ID_ADDR3(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_FIRMWARE_VERSION_INFO(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_RELEASE_NAME(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_UBITX_BOARD_VERSION(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_DATE_TIME_STAMP(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_PROCESSOR_TYPE(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_DISPLAY_TYPE(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_FUNCTIONALITY_SET(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_SMETER_SELECTION(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_SERIAL_TYPE(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_EEPROM_TYPE(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_ENCODER_TYPE(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_ENC_A(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_ENC_B(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_FBUTTON(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_PTT(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_ANALOG_KEYER(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_ANALOG_SMETER(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_LCD_PIN_RS(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_LCD_PIN_EN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_LCD_PIN_D4(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_LCD_PIN_D5(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_LCD_PIN_D6(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_LCD_PIN_D7(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_SOFTWARESERIAL_RX_PIN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_SOFTWARESERIAL_TX_PIN(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+        def EXT_NEXTIONBAUD(self, SettingName, EEPROMBuffer, EEPROMBufferDirty, memLocation, userSettingValue, _unused, _unused1):
+            pass
+
+
+
+        def defaultFunc(self, *args):
+                print ("Command not recognised:", args[0])
+
+        def get(self, cmd, *args):
+                return getattr(self, cmd, self.defaultFunc)(*args)
+
+
 
 
         def defaultFunc(self, *args):
@@ -2483,11 +2883,6 @@ class eepromObj:
 
     def __init__(self, log, **kw):
         self.log = log
-        self.EEPROMBuffer = bytearray(EEPROMSIZE)     # Used to save the in memory copy
-
-        self.EEPROMBufferDirty=bitarray(EEPROMSIZE)         # create a bit array of the same size that we can use to track dirty "bytes"
-        self.EEPROMBufferDirty.setall(0)                    # clear all bits. When we write a byte into the EEPROMBuffer, we will set
-                                                            # corresponding dirty bit to 1
 
         if eepromObj.xmlTemplatesProcessed == False:        # first time here, so go ahead and parse the two template files
             eepromObj.xmlTemplatesProcessed = True          # Only one try per customer
@@ -2500,7 +2895,7 @@ class eepromObj:
                 eepromObj.EEPROMroot = ET.parse(EEPROMMEMORYMAP)
             except:
                 self.log.println("timestamp",  EEPROMMEMORYMAP + " is missing or corrupted")
-                tk.messagebox.showerror(title="FATAL ERROR", message=EEPROMMEMORYMAP + " is missing or corrupted. Please re-install application. \nEXITING")
+                tkinter.messagebox.showerror(title="FATAL ERROR", message=EEPROMMEMORYMAP + " is missing or corrupted. Please re-install application. \nEXITING")
                 sys.exit(-1)
 
             self.log.println("timestamp",  "Completed preprocessing of EEPROM Memory Mapping")
@@ -2512,16 +2907,10 @@ class eepromObj:
                 eepromObj.UserModroot = ET.parse(USERMODFILETEMPLACE)
             except:
                 self.log.printerror("timestamp",  USERMODFILETEMPLACE + " is missing or corrupted")
-                tk.messagebox.showerror(title="FATAL ERROR", message=USERMODFILETEMPLACE + " is missing or corrupted. Please re-install application. \nEXITING")
+                tkinter.messagebox.showerror(title="FATAL ERROR", message=USERMODFILETEMPLACE + " is missing or corrupted. Please re-install application. \nEXITING")
                 sys.exit(-1)
 
             self.log.println("timestamp",  "Completed preprocessing of User Modification Template")
-
-    def read(self):
-        pass
-
-    def write(self):
-        pass
 
     def decode(self)->object:
         #
@@ -2558,7 +2947,7 @@ class eepromObj:
 
             if (userSettingTag != None):
                 valueTag=userSettingTag.find('.//value')
-                UserMods.get(userSettingName, userSettingName, self.EEPROMBuffer, memLocation, valueTag, eepromObj.EEPROMroot, userSettingTag)
+                UserMods.get(userSettingName, userSettingName, eepromObj.EEPROMBuffer, memLocation, valueTag, eepromObj.EEPROMroot, userSettingTag)
 
         return eepromObj.UserModroot
 
@@ -2591,7 +2980,7 @@ class eepromObj:
             memLocation = int(eepromSetting.find("EEPROMStart").text)
 
             if (userSettingValue != None):
-                EEPROM_Memory.set(userSettingName, userSettingName, self.EEPROMBuffer, self.EEPROMBufferDirty, memLocation, userSettingValue, eepromObj.EEPROMroot, userSetting)
+                EEPROM_Memory.set(userSettingName, userSettingName, eepromObj.EEPROMBuffer, eepromObj.EEPROMBufferDirty, memLocation, userSettingValue, eepromObj.EEPROMroot, userSetting)
             else:
                 self.log.printerror("timestamp","Warning: skipping because value = NONE, Setting Name" + userSettingName)
 
@@ -2601,18 +2990,67 @@ class eepromObj:
 
 class eepromUBITX (eepromObj):          # subclass
 
-    def __init__(self, comPort, log, **kw):
+    def __init__(self, comPortObj, log, **kw):
         super().__init__ (log, **kw)
-        self.comPort = comPort
-
-    def read(self):                # Read from Com Port
+        self.comPortObj = comPortObj
 
 
+    def getEEPROMSize(self):                # Read from Com Port
+
+        RS232=self.comPortObj.sendCommand(bytes([0, 0, 0, 0, GETSIZECOMMAND]))
+
+        checkSum: int = 0x02
+        theEEPROMsize: int =0
+
+        lastReadTime = millis()             #get time to check for timeout
+        i = -1
+        while i < 4:
+            if RS232.in_waiting != 0:
+                lastReadTime = millis()
+                if i< 0:
+                    throwaway = RS232.read(1)
+                else:
+                    readByte = int.from_bytes(RS232.read(),"little",signed=False)
+                    theEEPROMsize += readByte << (i*8)
+                    checkSum = (checkSum + readByte ) & 0xFF
+                i += 1
+            else:
+                if (millis() - lastReadTime > SERIALTIMEOUT):
+                    self.log.printerror("timestamp","Timeout when trying to reading size of EEPROM. Assuming default of 1024 bytes.")
+                    RS232.flush()
+                    return DEFAULT_EEPROM_SIZE
+
+    #   get checksum sent by radio CAT control
+        while RS232.in_waiting == 0:
+            sleep(0.01)
+        sentCheckSum = int.from_bytes(RS232.read(1),"little",signed=False)
+
+
+    #   get trailing byte. Must be an ACK (0x00)
+        while RS232.in_waiting == 0:
+            sleep(0.01)
+        trailingByte = int.from_bytes(RS232.read(1),"little",signed=False)
+
+
+        if(sentCheckSum!=checkSum)|(trailingByte!=0):
+            self.log.printerror("timestamp","Bad Checksum on EEPROM Read")
+            tkinter.messagebox.showerror(title="ERROR", message="Bad Checksum reading size of EEPROM from Radio.\nTry restarting radio, ensuring the USB cable plugged in securely, and then restart application. \nEXITING")
+            sys.exit(-1)
+        return theEEPROMsize
+
+    def read1024Bytes(self, blockNum):
+        # blockNum is the 1024 block. 0=address 0-1023, 1=address 1024-2047, etc.
         # LSB = memlocation & 0xff
         # MSB = (memlocation >> 8) & 0xff
 
-        NumLSB = EEPROMSIZE & 0xff
-        NumMSB = (EEPROMSIZE >> 8) & 0xff
+        blockSize = 1024            # size of chunk to read
+
+        StartLSB = (blockSize * blockNum) & 0xff
+        StartMSB = ((blockSize * blockNum)  >> 8) & 0xff
+
+        NumLSB = blockSize & 0xff
+        NumMSB = (blockSize  >> 8) & 0xff
+
 
         # send command buffer to radio
         # byte1 = LSB of the start location in EEPROM
@@ -2621,86 +3059,127 @@ class eepromUBITX (eepromObj):          # subclass
         # byte4 - MSB of the total bytes to read from EEPROM
         # byte5 - Command telling the radio what to do
 
-        self.comPort.write(bytes([0, 0, NumLSB, NumMSB, READCOMMAND]))
-
-        # create buffer to save bytes being returned
-        # byte1 = 0x2 - always
-        # lots of bytes = number of bytes requested
-        # byte3 = checksum of bytes above
-        # byte4 = 0x0 (ACK)
-
+        RS232=self.comPortObj.sendCommand(bytes([StartLSB, StartMSB, NumLSB, NumMSB, READCOMMAND]))
 
         checkSum: int = 0x02
 
         i = -1
-        while i < EEPROMSIZE:
-             if self.comPort.in_waiting != 0:
+        offset = blockNum*blockSize
+        lastReadTime = millis()
+        while i < blockSize:
+            if RS232.in_waiting != 0:
+                lastReadTime = millis()
+            # if self.comPort.in_waiting != 0:
                 if i< 0:
-                    throwaway = self.comPort.read(1)
+                    throwaway = RS232.read(1)
                 else:
-                    self.EEPROMBuffer[i] = int.from_bytes(self.comPort.read(1),"little")
-                    checkSum = (checkSum+self.EEPROMBuffer[i] ) & 0xFF
+                    eepromObj.EEPROMBuffer[i+offset] = int.from_bytes(RS232.read(1),"little")
+                    checkSum = (checkSum+eepromObj.EEPROMBuffer[i+offset] ) & 0xFF
                 i += 1
+            if (millis() -lastReadTime > SERIALTIMEOUT):
+                self.log.printerror("timestamp","Timeout reading from Serial Port.")
+                RS232.flush()
+                return False
+
 
     #   get checksum sent by radio CAT control
-        while self.comPort.in_waiting == 0:
+
+        while RS232.in_waiting == 0:
             sleep(0.01)
-        sentCheckSum = int.from_bytes(self.comPort.read(1),"little",signed=False)
+
+        sentCheckSum = int.from_bytes(RS232.read(1),"little",signed=False)
 
     #   get trailing byte. Must be an ACK (0x00)
-        while self.comPort.in_waiting == 0:
+        while RS232.in_waiting == 0:
             sleep(0.01)
-        trailingByte = int.from_bytes(self.comPort.read(1),"little",signed=False)
+
+        trailingByte = int.from_bytes(RS232.read(1),"little",signed=False)
 
         if(sentCheckSum!=checkSum)|(trailingByte!=0):
             self.log.printerror("timestamp","Bad Checksum on EEPROM Read")
             tkinter.messagebox.showerror(title="ERROR", message="Bad Checksum reading from Radio.\nTry restarting radio, ensuring the USB cable plugged in securely, and then restart application. \nEXITING")
             sys.exit(-1)
 
+        #   If we made it here, have passed all the tests and so return True
+        return True
 
+    def readFromCom(self):                # Read from Com Port
+
+            #   clear out buffers before  re-reading
+
+        for i in range(0, MAXEEPROMSIZE-1):
+            eepromObj.EEPROMBuffer[i] = 0
+            eepromObj.EEPROMBufferDirty[i] = 0
+
+        self.log.println("timestamp",  "Reading from EEPROM")
+
+        if(self.read1024Bytes(0) != True):          #   A return value of True indicates we were successful reading 1024 bytes
+            return False
+
+        # Reaching this point means we were able to read 1024 bytes from the EEPROM. We can now check whether
+        # large (>2048 or larger EEPROM) or small EEPROM (< 1024). Set it properly so we don't try to read bad data
+
+        if (eepromObj.EEPROMBuffer[VERSION_ADDRESS]  >= KD8CEC_V2_INTERNAL_VERSION_NUM):     #we have V2 or better, can ask what is the EEPROM size
+            setEEPROM_SIZE(self.getEEPROMSize())
+        else:
+            setEEPROM_SIZE(DEFAULT_EEPROM_SIZE)          # We have KD8CEC V1.2 or earlier, so that means only 1024 EEPROM and we can't ask...
+            return True                                 # Have read first block and this is defaulting to 1024, so we are done
+
+        if getEEPROM_SIZE () == MAXEEPROMSIZE:          # We have a 2k eeprom and so ok to read the second block
+            if (self.read1024Bytes(1)   != True):        # read the second 1024 bytes.If we don't get True, flag failure
+                self.log.printerror("timestamp",  "Error reading EEPROM. Please check your Serial Port selection and try reading again")
+                return False
+        return True
 
     def writeByteToEEPROM(self, memAddress: int, outbyte: int):
         self.log.println("timestamp","EEPROM Memory Address = " + str(memAddress))
         LSB: bytes = memAddress & 0xff
         MSB: bytes = (memAddress >> 8) & 0xff
-    #    print(type(LSB),"\t", type(MSB),"\t", type(outbyte))
-    #    print(memAddress)
+
         checkByte: int = ((LSB + MSB + outbyte) % 256) & 0xff
-        bytesToWrite = bytes([LSB, MSB, outbyte, checkByte, WRITECOMMAND])
-        self.comPort.write(bytesToWrite)
+
+        return self.comPortObj.sendCommand(bytes([LSB, MSB, outbyte, checkByte, WRITECOMMAND]))
 
 
-    def write(self):                # Write to Com Port
+    def write(self, protectFactory):                # Write to Com Port
 
         self.log.println("timestamp","The Following EEPROM Locations Were Updated")
         i: int = 0
-        while i < EEPROMSIZE:
-            if self.EEPROMBufferDirty[i]:  # Got a dirty byte
-    #            print(f"{i:04}", "\t", inMemBuffer[i],"\t",type(inMemBuffer[i]))
-                self.writeByteToEEPROM(i, self.EEPROMBuffer[i])
+        cntWritten = 0          # keeps track of bytes written
+        while i < MAXWRITETOEEPROM:
+            if eepromObj.EEPROMBufferDirty[i]:  # Got a dirty byte
+                if ((protectFactory == "YES") & ( i>=STARTFACTOREYRESTORE) & (i <= ENDFACTORYRESTORE)):
+                    self.log.printerror("timestamp", "Factory Data Protection is ON")
+                    self.log.printerror("timestamp","EEPROM Memory Address = " + str(i) + " not written")
+                else:
 
-                doneWithByte: bool = False
-                retryCnt: int = 0
-                while True:  # keep tring to write until successful or exceed # retries
+                    RS232=self.writeByteToEEPROM(i, eepromObj.EEPROMBuffer[i])
 
-                    while self.comPort.in_waiting == 0:
-                        sleep(0.005)
-                    resultCode = int.from_bytes(self.comPort.read(1), "little", signed=False)
-                    while self.comPort.in_waiting == 0:
-                        sleep(0.005)
-                    trailingByte = int.from_bytes(self.comPort.read(1), "little", signed=False)
-                    if (resultCode == OK) & (trailingByte == ACK):
-                        break
-                    else:
-                        self.log.printerror("timestamp","retrying byte =" + str(i))
-                        self.log.printerror("timestamp","resultcode=" + str(resultCode))
-                        self.log.printerror("timestamp","trailingByte=" + str(trailingByte))
-                        retryCnt += 1
-                        if retryCnt > RETRIES:
-                            self.log.printerror("timestamp","number of retries exceeded on memory location: " + str(i))
-                            return (1)  # Failure
+                    retryCnt: int = 0
+                    while True:  # keep tring to write until successful or exceed # retries
+
+                        while RS232.in_waiting == 0:
+                            sleep(0.005)
+                        resultCode = int.from_bytes(RS232.read(1), "little", signed=False)
+                        while RS232.in_waiting == 0:
+                            sleep(0.005)
+                        trailingByte = int.from_bytes(RS232.read(1), "little", signed=False)
+                        if (resultCode == OK) & (trailingByte == ACK):
+                            break
+                        else:
+                            self.log.printerror("timestamp","retrying byte =" + str(i))
+                            self.log.printerror("timestamp","resultcode=" + str(resultCode))
+                            self.log.printerror("timestamp","trailingByte=" + str(trailingByte))
+                            retryCnt += 1
+                            if retryCnt > RETRIES:
+                                self.log.printerror("timestamp","number of retries exceeded on memory location: " + str(i))
+                                return (1)  # Failure
+                    cntWritten += 1
             i += 1
-        return (0)                      # Success
+
+        #   cleardirty bit
+        eepromObj.EEPROMBufferDirty.setall(0)               
+        return (cntWritten)                      # return count of bytes written
 
 class eepromFILE (eepromObj):
     def __init__(self, fname, log, **kw):
@@ -2708,12 +3187,23 @@ class eepromFILE (eepromObj):
         self.fname = fname
 
     def read(self):                 # Read from binary file
+
         fd = open(self.fname, "rb")
-        self.EEPROMBuffer=bytearray(fd.read(EEPROMSIZE))
+        eepromObj.EEPROMBuffer=bytearray(fd.read(BACKUPFILESIZE))
         fd.close()
+
+        # Check whether large or small EEPROM. Set it properly so we don't try to read bad data
+        if (eepromObj.EEPROMBuffer[VERSION_ADDRESS]  >= KD8CEC_V2_INTERNAL_VERSION_NUM) and \
+            (eepromObj.EEPROMBuffer[EXT_FIRMWARE_ID_ADDR1]  == MAGIC_VALID_EEPROM_1) and \
+            (eepromObj.EEPROMBuffer[EXT_FIRMWARE_ID_ADDR2]  == MAGIC_VALID_EEPROM_2) and \
+            (eepromObj.EEPROMBuffer[EXT_FIRMWARE_ID_ADDR3]  == MAGIC_VALID_EEPROM_3):
+
+            setEEPROM_SIZE(MAXEEPROMSIZE ) #Command for EEPROM Size only available in V2 or greater
+        else:
+            setEEPROM_SIZE(1024)
+
 
     def write(self):                # Write to binary file
         fd = open(self.fname, "wb")
-        fd.write(self.EEPROMBuffer)
-        fd.write(b"\0"* (BACKUPFILESIZE-EEPROMSIZE))
+        fd.write(eepromObj.EEPROMBuffer)
         fd.close()

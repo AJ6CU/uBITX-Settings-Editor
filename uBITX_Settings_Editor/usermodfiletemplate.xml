@@ -81,7 +81,7 @@
 	<SETTING NAME="USB_CAL">					
 		<label>BFO (USB) Calibration</label>	<!--previously called USB Calibration. Often around 11996450-->
 		<value></value>
-		<tooltip>Adjusts BFO for best SSB reception. See HF Signals V6 Calibration video</tooltip>
+		<tooltip>Value for V5 and V6 uBITX motherboards must be between 11048000 to 11060000. Value for V3 and V4 uBITX Motherboards must be between 11990000 to 12010000. Adjusts BFO for best SSB reception. See HF Signals V6 Calibration video</tooltip>
 	</SETTING>
 	<SETTING NAME="CW_CAL">						
 		<label>CW BFO Calibration</label>
@@ -781,10 +781,10 @@
 -->
 	<SETTING NAME="TUNING_RESTICTIONS">						<!--Not clear this works at the moment....	-->						
 		<label>Tune Control</label>							
-		<value></value>										<!--Choice of NONE or BAND. BAND means only when in encoder tuning mode,
-																you will hop between bands. If you selected NONE, you will actually
-																move up or down on the VFO by 100KHz. -->
-		<tooltip>Selecting BAND restricts "Band Select Mode" menu to tuning betweem Ham Bands. Selecting NONE means that when you are in "Band Select Mode, you will actually tune up or down by 100KHz.</tooltip>
+		<value></value>										<!--Choice of 200Khz or BAND. BAND means only when in encoder tuning mode,
+																you will hop between bands. If you selected 200Khz, you will actually
+																move up or down on the VFO by 200KHz. -->
+		<tooltip>Selecting BAND restricts "Band Select Mode" menu to tuning betweem Ham Bands. Selecting 200Khz means that when you are in "Band Select Mode, you will actually tune up or down by 200KHz.</tooltip>
 	</SETTING>
 	<SETTING NAME="TX_RESTRICTIONS">
 		<label>Restrictions on TX</label>
@@ -1261,10 +1261,10 @@
 <!-- 	
 GENERAL UX
  -->
-	<SETTING NAME="NEXTION_DISPLAY_CALL_SIGN">
+	<SETTING NAME="DISPLAY_CALL_SIGN">
 		<label>Display Call Sign?</label>
-		<value>Display </value>										<!--either YES or NO-->
-		<tooltip></tooltip>											<!--appears to be unused - deprecated-->
+		<value></value>										<!--either YES or NO-->
+		<tooltip>Check to display callsign on LCD screen on 20x4 and dual 16x2 LCD's (always displayed on Nextions)</tooltip>
 	</SETTING>
 
 	<SETTING NAME="STORED_IF_SHIFT">
@@ -1394,7 +1394,66 @@ GENERAL UX
 		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
 		<tooltip>Select what happens when this key is pressed</tooltip>
 	</SETTING>
-	
+	<SETTING NAME="EXTENDED_KEY7_START">
+		<label>Key6 Start ADC</label>
+		<value></value>
+		<tooltip>Starting ADC value for this Key. Must be 1023 or less and lower than the End ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY7_END">
+		<label>Key6 End ADC</label>
+		<value></value>
+		<tooltip>Ending ADC value for this Key. Must be 1023 or less and greater than the Start ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY7_FUNC">
+		<label>Key6 Function</label>
+		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+		<tooltip>Select what happens when this key is pressed</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY8_START">
+		<label>Key6 Start ADC</label>
+		<value></value>
+		<tooltip>Starting ADC value for this Key. Must be 1023 or less and lower than the End ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY8_END">
+		<label>Key6 End ADC</label>
+		<value></value>
+		<tooltip>Ending ADC value for this Key. Must be 1023 or less and greater than the Start ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY8_FUNC">
+		<label>Key6 Function</label>
+		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+		<tooltip>Select what happens when this key is pressed</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY9_START">
+		<label>Key6 Start ADC</label>
+		<value></value>
+		<tooltip>Starting ADC value for this Key. Must be 1023 or less and lower than the End ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY9_END">
+		<label>Key6 End ADC</label>
+		<value></value>
+		<tooltip>Ending ADC value for this Key. Must be 1023 or less and greater than the Start ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY9_FUNC">
+		<label>Key6 Function</label>
+		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+		<tooltip>Select what happens when this key is pressed</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY10_START">
+		<label>Key6 Start ADC</label>
+		<value></value>
+		<tooltip>Starting ADC value for this Key. Must be 1023 or less and lower than the End ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY10_END">
+		<label>Key6 End ADC</label>
+		<value></value>
+		<tooltip>Ending ADC value for this Key. Must be 1023 or less and greater than the Start ADC</tooltip>
+	</SETTING>
+	<SETTING NAME="EXTENDED_KEY10_FUNC">
+		<label>Key6 Function</label>
+		<value></value>								<!--One of: NONE, MODE, BAND-UP, BAND-DN, TUNE_STEP, VFO-A/B, SPLIT, TX, SDR-MODE, RIT		-->
+		<tooltip>Select what happens when this key is pressed</tooltip>
+	</SETTING>
 <!-- 	
 	*****************************************************************************************************
 	CUSTOM_LPF_FILTERS
@@ -1512,5 +1571,175 @@ GENERAL UX
 																			For example the value of "TX_LPF,D10" (no quotes)
 																			enable for the TX_LPF relay and set D10 high     -->
 		<tooltip></tooltip>
-	</SETTING>	
+	</SETTING>
+<!--
+	*****************************************************************************************************
+	EXTENDED EEPROM DATA
+	The following definitions are for the additional data that is stored in larger EEPROMs. For
+	the traditional Nano, these settings are ignored and where they would normally appear in the GUI
+	there value will be replaced with "N/A"
+
+	Initially, this data is primarily information about the build so that a user can confirm that the
+	right options have been selected. However, over time this additional space can be used for other
+	information.
+
+	Even though the I2C based boards use a 64k byte eeprom, both the Settings Manager and KD8CEC
+	only use a max of 2k bytes. Besides no current need for data above 2k, there are many assumptions
+	in KD8CEC, especially in the CAT control are, where there is a maximum of a 16k byte start and a
+	fetch of max of 16k.
+	*****************************************************************************************************
+ -->
+	<SETTING NAME="EXT_FIRMWARE_ID_ADDR1">
+		<label>Magic Number 1 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_FIRMWARE_ID_ADDR2">
+		<label>Magic Number 2 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_FIRMWARE_ID_ADDR3">
+		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_FIRMWARE_VERSION_INFO">
+		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+
+	<SETTING NAME="EXT_RELEASE_NAME">
+		<label>Magic Number 3 for Ext EEPROM Validation</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_DATE_TIME_STAMP">
+		<label>Date/Timestamp of Firmware Build</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+
+	<SETTING NAME="EXT_UBITX_BOARD_VERSION">
+		<label>Version of uBITX Motherboard</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+
+	<SETTING NAME="EXT_PROCESSOR_TYPE">
+		<label>Primary Processor</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_DISPLAY_TYPE">
+		<label>Type of Attached Display</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_FUNCTIONALITY_SET">
+		<label>Encoder functionality level</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_SMETER_SELECTION">
+		<label>Type of S-Meter</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+
+	<SETTING NAME="EXT_SERIAL_TYPE">
+		<label>Type of Serial (SW or HW)</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_EEPROM_TYPE">
+		<label>Internal or I2C EEPROM</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_ENCODER_TYPE">
+		<label>Encoder Connected to Analog or Digital Pins</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_NEXTIONBAUD">
+		<label>Baud of Nextion</label>
+		<value></value>
+		<tooltip></tooltip>>
+	</SETTING>
+	<SETTING NAME="EXT_ENC_A">
+		<label>Pin of ENC_A</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_ENC_B">
+		<label>Pin of ENC_B</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_FBUTTON">
+		<label>Pin of Function Button (Encoder Press)</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+
+	<SETTING NAME="EXT_PTT">
+		<label>Pin where PTT Connected</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_ANALOG_KEYER">
+		<label>Pin for CW Key Input</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_ANALOG_SMETER">
+		<label>Pin of For Onboard S-Meter Connection</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_RS">
+		<label>LCD Reset Pin</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_EN">
+		<label>LCD Enable Pin</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_D4">
+		<label>LCD D4 Pin</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_D5">
+		<label>>LCD D5 Pin</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_D6">
+		<label>>LCD D6 Pin</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+	<SETTING NAME="EXT_LCD_PIN_D7">
+		<label>>LCD D7 Pin</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+
+	<SETTING NAME="EXT_SOFTWARESERIAL_RX_PIN">
+		<label>Pin Used with SoftwareSerial for RX</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+
+	<SETTING NAME="EXT_SOFTWARESERIAL_TX_PIN">
+		<label>Pin Used with SoftwareSerial for RX</label>
+		<value></value>
+		<tooltip></tooltip>
+	</SETTING>
+
 </data>

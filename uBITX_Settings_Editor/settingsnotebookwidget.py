@@ -66,11 +66,11 @@ class SettingsnotebookWidget(ttk.Frame):
         self.separator2.configure(orient="horizontal")
         self.separator2.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="x",
             pady=10,
             side="top")
-        self.frame4.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame4.pack(anchor="w", expand=True, fill="x", side="top")
         self.General_Tuning_Steps_Frame = ttk.Frame(self.General_Frame)
         self.General_Tuning_Steps_Frame.configure(height=200, width=200)
         self.Tuning_Steps_Title_Frame = ttk.Frame(
@@ -80,10 +80,9 @@ class SettingsnotebookWidget(ttk.Frame):
             self.Tuning_Steps_Title_Frame)
         self.General_Tuning_Steps_Label.configure(
             style="Heading3.TLabel", text='Tuning Steps')
-        self.General_Tuning_Steps_Label.pack(
-            anchor="w", expand="true", fill="x")
+        self.General_Tuning_Steps_Label.pack(anchor="w", expand=True, fill="x")
         self.Tuning_Steps_Title_Frame.pack(
-            anchor="w", expand="true", fill="x", pady="10 0", side="top")
+            anchor="w", expand=True, fill="x", pady="10 0", side="top")
         self.General_Tuning_Steps_Settings_Frame = ttk.Frame(
             self.General_Tuning_Steps_Frame)
         self.General_Tuning_Steps_Settings_Frame.configure(
@@ -278,10 +277,10 @@ class SettingsnotebookWidget(ttk.Frame):
         self.separator4.configure(orient="horizontal")
         self.separator4.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="x",
             side="top")
-        self.frame7.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame7.pack(anchor="w", expand=True, fill="x", side="top")
         self.General_CW_Frame = ttk.Frame(self.General_Frame)
         self.General_CW_Frame.configure(height=200, width=200)
         self.Operator_CW_Title_Frame = ttk.Frame(self.General_CW_Frame)
@@ -291,9 +290,9 @@ class SettingsnotebookWidget(ttk.Frame):
         self.General_Settings_CW_Label.configure(
             style="Heading3.TLabel", text='CW')
         self.General_Settings_CW_Label.pack(
-            anchor="w", expand="true", fill="x", pady="20 0")
+            anchor="w", expand=True, fill="x", pady="20 0")
         self.Operator_CW_Title_Frame.pack(
-            anchor="w", expand="true", fill="x", side="top")
+            anchor="w", expand=True, fill="x", side="top")
         self.General_CW_Settings_Frame = ttk.Frame(self.General_CW_Frame)
         self.General_CW_Settings_Frame.configure(height=200, width=200)
         self.CW_KEY_TYPE_LABEL = ttk.Label(self.General_CW_Settings_Frame)
@@ -301,7 +300,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='Key Type')
         self.CW_KEY_TYPE_LABEL.grid(column=0, pady="0 10", row=0)
         self.CW_KEY_TYPE = tk.StringVar(value='STRAIGHT')
-        __values = ['STRAIGHT', 'IAMBICA', 'IAMICAB']
+        __values = ['STRAIGHT', 'IAMBICA', 'IAMBICB']
         self.CW_KEY_TYPE_WIDGET = tk.OptionMenu(
             self.General_CW_Settings_Frame,
             self.CW_KEY_TYPE,
@@ -388,17 +387,25 @@ class SettingsnotebookWidget(ttk.Frame):
         self.CW_DISPLAY_FREQ_WIDGET = tk.OptionMenu(
             self.General_CW_Settings_Frame, self.CW_DISPLAY_FREQ, *__values, command=None)
         self.CW_DISPLAY_FREQ_WIDGET.grid(column=1, pady=10, row=15)
-        self.message8 = tk.Message(self.General_CW_Settings_Frame)
-        self.message8.configure(
+        self.text4 = tk.Text(self.General_CW_Settings_Frame)
+        self.text4.configure(
+            background="#eeeeee",
             borderwidth=2,
-            font="TkTextFont",
-            justify="left",
+            font="TkMenuFont",
+            foreground="black",
+            height=4,
+            padx=5,
             pady=5,
-            relief="ridge",
+            relief="groove",
+            state="disabled",
             takefocus=False,
-            text='When in CW mode, your VFO can display either your TX or RX frequency. TX seems to be generally the preferred choice. For more details, see:\nhttp://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html',
-            width=350)
-        self.message8.grid(column=2, padx=10, row=15)
+            width=57,
+            wrap="word")
+        _text_ = 'When in CW mode, your VFO can display either your TX or RX frequency. TX seems to be generally the preferred choice. For more details, see:\nhttp://www.hamskey.com/2018/07/cw-frequency-in-ubitx.html\n'
+        self.text4.configure(state="normal")
+        self.text4.insert("0.0", _text_)
+        self.text4.configure(state="disabled")
+        self.text4.grid(column=2, padx="10 0", row=15)
         self.General_CW_Settings_Frame.pack(padx="50 0", side="top")
         self.General_CW_Frame.pack(anchor="w", side="top")
         self.frame48 = ttk.Frame(self.General_Frame)
@@ -407,11 +414,11 @@ class SettingsnotebookWidget(ttk.Frame):
         self.separator5.configure(orient="horizontal")
         self.separator5.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="x",
             pady=10,
             side="top")
-        self.frame48.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame48.pack(anchor="w", expand=True, fill="x", side="top")
         self.IF_CUSTOMIZATION_Frame = ttk.Frame(self.General_Frame)
         self.IF_CUSTOMIZATION_Frame.configure(height=200, width=200)
         self.frame61 = ttk.Frame(self.IF_CUSTOMIZATION_Frame)
@@ -421,7 +428,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading3.TLabel",
             text='Personalized IF Shift')
         self.label207.grid(column=0, row=0)
-        self.frame61.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame61.pack(anchor="w", expand=True, fill="x", side="top")
         self.frame62 = ttk.Frame(self.IF_CUSTOMIZATION_Frame)
         self.frame62.configure(height=200, width=200)
         self.STORED_IF_SHIFT_WIDGET = ttk.Checkbutton(self.frame62)
@@ -455,21 +462,21 @@ class SettingsnotebookWidget(ttk.Frame):
         self.frame62.pack(anchor="w", padx="50 0", side="top")
         self.IF_CUSTOMIZATION_Frame.pack(anchor="w", side="top")
         self.General_Frame.pack(
-            expand="true",
+            expand=True,
             fill="both",
             padx=20,
             pady=5,
             side="top")
         self.frame15.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="both",
             padx=5,
             pady=5,
             side="top")
         self.General_SF.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="both",
             side="top")
         self.settingsNotebook.add(self.General_SF, text='General')
@@ -1141,10 +1148,10 @@ class SettingsnotebookWidget(ttk.Frame):
             textvariable=self.CW_AUTO_DATA)
         self.CW_AUTO_DATA_WIDGET.pack(padx="10 0", side="top")
         self.CW_Autokeyer_Hidden_Frame.grid(row=1)
-        self.frame5.pack(expand="true", fill="both", side="top")
+        self.frame5.pack(expand=True, fill="both", side="top")
         self.Autokeyer_Frame.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="both",
             padx=5,
             pady=5,
@@ -1571,7 +1578,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label135.grid(column=6, padx="0 5", row=19)
         self.frame46.pack(
             anchor="w",
-            expand="false",
+            expand=False,
             fill="x",
             pady="20 0",
             side="top")
@@ -1640,56 +1647,10 @@ class SettingsnotebookWidget(ttk.Frame):
             sticky="ew")
         self.frame58.pack(anchor="w", pady="20 0", side="top")
         self.frame58.grid_anchor("w")
-        self.frame12 = ttk.Frame(self.frame19)
-        self.label144 = ttk.Label(self.frame12)
-        self.label144.configure(
-            justify="left",
-            relief="flat",
-            style="Heading3.TLabel",
-            text='TX/RX Restrictions')
-        self.label144.grid(
-            column=0,
-            columnspan=2,
-            padx="0 15",
-            pady="10 0",
-            row=1,
-            sticky="w")
-        self.label145 = ttk.Label(self.frame12)
-        self.label145.configure(
-            style="Heading4.TLabel",
-            text='Tuning Restriction')
-        self.label145.grid(
-            column=1,
-            padx="80 15",
-            pady="5 10",
-            row=2,
-            sticky="e")
-        self.TUNING_RESTICTIONS = tk.StringVar(value='NONE')
-        __values = ['NONE', 'BAND']
-        self.TUNING_RESTICTIONS_WIDGET = ttk.OptionMenu(
-            self.frame12, self.TUNING_RESTICTIONS, "NONE", *__values, command=None)
-        self.TUNING_RESTICTIONS_WIDGET.grid(column=2, pady="5 10", row=2)
-        self.label146 = ttk.Label(self.frame12)
-        self.label146.configure(
-            style="Heading4.TLabel",
-            text='Transmit Restriction')
-        self.label146.grid(column=1, padx="30 15", row=3, sticky="e")
-        self.TX_RESTRICTIONS = tk.StringVar(value='NONE')
-        __values = ['NONE', 'HAM']
-        self.TX_RESTRICTIONS_WIDGET = ttk.OptionMenu(
-            self.frame12, self.TX_RESTRICTIONS, "NONE", *__values, command=None)
-        self.TX_RESTRICTIONS_WIDGET.grid(column=2, row=3)
-        self.frame12.pack(
-            anchor="w",
-            expand="false",
-            fill="x",
-            pady="20 0",
-            side="top")
-        self.frame12.grid_anchor("w")
         self.frame19.pack(anchor="w", padx=20, side="top")
         self.frame16.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="both",
             padx=5,
             pady=5,
@@ -1723,9 +1684,9 @@ class SettingsnotebookWidget(ttk.Frame):
         self.General_Settings_Channels_Label.configure(
             style="Heading3.TLabel", text='Channel Memory')
         self.General_Settings_Channels_Label.pack(
-            anchor="w", expand="true", fill="x", pady="20 0")
+            anchor="w", expand=True, fill="x", pady="20 0")
         self.General_Channel_Title_Frame.pack(
-            anchor="w", expand="true", fill="x", side="top")
+            anchor="w", expand=True, fill="x", side="top")
         self.General_Channels_Settings_Frame = ttk.Frame(
             self.Standard_Channel_Frame)
         self.label70 = ttk.Label(self.General_Channels_Settings_Frame)
@@ -2367,7 +2328,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label61.configure(text='Hz')
         self.label61.grid(column=5, padx="0 10", pady="5 0", row=13)
         self.General_Channels_Settings_Frame.pack(
-            anchor="w", expand="false", fill="x", padx="50 0", pady="20 0", side="top")
+            anchor="w", expand=False, fill="x", padx="50 0", pady="20 0", side="top")
         self.General_Channels_Settings_Frame.grid_anchor("w")
         self.Standard_Channel_Frame.pack(anchor="w", side="top")
         self.show_extended_channels_frame = ttk.Frame(self.All_Channel_Frame)
@@ -2388,12 +2349,12 @@ class SettingsnotebookWidget(ttk.Frame):
         self.separator1.configure(orient="horizontal")
         self.separator1.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="x",
             pady="10 0",
             side="top")
         self.show_extended_channels_frame.pack(
-            anchor="w", expand="true", fill="x", side="top")
+            anchor="w", expand=True, fill="x", side="top")
         self.Extended_Channel_Frame = ttk.Frame(self.All_Channel_Frame)
         self.Extended_Channel_Frame.configure(height=200, width=200)
         self.Extended_Channel_Title_Frame = ttk.Frame(
@@ -2403,13 +2364,9 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label103.configure(
             style="Heading3.TLabel",
             text='Extended Channel Memory')
-        self.label103.pack(
-            anchor="w",
-            expand="false",
-            pady="20 0",
-            side="left")
+        self.label103.pack(anchor="w", expand=False, pady="20 0", side="left")
         self.Extended_Channel_Title_Frame.pack(
-            anchor="w", expand="false", side="top")
+            anchor="w", expand=False, side="top")
         self.General_Extended_Channel_Frame = ttk.Frame(
             self.Extended_Channel_Frame)
         self.label72 = ttk.Label(self.General_Extended_Channel_Frame)
@@ -2810,12 +2767,12 @@ class SettingsnotebookWidget(ttk.Frame):
         self.CHANNEL_FREQ20_MODE_WIDGET.configure(
             validatecommand=self.clearErrorMsgPersistFlag)
         self.General_Extended_Channel_Frame.pack(
-            anchor="w", expand="false", fill="x", padx="50 0", side="left")
+            anchor="w", expand=False, fill="x", padx="50 0", side="left")
         self.General_Extended_Channel_Frame.grid_anchor("w")
         self.Extended_Channel_Frame.pack(anchor="w")
         self.All_Channel_Frame.pack(side="top")
         self.Operator_Channel_Frame.pack(anchor="w", side="top")
-        self.frame45.pack(anchor="w", expand="true", fill="both", side="top")
+        self.frame45.pack(anchor="w", expand=True, fill="both", side="top")
         self.Channels_SF.pack(side="top")
         self.settingsNotebook.add(self.Channels_SF, text='Channels')
         self.WSPR_SF = ScrolledFrame(self.settingsNotebook, scrolltype="both")
@@ -2835,7 +2792,7 @@ class SettingsnotebookWidget(ttk.Frame):
             pady="15 25",
             row=0,
             sticky="n")
-        self.WSPR_Frame.pack(expand="true", fill="both", side="top")
+        self.WSPR_Frame.pack(expand=True, fill="both", side="top")
         self.frame34 = ttk.Frame(self.frame22)
         self.frame34.configure(height=200, width=200)
         self.frame35 = ttk.Frame(self.frame34)
@@ -3218,6 +3175,14 @@ class SettingsnotebookWidget(ttk.Frame):
             pady="20 0",
             row=2,
             sticky="ew")
+        self.label11 = ttk.Label(self.frame11)
+        self.label11.configure(
+            relief="flat",
+            state="normal",
+            style="Normal.TLabel",
+            text='The default display is for VFO-A and its Mode to be on second line and the top line is used for VFO-B and other info. These checkboxes allow you to customize this display.',
+            wraplength=550)
+        self.label11.grid(column=0, padx=50, pady="5 10", row=3, sticky="w")
         self.SCROLLING_DISPLAY_WIDGET = ttk.Checkbutton(self.frame11)
         self.SCROLLING_DISPLAY = tk.StringVar()
         self.SCROLLING_DISPLAY_WIDGET.configure(
@@ -3247,20 +3212,67 @@ class SettingsnotebookWidget(ttk.Frame):
             variable=self.ONE_TWO_LINE_TOGGLE)
         self.ONE_TWO_LINE_TOGGLE_WIDGET.grid(
             column=0, padx=75, row=4, sticky="w")
-        self.label11 = ttk.Label(self.frame11)
-        self.label11.configure(
-            relief="flat",
-            state="normal",
-            style="Normal.TLabel",
-            text='The default display is for VFO-A and its Mode to be on second line and the top line is used for VFO-B and other info. These checkboxes allow you to customize this display.',
-            wraplength=550)
-        self.label11.grid(column=0, padx=50, pady="5 10", row=3, sticky="w")
+        self.DISPLAY_CALL_SIGN_WIDGET = ttk.Checkbutton(self.frame11)
+        self.DISPLAY_CALL_SIGN = tk.StringVar()
+        self.DISPLAY_CALL_SIGN_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            style="CheckboxNormal.TCheckbutton",
+            text='Display Callsign on 20x4 and dual 16x2 LCD configurations',
+            variable=self.DISPLAY_CALL_SIGN)
+        self.DISPLAY_CALL_SIGN_WIDGET.grid(
+            column=0, padx=75, row=7, sticky="w")
         self.frame11.pack(anchor="w", pady=5, side="top")
         self.frame11.grid_anchor("nw")
+        self.frame12 = ttk.Frame(self.frame25)
+        self.label144 = ttk.Label(self.frame12)
+        self.label144.configure(
+            justify="left",
+            relief="flat",
+            style="Heading3.TLabel",
+            text='TX/RX Tuning Options')
+        self.label144.grid(
+            column=0,
+            columnspan=2,
+            padx="0 15",
+            pady="10 0",
+            row=1,
+            sticky="w")
+        self.label145 = ttk.Label(self.frame12)
+        self.label145.configure(style="Heading4.TLabel", text='Tuning Method')
+        self.label145.grid(
+            column=1,
+            padx="80 15",
+            pady="5 10",
+            row=2,
+            sticky="e")
+        self.TUNING_RESTICTIONS = tk.StringVar(value='BAND')
+        __values = ['200Khz', 'BAND']
+        self.TUNING_RESTICTIONS_WIDGET = ttk.OptionMenu(
+            self.frame12, self.TUNING_RESTICTIONS, "BAND", *__values, command=None)
+        self.TUNING_RESTICTIONS_WIDGET.grid(
+            column=2, pady="5 10", row=2, sticky="w")
+        self.label146 = ttk.Label(self.frame12)
+        self.label146.configure(
+            style="Heading4.TLabel",
+            text='Transmit Restrictions')
+        self.label146.grid(column=1, padx="30 15", row=3, sticky="e")
+        self.TX_RESTRICTIONS = tk.StringVar(value='NONE')
+        __values = ['NONE', 'HAM']
+        self.TX_RESTRICTIONS_WIDGET = ttk.OptionMenu(
+            self.frame12, self.TX_RESTRICTIONS, "NONE", *__values, command=None)
+        self.TX_RESTRICTIONS_WIDGET.grid(column=2, row=3, sticky="w")
+        self.frame12.pack(
+            anchor="w",
+            expand=False,
+            fill="x",
+            pady="20 0",
+            side="top")
+        self.frame12.grid_anchor("w")
         self.frame25.pack(anchor="w", padx=20, side="top")
         self.frame24.pack(
             anchor="n",
-            expand="true",
+            expand=True,
             fill="both",
             padx=5,
             pady=5,
@@ -3272,11 +3284,6 @@ class SettingsnotebookWidget(ttk.Frame):
         self.MAIN_SCREEN_FORMAT_WIDGET.configure(
             textvariable=self.MAIN_SCREEN_FORMAT)
         self.MAIN_SCREEN_FORMAT_WIDGET.pack(side="top")
-        self.NEXTION_DISPLAY_CALL_SIGN_WIDGET = ttk.Label(self.LCD_HIDDEN)
-        self.NEXTION_DISPLAY_CALL_SIGN = tk.StringVar()
-        self.NEXTION_DISPLAY_CALL_SIGN_WIDGET.configure(
-            textvariable=self.NEXTION_DISPLAY_CALL_SIGN)
-        self.NEXTION_DISPLAY_CALL_SIGN_WIDGET.pack(side="top")
         self.LCD_HIDDEN.pack(side="top")
         self.LCD_SF.pack(side="top")
         self.settingsNotebook.add(self.LCD_SF, text='Displays')
@@ -3293,7 +3300,7 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label7.pack(anchor="w", padx=5, pady="15 25", side="top")
         self.SDR_Label_Frame.pack(
             anchor="n",
-            expand="true",
+            expand=True,
             fill="x",
             padx=5,
             pady=5,
@@ -3308,17 +3315,14 @@ class SettingsnotebookWidget(ttk.Frame):
             columnspan=2,
             padx=10,
             pady="0 5",
-            row=4,
+            row=3,
             sticky="e")
         self.SDR_OFFSET_MODE = tk.StringVar(value='NONE')
         __values = ['NONE', 'FIXED', 'MHZ', 'KHZ']
         self.SDR_OFFSET_MODE_WIDGET = ttk.OptionMenu(
             self.frame14, self.SDR_OFFSET_MODE, "NONE", *__values, command=None)
         self.SDR_OFFSET_MODE_WIDGET.grid(
-            column=3, padx="0 20", pady="0 5", row=4)
-        self.message1 = tk.Message(self.frame14)
-        self.message1.configure(justify="left", relief="raised", text="NONE:\tNo offset is provided to the data send to the \n\tSDR\n\nFIXED:\tThe SDR offset frequency is added to the\n\tfrequency on the display and sent to the SDR\n\nMHZ:\tThe single MHZ digit of the radio's frequency is\n\tadded. For example, if the radio was at\n\t14.032.000, and the offset was at 30.000.000,\n\tthe resulting frequency would be 43.032.000.\n\nKHZ:\tSimilar to MHZ_OFFSET, but using the KHZ\n\tnumber. So with a 30.000.000 offset and and \n\ta 14.032.000 radio setting, the SDR will see \n\ta 30.032.000 frequency.", width=500)
-        self.message1.grid(column=2, columnspan=3, padx="100 0", row=5)
+            column=3, padx="0 20", pady="0 5", row=3)
         self.label24 = ttk.Label(self.frame14)
         self.label24.configure(
             justify="left",
@@ -3356,16 +3360,35 @@ class SettingsnotebookWidget(ttk.Frame):
             variable=self.BOOT_INTO_SDR_MODE)
         self.BOOT_INTO_SDR_MODE_WIDGET.grid(
             column=1, columnspan=4, padx=8, pady=20, row=7, sticky="w")
+        self.text5 = tk.Text(self.frame14)
+        self.text5.configure(
+            background="#eeeeee",
+            borderwidth=2,
+            font="TkMenuFont",
+            foreground="black",
+            height=15,
+            padx=5,
+            pady=5,
+            relief="groove",
+            state="disabled",
+            takefocus=False,
+            width=50,
+            wrap="word")
+        _text_ = "NONE:\tNo offset is provided to the data send to the \n\tSDR\n\nFIXED:\tThe SDR offset frequency is added to the\n\tfrequency on the display and sent to the SDR\n\nMHZ:\tThe single MHZ digit of the radio's frequency is\n\tadded. For example, if the radio was at\n\t14.032.000, and the offset was at 30.000.000,\n\tthe resulting frequency would be 43.032.000.\n\nKHZ:\tSimilar to MHZ_OFFSET, but using the KHZ\n\tnumber. So with a 30.000.000 offset and and \n\ta 14.032.000 radio setting, the SDR will see \n\ta 30.032.000 frequency.\n"
+        self.text5.configure(state="normal")
+        self.text5.insert("0.0", _text_)
+        self.text5.configure(state="disabled")
+        self.text5.grid(column=2, columnspan=3, padx="100 0", row=4)
         self.frame14.pack(
             anchor="center",
-            expand="false",
+            expand=False,
             fill="x",
             padx=20,
             side="top")
         self.frame14.grid_anchor("nw")
         self.frame13.pack(
             anchor="n",
-            expand="true",
+            expand=True,
             fill="x",
             padx=5,
             pady=5,
@@ -3384,7 +3407,7 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading2.TLabel",
             text='KD8CEC Extentions')
         self.label5.pack(anchor="w", padx=5)
-        self.frame17.pack(anchor="w", expand="false", padx=5, side="top")
+        self.frame17.pack(anchor="w", expand=False, padx=5, side="top")
         self.frame29 = ttk.Frame(self.Extensions_Frame)
         self.frame55 = ttk.Frame(self.frame29)
         self.frame55.configure(height=200, width=200)
@@ -3394,18 +3417,31 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading3.TLabel",
             text='Extended Keys')
         self.label4.grid(column=0, row=0)
-        self.message6 = tk.Message(self.frame55)
-        self.message6.configure(
+        self.Extended_Keys_Info_Box = tk.Text(self.frame55)
+        self.Extended_Keys_Info_Box.configure(
+            background="#eeeeee",
             borderwidth=2,
-            font="TkTextFont",
-            justify="left",
+            font="TkMenuFont",
+            foreground="black",
+            height=7,
+            padx=5,
             pady=5,
-            relief="ridge",
+            relief="groove",
+            state="disabled",
             takefocus=False,
-            text='Supports attachment and control of an external button box. \n\nNOTE: Does NOT work with rotary encodes driven off digital pins. This is specific to the Pico, but depending on how KD8CEC is configured, my apply to other boards too.\n\nFor details, on the original design see: \nhttp://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html',
-            width=500)
-        self.message6.grid(column=2, padx=10, row=0)
-        self.frame55.grid(column=0, columnspan=10, pady="10 5", row=0)
+            width=80,
+            wrap="word")
+        _text_ = 'Supports attachment and control of an external button box. \n\nNOTE: Does NOT work with rotary encodes driven off digital pins. This is specific to the Pico, but depending on how KD8CEC is configured, my apply to other boards too.\n\nFor details, on the original design see: \nhttp://www.hamskey.com/2018/04/add-extended-switchs-to-ubitx-with.html\n \n'
+        self.Extended_Keys_Info_Box.configure(state="normal")
+        self.Extended_Keys_Info_Box.insert("0.0", _text_)
+        self.Extended_Keys_Info_Box.configure(state="disabled")
+        self.Extended_Keys_Info_Box.grid(column=2, padx="15 0", row=0)
+        self.frame55.grid(
+            column=0,
+            columnspan=10,
+            pady="10 5",
+            row=0,
+            sticky="ns")
         self.label14 = ttk.Label(self.frame29)
         self.label14.configure(style="Heading4.TLabel", text='ADC Range')
         self.label14.grid(column=4, columnspan=2, row=5)
@@ -3571,19 +3607,6 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading4.TLabel", text='Key 5')
         self.EXTENDED_KEY5_FUNC_LABEL.grid(
             column=1, padx="0 5", pady="0 5", row=13, sticky="w")
-        self.frame30 = ttk.Frame(self.frame29)
-        self.frame30.configure(height=200, width=200)
-        self.runADCScanner_WIDGET = ttk.Button(self.frame30)
-        self.runADCScanner_WIDGET.configure(
-            style="Button4.TButton", text='ADC Scanner')
-        self.runADCScanner_WIDGET.grid(column=0, row=0)
-        self.runADCScanner_WIDGET.configure(command=self.runADCScanner)
-        self.frame30.grid(column=1, columnspan=5, pady=15, row=16, sticky="ew")
-        self.EXTENDED_KEY6_FUNC_LABEL = ttk.Label(self.frame29)
-        self.EXTENDED_KEY6_FUNC_LABEL.configure(
-            style="Heading4.TLabel", text='Key 6')
-        self.EXTENDED_KEY6_FUNC_LABEL.grid(
-            column=1, padx="0 5", pady="0 5", row=14, sticky="w")
         self.EXTENDED_KEY5_FUNC_WIDGET = ttk.Combobox(self.frame29)
         self.EXTENDED_KEY5_FUNC = tk.StringVar()
         self.EXTENDED_KEY5_FUNC_WIDGET.configure(
@@ -3616,6 +3639,11 @@ class SettingsnotebookWidget(ttk.Frame):
             self.EXTENDED_KEY5_END_WIDGET.register(
                 self.validate_EXTENDED_KEY5_END), "%P", "%V")
         self.EXTENDED_KEY5_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY6_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY6_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 6')
+        self.EXTENDED_KEY6_FUNC_LABEL.grid(
+            column=1, padx="0 5", pady="0 5", row=14, sticky="w")
         self.EXTENDED_KEY6_FUNC_WIDGET = ttk.Combobox(self.frame29)
         self.EXTENDED_KEY6_FUNC = tk.StringVar()
         self.EXTENDED_KEY6_FUNC_WIDGET.configure(
@@ -3648,6 +3676,182 @@ class SettingsnotebookWidget(ttk.Frame):
             self.EXTENDED_KEY6_END_WIDGET.register(
                 self.validate_EXTENDED_KEY6_END), "%P", "%V")
         self.EXTENDED_KEY6_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY7_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY7_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 7')
+        self.EXTENDED_KEY7_FUNC_LABEL.grid(
+            column=1, padx="0 5", pady="0 5", row=15, sticky="w")
+        self.EXTENDED_KEY7_FUNC_WIDGET = ttk.Combobox(self.frame29)
+        self.EXTENDED_KEY7_FUNC = tk.StringVar()
+        self.EXTENDED_KEY7_FUNC_WIDGET.configure(
+            textvariable=self.EXTENDED_KEY7_FUNC,
+            values='NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT',
+            width=10)
+        self.EXTENDED_KEY7_FUNC_WIDGET.grid(column=2, row=15)
+        self.EXTENDED_KEY7_START_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY7_START = tk.StringVar()
+        self.EXTENDED_KEY7_START_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY7_START,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY7_START_WIDGET.grid(column=4, pady="0 5", row=15)
+        _validatecmd = (self.EXTENDED_KEY7_START_WIDGET.register(
+            self.validate_EXTENDED_KEY7_START), "%P", "%V")
+        self.EXTENDED_KEY7_START_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY7_END_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY7_END = tk.StringVar()
+        self.EXTENDED_KEY7_END_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY7_END,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY7_END_WIDGET.grid(column=5, pady="0 5", row=15)
+        _validatecmd = (
+            self.EXTENDED_KEY7_END_WIDGET.register(
+                self.validate_EXTENDED_KEY7_END), "%P", "%V")
+        self.EXTENDED_KEY7_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY8_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY8_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 8')
+        self.EXTENDED_KEY8_FUNC_LABEL.grid(
+            column=1, padx="0 5", pady="0 5", row=16, sticky="w")
+        self.EXTENDED_KEY8_FUNC_WIDGET = ttk.Combobox(self.frame29)
+        self.EXTENDED_KEY8_FUNC = tk.StringVar()
+        self.EXTENDED_KEY8_FUNC_WIDGET.configure(
+            textvariable=self.EXTENDED_KEY8_FUNC,
+            values='NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT',
+            width=10)
+        self.EXTENDED_KEY8_FUNC_WIDGET.grid(column=2, row=16)
+        self.EXTENDED_KEY8_START_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY8_START = tk.StringVar()
+        self.EXTENDED_KEY8_START_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY8_START,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY8_START_WIDGET.grid(column=4, pady="0 5", row=16)
+        _validatecmd = (self.EXTENDED_KEY8_START_WIDGET.register(
+            self.validate_EXTENDED_KEY8_START), "%P", "%V")
+        self.EXTENDED_KEY8_START_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY8_END_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY8_END = tk.StringVar()
+        self.EXTENDED_KEY8_END_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY8_END,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY8_END_WIDGET.grid(column=5, pady="0 5", row=16)
+        _validatecmd = (
+            self.EXTENDED_KEY8_END_WIDGET.register(
+                self.validate_EXTENDED_KEY8_END), "%P", "%V")
+        self.EXTENDED_KEY8_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY9_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY9_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 9')
+        self.EXTENDED_KEY9_FUNC_LABEL.grid(
+            column=1, padx="0 5", pady="0 5", row=17, sticky="w")
+        self.EXTENDED_KEY9_FUNC_WIDGET = ttk.Combobox(self.frame29)
+        self.EXTENDED_KEY9_FUNC = tk.StringVar()
+        self.EXTENDED_KEY9_FUNC_WIDGET.configure(
+            textvariable=self.EXTENDED_KEY9_FUNC,
+            values='NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT',
+            width=10)
+        self.EXTENDED_KEY9_FUNC_WIDGET.grid(column=2, row=17)
+        self.EXTENDED_KEY9_START_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY9_START = tk.StringVar()
+        self.EXTENDED_KEY9_START_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY9_START,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY9_START_WIDGET.grid(column=4, pady="0 5", row=17)
+        _validatecmd = (self.EXTENDED_KEY9_START_WIDGET.register(
+            self.validate_EXTENDED_KEY9_START), "%P", "%V")
+        self.EXTENDED_KEY9_START_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY9_END_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY9_END = tk.StringVar()
+        self.EXTENDED_KEY9_END_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY9_END,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY9_END_WIDGET.grid(column=5, pady="0 5", row=17)
+        _validatecmd = (
+            self.EXTENDED_KEY9_END_WIDGET.register(
+                self.validate_EXTENDED_KEY9_END), "%P", "%V")
+        self.EXTENDED_KEY9_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.EXTENDED_KEY10_FUNC_LABEL = ttk.Label(self.frame29)
+        self.EXTENDED_KEY10_FUNC_LABEL.configure(
+            style="Heading4.TLabel", text='Key 10')
+        self.EXTENDED_KEY10_FUNC_LABEL.grid(
+            column=1, padx="0 5", pady="0 5", row=18, sticky="w")
+        self.EXTENDED_KEY10_FUNC_WIDGET = ttk.Combobox(self.frame29)
+        self.EXTENDED_KEY10_FUNC = tk.StringVar()
+        self.EXTENDED_KEY10_FUNC_WIDGET.configure(
+            textvariable=self.EXTENDED_KEY10_FUNC,
+            values='NONE MODE BAND-UP BAND-DN TUNE-STEP VFO-A/B SPLIT TX SDR-MODE RIT',
+            width=10)
+        self.EXTENDED_KEY10_FUNC_WIDGET.grid(column=2, row=18)
+        self.EXTENDED_KEY10_START_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY10_START = tk.StringVar()
+        self.EXTENDED_KEY10_START_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY10_START,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY10_START_WIDGET.grid(column=4, pady="0 5", row=18)
+        _validatecmd = (self.EXTENDED_KEY10_START_WIDGET.register(
+            self.validate_EXTENDED_KEY10_START), "%P", "%V")
+        self.EXTENDED_KEY10_START_WIDGET.configure(
+            validatecommand=_validatecmd)
+        self.EXTENDED_KEY10_END_WIDGET = ttk.Entry(self.frame29)
+        self.EXTENDED_KEY10_END = tk.StringVar()
+        self.EXTENDED_KEY10_END_WIDGET.configure(
+            justify="right",
+            style="NoBorder.TEntry",
+            textvariable=self.EXTENDED_KEY10_END,
+            validate="focus",
+            width=5)
+        self.EXTENDED_KEY10_END_WIDGET.grid(column=5, pady="0 5", row=18)
+        _validatecmd = (
+            self.EXTENDED_KEY10_END_WIDGET.register(
+                self.validate_EXTENDED_KEY10_END), "%P", "%V")
+        self.EXTENDED_KEY10_END_WIDGET.configure(validatecommand=_validatecmd)
+        self.frame30 = ttk.Frame(self.frame29)
+        self.frame30.configure(height=200, width=200)
+        self.runADCScanner_WIDGET = ttk.Button(self.frame30)
+        self.runADCScanner_WIDGET.configure(
+            style="Button4.TButton", text='ADC Scanner')
+        self.runADCScanner_WIDGET.grid(column=0, row=0)
+        self.runADCScanner_WIDGET.configure(command=self.runADCScannerENCSW)
+        self.frame30.grid(column=1, columnspan=5, pady=15, row=19, sticky="ew")
+        self.text1 = tk.Text(self.frame29)
+        self.text1.configure(
+            background="#eeeeee",
+            borderwidth=2,
+            font="TkMenuFont",
+            foreground="black",
+            height=4,
+            padx=5,
+            pady=5,
+            relief="groove",
+            state="disabled",
+            takefocus=False,
+            width=55,
+            wrap="word")
+        _text_ = 'All specified ADC values should be dividable by 4 (e.g. 16, 32, 40, etc.) - This is because of how the values are stored internally to save EEPROM space. If not, the values entered will be rounded down to the next number that is dividable by 4.\n'
+        self.text1.configure(state="normal")
+        self.text1.insert("0.0", _text_)
+        self.text1.configure(state="disabled")
+        self.text1.grid(column=6, padx="15 0", row=7, rowspan=10, sticky="n")
         self.frame29.pack(fill="x", padx="20 0", side="top")
         self.frame29.grid_anchor("nw")
         self.frame57 = ttk.Frame(self.Extensions_Frame)
@@ -3656,10 +3860,10 @@ class SettingsnotebookWidget(ttk.Frame):
         self.separator7.configure(orient="horizontal")
         self.separator7.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="x",
             side="top")
-        self.frame57.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame57.pack(anchor="w", expand=True, fill="x", side="top")
         self.frame8 = ttk.Frame(self.Extensions_Frame)
         self.frame56 = ttk.Frame(self.frame8)
         self.frame56.configure(height=200, width=200)
@@ -3669,18 +3873,26 @@ class SettingsnotebookWidget(ttk.Frame):
             style="Heading3.TLabel",
             text='Low Pass Filters')
         self.label10.grid(column=0, row=0, sticky="w")
-        self.message4 = tk.Message(self.frame56)
-        self.message4.configure(
+        self.text2 = tk.Text(self.frame56)
+        self.text2.configure(
+            background="#eeeeee",
             borderwidth=2,
-            font="TkTextFont",
-            justify="left",
+            font="TkMenuFont",
+            foreground="black",
+            height=7,
+            padx=5,
             pady=5,
-            relief="ridge",
+            relief="groove",
+            state="disabled",
             takefocus=False,
-            text="Provides customization of uBITX's LPF as well as external LPF attached to PA.\n\nNOTE: The EXTENDED option Does NOT work on configurations with LCD's using parallel data connections. \n\nFor details, see: \nhttp://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html",
-            width=500)
-        self.message4.grid(column=1, padx=10, row=0, sticky="w")
-        self.frame56.grid(column=0, pady="5 0", row=0)
+            width=79,
+            wrap="word")
+        _text_ = "Provides customization of uBITX's LPF as well as external LPF attached to PA.\n\nNOTE: The EXTENDED option Does NOT work on configurations with LCD's using parallel data connections. \n\nFor details, see: \nhttp://www.hamskey.com/2018/09/ubitx-setting-for-custmizedhacked-or.html\n"
+        self.text2.configure(state="normal")
+        self.text2.insert("0.0", _text_)
+        self.text2.configure(state="disabled")
+        self.text2.grid(column=1, padx="10 0", row=0)
+        self.frame56.grid(column=0, pady="5 0", row=0, sticky="w")
         self.frame18 = ttk.Frame(self.frame8)
         self.frame18.configure(height=200, width=200)
         self.CUST_LPF_ENABLED_Label = ttk.Label(self.frame18)
@@ -4473,7 +4685,8 @@ class SettingsnotebookWidget(ttk.Frame):
         self.CUSTOM_BANDPASS_EXTENDED_Frame.pack(anchor="w", side="left")
         self.CUSTOM_BANDPASS_FILTER_Frame.pack(
             anchor="w", pady="10 0", side="top")
-        self.CUST_LPF_ENABLED_Frame.grid(column=0, pady="5 0", row=5)
+        self.CUST_LPF_ENABLED_Frame.grid(
+            column=0, pady="5 0", row=5, sticky="w")
         self.hidden_data_items = ttk.Frame(self.frame8)
         self.hidden_data_items.configure(height=0, width=0)
         self.CUST_LPF_FILTER1_CONTROL_WIDGET = ttk.Label(
@@ -4527,10 +4740,10 @@ class SettingsnotebookWidget(ttk.Frame):
         self.separator8.configure(orient="horizontal")
         self.separator8.pack(
             anchor="center",
-            expand="true",
+            expand=True,
             fill="x",
             side="top")
-        self.frame59.pack(anchor="w", expand="true", fill="x", side="top")
+        self.frame59.pack(anchor="w", expand=True, fill="x", side="top")
         self.frame49 = ttk.Frame(self.Extensions_Frame)
         self.frame49.configure(height=200, width=200)
         self.frame50 = ttk.Frame(self.frame49)
@@ -4538,19 +4751,28 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label200 = ttk.Label(self.frame50)
         self.label200.configure(style="Heading3.TLabel", text='IF Adjustments')
         self.label200.grid(column=0, row=0)
-        self.message3 = tk.Message(self.frame50)
-        self.message3.configure(
+        self.text3 = tk.Text(self.frame50)
+        self.text3.configure(
+            background="#eeeeee",
             borderwidth=2,
-            font="TkTextFont",
-            justify="left",
+            font="TkMenuFont",
+            foreground="black",
+            height=2,
+            padx=5,
             pady=5,
-            relief="ridge",
-            text='Can improve receiver performance. For details, see:\nhttp://www.hamskey.com/2018/04/improves-ubitx-receive-performance-by.html',
-            width=500)
-        self.message3.grid(column=1, padx=10, row=0, sticky="w")
+            relief="groove",
+            state="disabled",
+            takefocus=False,
+            width=80,
+            wrap="word")
+        _text_ = 'Can improve receiver performance. For details, see:\nhttp://www.hamskey.com/2018/04/improves-ubitx-receive-performance-by.html\n'
+        self.text3.configure(state="normal")
+        self.text3.insert("0.0", _text_)
+        self.text3.configure(state="disabled")
+        self.text3.grid(column=1, padx="10 0", pady=5, row=0, sticky="w")
         self.frame50.pack(
             anchor="w",
-            expand="true",
+            expand=True,
             fill="x",
             padx="20 0",
             side="top")
@@ -4598,12 +4820,12 @@ class SettingsnotebookWidget(ttk.Frame):
         self.frame49.pack(anchor="w", side="top")
         self.Extensions_Frame.pack(
             anchor="w",
-            expand="true",
+            expand=True,
             fill="both",
             padx=5,
             pady="15 10",
             side="top")
-        self.Extensions_SF.pack(expand="true", fill="both", side="top")
+        self.Extensions_SF.pack(expand=True, fill="both", side="top")
         self.settingsNotebook.add(self.Extensions_SF, text='Extensions')
         self.Calibration_SF = ScrolledFrame(
             self.settingsNotebook, scrolltype="both")
@@ -4732,6 +4954,19 @@ class SettingsnotebookWidget(ttk.Frame):
             self.CW_CAL_WIDGET.register(
                 self.validate_CW_CAL), "%P", "%V")
         self.CW_CAL_WIDGET.configure(validatecommand=_validatecmd)
+        self.FACTORY_SETTING_PROTECTION_WIDGET = ttk.Checkbutton(
+            self.Radio_Calibration_Frame)
+        self.FACTORY_SETTING_PROTECTION = tk.StringVar()
+        self.FACTORY_SETTING_PROTECTION_WIDGET.configure(
+            offvalue="NO",
+            onvalue="YES",
+            style="Checkbox4.TCheckbutton",
+            text='Enable update of\nFactory settings?',
+            variable=self.FACTORY_SETTING_PROTECTION)
+        self.FACTORY_SETTING_PROTECTION_WIDGET.grid(
+            column=7, columnspan=4, padx="20 0", row=4, rowspan=2)
+        self.FACTORY_SETTING_PROTECTION_WIDGET.configure(
+            command=self.Factory_Settings_Enable_CB)
         self.I2C_ADDR_SI5351_LABEL = ttk.Label(self.Radio_Calibration_Frame)
         self.I2C_ADDR_SI5351_LABEL.configure(
             justify="center",
@@ -4745,12 +4980,15 @@ class SettingsnotebookWidget(ttk.Frame):
         self.I2C_ADDR_SI5351_WIDGET.configure(
             justify="center",
             style="Normal.TEntry",
-            takefocus=False,
             textvariable=self.I2C_ADDR_SI5351,
-            validate="none",
+            validate="focus",
             width=10)
         self.I2C_ADDR_SI5351_WIDGET.grid(
             column=3, pady="15 0", row=7, sticky="w")
+        _validatecmd = (
+            self.I2C_ADDR_SI5351_WIDGET.register(
+                self.validate_I2C_ADDR_SI5351), "%P", "%V")
+        self.I2C_ADDR_SI5351_WIDGET.configure(validatecommand=_validatecmd)
         self.Calibration_Screen_Hidden = ttk.Frame(
             self.Radio_Calibration_Frame)
         self.Calibration_Screen_Hidden.configure(height=200, width=200)
@@ -4761,19 +4999,14 @@ class SettingsnotebookWidget(ttk.Frame):
             state="disabled", textvariable=self.CW_FREQUENCY_ADJUSTMENT)
         self.CW_FREQUENCY_ADJUSTMENT_WIDGET.pack()
         self.Calibration_Screen_Hidden.grid(column=5, row=7)
-        self.FACTORY_SETTING_PROTECTION_WIDGET = ttk.Checkbutton(
+        self.CalibrationWizard_Button = ttk.Button(
             self.Radio_Calibration_Frame)
-        self.FACTORY_SETTING_PROTECTION = tk.StringVar()
-        self.FACTORY_SETTING_PROTECTION_WIDGET.configure(
-            offvalue="NO",
-            onvalue="YES",
-            style="Checkbox4.TCheckbutton",
-            text='Enable update of\nFactory settings?',
-            variable=self.FACTORY_SETTING_PROTECTION)
-        self.FACTORY_SETTING_PROTECTION_WIDGET.grid(
-            column=5, columnspan=4, row=6, rowspan=2)
-        self.FACTORY_SETTING_PROTECTION_WIDGET.configure(
-            command=self.Factory_Settings_Enable_CB)
+        self.CalibrationWizard_Button.configure(
+            style="Button3Blue.TButton", text='Calibration Wizard')
+        self.CalibrationWizard_Button.grid(
+            column=4, columnspan=2, pady="15 0", row=6, rowspan=2)
+        self.CalibrationWizard_Button.configure(
+            command=self.runCalibrationWizard)
         self.Radio_Calibration_Frame.pack(fill="x", side="top")
         self.Radio_Calibration_Frame.grid_anchor("nw")
         self.CW_Calibration_Frame = ttk.Frame(self.frame21)
@@ -4958,7 +5191,8 @@ class SettingsnotebookWidget(ttk.Frame):
         self.CAL_runADCScanner_WIDGET.configure(
             style="Button4.TButton", text='ADC Scanner')
         self.CAL_runADCScanner_WIDGET.grid(column=0, row=0)
-        self.CAL_runADCScanner_WIDGET.configure(command=self.runADCScanner)
+        self.CAL_runADCScanner_WIDGET.configure(
+            command=self.runADCScannerCWKEYER)
         self.frame3.grid(column=1, columnspan=5, pady=15, row=12, sticky="ew")
         self.CW_Calibration_Frame.pack(fill="x", side="top")
         self.CW_Calibration_Frame.grid_anchor("nw")
@@ -4966,23 +5200,6 @@ class SettingsnotebookWidget(ttk.Frame):
         self.label1 = ttk.Label(self.S_Meter_Frame)
         self.label1.configure(style="Heading3.TLabel", text='S-Meter')
         self.label1.grid(column=0, padx=0, pady="20 0", row=1, sticky="ew")
-        self.message7 = tk.Message(self.S_Meter_Frame)
-        self.message7.configure(
-            borderwidth=2,
-            font="TkTextFont",
-            justify="left",
-            pady=5,
-            relief="ridge",
-            takefocus=False,
-            text='This setting is only for S-Meters where the sensor is directly attached to the main processor. If your uBITX is using a separate processor for the S-Meter (and perhaps SWR), then DO NOT enable this one.',
-            width=300)
-        self.message7.grid(
-            column=1,
-            columnspan=2,
-            padx="30 0",
-            pady="50 0",
-            row=1,
-            sticky="nw")
         self.S_METER_LEVELS_WIDGET = ttk.Checkbutton(self.S_Meter_Frame)
         self.S_METER_LEVELS = tk.StringVar()
         self.S_METER_LEVELS_WIDGET.configure(
@@ -5190,6 +5407,34 @@ class SettingsnotebookWidget(ttk.Frame):
             command=self.runSmeterAssistant)
         self.SMETER_CONFIG_FRAME.pack()
         self.frame28.grid(column=0, columnspan=2, row=4)
+        self.text6 = tk.Text(self.S_Meter_Frame)
+        self.text6.configure(
+            background="#eeeeee",
+            borderwidth=2,
+            font="TkMenuFont",
+            foreground="black",
+            height=4,
+            padx=5,
+            pady=5,
+            relief="groove",
+            state="disabled",
+            takefocus=False,
+            width=50,
+            wrap="word")
+        _text_ = 'This setting is only for S-Meters where the sensor is directly attached to the main processor. If your uBITX is using a separate processor for the S-Meter (and perhaps SWR), then DO NOT enable this one.\n'
+        self.text6.configure(state="normal")
+        self.text6.insert("0.0", _text_)
+        self.text6.configure(state="disabled")
+        self.text6.grid(
+            column=1,
+            columnspan=2,
+            padx="30 0",
+            pady="50 0",
+            row=1,
+            sticky="nw")
+        self.frame9 = ttk.Frame(self.S_Meter_Frame)
+        self.frame9.configure(height=200, width=200)
+        self.frame9.grid(column=0, row=5)
         self.S_Meter_Frame.pack(fill="x", side="top")
         self.S_Meter_Frame.grid_anchor("nw")
         self.frame21.pack(anchor="w", padx=20, side="top")
@@ -5214,87 +5459,411 @@ class SettingsnotebookWidget(ttk.Frame):
         self.frame27.configure(height=200, width=200)
         self.System_Info_Firmware_Version = ttk.Frame(self.frame27)
         self.System_Info_Firmware_Version.configure(width=200)
-        self.System_Info_Firmware_Version_Label = ttk.Label(
+        self.Firmware_Version_Title = ttk.Frame(
             self.System_Info_Firmware_Version)
+        self.Firmware_Version_Title.configure(height=200, width=200)
+        self.System_Info_Firmware_Version_Label = ttk.Label(
+            self.Firmware_Version_Title)
         self.System_Info_Firmware_Version_Label.configure(
             style="Heading3.TLabel", text='Firmware Version: ')
-        self.System_Info_Firmware_Version_Label.grid(column=0, row=0)
-        self.KD8CEC_VERSION_WIDGET = ttk.Label(
+        self.System_Info_Firmware_Version_Label.pack(expand=True, fill="x")
+        self.Firmware_Version_Title.pack(
+            anchor="w", expand=True, fill="x", side="top")
+        self.Firmware_Version_Content = ttk.Frame(
             self.System_Info_Firmware_Version)
+        self.Firmware_Version_Content.configure(height=200, width=200)
+        self.KD8CEC_VERSION_WIDGET = ttk.Label(self.Firmware_Version_Content)
         self.KD8CEC_VERSION_WIDGET.configure(
-            style="Normal.TLabel", text='KD8CEC  ')
-        self.KD8CEC_VERSION_WIDGET.grid(column=1, row=0, sticky="ew")
-        self.VERSION_ADDRESS_WIDGET = ttk.Label(
-            self.System_Info_Firmware_Version)
-        self.VERSION_ADDRESS = tk.StringVar()
-        self.VERSION_ADDRESS_WIDGET.configure(
-            style="Normal.TLabel", textvariable=self.VERSION_ADDRESS)
-        self.VERSION_ADDRESS_WIDGET.grid(column=2, row=0, sticky="w")
+            style="Heading4.TLabel", text='KD8CEC')
+        self.KD8CEC_VERSION_WIDGET.grid(column=0, row=0, sticky="e")
+        self.EXT_FIRMWARE_VERSION_INFO_WIDGET = ttk.Label(
+            self.Firmware_Version_Content)
+        self.EXT_FIRMWARE_VERSION_INFO = tk.StringVar()
+        self.EXT_FIRMWARE_VERSION_INFO_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_FIRMWARE_VERSION_INFO)
+        self.EXT_FIRMWARE_VERSION_INFO_WIDGET.grid(
+            column=1, padx=5, row=0, sticky="w")
+        self.EXT_RELEASE_NAME_LABEL = ttk.Label(self.Firmware_Version_Content)
+        self.EXT_RELEASE_NAME_LABEL.configure(
+            style="Heading4.TLabel", text='Release Name:')
+        self.EXT_RELEASE_NAME_LABEL.grid(column=0, row=1, sticky="e")
+        self.EXT_RELEASE_NAME_WIDGET = ttk.Label(self.Firmware_Version_Content)
+        self.EXT_RELEASE_NAME = tk.StringVar()
+        self.EXT_RELEASE_NAME_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_RELEASE_NAME)
+        self.EXT_RELEASE_NAME_WIDGET.grid(column=1, padx=5, row=1, sticky="w")
+        self.label165 = ttk.Label(self.Firmware_Version_Content)
+        self.label165.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='Build Date:')
+        self.label165.grid(column=0, row=2, sticky="e")
+        self.EXT_DATE_TIME_STAMP_WIDGET = ttk.Label(
+            self.Firmware_Version_Content)
+        self.EXT_DATE_TIME_STAMP = tk.StringVar()
+        self.EXT_DATE_TIME_STAMP_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_DATE_TIME_STAMP)
+        self.EXT_DATE_TIME_STAMP_WIDGET.grid(
+            column=1, padx=5, row=2, sticky="w")
+        self.label186 = ttk.Label(self.Firmware_Version_Content)
+        self.label186.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='Functionality Set:')
+        self.label186.grid(column=0, row=3, sticky="e")
+        self.EXT_FUNCTIONALITY_SET_WIDGET = ttk.Label(
+            self.Firmware_Version_Content)
+        self.EXT_FUNCTIONALITY_SET = tk.StringVar()
+        self.EXT_FUNCTIONALITY_SET_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_FUNCTIONALITY_SET)
+        self.EXT_FUNCTIONALITY_SET_WIDGET.grid(
+            column=1, padx=5, row=3, sticky="w")
+        self.Firmware_Version_Content.pack(
+            expand=True, fill="x", padx=75, side="top")
         self.System_Info_Firmware_Version.pack(
             anchor="w", pady="20 0", side="top")
         self.System_Info_Calibration_Settings = ttk.Frame(self.frame27)
         self.System_Info_Calibration_Settings.configure(width=200)
-        self.System_Info_Factory_Calibration_Label = ttk.Label(
+        self.Factory_Data_Title = ttk.Frame(
             self.System_Info_Calibration_Settings)
+        self.Factory_Data_Title.configure(height=200, width=200)
+        self.System_Info_Factory_Calibration_Label = ttk.Label(
+            self.Factory_Data_Title)
         self.System_Info_Factory_Calibration_Label.configure(
             style="Heading3.TLabel", text='Factory Data')
-        self.System_Info_Factory_Calibration_Label.grid(
-            column=0, columnspan=3, row=0, sticky="w")
-        self.System_Info_Factory_Calibration_Master_Label = ttk.Label(
+        self.System_Info_Factory_Calibration_Label.pack(anchor="w")
+        self.Factory_Data_Title.pack(
+            anchor="w", expand=True, fill="x", side="top")
+        self.Factory_Data_Content = ttk.Frame(
             self.System_Info_Calibration_Settings)
+        self.Factory_Data_Content.configure(height=200, width=200)
+        self.System_Info_Factory_Calibration_Master_Label = ttk.Label(
+            self.Factory_Data_Content)
         self.System_Info_Factory_Calibration_Master_Label.configure(
             style="Heading4.TLabel", text='Master Calibration:')
         self.System_Info_Factory_Calibration_Master_Label.grid(
-            column=1, padx="75 50", row=2, sticky="e")
+            column=0, row=0, sticky="e")
         self.System_Info_MASTER_CAL_WIDGET = ttk.Label(
-            self.System_Info_Calibration_Settings)
+            self.Factory_Data_Content)
         self.System_Info_MASTER_CAL_WIDGET.configure(
             compound="top",
             style="Normal.TLabel",
             textvariable=self.FACTORY_VALUES_MASTER_CAL)
-        self.System_Info_MASTER_CAL_WIDGET.grid(column=2, row=2, sticky="e")
+        self.System_Info_MASTER_CAL_WIDGET.grid(
+            column=1, padx=5, row=0, sticky="w")
         self.System_Info_Factory_Calibration_BFO_Label = ttk.Label(
-            self.System_Info_Calibration_Settings)
+            self.Factory_Data_Content)
         self.System_Info_Factory_Calibration_BFO_Label.configure(
             style="Heading4.TLabel", text='SSB BFO Calibration:')
         self.System_Info_Factory_Calibration_BFO_Label.grid(
-            column=1, padx="75 50", pady="0 3", row=3, sticky="e")
-        self.System_Info_USB_CAL_WIDGET = ttk.Label(
-            self.System_Info_Calibration_Settings)
+            column=0, row=1, sticky="e")
+        self.System_Info_USB_CAL_WIDGET = ttk.Label(self.Factory_Data_Content)
         self.System_Info_USB_CAL_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.FACTORY_VALUES_USB_CAL)
-        self.System_Info_USB_CAL_WIDGET.grid(column=2, row=3, sticky="e")
-        self.label171 = ttk.Label(self.System_Info_Calibration_Settings)
+        self.System_Info_USB_CAL_WIDGET.grid(
+            column=1, padx=5, row=1, sticky="w")
+        self.label171 = ttk.Label(self.Factory_Data_Content)
         self.label171.configure(style="Heading4.TLabel", text='CW Sidetone:')
-        self.label171.grid(
-            column=1,
-            padx="75 50",
-            pady="0 3",
-            row=4,
-            sticky="e")
+        self.label171.grid(column=0, row=2, sticky="e")
         self.FACTORY_VALUES_CW_SIDETONE_WIDGET = ttk.Label(
-            self.System_Info_Calibration_Settings)
+            self.Factory_Data_Content)
         self.FACTORY_VALUES_CW_SIDETONE = tk.StringVar()
         self.FACTORY_VALUES_CW_SIDETONE_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.FACTORY_VALUES_CW_SIDETONE)
         self.FACTORY_VALUES_CW_SIDETONE_WIDGET.grid(
-            column=2, row=4, sticky="e")
-        self.label184 = ttk.Label(self.System_Info_Calibration_Settings)
+            column=1, padx=5, row=2, sticky="w")
+        self.label184 = ttk.Label(self.Factory_Data_Content)
         self.label184.configure(style="Heading4.TLabel", text='CW Speed:')
-        self.label184.grid(
-            column=1,
-            padx="75 50",
-            pady="0 3",
-            row=5,
-            sticky="e")
+        self.label184.grid(column=0, row=3, sticky="e")
         self.FACTORY_VALUES_CW_SPEED_WIDGET = ttk.Label(
-            self.System_Info_Calibration_Settings)
+            self.Factory_Data_Content)
         self.FACTORY_VALUES_CW_SPEED = tk.StringVar()
         self.FACTORY_VALUES_CW_SPEED_WIDGET.configure(
             style="Normal.TLabel", textvariable=self.FACTORY_VALUES_CW_SPEED)
-        self.FACTORY_VALUES_CW_SPEED_WIDGET.grid(column=2, row=5, sticky="e")
+        self.FACTORY_VALUES_CW_SPEED_WIDGET.grid(
+            column=1, padx=5, row=3, sticky="w")
+        self.Factory_Data_Content.pack(
+            expand=True, fill="x", padx=50, side="top")
         self.System_Info_Calibration_Settings.pack(
             anchor="w", pady="20 0", side="top")
+        self.System_Info_Hardware = ttk.Frame(self.frame27)
+        self.System_Info_Hardware.configure(width=200)
+        self.Hardware_Title = ttk.Frame(self.System_Info_Hardware)
+        self.Hardware_Title.configure(height=200, width=200)
+        self.label166 = ttk.Label(self.Hardware_Title)
+        self.label166.configure(style="Heading3.TLabel", text='Hardware: ')
+        self.label166.pack(anchor="w")
+        self.Hardware_Title.pack(anchor="w", expand=True, fill="x", side="top")
+        self.Hardware_Content = ttk.Frame(self.System_Info_Hardware)
+        self.Hardware_Content.configure(height=200, width=200)
+        self.label190 = ttk.Label(self.Hardware_Content)
+        self.label190.configure(style="Heading4.TLabel", text='uBITX Version:')
+        self.label190.grid(column=0, row=0, sticky="e")
+        self.EXT_UBITX_BOARD_VERSION_WIDGET = ttk.Label(self.Hardware_Content)
+        self.EXT_UBITX_BOARD_VERSION = tk.StringVar()
+        self.EXT_UBITX_BOARD_VERSION_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_UBITX_BOARD_VERSION)
+        self.EXT_UBITX_BOARD_VERSION_WIDGET.grid(
+            column=1, padx=5, row=0, sticky="w")
+        self.label192 = ttk.Label(self.Hardware_Content)
+        self.label192.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='Processor:')
+        self.label192.grid(column=0, row=1, sticky="e")
+        self.EXT_PROCESSOR_TYPE_WIDGET = ttk.Label(self.Hardware_Content)
+        self.EXT_PROCESSOR_TYPE = tk.StringVar()
+        self.EXT_PROCESSOR_TYPE_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_PROCESSOR_TYPE)
+        self.EXT_PROCESSOR_TYPE_WIDGET.grid(
+            column=1, padx=5, row=1, sticky="w")
+        self.label194 = ttk.Label(self.Hardware_Content)
+        self.label194.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='Display:')
+        self.label194.grid(column=0, row=2, sticky="e")
+        self.EXT_DISPLAY_TYPE_WIDGET = ttk.Label(self.Hardware_Content)
+        self.EXT_DISPLAY_TYPE = tk.StringVar()
+        self.EXT_DISPLAY_TYPE_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_DISPLAY_TYPE)
+        self.EXT_DISPLAY_TYPE_WIDGET.grid(column=1, padx=5, row=2, sticky="w")
+        self.label196 = ttk.Label(self.Hardware_Content)
+        self.label196.configure(
+            state="normal",
+            style="Heading4.TLabel",
+            text='S-Meter:')
+        self.label196.grid(column=0, row=3, sticky="e")
+        self.EXT_SMETER_SELECTION_WIDGET = ttk.Label(self.Hardware_Content)
+        self.EXT_SMETER_SELECTION = tk.StringVar()
+        self.EXT_SMETER_SELECTION_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_SMETER_SELECTION)
+        self.EXT_SMETER_SELECTION_WIDGET.grid(
+            column=1, padx=5, row=3, sticky="w")
+        self.Serial_Type_Label = ttk.Label(self.Hardware_Content)
+        self.Serial_Type_Label.configure(
+            state="normal", style="Heading4.TLabel", text='Serial:')
+        self.Serial_Type_Label.grid(column=0, row=4, sticky="e")
+        self.EXT_SERIAL_TYPE_WIDGET = ttk.Label(self.Hardware_Content)
+        self.EXT_SERIAL_TYPE = tk.StringVar()
+        self.EXT_SERIAL_TYPE_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_SERIAL_TYPE)
+        self.EXT_SERIAL_TYPE_WIDGET.grid(column=1, padx=5, row=4, sticky="w")
+        self.EEPROM_Type_Label = ttk.Label(self.Hardware_Content)
+        self.EEPROM_Type_Label.configure(
+            state="normal", style="Heading4.TLabel", text='EEPROM:')
+        self.EEPROM_Type_Label.grid(column=0, row=5, sticky="e")
+        self.EXT_EEPROM_TYPE_WIDGET = ttk.Label(self.Hardware_Content)
+        self.EXT_EEPROM_TYPE = tk.StringVar()
+        self.EXT_EEPROM_TYPE_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_EEPROM_TYPE)
+        self.EXT_EEPROM_TYPE_WIDGET.grid(column=1, padx=5, row=5, sticky="w")
+        self.Encoder_Type_Label = ttk.Label(self.Hardware_Content)
+        self.Encoder_Type_Label.configure(
+            state="normal", style="Heading4.TLabel", text='Encoder:')
+        self.Encoder_Type_Label.grid(column=0, row=6, sticky="e")
+        self.EXT_ENCODER_TYPE_WIDGET = ttk.Label(self.Hardware_Content)
+        self.EXT_ENCODER_TYPE = tk.StringVar()
+        self.EXT_ENCODER_TYPE_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_ENCODER_TYPE)
+        self.EXT_ENCODER_TYPE_WIDGET.grid(column=1, padx=5, row=6, sticky="w")
+        self.Outer_Nextion_Frame = ttk.Frame(self.Hardware_Content)
+        self.Outer_Nextion_Frame.configure(height=200, width=200)
+        self.NEXTION_BAUD_FRAME = ttk.Frame(self.Outer_Nextion_Frame)
+        self.NEXTION_BAUD_FRAME.configure(height=200, width=200)
+        self.EXT_NEXTIONBAUD_Label = ttk.Label(self.NEXTION_BAUD_FRAME)
+        self.EXT_NEXTIONBAUD_Label.configure(
+            style="Heading4.TLabel", text='Baud:')
+        self.EXT_NEXTIONBAUD_Label.grid(column=0, padx="10 0", row=0)
+        self.EXT_NEXTIONBAUD_WIDGET = ttk.Label(self.NEXTION_BAUD_FRAME)
+        self.EXT_NEXTIONBAUD = tk.StringVar()
+        self.EXT_NEXTIONBAUD_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_NEXTIONBAUD)
+        self.EXT_NEXTIONBAUD_WIDGET.grid(column=1, padx=5, row=0, sticky="w")
+        self.NEXTION_BAUD_FRAME.pack()
+        self.Outer_Nextion_Frame.grid(column=2, row=2)
+        self.Hardware_Content.pack(expand=True, fill="x", padx=18, side="top")
+        self.System_Info_Hardware.pack(
+            anchor="w",
+            expand=True,
+            fill="x",
+            pady="20 0",
+            side="top")
+        self.System_Info_Pins = ttk.Frame(self.frame27)
+        self.System_Info_Pins.configure(width=200)
+        self.Pins_Title_Frame = ttk.Frame(self.System_Info_Pins)
+        self.Pins_Title_Frame.configure(height=200, width=200)
+        self.label185 = ttk.Label(self.Pins_Title_Frame)
+        self.label185.configure(
+            style="Heading3.TLabel",
+            text='Pin Assignments:')
+        self.label185.pack(anchor="w")
+        self.Pins_Title_Frame.pack(
+            anchor="w", expand=True, fill="x", side="top")
+        self.Pins_Content_Frame = ttk.Frame(self.System_Info_Pins)
+        self.Pins_Content_Frame.configure(height=200, width=200)
+        self.frame42 = ttk.Frame(self.Pins_Content_Frame)
+        self.frame42.configure(height=200, width=200)
+        self.ENC_A_Label = ttk.Label(self.frame42)
+        self.ENC_A_Label.configure(style="Heading4.TLabel", text='ENC A:')
+        self.ENC_A_Label.grid(column=0, row=0, sticky="e")
+        self.EXT_ENC_A_WIDGET = ttk.Label(self.frame42)
+        self.EXT_ENC_A = tk.StringVar()
+        self.EXT_ENC_A_WIDGET.configure(
+            style="Normal.TLabel",
+            textvariable=self.EXT_ENC_A)
+        self.EXT_ENC_A_WIDGET.grid(column=1, padx="5 0", row=0, sticky="w")
+        self.PTT_Label = ttk.Label(self.frame42)
+        self.PTT_Label.configure(style="Heading4.TLabel", text='PTT:')
+        self.PTT_Label.grid(column=0, row=1, sticky="e")
+        self.EXT_PTT_WIDGET = ttk.Label(self.frame42)
+        self.EXT_PTT = tk.StringVar()
+        self.EXT_PTT_WIDGET.configure(
+            style="Normal.TLabel",
+            textvariable=self.EXT_PTT)
+        self.EXT_PTT_WIDGET.grid(column=1, padx="5 0", row=1, sticky="w")
+        self.EXT_LCD_PIN_RS_Label = ttk.Label(self.frame42)
+        self.EXT_LCD_PIN_RS_Label.configure(
+            style="Heading4.TLabel", text='LCD RS:')
+        self.EXT_LCD_PIN_RS_Label.grid(
+            column=0, pady="10 0", row=2, sticky="e")
+        self.EXT_LCD_PIN_RS_WIDGET = ttk.Label(self.frame42)
+        self.EXT_LCD_PIN_RS = tk.StringVar()
+        self.EXT_LCD_PIN_RS_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_LCD_PIN_RS)
+        self.EXT_LCD_PIN_RS_WIDGET.grid(
+            column=1, padx="5 0", pady="10 0", row=2, sticky="w")
+        self.EXT_LCD_PIN_D5_Label = ttk.Label(self.frame42)
+        self.EXT_LCD_PIN_D5_Label.configure(
+            style="Heading4.TLabel", text='LCD D5:')
+        self.EXT_LCD_PIN_D5_Label.grid(column=0, row=3, sticky="e")
+        self.EXT_LCD_PIN_D5_WIDGET = ttk.Label(self.frame42)
+        self.EXT_LCD_PIN_D5 = tk.StringVar()
+        self.EXT_LCD_PIN_D5_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_LCD_PIN_D5)
+        self.EXT_LCD_PIN_D5_WIDGET.grid(
+            column=1, padx="5 0", row=3, sticky="w")
+        self.EXT_SOFTWARESERIAL_RX_PIN_Label = ttk.Label(self.frame42)
+        self.EXT_SOFTWARESERIAL_RX_PIN_Label.configure(
+            justify="left", style="Heading4.TLabel", text='SW Serial RX:')
+        self.EXT_SOFTWARESERIAL_RX_PIN_Label.grid(
+            column=0, pady="10 0", row=4, sticky="e")
+        self.EXT_SOFTWARESERIAL_RX_PIN_WIDGET = ttk.Label(self.frame42)
+        self.EXT_SOFTWARESERIAL_RX_PIN = tk.StringVar()
+        self.EXT_SOFTWARESERIAL_RX_PIN_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_SOFTWARESERIAL_RX_PIN)
+        self.EXT_SOFTWARESERIAL_RX_PIN_WIDGET.grid(
+            column=1, padx="5 0", pady="10 0", row=4, sticky="w")
+        self.frame42.grid(column=0, row=0, sticky="n")
+        self.frame44 = ttk.Frame(self.Pins_Content_Frame)
+        self.frame44.configure(height=200, width=200)
+        self.ENC_B_Label = ttk.Label(self.frame44)
+        self.ENC_B_Label.configure(
+            justify="left",
+            style="Heading4.TLabel",
+            text='ENC B:')
+        self.ENC_B_Label.grid(column=0, row=0, sticky="e")
+        self.EXT_ENC_B_WIDGET = ttk.Label(self.frame44)
+        self.EXT_ENC_B = tk.StringVar()
+        self.EXT_ENC_B_WIDGET.configure(
+            style="Normal.TLabel",
+            textvariable=self.EXT_ENC_B)
+        self.EXT_ENC_B_WIDGET.grid(column=1, padx="5 0", row=0, sticky="w")
+        self.EXT_ANALOG_KEYER_Label = ttk.Label(self.frame44)
+        self.EXT_ANALOG_KEYER_Label.configure(
+            justify="left", style="Heading4.TLabel", text='CW Keyer:')
+        self.EXT_ANALOG_KEYER_Label.grid(column=0, row=1, sticky="e")
+        self.EXT_ANALOG_KEYER_WIDGET = ttk.Label(self.frame44)
+        self.EXT_ANALOG_KEYER = tk.StringVar()
+        self.EXT_ANALOG_KEYER_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_ANALOG_KEYER)
+        self.EXT_ANALOG_KEYER_WIDGET.grid(
+            column=1, padx="5 0", row=1, sticky="w")
+        self.EXT_LCD_PIN_EN_Label = ttk.Label(self.frame44)
+        self.EXT_LCD_PIN_EN_Label.configure(
+            justify="left", style="Heading4.TLabel", text='LCD EN:')
+        self.EXT_LCD_PIN_EN_Label.grid(
+            column=0, pady="10 0", row=2, sticky="e")
+        self.EXT_LCD_PIN_EN_WIDGET = ttk.Label(self.frame44)
+        self.EXT_LCD_PIN_EN = tk.StringVar()
+        self.EXT_LCD_PIN_EN_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_LCD_PIN_EN)
+        self.EXT_LCD_PIN_EN_WIDGET.grid(
+            column=1, padx="5 0", pady="10 0", row=2, sticky="w")
+        self.EXT_LCD_PIN_D6_Label = ttk.Label(self.frame44)
+        self.EXT_LCD_PIN_D6_Label.configure(
+            justify="left", style="Heading4.TLabel", text='LCD D6:')
+        self.EXT_LCD_PIN_D6_Label.grid(column=0, row=3, sticky="e")
+        self.EXT_LCD_PIN_D6_WIDGET = ttk.Label(self.frame44)
+        self.EXT_LCD_PIN_D6 = tk.StringVar()
+        self.EXT_LCD_PIN_D6_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_LCD_PIN_D6)
+        self.EXT_LCD_PIN_D6_WIDGET.grid(
+            column=1, padx="5 0", row=3, sticky="w")
+        self.EXT_SOFTWARESERIAL_TX_PIN_Label = ttk.Label(self.frame44)
+        self.EXT_SOFTWARESERIAL_TX_PIN_Label.configure(
+            justify="left", style="Heading4.TLabel", text='SW Serial TX:')
+        self.EXT_SOFTWARESERIAL_TX_PIN_Label.grid(
+            column=0, pady="10 0", row=4, sticky="e")
+        self.EXT_SOFTWARESERIAL_TX_PIN_WIDGET = ttk.Label(self.frame44)
+        self.EXT_SOFTWARESERIAL_TX_PIN = tk.StringVar()
+        self.EXT_SOFTWARESERIAL_TX_PIN_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_SOFTWARESERIAL_TX_PIN)
+        self.EXT_SOFTWARESERIAL_TX_PIN_WIDGET.grid(
+            column=1, padx="5 0", pady="10 0", row=4, sticky="w")
+        self.frame44.grid(column=1, padx="100 0", row=0, sticky="n")
+        self.frame52 = ttk.Frame(self.Pins_Content_Frame)
+        self.frame52.configure(height=200, width=200)
+        self.EXT_FBUTTON_Label = ttk.Label(self.frame52)
+        self.EXT_FBUTTON_Label.configure(
+            justify="left", style="Heading4.TLabel", text='ENC SW:')
+        self.EXT_FBUTTON_Label.grid(column=0, row=0, sticky="e")
+        self.EXT_FBUTTON_WIDGET = ttk.Label(self.frame52)
+        self.EXT_FBUTTON = tk.StringVar()
+        self.EXT_FBUTTON_WIDGET.configure(
+            style="Normal.TLabel",
+            textvariable=self.EXT_FBUTTON)
+        self.EXT_FBUTTON_WIDGET.grid(column=1, padx="5 0", row=0, sticky="w")
+        self.EXT_ANALOG_SMETER_Label = ttk.Label(self.frame52)
+        self.EXT_ANALOG_SMETER_Label.configure(
+            justify="left", style="Heading4.TLabel", text='S-Meter:')
+        self.EXT_ANALOG_SMETER_Label.grid(column=0, row=1, sticky="e")
+        self.EXT_ANALOG_SMETER_WIDGET = ttk.Label(self.frame52)
+        self.EXT_ANALOG_SMETER = tk.StringVar()
+        self.EXT_ANALOG_SMETER_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_ANALOG_SMETER)
+        self.EXT_ANALOG_SMETER_WIDGET.grid(
+            column=1, padx="5 0", row=1, sticky="w")
+        self.EXT_LCD_PIN_D4_Label = ttk.Label(self.frame52)
+        self.EXT_LCD_PIN_D4_Label.configure(
+            justify="left", style="Heading4.TLabel", text='LCD D4:')
+        self.EXT_LCD_PIN_D4_Label.grid(
+            column=0, pady="10 0", row=2, sticky="e")
+        self.EXT_LCD_PIN_D4_WIDGET = ttk.Label(self.frame52)
+        self.EXT_LCD_PIN_D4 = tk.StringVar()
+        self.EXT_LCD_PIN_D4_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_LCD_PIN_D4)
+        self.EXT_LCD_PIN_D4_WIDGET.grid(
+            column=1, padx="5 0", pady="10 0", row=2, sticky="w")
+        self.EXT_LCD_PIN_D7_Label = ttk.Label(self.frame52)
+        self.EXT_LCD_PIN_D7_Label.configure(
+            justify="left", style="Heading4.TLabel", text='LCD D7:')
+        self.EXT_LCD_PIN_D7_Label.grid(column=0, row=3, sticky="e")
+        self.EXT_LCD_PIN_D7_WIDGET = ttk.Label(self.frame52)
+        self.EXT_LCD_PIN_D7 = tk.StringVar()
+        self.EXT_LCD_PIN_D7_WIDGET.configure(
+            style="Normal.TLabel", textvariable=self.EXT_LCD_PIN_D7)
+        self.EXT_LCD_PIN_D7_WIDGET.grid(
+            column=1, padx="5 0", row=3, sticky="w")
+        self.frame52.grid(column=2, padx="100 0", row=0, sticky="n")
+        self.Pins_Content_Frame.pack(
+            expand=True, fill="x", padx=93, side="top")
+        self.System_Info_Pins.pack(
+            anchor="w",
+            expand=True,
+            fill="x",
+            pady="20 0",
+            side="top")
         self.System_Info_VFO_Frame = ttk.Frame(self.frame27)
         self.sytem_Infor_Last_Saved_Freq_Label = ttk.Label(
             self.System_Info_VFO_Frame)
@@ -5590,18 +6159,23 @@ class SettingsnotebookWidget(ttk.Frame):
         self.FACTORY_VALUES_VFO_B_WIDGET.configure(
             textvariable=self.FACTORY_VALUES_VFO_B)
         self.FACTORY_VALUES_VFO_B_WIDGET.pack(side="top")
+        self.VERSION_ADDRESS_WIDGET = ttk.Label(self.SYSTEM_INFO_HIDDEN_Frame)
+        self.VERSION_ADDRESS = tk.StringVar(value='label167')
+        self.VERSION_ADDRESS_WIDGET.configure(
+            text='label167', textvariable=self.VERSION_ADDRESS)
+        self.VERSION_ADDRESS_WIDGET.pack()
         self.SYSTEM_INFO_HIDDEN_Frame.pack(side="top")
-        self.System_Info_SF.pack(expand="true", fill="both", side="top")
+        self.System_Info_SF.pack(expand=True, fill="both", side="top")
         self.settingsNotebook.add(self.System_Info_SF, text='System Info')
         self.settingsNotebook.pack(
             anchor="w",
-            expand="true",
+            expand=True,
             fill="both",
             padx=5,
             pady="15 25",
             side="top")
         self.configure(height=600, padding=5, relief="groove", width=600)
-        self.pack(expand="true", fill="both", side="top")
+        self.pack(expand=True, fill="both", side="top")
 
         self.setup_ttk_styles()
 
@@ -5989,9 +6563,6 @@ class SettingsnotebookWidget(ttk.Frame):
     def validate_EXTENDED_KEY4_END(self, p_entry_value, v_condition):
         pass
 
-    def runADCScanner(self):
-        pass
-
     def validate_EXTENDED_KEY5_START(self, p_entry_value, v_condition):
         pass
 
@@ -6002,6 +6573,33 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def validate_EXTENDED_KEY6_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY7_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY7_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY8_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY8_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY9_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY9_END(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY10_START(self, p_entry_value, v_condition):
+        pass
+
+    def validate_EXTENDED_KEY10_END(self, p_entry_value, v_condition):
+        pass
+
+    def runADCScannerENCSW(self):
         pass
 
     def CUST_LPF_SELECTION_CB(self, option):
@@ -6076,6 +6674,12 @@ class SettingsnotebookWidget(ttk.Frame):
     def Factory_Settings_Enable_CB(self):
         pass
 
+    def validate_I2C_ADDR_SI5351(self, p_entry_value, v_condition):
+        pass
+
+    def runCalibrationWizard(self):
+        pass
+
     def validate_CW_ADC_ST_FROM(self, p_entry_value, v_condition):
         pass
 
@@ -6101,6 +6705,9 @@ class SettingsnotebookWidget(ttk.Frame):
         pass
 
     def load_Recommended_ADC_CW_Values(self):
+        pass
+
+    def runADCScannerCWKEYER(self):
         pass
 
     def SMeter_Input_CB(self):

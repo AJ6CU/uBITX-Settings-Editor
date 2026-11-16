@@ -67,7 +67,6 @@ class WSPRFreqSelect(WsprfreqselectWidget):
         self.WSPR_CURRENT_BANDWIDTH.set('{:,}'.format(1400 + int(float(scale_value))).replace(",","."))
 
     def WSPR_BAND_OK_Button_CB(self):
-        # print("wspr OK button clicked")
         self.freq_ptr.set(self.WSPR_CURRENT_FREQUENCY.get())
         newregs = buildWSPRRegs ( int(self.WSPR_CURRENT_FREQUENCY.get().replace(".","")), self.WSPR_BAND_SELECTION.get(), int(self.cal))
         self.reg1_ptr.set(newregs[0])
