@@ -220,3 +220,9 @@ uBITX_Settings_Editor/dist_macos/.DS_Store
 uBITX_Settings_Editor/videos/Introduction to the Settings Editor for the CEC Firmware on the uBITX.mp4
 uBITX_Settings_Editor/videos/Trying out CEC V2 Without Messing With a Working CEC 1.2.mp4
 uBITX_Settings_Editor/videos/Using the Settings Editor Calibration Wizard.mp4
+build/
+dist/
+*.orig
+*.rej
+.DS_Store
+__pycache__/

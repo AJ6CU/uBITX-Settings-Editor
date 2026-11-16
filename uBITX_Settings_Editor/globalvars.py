@@ -3,7 +3,10 @@ import sys
 import time
 import tkinter as tk
 
-VERSION="Release Candidate 1"
+VERSION="Release Candidate 4"
+# The release as Python packaging writes it (PEP 440): packaging/build_wheel.py
+# names the wheel and the download bundles after it. Change both together.
+APPVERSION = "2.0rc4"
 
 # default window size
 DEFAULT_ROOT_WINDOW_WIDTH = 1280
@@ -179,7 +182,12 @@ def resource_path(relative_path):
         # PyInstaller creates a temp folder and stores path in _MEIPASS
         base_path = sys._MEIPASS
     except Exception:
-        base_path = os.path.abspath(".")
+        # FIX (2026-11-15): the folder this file is in, not the current
+        # directory. Installed from a wheel, the program is started from
+        # wherever the user is (a menu, a shortcut, a terminal), and "."
+        # was then not where help.xml, the images and the EEPROM map are.
+        # Run from its own folder, as before, this is the same place.
+        base_path = os.path.dirname(os.path.abspath(__file__))
 
     return os.path.join(base_path, relative_path)
 
