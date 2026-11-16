@@ -43,7 +43,7 @@ DIST = os.path.join(ROOT, "dist")
 # window icon and the icons the installers give the app.
 DATA = [
     "help.xml", "about.xml", "eeprommemorymap.xml", "usermodfiletemplate.xml",
-    "img_*.png", "settingseditor.gif", "settingseditor.ico", "settingseditor.icns",
+    "images/*.png", "settingseditor.gif", "settingseditor.ico", "settingseditor.icns",
 ]
 
 REQUIRES = ["pyserial", "lxml", "bitarray", "pygubu", "Pillow"]
@@ -116,7 +116,10 @@ def main():
         if not found:
             sys.exit(f"missing {pattern} in uBITX_Settings_Editor/")
         for path in found:
-            shutil.copy2(path, pkg)
+            # Kept in its folder (images/...), where resource_path looks.
+            dest = os.path.join(pkg, os.path.relpath(path, SRC))
+            os.makedirs(os.path.dirname(dest), exist_ok=True)
+            shutil.copy2(path, dest)
         data.append(pattern)
     png_icon(os.path.join(pkg, "icon_256.png"))
     if os.path.exists(os.path.join(pkg, "icon_256.png")):

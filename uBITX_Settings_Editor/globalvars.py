@@ -234,23 +234,24 @@ ABOUTFILE = resource_path("about.xml")
 
 WINDOWMANAGERICON = resource_path("settingseditor.gif")
 
-LEFTCOPYARROW = resource_path("img_red-arrow-pointing-left59x36.png")
-RIGHTCOPYARROW = resource_path("img_red-arrow-pointing-right59x36.png")
+# The program's images are in images/, beside the code.
+LEFTCOPYARROW = resource_path(os.path.join("images", "img_red-arrow-pointing-left59x36.png"))
+RIGHTCOPYARROW = resource_path(os.path.join("images", "img_red-arrow-pointing-right59x36.png"))
 
-SAMPLE1ICON = resource_path("img_sample1-125x80.png")
-SAMPLE2ICON = resource_path("img_sample2-125x80.png")
-SAMPLE3ICON = resource_path("img_sample3-125x80.png")
-SAMPLE4ICON = resource_path("img_sample4-125x80.png")
-SAMPLE5ICON = resource_path("img_sample5-125x80.png")
-SAMPLE6ICON = resource_path("img_sample6-125x80.png")
-SAMPLE7ICON = resource_path("img_sample7-125x80.png")
-CUSTOMICON = resource_path("img_Custom-125x80.png")
+SAMPLE1ICON = resource_path(os.path.join("images", "img_sample1-125x80.png"))
+SAMPLE2ICON = resource_path(os.path.join("images", "img_sample2-125x80.png"))
+SAMPLE3ICON = resource_path(os.path.join("images", "img_sample3-125x80.png"))
+SAMPLE4ICON = resource_path(os.path.join("images", "img_sample4-125x80.png"))
+SAMPLE5ICON = resource_path(os.path.join("images", "img_sample5-125x80.png"))
+SAMPLE6ICON = resource_path(os.path.join("images", "img_sample6-125x80.png"))
+SAMPLE7ICON = resource_path(os.path.join("images", "img_sample7-125x80.png"))
+CUSTOMICON = resource_path(os.path.join("images", "img_Custom-125x80.png"))
 
-RELOADICON = resource_path("img_Reload-24x24.png")
-COPYICON = resource_path("img_copy_icon25x25.png")
+RELOADICON = resource_path(os.path.join("images", "img_Reload-24x24.png"))
+COPYICON = resource_path(os.path.join("images", "img_copy_icon25x25.png"))
 
-MOVELEFTARROWICON = resource_path("img_plain_red-arrow-pointing-left59x36.png")
-MOVERIGHTARROWICON = resource_path("img_plain_red-arrow-pointing-right59x36.png")
+MOVELEFTARROWICON = resource_path(os.path.join("images", "img_plain_red-arrow-pointing-left59x36.png"))
+MOVERIGHTARROWICON = resource_path(os.path.join("images", "img_plain_red-arrow-pointing-right59x36.png"))
 
 
 
