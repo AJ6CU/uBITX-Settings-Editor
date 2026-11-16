@@ -167,11 +167,11 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.frame22.configure(height=200, width=200)
         self.hfsignalsBFOTuningAid_Label = ttk.Label(self.frame22)
         self.hfsignalsBFOTuningAid = tk.StringVar(
-            value='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n')
+            value='https://web.archive.org/web/20200927090946/hfsignals.com/index.php/bfo-tuning-aid/\n')
         self.hfsignalsBFOTuningAid_Label.configure(
             compound="top",
             cursor="arrow",
-            text='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n',
+            text='https://web.archive.org/web/20200927090946/hfsignals.com/index.php/bfo-tuning-aid/\n',
             textvariable=self.hfsignalsBFOTuningAid)
         self.hfsignalsBFOTuningAid_Label.pack(side="left")
         self.hfsignalsBFOTuningAidCopy_Button = ttk.Button(self.frame22)
@@ -471,7 +471,7 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.label18.configure(
             compound="top",
             cursor="arrow",
-            text='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n',
+            text='https://web.archive.org/web/20200927090946/hfsignals.com/index.php/bfo-tuning-aid/\n',
             textvariable=self.hfsignalsBFOTuningAid)
         self.label18.pack(side="left")
         self.fineTunehfsignalsBFOTuningAidCopy_Button = ttk.Button(
@@ -568,7 +568,7 @@ class CalibrationWizardWidget(tk.Toplevel):
         self.label24.configure(
             compound="top",
             cursor="arrow",
-            text='https://www.hfsignals.com/index.php/bfo-tuning-aid/\n',
+            text='https://web.archive.org/web/20200927090946/hfsignals.com/index.php/bfo-tuning-aid/\n',
             textvariable=self.hfsignalsBFOTuningAid)
         self.label24.pack(side="left")
         self.CWTunehfsignalsBFOTuningAidCopy_Button = ttk.Button(self.frame18)

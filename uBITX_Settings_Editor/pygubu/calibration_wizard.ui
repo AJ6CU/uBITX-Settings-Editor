@@ -382,7 +382,7 @@ If you have not watched it, you should watch the youtube video below by the desi
                   <object class="ttk.Label" id="hfsignalsBFOTuningAid_Label" named="True">
                     <property name="compound">top</property>
                     <property name="cursor">arrow</property>
-                    <property name="text" translatable="yes">https://www.hfsignals.com/index.php/bfo-tuning-aid/
+                    <property name="text" translatable="yes">https://web.archive.org/web/20200927090946/hfsignals.com/index.php/bfo-tuning-aid/
 </property>
                     <property name="textvariable">string:hfsignalsBFOTuningAid</property>
                     <layout manager="pack">
@@ -1063,7 +1063,7 @@ Make sure to reconnect your antenna (if you had disconnected it) and tune to an 
                   <object class="ttk.Label" id="label18" named="True">
                     <property name="compound">top</property>
                     <property name="cursor">arrow</property>
-                    <property name="text" translatable="yes">https://www.hfsignals.com/index.php/bfo-tuning-aid/
+                    <property name="text" translatable="yes">https://web.archive.org/web/20200927090946/hfsignals.com/index.php/bfo-tuning-aid/
 </property>
                     <property name="textvariable">string:hfsignalsBFOTuningAid</property>
                     <layout manager="pack">
@@ -1276,7 +1276,7 @@ A link to the HF Signals BFO Tuning Aid is also provided below.</property>
                   <object class="ttk.Label" id="label24" named="True">
                     <property name="compound">top</property>
                     <property name="cursor">arrow</property>
-                    <property name="text" translatable="yes">https://www.hfsignals.com/index.php/bfo-tuning-aid/
+                    <property name="text" translatable="yes">https://web.archive.org/web/20200927090946/hfsignals.com/index.php/bfo-tuning-aid/
 </property>
                     <property name="textvariable">string:hfsignalsBFOTuningAid</property>
                     <layout manager="pack">

@@ -8,6 +8,14 @@ VERSION="Release Candidate 4"
 # names the wheel and the download bundles after it. Change both together.
 APPVERSION = "2.0rc4"
 
+# FIX (2026-11-15): HF Signals no longer hosts its BFO tuning aid (the old
+# page, https://www.hfsignals.com/index.php/bfo-tuning-aid/, is empty). This is the
+# Internet Archive's copy from 27 September 2020, checked to still run (it
+# asks for the microphone and draws the audio passband). Pinned to that
+# capture: the Archive's newest capture is the empty page. The calibration
+# wizard shows and copies this address.
+BFO_TUNING_AID_URL = "https://web.archive.org/web/20200927090946/hfsignals.com/index.php/bfo-tuning-aid/"
+
 # default window size
 DEFAULT_ROOT_WINDOW_WIDTH = 1280
 DEFAULT_ROOT_WINDOW_HEIGHT = 900

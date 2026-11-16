@@ -24,6 +24,10 @@ class calibrationWizard(CalibrationWizardWidget):
         self.log = log
         super().__init__()
 
+        # FIX (2026-11-15): the BFO tuning aid's address from globalvars -- HF
+        # Signals' own page is gone; see BFO_TUNING_AID_URL.
+        self.hfsignalsBFOTuningAid.set(BFO_TUNING_AID_URL + "\n")
+
         #self.iconbitmap(WINDOWMANAGERICON)
 
 
@@ -94,7 +98,7 @@ class calibrationWizard(CalibrationWizardWidget):
                        + "clipboard where you should then paste it in a document and save it")
         # Step 2 - Provides links to HF Signals Video and Calibration Aid
         tooltip.create(self.CalVideoCopy_Button, "Click to copy the URL for the HF Signals Calibration Video to your clipboard" )
-        tooltip.create(self.hfsignalsBFOTuningAidCopy_Button, "Click to copy the URL for the HF Signals BFO Tuning Aid to your clipboard" )
+        tooltip.create(self.hfsignalsBFOTuningAidCopy_Button, "Click to copy the URL for the HF Signals BFO Tuning Aid (an archived copy at the Internet Archive) to your clipboard" )
 
         # Step 3 - First effort of tuning BFO
         tooltip.create(self.moveFreqLower_Button, "Click to move the audio spectrum to the LEFT" )
@@ -117,14 +121,14 @@ class calibrationWizard(CalibrationWizardWidget):
         tooltip.create(self.newMASTER_CAL_Label, "This is the new calculated value for the MASTER_CAL. (read only)" )
 
         #step 5 - Fine tuning BFO
-        tooltip.create(self.fineTunehfsignalsBFOTuningAidCopy_Button, "Click to copy the URL for the HF Signals BFO Tuning Aid to your clipboard" )
+        tooltip.create(self.fineTunehfsignalsBFOTuningAidCopy_Button, "Click to copy the URL for the HF Signals BFO Tuning Aid (an archived copy at the Internet Archive) to your clipboard" )
         tooltip.create(self.fineTuneMoveFreqLower_Button, "Click to move the audio spectrum to the LEFT" )
         tooltip.create(self.fineTuneBFOMultiplier_OptionMenu, "Allows you to set the speed of movement of the audio spectrum" )
         tooltip.create(self.fineTuneMoveFreqHigher_Button, "Click to move the audio spectrum to the RIGHT" )
         tooltip.create(self.newBFOSetting_Entry, "New BFO Setting (read only)" )
 
         #step 6 - Setting the CW BFO
-        tooltip.create(self.CWTunehfsignalsBFOTuningAidCopy_Button, "Click to copy the URL for the HF Signals BFO Tuning Aid to your clipboard" )
+        tooltip.create(self.CWTunehfsignalsBFOTuningAidCopy_Button, "Click to copy the URL for the HF Signals BFO Tuning Aid (an archived copy at the Internet Archive) to your clipboard" )
         tooltip.create(self.moveCWBFOFreqLower_Button, "Click to move the audio spectrum to the LEFT" )
         tooltip.create(self.CWspeedMultiplier_OptionMenu, "Allows you to set the speed of movement of the audio spectrum" )
         tooltip.create(self.moveCWBFOFreqHigher_Button, "Click to move the audio spectrum to the RIGHT" )
