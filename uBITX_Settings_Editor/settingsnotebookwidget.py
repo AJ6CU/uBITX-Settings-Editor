@@ -3297,7 +3297,15 @@ class SettingsnotebookWidget(ttk.Frame):
             justify="center",
             style="Heading2.TLabel",
             text='SDR Settings')
-        self.label7.pack(anchor="w", padx=5, pady="15 25", side="top")
+        self.label7.pack(anchor="w", padx=5, pady="15 10", side="top")
+        # FIX: say these settings are KD8CEC's legacy SDR support, not used by uBITX CEC Desktop.
+        self.SDR_Legacy_Note = ttk.Label(self.SDR_Label_Frame)
+        self.SDR_Legacy_Note.configure(
+            justify="left",
+            style="Normal.TLabel",
+            text="These settings are for the legacy SDR support in KD8CEC's firmware, which needs Dr. Lee's hardware modification to the uBITX. uBITX CEC Desktop does not use them: its SDR panadapter works without them, so leave the SDR Frequency Mode at NONE and Boot into SDR Mode unticked.",
+            wraplength=550)
+        self.SDR_Legacy_Note.pack(anchor="w", padx=5, pady="0 20", side="top")
         self.SDR_Label_Frame.pack(
             anchor="n",
             expand=True,

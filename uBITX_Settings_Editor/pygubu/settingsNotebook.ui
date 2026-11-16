@@ -5780,7 +5780,21 @@ Dual LCD Config</property>
                             <layout manager="pack">
                               <property name="anchor">w</property>
                               <property name="padx">5</property>
-                              <property name="pady">15 25</property>
+                              <property name="pady">15 10</property>
+                              <property name="side">top</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ttk.Label" id="SDR_Legacy_Note" named="True">
+                            <property name="justify">left</property>
+                            <property name="style">Normal.TLabel</property>
+                            <property name="text" translatable="yes">These settings are for the legacy SDR support in KD8CEC&apos;s firmware, which needs Dr. Lee&apos;s hardware modification to the uBITX. uBITX CEC Desktop does not use them: its SDR panadapter works without them, so leave the SDR Frequency Mode at NONE and Boot into SDR Mode unticked.</property>
+                            <property name="wraplength">550</property>
+                            <layout manager="pack">
+                              <property name="anchor">w</property>
+                              <property name="padx">5</property>
+                              <property name="pady">0 20</property>
                               <property name="side">top</property>
                             </layout>
                           </object>
