@@ -8,12 +8,14 @@
       <property name="side">top</property>
     </layout>
     <child>
-      <object class="ttk.OptionMenu" id="comPortsOptionMenu" named="True">
-        <property name="command" type="command" cbtype="simple">comPortSelected</property>
-        <property name="style">Normal.TOptionMenu</property>
-        <property name="value">Select Serial Port</property>
-        <property name="values">Select Serial Port</property>
-        <property name="variable">string:availableComPorts</property>
+      <object class="ttk.Combobox" id="comPortsOptionMenu" named="True">
+        <property name="textvariable">string:availableComPorts</property>
+        <property name="values">{Select Serial Port}</property>
+        <property name="width">20</property>
+        <bind sequence="&lt;&lt;ComboboxSelected&gt;&gt;" handler="comPortSelected" add="" />
+        <bind sequence="&lt;FocusOut&gt;" handler="comPortTyped" add="" />
+        <bind sequence="&lt;KeyRelease&gt;" handler="comPortTyped" add="" />
+        <bind sequence="&lt;Return&gt;" handler="comPortTyped" add="" />
         <layout manager="grid">
           <property name="column">0</property>
           <property name="padx">0 5</property>

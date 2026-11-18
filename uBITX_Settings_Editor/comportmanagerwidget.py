@@ -7,14 +7,17 @@ class ComPortmanagerWidget(ttk.Frame):
     def __init__(self, master=None, **kw):
         super(ComPortmanagerWidget, self).__init__(master, **kw)
         self.availableComPorts = tk.StringVar(value='Select Serial Port')
-        __values = ['Select Serial Port']
-        self.comPortsOptionMenu = ttk.OptionMenu(
-            self,
-            self.availableComPorts,
-            "Select Serial Port",
-            *__values,
-            command=self.comPortSelected)
+        self.comPortsOptionMenu = ttk.Combobox(self)
+        self.comPortsOptionMenu.configure(
+            textvariable=self.availableComPorts,
+            values='{Select Serial Port}',
+            width=20)
         self.comPortsOptionMenu.grid(column=0, padx="0 5", row=0, sticky="w")
+        self.comPortsOptionMenu.bind(
+            "<<ComboboxSelected>>", self.comPortSelected, add="")
+        self.comPortsOptionMenu.bind("<FocusOut>", self.comPortTyped, add="")
+        self.comPortsOptionMenu.bind("<KeyRelease>", self.comPortTyped, add="")
+        self.comPortsOptionMenu.bind("<Return>", self.comPortTyped, add="")
         self.comPortListRefresh = tk.Button(self)
         self.comPortListRefresh.configure(
             borderwidth=0, cursor="arrow", font="TkDefaultFont")
@@ -123,7 +126,10 @@ class ComPortmanagerWidget(ttk.Frame):
         style.configure('Fixed.TNotebook')
         style.configure('Fixed.TNotebook.Tab', padding=[5, 2])
 
-    def comPortSelected(self, option):
+    def comPortSelected(self, event=None):
+        pass
+
+    def comPortTyped(self, event=None):
         pass
 
     def updateComPorts(self):

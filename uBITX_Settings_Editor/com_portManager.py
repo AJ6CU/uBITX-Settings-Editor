@@ -8,6 +8,20 @@ from comportmanagerwidget import ComPortmanagerWidget
 from time import sleep
 from globalvars import *
 
+def _is_usb_port(device):
+    """A USB serial adapter's name on Linux and macOS (Windows' COM names
+    say nothing, so they sort by name)."""
+    name = device.rsplit("/", 1)[-1]
+    return name.startswith(("ttyUSB", "ttyACM", "cu.usb", "cu.wchusb", "cu.SLAB", "tty.usb"))
+
+
+def _looks_like_port(text):
+    """Something a user could mean as a port: a device path or a COM name,
+    not the prompt or nothing."""
+    text = (text or "").strip()
+    return text.startswith("/dev/") or (text.upper().startswith("COM") and text[3:].isdigit())
+
+
 class com_portManager(ComPortmanagerWidget):
 
 
@@ -25,7 +39,12 @@ class com_portManager(ComPortmanagerWidget):
         self.actionButton_CB = actionButtonStateChange         # Callback function invoked when state change
 
         self.updateComPorts()               #preload the available com ports
-        self.comPortsOptionMenu.configure(width=15)
+        # FIX (2026-11-19): a list you can also TYPE into. A port the system
+        # has but pyserial does not list (seen on Ubuntu 26.04: /dev/ttyUSB0
+        # there and openable, yet missing from the list) can be typed in --
+        # /dev/ttyUSB0, COM7, /dev/cu.usbserial-1410 -- so a missing entry
+        # never blocks a read.
+        self.comPortsOptionMenu.configure(width=20)
         #self.comPortsOptionMenu.grid_configure(sticky='e')
 
 
@@ -64,17 +83,20 @@ class com_portManager(ComPortmanagerWidget):
     def updateComPorts(self, *args):
 
         ports = serial.tools.list_ports.comports()          #Gets list of ports
-        self.comPortList =[("Select Serial Port")]          #Seeds option list with Selection instructions
+        # FIX (2026-11-19): USB adapters first -- the radio is one; the PC's
+        # own serial ports (ttyS*, COM1) after them.
+        found = sorted((p.device for p in ports), key=lambda d: (not _is_usb_port(d), d))
+        self.comPortList = list(found)
+        self.comPortsOptionMenu.configure(values=self.comPortList)
 
-        for p in ports:                                 #this used to strip down to just the com port# or path
-            self.comPortList.append(p.device)
-
-        if com_portManager.last_com_port_selected in self.comPortList:      #check whether the last port selected is in list
-            self.comPortsOptionMenu.set_menu(*self.comPortList)             #put found ports into the option menu
-            self.availableComPorts.set(com_portManager.last_com_port_selected)          #default to last port
+        last = com_portManager.last_com_port_selected
+        if last in self.comPortList or _looks_like_port(last):
+            # The last port chosen -- listed, or typed in by hand (FIX: kept
+            # even when the list does not show it, see above).
+            self.availableComPorts.set(last)
             self.actionButton_CB('normal')                                  #signal to parent that we have a valid selection
         else:                       # no last valid port, to force selection
-            self.comPortsOptionMenu.set_menu("Select Serial Port", *self.comPortList)
+            self.availableComPorts.set("Select Serial Port")
             self.actionButton_CB('disabled')                                  #signal to parent that we have a invalid selection
         return
 
@@ -83,9 +105,20 @@ class com_portManager(ComPortmanagerWidget):
         com_portManager.last_com_port_selected = self.availableComPorts.get()
         self.actionButton_CB('normal')                                  #signal to parent that we have a valid selection
 
+    def comPortTyped(self, *args):
+        # FIX (2026-11-19): a port typed in counts as chosen once it looks
+        # like one; anything else (empty, the prompt) leaves the action
+        # buttons off.
+        typed = self.availableComPorts.get().strip()
+        if _looks_like_port(typed):
+            com_portManager.last_com_port_selected = typed
+            self.actionButton_CB('normal')
+        else:
+            self.actionButton_CB('disabled')
+
 
     def getSelectedComPort(self):
-        return self.availableComPorts.get()
+        return self.availableComPorts.get().strip()
 
 
     def sendCommand (self, theCommand): # DO WE NEED THE PORT AS AN INPUT?ISn't it always the selected port???'
