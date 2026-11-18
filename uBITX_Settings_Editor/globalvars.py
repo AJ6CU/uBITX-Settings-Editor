@@ -3,10 +3,10 @@ import sys
 import time
 import tkinter as tk
 
-VERSION="Release Candidate 4"
+VERSION="Release Candidate 5"
 # The release as Python packaging writes it (PEP 440): packaging/build_wheel.py
 # names the wheel and the download bundles after it. Change both together.
-APPVERSION = "2.0rc4"
+APPVERSION = "2.0rc5"
 
 # FIX (2026-11-15): HF Signals no longer hosts its BFO tuning aid (the old
 # page, https://www.hfsignals.com/index.php/bfo-tuning-aid/, is empty). This is the
