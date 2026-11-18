@@ -15,6 +15,13 @@ def _is_usb_port(device):
     return name.startswith(("ttyUSB", "ttyACM", "cu.usb", "cu.wchusb", "cu.SLAB", "tty.usb"))
 
 
+def _is_real_port(port):
+    """False for a serial slot the kernel reserves but nothing drives, which
+    pyserial reports with "n/a" for both its description and its hardware
+    id (the unused /dev/ttyS* on Linux)."""
+    return not (getattr(port, "description", "") == "n/a" and getattr(port, "hwid", "") == "n/a")
+
+
 def _looks_like_port(text):
     """Something a user could mean as a port: a device path or a COM name,
     not the prompt or nothing."""
@@ -85,7 +92,13 @@ class com_portManager(ComPortmanagerWidget):
         ports = serial.tools.list_ports.comports()          #Gets list of ports
         # FIX (2026-11-19): USB adapters first -- the radio is one; the PC's
         # own serial ports (ttyS*, COM1) after them.
-        found = sorted((p.device for p in ports), key=lambda d: (not _is_usb_port(d), d))
+        # FIX (2026-11-19): AND ONLY PORTS THAT ARE THERE. Ubuntu 26.04
+        # reports all 32 of the kernel's ttyS slots, most with no hardware
+        # behind them ("n/a"); with ttyUSB0 listed after them, it fell off
+        # the bottom of the screen (PA1CJT: "33 ports found"). A slot with
+        # nothing behind it is left out; a port typed in is still used.
+        found = sorted((p.device for p in ports if _is_real_port(p)),
+                       key=lambda d: (not _is_usb_port(d), d))
         self.comPortList = list(found)
         self.comPortsOptionMenu.configure(values=self.comPortList)
 

@@ -34,7 +34,11 @@ PORTS = []
 serial = types.ModuleType("serial"); serial.PARITY_NONE = "N"
 serial.tools = types.ModuleType("serial.tools")
 serial.tools.list_ports = types.ModuleType("serial.tools.list_ports")
-serial.tools.list_ports.comports = lambda: [types.SimpleNamespace(device=d) for d in PORTS]
+def _port(d):
+    if isinstance(d, tuple):                      # (device, description, hwid)
+        return types.SimpleNamespace(device=d[0], description=d[1], hwid=d[2])
+    return types.SimpleNamespace(device=d, description="USB Serial", hwid="USB VID:PID=1A86:7523")
+serial.tools.list_ports.comports = lambda: [_port(d) for d in PORTS]
 stub = lambda name, **attrs: sys.modules.setdefault(name, types.SimpleNamespace(**attrs))
 sys.modules.update({"serial": serial, "serial.tools": serial.tools,
                     "serial.tools.list_ports": serial.tools.list_ports})
@@ -62,6 +66,13 @@ m, states = manager()
 case("every port pyserial finds is offered, USB adapters first",
      m.comPortsOptionMenu.values == ["/dev/ttyUSB0", "/dev/ttyS0", "/dev/ttyS4"])
 case("nothing chosen yet: the buttons are off", states[-1] == "disabled")
+
+# Kees's Ubuntu 26.04: 32 ttyS slots, only ttyS4 real, ttyUSB0 last.
+PORTS[:] = ([("/dev/ttyS%d" % i, "n/a", "n/a") for i in range(32) if i != 4]
+            + [("/dev/ttyS4", "ttyS4", "PNP0501"), "/dev/ttyUSB0"])
+m, states = manager()
+case("Ubuntu 26.04's empty ttyS slots are left out; ttyUSB0 is first",
+     m.comPortsOptionMenu.values == ["/dev/ttyUSB0", "/dev/ttyS4"])
 
 PORTS[:] = ["/dev/ttyS4"]                         # pyserial misses ttyUSB0
 m, states = manager()
